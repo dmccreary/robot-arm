@@ -1,0 +1,1681 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A detailed course description for Controlling a Robot Arm including overview, topics covered and learning objectives in the format of the 2001 Bloom Taxonomy">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/course-description/">
+      
+      
+        <link rel="prev" href="../about/">
+      
+      
+        <link rel="next" href="../chapters/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Course Description for Controlling a Robot Arm - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#course-description-for-controlling-a-robot-arm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Course Description for Controlling a Robot Arm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#title" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Title
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subtitle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subtitle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-python-is-taught" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the Python Is Taught
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-skills-ladder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Skills Ladder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-book-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Book Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topics-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topics Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topics-not-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topics Not Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-elements-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Elements (MicroSims)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Outcomes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Learning Outcomes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remember
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyze
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-and-software-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware and Software Used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimated-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimated Scale
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#title" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Title
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subtitle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subtitle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-python-is-taught" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the Python Is Taught
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-skills-ladder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Skills Ladder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-book-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Book Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topics-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topics Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topics-not-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topics Not Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-elements-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Elements (MicroSims)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Outcomes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Learning Outcomes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remember
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyze
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-and-software-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware and Software Used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimated-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimated Scale
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/course-description.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="course-description-for-controlling-a-robot-arm">Course Description for Controlling a Robot Arm<a class="headerlink" href="#course-description-for-controlling-a-robot-arm" title="Permanent link">&para;</a></h1>
+<h2 id="title">Title<a class="headerlink" href="#title" title="Permanent link">&para;</a></h2>
+<p>Controlling a Robot Arm: Source, Build and Control</p>
+<h2 id="subtitle">Subtitle<a class="headerlink" href="#subtitle" title="Permanent link">&para;</a></h2>
+<p>Learn Python by Sourcing, Building, and Programming Low-Cost Robot Arms with the SO-ARM100 and the Seeed Studio reBot-DevArm, and Connecting Them to AI Agents</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This is a <strong>Python programming book that happens to move a real robot</strong>. Every
+chapter turns an idea into Python code that reads a sensor, moves a joint, or
+makes a decision, and then shows the result on a physical arm. The reader
+starts with a bill of materials and ends with an AI agent that can safely
+command a robot arm through Python code the reader wrote.</p>
+<p>The book follows one learning path across two open-source desktop arms at
+opposite ends of the hobbyist-to-developer range:</p>
+<ul>
+<li><strong>SO-ARM100</strong> (and its successor, the SO-ARM101) — a 3D-printed,
+  six-degree-of-freedom arm designed by The Robot Studio with Hugging Face. It
+  is built in leader/follower pairs around STS3215 serial bus servos and works
+  with the open-source LeRobot library. It is the low-cost entry point: cheap
+  to source, easy to print, and well supported for teleoperation and imitation
+  learning.</li>
+<li><strong>reBot-DevArm</strong> (B601 series) from Seeed Studio — an open-source six-axis arm
+  plus a parallel gripper, built around CAN-bus actuators (Damiao motors in the
+  B601-DM variant, RobStride in the B601-RS variant). It has a higher payload
+  and reach, and is compatible with ROS, LeRobot, NVIDIA Isaac Sim, and
+  Pinocchio. It is the step up for readers who need more capability and a
+  more industrial software stack.</li>
+</ul>
+<p>Comparing the two arms lets the reader see which design decisions (actuators,
+buses, power, kinematics, software) are essential to any arm and which are
+specific to one platform. It also motivates the book's central Python skill:
+writing a small <strong>hardware abstraction layer</strong> (a Python class) so the same
+program can drive either arm.</p>
+<h3 id="how-the-python-is-taught">How the Python Is Taught<a class="headerlink" href="#how-the-python-is-taught" title="Permanent link">&para;</a></h3>
+<p>The reader is assumed to have <strong>only the Python from the Learning Python
+course</strong>. Anything beyond that is introduced just in time, inside the lab that
+needs it, using these rules:</p>
+<ol>
+<li><strong>One new Python idea per lab.</strong> A lab may introduce a new library or
+   language feature, never several at once.</li>
+<li><strong>Simulate first, then power on.</strong> Each program runs against a software
+   "fake arm" before it touches hardware, so mistakes are cheap and safe.</li>
+<li><strong>Small, readable programs.</strong> Code listings stay short, use clear names, and
+   build on code from earlier labs rather than starting over.</li>
+<li><strong>Use the high-level library first.</strong> The reader drives the arms with
+   LeRobot's Python interface and vendor SDKs before seeing what happens
+   underneath. Robotics frameworks that need deep background (ROS 2, Isaac Sim,
+   Pinocchio, and neural-network training for imitation learning) are
+   presented as <strong>guided tours with working example code</strong>, not as skills the
+   reader must master.</li>
+<li><strong>Math is computed, not memorized.</strong> Trigonometry and geometry appear as
+   short Python functions the reader runs, plots, and experiments with.</li>
+</ol>
+<h2 id="audience">Audience<a class="headerlink" href="#audience" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Primary:</strong> middle-school students, high-school students, and adults, with
+  a <strong>minimum age of 12</strong>, who completed the Learning Python course and want a
+  motivating project that uses Python to control a physical machine.</li>
+<li><strong>Secondary:</strong> makers, hobbyists, and self-taught roboticists who can write
+  basic Python and want to build and program their first arm.</li>
+<li><strong>Tertiary:</strong> middle-school, high-school, and undergraduate students in
+  robotics, computer science, or AI classes that need a low-cost lab platform,
+  and the teachers, makerspace leaders, and club mentors who plan the parts
+  order for them.</li>
+<li><strong>Also useful to:</strong> software developers and AI practitioners who want to give
+  an AI agent a physical body and need to learn the hardware side.</li>
+</ul>
+<p><strong>Supervision note:</strong> the minimum age is 12. Readers under 16 should work with
+an adult when using 3D printers, soldering irons, or mains-powered supplies,
+and when working with the higher-voltage reBot-DevArm. The book flags every
+such step.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>The reader must have completed the <strong>Learning Python</strong> course or be able to do
+everything in the list below. The book reviews each item briefly the first time
+it is used.</p>
+<p><strong>Python skills assumed (all from Learning Python):</strong></p>
+<ul>
+<li>Variables, numbers, strings, f-strings, and <code>input()</code> / <code>print()</code>.</li>
+<li><code>if</code>/<code>elif</code>/<code>else</code>, <code>for</code> and <code>while</code> loops, and <code>range()</code>.</li>
+<li>Writing functions with parameters, return values, and docstrings.</li>
+<li>Lists, tuples, dictionaries, sets, and list comprehensions.</li>
+<li>Importing and using modules such as <code>math</code>, <code>random</code>, and <code>time</code>.</li>
+<li>Reading and writing text files with <code>with open(...)</code>, and reading JSON.</li>
+<li>Handling errors with <code>try</code>/<code>except</code> and reading a traceback.</li>
+<li>Defining a simple class with <code>__init__</code>, attributes, methods, and basic
+  inheritance.</li>
+<li>Making a basic plot with matplotlib and basic array math with NumPy.</li>
+<li>Using the Python REPL, running a script from the terminal, and installing a
+  package with <code>pip</code> inside a virtual environment.</li>
+</ul>
+<p><strong>Other prerequisites:</strong></p>
+<ul>
+<li>Basic algebra and the idea of an angle. Sine and cosine are reviewed with
+  Python code in the first kinematics lab.</li>
+<li>Willingness to follow safety instructions when working with motors and
+  power supplies.</li>
+</ul>
+<p><strong>Not assumed.</strong> The book does not assume any experience with robotics,
+electronics, 3D printing, soldering, ROS, machine learning frameworks,
+asynchronous programming, or large language models. Each is introduced
+when first needed.</p>
+<h2 id="python-skills-ladder">Python Skills Ladder<a class="headerlink" href="#python-skills-ladder" title="Permanent link">&para;</a></h2>
+<p>New Python skills are introduced in this order, each in the lab that first
+needs it. This ladder is the core of the book's design.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>New Python skill</th>
+<th>First used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Review: <code>pip</code>, virtual environments, project folders</td>
+<td>Setting up the arm software</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Serial ports and bytes with <code>pyserial</code> and the vendor SDK</td>
+<td>Pinging a servo and reading its position</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Configuration with JSON files and <code>argparse</code></td>
+<td>Saving servo IDs, limits, and calibration</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Classes for hardware: <code>Arm</code> and <code>Joint</code>, and a fake arm for testing</td>
+<td>A single program that drives either arm</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>dataclass</code> and light type hints</td>
+<td>Describing poses, joint limits, and commands</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>try</code>/<code>finally</code> and context managers (<code>with</code>)</td>
+<td>Always releasing torque and closing the port safely</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Timing loops with <code>time</code> and a fixed control rate</td>
+<td>Smooth motion and trajectories</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>math</code> and NumPy for angles and vectors</td>
+<td>Forward and inverse kinematics</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Plotting with matplotlib</td>
+<td>Visualizing trajectories and workspace</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Logging with the <code>logging</code> module and CSV output</td>
+<td>Debugging and audit trails</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Testing with <code>pytest</code> and mock objects</td>
+<td>Verifying safety limits without hardware</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Camera frames with OpenCV and NumPy</td>
+<td>Finding an object's position</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Using web APIs and JSON requests</td>
+<td>Calling a vision-language model</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Functions as tools: typed parameters, validation, docstrings</td>
+<td>Exposing arm commands to an AI agent</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Threads and a stop flag (introductory only)</td>
+<td>A responsive emergency stop</td>
+</tr>
+</tbody>
+</table>
+<p>Asynchronous programming (<code>async</code>/<code>await</code>), decorators, and metaclasses are
+<strong>not</strong> required. Where a library uses them, the book provides a ready-made
+wrapper.</p>
+<h2 id="why-this-book-matters">Why This Book Matters<a class="headerlink" href="#why-this-book-matters" title="Permanent link">&para;</a></h2>
+<p>Python is the language of robotics research and of AI, and the arms in this
+book are among the lowest-cost ways to run real robot-learning code. A reader
+who finishes the book has written code that crosses the line from software to
+hardware, where mistakes have physical consequences. That experience teaches
+careful programming habits (validation, testing, logging, safe shutdown) that
+carry into every later project.</p>
+<p>AI agents are also beginning to act in the physical world. Letting an agent
+call Python functions that move an arm is a concrete, low-risk setting in which
+to learn what makes agent control useful and what makes it dangerous. Readers
+learn to build the safety layer, not just the demo.</p>
+<h2 id="topics-covered">Topics Covered<a class="headerlink" href="#topics-covered" title="Permanent link">&para;</a></h2>
+<p>The book is organized into ten main topic areas. Each area lists the concepts
+it introduces and the Python skills (from the ladder above) that it uses.</p>
+<ol>
+<li>
+<p><strong>Robot arm fundamentals</strong> — links, joints, degrees of freedom, end
+   effectors, workspace, payload, repeatability, reach, and singular poses.
+   <em>Python:</em> describing an arm as data (dictionaries, then a class).</p>
+</li>
+<li>
+<p><strong>Actuators, sensors, and electronics</strong> — hobby servos, serial bus servos,
+   and CAN-bus actuators; gear ratios, torque, encoders, position feedback;
+   TTL half-duplex serial, UART, USB adapters, CAN bus, device IDs, and baud
+   rates; power supplies, voltage and current, wiring, fuses, and emergency
+   stops. <em>Python:</em> serial communication, bytes, and reading a servo's state.</p>
+</li>
+<li>
+<p><strong>Safety</strong> — pinch points, torque and speed limits, runaway behavior, safe
+   work envelopes, supervising a powered arm, safe power-up and shutdown, and
+   emergency stops. <em>Python:</em> limit checking, <code>try</code>/<code>finally</code>, and context
+   managers.</p>
+</li>
+<li>
+<p><strong>Sourcing parts</strong> — reading a bill of materials; kits versus self-sourced
+   builds; official sellers, distributors, and marketplaces; lead times;
+   budgeting; counterfeit and incompatible parts; SO-ARM100 versus SO-ARM101
+   revisions; 3D printers, materials, and print settings; fasteners, cables,
+   and tools. <em>Python:</em> a bill-of-materials cost calculator using dictionaries,
+   CSV or JSON files, and sorting.</p>
+</li>
+<li>
+<p><strong>Building and calibrating the SO-ARM100</strong> — reading an open-source
+   repository, preparing servos (IDs and baud rates), assembling the follower
+   and leader arms, cable routing, calibration, and troubleshooting.
+   <em>Python:</em> configuration files, calibration scripts, and a servo-testing tool.</p>
+</li>
+<li>
+<p><strong>Building and calibrating the reBot-DevArm</strong> — the B601-DM and B601-RS
+   variants, CAN-bus configuration, higher-voltage power distribution,
+   assembly, zeroing, calibration, and a side-by-side comparison with the
+   SO-ARM100. <em>Python:</em> a hardware abstraction class that drives both arms.</p>
+</li>
+<li>
+<p><strong>Motion programming in Python</strong> — reading joint positions, joint-space
+   moves, speed and acceleration limits, smooth trajectories and interpolation,
+   control loops and timing, gripper control, pick-and-place routines, and
+   teleoperation with a leader and follower arm. <em>Python:</em> classes, timing
+   loops, NumPy, and matplotlib plots.</p>
+</li>
+<li>
+<p><strong>Kinematics and simulation</strong> — forward kinematics, inverse kinematics,
+   multiple solutions, unreachable targets, Cartesian moves, and testing code
+   in simulation before using hardware. <em>Python:</em> <code>math</code>, NumPy, and a fake arm
+   for testing. Robot-model formats (URDF) and simulators are presented as
+   guided tours.</p>
+</li>
+<li>
+<p><strong>Perception and learning from demonstration</strong> — cameras and calibration,
+   finding colored objects, converting image coordinates to arm coordinates,
+   recording demonstration episodes, datasets, and training and evaluating an
+   imitation policy. <em>Python:</em> OpenCV, NumPy, and LeRobot's recording and
+   training scripts. Training internals are presented as a guided tour.</p>
+</li>
+<li>
+<p><strong>AI agents that control the arm</strong> — the agent loop (perceive, plan, act,
+    observe); OpenClaw (installation, messaging interfaces, and skills);
+    writing a robot-arm skill with bounded, validated commands; natural-language
+    control; local versus cloud agents; combining an agent planner with
+    LeRobot execution; other agent interfaces such as the Model Context
+    Protocol (MCP) and ROS 2 bridges; designing tools for agents; vision-language
+    models as perception; task planning and replanning; safety guardrails
+    (workspace limits, speed limits, command validation, dry-run mode,
+    confirmations, hardware emergency stop, and audit logs); risks specific to
+    agents (ambiguous instructions, hallucinated tool calls, and prompt
+    injection); testing and evaluating agent-controlled systems; and deploying
+    and operating the result. <em>Python:</em> functions as tools, type hints,
+    validation, logging, <code>pytest</code>, and web API calls.</p>
+</li>
+</ol>
+<p>Chapters on classroom and makerspace use (parts ordering for groups, lab
+schedules, assessment) and on next steps (bimanual setups, mobile manipulation,
+larger arms, contributing to open-source projects) close the book.</p>
+<h2 id="topics-not-covered">Topics Not Covered<a class="headerlink" href="#topics-not-covered" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Designing a robot arm from scratch, including custom mechanical design, PCB
+  design, and custom firmware.</li>
+<li>Advanced control theory such as dynamics-based, force, and impedance control.</li>
+<li>Training large foundation models for robotics, or writing neural networks
+  from scratch.</li>
+<li>Mastery of ROS 2, Isaac Sim, or Pinocchio (these are guided tours only).</li>
+<li>Asynchronous programming, decorators, metaclasses, and other advanced Python
+  language features.</li>
+<li>Industrial robot-arm certification and safety-standards compliance.</li>
+<li>Humanoid robots and mobile bases, other than as pointers for next steps.</li>
+<li>Web development, databases, and cloud deployment beyond calling an API.</li>
+</ul>
+<h2 id="interactive-elements-microsims">Interactive Elements (MicroSims)<a class="headerlink" href="#interactive-elements-microsims" title="Permanent link">&para;</a></h2>
+<p>The book uses interactive simulations to make abstract ideas concrete. Planned
+MicroSims include:</p>
+<ul>
+<li>Joint and link explorer showing degrees of freedom and workspace.</li>
+<li>Two-link forward kinematics playground, with a six-joint extension.</li>
+<li>Inverse kinematics solver showing multiple solutions and singularities.</li>
+<li>Servo versus CAN-actuator comparison chart.</li>
+<li>Bill-of-materials cost calculator for the SO-ARM100 and reBot-DevArm.</li>
+<li>Power budget and wire-gauge calculator.</li>
+<li>Bus topology diagrams for serial-bus and CAN-bus wiring.</li>
+<li>Serial packet explorer that shows the bytes sent to a servo.</li>
+<li>Calibration walk-through with a virtual arm.</li>
+<li>Trajectory profile plotter (trapezoidal versus smooth velocity).</li>
+<li>Python-in-the-browser arm sandbox with a fake arm for first programs.</li>
+<li>Agent loop visualizer: perceive, plan, act, observe.</li>
+<li>Tool-call and safety-layer flow diagram for an agent-driven arm.</li>
+<li>Imitation-learning data pipeline diagram.</li>
+</ul>
+<h2 id="learning-outcomes">Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permanent link">&para;</a></h2>
+<p>After completing this book, readers will be able to demonstrate the following
+competencies.</p>
+<h3 id="remember">Remember<a class="headerlink" href="#remember" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Name</strong> the parts of a robot arm and <strong>define</strong> degrees of freedom,
+  workspace, payload, and repeatability.</li>
+<li><strong>List</strong> the major components in the SO-ARM100 and reBot-DevArm bills of
+  materials.</li>
+<li><strong>Recall</strong> the actuator type, communication bus, and supply voltage each arm
+  uses.</li>
+<li><strong>State</strong> the safety rules for working with a powered arm.</li>
+<li><strong>Identify</strong> the Python libraries used in the book (<code>pyserial</code>, NumPy,
+  matplotlib, OpenCV, <code>pytest</code>, LeRobot) and the job each does.</li>
+<li><strong>Recall</strong> the steps in the agent loop and the purpose of an agent skill or
+  tool.</li>
+</ul>
+<h3 id="understand">Understand<a class="headerlink" href="#understand" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Explain</strong> how serial bus servos and CAN-bus actuators differ in wiring,
+  addressing, and speed.</li>
+<li><strong>Explain</strong> what calibration does and why a miscalibrated arm misbehaves.</li>
+<li><strong>Describe</strong> the difference between joint-space and Cartesian control.</li>
+<li><strong>Explain</strong> how forward and inverse kinematics relate and why inverse
+  kinematics can have several solutions or none.</li>
+<li><strong>Describe</strong> how a Python class can hide hardware differences behind one
+  interface.</li>
+<li><strong>Explain</strong> why <code>try</code>/<code>finally</code> and context managers matter when a program
+  controls a motor.</li>
+<li><strong>Explain</strong> why the leader/follower arrangement produces useful training
+  data.</li>
+<li><strong>Describe</strong> how an agent framework such as OpenClaw calls Python functions
+  to act in the physical world.</li>
+</ul>
+<h3 id="apply">Apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Source</strong> a complete parts list for an arm and place an order within a
+  budget.</li>
+<li><strong>Print</strong>, assemble, wire, and calibrate an SO-ARM100.</li>
+<li><strong>Configure</strong> the actuators and software for a reBot-DevArm.</li>
+<li><strong>Write</strong> Python programs that read joint state, move the arm along a planned
+  path, and run a pick-and-place routine.</li>
+<li><strong>Implement</strong> forward kinematics for a two-link arm in Python and <strong>plot</strong> the
+  workspace.</li>
+<li><strong>Write</strong> a Python class that drives a real arm and a fake arm through the
+  same interface.</li>
+<li><strong>Use</strong> <code>logging</code> and <code>pytest</code> to record and verify a program's behavior
+  without hardware.</li>
+<li><strong>Teleoperate</strong> an arm with a leader arm and <strong>record</strong> a dataset.</li>
+<li><strong>Install</strong> OpenClaw and <strong>write</strong> a skill that exposes arm commands to an
+  agent.</li>
+</ul>
+<h3 id="analyze">Analyze<a class="headerlink" href="#analyze" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Compare</strong> the two arms on cost, payload, reach, accuracy, software support,
+  and assembly effort.</li>
+<li><strong>Diagnose</strong> a failing arm from symptoms (communication errors, jitter,
+  overheating, drift) by isolating power, bus, mechanical, and software causes.</li>
+<li><strong>Trace</strong> a Python command from a function call through the library, bus, and
+  motor to the physical motion.</li>
+<li><strong>Break down</strong> an agent-driven task into perception, planning, tool-call, and
+  safety-check stages and <strong>identify</strong> where failures arise.</li>
+<li><strong>Analyze</strong> the risks of giving an AI agent control of physical hardware,
+  including prompt injection and hallucinated commands.</li>
+<li><strong>Examine</strong> log files to find why a motion failed.</li>
+</ul>
+<h3 id="evaluate">Evaluate<a class="headerlink" href="#evaluate" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Judge</strong> whether a kit, a self-sourced build, or a different arm best fits a
+  given budget, classroom, or project.</li>
+<li><strong>Assess</strong> a safety design for an agent-controlled arm and decide whether it
+  is adequate for the intended setting.</li>
+<li><strong>Critique</strong> a robot-control program for missing limit checks, unsafe
+  shutdown behavior, and unclear names.</li>
+<li><strong>Evaluate</strong> the success rate and repeatability of a scripted routine, a
+  learned policy, and an agent-driven task.</li>
+<li><strong>Decide</strong> when a task should use a fixed script, a learned policy, or an AI
+  agent, and justify the choice.</li>
+</ul>
+<h3 id="create">Create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Design</strong> and <strong>build</strong> a complete agent-controlled arm system: hardware,
+  Python control library, tool interface, safety layer, tests, and logging.</li>
+<li><strong>Create</strong> a reusable Python package that drives both arms through one
+  interface.</li>
+<li><strong>Create</strong> a custom OpenClaw skill (or an equivalent tool interface for
+  another agent framework) with bounded, validated commands.</li>
+<li><strong>Design</strong> an original multi-step project, such as a desk assistant that
+  sorts objects, and <strong>document</strong> it so others can reproduce it.</li>
+<li><strong>Produce</strong> a reusable parts list, build guide, and test plan for a classroom
+  set of arms.</li>
+</ul>
+<p><strong>Capstone ideas:</strong> a chat-controlled desk arm; a color-sorting arm that uses a
+camera; a leader/follower data-collection station; an agent-driven arm with a
+complete safety layer and test suite.</p>
+<h2 id="hardware-and-software-used">Hardware and Software Used<a class="headerlink" href="#hardware-and-software-used" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arm 1</td>
+<td>SO-ARM100 (SO-ARM101 differences noted), 6 DOF per arm, STS3215 serial bus servos, leader/follower pair</td>
+</tr>
+<tr>
+<td>Arm 2</td>
+<td>Seeed Studio reBot-DevArm B601 series, 6 axes plus parallel gripper, CAN-bus actuators</td>
+</tr>
+<tr>
+<td>Fabrication</td>
+<td>FDM 3D printer, hand tools, soldering or crimping tools as needed</td>
+</tr>
+<tr>
+<td>Computer</td>
+<td>macOS, Linux, or Windows with WSL; an optional edge AI computer for local agents</td>
+</tr>
+<tr>
+<td>Camera</td>
+<td>A USB webcam for the perception chapters</td>
+</tr>
+<tr>
+<td>Python libraries</td>
+<td><code>pyserial</code> or vendor SDKs, NumPy, matplotlib, OpenCV, LeRobot, <code>pytest</code></td>
+</tr>
+<tr>
+<td>Agent tools</td>
+<td>OpenClaw; an LLM or vision-language model service (cloud or local)</td>
+</tr>
+<tr>
+<td>Optional tours</td>
+<td>ROS 2, a physics simulator</td>
+</tr>
+</tbody>
+</table>
+<p>Specifications of both arms, software versions, and prices change often. The
+book links to the official repositories and vendor pages as the source of truth
+and notes the date each fact was last checked.</p>
+<h2 id="estimated-scale">Estimated Scale<a class="headerlink" href="#estimated-scale" title="Permanent link">&para;</a></h2>
+<ul>
+<li>14 to 18 chapters, each with at least one hands-on Python lab.</li>
+<li>Roughly 300 to 450 concepts in the learning graph.</li>
+<li>Every build and programming lab includes a fake-arm version that runs without
+  hardware, so readers can complete the Python work even before their arm
+  arrives.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../about/" class="md-footer__link md-footer__link--prev" aria-label="Previous: About">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                About
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../chapters/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Chapters">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                List of Chapters
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
