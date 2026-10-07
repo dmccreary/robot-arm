@@ -111,6 +111,10 @@ it is used.
   Python code in the first kinematics lab.
 - Willingness to follow safety instructions when working with motors and
   power supplies.
+- For the **optional advanced chapter only:** comfort with the algebra used in
+  the rest of the book and willingness to learn vectors, matrices, and rates
+  of change. The chapter reviews each from scratch with Python experiments, so
+  no calculus or linear algebra course is required.
 
 **Not assumed.** The book does not assume any experience with robotics,
 electronics, 3D printing, soldering, ROS, machine learning frameworks,
@@ -139,6 +143,7 @@ needs it. This ladder is the core of the book's design.
 | 13 | Using web APIs and JSON requests | Calling a vision-language model |
 | 14 | Functions as tools: typed parameters, validation, docstrings | Exposing arm commands to an AI agent |
 | 15 | Threads and a stop flag (introductory only) | A responsive emergency stop |
+| 16 (optional) | `numpy.linalg` and SciPy (`interpolate`, `optimize`) | Jacobians, trajectories, and path prediction in the advanced chapter |
 
 Asynchronous programming (`async`/`await`), decorators, and metaclasses are
 **not** required. Where a library uses them, the book provides a ready-made
@@ -160,8 +165,10 @@ learn to build the safety layer, not just the demo.
 
 ## Topics Covered
 
-The book is organized into ten main topic areas. Each area lists the concepts
-it introduces and the Python skills (from the ladder above) that it uses.
+The book is organized into ten core topic areas plus one **optional advanced
+chapter** (area 11). Each area lists the concepts it introduces and the Python
+skills (from the ladder above) that it uses. Nothing in areas 1–10 depends on
+area 11, so readers can skip it and still complete every build and project.
 
 1. **Robot arm fundamentals** — links, joints, degrees of freedom, end
    effectors, workspace, payload, repeatability, reach, and singular poses.
@@ -227,6 +234,25 @@ it introduces and the Python skills (from the ladder above) that it uses.
     and operating the result. *Python:* functions as tools, type hints,
     validation, logging, `pytest`, and web API calls.
 
+11. **Optional advanced chapter: the mathematics of arm paths** — for readers
+    who want to understand and predict how an arm will move before it moves.
+    The chapter reviews vectors, matrices, and the idea of a derivative using
+    short Python experiments, then covers: rotation matrices, homogeneous
+    transforms, and quaternions for orientation; the Jacobian and velocity
+    kinematics; damped least-squares inverse kinematics and manipulability near
+    singular poses; the difference between a path and a trajectory;
+    polynomial (cubic and quintic), minimum-jerk, and spline trajectories;
+    time scaling with velocity and acceleration limits; Cartesian straight-line
+    paths; a simple static-torque estimate for holding a pose; sampling-based
+    path planning around obstacles (RRT) and path smoothing; and **predicting a
+    path** by simulating it in Python and then comparing the prediction with the
+    path recorded from the real arm, using error measures such as RMSE and
+    maximum deviation. *Python:* `numpy.linalg`, SciPy interpolation and
+    optimization, matplotlib animation, and comparing logged data with
+    predictions. This chapter is optional and is marked as **Advanced** in the
+    navigation; it builds on the kinematics lab (area 8) and the logging and
+    plotting labs (area 7).
+
 Chapters on classroom and makerspace use (parts ordering for groups, lab
 schedules, assessment) and on next steps (bimanual setups, mobile manipulation,
 larger arms, contributing to open-source projects) close the book.
@@ -235,7 +261,9 @@ larger arms, contributing to open-source projects) close the book.
 
 - Designing a robot arm from scratch, including custom mechanical design, PCB
   design, and custom firmware.
-- Advanced control theory such as dynamics-based, force, and impedance control.
+- Full rigid-body dynamics, force control, and impedance control. (The optional
+  advanced chapter covers only kinematic path mathematics and a simple
+  static-torque estimate.)
 - Training large foundation models for robotics, or writing neural networks
   from scratch.
 - Mastery of ROS 2, Isaac Sim, or Pinocchio (these are guided tours only).
@@ -253,6 +281,13 @@ MicroSims include:
 - Joint and link explorer showing degrees of freedom and workspace.
 - Two-link forward kinematics playground, with a six-joint extension.
 - Inverse kinematics solver showing multiple solutions and singularities.
+- Jacobian velocity explorer showing how joint speeds become hand speed, with
+  a manipulability ellipse (advanced chapter).
+- Trajectory comparison plotter: cubic, quintic, and minimum-jerk curves for
+  position, velocity, and acceleration (advanced chapter).
+- Path planner sandbox that grows an RRT around obstacles (advanced chapter).
+- Predicted-versus-measured path viewer that overlays a simulated path on a
+  recorded one and reports the error (advanced chapter).
 - Servo versus CAN-actuator comparison chart.
 - Bill-of-materials cost calculator for the SO-ARM100 and reBot-DevArm.
 - Power budget and wire-gauge calculator.
@@ -363,6 +398,28 @@ competencies.
 camera; a leader/follower data-collection station; an agent-driven arm with a
 complete safety layer and test suite.
 
+### Optional Advanced Chapter Outcomes
+
+Readers who take the optional chapter on the mathematics of arm paths will
+also be able to:
+
+- **Define** path, trajectory, Jacobian, manipulability, and quaternion, and
+  **recall** the shape of a cubic, quintic, and minimum-jerk curve. *(Remember)*
+- **Explain** how the Jacobian relates joint speeds to hand speed, why an arm
+  loses motion in some directions near a singular pose, and why smooth
+  trajectories reduce jerk and servo stress. *(Understand)*
+- **Compute** a Jacobian with NumPy, **generate** a quintic trajectory between
+  two poses, and **plan** a path around an obstacle with a simple RRT.
+  *(Apply)*
+- **Compare** trajectory types by their peak velocity, acceleration, and jerk,
+  and **analyze** where and why a recorded path deviates from the predicted
+  one. *(Analyze)*
+- **Evaluate** a prediction by RMSE and maximum deviation, and **judge**
+  whether a planned path is safe given joint limits, speed limits, and
+  obstacles. *(Evaluate)*
+- **Build** a Python tool that predicts an arm's path, runs it, logs the result,
+  and reports the prediction error. *(Create)*
+
 ## Hardware and Software Used
 
 | Item | Details |
@@ -382,8 +439,10 @@ and notes the date each fact was last checked.
 
 ## Estimated Scale
 
-- 14 to 18 chapters, each with at least one hands-on Python lab.
-- Roughly 300 to 450 concepts in the learning graph.
+- 15 to 19 chapters, each with at least one hands-on Python lab. One chapter
+  (the mathematics of arm paths) is optional and marked Advanced.
+- Roughly 450 to 550 concepts in the learning graph, about 50 of them in the
+  optional advanced chapter.
 - Every build and programming lab includes a fake-arm version that runs without
   hardware, so readers can complete the Python work even before their arm
   arrives.

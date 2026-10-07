@@ -74,7 +74,7 @@ the main gaps in the first draft:
 
 ## Concept Generation Readiness
 
-**Estimated learning graph size: 350–450 concepts.** This exceeds the 200-concept
+**Estimated learning graph size: 450–550 concepts** (including about 50 in the optional advanced chapter). This exceeds the 200-concept
 target.
 
 | Topic area | Estimated concepts |
@@ -89,6 +89,7 @@ target.
 | 8. Kinematics and simulation | 30–40 |
 | 9. Perception and learning from demonstration | 35–45 |
 | 10. AI agents that control the arm | 60–80 |
+| 11. Optional advanced chapter: mathematics of arm paths | 45–55 |
 
 The Bloom's outcomes suggest a healthy mix of concept types: vocabulary
 (parts, buses, protocols), procedures (assembly, calibration), Python skills
