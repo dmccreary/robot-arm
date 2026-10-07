@@ -1,0 +1,538 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Learning Python Prerequisites,,PYS
+2,Python Interpreter,1,PYS
+3,REPL,2,PYS
+4,Python Script,2,PYS
+5,Terminal,1,PYS
+6,Virtual Environment,5|2,PYS
+7,Pip,6,PYS
+8,Requirements File,7,PYS
+9,Project Folder Layout,4,PYS
+10,Python Module,4,PYS
+11,Python Package,10|9,PYS
+12,Import Statement,10,PYS
+13,Standard Library,12,PYS
+14,Docstring,4,PYS
+15,Naming Conventions,4,PYS
+16,Reading a Traceback,4,PYS
+17,Print Debugging,4|16,PYS
+18,Git Version Control,5,PYS
+19,Code Editor,4,PYS
+20,JSON File Format,4,PYS
+21,Configuration File,20,PYS
+22,Command Line Arguments,5|4,PYS
+23,Argparse Module,22|13,PYS
+24,Environment Variables,5,PYS
+25,File Paths,4,PYS
+26,Robot Arm,,ARM
+27,Link,26,ARM
+28,Joint,26,ARM
+29,Revolute Joint,28,ARM
+30,Prismatic Joint,28,ARM
+31,Degrees of Freedom,28|27,ARM
+32,End Effector,26,ARM
+33,Gripper,32,ARM
+34,Parallel Gripper,33,ARM
+35,Base Frame,26,ARM
+36,Workspace,31|27,ARM
+37,Reach,36,ARM
+38,Payload,26,ARM
+39,Repeatability,26,ARM
+40,Accuracy,39,ARM
+41,Serial Manipulator,27|28,ARM
+42,Six-Axis Arm,41|31,ARM
+43,Shoulder,42,ARM
+44,Elbow,42,ARM
+45,Wrist,42,ARM
+46,Joint Limits,28,ARM
+47,Joint Angle,29,ARM
+48,Pose,47|32,ARM
+49,Home Position,48,ARM
+50,Open-Source Hardware,26,ARM
+51,Desktop Robot Arm,26|50,ARM
+52,Leader Arm,51,ARM
+53,Follower Arm,51,ARM
+54,Teleoperation,52|53,ARM
+55,Bimanual Robot,26|53,ARM
+56,Robot Arm Applications,26|38,ARM
+57,Actuator,26|28,ACT
+58,DC Motor,57|120,ACT
+59,Hobby Servo,61|60,ACT
+60,PWM Signal,120,ACT
+61,Servo Motor,58|73,ACT
+62,Serial Bus Servo,61|87,ACT
+63,STS3215 Servo,62,ACT
+64,Brushless Motor,57|120,ACT
+65,Damiao Actuator,64|103,ACT
+66,RobStride Actuator,64|103,ACT
+67,Gear Ratio,57,ACT
+68,Gearbox,67,ACT
+69,Backlash,68,ACT
+70,Torque,57,ACT
+71,Stall Torque,70,ACT
+72,Motor Speed,57,ACT
+73,Encoder,57,ACT
+74,Magnetic Encoder,73,ACT
+75,Position Feedback,73,ACT
+76,Velocity Feedback,73,ACT
+77,Current Sensing,57|121,ACT
+78,Temperature Sensing,57,ACT
+79,Load Feedback,70|77,ACT
+80,Torque Limit,70,ACT
+81,Torque Enable,57|70,ACT
+82,Overload Protection,80|78|79,ACT
+83,PID Control,75,ACT
+84,Servo Compliance,83|80,ACT
+85,Quasi-Direct Drive,67|64,ACT
+86,Motor Controller,57|83,ACT
+87,Serial Communication,120,COMM
+88,UART,87,COMM
+89,TTL Half-Duplex Serial,88,COMM
+90,Baud Rate,88,COMM
+91,USB Serial Adapter,88,COMM
+92,Serial Port,91,COMM
+93,Pyserial Library,92|7,COMM
+94,Bytes and Bytearray,1,COMM
+95,Hexadecimal,94,COMM
+96,Packet Structure,94|87,COMM
+97,Checksum,96|95,COMM
+98,Instruction Packet,96,COMM
+99,Status Packet,96,COMM
+100,Device ID,87,COMM
+101,Daisy Chain Wiring,100|89,COMM
+102,Servo Bus Controller Board,91|62,COMM
+103,CAN Bus,87,COMM
+104,CAN Frame,103|94,COMM
+105,CAN Bit Rate,103,COMM
+106,CAN Termination,103,COMM
+107,CAN Adapter,103|91,COMM
+108,Python-CAN Library,107|7,COMM
+109,Vendor SDK,11|7,COMM
+110,Struct Module,94|13,COMM
+111,Bit Operations,95,COMM
+112,Little-Endian Byte Order,94,COMM
+113,Register Map,98,COMM
+114,Reading a Register,113|93,COMM
+115,Writing a Register,113|93,COMM
+116,Ping Command,98|99|93,COMM
+117,Bus Scan,116|100,COMM
+118,Communication Timeout,92,COMM
+119,Communication Errors,118|97,COMM
+120,Voltage,,POWR
+121,Current,120,POWR
+122,Electrical Power,120|121,POWR
+123,Ohm's Law,120|121,POWR
+124,Power Supply,120|121,POWR
+125,Battery,124,POWR
+126,Voltage Rating,124,POWR
+127,Current Rating,121|124,POWR
+128,Power Budget,122|127,POWR
+129,Wire Gauge,121|123,POWR
+130,Power Connectors,129,POWR
+131,Fuse,127,POWR
+132,Voltage Drop,123|129,POWR
+133,Brown-Out,132|128,POWR
+134,Inrush Current,121|57,POWR
+135,Back-EMF,120|58,POWR
+136,Common Ground,120,POWR
+137,Reverse Polarity Protection,130|131,POWR
+138,Power Distribution Board,128|131|130,POWR
+139,Safe Power-Up Sequence,124|142,POWR
+140,Mains Power Safety,124|142,POWR
+141,24 V to 48 V Systems,126|142,POWR
+142,Robot Safety,26,SAFE
+143,Pinch Point,142|28,SAFE
+144,Safe Work Envelope,142|36,SAFE
+145,Emergency Stop,142,SAFE
+146,Hardware E-Stop,145|124,SAFE
+147,Software E-Stop,145|4,SAFE
+148,Speed Limit,142|72,SAFE
+149,Force Limit,142|80,SAFE
+150,Runaway Motion,142|83,SAFE
+151,Collision,142|36,SAFE
+152,Torque Release,81|145,SAFE
+153,Supervised Operation,142,SAFE
+154,Safe Shutdown,152|139,SAFE
+155,Risk Assessment,142|143,SAFE
+156,Soldering Safety,142|219,SAFE
+157,3D Printer Safety,142|194,SAFE
+158,Adult Supervision,142,SAFE
+159,Safety Checklist,155|154,SAFE
+160,Watchdog Timer,147|118,SAFE
+161,Fail-Safe Behavior,160|146,SAFE
+162,Bill of Materials,26,SORC
+163,Required Parts,162,SORC
+164,Optional Parts,162,SORC
+165,Substitute Parts,163,SORC
+166,Kit Build,162,SORC
+167,Self-Sourced Build,163|165,SORC
+168,Official Kit,166,SORC
+169,Distributor,162,SORC
+170,Online Marketplace,169,SORC
+171,Direct from Manufacturer,169,SORC
+172,Lead Time,169,SORC
+173,Shipping and Customs,172,SORC
+174,Total Build Cost,162|173,SORC
+175,Budgeting,174,SORC
+176,Cost Calculator,175|192,SORC
+177,Order Tracking,172,SORC
+178,Counterfeit Parts,170,SORC
+179,Incompatible Parts,165|180,SORC
+180,Part Revisions,162,SORC
+181,SO-ARM100,51|63,SORC
+182,SO-ARM101,181,SORC
+183,SO-ARM100 vs SO-ARM101,181|182|180,SORC
+184,reBot-DevArm,51|65,SORC
+185,reBot B601-DM,184|65,SORC
+186,reBot B601-RS,184|66,SORC
+187,Spare Parts,162,SORC
+188,Classroom Parts Order,174|187,SORC
+189,Datasheet,57,SORC
+190,Vendor Documentation,189,SORC
+191,Fact-Checking Specifications,190|189,SORC
+192,CSV Parts List,162|4,SORC
+193,Totaling Costs in Python,192|174,SORC
+194,3D Printing,,BUILD
+195,FDM Printer,194,BUILD
+196,Filament,195,BUILD
+197,PLA,196,BUILD
+198,PETG,196,BUILD
+199,Print Settings,195,BUILD
+200,Layer Height,199,BUILD
+201,Infill,199,BUILD
+202,Print Orientation,199,BUILD
+203,Support Material,202,BUILD
+204,STL File,194,BUILD
+205,STEP File,194,BUILD
+206,Slicer,204|199,BUILD
+207,G-Code,206,BUILD
+208,Print Quality Inspection,199|210,BUILD
+209,Warping,196|199,BUILD
+210,Dimensional Tolerance,199,BUILD
+211,Heat-Set Insert,212,BUILD
+212,Fasteners,162,BUILD
+213,Screws,212,BUILD
+214,Assembly Tools,213,BUILD
+215,Servo Horn,61|212,BUILD
+216,Crimping,129,BUILD
+217,Cable Management,216,BUILD
+218,Strain Relief,217,BUILD
+219,Soldering,129,BUILD
+220,Multimeter,120|121,BUILD
+221,Open-Source Repository,50|18,BUILD
+222,Assembly Guide,221,BUILD
+223,Repository Version History,221|18,BUILD
+224,Servo Preparation,63|102,BUILD
+225,Setting Servo IDs,224|100|115,BUILD
+226,Setting Baud Rate,224|90|115,BUILD
+227,Servo Testing,225|116,BUILD
+228,Leader Gear Ratios,67|52|181,BUILD
+229,Follower Assembly,222|227|208,BUILD
+230,Leader Assembly,229|228,BUILD
+231,Leader Handle and Trigger,230,BUILD
+232,Joint Assembly Order,222|28,BUILD
+233,Cable Routing,229|217,BUILD
+234,Mounting to a Table,229,BUILD
+235,Calibration,46|75,BUILD
+236,Calibration Procedure,235|247|49,BUILD
+237,Homing Position,49|235,BUILD
+238,Range of Motion Limits,46|235,BUILD
+239,Calibration File,236|20,BUILD
+240,Calibration Drift,239|69,BUILD
+241,Troubleshooting,227|220,BUILD
+242,Servo Not Found,241|117,BUILD
+243,Servo Overheating,241|78,BUILD
+244,Jitter,241|83,BUILD
+245,Loose Gears,241|69,BUILD
+246,Intermittent Wiring,241|218,BUILD
+247,First Power-On,139|233,BUILD
+248,B601 Body Structure,185|214,BUILD
+249,CAN Motor Configuration,65|107|108,BUILD
+250,Motor ID Assignment,249|100,BUILD
+251,CAN Bring-Up Check,250|106|105,BUILD
+252,reBot Gripper Assembly,248|34,BUILD
+253,reBot Wrist Assembly,248|45,BUILD
+254,High-Voltage Power Distribution,141|138|131,BUILD
+255,Zeroing,251|49,BUILD
+256,Zero Offset,255|235,BUILD
+257,Motor Mode Selection,249|83,BUILD
+258,Arm Comparison,181|184,BUILD
+259,Cost Comparison,258|174,BUILD
+260,Payload Comparison,258|38,BUILD
+261,Learning Curve,258,BUILD
+262,Platform Selection Criteria,259|260|261,BUILD
+263,Hardware Abstraction Layer,266|93|108|258,PYMO
+264,Arm Class,266|26,PYMO
+265,Joint Class,266|28,PYMO
+266,Class Interface,1,PYMO
+267,Inheritance for Drivers,266|263,PYMO
+268,Fake Arm,264|267,PYMO
+269,Mock Hardware,268,PYMO
+270,Dataclass,1|266,PYMO
+271,Type Hints,1,PYMO
+272,Pose Dataclass,270|48|271,PYMO
+273,Command Dataclass,270|271,PYMO
+274,Connect and Disconnect,264|92,PYMO
+275,Context Manager,274|276,PYMO
+276,With Statement,1,PYMO
+277,Try Finally,16|1,PYMO
+278,Exception Handling for Hardware,277|119,PYMO
+279,Custom Exceptions,278|266,PYMO
+280,Reading Joint Positions,264|114|75,PYMO
+281,Writing Target Positions,264|115|46,PYMO
+282,Raw Servo Units,280,PYMO
+283,Degrees and Radians,47|1,PYMO
+284,Unit Conversion,282|283,PYMO
+285,Joint-Space Motion,281|284,PYMO
+286,Single-Joint Move,285,PYMO
+287,Multi-Joint Move,286,PYMO
+288,Waypoint,48,PYMO
+289,Waypoint List,288|287,PYMO
+290,Interpolation,289,PYMO
+291,Linear Interpolation,290,PYMO
+292,Trajectory,290|296,PYMO
+293,Trapezoidal Velocity Profile,292|295|148,PYMO
+294,Smooth Velocity Profile,293,PYMO
+295,Acceleration Limit,148|281,PYMO
+296,Control Loop,298,PYMO
+297,Control Rate,296,PYMO
+298,Time Module,13,PYMO
+299,Timing Jitter,297,PYMO
+300,Blocking vs Non-Blocking Code,296,PYMO
+301,Threads,300,PYMO
+302,Stop Flag,301|147,PYMO
+303,Gripper Control,281|33,PYMO
+304,Gripper Width,303,PYMO
+305,Grasp Force,303|80,PYMO
+306,Pick and Place,289|303,PYMO
+307,Pre-Grasp Approach,306,PYMO
+308,Lift and Retreat,307,PYMO
+309,State Machine,306,PYMO
+310,Teleoperation Loop,54|296|280,PYMO
+311,Leader-Follower Mapping,310|239,PYMO
+312,Latency,310|299,PYMO
+313,Recording Episodes,310|317,PYMO
+314,Replaying Motion,313|292,PYMO
+315,Logging Module,13|17,PYMO
+316,Log Levels,315,PYMO
+317,CSV Logging,315|25,PYMO
+318,Matplotlib Plot,1,PYMO
+319,Plotting Trajectories,318|292|317,PYMO
+320,Plotting Workspace,318|351,PYMO
+321,Pytest,7|4,PYMO
+322,Test Fixtures,321,PYMO
+323,Unit Test,321,PYMO
+324,Testing Safety Limits,323|46|268,PYMO
+325,Test Coverage,323,PYMO
+326,Regression Testing,325|323,PYMO
+327,Coordinate Frame,35|48,KINE
+328,Cartesian Coordinates,327,KINE
+329,Rotation,328,KINE
+330,Sine and Cosine,1,KINE
+331,Vector,332,KINE
+332,NumPy Array,1,KINE
+333,Rotation Matrix,329|330|332,KINE
+334,Homogeneous Transform,333|331,KINE
+335,Transform Chain,334|27,KINE
+336,Denavit-Hartenberg Parameters,335|29,KINE
+337,Forward Kinematics,335|47|339,KINE
+338,Two-Link Arm,339|330|29,KINE
+339,Link Lengths,27,KINE
+340,Inverse Kinematics,337,KINE
+341,Geometric Inverse Kinematics,340|338,KINE
+342,Numerical Inverse Kinematics,340|347,KINE
+343,Multiple IK Solutions,341,KINE
+344,Elbow Up and Elbow Down,343|44,KINE
+345,Unreachable Target,340|37,KINE
+346,Singular Pose,340|31,KINE
+347,Jacobian,337|332,KINE
+348,Cartesian Motion,340|285,KINE
+349,Straight-Line Motion,348|291,KINE
+350,Orientation Control,348|333,KINE
+351,Workspace Sampling,337|46|36,KINE
+352,Reachability Map,351,KINE
+353,Collision Checking,337|151,KINE
+354,Simulation,337|268,KINE
+355,URDF Model,354|27|28,KINE
+356,Physics Simulator,354|355,KINE
+357,Pinocchio Library,355|337,KINE
+358,Isaac Sim Tour,356|355,KINE
+359,ROS 2 Tour,11|354,KINE
+360,ROS Node,359,KINE
+361,ROS Topic,360,KINE
+362,MoveIt Planning,361|355|353,KINE
+363,Sim-to-Real Gap,354|69,KINE
+364,Camera,,PERC
+365,USB Webcam,364,PERC
+366,Image Frame,365|332,PERC
+367,OpenCV Library,366|7,PERC
+368,Color Space,367,PERC
+369,Color Thresholding,368,PERC
+370,Contour Detection,369,PERC
+371,Object Centroid,370,PERC
+372,Camera Calibration,367,PERC
+373,Camera Intrinsics,372,PERC
+374,Camera Extrinsics,372|334,PERC
+375,Hand-Eye Calibration,374|337,PERC
+376,Pixel-to-World Mapping,371|373|375,PERC
+377,Fiducial Markers,367|374,PERC
+378,Object Detection,371|366,PERC
+379,Imitation Learning,54|313,PERC
+380,Demonstration Data,379|313,PERC
+381,Dataset,380,PERC
+382,LeRobot Library,7|54|53,PERC
+383,Observation and Action,379|366,PERC
+384,Policy,383,PERC
+385,ACT Policy,384|381,PERC
+386,Training a Policy,385|381|391,PERC
+387,Training Loss,386,PERC
+388,Evaluating a Policy,386|458,PERC
+389,Policy Failure Modes,388,PERC
+390,Overfitting,387,PERC
+391,GPU Training,381|382,PERC
+392,Hugging Face Hub,381|382,PERC
+393,AI Agent,396|4,AGNT
+394,Agent Loop,393,AGNT
+395,Perceive Plan Act Observe,394,AGNT
+396,Large Language Model,,AGNT
+397,Tool Calling,393|271,AGNT
+398,Agent Tool,397|14|271,AGNT
+399,Tool Schema,398|20,AGNT
+400,Agent Skill,398,AGNT
+401,OpenClaw,393|400,AGNT
+402,OpenClaw Installation,401|5|24,AGNT
+403,OpenClaw Messaging Interface,401,AGNT
+404,OpenClaw Skill Files,401|400,AGNT
+405,Robot Arm Skill,404|264|268,AGNT
+406,Bounded Commands,405|46|148,AGNT
+407,Typed Parameters,271|398,AGNT
+408,Parameter Validation,407|406,AGNT
+409,Descriptive Error Messages,408|279,AGNT
+410,Natural-Language Control,405|403,AGNT
+411,Command Parsing,410,AGNT
+412,Move to Pose Tool,398|348|272,AGNT
+413,Open Gripper Tool,398|303,AGNT
+414,Go Home Tool,398|49,AGNT
+415,Stop Tool,398|147,AGNT
+416,Local Agent,393,AGNT
+417,Cloud Agent,393|431,AGNT
+418,Edge AI Computer,416,AGNT
+419,Latency and Cost,417|416,AGNT
+420,Privacy Considerations,417|364,AGNT
+421,Agent Planner,393|436,AGNT
+422,Learned Policy Executor,384|421,AGNT
+423,Planner-Executor Split,421|422|382,AGNT
+424,Model Context Protocol,398|399,AGNT
+425,MCP Server,424|11,AGNT
+426,ROS 2 Bridge,361|398,AGNT
+427,Tool Server,398|428,AGNT
+428,HTTP API,20|4,AGNT
+429,JSON Requests,428|20,AGNT
+430,Requests Library,429|7,AGNT
+431,API Key Handling,24|430,AGNT
+432,Vision-Language Model,396|366,AGNT
+433,Scene Description,432,AGNT
+434,Object Localization,432|378,AGNT
+435,Image-to-Arm Coordinates,434|376,AGNT
+436,Task Planning,393|306,AGNT
+437,Task Decomposition,436,AGNT
+438,Replanning,437|439,AGNT
+439,Failed Grasp Recovery,306|305,AGNT
+440,Asking a Human,438,AGNT
+441,Agent Architecture,394|427|405,AGNT
+442,Safety Layer,441|161,AGSF
+443,Workspace Limits,442|144,AGSF
+444,Command Validation,442|408,AGSF
+445,Dry-Run Mode,444|268,AGSF
+446,Simulation Mode,445|354,AGSF
+447,Confirmation Step,442|440,AGSF
+448,Audit Log,442|315,AGSF
+449,Ambiguous Instructions,410,AGSF
+450,Hallucinated Tool Calls,397|444,AGSF
+451,Prompt Injection,396|452,AGSF
+452,Untrusted Input,366|403,AGSF
+453,Least Privilege,442|452,AGSF
+454,Defense in Depth,442|146,AGSF
+455,Agent Is Not the Safety Layer,454|450|451,AGSF
+456,Rate Limiting,442|148,AGSF
+457,Agent Testing,323|268|398,AGSF
+458,Success Rate,306|39,AGSF
+459,Repeatability Test,39|317,AGSF
+460,Agent Evaluation Suite,457|458|459,AGSF
+461,Replay Testing,460|448,AGSF
+462,Desk Assistant Project,423|435|442,PROJ
+463,Color Sorting Project,369|376|306,PROJ
+464,Chat-Controlled Arm,410|442,PROJ
+465,Data Collection Station,313|381,PROJ
+466,Capstone Project,462|464|460,PROJ
+467,Project Documentation,466,PROJ
+468,Startup Procedure,139|159,PROJ
+469,Shutdown Procedure,154,PROJ
+470,Monitoring,315|78,PROJ
+471,Maintenance Schedule,470|243,PROJ
+472,Servo Replacement,471|225,PROJ
+473,Wear and Lubrication,471|69,PROJ
+474,Script vs Policy vs Agent,306|384|393,PROJ
+475,Classroom Use,188|159|158,PROJ
+476,Makerspace Use,475,PROJ
+477,Lab Schedule,475,PROJ
+478,Assessment Rubric,475,PROJ
+479,Group Parts Ordering,188,PROJ
+480,Bimanual Setup,55|54,PROJ
+481,Mobile Manipulation,56,PROJ
+482,Larger Arms,262,PROJ
+483,Open-Source Contribution,221|18,PROJ
+484,Responsible Robotics,142|455,PROJ
+485,Matrix Multiplication,332,ADV
+486,Linear Algebra with NumPy,485,ADV
+487,Derivative as Rate of Change,1|318,ADV
+488,Numerical Differentiation,487|332,ADV
+489,Path vs Trajectory,292|289,ADV
+490,Axis-Angle Rotation,333,ADV
+491,Euler Angles,333,ADV
+492,Gimbal Lock,491,ADV
+493,Quaternion,490,ADV
+494,Quaternion Rotation,493|333,ADV
+495,SLERP,494|291,ADV
+496,Velocity Kinematics,347|488,ADV
+497,Numerical Jacobian,347|488,ADV
+498,Jacobian Pseudoinverse,497|486,ADV
+499,Damped Least Squares,498|346,ADV
+500,Jacobian-Based IK,499|342,ADV
+501,Manipulability,347|486,ADV
+502,Manipulability Ellipse,501|318,ADV
+503,Condition Number,486|501,ADV
+504,Singularity Avoidance,501|503|499,ADV
+505,Boundary Conditions,489|487,ADV
+506,Cubic Polynomial Trajectory,505|291,ADV
+507,Quintic Polynomial Trajectory,506,ADV
+508,Jerk,487|295,ADV
+509,Minimum-Jerk Trajectory,508|507,ADV
+510,Cubic Spline,506|511,ADV
+511,SciPy Interpolation,7|290,ADV
+512,Via-Point Trajectory,510|289,ADV
+513,Time Scaling,489|293,ADV
+514,Velocity Limit Scaling,513|148,ADV
+515,Cartesian Straight-Line Path,349|500,ADV
+516,Path Parameterization,489,ADV
+517,Static Torque Estimate,70|339|38,ADV
+518,Gravity Load on Joints,517|519,ADV
+519,Moment Arm,70|339|517,ADV
+520,Servo Torque Margin,518|71,ADV
+521,Configuration Space,47|46,ADV
+522,Obstacle Representation,353|521,ADV
+523,Sampling-Based Planning,521|522,ADV
+524,RRT Algorithm,523,ADV
+525,Path Smoothing,524|510,ADV
+526,Shortcut Smoothing,525,ADV
+527,Joint-Limit Constrained Planning,524|46,ADV
+528,Path Safety Check,527|144|148,ADV
+529,Path Prediction,337|292|268,ADV
+530,Forward Simulation of Paths,529|354,ADV
+531,Predicted vs Measured Path,529|319|317,ADV
+532,Tracking Error,531,ADV
+533,RMSE,532|332,ADV
+534,Maximum Deviation,532,ADV
+535,Prediction Error Sources,532|69|312,ADV
+536,SciPy Optimize,7|342,ADV
+537,Matplotlib Animation,318|319,ADV

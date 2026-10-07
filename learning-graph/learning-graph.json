@@ -1,0 +1,6983 @@
+{
+  "metadata": {
+    "title": "Controlling a Robot Arm: Source, Build and Control",
+    "description": "An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms in Python, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as case studies, and connecting the arms to AI agents.",
+    "creator": "Dan McCreary",
+    "date": "2026-10-06",
+    "version": "1.0",
+    "format": "Learning Graph JSON v1.0",
+    "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+    "license": "CC BY-NC-SA 4.0 DEED"
+  },
+  "groups": {
+    "PYS": {
+      "classifierName": "Python Setup and Tools",
+      "color": "SteelBlue",
+      "font": {
+        "color": "white"
+      }
+    },
+    "ARM": {
+      "classifierName": "Robot Arm Fundamentals",
+      "color": "DarkSlateBlue",
+      "font": {
+        "color": "white"
+      }
+    },
+    "ACT": {
+      "classifierName": "Actuators and Sensors",
+      "color": "DarkGreen",
+      "font": {
+        "color": "white"
+      }
+    },
+    "COMM": {
+      "classifierName": "Communication Buses and Protocols",
+      "color": "LimeGreen",
+      "font": {
+        "color": "black"
+      }
+    },
+    "POWR": {
+      "classifierName": "Power Systems",
+      "color": "Gold",
+      "font": {
+        "color": "black"
+      }
+    },
+    "SAFE": {
+      "classifierName": "Safety",
+      "color": "Crimson",
+      "font": {
+        "color": "white"
+      }
+    },
+    "SORC": {
+      "classifierName": "Sourcing Parts",
+      "color": "DarkGoldenrod",
+      "font": {
+        "color": "white"
+      }
+    },
+    "BUILD": {
+      "classifierName": "Fabrication and Building",
+      "color": "Teal",
+      "font": {
+        "color": "white"
+      }
+    },
+    "PYMO": {
+      "classifierName": "Python Motion Programming",
+      "color": "DodgerBlue",
+      "font": {
+        "color": "white"
+      }
+    },
+    "KINE": {
+      "classifierName": "Kinematics and Simulation",
+      "color": "MediumPurple",
+      "font": {
+        "color": "white"
+      }
+    },
+    "PERC": {
+      "classifierName": "Perception and Learning",
+      "color": "HotPink",
+      "font": {
+        "color": "black"
+      }
+    },
+    "AGNT": {
+      "classifierName": "AI Agents and OpenClaw",
+      "color": "Orange",
+      "font": {
+        "color": "black"
+      }
+    },
+    "AGSF": {
+      "classifierName": "Agent Safety and Evaluation",
+      "color": "Coral",
+      "font": {
+        "color": "black"
+      }
+    },
+    "PROJ": {
+      "classifierName": "Projects, Operations, and Teaching",
+      "color": "OliveDrab",
+      "font": {
+        "color": "white"
+      }
+    },
+    "ADV": {
+      "classifierName": "Advanced Path Mathematics",
+      "color": "Indigo",
+      "font": {
+        "color": "white"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Learning Python Prerequisites",
+      "group": "PYS",
+      "shape": "box",
+      "cis": 4123
+    },
+    {
+      "id": 2,
+      "label": "Python Interpreter",
+      "group": "PYS",
+      "cis": 1603
+    },
+    {
+      "id": 3,
+      "label": "REPL",
+      "group": "PYS",
+      "cis": 1
+    },
+    {
+      "id": 4,
+      "label": "Python Script",
+      "group": "PYS",
+      "cis": 999
+    },
+    {
+      "id": 5,
+      "label": "Terminal",
+      "group": "PYS",
+      "cis": 630
+    },
+    {
+      "id": 6,
+      "label": "Virtual Environment",
+      "group": "PYS",
+      "cis": 602
+    },
+    {
+      "id": 7,
+      "label": "Pip",
+      "group": "PYS",
+      "cis": 601
+    },
+    {
+      "id": 8,
+      "label": "Requirements File",
+      "group": "PYS",
+      "cis": 1
+    },
+    {
+      "id": 9,
+      "label": "Project Folder Layout",
+      "group": "PYS",
+      "cis": 9
+    },
+    {
+      "id": 10,
+      "label": "Python Module",
+      "group": "PYS",
+      "cis": 204
+    },
+    {
+      "id": 11,
+      "label": "Python Package",
+      "group": "PYS",
+      "cis": 8
+    },
+    {
+      "id": 12,
+      "label": "Import Statement",
+      "group": "PYS",
+      "cis": 195
+    },
+    {
+      "id": 13,
+      "label": "Standard Library",
+      "group": "PYS",
+      "cis": 194
+    },
+    {
+      "id": 14,
+      "label": "Docstring",
+      "group": "PYS",
+      "cis": 145
+    },
+    {
+      "id": 15,
+      "label": "Naming Conventions",
+      "group": "PYS",
+      "cis": 1
+    },
+    {
+      "id": 16,
+      "label": "Reading a Traceback",
+      "group": "PYS",
+      "cis": 92
+    },
+    {
+      "id": 17,
+      "label": "Print Debugging",
+      "group": "PYS",
+      "cis": 87
+    },
+    {
+      "id": 18,
+      "label": "Git Version Control",
+      "group": "PYS",
+      "cis": 18
+    },
+    {
+      "id": 19,
+      "label": "Code Editor",
+      "group": "PYS",
+      "cis": 1
+    },
+    {
+      "id": 20,
+      "label": "JSON File Format",
+      "group": "PYS",
+      "cis": 45
+    },
+    {
+      "id": 21,
+      "label": "Configuration File",
+      "group": "PYS",
+      "cis": 1
+    },
+    {
+      "id": 22,
+      "label": "Command Line Arguments",
+      "group": "PYS",
+      "cis": 2
+    },
+    {
+      "id": 23,
+      "label": "Argparse Module",
+      "group": "PYS",
+      "cis": 1
+    },
+    {
+      "id": 24,
+      "label": "Environment Variables",
+      "group": "PYS",
+      "cis": 6
+    },
+    {
+      "id": 25,
+      "label": "File Paths",
+      "group": "PYS",
+      "cis": 79
+    },
+    {
+      "id": 26,
+      "label": "Robot Arm",
+      "group": "ARM",
+      "shape": "box",
+      "cis": 4204
+    },
+    {
+      "id": 27,
+      "label": "Link",
+      "group": "ARM",
+      "cis": 242
+    },
+    {
+      "id": 28,
+      "label": "Joint",
+      "group": "ARM",
+      "cis": 1355
+    },
+    {
+      "id": 29,
+      "label": "Revolute Joint",
+      "group": "ARM",
+      "cis": 421
+    },
+    {
+      "id": 30,
+      "label": "Prismatic Joint",
+      "group": "ARM",
+      "cis": 1
+    },
+    {
+      "id": 31,
+      "label": "Degrees of Freedom",
+      "group": "ARM",
+      "cis": 31
+    },
+    {
+      "id": 32,
+      "label": "End Effector",
+      "group": "ARM",
+      "cis": 258
+    },
+    {
+      "id": 33,
+      "label": "Gripper",
+      "group": "ARM",
+      "cis": 43
+    },
+    {
+      "id": 34,
+      "label": "Parallel Gripper",
+      "group": "ARM",
+      "cis": 2
+    },
+    {
+      "id": 35,
+      "label": "Base Frame",
+      "group": "ARM",
+      "cis": 107
+    },
+    {
+      "id": 36,
+      "label": "Workspace",
+      "group": "ARM",
+      "cis": 19
+    },
+    {
+      "id": 37,
+      "label": "Reach",
+      "group": "ARM",
+      "cis": 2
+    },
+    {
+      "id": 38,
+      "label": "Payload",
+      "group": "ARM",
+      "cis": 12
+    },
+    {
+      "id": 39,
+      "label": "Repeatability",
+      "group": "ARM",
+      "cis": 14
+    },
+    {
+      "id": 40,
+      "label": "Accuracy",
+      "group": "ARM",
+      "cis": 1
+    },
+    {
+      "id": 41,
+      "label": "Serial Manipulator",
+      "group": "ARM",
+      "cis": 7
+    },
+    {
+      "id": 42,
+      "label": "Six-Axis Arm",
+      "group": "ARM",
+      "cis": 6
+    },
+    {
+      "id": 43,
+      "label": "Shoulder",
+      "group": "ARM",
+      "cis": 1
+    },
+    {
+      "id": 44,
+      "label": "Elbow",
+      "group": "ARM",
+      "cis": 2
+    },
+    {
+      "id": 45,
+      "label": "Wrist",
+      "group": "ARM",
+      "cis": 2
+    },
+    {
+      "id": 46,
+      "label": "Joint Limits",
+      "group": "ARM",
+      "cis": 190
+    },
+    {
+      "id": 47,
+      "label": "Joint Angle",
+      "group": "ARM",
+      "cis": 415
+    },
+    {
+      "id": 48,
+      "label": "Pose",
+      "group": "ARM",
+      "cis": 214
+    },
+    {
+      "id": 49,
+      "label": "Home Position",
+      "group": "ARM",
+      "cis": 9
+    },
+    {
+      "id": 50,
+      "label": "Open-Source Hardware",
+      "group": "ARM",
+      "cis": 447
+    },
+    {
+      "id": 51,
+      "label": "Desktop Robot Arm",
+      "group": "ARM",
+      "cis": 431
+    },
+    {
+      "id": 52,
+      "label": "Leader Arm",
+      "group": "ARM",
+      "cis": 118
+    },
+    {
+      "id": 53,
+      "label": "Follower Arm",
+      "group": "ARM",
+      "cis": 129
+    },
+    {
+      "id": 54,
+      "label": "Teleoperation",
+      "group": "ARM",
+      "cis": 114
+    },
+    {
+      "id": 55,
+      "label": "Bimanual Robot",
+      "group": "ARM",
+      "cis": 2
+    },
+    {
+      "id": 56,
+      "label": "Robot Arm Applications",
+      "group": "ARM",
+      "cis": 2
+    },
+    {
+      "id": 57,
+      "label": "Actuator",
+      "group": "ACT",
+      "cis": 688
+    },
+    {
+      "id": 58,
+      "label": "DC Motor",
+      "group": "ACT",
+      "cis": 148
+    },
+    {
+      "id": 59,
+      "label": "Hobby Servo",
+      "group": "ACT",
+      "cis": 1
+    },
+    {
+      "id": 60,
+      "label": "PWM Signal",
+      "group": "ACT",
+      "cis": 2
+    },
+    {
+      "id": 61,
+      "label": "Servo Motor",
+      "group": "ACT",
+      "cis": 146
+    },
+    {
+      "id": 62,
+      "label": "Serial Bus Servo",
+      "group": "ACT",
+      "cis": 143
+    },
+    {
+      "id": 63,
+      "label": "STS3215 Servo",
+      "group": "ACT",
+      "cis": 117
+    },
+    {
+      "id": 64,
+      "label": "Brushless Motor",
+      "group": "ACT",
+      "cis": 106
+    },
+    {
+      "id": 65,
+      "label": "Damiao Actuator",
+      "group": "ACT",
+      "cis": 102
+    },
+    {
+      "id": 66,
+      "label": "RobStride Actuator",
+      "group": "ACT",
+      "cis": 2
+    },
+    {
+      "id": 67,
+      "label": "Gear Ratio",
+      "group": "ACT",
+      "cis": 12
+    },
+    {
+      "id": 68,
+      "label": "Gearbox",
+      "group": "ACT",
+      "cis": 7
+    },
+    {
+      "id": 69,
+      "label": "Backlash",
+      "group": "ACT",
+      "cis": 6
+    },
+    {
+      "id": 70,
+      "label": "Torque",
+      "group": "ACT",
+      "cis": 33
+    },
+    {
+      "id": 71,
+      "label": "Stall Torque",
+      "group": "ACT",
+      "cis": 2
+    },
+    {
+      "id": 72,
+      "label": "Motor Speed",
+      "group": "ACT",
+      "cis": 25
+    },
+    {
+      "id": 73,
+      "label": "Encoder",
+      "group": "ACT",
+      "cis": 334
+    },
+    {
+      "id": 74,
+      "label": "Magnetic Encoder",
+      "group": "ACT",
+      "cis": 1
+    },
+    {
+      "id": 75,
+      "label": "Position Feedback",
+      "group": "ACT",
+      "cis": 185
+    },
+    {
+      "id": 76,
+      "label": "Velocity Feedback",
+      "group": "ACT",
+      "cis": 1
+    },
+    {
+      "id": 77,
+      "label": "Current Sensing",
+      "group": "ACT",
+      "cis": 3
+    },
+    {
+      "id": 78,
+      "label": "Temperature Sensing",
+      "group": "ACT",
+      "cis": 10
+    },
+    {
+      "id": 79,
+      "label": "Load Feedback",
+      "group": "ACT",
+      "cis": 2
+    },
+    {
+      "id": 80,
+      "label": "Torque Limit",
+      "group": "ACT",
+      "cis": 9
+    },
+    {
+      "id": 81,
+      "label": "Torque Enable",
+      "group": "ACT",
+      "cis": 10
+    },
+    {
+      "id": 82,
+      "label": "Overload Protection",
+      "group": "ACT",
+      "cis": 1
+    },
+    {
+      "id": 83,
+      "label": "PID Control",
+      "group": "ACT",
+      "cis": 6
+    },
+    {
+      "id": 84,
+      "label": "Servo Compliance",
+      "group": "ACT",
+      "cis": 1
+    },
+    {
+      "id": 85,
+      "label": "Quasi-Direct Drive",
+      "group": "ACT",
+      "cis": 1
+    },
+    {
+      "id": 86,
+      "label": "Motor Controller",
+      "group": "ACT",
+      "cis": 1
+    },
+    {
+      "id": 87,
+      "label": "Serial Communication",
+      "group": "COMM",
+      "cis": 1375
+    },
+    {
+      "id": 88,
+      "label": "UART",
+      "group": "COMM",
+      "cis": 597
+    },
+    {
+      "id": 89,
+      "label": "TTL Half-Duplex Serial",
+      "group": "COMM",
+      "cis": 2
+    },
+    {
+      "id": 90,
+      "label": "Baud Rate",
+      "group": "COMM",
+      "cis": 2
+    },
+    {
+      "id": 91,
+      "label": "USB Serial Adapter",
+      "group": "COMM",
+      "cis": 592
+    },
+    {
+      "id": 92,
+      "label": "Serial Port",
+      "group": "COMM",
+      "cis": 477
+    },
+    {
+      "id": 93,
+      "label": "Pyserial Library",
+      "group": "COMM",
+      "cis": 445
+    },
+    {
+      "id": 94,
+      "label": "Bytes and Bytearray",
+      "group": "COMM",
+      "cis": 412
+    },
+    {
+      "id": 95,
+      "label": "Hexadecimal",
+      "group": "COMM",
+      "cis": 7
+    },
+    {
+      "id": 96,
+      "label": "Packet Structure",
+      "group": "COMM",
+      "cis": 401
+    },
+    {
+      "id": 97,
+      "label": "Checksum",
+      "group": "COMM",
+      "cis": 5
+    },
+    {
+      "id": 98,
+      "label": "Instruction Packet",
+      "group": "COMM",
+      "cis": 371
+    },
+    {
+      "id": 99,
+      "label": "Status Packet",
+      "group": "COMM",
+      "cis": 24
+    },
+    {
+      "id": 100,
+      "label": "Device ID",
+      "group": "COMM",
+      "cis": 30
+    },
+    {
+      "id": 101,
+      "label": "Daisy Chain Wiring",
+      "group": "COMM",
+      "cis": 1
+    },
+    {
+      "id": 102,
+      "label": "Servo Bus Controller Board",
+      "group": "COMM",
+      "cis": 25
+    },
+    {
+      "id": 103,
+      "label": "CAN Bus",
+      "group": "COMM",
+      "cis": 203
+    },
+    {
+      "id": 104,
+      "label": "CAN Frame",
+      "group": "COMM",
+      "cis": 1
+    },
+    {
+      "id": 105,
+      "label": "CAN Bit Rate",
+      "group": "COMM",
+      "cis": 4
+    },
+    {
+      "id": 106,
+      "label": "CAN Termination",
+      "group": "COMM",
+      "cis": 4
+    },
+    {
+      "id": 107,
+      "label": "CAN Adapter",
+      "group": "COMM",
+      "cis": 89
+    },
+    {
+      "id": 108,
+      "label": "Python-CAN Library",
+      "group": "COMM",
+      "cis": 82
+    },
+    {
+      "id": 109,
+      "label": "Vendor SDK",
+      "group": "COMM",
+      "cis": 1
+    },
+    {
+      "id": 110,
+      "label": "Struct Module",
+      "group": "COMM",
+      "cis": 1
+    },
+    {
+      "id": 111,
+      "label": "Bit Operations",
+      "group": "COMM",
+      "cis": 1
+    },
+    {
+      "id": 112,
+      "label": "Little-Endian Byte Order",
+      "group": "COMM",
+      "cis": 1
+    },
+    {
+      "id": 113,
+      "label": "Register Map",
+      "group": "COMM",
+      "cis": 347
+    },
+    {
+      "id": 114,
+      "label": "Reading a Register",
+      "group": "COMM",
+      "cis": 171
+    },
+    {
+      "id": 115,
+      "label": "Writing a Register",
+      "group": "COMM",
+      "cis": 175
+    },
+    {
+      "id": 116,
+      "label": "Ping Command",
+      "group": "COMM",
+      "cis": 23
+    },
+    {
+      "id": 117,
+      "label": "Bus Scan",
+      "group": "COMM",
+      "cis": 2
+    },
+    {
+      "id": 118,
+      "label": "Communication Timeout",
+      "group": "COMM",
+      "cis": 29
+    },
+    {
+      "id": 119,
+      "label": "Communication Errors",
+      "group": "COMM",
+      "cis": 4
+    },
+    {
+      "id": 120,
+      "label": "Voltage",
+      "group": "POWR",
+      "shape": "box",
+      "cis": 1858
+    },
+    {
+      "id": 121,
+      "label": "Current",
+      "group": "POWR",
+      "cis": 129
+    },
+    {
+      "id": 122,
+      "label": "Electrical Power",
+      "group": "POWR",
+      "cis": 5
+    },
+    {
+      "id": 123,
+      "label": "Ohm's Law",
+      "group": "POWR",
+      "cis": 22
+    },
+    {
+      "id": 124,
+      "label": "Power Supply",
+      "group": "POWR",
+      "cis": 58
+    },
+    {
+      "id": 125,
+      "label": "Battery",
+      "group": "POWR",
+      "cis": 1
+    },
+    {
+      "id": 126,
+      "label": "Voltage Rating",
+      "group": "POWR",
+      "cis": 3
+    },
+    {
+      "id": 127,
+      "label": "Current Rating",
+      "group": "POWR",
+      "cis": 10
+    },
+    {
+      "id": 128,
+      "label": "Power Budget",
+      "group": "POWR",
+      "cis": 4
+    },
+    {
+      "id": 129,
+      "label": "Wire Gauge",
+      "group": "POWR",
+      "cis": 19
+    },
+    {
+      "id": 130,
+      "label": "Power Connectors",
+      "group": "POWR",
+      "cis": 4
+    },
+    {
+      "id": 131,
+      "label": "Fuse",
+      "group": "POWR",
+      "cis": 5
+    },
+    {
+      "id": 132,
+      "label": "Voltage Drop",
+      "group": "POWR",
+      "cis": 2
+    },
+    {
+      "id": 133,
+      "label": "Brown-Out",
+      "group": "POWR",
+      "cis": 1
+    },
+    {
+      "id": 134,
+      "label": "Inrush Current",
+      "group": "POWR",
+      "cis": 1
+    },
+    {
+      "id": 135,
+      "label": "Back-EMF",
+      "group": "POWR",
+      "cis": 1
+    },
+    {
+      "id": 136,
+      "label": "Common Ground",
+      "group": "POWR",
+      "cis": 1
+    },
+    {
+      "id": 137,
+      "label": "Reverse Polarity Protection",
+      "group": "POWR",
+      "cis": 1
+    },
+    {
+      "id": 138,
+      "label": "Power Distribution Board",
+      "group": "POWR",
+      "cis": 2
+    },
+    {
+      "id": 139,
+      "label": "Safe Power-Up Sequence",
+      "group": "POWR",
+      "cis": 15
+    },
+    {
+      "id": 140,
+      "label": "Mains Power Safety",
+      "group": "POWR",
+      "cis": 1
+    },
+    {
+      "id": 141,
+      "label": "24 V to 48 V Systems",
+      "group": "POWR",
+      "cis": 2
+    },
+    {
+      "id": 142,
+      "label": "Robot Safety",
+      "group": "SAFE",
+      "cis": 146
+    },
+    {
+      "id": 143,
+      "label": "Pinch Point",
+      "group": "SAFE",
+      "cis": 8
+    },
+    {
+      "id": 144,
+      "label": "Safe Work Envelope",
+      "group": "SAFE",
+      "cis": 3
+    },
+    {
+      "id": 145,
+      "label": "Emergency Stop",
+      "group": "SAFE",
+      "cis": 64
+    },
+    {
+      "id": 146,
+      "label": "Hardware E-Stop",
+      "group": "SAFE",
+      "cis": 27
+    },
+    {
+      "id": 147,
+      "label": "Software E-Stop",
+      "group": "SAFE",
+      "cis": 27
+    },
+    {
+      "id": 148,
+      "label": "Speed Limit",
+      "group": "SAFE",
+      "cis": 24
+    },
+    {
+      "id": 149,
+      "label": "Force Limit",
+      "group": "SAFE",
+      "cis": 1
+    },
+    {
+      "id": 150,
+      "label": "Runaway Motion",
+      "group": "SAFE",
+      "cis": 1
+    },
+    {
+      "id": 151,
+      "label": "Collision",
+      "group": "SAFE",
+      "cis": 10
+    },
+    {
+      "id": 152,
+      "label": "Torque Release",
+      "group": "SAFE",
+      "cis": 9
+    },
+    {
+      "id": 153,
+      "label": "Supervised Operation",
+      "group": "SAFE",
+      "cis": 1
+    },
+    {
+      "id": 154,
+      "label": "Safe Shutdown",
+      "group": "SAFE",
+      "cis": 8
+    },
+    {
+      "id": 155,
+      "label": "Risk Assessment",
+      "group": "SAFE",
+      "cis": 7
+    },
+    {
+      "id": 156,
+      "label": "Soldering Safety",
+      "group": "SAFE",
+      "cis": 1
+    },
+    {
+      "id": 157,
+      "label": "3D Printer Safety",
+      "group": "SAFE",
+      "cis": 1
+    },
+    {
+      "id": 158,
+      "label": "Adult Supervision",
+      "group": "SAFE",
+      "cis": 5
+    },
+    {
+      "id": 159,
+      "label": "Safety Checklist",
+      "group": "SAFE",
+      "cis": 6
+    },
+    {
+      "id": 160,
+      "label": "Watchdog Timer",
+      "group": "SAFE",
+      "cis": 24
+    },
+    {
+      "id": 161,
+      "label": "Fail-Safe Behavior",
+      "group": "SAFE",
+      "cis": 23
+    },
+    {
+      "id": 162,
+      "label": "Bill of Materials",
+      "group": "SORC",
+      "cis": 63
+    },
+    {
+      "id": 163,
+      "label": "Required Parts",
+      "group": "SORC",
+      "cis": 5
+    },
+    {
+      "id": 164,
+      "label": "Optional Parts",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 165,
+      "label": "Substitute Parts",
+      "group": "SORC",
+      "cis": 3
+    },
+    {
+      "id": 166,
+      "label": "Kit Build",
+      "group": "SORC",
+      "cis": 2
+    },
+    {
+      "id": 167,
+      "label": "Self-Sourced Build",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 168,
+      "label": "Official Kit",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 169,
+      "label": "Distributor",
+      "group": "SORC",
+      "cis": 20
+    },
+    {
+      "id": 170,
+      "label": "Online Marketplace",
+      "group": "SORC",
+      "cis": 2
+    },
+    {
+      "id": 171,
+      "label": "Direct from Manufacturer",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 172,
+      "label": "Lead Time",
+      "group": "SORC",
+      "cis": 16
+    },
+    {
+      "id": 173,
+      "label": "Shipping and Customs",
+      "group": "SORC",
+      "cis": 14
+    },
+    {
+      "id": 174,
+      "label": "Total Build Cost",
+      "group": "SORC",
+      "cis": 13
+    },
+    {
+      "id": 175,
+      "label": "Budgeting",
+      "group": "SORC",
+      "cis": 2
+    },
+    {
+      "id": 176,
+      "label": "Cost Calculator",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 177,
+      "label": "Order Tracking",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 178,
+      "label": "Counterfeit Parts",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 179,
+      "label": "Incompatible Parts",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 180,
+      "label": "Part Revisions",
+      "group": "SORC",
+      "cis": 3
+    },
+    {
+      "id": 181,
+      "label": "SO-ARM100",
+      "group": "SORC",
+      "cis": 92
+    },
+    {
+      "id": 182,
+      "label": "SO-ARM101",
+      "group": "SORC",
+      "cis": 2
+    },
+    {
+      "id": 183,
+      "label": "SO-ARM100 vs SO-ARM101",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 184,
+      "label": "reBot-DevArm",
+      "group": "SORC",
+      "cis": 91
+    },
+    {
+      "id": 185,
+      "label": "reBot B601-DM",
+      "group": "SORC",
+      "cis": 4
+    },
+    {
+      "id": 186,
+      "label": "reBot B601-RS",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 187,
+      "label": "Spare Parts",
+      "group": "SORC",
+      "cis": 7
+    },
+    {
+      "id": 188,
+      "label": "Classroom Parts Order",
+      "group": "SORC",
+      "cis": 6
+    },
+    {
+      "id": 189,
+      "label": "Datasheet",
+      "group": "SORC",
+      "cis": 4
+    },
+    {
+      "id": 190,
+      "label": "Vendor Documentation",
+      "group": "SORC",
+      "cis": 2
+    },
+    {
+      "id": 191,
+      "label": "Fact-Checking Specifications",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 192,
+      "label": "CSV Parts List",
+      "group": "SORC",
+      "cis": 3
+    },
+    {
+      "id": 193,
+      "label": "Totaling Costs in Python",
+      "group": "SORC",
+      "cis": 1
+    },
+    {
+      "id": 194,
+      "label": "3D Printing",
+      "group": "BUILD",
+      "shape": "box",
+      "cis": 42
+    },
+    {
+      "id": 195,
+      "label": "FDM Printer",
+      "group": "BUILD",
+      "cis": 36
+    },
+    {
+      "id": 196,
+      "label": "Filament",
+      "group": "BUILD",
+      "cis": 4
+    },
+    {
+      "id": 197,
+      "label": "PLA",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 198,
+      "label": "PETG",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 199,
+      "label": "Print Settings",
+      "group": "BUILD",
+      "cis": 31
+    },
+    {
+      "id": 200,
+      "label": "Layer Height",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 201,
+      "label": "Infill",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 202,
+      "label": "Print Orientation",
+      "group": "BUILD",
+      "cis": 2
+    },
+    {
+      "id": 203,
+      "label": "Support Material",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 204,
+      "label": "STL File",
+      "group": "BUILD",
+      "cis": 3
+    },
+    {
+      "id": 205,
+      "label": "STEP File",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 206,
+      "label": "Slicer",
+      "group": "BUILD",
+      "cis": 2
+    },
+    {
+      "id": 207,
+      "label": "G-Code",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 208,
+      "label": "Print Quality Inspection",
+      "group": "BUILD",
+      "cis": 11
+    },
+    {
+      "id": 209,
+      "label": "Warping",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 210,
+      "label": "Dimensional Tolerance",
+      "group": "BUILD",
+      "cis": 12
+    },
+    {
+      "id": 211,
+      "label": "Heat-Set Insert",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 212,
+      "label": "Fasteners",
+      "group": "BUILD",
+      "cis": 8
+    },
+    {
+      "id": 213,
+      "label": "Screws",
+      "group": "BUILD",
+      "cis": 5
+    },
+    {
+      "id": 214,
+      "label": "Assembly Tools",
+      "group": "BUILD",
+      "cis": 4
+    },
+    {
+      "id": 215,
+      "label": "Servo Horn",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 216,
+      "label": "Crimping",
+      "group": "BUILD",
+      "cis": 10
+    },
+    {
+      "id": 217,
+      "label": "Cable Management",
+      "group": "BUILD",
+      "cis": 9
+    },
+    {
+      "id": 218,
+      "label": "Strain Relief",
+      "group": "BUILD",
+      "cis": 2
+    },
+    {
+      "id": 219,
+      "label": "Soldering",
+      "group": "BUILD",
+      "cis": 2
+    },
+    {
+      "id": 220,
+      "label": "Multimeter",
+      "group": "BUILD",
+      "cis": 10
+    },
+    {
+      "id": 221,
+      "label": "Open-Source Repository",
+      "group": "BUILD",
+      "cis": 15
+    },
+    {
+      "id": 222,
+      "label": "Assembly Guide",
+      "group": "BUILD",
+      "cis": 12
+    },
+    {
+      "id": 223,
+      "label": "Repository Version History",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 224,
+      "label": "Servo Preparation",
+      "group": "BUILD",
+      "cis": 24
+    },
+    {
+      "id": 225,
+      "label": "Setting Servo IDs",
+      "group": "BUILD",
+      "cis": 22
+    },
+    {
+      "id": 226,
+      "label": "Setting Baud Rate",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 227,
+      "label": "Servo Testing",
+      "group": "BUILD",
+      "cis": 20
+    },
+    {
+      "id": 228,
+      "label": "Leader Gear Ratios",
+      "group": "BUILD",
+      "cis": 3
+    },
+    {
+      "id": 229,
+      "label": "Follower Assembly",
+      "group": "BUILD",
+      "cis": 10
+    },
+    {
+      "id": 230,
+      "label": "Leader Assembly",
+      "group": "BUILD",
+      "cis": 2
+    },
+    {
+      "id": 231,
+      "label": "Leader Handle and Trigger",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 232,
+      "label": "Joint Assembly Order",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 233,
+      "label": "Cable Routing",
+      "group": "BUILD",
+      "cis": 6
+    },
+    {
+      "id": 234,
+      "label": "Mounting to a Table",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 235,
+      "label": "Calibration",
+      "group": "BUILD",
+      "cis": 8
+    },
+    {
+      "id": 236,
+      "label": "Calibration Procedure",
+      "group": "BUILD",
+      "cis": 4
+    },
+    {
+      "id": 237,
+      "label": "Homing Position",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 238,
+      "label": "Range of Motion Limits",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 239,
+      "label": "Calibration File",
+      "group": "BUILD",
+      "cis": 3
+    },
+    {
+      "id": 240,
+      "label": "Calibration Drift",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 241,
+      "label": "Troubleshooting",
+      "group": "BUILD",
+      "cis": 9
+    },
+    {
+      "id": 242,
+      "label": "Servo Not Found",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 243,
+      "label": "Servo Overheating",
+      "group": "BUILD",
+      "cis": 4
+    },
+    {
+      "id": 244,
+      "label": "Jitter",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 245,
+      "label": "Loose Gears",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 246,
+      "label": "Intermittent Wiring",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 247,
+      "label": "First Power-On",
+      "group": "BUILD",
+      "cis": 5
+    },
+    {
+      "id": 248,
+      "label": "B601 Body Structure",
+      "group": "BUILD",
+      "cis": 3
+    },
+    {
+      "id": 249,
+      "label": "CAN Motor Configuration",
+      "group": "BUILD",
+      "cis": 6
+    },
+    {
+      "id": 250,
+      "label": "Motor ID Assignment",
+      "group": "BUILD",
+      "cis": 4
+    },
+    {
+      "id": 251,
+      "label": "CAN Bring-Up Check",
+      "group": "BUILD",
+      "cis": 3
+    },
+    {
+      "id": 252,
+      "label": "reBot Gripper Assembly",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 253,
+      "label": "reBot Wrist Assembly",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 254,
+      "label": "High-Voltage Power Distribution",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 255,
+      "label": "Zeroing",
+      "group": "BUILD",
+      "cis": 2
+    },
+    {
+      "id": 256,
+      "label": "Zero Offset",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 257,
+      "label": "Motor Mode Selection",
+      "group": "BUILD",
+      "cis": 1
+    },
+    {
+      "id": 258,
+      "label": "Arm Comparison",
+      "group": "BUILD",
+      "cis": 85
+    },
+    {
+      "id": 259,
+      "label": "Cost Comparison",
+      "group": "BUILD",
+      "cis": 3
+    },
+    {
+      "id": 260,
+      "label": "Payload Comparison",
+      "group": "BUILD",
+      "cis": 3
+    },
+    {
+      "id": 261,
+      "label": "Learning Curve",
+      "group": "BUILD",
+      "cis": 3
+    },
+    {
+      "id": 262,
+      "label": "Platform Selection Criteria",
+      "group": "BUILD",
+      "cis": 2
+    },
+    {
+      "id": 263,
+      "label": "Hardware Abstraction Layer",
+      "group": "PYMO",
+      "cis": 75
+    },
+    {
+      "id": 264,
+      "label": "Arm Class",
+      "group": "PYMO",
+      "cis": 436
+    },
+    {
+      "id": 265,
+      "label": "Joint Class",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 266,
+      "label": "Class Interface",
+      "group": "PYMO",
+      "cis": 593
+    },
+    {
+      "id": 267,
+      "label": "Inheritance for Drivers",
+      "group": "PYMO",
+      "cis": 74
+    },
+    {
+      "id": 268,
+      "label": "Fake Arm",
+      "group": "PYMO",
+      "cis": 73
+    },
+    {
+      "id": 269,
+      "label": "Mock Hardware",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 270,
+      "label": "Dataclass",
+      "group": "PYMO",
+      "cis": 4
+    },
+    {
+      "id": 271,
+      "label": "Type Hints",
+      "group": "PYMO",
+      "cis": 305
+    },
+    {
+      "id": 272,
+      "label": "Pose Dataclass",
+      "group": "PYMO",
+      "cis": 2
+    },
+    {
+      "id": 273,
+      "label": "Command Dataclass",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 274,
+      "label": "Connect and Disconnect",
+      "group": "PYMO",
+      "cis": 2
+    },
+    {
+      "id": 275,
+      "label": "Context Manager",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 276,
+      "label": "With Statement",
+      "group": "PYMO",
+      "cis": 2
+    },
+    {
+      "id": 277,
+      "label": "Try Finally",
+      "group": "PYMO",
+      "cis": 4
+    },
+    {
+      "id": 278,
+      "label": "Exception Handling for Hardware",
+      "group": "PYMO",
+      "cis": 3
+    },
+    {
+      "id": 279,
+      "label": "Custom Exceptions",
+      "group": "PYMO",
+      "cis": 2
+    },
+    {
+      "id": 280,
+      "label": "Reading Joint Positions",
+      "group": "PYMO",
+      "cis": 170
+    },
+    {
+      "id": 281,
+      "label": "Writing Target Positions",
+      "group": "PYMO",
+      "cis": 151
+    },
+    {
+      "id": 282,
+      "label": "Raw Servo Units",
+      "group": "PYMO",
+      "cis": 105
+    },
+    {
+      "id": 283,
+      "label": "Degrees and Radians",
+      "group": "PYMO",
+      "cis": 105
+    },
+    {
+      "id": 284,
+      "label": "Unit Conversion",
+      "group": "PYMO",
+      "cis": 104
+    },
+    {
+      "id": 285,
+      "label": "Joint-Space Motion",
+      "group": "PYMO",
+      "cis": 103
+    },
+    {
+      "id": 286,
+      "label": "Single-Joint Move",
+      "group": "PYMO",
+      "cis": 97
+    },
+    {
+      "id": 287,
+      "label": "Multi-Joint Move",
+      "group": "PYMO",
+      "cis": 96
+    },
+    {
+      "id": 288,
+      "label": "Waypoint",
+      "group": "PYMO",
+      "cis": 96
+    },
+    {
+      "id": 289,
+      "label": "Waypoint List",
+      "group": "PYMO",
+      "cis": 95
+    },
+    {
+      "id": 290,
+      "label": "Interpolation",
+      "group": "PYMO",
+      "cis": 49
+    },
+    {
+      "id": 291,
+      "label": "Linear Interpolation",
+      "group": "PYMO",
+      "cis": 11
+    },
+    {
+      "id": 292,
+      "label": "Trajectory",
+      "group": "PYMO",
+      "cis": 32
+    },
+    {
+      "id": 293,
+      "label": "Trapezoidal Velocity Profile",
+      "group": "PYMO",
+      "cis": 4
+    },
+    {
+      "id": 294,
+      "label": "Smooth Velocity Profile",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 295,
+      "label": "Acceleration Limit",
+      "group": "PYMO",
+      "cis": 7
+    },
+    {
+      "id": 296,
+      "label": "Control Loop",
+      "group": "PYMO",
+      "cis": 104
+    },
+    {
+      "id": 297,
+      "label": "Control Rate",
+      "group": "PYMO",
+      "cis": 4
+    },
+    {
+      "id": 298,
+      "label": "Time Module",
+      "group": "PYMO",
+      "cis": 105
+    },
+    {
+      "id": 299,
+      "label": "Timing Jitter",
+      "group": "PYMO",
+      "cis": 3
+    },
+    {
+      "id": 300,
+      "label": "Blocking vs Non-Blocking Code",
+      "group": "PYMO",
+      "cis": 3
+    },
+    {
+      "id": 301,
+      "label": "Threads",
+      "group": "PYMO",
+      "cis": 2
+    },
+    {
+      "id": 302,
+      "label": "Stop Flag",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 303,
+      "label": "Gripper Control",
+      "group": "PYMO",
+      "cis": 40
+    },
+    {
+      "id": 304,
+      "label": "Gripper Width",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 305,
+      "label": "Grasp Force",
+      "group": "PYMO",
+      "cis": 5
+    },
+    {
+      "id": 306,
+      "label": "Pick and Place",
+      "group": "PYMO",
+      "cis": 32
+    },
+    {
+      "id": 307,
+      "label": "Pre-Grasp Approach",
+      "group": "PYMO",
+      "cis": 2
+    },
+    {
+      "id": 308,
+      "label": "Lift and Retreat",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 309,
+      "label": "State Machine",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 310,
+      "label": "Teleoperation Loop",
+      "group": "PYMO",
+      "cis": 64
+    },
+    {
+      "id": 311,
+      "label": "Leader-Follower Mapping",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 312,
+      "label": "Latency",
+      "group": "PYMO",
+      "cis": 2
+    },
+    {
+      "id": 313,
+      "label": "Recording Episodes",
+      "group": "PYMO",
+      "cis": 60
+    },
+    {
+      "id": 314,
+      "label": "Replaying Motion",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 315,
+      "label": "Logging Module",
+      "group": "PYMO",
+      "cis": 86
+    },
+    {
+      "id": 316,
+      "label": "Log Levels",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 317,
+      "label": "CSV Logging",
+      "group": "PYMO",
+      "cis": 78
+    },
+    {
+      "id": 318,
+      "label": "Matplotlib Plot",
+      "group": "PYMO",
+      "cis": 30
+    },
+    {
+      "id": 319,
+      "label": "Plotting Trajectories",
+      "group": "PYMO",
+      "cis": 7
+    },
+    {
+      "id": 320,
+      "label": "Plotting Workspace",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 321,
+      "label": "Pytest",
+      "group": "PYMO",
+      "cis": 12
+    },
+    {
+      "id": 322,
+      "label": "Test Fixtures",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 323,
+      "label": "Unit Test",
+      "group": "PYMO",
+      "cis": 10
+    },
+    {
+      "id": 324,
+      "label": "Testing Safety Limits",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 325,
+      "label": "Test Coverage",
+      "group": "PYMO",
+      "cis": 2
+    },
+    {
+      "id": 326,
+      "label": "Regression Testing",
+      "group": "PYMO",
+      "cis": 1
+    },
+    {
+      "id": 327,
+      "label": "Coordinate Frame",
+      "group": "KINE",
+      "cis": 106
+    },
+    {
+      "id": 328,
+      "label": "Cartesian Coordinates",
+      "group": "KINE",
+      "cis": 105
+    },
+    {
+      "id": 329,
+      "label": "Rotation",
+      "group": "KINE",
+      "cis": 104
+    },
+    {
+      "id": 330,
+      "label": "Sine and Cosine",
+      "group": "KINE",
+      "cis": 108
+    },
+    {
+      "id": 331,
+      "label": "Vector",
+      "group": "KINE",
+      "cis": 94
+    },
+    {
+      "id": 332,
+      "label": "NumPy Array",
+      "group": "KINE",
+      "cis": 307
+    },
+    {
+      "id": 333,
+      "label": "Rotation Matrix",
+      "group": "KINE",
+      "cis": 103
+    },
+    {
+      "id": 334,
+      "label": "Homogeneous Transform",
+      "group": "KINE",
+      "cis": 93
+    },
+    {
+      "id": 335,
+      "label": "Transform Chain",
+      "group": "KINE",
+      "cis": 83
+    },
+    {
+      "id": 336,
+      "label": "Denavit-Hartenberg Parameters",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 337,
+      "label": "Forward Kinematics",
+      "group": "KINE",
+      "cis": 81
+    },
+    {
+      "id": 338,
+      "label": "Two-Link Arm",
+      "group": "KINE",
+      "cis": 4
+    },
+    {
+      "id": 339,
+      "label": "Link Lengths",
+      "group": "KINE",
+      "cis": 95
+    },
+    {
+      "id": 340,
+      "label": "Inverse Kinematics",
+      "group": "KINE",
+      "cis": 19
+    },
+    {
+      "id": 341,
+      "label": "Geometric Inverse Kinematics",
+      "group": "KINE",
+      "cis": 3
+    },
+    {
+      "id": 342,
+      "label": "Numerical Inverse Kinematics",
+      "group": "KINE",
+      "cis": 4
+    },
+    {
+      "id": 343,
+      "label": "Multiple IK Solutions",
+      "group": "KINE",
+      "cis": 2
+    },
+    {
+      "id": 344,
+      "label": "Elbow Up and Elbow Down",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 345,
+      "label": "Unreachable Target",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 346,
+      "label": "Singular Pose",
+      "group": "KINE",
+      "cis": 5
+    },
+    {
+      "id": 347,
+      "label": "Jacobian",
+      "group": "KINE",
+      "cis": 17
+    },
+    {
+      "id": 348,
+      "label": "Cartesian Motion",
+      "group": "KINE",
+      "cis": 5
+    },
+    {
+      "id": 349,
+      "label": "Straight-Line Motion",
+      "group": "KINE",
+      "cis": 2
+    },
+    {
+      "id": 350,
+      "label": "Orientation Control",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 351,
+      "label": "Workspace Sampling",
+      "group": "KINE",
+      "cis": 3
+    },
+    {
+      "id": 352,
+      "label": "Reachability Map",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 353,
+      "label": "Collision Checking",
+      "group": "KINE",
+      "cis": 9
+    },
+    {
+      "id": 354,
+      "label": "Simulation",
+      "group": "KINE",
+      "cis": 17
+    },
+    {
+      "id": 355,
+      "label": "URDF Model",
+      "group": "KINE",
+      "cis": 6
+    },
+    {
+      "id": 356,
+      "label": "Physics Simulator",
+      "group": "KINE",
+      "cis": 2
+    },
+    {
+      "id": 357,
+      "label": "Pinocchio Library",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 358,
+      "label": "Isaac Sim Tour",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 359,
+      "label": "ROS 2 Tour",
+      "group": "KINE",
+      "cis": 5
+    },
+    {
+      "id": 360,
+      "label": "ROS Node",
+      "group": "KINE",
+      "cis": 4
+    },
+    {
+      "id": 361,
+      "label": "ROS Topic",
+      "group": "KINE",
+      "cis": 3
+    },
+    {
+      "id": 362,
+      "label": "MoveIt Planning",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 363,
+      "label": "Sim-to-Real Gap",
+      "group": "KINE",
+      "cis": 1
+    },
+    {
+      "id": 364,
+      "label": "Camera",
+      "group": "PERC",
+      "shape": "box",
+      "cis": 72
+    },
+    {
+      "id": 365,
+      "label": "USB Webcam",
+      "group": "PERC",
+      "cis": 70
+    },
+    {
+      "id": 366,
+      "label": "Image Frame",
+      "group": "PERC",
+      "cis": 69
+    },
+    {
+      "id": 367,
+      "label": "OpenCV Library",
+      "group": "PERC",
+      "cis": 36
+    },
+    {
+      "id": 368,
+      "label": "Color Space",
+      "group": "PERC",
+      "cis": 17
+    },
+    {
+      "id": 369,
+      "label": "Color Thresholding",
+      "group": "PERC",
+      "cis": 16
+    },
+    {
+      "id": 370,
+      "label": "Contour Detection",
+      "group": "PERC",
+      "cis": 14
+    },
+    {
+      "id": 371,
+      "label": "Object Centroid",
+      "group": "PERC",
+      "cis": 13
+    },
+    {
+      "id": 372,
+      "label": "Camera Calibration",
+      "group": "PERC",
+      "cis": 17
+    },
+    {
+      "id": 373,
+      "label": "Camera Intrinsics",
+      "group": "PERC",
+      "cis": 7
+    },
+    {
+      "id": 374,
+      "label": "Camera Extrinsics",
+      "group": "PERC",
+      "cis": 9
+    },
+    {
+      "id": 375,
+      "label": "Hand-Eye Calibration",
+      "group": "PERC",
+      "cis": 7
+    },
+    {
+      "id": 376,
+      "label": "Pixel-to-World Mapping",
+      "group": "PERC",
+      "cis": 6
+    },
+    {
+      "id": 377,
+      "label": "Fiducial Markers",
+      "group": "PERC",
+      "cis": 1
+    },
+    {
+      "id": 378,
+      "label": "Object Detection",
+      "group": "PERC",
+      "cis": 6
+    },
+    {
+      "id": 379,
+      "label": "Imitation Learning",
+      "group": "PERC",
+      "cis": 36
+    },
+    {
+      "id": 380,
+      "label": "Demonstration Data",
+      "group": "PERC",
+      "cis": 21
+    },
+    {
+      "id": 381,
+      "label": "Dataset",
+      "group": "PERC",
+      "cis": 20
+    },
+    {
+      "id": 382,
+      "label": "LeRobot Library",
+      "group": "PERC",
+      "cis": 12
+    },
+    {
+      "id": 383,
+      "label": "Observation and Action",
+      "group": "PERC",
+      "cis": 14
+    },
+    {
+      "id": 384,
+      "label": "Policy",
+      "group": "PERC",
+      "cis": 13
+    },
+    {
+      "id": 385,
+      "label": "ACT Policy",
+      "group": "PERC",
+      "cis": 6
+    },
+    {
+      "id": 386,
+      "label": "Training a Policy",
+      "group": "PERC",
+      "cis": 5
+    },
+    {
+      "id": 387,
+      "label": "Training Loss",
+      "group": "PERC",
+      "cis": 2
+    },
+    {
+      "id": 388,
+      "label": "Evaluating a Policy",
+      "group": "PERC",
+      "cis": 2
+    },
+    {
+      "id": 389,
+      "label": "Policy Failure Modes",
+      "group": "PERC",
+      "cis": 1
+    },
+    {
+      "id": 390,
+      "label": "Overfitting",
+      "group": "PERC",
+      "cis": 1
+    },
+    {
+      "id": 391,
+      "label": "GPU Training",
+      "group": "PERC",
+      "cis": 6
+    },
+    {
+      "id": 392,
+      "label": "Hugging Face Hub",
+      "group": "PERC",
+      "cis": 1
+    },
+    {
+      "id": 393,
+      "label": "AI Agent",
+      "group": "AGNT",
+      "cis": 260
+    },
+    {
+      "id": 394,
+      "label": "Agent Loop",
+      "group": "AGNT",
+      "cis": 25
+    },
+    {
+      "id": 395,
+      "label": "Perceive Plan Act Observe",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 396,
+      "label": "Large Language Model",
+      "group": "AGNT",
+      "shape": "box",
+      "cis": 271
+    },
+    {
+      "id": 397,
+      "label": "Tool Calling",
+      "group": "AGNT",
+      "cis": 148
+    },
+    {
+      "id": 398,
+      "label": "Agent Tool",
+      "group": "AGNT",
+      "cis": 144
+    },
+    {
+      "id": 399,
+      "label": "Tool Schema",
+      "group": "AGNT",
+      "cis": 3
+    },
+    {
+      "id": 400,
+      "label": "Agent Skill",
+      "group": "AGNT",
+      "cis": 95
+    },
+    {
+      "id": 401,
+      "label": "OpenClaw",
+      "group": "AGNT",
+      "cis": 54
+    },
+    {
+      "id": 402,
+      "label": "OpenClaw Installation",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 403,
+      "label": "OpenClaw Messaging Interface",
+      "group": "AGNT",
+      "cis": 12
+    },
+    {
+      "id": 404,
+      "label": "OpenClaw Skill Files",
+      "group": "AGNT",
+      "cis": 40
+    },
+    {
+      "id": 405,
+      "label": "Robot Arm Skill",
+      "group": "AGNT",
+      "cis": 39
+    },
+    {
+      "id": 406,
+      "label": "Bounded Commands",
+      "group": "AGNT",
+      "cis": 9
+    },
+    {
+      "id": 407,
+      "label": "Typed Parameters",
+      "group": "AGNT",
+      "cis": 9
+    },
+    {
+      "id": 408,
+      "label": "Parameter Validation",
+      "group": "AGNT",
+      "cis": 8
+    },
+    {
+      "id": 409,
+      "label": "Descriptive Error Messages",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 410,
+      "label": "Natural-Language Control",
+      "group": "AGNT",
+      "cis": 6
+    },
+    {
+      "id": 411,
+      "label": "Command Parsing",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 412,
+      "label": "Move to Pose Tool",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 413,
+      "label": "Open Gripper Tool",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 414,
+      "label": "Go Home Tool",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 415,
+      "label": "Stop Tool",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 416,
+      "label": "Local Agent",
+      "group": "AGNT",
+      "cis": 3
+    },
+    {
+      "id": 417,
+      "label": "Cloud Agent",
+      "group": "AGNT",
+      "cis": 3
+    },
+    {
+      "id": 418,
+      "label": "Edge AI Computer",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 419,
+      "label": "Latency and Cost",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 420,
+      "label": "Privacy Considerations",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 421,
+      "label": "Agent Planner",
+      "group": "AGNT",
+      "cis": 10
+    },
+    {
+      "id": 422,
+      "label": "Learned Policy Executor",
+      "group": "AGNT",
+      "cis": 5
+    },
+    {
+      "id": 423,
+      "label": "Planner-Executor Split",
+      "group": "AGNT",
+      "cis": 4
+    },
+    {
+      "id": 424,
+      "label": "Model Context Protocol",
+      "group": "AGNT",
+      "cis": 2
+    },
+    {
+      "id": 425,
+      "label": "MCP Server",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 426,
+      "label": "ROS 2 Bridge",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 427,
+      "label": "Tool Server",
+      "group": "AGNT",
+      "cis": 24
+    },
+    {
+      "id": 428,
+      "label": "HTTP API",
+      "group": "AGNT",
+      "cis": 31
+    },
+    {
+      "id": 429,
+      "label": "JSON Requests",
+      "group": "AGNT",
+      "cis": 6
+    },
+    {
+      "id": 430,
+      "label": "Requests Library",
+      "group": "AGNT",
+      "cis": 5
+    },
+    {
+      "id": 431,
+      "label": "API Key Handling",
+      "group": "AGNT",
+      "cis": 4
+    },
+    {
+      "id": 432,
+      "label": "Vision-Language Model",
+      "group": "AGNT",
+      "cis": 7
+    },
+    {
+      "id": 433,
+      "label": "Scene Description",
+      "group": "AGNT",
+      "cis": 1
+    },
+    {
+      "id": 434,
+      "label": "Object Localization",
+      "group": "AGNT",
+      "cis": 5
+    },
+    {
+      "id": 435,
+      "label": "Image-to-Arm Coordinates",
+      "group": "AGNT",
+      "cis": 4
+    },
+    {
+      "id": 436,
+      "label": "Task Planning",
+      "group": "AGNT",
+      "cis": 15
+    },
+    {
+      "id": 437,
+      "label": "Task Decomposition",
+      "group": "AGNT",
+      "cis": 4
+    },
+    {
+      "id": 438,
+      "label": "Replanning",
+      "group": "AGNT",
+      "cis": 3
+    },
+    {
+      "id": 439,
+      "label": "Failed Grasp Recovery",
+      "group": "AGNT",
+      "cis": 4
+    },
+    {
+      "id": 440,
+      "label": "Asking a Human",
+      "group": "AGNT",
+      "cis": 2
+    },
+    {
+      "id": 441,
+      "label": "Agent Architecture",
+      "group": "AGNT",
+      "cis": 23
+    },
+    {
+      "id": 442,
+      "label": "Safety Layer",
+      "group": "AGSF",
+      "cis": 22
+    },
+    {
+      "id": 443,
+      "label": "Workspace Limits",
+      "group": "AGSF",
+      "cis": 1
+    },
+    {
+      "id": 444,
+      "label": "Command Validation",
+      "group": "AGSF",
+      "cis": 6
+    },
+    {
+      "id": 445,
+      "label": "Dry-Run Mode",
+      "group": "AGSF",
+      "cis": 2
+    },
+    {
+      "id": 446,
+      "label": "Simulation Mode",
+      "group": "AGSF",
+      "cis": 1
+    },
+    {
+      "id": 447,
+      "label": "Confirmation Step",
+      "group": "AGSF",
+      "cis": 1
+    },
+    {
+      "id": 448,
+      "label": "Audit Log",
+      "group": "AGSF",
+      "cis": 2
+    },
+    {
+      "id": 449,
+      "label": "Ambiguous Instructions",
+      "group": "AGSF",
+      "cis": 1
+    },
+    {
+      "id": 450,
+      "label": "Hallucinated Tool Calls",
+      "group": "AGSF",
+      "cis": 3
+    },
+    {
+      "id": 451,
+      "label": "Prompt Injection",
+      "group": "AGSF",
+      "cis": 3
+    },
+    {
+      "id": 452,
+      "label": "Untrusted Input",
+      "group": "AGSF",
+      "cis": 5
+    },
+    {
+      "id": 453,
+      "label": "Least Privilege",
+      "group": "AGSF",
+      "cis": 1
+    },
+    {
+      "id": 454,
+      "label": "Defense in Depth",
+      "group": "AGSF",
+      "cis": 3
+    },
+    {
+      "id": 455,
+      "label": "Agent Is Not the Safety Layer",
+      "group": "AGSF",
+      "cis": 2
+    },
+    {
+      "id": 456,
+      "label": "Rate Limiting",
+      "group": "AGSF",
+      "cis": 1
+    },
+    {
+      "id": 457,
+      "label": "Agent Testing",
+      "group": "AGSF",
+      "cis": 5
+    },
+    {
+      "id": 458,
+      "label": "Success Rate",
+      "group": "AGSF",
+      "cis": 7
+    },
+    {
+      "id": 459,
+      "label": "Repeatability Test",
+      "group": "AGSF",
+      "cis": 5
+    },
+    {
+      "id": 460,
+      "label": "Agent Evaluation Suite",
+      "group": "AGSF",
+      "cis": 4
+    },
+    {
+      "id": 461,
+      "label": "Replay Testing",
+      "group": "AGSF",
+      "cis": 1
+    },
+    {
+      "id": 462,
+      "label": "Desk Assistant Project",
+      "group": "PROJ",
+      "cis": 3
+    },
+    {
+      "id": 463,
+      "label": "Color Sorting Project",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 464,
+      "label": "Chat-Controlled Arm",
+      "group": "PROJ",
+      "cis": 3
+    },
+    {
+      "id": 465,
+      "label": "Data Collection Station",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 466,
+      "label": "Capstone Project",
+      "group": "PROJ",
+      "cis": 2
+    },
+    {
+      "id": 467,
+      "label": "Project Documentation",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 468,
+      "label": "Startup Procedure",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 469,
+      "label": "Shutdown Procedure",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 470,
+      "label": "Monitoring",
+      "group": "PROJ",
+      "cis": 4
+    },
+    {
+      "id": 471,
+      "label": "Maintenance Schedule",
+      "group": "PROJ",
+      "cis": 3
+    },
+    {
+      "id": 472,
+      "label": "Servo Replacement",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 473,
+      "label": "Wear and Lubrication",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 474,
+      "label": "Script vs Policy vs Agent",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 475,
+      "label": "Classroom Use",
+      "group": "PROJ",
+      "cis": 4
+    },
+    {
+      "id": 476,
+      "label": "Makerspace Use",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 477,
+      "label": "Lab Schedule",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 478,
+      "label": "Assessment Rubric",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 479,
+      "label": "Group Parts Ordering",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 480,
+      "label": "Bimanual Setup",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 481,
+      "label": "Mobile Manipulation",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 482,
+      "label": "Larger Arms",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 483,
+      "label": "Open-Source Contribution",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 484,
+      "label": "Responsible Robotics",
+      "group": "PROJ",
+      "cis": 1
+    },
+    {
+      "id": 485,
+      "label": "Matrix Multiplication",
+      "group": "ADV",
+      "cis": 14
+    },
+    {
+      "id": 486,
+      "label": "Linear Algebra with NumPy",
+      "group": "ADV",
+      "cis": 13
+    },
+    {
+      "id": 487,
+      "label": "Derivative as Rate of Change",
+      "group": "ADV",
+      "cis": 19
+    },
+    {
+      "id": 488,
+      "label": "Numerical Differentiation",
+      "group": "ADV",
+      "cis": 8
+    },
+    {
+      "id": 489,
+      "label": "Path vs Trajectory",
+      "group": "ADV",
+      "cis": 12
+    },
+    {
+      "id": 490,
+      "label": "Axis-Angle Rotation",
+      "group": "ADV",
+      "cis": 4
+    },
+    {
+      "id": 491,
+      "label": "Euler Angles",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 492,
+      "label": "Gimbal Lock",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 493,
+      "label": "Quaternion",
+      "group": "ADV",
+      "cis": 3
+    },
+    {
+      "id": 494,
+      "label": "Quaternion Rotation",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 495,
+      "label": "SLERP",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 496,
+      "label": "Velocity Kinematics",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 497,
+      "label": "Numerical Jacobian",
+      "group": "ADV",
+      "cis": 6
+    },
+    {
+      "id": 498,
+      "label": "Jacobian Pseudoinverse",
+      "group": "ADV",
+      "cis": 5
+    },
+    {
+      "id": 499,
+      "label": "Damped Least Squares",
+      "group": "ADV",
+      "cis": 4
+    },
+    {
+      "id": 500,
+      "label": "Jacobian-Based IK",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 501,
+      "label": "Manipulability",
+      "group": "ADV",
+      "cis": 5
+    },
+    {
+      "id": 502,
+      "label": "Manipulability Ellipse",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 503,
+      "label": "Condition Number",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 504,
+      "label": "Singularity Avoidance",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 505,
+      "label": "Boundary Conditions",
+      "group": "ADV",
+      "cis": 8
+    },
+    {
+      "id": 506,
+      "label": "Cubic Polynomial Trajectory",
+      "group": "ADV",
+      "cis": 7
+    },
+    {
+      "id": 507,
+      "label": "Quintic Polynomial Trajectory",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 508,
+      "label": "Jerk",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 509,
+      "label": "Minimum-Jerk Trajectory",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 510,
+      "label": "Cubic Spline",
+      "group": "ADV",
+      "cis": 4
+    },
+    {
+      "id": 511,
+      "label": "SciPy Interpolation",
+      "group": "ADV",
+      "cis": 5
+    },
+    {
+      "id": 512,
+      "label": "Via-Point Trajectory",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 513,
+      "label": "Time Scaling",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 514,
+      "label": "Velocity Limit Scaling",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 515,
+      "label": "Cartesian Straight-Line Path",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 516,
+      "label": "Path Parameterization",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 517,
+      "label": "Static Torque Estimate",
+      "group": "ADV",
+      "cis": 6
+    },
+    {
+      "id": 518,
+      "label": "Gravity Load on Joints",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 519,
+      "label": "Moment Arm",
+      "group": "ADV",
+      "cis": 3
+    },
+    {
+      "id": 520,
+      "label": "Servo Torque Margin",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 521,
+      "label": "Configuration Space",
+      "group": "ADV",
+      "cis": 14
+    },
+    {
+      "id": 522,
+      "label": "Obstacle Representation",
+      "group": "ADV",
+      "cis": 7
+    },
+    {
+      "id": 523,
+      "label": "Sampling-Based Planning",
+      "group": "ADV",
+      "cis": 6
+    },
+    {
+      "id": 524,
+      "label": "RRT Algorithm",
+      "group": "ADV",
+      "cis": 5
+    },
+    {
+      "id": 525,
+      "label": "Path Smoothing",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 526,
+      "label": "Shortcut Smoothing",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 527,
+      "label": "Joint-Limit Constrained Planning",
+      "group": "ADV",
+      "cis": 2
+    },
+    {
+      "id": 528,
+      "label": "Path Safety Check",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 529,
+      "label": "Path Prediction",
+      "group": "ADV",
+      "cis": 7
+    },
+    {
+      "id": 530,
+      "label": "Forward Simulation of Paths",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 531,
+      "label": "Predicted vs Measured Path",
+      "group": "ADV",
+      "cis": 5
+    },
+    {
+      "id": 532,
+      "label": "Tracking Error",
+      "group": "ADV",
+      "cis": 4
+    },
+    {
+      "id": 533,
+      "label": "RMSE",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 534,
+      "label": "Maximum Deviation",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 535,
+      "label": "Prediction Error Sources",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 536,
+      "label": "SciPy Optimize",
+      "group": "ADV",
+      "cis": 1
+    },
+    {
+      "id": 537,
+      "label": "Matplotlib Animation",
+      "group": "ADV",
+      "cis": 1
+    }
+  ],
+  "edges": [
+    {
+      "from": 2,
+      "to": 1
+    },
+    {
+      "from": 3,
+      "to": 2
+    },
+    {
+      "from": 4,
+      "to": 2
+    },
+    {
+      "from": 5,
+      "to": 1
+    },
+    {
+      "from": 6,
+      "to": 5
+    },
+    {
+      "from": 6,
+      "to": 2
+    },
+    {
+      "from": 7,
+      "to": 6
+    },
+    {
+      "from": 8,
+      "to": 7
+    },
+    {
+      "from": 9,
+      "to": 4
+    },
+    {
+      "from": 10,
+      "to": 4
+    },
+    {
+      "from": 11,
+      "to": 10
+    },
+    {
+      "from": 11,
+      "to": 9
+    },
+    {
+      "from": 12,
+      "to": 10
+    },
+    {
+      "from": 13,
+      "to": 12
+    },
+    {
+      "from": 14,
+      "to": 4
+    },
+    {
+      "from": 15,
+      "to": 4
+    },
+    {
+      "from": 16,
+      "to": 4
+    },
+    {
+      "from": 17,
+      "to": 4
+    },
+    {
+      "from": 17,
+      "to": 16
+    },
+    {
+      "from": 18,
+      "to": 5
+    },
+    {
+      "from": 19,
+      "to": 4
+    },
+    {
+      "from": 20,
+      "to": 4
+    },
+    {
+      "from": 21,
+      "to": 20
+    },
+    {
+      "from": 22,
+      "to": 5
+    },
+    {
+      "from": 22,
+      "to": 4
+    },
+    {
+      "from": 23,
+      "to": 22
+    },
+    {
+      "from": 23,
+      "to": 13
+    },
+    {
+      "from": 24,
+      "to": 5
+    },
+    {
+      "from": 25,
+      "to": 4
+    },
+    {
+      "from": 27,
+      "to": 26
+    },
+    {
+      "from": 28,
+      "to": 26
+    },
+    {
+      "from": 29,
+      "to": 28
+    },
+    {
+      "from": 30,
+      "to": 28
+    },
+    {
+      "from": 31,
+      "to": 28
+    },
+    {
+      "from": 31,
+      "to": 27
+    },
+    {
+      "from": 32,
+      "to": 26
+    },
+    {
+      "from": 33,
+      "to": 32
+    },
+    {
+      "from": 34,
+      "to": 33
+    },
+    {
+      "from": 35,
+      "to": 26
+    },
+    {
+      "from": 36,
+      "to": 31
+    },
+    {
+      "from": 36,
+      "to": 27
+    },
+    {
+      "from": 37,
+      "to": 36
+    },
+    {
+      "from": 38,
+      "to": 26
+    },
+    {
+      "from": 39,
+      "to": 26
+    },
+    {
+      "from": 40,
+      "to": 39
+    },
+    {
+      "from": 41,
+      "to": 27
+    },
+    {
+      "from": 41,
+      "to": 28
+    },
+    {
+      "from": 42,
+      "to": 41
+    },
+    {
+      "from": 42,
+      "to": 31
+    },
+    {
+      "from": 43,
+      "to": 42
+    },
+    {
+      "from": 44,
+      "to": 42
+    },
+    {
+      "from": 45,
+      "to": 42
+    },
+    {
+      "from": 46,
+      "to": 28
+    },
+    {
+      "from": 47,
+      "to": 29
+    },
+    {
+      "from": 48,
+      "to": 47
+    },
+    {
+      "from": 48,
+      "to": 32
+    },
+    {
+      "from": 49,
+      "to": 48
+    },
+    {
+      "from": 50,
+      "to": 26
+    },
+    {
+      "from": 51,
+      "to": 26
+    },
+    {
+      "from": 51,
+      "to": 50
+    },
+    {
+      "from": 52,
+      "to": 51
+    },
+    {
+      "from": 53,
+      "to": 51
+    },
+    {
+      "from": 54,
+      "to": 52
+    },
+    {
+      "from": 54,
+      "to": 53
+    },
+    {
+      "from": 55,
+      "to": 26
+    },
+    {
+      "from": 55,
+      "to": 53
+    },
+    {
+      "from": 56,
+      "to": 26
+    },
+    {
+      "from": 56,
+      "to": 38
+    },
+    {
+      "from": 57,
+      "to": 26
+    },
+    {
+      "from": 57,
+      "to": 28
+    },
+    {
+      "from": 58,
+      "to": 57
+    },
+    {
+      "from": 58,
+      "to": 120
+    },
+    {
+      "from": 59,
+      "to": 61
+    },
+    {
+      "from": 59,
+      "to": 60
+    },
+    {
+      "from": 60,
+      "to": 120
+    },
+    {
+      "from": 61,
+      "to": 58
+    },
+    {
+      "from": 61,
+      "to": 73
+    },
+    {
+      "from": 62,
+      "to": 61
+    },
+    {
+      "from": 62,
+      "to": 87
+    },
+    {
+      "from": 63,
+      "to": 62
+    },
+    {
+      "from": 64,
+      "to": 57
+    },
+    {
+      "from": 64,
+      "to": 120
+    },
+    {
+      "from": 65,
+      "to": 64
+    },
+    {
+      "from": 65,
+      "to": 103
+    },
+    {
+      "from": 66,
+      "to": 64
+    },
+    {
+      "from": 66,
+      "to": 103
+    },
+    {
+      "from": 67,
+      "to": 57
+    },
+    {
+      "from": 68,
+      "to": 67
+    },
+    {
+      "from": 69,
+      "to": 68
+    },
+    {
+      "from": 70,
+      "to": 57
+    },
+    {
+      "from": 71,
+      "to": 70
+    },
+    {
+      "from": 72,
+      "to": 57
+    },
+    {
+      "from": 73,
+      "to": 57
+    },
+    {
+      "from": 74,
+      "to": 73
+    },
+    {
+      "from": 75,
+      "to": 73
+    },
+    {
+      "from": 76,
+      "to": 73
+    },
+    {
+      "from": 77,
+      "to": 57
+    },
+    {
+      "from": 77,
+      "to": 121
+    },
+    {
+      "from": 78,
+      "to": 57
+    },
+    {
+      "from": 79,
+      "to": 70
+    },
+    {
+      "from": 79,
+      "to": 77
+    },
+    {
+      "from": 80,
+      "to": 70
+    },
+    {
+      "from": 81,
+      "to": 57
+    },
+    {
+      "from": 81,
+      "to": 70
+    },
+    {
+      "from": 82,
+      "to": 80
+    },
+    {
+      "from": 82,
+      "to": 78
+    },
+    {
+      "from": 82,
+      "to": 79
+    },
+    {
+      "from": 83,
+      "to": 75
+    },
+    {
+      "from": 84,
+      "to": 83
+    },
+    {
+      "from": 84,
+      "to": 80
+    },
+    {
+      "from": 85,
+      "to": 67
+    },
+    {
+      "from": 85,
+      "to": 64
+    },
+    {
+      "from": 86,
+      "to": 57
+    },
+    {
+      "from": 86,
+      "to": 83
+    },
+    {
+      "from": 87,
+      "to": 120
+    },
+    {
+      "from": 88,
+      "to": 87
+    },
+    {
+      "from": 89,
+      "to": 88
+    },
+    {
+      "from": 90,
+      "to": 88
+    },
+    {
+      "from": 91,
+      "to": 88
+    },
+    {
+      "from": 92,
+      "to": 91
+    },
+    {
+      "from": 93,
+      "to": 92
+    },
+    {
+      "from": 93,
+      "to": 7
+    },
+    {
+      "from": 94,
+      "to": 1
+    },
+    {
+      "from": 95,
+      "to": 94
+    },
+    {
+      "from": 96,
+      "to": 94
+    },
+    {
+      "from": 96,
+      "to": 87
+    },
+    {
+      "from": 97,
+      "to": 96
+    },
+    {
+      "from": 97,
+      "to": 95
+    },
+    {
+      "from": 98,
+      "to": 96
+    },
+    {
+      "from": 99,
+      "to": 96
+    },
+    {
+      "from": 100,
+      "to": 87
+    },
+    {
+      "from": 101,
+      "to": 100
+    },
+    {
+      "from": 101,
+      "to": 89
+    },
+    {
+      "from": 102,
+      "to": 91
+    },
+    {
+      "from": 102,
+      "to": 62
+    },
+    {
+      "from": 103,
+      "to": 87
+    },
+    {
+      "from": 104,
+      "to": 103
+    },
+    {
+      "from": 104,
+      "to": 94
+    },
+    {
+      "from": 105,
+      "to": 103
+    },
+    {
+      "from": 106,
+      "to": 103
+    },
+    {
+      "from": 107,
+      "to": 103
+    },
+    {
+      "from": 107,
+      "to": 91
+    },
+    {
+      "from": 108,
+      "to": 107
+    },
+    {
+      "from": 108,
+      "to": 7
+    },
+    {
+      "from": 109,
+      "to": 11
+    },
+    {
+      "from": 109,
+      "to": 7
+    },
+    {
+      "from": 110,
+      "to": 94
+    },
+    {
+      "from": 110,
+      "to": 13
+    },
+    {
+      "from": 111,
+      "to": 95
+    },
+    {
+      "from": 112,
+      "to": 94
+    },
+    {
+      "from": 113,
+      "to": 98
+    },
+    {
+      "from": 114,
+      "to": 113
+    },
+    {
+      "from": 114,
+      "to": 93
+    },
+    {
+      "from": 115,
+      "to": 113
+    },
+    {
+      "from": 115,
+      "to": 93
+    },
+    {
+      "from": 116,
+      "to": 98
+    },
+    {
+      "from": 116,
+      "to": 99
+    },
+    {
+      "from": 116,
+      "to": 93
+    },
+    {
+      "from": 117,
+      "to": 116
+    },
+    {
+      "from": 117,
+      "to": 100
+    },
+    {
+      "from": 118,
+      "to": 92
+    },
+    {
+      "from": 119,
+      "to": 118
+    },
+    {
+      "from": 119,
+      "to": 97
+    },
+    {
+      "from": 121,
+      "to": 120
+    },
+    {
+      "from": 122,
+      "to": 120
+    },
+    {
+      "from": 122,
+      "to": 121
+    },
+    {
+      "from": 123,
+      "to": 120
+    },
+    {
+      "from": 123,
+      "to": 121
+    },
+    {
+      "from": 124,
+      "to": 120
+    },
+    {
+      "from": 124,
+      "to": 121
+    },
+    {
+      "from": 125,
+      "to": 124
+    },
+    {
+      "from": 126,
+      "to": 124
+    },
+    {
+      "from": 127,
+      "to": 121
+    },
+    {
+      "from": 127,
+      "to": 124
+    },
+    {
+      "from": 128,
+      "to": 122
+    },
+    {
+      "from": 128,
+      "to": 127
+    },
+    {
+      "from": 129,
+      "to": 121
+    },
+    {
+      "from": 129,
+      "to": 123
+    },
+    {
+      "from": 130,
+      "to": 129
+    },
+    {
+      "from": 131,
+      "to": 127
+    },
+    {
+      "from": 132,
+      "to": 123
+    },
+    {
+      "from": 132,
+      "to": 129
+    },
+    {
+      "from": 133,
+      "to": 132
+    },
+    {
+      "from": 133,
+      "to": 128
+    },
+    {
+      "from": 134,
+      "to": 121
+    },
+    {
+      "from": 134,
+      "to": 57
+    },
+    {
+      "from": 135,
+      "to": 120
+    },
+    {
+      "from": 135,
+      "to": 58
+    },
+    {
+      "from": 136,
+      "to": 120
+    },
+    {
+      "from": 137,
+      "to": 130
+    },
+    {
+      "from": 137,
+      "to": 131
+    },
+    {
+      "from": 138,
+      "to": 128
+    },
+    {
+      "from": 138,
+      "to": 131
+    },
+    {
+      "from": 138,
+      "to": 130
+    },
+    {
+      "from": 139,
+      "to": 124
+    },
+    {
+      "from": 139,
+      "to": 142
+    },
+    {
+      "from": 140,
+      "to": 124
+    },
+    {
+      "from": 140,
+      "to": 142
+    },
+    {
+      "from": 141,
+      "to": 126
+    },
+    {
+      "from": 141,
+      "to": 142
+    },
+    {
+      "from": 142,
+      "to": 26
+    },
+    {
+      "from": 143,
+      "to": 142
+    },
+    {
+      "from": 143,
+      "to": 28
+    },
+    {
+      "from": 144,
+      "to": 142
+    },
+    {
+      "from": 144,
+      "to": 36
+    },
+    {
+      "from": 145,
+      "to": 142
+    },
+    {
+      "from": 146,
+      "to": 145
+    },
+    {
+      "from": 146,
+      "to": 124
+    },
+    {
+      "from": 147,
+      "to": 145
+    },
+    {
+      "from": 147,
+      "to": 4
+    },
+    {
+      "from": 148,
+      "to": 142
+    },
+    {
+      "from": 148,
+      "to": 72
+    },
+    {
+      "from": 149,
+      "to": 142
+    },
+    {
+      "from": 149,
+      "to": 80
+    },
+    {
+      "from": 150,
+      "to": 142
+    },
+    {
+      "from": 150,
+      "to": 83
+    },
+    {
+      "from": 151,
+      "to": 142
+    },
+    {
+      "from": 151,
+      "to": 36
+    },
+    {
+      "from": 152,
+      "to": 81
+    },
+    {
+      "from": 152,
+      "to": 145
+    },
+    {
+      "from": 153,
+      "to": 142
+    },
+    {
+      "from": 154,
+      "to": 152
+    },
+    {
+      "from": 154,
+      "to": 139
+    },
+    {
+      "from": 155,
+      "to": 142
+    },
+    {
+      "from": 155,
+      "to": 143
+    },
+    {
+      "from": 156,
+      "to": 142
+    },
+    {
+      "from": 156,
+      "to": 219
+    },
+    {
+      "from": 157,
+      "to": 142
+    },
+    {
+      "from": 157,
+      "to": 194
+    },
+    {
+      "from": 158,
+      "to": 142
+    },
+    {
+      "from": 159,
+      "to": 155
+    },
+    {
+      "from": 159,
+      "to": 154
+    },
+    {
+      "from": 160,
+      "to": 147
+    },
+    {
+      "from": 160,
+      "to": 118
+    },
+    {
+      "from": 161,
+      "to": 160
+    },
+    {
+      "from": 161,
+      "to": 146
+    },
+    {
+      "from": 162,
+      "to": 26
+    },
+    {
+      "from": 163,
+      "to": 162
+    },
+    {
+      "from": 164,
+      "to": 162
+    },
+    {
+      "from": 165,
+      "to": 163
+    },
+    {
+      "from": 166,
+      "to": 162
+    },
+    {
+      "from": 167,
+      "to": 163
+    },
+    {
+      "from": 167,
+      "to": 165
+    },
+    {
+      "from": 168,
+      "to": 166
+    },
+    {
+      "from": 169,
+      "to": 162
+    },
+    {
+      "from": 170,
+      "to": 169
+    },
+    {
+      "from": 171,
+      "to": 169
+    },
+    {
+      "from": 172,
+      "to": 169
+    },
+    {
+      "from": 173,
+      "to": 172
+    },
+    {
+      "from": 174,
+      "to": 162
+    },
+    {
+      "from": 174,
+      "to": 173
+    },
+    {
+      "from": 175,
+      "to": 174
+    },
+    {
+      "from": 176,
+      "to": 175
+    },
+    {
+      "from": 176,
+      "to": 192
+    },
+    {
+      "from": 177,
+      "to": 172
+    },
+    {
+      "from": 178,
+      "to": 170
+    },
+    {
+      "from": 179,
+      "to": 165
+    },
+    {
+      "from": 179,
+      "to": 180
+    },
+    {
+      "from": 180,
+      "to": 162
+    },
+    {
+      "from": 181,
+      "to": 51
+    },
+    {
+      "from": 181,
+      "to": 63
+    },
+    {
+      "from": 182,
+      "to": 181
+    },
+    {
+      "from": 183,
+      "to": 181
+    },
+    {
+      "from": 183,
+      "to": 182
+    },
+    {
+      "from": 183,
+      "to": 180
+    },
+    {
+      "from": 184,
+      "to": 51
+    },
+    {
+      "from": 184,
+      "to": 65
+    },
+    {
+      "from": 185,
+      "to": 184
+    },
+    {
+      "from": 185,
+      "to": 65
+    },
+    {
+      "from": 186,
+      "to": 184
+    },
+    {
+      "from": 186,
+      "to": 66
+    },
+    {
+      "from": 187,
+      "to": 162
+    },
+    {
+      "from": 188,
+      "to": 174
+    },
+    {
+      "from": 188,
+      "to": 187
+    },
+    {
+      "from": 189,
+      "to": 57
+    },
+    {
+      "from": 190,
+      "to": 189
+    },
+    {
+      "from": 191,
+      "to": 190
+    },
+    {
+      "from": 191,
+      "to": 189
+    },
+    {
+      "from": 192,
+      "to": 162
+    },
+    {
+      "from": 192,
+      "to": 4
+    },
+    {
+      "from": 193,
+      "to": 192
+    },
+    {
+      "from": 193,
+      "to": 174
+    },
+    {
+      "from": 195,
+      "to": 194
+    },
+    {
+      "from": 196,
+      "to": 195
+    },
+    {
+      "from": 197,
+      "to": 196
+    },
+    {
+      "from": 198,
+      "to": 196
+    },
+    {
+      "from": 199,
+      "to": 195
+    },
+    {
+      "from": 200,
+      "to": 199
+    },
+    {
+      "from": 201,
+      "to": 199
+    },
+    {
+      "from": 202,
+      "to": 199
+    },
+    {
+      "from": 203,
+      "to": 202
+    },
+    {
+      "from": 204,
+      "to": 194
+    },
+    {
+      "from": 205,
+      "to": 194
+    },
+    {
+      "from": 206,
+      "to": 204
+    },
+    {
+      "from": 206,
+      "to": 199
+    },
+    {
+      "from": 207,
+      "to": 206
+    },
+    {
+      "from": 208,
+      "to": 199
+    },
+    {
+      "from": 208,
+      "to": 210
+    },
+    {
+      "from": 209,
+      "to": 196
+    },
+    {
+      "from": 209,
+      "to": 199
+    },
+    {
+      "from": 210,
+      "to": 199
+    },
+    {
+      "from": 211,
+      "to": 212
+    },
+    {
+      "from": 212,
+      "to": 162
+    },
+    {
+      "from": 213,
+      "to": 212
+    },
+    {
+      "from": 214,
+      "to": 213
+    },
+    {
+      "from": 215,
+      "to": 61
+    },
+    {
+      "from": 215,
+      "to": 212
+    },
+    {
+      "from": 216,
+      "to": 129
+    },
+    {
+      "from": 217,
+      "to": 216
+    },
+    {
+      "from": 218,
+      "to": 217
+    },
+    {
+      "from": 219,
+      "to": 129
+    },
+    {
+      "from": 220,
+      "to": 120
+    },
+    {
+      "from": 220,
+      "to": 121
+    },
+    {
+      "from": 221,
+      "to": 50
+    },
+    {
+      "from": 221,
+      "to": 18
+    },
+    {
+      "from": 222,
+      "to": 221
+    },
+    {
+      "from": 223,
+      "to": 221
+    },
+    {
+      "from": 223,
+      "to": 18
+    },
+    {
+      "from": 224,
+      "to": 63
+    },
+    {
+      "from": 224,
+      "to": 102
+    },
+    {
+      "from": 225,
+      "to": 224
+    },
+    {
+      "from": 225,
+      "to": 100
+    },
+    {
+      "from": 225,
+      "to": 115
+    },
+    {
+      "from": 226,
+      "to": 224
+    },
+    {
+      "from": 226,
+      "to": 90
+    },
+    {
+      "from": 226,
+      "to": 115
+    },
+    {
+      "from": 227,
+      "to": 225
+    },
+    {
+      "from": 227,
+      "to": 116
+    },
+    {
+      "from": 228,
+      "to": 67
+    },
+    {
+      "from": 228,
+      "to": 52
+    },
+    {
+      "from": 228,
+      "to": 181
+    },
+    {
+      "from": 229,
+      "to": 222
+    },
+    {
+      "from": 229,
+      "to": 227
+    },
+    {
+      "from": 229,
+      "to": 208
+    },
+    {
+      "from": 230,
+      "to": 229
+    },
+    {
+      "from": 230,
+      "to": 228
+    },
+    {
+      "from": 231,
+      "to": 230
+    },
+    {
+      "from": 232,
+      "to": 222
+    },
+    {
+      "from": 232,
+      "to": 28
+    },
+    {
+      "from": 233,
+      "to": 229
+    },
+    {
+      "from": 233,
+      "to": 217
+    },
+    {
+      "from": 234,
+      "to": 229
+    },
+    {
+      "from": 235,
+      "to": 46
+    },
+    {
+      "from": 235,
+      "to": 75
+    },
+    {
+      "from": 236,
+      "to": 235
+    },
+    {
+      "from": 236,
+      "to": 247
+    },
+    {
+      "from": 236,
+      "to": 49
+    },
+    {
+      "from": 237,
+      "to": 49
+    },
+    {
+      "from": 237,
+      "to": 235
+    },
+    {
+      "from": 238,
+      "to": 46
+    },
+    {
+      "from": 238,
+      "to": 235
+    },
+    {
+      "from": 239,
+      "to": 236
+    },
+    {
+      "from": 239,
+      "to": 20
+    },
+    {
+      "from": 240,
+      "to": 239
+    },
+    {
+      "from": 240,
+      "to": 69
+    },
+    {
+      "from": 241,
+      "to": 227
+    },
+    {
+      "from": 241,
+      "to": 220
+    },
+    {
+      "from": 242,
+      "to": 241
+    },
+    {
+      "from": 242,
+      "to": 117
+    },
+    {
+      "from": 243,
+      "to": 241
+    },
+    {
+      "from": 243,
+      "to": 78
+    },
+    {
+      "from": 244,
+      "to": 241
+    },
+    {
+      "from": 244,
+      "to": 83
+    },
+    {
+      "from": 245,
+      "to": 241
+    },
+    {
+      "from": 245,
+      "to": 69
+    },
+    {
+      "from": 246,
+      "to": 241
+    },
+    {
+      "from": 246,
+      "to": 218
+    },
+    {
+      "from": 247,
+      "to": 139
+    },
+    {
+      "from": 247,
+      "to": 233
+    },
+    {
+      "from": 248,
+      "to": 185
+    },
+    {
+      "from": 248,
+      "to": 214
+    },
+    {
+      "from": 249,
+      "to": 65
+    },
+    {
+      "from": 249,
+      "to": 107
+    },
+    {
+      "from": 249,
+      "to": 108
+    },
+    {
+      "from": 250,
+      "to": 249
+    },
+    {
+      "from": 250,
+      "to": 100
+    },
+    {
+      "from": 251,
+      "to": 250
+    },
+    {
+      "from": 251,
+      "to": 106
+    },
+    {
+      "from": 251,
+      "to": 105
+    },
+    {
+      "from": 252,
+      "to": 248
+    },
+    {
+      "from": 252,
+      "to": 34
+    },
+    {
+      "from": 253,
+      "to": 248
+    },
+    {
+      "from": 253,
+      "to": 45
+    },
+    {
+      "from": 254,
+      "to": 141
+    },
+    {
+      "from": 254,
+      "to": 138
+    },
+    {
+      "from": 254,
+      "to": 131
+    },
+    {
+      "from": 255,
+      "to": 251
+    },
+    {
+      "from": 255,
+      "to": 49
+    },
+    {
+      "from": 256,
+      "to": 255
+    },
+    {
+      "from": 256,
+      "to": 235
+    },
+    {
+      "from": 257,
+      "to": 249
+    },
+    {
+      "from": 257,
+      "to": 83
+    },
+    {
+      "from": 258,
+      "to": 181
+    },
+    {
+      "from": 258,
+      "to": 184
+    },
+    {
+      "from": 259,
+      "to": 258
+    },
+    {
+      "from": 259,
+      "to": 174
+    },
+    {
+      "from": 260,
+      "to": 258
+    },
+    {
+      "from": 260,
+      "to": 38
+    },
+    {
+      "from": 261,
+      "to": 258
+    },
+    {
+      "from": 262,
+      "to": 259
+    },
+    {
+      "from": 262,
+      "to": 260
+    },
+    {
+      "from": 262,
+      "to": 261
+    },
+    {
+      "from": 263,
+      "to": 266
+    },
+    {
+      "from": 263,
+      "to": 93
+    },
+    {
+      "from": 263,
+      "to": 108
+    },
+    {
+      "from": 263,
+      "to": 258
+    },
+    {
+      "from": 264,
+      "to": 266
+    },
+    {
+      "from": 264,
+      "to": 26
+    },
+    {
+      "from": 265,
+      "to": 266
+    },
+    {
+      "from": 265,
+      "to": 28
+    },
+    {
+      "from": 266,
+      "to": 1
+    },
+    {
+      "from": 267,
+      "to": 266
+    },
+    {
+      "from": 267,
+      "to": 263
+    },
+    {
+      "from": 268,
+      "to": 264
+    },
+    {
+      "from": 268,
+      "to": 267
+    },
+    {
+      "from": 269,
+      "to": 268
+    },
+    {
+      "from": 270,
+      "to": 1
+    },
+    {
+      "from": 270,
+      "to": 266
+    },
+    {
+      "from": 271,
+      "to": 1
+    },
+    {
+      "from": 272,
+      "to": 270
+    },
+    {
+      "from": 272,
+      "to": 48
+    },
+    {
+      "from": 272,
+      "to": 271
+    },
+    {
+      "from": 273,
+      "to": 270
+    },
+    {
+      "from": 273,
+      "to": 271
+    },
+    {
+      "from": 274,
+      "to": 264
+    },
+    {
+      "from": 274,
+      "to": 92
+    },
+    {
+      "from": 275,
+      "to": 274
+    },
+    {
+      "from": 275,
+      "to": 276
+    },
+    {
+      "from": 276,
+      "to": 1
+    },
+    {
+      "from": 277,
+      "to": 16
+    },
+    {
+      "from": 277,
+      "to": 1
+    },
+    {
+      "from": 278,
+      "to": 277
+    },
+    {
+      "from": 278,
+      "to": 119
+    },
+    {
+      "from": 279,
+      "to": 278
+    },
+    {
+      "from": 279,
+      "to": 266
+    },
+    {
+      "from": 280,
+      "to": 264
+    },
+    {
+      "from": 280,
+      "to": 114
+    },
+    {
+      "from": 280,
+      "to": 75
+    },
+    {
+      "from": 281,
+      "to": 264
+    },
+    {
+      "from": 281,
+      "to": 115
+    },
+    {
+      "from": 281,
+      "to": 46
+    },
+    {
+      "from": 282,
+      "to": 280
+    },
+    {
+      "from": 283,
+      "to": 47
+    },
+    {
+      "from": 283,
+      "to": 1
+    },
+    {
+      "from": 284,
+      "to": 282
+    },
+    {
+      "from": 284,
+      "to": 283
+    },
+    {
+      "from": 285,
+      "to": 281
+    },
+    {
+      "from": 285,
+      "to": 284
+    },
+    {
+      "from": 286,
+      "to": 285
+    },
+    {
+      "from": 287,
+      "to": 286
+    },
+    {
+      "from": 288,
+      "to": 48
+    },
+    {
+      "from": 289,
+      "to": 288
+    },
+    {
+      "from": 289,
+      "to": 287
+    },
+    {
+      "from": 290,
+      "to": 289
+    },
+    {
+      "from": 291,
+      "to": 290
+    },
+    {
+      "from": 292,
+      "to": 290
+    },
+    {
+      "from": 292,
+      "to": 296
+    },
+    {
+      "from": 293,
+      "to": 292
+    },
+    {
+      "from": 293,
+      "to": 295
+    },
+    {
+      "from": 293,
+      "to": 148
+    },
+    {
+      "from": 294,
+      "to": 293
+    },
+    {
+      "from": 295,
+      "to": 148
+    },
+    {
+      "from": 295,
+      "to": 281
+    },
+    {
+      "from": 296,
+      "to": 298
+    },
+    {
+      "from": 297,
+      "to": 296
+    },
+    {
+      "from": 298,
+      "to": 13
+    },
+    {
+      "from": 299,
+      "to": 297
+    },
+    {
+      "from": 300,
+      "to": 296
+    },
+    {
+      "from": 301,
+      "to": 300
+    },
+    {
+      "from": 302,
+      "to": 301
+    },
+    {
+      "from": 302,
+      "to": 147
+    },
+    {
+      "from": 303,
+      "to": 281
+    },
+    {
+      "from": 303,
+      "to": 33
+    },
+    {
+      "from": 304,
+      "to": 303
+    },
+    {
+      "from": 305,
+      "to": 303
+    },
+    {
+      "from": 305,
+      "to": 80
+    },
+    {
+      "from": 306,
+      "to": 289
+    },
+    {
+      "from": 306,
+      "to": 303
+    },
+    {
+      "from": 307,
+      "to": 306
+    },
+    {
+      "from": 308,
+      "to": 307
+    },
+    {
+      "from": 309,
+      "to": 306
+    },
+    {
+      "from": 310,
+      "to": 54
+    },
+    {
+      "from": 310,
+      "to": 296
+    },
+    {
+      "from": 310,
+      "to": 280
+    },
+    {
+      "from": 311,
+      "to": 310
+    },
+    {
+      "from": 311,
+      "to": 239
+    },
+    {
+      "from": 312,
+      "to": 310
+    },
+    {
+      "from": 312,
+      "to": 299
+    },
+    {
+      "from": 313,
+      "to": 310
+    },
+    {
+      "from": 313,
+      "to": 317
+    },
+    {
+      "from": 314,
+      "to": 313
+    },
+    {
+      "from": 314,
+      "to": 292
+    },
+    {
+      "from": 315,
+      "to": 13
+    },
+    {
+      "from": 315,
+      "to": 17
+    },
+    {
+      "from": 316,
+      "to": 315
+    },
+    {
+      "from": 317,
+      "to": 315
+    },
+    {
+      "from": 317,
+      "to": 25
+    },
+    {
+      "from": 318,
+      "to": 1
+    },
+    {
+      "from": 319,
+      "to": 318
+    },
+    {
+      "from": 319,
+      "to": 292
+    },
+    {
+      "from": 319,
+      "to": 317
+    },
+    {
+      "from": 320,
+      "to": 318
+    },
+    {
+      "from": 320,
+      "to": 351
+    },
+    {
+      "from": 321,
+      "to": 7
+    },
+    {
+      "from": 321,
+      "to": 4
+    },
+    {
+      "from": 322,
+      "to": 321
+    },
+    {
+      "from": 323,
+      "to": 321
+    },
+    {
+      "from": 324,
+      "to": 323
+    },
+    {
+      "from": 324,
+      "to": 46
+    },
+    {
+      "from": 324,
+      "to": 268
+    },
+    {
+      "from": 325,
+      "to": 323
+    },
+    {
+      "from": 326,
+      "to": 325
+    },
+    {
+      "from": 326,
+      "to": 323
+    },
+    {
+      "from": 327,
+      "to": 35
+    },
+    {
+      "from": 327,
+      "to": 48
+    },
+    {
+      "from": 328,
+      "to": 327
+    },
+    {
+      "from": 329,
+      "to": 328
+    },
+    {
+      "from": 330,
+      "to": 1
+    },
+    {
+      "from": 331,
+      "to": 332
+    },
+    {
+      "from": 332,
+      "to": 1
+    },
+    {
+      "from": 333,
+      "to": 329
+    },
+    {
+      "from": 333,
+      "to": 330
+    },
+    {
+      "from": 333,
+      "to": 332
+    },
+    {
+      "from": 334,
+      "to": 333
+    },
+    {
+      "from": 334,
+      "to": 331
+    },
+    {
+      "from": 335,
+      "to": 334
+    },
+    {
+      "from": 335,
+      "to": 27
+    },
+    {
+      "from": 336,
+      "to": 335
+    },
+    {
+      "from": 336,
+      "to": 29
+    },
+    {
+      "from": 337,
+      "to": 335
+    },
+    {
+      "from": 337,
+      "to": 47
+    },
+    {
+      "from": 337,
+      "to": 339
+    },
+    {
+      "from": 338,
+      "to": 339
+    },
+    {
+      "from": 338,
+      "to": 330
+    },
+    {
+      "from": 338,
+      "to": 29
+    },
+    {
+      "from": 339,
+      "to": 27
+    },
+    {
+      "from": 340,
+      "to": 337
+    },
+    {
+      "from": 341,
+      "to": 340
+    },
+    {
+      "from": 341,
+      "to": 338
+    },
+    {
+      "from": 342,
+      "to": 340
+    },
+    {
+      "from": 342,
+      "to": 347
+    },
+    {
+      "from": 343,
+      "to": 341
+    },
+    {
+      "from": 344,
+      "to": 343
+    },
+    {
+      "from": 344,
+      "to": 44
+    },
+    {
+      "from": 345,
+      "to": 340
+    },
+    {
+      "from": 345,
+      "to": 37
+    },
+    {
+      "from": 346,
+      "to": 340
+    },
+    {
+      "from": 346,
+      "to": 31
+    },
+    {
+      "from": 347,
+      "to": 337
+    },
+    {
+      "from": 347,
+      "to": 332
+    },
+    {
+      "from": 348,
+      "to": 340
+    },
+    {
+      "from": 348,
+      "to": 285
+    },
+    {
+      "from": 349,
+      "to": 348
+    },
+    {
+      "from": 349,
+      "to": 291
+    },
+    {
+      "from": 350,
+      "to": 348
+    },
+    {
+      "from": 350,
+      "to": 333
+    },
+    {
+      "from": 351,
+      "to": 337
+    },
+    {
+      "from": 351,
+      "to": 46
+    },
+    {
+      "from": 351,
+      "to": 36
+    },
+    {
+      "from": 352,
+      "to": 351
+    },
+    {
+      "from": 353,
+      "to": 337
+    },
+    {
+      "from": 353,
+      "to": 151
+    },
+    {
+      "from": 354,
+      "to": 337
+    },
+    {
+      "from": 354,
+      "to": 268
+    },
+    {
+      "from": 355,
+      "to": 354
+    },
+    {
+      "from": 355,
+      "to": 27
+    },
+    {
+      "from": 355,
+      "to": 28
+    },
+    {
+      "from": 356,
+      "to": 354
+    },
+    {
+      "from": 356,
+      "to": 355
+    },
+    {
+      "from": 357,
+      "to": 355
+    },
+    {
+      "from": 357,
+      "to": 337
+    },
+    {
+      "from": 358,
+      "to": 356
+    },
+    {
+      "from": 358,
+      "to": 355
+    },
+    {
+      "from": 359,
+      "to": 11
+    },
+    {
+      "from": 359,
+      "to": 354
+    },
+    {
+      "from": 360,
+      "to": 359
+    },
+    {
+      "from": 361,
+      "to": 360
+    },
+    {
+      "from": 362,
+      "to": 361
+    },
+    {
+      "from": 362,
+      "to": 355
+    },
+    {
+      "from": 362,
+      "to": 353
+    },
+    {
+      "from": 363,
+      "to": 354
+    },
+    {
+      "from": 363,
+      "to": 69
+    },
+    {
+      "from": 365,
+      "to": 364
+    },
+    {
+      "from": 366,
+      "to": 365
+    },
+    {
+      "from": 366,
+      "to": 332
+    },
+    {
+      "from": 367,
+      "to": 366
+    },
+    {
+      "from": 367,
+      "to": 7
+    },
+    {
+      "from": 368,
+      "to": 367
+    },
+    {
+      "from": 369,
+      "to": 368
+    },
+    {
+      "from": 370,
+      "to": 369
+    },
+    {
+      "from": 371,
+      "to": 370
+    },
+    {
+      "from": 372,
+      "to": 367
+    },
+    {
+      "from": 373,
+      "to": 372
+    },
+    {
+      "from": 374,
+      "to": 372
+    },
+    {
+      "from": 374,
+      "to": 334
+    },
+    {
+      "from": 375,
+      "to": 374
+    },
+    {
+      "from": 375,
+      "to": 337
+    },
+    {
+      "from": 376,
+      "to": 371
+    },
+    {
+      "from": 376,
+      "to": 373
+    },
+    {
+      "from": 376,
+      "to": 375
+    },
+    {
+      "from": 377,
+      "to": 367
+    },
+    {
+      "from": 377,
+      "to": 374
+    },
+    {
+      "from": 378,
+      "to": 371
+    },
+    {
+      "from": 378,
+      "to": 366
+    },
+    {
+      "from": 379,
+      "to": 54
+    },
+    {
+      "from": 379,
+      "to": 313
+    },
+    {
+      "from": 380,
+      "to": 379
+    },
+    {
+      "from": 380,
+      "to": 313
+    },
+    {
+      "from": 381,
+      "to": 380
+    },
+    {
+      "from": 382,
+      "to": 7
+    },
+    {
+      "from": 382,
+      "to": 54
+    },
+    {
+      "from": 382,
+      "to": 53
+    },
+    {
+      "from": 383,
+      "to": 379
+    },
+    {
+      "from": 383,
+      "to": 366
+    },
+    {
+      "from": 384,
+      "to": 383
+    },
+    {
+      "from": 385,
+      "to": 384
+    },
+    {
+      "from": 385,
+      "to": 381
+    },
+    {
+      "from": 386,
+      "to": 385
+    },
+    {
+      "from": 386,
+      "to": 381
+    },
+    {
+      "from": 386,
+      "to": 391
+    },
+    {
+      "from": 387,
+      "to": 386
+    },
+    {
+      "from": 388,
+      "to": 386
+    },
+    {
+      "from": 388,
+      "to": 458
+    },
+    {
+      "from": 389,
+      "to": 388
+    },
+    {
+      "from": 390,
+      "to": 387
+    },
+    {
+      "from": 391,
+      "to": 381
+    },
+    {
+      "from": 391,
+      "to": 382
+    },
+    {
+      "from": 392,
+      "to": 381
+    },
+    {
+      "from": 392,
+      "to": 382
+    },
+    {
+      "from": 393,
+      "to": 396
+    },
+    {
+      "from": 393,
+      "to": 4
+    },
+    {
+      "from": 394,
+      "to": 393
+    },
+    {
+      "from": 395,
+      "to": 394
+    },
+    {
+      "from": 397,
+      "to": 393
+    },
+    {
+      "from": 397,
+      "to": 271
+    },
+    {
+      "from": 398,
+      "to": 397
+    },
+    {
+      "from": 398,
+      "to": 14
+    },
+    {
+      "from": 398,
+      "to": 271
+    },
+    {
+      "from": 399,
+      "to": 398
+    },
+    {
+      "from": 399,
+      "to": 20
+    },
+    {
+      "from": 400,
+      "to": 398
+    },
+    {
+      "from": 401,
+      "to": 393
+    },
+    {
+      "from": 401,
+      "to": 400
+    },
+    {
+      "from": 402,
+      "to": 401
+    },
+    {
+      "from": 402,
+      "to": 5
+    },
+    {
+      "from": 402,
+      "to": 24
+    },
+    {
+      "from": 403,
+      "to": 401
+    },
+    {
+      "from": 404,
+      "to": 401
+    },
+    {
+      "from": 404,
+      "to": 400
+    },
+    {
+      "from": 405,
+      "to": 404
+    },
+    {
+      "from": 405,
+      "to": 264
+    },
+    {
+      "from": 405,
+      "to": 268
+    },
+    {
+      "from": 406,
+      "to": 405
+    },
+    {
+      "from": 406,
+      "to": 46
+    },
+    {
+      "from": 406,
+      "to": 148
+    },
+    {
+      "from": 407,
+      "to": 271
+    },
+    {
+      "from": 407,
+      "to": 398
+    },
+    {
+      "from": 408,
+      "to": 407
+    },
+    {
+      "from": 408,
+      "to": 406
+    },
+    {
+      "from": 409,
+      "to": 408
+    },
+    {
+      "from": 409,
+      "to": 279
+    },
+    {
+      "from": 410,
+      "to": 405
+    },
+    {
+      "from": 410,
+      "to": 403
+    },
+    {
+      "from": 411,
+      "to": 410
+    },
+    {
+      "from": 412,
+      "to": 398
+    },
+    {
+      "from": 412,
+      "to": 348
+    },
+    {
+      "from": 412,
+      "to": 272
+    },
+    {
+      "from": 413,
+      "to": 398
+    },
+    {
+      "from": 413,
+      "to": 303
+    },
+    {
+      "from": 414,
+      "to": 398
+    },
+    {
+      "from": 414,
+      "to": 49
+    },
+    {
+      "from": 415,
+      "to": 398
+    },
+    {
+      "from": 415,
+      "to": 147
+    },
+    {
+      "from": 416,
+      "to": 393
+    },
+    {
+      "from": 417,
+      "to": 393
+    },
+    {
+      "from": 417,
+      "to": 431
+    },
+    {
+      "from": 418,
+      "to": 416
+    },
+    {
+      "from": 419,
+      "to": 417
+    },
+    {
+      "from": 419,
+      "to": 416
+    },
+    {
+      "from": 420,
+      "to": 417
+    },
+    {
+      "from": 420,
+      "to": 364
+    },
+    {
+      "from": 421,
+      "to": 393
+    },
+    {
+      "from": 421,
+      "to": 436
+    },
+    {
+      "from": 422,
+      "to": 384
+    },
+    {
+      "from": 422,
+      "to": 421
+    },
+    {
+      "from": 423,
+      "to": 421
+    },
+    {
+      "from": 423,
+      "to": 422
+    },
+    {
+      "from": 423,
+      "to": 382
+    },
+    {
+      "from": 424,
+      "to": 398
+    },
+    {
+      "from": 424,
+      "to": 399
+    },
+    {
+      "from": 425,
+      "to": 424
+    },
+    {
+      "from": 425,
+      "to": 11
+    },
+    {
+      "from": 426,
+      "to": 361
+    },
+    {
+      "from": 426,
+      "to": 398
+    },
+    {
+      "from": 427,
+      "to": 398
+    },
+    {
+      "from": 427,
+      "to": 428
+    },
+    {
+      "from": 428,
+      "to": 20
+    },
+    {
+      "from": 428,
+      "to": 4
+    },
+    {
+      "from": 429,
+      "to": 428
+    },
+    {
+      "from": 429,
+      "to": 20
+    },
+    {
+      "from": 430,
+      "to": 429
+    },
+    {
+      "from": 430,
+      "to": 7
+    },
+    {
+      "from": 431,
+      "to": 24
+    },
+    {
+      "from": 431,
+      "to": 430
+    },
+    {
+      "from": 432,
+      "to": 396
+    },
+    {
+      "from": 432,
+      "to": 366
+    },
+    {
+      "from": 433,
+      "to": 432
+    },
+    {
+      "from": 434,
+      "to": 432
+    },
+    {
+      "from": 434,
+      "to": 378
+    },
+    {
+      "from": 435,
+      "to": 434
+    },
+    {
+      "from": 435,
+      "to": 376
+    },
+    {
+      "from": 436,
+      "to": 393
+    },
+    {
+      "from": 436,
+      "to": 306
+    },
+    {
+      "from": 437,
+      "to": 436
+    },
+    {
+      "from": 438,
+      "to": 437
+    },
+    {
+      "from": 438,
+      "to": 439
+    },
+    {
+      "from": 439,
+      "to": 306
+    },
+    {
+      "from": 439,
+      "to": 305
+    },
+    {
+      "from": 440,
+      "to": 438
+    },
+    {
+      "from": 441,
+      "to": 394
+    },
+    {
+      "from": 441,
+      "to": 427
+    },
+    {
+      "from": 441,
+      "to": 405
+    },
+    {
+      "from": 442,
+      "to": 441
+    },
+    {
+      "from": 442,
+      "to": 161
+    },
+    {
+      "from": 443,
+      "to": 442
+    },
+    {
+      "from": 443,
+      "to": 144
+    },
+    {
+      "from": 444,
+      "to": 442
+    },
+    {
+      "from": 444,
+      "to": 408
+    },
+    {
+      "from": 445,
+      "to": 444
+    },
+    {
+      "from": 445,
+      "to": 268
+    },
+    {
+      "from": 446,
+      "to": 445
+    },
+    {
+      "from": 446,
+      "to": 354
+    },
+    {
+      "from": 447,
+      "to": 442
+    },
+    {
+      "from": 447,
+      "to": 440
+    },
+    {
+      "from": 448,
+      "to": 442
+    },
+    {
+      "from": 448,
+      "to": 315
+    },
+    {
+      "from": 449,
+      "to": 410
+    },
+    {
+      "from": 450,
+      "to": 397
+    },
+    {
+      "from": 450,
+      "to": 444
+    },
+    {
+      "from": 451,
+      "to": 396
+    },
+    {
+      "from": 451,
+      "to": 452
+    },
+    {
+      "from": 452,
+      "to": 366
+    },
+    {
+      "from": 452,
+      "to": 403
+    },
+    {
+      "from": 453,
+      "to": 442
+    },
+    {
+      "from": 453,
+      "to": 452
+    },
+    {
+      "from": 454,
+      "to": 442
+    },
+    {
+      "from": 454,
+      "to": 146
+    },
+    {
+      "from": 455,
+      "to": 454
+    },
+    {
+      "from": 455,
+      "to": 450
+    },
+    {
+      "from": 455,
+      "to": 451
+    },
+    {
+      "from": 456,
+      "to": 442
+    },
+    {
+      "from": 456,
+      "to": 148
+    },
+    {
+      "from": 457,
+      "to": 323
+    },
+    {
+      "from": 457,
+      "to": 268
+    },
+    {
+      "from": 457,
+      "to": 398
+    },
+    {
+      "from": 458,
+      "to": 306
+    },
+    {
+      "from": 458,
+      "to": 39
+    },
+    {
+      "from": 459,
+      "to": 39
+    },
+    {
+      "from": 459,
+      "to": 317
+    },
+    {
+      "from": 460,
+      "to": 457
+    },
+    {
+      "from": 460,
+      "to": 458
+    },
+    {
+      "from": 460,
+      "to": 459
+    },
+    {
+      "from": 461,
+      "to": 460
+    },
+    {
+      "from": 461,
+      "to": 448
+    },
+    {
+      "from": 462,
+      "to": 423
+    },
+    {
+      "from": 462,
+      "to": 435
+    },
+    {
+      "from": 462,
+      "to": 442
+    },
+    {
+      "from": 463,
+      "to": 369
+    },
+    {
+      "from": 463,
+      "to": 376
+    },
+    {
+      "from": 463,
+      "to": 306
+    },
+    {
+      "from": 464,
+      "to": 410
+    },
+    {
+      "from": 464,
+      "to": 442
+    },
+    {
+      "from": 465,
+      "to": 313
+    },
+    {
+      "from": 465,
+      "to": 381
+    },
+    {
+      "from": 466,
+      "to": 462
+    },
+    {
+      "from": 466,
+      "to": 464
+    },
+    {
+      "from": 466,
+      "to": 460
+    },
+    {
+      "from": 467,
+      "to": 466
+    },
+    {
+      "from": 468,
+      "to": 139
+    },
+    {
+      "from": 468,
+      "to": 159
+    },
+    {
+      "from": 469,
+      "to": 154
+    },
+    {
+      "from": 470,
+      "to": 315
+    },
+    {
+      "from": 470,
+      "to": 78
+    },
+    {
+      "from": 471,
+      "to": 470
+    },
+    {
+      "from": 471,
+      "to": 243
+    },
+    {
+      "from": 472,
+      "to": 471
+    },
+    {
+      "from": 472,
+      "to": 225
+    },
+    {
+      "from": 473,
+      "to": 471
+    },
+    {
+      "from": 473,
+      "to": 69
+    },
+    {
+      "from": 474,
+      "to": 306
+    },
+    {
+      "from": 474,
+      "to": 384
+    },
+    {
+      "from": 474,
+      "to": 393
+    },
+    {
+      "from": 475,
+      "to": 188
+    },
+    {
+      "from": 475,
+      "to": 159
+    },
+    {
+      "from": 475,
+      "to": 158
+    },
+    {
+      "from": 476,
+      "to": 475
+    },
+    {
+      "from": 477,
+      "to": 475
+    },
+    {
+      "from": 478,
+      "to": 475
+    },
+    {
+      "from": 479,
+      "to": 188
+    },
+    {
+      "from": 480,
+      "to": 55
+    },
+    {
+      "from": 480,
+      "to": 54
+    },
+    {
+      "from": 481,
+      "to": 56
+    },
+    {
+      "from": 482,
+      "to": 262
+    },
+    {
+      "from": 483,
+      "to": 221
+    },
+    {
+      "from": 483,
+      "to": 18
+    },
+    {
+      "from": 484,
+      "to": 142
+    },
+    {
+      "from": 484,
+      "to": 455
+    },
+    {
+      "from": 485,
+      "to": 332
+    },
+    {
+      "from": 486,
+      "to": 485
+    },
+    {
+      "from": 487,
+      "to": 1
+    },
+    {
+      "from": 487,
+      "to": 318
+    },
+    {
+      "from": 488,
+      "to": 487
+    },
+    {
+      "from": 488,
+      "to": 332
+    },
+    {
+      "from": 489,
+      "to": 292
+    },
+    {
+      "from": 489,
+      "to": 289
+    },
+    {
+      "from": 490,
+      "to": 333
+    },
+    {
+      "from": 491,
+      "to": 333
+    },
+    {
+      "from": 492,
+      "to": 491
+    },
+    {
+      "from": 493,
+      "to": 490
+    },
+    {
+      "from": 494,
+      "to": 493
+    },
+    {
+      "from": 494,
+      "to": 333
+    },
+    {
+      "from": 495,
+      "to": 494
+    },
+    {
+      "from": 495,
+      "to": 291
+    },
+    {
+      "from": 496,
+      "to": 347
+    },
+    {
+      "from": 496,
+      "to": 488
+    },
+    {
+      "from": 497,
+      "to": 347
+    },
+    {
+      "from": 497,
+      "to": 488
+    },
+    {
+      "from": 498,
+      "to": 497
+    },
+    {
+      "from": 498,
+      "to": 486
+    },
+    {
+      "from": 499,
+      "to": 498
+    },
+    {
+      "from": 499,
+      "to": 346
+    },
+    {
+      "from": 500,
+      "to": 499
+    },
+    {
+      "from": 500,
+      "to": 342
+    },
+    {
+      "from": 501,
+      "to": 347
+    },
+    {
+      "from": 501,
+      "to": 486
+    },
+    {
+      "from": 502,
+      "to": 501
+    },
+    {
+      "from": 502,
+      "to": 318
+    },
+    {
+      "from": 503,
+      "to": 486
+    },
+    {
+      "from": 503,
+      "to": 501
+    },
+    {
+      "from": 504,
+      "to": 501
+    },
+    {
+      "from": 504,
+      "to": 503
+    },
+    {
+      "from": 504,
+      "to": 499
+    },
+    {
+      "from": 505,
+      "to": 489
+    },
+    {
+      "from": 505,
+      "to": 487
+    },
+    {
+      "from": 506,
+      "to": 505
+    },
+    {
+      "from": 506,
+      "to": 291
+    },
+    {
+      "from": 507,
+      "to": 506
+    },
+    {
+      "from": 508,
+      "to": 487
+    },
+    {
+      "from": 508,
+      "to": 295
+    },
+    {
+      "from": 509,
+      "to": 508
+    },
+    {
+      "from": 509,
+      "to": 507
+    },
+    {
+      "from": 510,
+      "to": 506
+    },
+    {
+      "from": 510,
+      "to": 511
+    },
+    {
+      "from": 511,
+      "to": 7
+    },
+    {
+      "from": 511,
+      "to": 290
+    },
+    {
+      "from": 512,
+      "to": 510
+    },
+    {
+      "from": 512,
+      "to": 289
+    },
+    {
+      "from": 513,
+      "to": 489
+    },
+    {
+      "from": 513,
+      "to": 293
+    },
+    {
+      "from": 514,
+      "to": 513
+    },
+    {
+      "from": 514,
+      "to": 148
+    },
+    {
+      "from": 515,
+      "to": 349
+    },
+    {
+      "from": 515,
+      "to": 500
+    },
+    {
+      "from": 516,
+      "to": 489
+    },
+    {
+      "from": 517,
+      "to": 70
+    },
+    {
+      "from": 517,
+      "to": 339
+    },
+    {
+      "from": 517,
+      "to": 38
+    },
+    {
+      "from": 518,
+      "to": 517
+    },
+    {
+      "from": 518,
+      "to": 519
+    },
+    {
+      "from": 519,
+      "to": 70
+    },
+    {
+      "from": 519,
+      "to": 339
+    },
+    {
+      "from": 519,
+      "to": 517
+    },
+    {
+      "from": 520,
+      "to": 518
+    },
+    {
+      "from": 520,
+      "to": 71
+    },
+    {
+      "from": 521,
+      "to": 47
+    },
+    {
+      "from": 521,
+      "to": 46
+    },
+    {
+      "from": 522,
+      "to": 353
+    },
+    {
+      "from": 522,
+      "to": 521
+    },
+    {
+      "from": 523,
+      "to": 521
+    },
+    {
+      "from": 523,
+      "to": 522
+    },
+    {
+      "from": 524,
+      "to": 523
+    },
+    {
+      "from": 525,
+      "to": 524
+    },
+    {
+      "from": 525,
+      "to": 510
+    },
+    {
+      "from": 526,
+      "to": 525
+    },
+    {
+      "from": 527,
+      "to": 524
+    },
+    {
+      "from": 527,
+      "to": 46
+    },
+    {
+      "from": 528,
+      "to": 527
+    },
+    {
+      "from": 528,
+      "to": 144
+    },
+    {
+      "from": 528,
+      "to": 148
+    },
+    {
+      "from": 529,
+      "to": 337
+    },
+    {
+      "from": 529,
+      "to": 292
+    },
+    {
+      "from": 529,
+      "to": 268
+    },
+    {
+      "from": 530,
+      "to": 529
+    },
+    {
+      "from": 530,
+      "to": 354
+    },
+    {
+      "from": 531,
+      "to": 529
+    },
+    {
+      "from": 531,
+      "to": 319
+    },
+    {
+      "from": 531,
+      "to": 317
+    },
+    {
+      "from": 532,
+      "to": 531
+    },
+    {
+      "from": 533,
+      "to": 532
+    },
+    {
+      "from": 533,
+      "to": 332
+    },
+    {
+      "from": 534,
+      "to": 532
+    },
+    {
+      "from": 535,
+      "to": 532
+    },
+    {
+      "from": 535,
+      "to": 69
+    },
+    {
+      "from": 535,
+      "to": 312
+    },
+    {
+      "from": 536,
+      "to": 7
+    },
+    {
+      "from": 536,
+      "to": 342
+    },
+    {
+      "from": 537,
+      "to": 318
+    },
+    {
+      "from": 537,
+      "to": 319
+    }
+  ]
+}

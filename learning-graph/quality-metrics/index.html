@@ -12,31 +12,31 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/learning-graph/">
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/learning-graph/quality-metrics/">
       
       
-        <link rel="prev" href="../chapters/">
+        <link rel="prev" href="../concept-taxonomy/">
       
       
-        <link rel="next" href="course-description-assessment/">
+        <link rel="next" href="../taxonomy-distribution/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Introduction - Controlling a Robot Arm</title>
+        <title>Graph Quality Analysis - Controlling a Robot Arm</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#learning-graph-for-controlling-a-robot-arm" class="md-skip">
+        <a href="#learning-graph-quality-metrics-report" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Graph Quality Analysis
             
           </span>
         </div>
@@ -213,7 +213,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -243,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -270,7 +270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -297,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../course-description/" class="md-nav__link">
+      <a href="../../course-description/" class="md-nav__link">
         
   
   
@@ -345,7 +345,7 @@
   
   
   
-    <a href="../chapters/" class="md-nav__link">
+    <a href="../../chapters/" class="md-nav__link">
       
   
   
@@ -410,7 +410,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -428,7 +428,7 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -454,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="course-description-assessment/" class="md-nav__link">
+      <a href="../course-description-assessment/" class="md-nav__link">
         
   
   
@@ -482,7 +482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="concept-list/" class="md-nav__link">
+      <a href="../concept-list/" class="md-nav__link">
         
   
   
@@ -510,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="concept-taxonomy/" class="md-nav__link">
+      <a href="../concept-taxonomy/" class="md-nav__link">
         
   
   
@@ -535,10 +535,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="quality-metrics/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Quality Analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -554,6 +581,153 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-structure-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graph Structure Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foundational-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Foundational Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-chain-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Chain Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Chain Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#longest-learning-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Longest Learning Path:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-nodes-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminal Nodes Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orphaned-nodes-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orphaned Nodes Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connected-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connected Components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indegree-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indegree Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outdegree-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outdegree Distribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -566,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="taxonomy-distribution/" class="md-nav__link">
+      <a href="../taxonomy-distribution/" class="md-nav__link">
         
   
   
@@ -624,7 +798,7 @@
   
   
   
-    <a href="../sims/" class="md-nav__link">
+    <a href="../../sims/" class="md-nav__link">
       
   
   
@@ -657,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../license/" class="md-nav__link">
+      <a href="../../license/" class="md-nav__link">
         
   
   
@@ -684,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contact/" class="md-nav__link">
+      <a href="../../contact/" class="md-nav__link">
         
   
   
@@ -731,10 +905,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#course-description" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Course Description
+        Overview
       
     </span>
   </a>
@@ -742,10 +916,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#list-of-concepts" class="md-nav__link">
+  <a href="#graph-structure-validation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        List of Concepts
+        Graph Structure Validation
       
     </span>
   </a>
@@ -753,10 +927,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#concept-dependency-list" class="md-nav__link">
+  <a href="#foundational-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Concept Dependency List
+        Foundational Concepts
       
     </span>
   </a>
@@ -764,55 +938,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#analysis-documentation" class="md-nav__link">
+  <a href="#dependency-chain-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Analysis &amp; Documentation
+        Dependency Chain Analysis
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Analysis &amp; Documentation">
+    <nav class="md-nav" aria-label="Dependency Chain Analysis">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#course-description-quality-assessment" class="md-nav__link">
+  <a href="#longest-learning-path" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Course Description Quality Assessment
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learning-graph-quality-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Learning Graph Quality Validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#concept-taxonomy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Concept Taxonomy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#taxonomy-distribution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Taxonomy Distribution
+        Longest Learning Path:
       
     </span>
   </a>
@@ -821,6 +962,72 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-nodes-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminal Nodes Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orphaned-nodes-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orphaned Nodes Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connected-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connected Components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indegree-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indegree Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outdegree-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outdegree Distribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendations
+      
+    </span>
+  </a>
   
 </li>
       
@@ -849,7 +1056,7 @@
   
   
     <li class="md-path__item">
-      <a href=".." class="md-path__link">
+      <a href="../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Home
@@ -867,7 +1074,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
     Learning Graph
@@ -889,7 +1096,7 @@
 
 
   
-    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/learning-graph/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/learning-graph/quality-metrics.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -897,86 +1104,215 @@
   
 
 
-<h1 id="learning-graph-for-controlling-a-robot-arm">Learning Graph for Controlling a Robot Arm<a class="headerlink" href="#learning-graph-for-controlling-a-robot-arm" title="Permanent link">&para;</a></h1>
-<p><a class="md-button md-button--primary" href="../sims/graph-viewer/main.html">Open Learning Graph Viewer Fullscreen</a></p>
-<iframe src="../sims/graph-viewer/main.html" width="100%" height="600px" frameborder="0"></iframe>
-
-<p>This section contains the learning graph for this textbook.  A learning graph is
-a graph of concepts used in this textbook.  Each concept is represented by a
-node in a network graph.  Concepts are connected by directed edges that indicate
-what concepts each node depends on before that concept is understood by the student.</p>
-<p>A learning graph is the foundational data structure for intelligent textbooks that can recommend learning paths.
-A learning graph is like a roadmap of concepts to help students arrive at their learning goals.</p>
-<p>The graph has 537 concepts. The last 53 (the <em>Advanced Path Mathematics</em> category) belong to an optional chapter, and no other concept depends on them, so readers can skip them.</p>
-<p>At the left of the learning graph are prerequisite or foundational concepts.  They
-have no outbound edges.  They only have inbound edges for other concepts that depend on
-understanding these foundational prerequisite concepts.  At the far right
-we have the most advanced concepts in the course.  To master these concepts you
-must understand all the concepts that they point to.</p>
-<p>Here are other files used by the learning graph.</p>
-<h2 id="course-description">Course Description<a class="headerlink" href="#course-description" title="Permanent link">&para;</a></h2>
-<p>We use the <a href="../course-description/">Course Description</a> as
-the source document for the concepts that are included in this course.
-The course description uses the 2001 Bloom taxonomy to order learning objectives.</p>
-<h2 id="list-of-concepts">List of Concepts<a class="headerlink" href="#list-of-concepts" title="Permanent link">&para;</a></h2>
-<p>We use generative AI to convert the course description into a <a href="concept-list/">Concept List</a>.
-Each concept is in the form of a short Title Case label with most labels under 32 characters long.</p>
-<h2 id="concept-dependency-list">Concept Dependency List<a class="headerlink" href="#concept-dependency-list" title="Permanent link">&para;</a></h2>
-<p>We next use generative AI to create a Directed Acyclic Graph (DAG).  DAGs do not have cycles where
-concepts depend on themselves.  We provide the DAG in two formats.  One is a <a href="learning-graph.csv">CSV file</a> and the other
-format is a <a href="learning-graph.json">JSON file</a> that uses the vis-network JavaScript library format.  The vis-network format uses <code>nodes</code>, <code>edges</code> and <code>metadata</code>
-elements with edges containing <code>from</code> and <code>to</code> properties.  This makes it easy for you to view and edit the learning
-graph using an editor built with the vis-network tools.</p>
-<h2 id="analysis-documentation">Analysis &amp; Documentation<a class="headerlink" href="#analysis-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="course-description-quality-assessment">Course Description Quality Assessment<a class="headerlink" href="#course-description-quality-assessment" title="Permanent link">&para;</a></h3>
-<p>This report rates the overall quality of the course description for the purpose of generating a learning graph.</p>
+<h1 id="learning-graph-quality-metrics-report">Learning Graph Quality Metrics Report<a class="headerlink" href="#learning-graph-quality-metrics-report" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Course description fields and content depth analysis</li>
-<li>Validates course description has sufficient depth for generating 300-600 concepts</li>
-<li>Compares course description against similar courses</li>
-<li>Identifies content gaps and strengths</li>
-<li>Suggests areas of improvement
-<a href="course-description-assessment/">View the Course Description Quality Assessment</a></li>
+<li><strong>Total Concepts</strong>: 537</li>
+<li><strong>Foundational Concepts</strong> (no prerequisites, other concepts depend on them): 6</li>
+<li><strong>Terminal Nodes</strong> (nothing depends on them, but have prerequisites): 159</li>
+<li><strong>Orphaned Nodes</strong> (completely disconnected, no edges): 0</li>
+<li><strong>Concepts with Dependencies</strong>: 531</li>
+<li><strong>Average Dependencies per Concept</strong>: 1.71</li>
 </ul>
-<h3 id="learning-graph-quality-validation">Learning Graph Quality Validation<a class="headerlink" href="#learning-graph-quality-validation" title="Permanent link">&para;</a></h3>
-<p>This report gives you an overall assessment of the quality of the learning graph.
-It uses graph algorithms to look for specific quality patterns in the graph.</p>
+<h2 id="graph-structure-validation">Graph Structure Validation<a class="headerlink" href="#graph-structure-validation" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Graph structure validation - all concepts are connected</li>
-<li>DAG validation (no cycles detected)</li>
-<li>Foundational concepts: 6 entry points</li>
-<li>Indegree distribution analysis</li>
-<li>Longest dependency chains</li>
-<li>Connectivity: percent of nodes connected to the main cluster</li>
+<li><strong>Valid DAG Structure</strong>: ✅ Yes</li>
+<li><strong>Self-Dependencies</strong>: None detected ✅</li>
+<li><strong>Cycles Detected</strong>: 0</li>
 </ul>
-<p><a href="quality-metrics/">View the Learning Graph Quality Validation</a></p>
-<h3 id="concept-taxonomy">Concept Taxonomy<a class="headerlink" href="#concept-taxonomy" title="Permanent link">&para;</a></h3>
-<p>In order to see patterns in the learning graph, it is useful to assign colors
-to each concept based on the concept type.  We use generative AI to
-create about a dozen categories for our concepts and then place each concept
-into a single primary classifier.</p>
+<h2 id="foundational-concepts">Foundational Concepts<a class="headerlink" href="#foundational-concepts" title="Permanent link">&para;</a></h2>
+<p>These concepts have no prerequisites:</p>
 <ul>
-<li>A concept classifier taxonomy with approximately 12 categories (+/- 1 or 2)</li>
-<li>Category organization - foundational elements first, course capstone project ideas last</li>
-<li>Balanced categories (3.5% - 15% each)</li>
-<li>All categories under 30% threshold</li>
-<li>Pedagogical flow recommendations</li>
-<li>Clear 3-5 letter abbreviations for use in CSV file</li>
-<li>A Miscellaneous (MISC) category is sometimes added
-<a href="concept-taxonomy/">View the Concept Taxonomy</a></li>
+<li><strong>1</strong>: Learning Python Prerequisites</li>
+<li><strong>26</strong>: Robot Arm</li>
+<li><strong>120</strong>: Voltage</li>
+<li><strong>194</strong>: 3D Printing</li>
+<li><strong>364</strong>: Camera</li>
+<li><strong>396</strong>: Large Language Model</li>
 </ul>
-<h3 id="taxonomy-distribution">Taxonomy Distribution<a class="headerlink" href="#taxonomy-distribution" title="Permanent link">&para;</a></h3>
-<p>This reports shows how many concepts fit into each category of the taxonomy.
-Our goal is a somewhat balanced taxonomy where each category holds an
-equal number of concepts.  We also don't want any category to contain
-over 30% of our concepts.</p>
+<h2 id="dependency-chain-analysis">Dependency Chain Analysis<a class="headerlink" href="#dependency-chain-analysis" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Statistical breakdown</li>
-<li>Detailed concept listing by category</li>
-<li>Visual distribution table</li>
-<li>Balance verification</li>
+<li><strong>Maximum Dependency Chain Length</strong>: 22</li>
 </ul>
-<p><a href="taxonomy-distribution/">View the Taxonomy Distribution Report</a></p>
+<h3 id="longest-learning-path">Longest Learning Path:<a class="headerlink" href="#longest-learning-path" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Voltage</strong> (ID: 120)</li>
+<li><strong>Serial Communication</strong> (ID: 87)</li>
+<li><strong>UART</strong> (ID: 88)</li>
+<li><strong>USB Serial Adapter</strong> (ID: 91)</li>
+<li><strong>Serial Port</strong> (ID: 92)</li>
+<li><strong>Pyserial Library</strong> (ID: 93)</li>
+<li><strong>Reading a Register</strong> (ID: 114)</li>
+<li><strong>Reading Joint Positions</strong> (ID: 280)</li>
+<li><strong>Raw Servo Units</strong> (ID: 282)</li>
+<li><strong>Unit Conversion</strong> (ID: 284)</li>
+<li><strong>Joint-Space Motion</strong> (ID: 285)</li>
+<li><strong>Single-Joint Move</strong> (ID: 286)</li>
+<li><strong>Multi-Joint Move</strong> (ID: 287)</li>
+<li><strong>Waypoint List</strong> (ID: 289)</li>
+<li><strong>Pick and Place</strong> (ID: 306)</li>
+<li><strong>Task Planning</strong> (ID: 436)</li>
+<li><strong>Agent Planner</strong> (ID: 421)</li>
+<li><strong>Learned Policy Executor</strong> (ID: 422)</li>
+<li><strong>Planner-Executor Split</strong> (ID: 423)</li>
+<li><strong>Desk Assistant Project</strong> (ID: 462)</li>
+<li><strong>Capstone Project</strong> (ID: 466)</li>
+<li><strong>Project Documentation</strong> (ID: 467)</li>
+</ol>
+<h2 id="terminal-nodes-analysis">Terminal Nodes Analysis<a class="headerlink" href="#terminal-nodes-analysis" title="Permanent link">&para;</a></h2>
+<p>Terminal nodes are concepts that nothing else depends on but have prerequisites. They represent natural endpoints of learning paths — culminating or specialized concepts.</p>
+<ul>
+<li><strong>Total Terminal Nodes</strong>: 159 (29.6% of all concepts)</li>
+<li><strong>Healthy Range</strong>: 5-40% of total concepts</li>
+</ul>
+<p>Concepts at the end of learning paths:</p>
+<ul>
+<li><strong>3</strong>: REPL</li>
+<li><strong>8</strong>: Requirements File</li>
+<li><strong>15</strong>: Naming Conventions</li>
+<li><strong>19</strong>: Code Editor</li>
+<li><strong>21</strong>: Configuration File</li>
+<li><strong>23</strong>: Argparse Module</li>
+<li><strong>30</strong>: Prismatic Joint</li>
+<li><strong>40</strong>: Accuracy</li>
+<li><strong>43</strong>: Shoulder</li>
+<li><strong>59</strong>: Hobby Servo</li>
+<li><strong>74</strong>: Magnetic Encoder</li>
+<li><strong>76</strong>: Velocity Feedback</li>
+<li><strong>82</strong>: Overload Protection</li>
+<li><strong>84</strong>: Servo Compliance</li>
+<li><strong>85</strong>: Quasi-Direct Drive</li>
+<li><strong>86</strong>: Motor Controller</li>
+<li><strong>101</strong>: Daisy Chain Wiring</li>
+<li><strong>104</strong>: CAN Frame</li>
+<li><strong>109</strong>: Vendor SDK</li>
+<li><strong>110</strong>: Struct Module</li>
+</ul>
+<p><em>...and 139 more</em></p>
+<h2 id="orphaned-nodes-analysis">Orphaned Nodes Analysis<a class="headerlink" href="#orphaned-nodes-analysis" title="Permanent link">&para;</a></h2>
+<p>Orphaned nodes are completely disconnected concepts with no inbound AND no outbound edges. These indicate a quality problem — every concept should connect to the graph.</p>
+<ul>
+<li><strong>Total Orphaned Nodes</strong>: 0</li>
+</ul>
+<p>✅ No orphaned nodes detected. All concepts are connected to the graph.</p>
+<h2 id="connected-components">Connected Components<a class="headerlink" href="#connected-components" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Number of Connected Components</strong>: 1</li>
+</ul>
+<p>✅ All concepts are connected in a single graph.</p>
+<h2 id="indegree-analysis">Indegree Analysis<a class="headerlink" href="#indegree-analysis" title="Permanent link">&para;</a></h2>
+<p>Top 10 concepts that are prerequisites for the most other concepts:</p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Concept ID</th>
+<th>Concept Label</th>
+<th>Indegree</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>142</td>
+<td>Robot Safety</td>
+<td>16</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>Python Script</td>
+<td>15</td>
+</tr>
+<tr>
+<td>3</td>
+<td>26</td>
+<td>Robot Arm</td>
+<td>14</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>Learning Python Prerequisites</td>
+<td>13</td>
+</tr>
+<tr>
+<td>5</td>
+<td>57</td>
+<td>Actuator</td>
+<td>12</td>
+</tr>
+<tr>
+<td>6</td>
+<td>120</td>
+<td>Voltage</td>
+<td>11</td>
+</tr>
+<tr>
+<td>7</td>
+<td>398</td>
+<td>Agent Tool</td>
+<td>11</td>
+</tr>
+<tr>
+<td>8</td>
+<td>7</td>
+<td>Pip</td>
+<td>10</td>
+</tr>
+<tr>
+<td>9</td>
+<td>28</td>
+<td>Joint</td>
+<td>10</td>
+</tr>
+<tr>
+<td>10</td>
+<td>162</td>
+<td>Bill of Materials</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<h2 id="outdegree-distribution">Outdegree Distribution<a class="headerlink" href="#outdegree-distribution" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Dependencies</th>
+<th>Number of Concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr>
+<td>1</td>
+<td>207</td>
+</tr>
+<tr>
+<td>2</td>
+<td>272</td>
+</tr>
+<tr>
+<td>3</td>
+<td>51</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="recommendations">Recommendations<a class="headerlink" href="#recommendations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Terminal node percentage</strong> (29.6%): Within healthy range (5-40%)</li>
+<li>✅ <strong>DAG structure verified</strong>: Graph supports valid learning progressions</li>
+<li>ℹ️ <strong>Long dependency chains</strong> (22): Ensure students can follow extended learning paths</li>
+</ul>
+<hr />
+<p><em>Report generated by learning-graph-reports/analyze_graph.py</em></p>
 
 
 
@@ -1012,7 +1348,7 @@ over 30% of our concepts.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../chapters/" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Chapters">
+          <a href="../concept-taxonomy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Concept Taxonomy">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1022,20 +1358,20 @@ over 30% of our concepts.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                List of Chapters
+                Concept Taxonomy
               </div>
             </div>
           </a>
         
         
           
-          <a href="course-description-assessment/" class="md-footer__link md-footer__link--next" aria-label="Next: Course Description Assessment">
+          <a href="../taxonomy-distribution/" class="md-footer__link md-footer__link--next" aria-label="Next: Taxonomy Distribution">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Course Description Assessment
+                Taxonomy Distribution
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1071,10 +1407,10 @@ over 30% of our concepts.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

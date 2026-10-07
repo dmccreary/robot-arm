@@ -1,0 +1,17 @@
+{
+  "PYS": "SteelBlue",
+  "ARM": "DarkSlateBlue",
+  "ACT": "DarkGreen",
+  "COMM": "LimeGreen",
+  "POWR": "Gold",
+  "SAFE": "Crimson",
+  "SORC": "DarkGoldenrod",
+  "BUILD": "Teal",
+  "PYMO": "DodgerBlue",
+  "KINE": "MediumPurple",
+  "PERC": "HotPink",
+  "AGNT": "Orange",
+  "AGSF": "Coral",
+  "PROJ": "OliveDrab",
+  "ADV": "Indigo"
+}

@@ -561,6 +561,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#optional-advanced-chapter-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Advanced Chapter Outcomes
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -667,6 +678,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -719,6 +736,8 @@
       
         
           
+        
+      
         
       
     
@@ -1047,6 +1066,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#optional-advanced-chapter-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Advanced Chapter Outcomes
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1202,6 +1232,10 @@ it is used.</p>
   Python code in the first kinematics lab.</li>
 <li>Willingness to follow safety instructions when working with motors and
   power supplies.</li>
+<li>For the <strong>optional advanced chapter only:</strong> comfort with the algebra used in
+  the rest of the book and willingness to learn vectors, matrices, and rates
+  of change. The chapter reviews each from scratch with Python experiments, so
+  no calculus or linear algebra course is required.</li>
 </ul>
 <p><strong>Not assumed.</strong> The book does not assume any experience with robotics,
 electronics, 3D printing, soldering, ROS, machine learning frameworks,
@@ -1294,6 +1328,11 @@ needs it. This ladder is the core of the book's design.</p>
 <td>Threads and a stop flag (introductory only)</td>
 <td>A responsive emergency stop</td>
 </tr>
+<tr>
+<td>16 (optional)</td>
+<td><code>numpy.linalg</code> and SciPy (<code>interpolate</code>, <code>optimize</code>)</td>
+<td>Jacobians, trajectories, and path prediction in the advanced chapter</td>
+</tr>
 </tbody>
 </table>
 <p>Asynchronous programming (<code>async</code>/<code>await</code>), decorators, and metaclasses are
@@ -1311,8 +1350,10 @@ call Python functions that move an arm is a concrete, low-risk setting in which
 to learn what makes agent control useful and what makes it dangerous. Readers
 learn to build the safety layer, not just the demo.</p>
 <h2 id="topics-covered">Topics Covered<a class="headerlink" href="#topics-covered" title="Permanent link">&para;</a></h2>
-<p>The book is organized into ten main topic areas. Each area lists the concepts
-it introduces and the Python skills (from the ladder above) that it uses.</p>
+<p>The book is organized into ten core topic areas plus one <strong>optional advanced
+chapter</strong> (area 11). Each area lists the concepts it introduces and the Python
+skills (from the ladder above) that it uses. Nothing in areas 1–10 depends on
+area 11, so readers can skip it and still complete every build and project.</p>
 <ol>
 <li>
 <p><strong>Robot arm fundamentals</strong> — links, joints, degrees of freedom, end
@@ -1388,6 +1429,26 @@ it introduces and the Python skills (from the ladder above) that it uses.</p>
     and operating the result. <em>Python:</em> functions as tools, type hints,
     validation, logging, <code>pytest</code>, and web API calls.</p>
 </li>
+<li>
+<p><strong>Optional advanced chapter: the mathematics of arm paths</strong> — for readers
+    who want to understand and predict how an arm will move before it moves.
+    The chapter reviews vectors, matrices, and the idea of a derivative using
+    short Python experiments, then covers: rotation matrices, homogeneous
+    transforms, and quaternions for orientation; the Jacobian and velocity
+    kinematics; damped least-squares inverse kinematics and manipulability near
+    singular poses; the difference between a path and a trajectory;
+    polynomial (cubic and quintic), minimum-jerk, and spline trajectories;
+    time scaling with velocity and acceleration limits; Cartesian straight-line
+    paths; a simple static-torque estimate for holding a pose; sampling-based
+    path planning around obstacles (RRT) and path smoothing; and <strong>predicting a
+    path</strong> by simulating it in Python and then comparing the prediction with the
+    path recorded from the real arm, using error measures such as RMSE and
+    maximum deviation. <em>Python:</em> <code>numpy.linalg</code>, SciPy interpolation and
+    optimization, matplotlib animation, and comparing logged data with
+    predictions. This chapter is optional and is marked as <strong>Advanced</strong> in the
+    navigation; it builds on the kinematics lab (area 8) and the logging and
+    plotting labs (area 7).</p>
+</li>
 </ol>
 <p>Chapters on classroom and makerspace use (parts ordering for groups, lab
 schedules, assessment) and on next steps (bimanual setups, mobile manipulation,
@@ -1396,7 +1457,9 @@ larger arms, contributing to open-source projects) close the book.</p>
 <ul>
 <li>Designing a robot arm from scratch, including custom mechanical design, PCB
   design, and custom firmware.</li>
-<li>Advanced control theory such as dynamics-based, force, and impedance control.</li>
+<li>Full rigid-body dynamics, force control, and impedance control. (The optional
+  advanced chapter covers only kinematic path mathematics and a simple
+  static-torque estimate.)</li>
 <li>Training large foundation models for robotics, or writing neural networks
   from scratch.</li>
 <li>Mastery of ROS 2, Isaac Sim, or Pinocchio (these are guided tours only).</li>
@@ -1413,6 +1476,13 @@ MicroSims include:</p>
 <li>Joint and link explorer showing degrees of freedom and workspace.</li>
 <li>Two-link forward kinematics playground, with a six-joint extension.</li>
 <li>Inverse kinematics solver showing multiple solutions and singularities.</li>
+<li>Jacobian velocity explorer showing how joint speeds become hand speed, with
+  a manipulability ellipse (advanced chapter).</li>
+<li>Trajectory comparison plotter: cubic, quintic, and minimum-jerk curves for
+  position, velocity, and acceleration (advanced chapter).</li>
+<li>Path planner sandbox that grows an RRT around obstacles (advanced chapter).</li>
+<li>Predicted-versus-measured path viewer that overlays a simulated path on a
+  recorded one and reports the error (advanced chapter).</li>
 <li>Servo versus CAN-actuator comparison chart.</li>
 <li>Bill-of-materials cost calculator for the SO-ARM100 and reBot-DevArm.</li>
 <li>Power budget and wire-gauge calculator.</li>
@@ -1520,6 +1590,27 @@ competencies.</p>
 <p><strong>Capstone ideas:</strong> a chat-controlled desk arm; a color-sorting arm that uses a
 camera; a leader/follower data-collection station; an agent-driven arm with a
 complete safety layer and test suite.</p>
+<h3 id="optional-advanced-chapter-outcomes">Optional Advanced Chapter Outcomes<a class="headerlink" href="#optional-advanced-chapter-outcomes" title="Permanent link">&para;</a></h3>
+<p>Readers who take the optional chapter on the mathematics of arm paths will
+also be able to:</p>
+<ul>
+<li><strong>Define</strong> path, trajectory, Jacobian, manipulability, and quaternion, and
+  <strong>recall</strong> the shape of a cubic, quintic, and minimum-jerk curve. <em>(Remember)</em></li>
+<li><strong>Explain</strong> how the Jacobian relates joint speeds to hand speed, why an arm
+  loses motion in some directions near a singular pose, and why smooth
+  trajectories reduce jerk and servo stress. <em>(Understand)</em></li>
+<li><strong>Compute</strong> a Jacobian with NumPy, <strong>generate</strong> a quintic trajectory between
+  two poses, and <strong>plan</strong> a path around an obstacle with a simple RRT.
+  <em>(Apply)</em></li>
+<li><strong>Compare</strong> trajectory types by their peak velocity, acceleration, and jerk,
+  and <strong>analyze</strong> where and why a recorded path deviates from the predicted
+  one. <em>(Analyze)</em></li>
+<li><strong>Evaluate</strong> a prediction by RMSE and maximum deviation, and <strong>judge</strong>
+  whether a planned path is safe given joint limits, speed limits, and
+  obstacles. <em>(Evaluate)</em></li>
+<li><strong>Build</strong> a Python tool that predicts an arm's path, runs it, logs the result,
+  and reports the prediction error. <em>(Create)</em></li>
+</ul>
 <h2 id="hardware-and-software-used">Hardware and Software Used<a class="headerlink" href="#hardware-and-software-used" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1568,8 +1659,10 @@ book links to the official repositories and vendor pages as the source of truth
 and notes the date each fact was last checked.</p>
 <h2 id="estimated-scale">Estimated Scale<a class="headerlink" href="#estimated-scale" title="Permanent link">&para;</a></h2>
 <ul>
-<li>14 to 18 chapters, each with at least one hands-on Python lab.</li>
-<li>Roughly 300 to 450 concepts in the learning graph.</li>
+<li>15 to 19 chapters, each with at least one hands-on Python lab. One chapter
+  (the mathematics of arm paths) is optional and marked Advanced.</li>
+<li>Roughly 450 to 550 concepts in the learning graph, about 50 of them in the
+  optional advanced chapter.</li>
 <li>Every build and programming lab includes a fake-arm version that runs without
   hardware, so readers can complete the Python work even before their arm
   arrives.</li>
