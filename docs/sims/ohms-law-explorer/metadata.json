@@ -1,0 +1,95 @@
+{
+  "title": "Ohm's Law Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Electronics for Robotics",
+  "description": "Change the supply voltage and the load resistance in a simple loop and watch animated current dots speed up and slow down with the ammeter reading. Then solve five challenges that set a target current or power. Used in Chapter 3.",
+  "date": "2026-10-07",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/ohms-law-explorer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Voltage, current, resistance and power (Ohm's law)",
+    "learningObjectives": [
+      "Calculate the resistor or supply voltage that gives a target current or power in a simple loop, in five challenges, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "voltage",
+      "current",
+      "resistance",
+      "Ohm's law",
+      "electrical power"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 562
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "circuit-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict or set a value first, then watch animated current confirm or correct it",
+    "keyQuestions": [
+      "What happens to the dot speed when you double V? When you double R?",
+      "Why does no current flow through the voltmeter?"
+    ],
+    "commonMisconceptions": [
+      "More voltage means less current",
+      "Current is used up as it goes around the loop",
+      "A voltmeter carries the load current"
+    ],
+    "assessmentOpportunities": [
+      "Five committed settings; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Challenges"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Supply V",
+        "range": "0 to 24 volts, step 1, default 12"
+      },
+      {
+        "type": "slider",
+        "label": "Load R",
+        "range": "1 to 24 ohms, step 1, default 6"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next challenge"
+      }
+    ]
+  }
+}

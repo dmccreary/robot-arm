@@ -76,6 +76,10 @@ nav:
       - Robot Arm Part Identifier: sims/robot-arm-part-identifier/index.md
       - Two-Link Workspace Explorer: sims/two-link-workspace-explorer/index.md
       - Leader and Follower Mirror: sims/leader-follower-mirror/index.md
+      - Ohm's Law Explorer: sims/ohms-law-explorer/index.md
+      - Wire Voltage-Drop Explorer: sims/wire-voltage-drop-explorer/index.md
+      - Fuse and E-Stop Power Path: sims/protected-power-path/index.md
+      - Common Ground Loop: sims/common-ground-loop/index.md
 
   - Appendices:
       - List of Appendices: appendices/index.md

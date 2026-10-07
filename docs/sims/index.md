@@ -36,6 +36,26 @@ Plotly, Venn.js).
     Predict where a follower arm's joint ends up when it copies a leader: the copy rule, the follower's joint limits, and calibration error.
     Used in [Chapter 2](../chapters/02-anatomy-of-a-robot-arm/index.md).
 
+- **[Ohm's Law Explorer](ohms-law-explorer/index.md)**
+
+    Change the supply voltage and load resistance, watch animated current dots speed up and slow down, then solve five target-current and target-power challenges.
+    Used in [Chapter 3](../chapters/03-electricity-power-and-safety/index.md).
+
+- **[Wire Voltage-Drop Explorer](wire-voltage-drop-explorer/index.md)**
+
+    Pick a wire gauge, length and load current and see the voltage lost in the wires, then choose the thinnest safe wire for five loads.
+    Used in [Chapter 3](../chapters/03-electricity-power-and-safety/index.md).
+
+- **[Fuse and E-Stop Power Path](protected-power-path/index.md)**
+
+    Predict whether the arm runs, the fuse blows, or the E-stop stops it, and watch the current dots stop or flow.
+    Used in [Chapter 3](../chapters/03-electricity-power-and-safety/index.md).
+
+- **[Common Ground Loop](common-ground-loop/index.md)**
+
+    Predict what a motor driver's input reads with and without a shared ground wire, and watch the signal current loop appear and vanish.
+    Used in [Chapter 3](../chapters/03-electricity-power-and-safety/index.md).
+
 </div>
 
 <!-- Add new MicroSims to the catalog as they are built. -->
