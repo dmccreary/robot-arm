@@ -26,6 +26,12 @@ writing-style rules, the MicroSim expectations, and the Markdown formatting
 rules for this book. Content that ignores it produces broken layouts and an
 inconsistent student experience.
 
+Student-facing content features **Servo the Robot Arm**, the book's learning
+mascot. Servo's identity is in `docs/img/mascot/character-sheet.md`; the
+placement rules are in the Learning Mascot section of
+`CONTENT-GENERATION-GUIDE.md`. Teacher guides, instructor guides, and other
+instructor-facing content do not use the mascot.
+
 ## Project facts
 
 | | |
