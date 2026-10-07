@@ -1,0 +1,3956 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The vocabulary of robot arms - links, joints, degrees of freedom, end effectors, workspace, payload, and repeatability - plus leader and follower arms and the two open-source desktop arms used in this book.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/02-anatomy-of-a-robot-arm/">
+      
+      
+        <link rel="prev" href="../01-python-setup-for-robotics/">
+      
+      
+        <link rel="next" href="../03-electricity-power-and-safety/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Anatomy of a Robot Arm - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#anatomy-of-a-robot-arm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Anatomy of a Robot Arm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-python-setup-for-robotics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Setting Up Python for Robotics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-robot-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Robot Arm?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joints-and-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joints and Links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-the-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming the Parts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Naming the Parts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-robot-arm-part-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Robot Arm Part Identifier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#angles-poses-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Angles, Poses, and Limits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Angles, Poses, and Limits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#joint-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joint Angle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joint-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joint Limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#home-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      Home Position
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#degrees-of-freedom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Degrees of Freedom
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Degrees of Freedom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-degrees-of-freedom-counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Degrees of Freedom Counter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-six-axis-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Six-Axis Arm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frames-and-reach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frames and Reach
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frames and Reach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-base-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Base Frame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Workspace
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Workspace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-two-link-workspace-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Two-Link Workspace Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifications-payload-repeatability-and-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specifications: Payload, Repeatability, and Accuracy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifications: Payload, Repeatability, and Accuracy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeatability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repeatability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accuracy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-accuracy-and-repeatability-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Accuracy and Repeatability Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leader-and-follower-arms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leader and Follower Arms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leader and Follower Arms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teleoperation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Teleoperation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-leader-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Leader Arm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-follower-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Follower Arm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-the-pair-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the Pair Works
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the Pair Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-leader-and-follower-mirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Leader and Follower Mirror
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-bimanual-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Bimanual Robot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-arms-in-this-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Arms in This Book
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Arms in This Book">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-desktop-robot-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Desktop Robot Arm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-source-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open-Source Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-arms-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Arms Side by Side
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robot-arm-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robot Arm Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-describe-your-arm-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab: Describe Your Arm in Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab: Describe Your Arm in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-describe-the-other-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge: Describe the Other Arm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-check-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Check Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-electricity-power-and-safety/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Electricity, Power, and Safety Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-serial-and-can-communication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Serial and CAN Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-actuators-and-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Actuators and Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-sourcing-parts-and-budget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Sourcing Parts and Planning a Budget
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-printing-fasteners-and-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. 3D Printing, Fasteners, and Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-building-the-so-arm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Building and Calibrating the SO-ARM100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-building-the-rebot-devarm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Building the reBot-DevArm and Choosing a Platform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-python-hardware-library/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. A Python Hardware Library for Robot Arms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-moving-the-arm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-kinematics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Kinematics: Where Is the Hand and How Do I Get There
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-logging-testing-simulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Logging, Testing, Simulation, and ROS 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-perception-and-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Cameras, Perception, and Learning from Demonstration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-agents-and-openclaw-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. AI Agents, Tools, and OpenClaw Skills
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-agent-planning-and-vision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Agent Planning, Vision, and Interfaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-agent-safety-and-evaluation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Safety Layers and Evaluation for Agent-Controlled Arms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-projects-operation-and-teaching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Projects, Operation, and Teaching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-advanced-arm-path-mathematics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Optional Advanced Chapter: The Mathematics of Arm Paths
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-robot-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Robot Arm?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joints-and-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joints and Links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-the-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming the Parts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Naming the Parts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-robot-arm-part-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Robot Arm Part Identifier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#angles-poses-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Angles, Poses, and Limits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Angles, Poses, and Limits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#joint-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joint Angle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joint-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joint Limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#home-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      Home Position
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#degrees-of-freedom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Degrees of Freedom
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Degrees of Freedom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-degrees-of-freedom-counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Degrees of Freedom Counter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-six-axis-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Six-Axis Arm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frames-and-reach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frames and Reach
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frames and Reach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-base-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Base Frame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Workspace
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Workspace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-two-link-workspace-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Two-Link Workspace Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifications-payload-repeatability-and-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specifications: Payload, Repeatability, and Accuracy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifications: Payload, Repeatability, and Accuracy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeatability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repeatability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accuracy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-accuracy-and-repeatability-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Accuracy and Repeatability Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leader-and-follower-arms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leader and Follower Arms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leader and Follower Arms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teleoperation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Teleoperation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-leader-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Leader Arm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-follower-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Follower Arm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-the-pair-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the Pair Works
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the Pair Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-leader-and-follower-mirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Leader and Follower Mirror
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-bimanual-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Bimanual Robot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-arms-in-this-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Arms in This Book
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Arms in This Book">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-desktop-robot-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Desktop Robot Arm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-source-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open-Source Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-arms-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Arms Side by Side
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robot-arm-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robot Arm Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-describe-your-arm-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab: Describe Your Arm in Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab: Describe Your Arm in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-describe-the-other-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge: Describe the Other Arm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-check-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Check Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/02-anatomy-of-a-robot-arm/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="anatomy-of-a-robot-arm">Anatomy of a Robot Arm<a class="headerlink" href="#anatomy-of-a-robot-arm" title="Permanent link">&para;</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This chapter introduces the vocabulary of robot arms: links, joints, degrees of freedom, end effectors, workspace, payload, and repeatability. It also introduces leader and follower arms and the open-source desktop arms used in this book. After this chapter, you will be able to describe an arm and compare arms using standard terms.</p>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<p>This chapter covers the following 31 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Robot Arm</td>
+<td>4204</td>
+</tr>
+<tr>
+<td>Joint</td>
+<td>1355</td>
+</tr>
+<tr>
+<td>Open-Source Hardware</td>
+<td>447</td>
+</tr>
+<tr>
+<td>Desktop Robot Arm</td>
+<td>431</td>
+</tr>
+<tr>
+<td>Revolute Joint</td>
+<td>421</td>
+</tr>
+<tr>
+<td>Joint Angle</td>
+<td>415</td>
+</tr>
+<tr>
+<td>End Effector</td>
+<td>258</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>242</td>
+</tr>
+<tr>
+<td>Pose</td>
+<td>214</td>
+</tr>
+<tr>
+<td>Joint Limits</td>
+<td>190</td>
+</tr>
+<tr>
+<td>Follower Arm</td>
+<td>129</td>
+</tr>
+<tr>
+<td>Leader Arm</td>
+<td>118</td>
+</tr>
+<tr>
+<td>Teleoperation</td>
+<td>114</td>
+</tr>
+<tr>
+<td>Base Frame</td>
+<td>107</td>
+</tr>
+<tr>
+<td>Gripper</td>
+<td>43</td>
+</tr>
+<tr>
+<td>Degrees of Freedom</td>
+<td>31</td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Repeatability</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Home Position</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Serial Manipulator</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Six-Axis Arm</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Parallel Gripper</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Reach</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Elbow</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Wrist</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Bimanual Robot</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Robot Arm Applications</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Prismatic Joint</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Shoulder</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>This chapter assumes only the prerequisites listed in the <a href="../../course-description/">course description</a>.</p>
+<hr />
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Meet My Parts!</p>
+<p><img alt="Servo waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+You are about to learn the name of every part of my body, and why each one matters when you write code. By the end you will be able to describe any robot arm in a few precise words, and to describe me in Python. Let's move it!</p>
+</div>
+<p>Chapter 1 gave you a clean place to write robot code. This chapter gives you the words to talk about the robot. Those words are not decoration. A spec sheet that says "6 DOF, 1.5 kg payload, 0.2 mm repeatability" is only useful if you know what each phrase promises and what it leaves out. A program that moves "the elbow to 40 degrees" only makes sense if you know where the elbow is and which way 40 degrees turns.</p>
+<p>You will meet a lot of terms. Each one is defined before it is used, and each one connects to a part of the two arms in this book, the SO-ARM101 and the reBot-DevArm B601. Nothing in this chapter needs hardware. You will use Python only at the end, in a short lab, to describe an arm as data.</p>
+<h2 id="what-is-a-robot-arm">What Is a Robot Arm?<a class="headerlink" href="#what-is-a-robot-arm" title="Permanent link">&para;</a></h2>
+<p>A <strong>robot arm</strong> is a programmable machine made of rigid pieces connected by motorized joints, built to move a tool to a chosen place. The word "programmable" matters. A crane moves a hook when a person works its levers. A robot arm moves its tool when a <em>program</em> tells its motors where to go, which is why a Python script can drive one.</p>
+<p>The easiest way to learn the parts is to compare the arm to your own. Hold your right arm out in front of you and notice that it bends in a few specific places. A robot arm uses the same layout, with a motor at each bend.</p>
+<table>
+<thead>
+<tr>
+<th>Your arm</th>
+<th>Robot arm part</th>
+<th>What it does</th>
+<th>SO-ARM101 joint name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Torso (stays put)</td>
+<td>Base</td>
+<td>Holds everything and stays fixed to the table</td>
+<td>none (fixed)</td>
+</tr>
+<tr>
+<td>Shoulder, swinging sideways</td>
+<td>Shoulder pan</td>
+<td>Turns the whole arm left and right</td>
+<td><code>shoulder_pan</code></td>
+</tr>
+<tr>
+<td>Shoulder, raising the arm</td>
+<td>Shoulder lift</td>
+<td>Raises and lowers the arm</td>
+<td><code>shoulder_lift</code></td>
+</tr>
+<tr>
+<td>Elbow</td>
+<td>Elbow</td>
+<td>Bends the arm in the middle</td>
+<td><code>elbow_flex</code></td>
+</tr>
+<tr>
+<td>Wrist, nodding the hand</td>
+<td>Wrist flex</td>
+<td>Tilts the hand up and down</td>
+<td><code>wrist_flex</code></td>
+</tr>
+<tr>
+<td>Wrist, twisting the palm</td>
+<td>Wrist roll</td>
+<td>Twists the hand around its own axis</td>
+<td><code>wrist_roll</code></td>
+</tr>
+<tr>
+<td>Hand and fingers</td>
+<td>Gripper</td>
+<td>Grasps objects</td>
+<td><code>gripper</code></td>
+</tr>
+</tbody>
+</table>
+<p>Those six names are the ones used by LeRobot, the library that drives the SO-ARM101, and they are the same names you used in the <code>config/arm.json</code> file in Chapter 1. Your human shoulder is more flexible than the robot's. It can swing, raise, and also rotate the upper arm, which is three kinds of motion, while the robot's shoulder has two. Real arms always trade some flexibility for a simpler machine.</p>
+<p>A robot arm is also a <strong>serial manipulator</strong>. That phrase means its joints are connected one after another in a single chain, from the base to the tool, like links in a necklace. The opposite design is a <em>parallel</em> manipulator, in which several chains hold the tool at the same time, as in the delta robots that sort items on factory conveyor belts. A serial chain has two consequences you will use again and again.</p>
+<ul>
+<li><strong>Motion adds up.</strong> Each joint moves everything beyond it. Turn the shoulder, and the elbow, wrist, and gripper all swing along.</li>
+<li><strong>Weight adds up too.</strong> The joint nearest the base has to carry the whole arm plus whatever the gripper holds. The joint nearest the tool carries only a small part of the weight.</li>
+</ul>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">An Arm Is a Chain</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Picture a chain of joints in which every joint moves all the joints after it. That one picture answers two big questions: where the hand ends up (add up the motion down the chain) and which motor works hardest (the one at the start).</p>
+</div>
+<h2 id="joints-and-links">Joints and Links<a class="headerlink" href="#joints-and-links" title="Permanent link">&para;</a></h2>
+<p>Every serial arm is built from only two kinds of piece, and learning them is the key to the whole subject.</p>
+<p>A <strong>joint</strong> is a connection between two pieces that lets one move relative to the other. A <strong>link</strong> is a rigid piece between two joints that does not bend. A robot arm is an alternating chain: base, joint, link, joint, link, and so on out to the tool. If you remember only one idea from this chapter, remember that joints move and links do not.</p>
+<p>Joints come in two main kinds, and the difference is the kind of motion.</p>
+<p>A <strong>revolute joint</strong> rotates around a fixed line, called its <strong>axis</strong>, like a door on a hinge. Its motion is measured as an angle, in degrees or radians. Every joint in the SO-ARM101 and in the reBot-DevArm's arm is revolute: each is driven by a motor that turns a shaft.</p>
+<p>A <strong>prismatic joint</strong> slides along a straight line, like a drawer on its rails. Its motion is measured as a distance, in millimeters or meters. You already know machines made of prismatic joints. A 3D printer moves its nozzle with three sliding axes, X, Y, and Z, so a printer is a robot of three prismatic joints. You will use one in Chapter 7.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Revolute joint</th>
+<th>Prismatic joint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motion</td>
+<td>Rotates around an axis</td>
+<td>Slides along a line</td>
+</tr>
+<tr>
+<td>Measured as</td>
+<td>An angle (degrees or radians)</td>
+<td>A distance (millimeters or meters)</td>
+</tr>
+<tr>
+<td>Everyday example</td>
+<td>A door hinge</td>
+<td>A drawer on rails</td>
+</tr>
+<tr>
+<td>In this book</td>
+<td>All six joints of the SO-ARM101, and the arm joints of the reBot-DevArm</td>
+<td>The fingers of a parallel gripper move in this way</td>
+</tr>
+</tbody>
+</table>
+<p>Look at the last cell of that table. The reBot-DevArm's gripper has fingers that slide, so its motion is prismatic, even though a motor that turns drives it. A mechanism can change one kind of motion into another, so the kind of <em>joint</em> is about the motion you get at the output, not the motor behind it.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Never Force a Powered Joint</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+When an arm is powered, its motors hold each joint in place, and twisting a joint by hand fights the gears and can damage them. The only arm you should move by hand is a <em>leader</em> arm, which is built for that, or any arm whose motors are switched off. If a joint feels stuck, stop, power down, and look for what is blocking it.</p>
+</div>
+<p>Links matter because their lengths decide where the tool can go. A short link tends to give a small, stiff arm, and a long link gives a larger arm that flexes more. In the SO-ARM101 the links are the 3D-printed parts. The files you will print in Chapter 7 include <code>Upper_arm_SO101.stl</code>, the link between the shoulder and the elbow, and <code>Under_arm_SO101.stl</code>, the link between the elbow and the wrist. The <code>Base_SO101.stl</code> part clamps to the table and holds the first motor, so it is the fixed base that every other part moves relative to.</p>
+<p>Here is a worked example that shows why link lengths matter. Imagine a flat arm with one shoulder joint, an upper arm 10 cm long, an elbow joint, and a forearm 15 cm long. These lengths are illustrative. With the arm stretched straight out, the tip is 10 + 15 = 25 cm from the shoulder. With the elbow bent all the way back so the forearm folds along the upper arm, the tip is 15 − 10 = 5 cm from the shoulder. Every point the tip can reach is between 5 cm and 25 cm away. You will build on this exact example in the workspace section.</p>
+<h2 id="naming-the-parts">Naming the Parts<a class="headerlink" href="#naming-the-parts" title="Permanent link">&para;</a></h2>
+<p>You now know that an arm is a chain of joints and links. Engineers use specific names for the positions along that chain, and you will see them in every data sheet and library.</p>
+<ul>
+<li>The <strong>shoulder</strong> is the joint group at the base end of the arm. In the SO-ARM101 it has two motors, <code>shoulder_pan</code> to turn left and right, and <code>shoulder_lift</code> to raise and lower.</li>
+<li>The <strong>elbow</strong> is the joint in the middle, between the upper arm and the forearm. It bends the arm.</li>
+<li>The <strong>wrist</strong> is the joint group at the tool end of the arm. It tilts and twists the hand, and it is the reason a gripper can approach an object from a chosen angle.</li>
+<li>The <strong>end effector</strong> is the tool at the very end of the chain, the part that actually touches the world. It might be a gripper, a suction cup, a pen holder, or a camera. It is called an effector because it is where the robot has its <em>effect</em>.</li>
+</ul>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Name Parts from the Base Outward</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+When you meet a new arm, point at its parts in order from the table to the tool: base, shoulder, upper arm, elbow, forearm, wrist, end effector. Doing this takes ten seconds, and it tells you where each motor sits and which joints are the first ones that matter in your code.</p>
+</div>
+<p>The most common end effector is the <strong>gripper</strong>, a hand with two fingers or jaws that closes on an object. Grippers differ in how the jaws move. The SO-ARM101 follower has a gripper with one fixed jaw and one <strong>moving jaw</strong> that swings shut against it. The printed file <code>Moving_Jaw_SO101.stl</code> is that moving part, and the fixed half is formed by the wrist-roll part. The reBot-DevArm uses a <strong>parallel gripper</strong>, in which both fingers stay parallel and slide toward each other. A parallel gripper centers the object between its fingers whatever the object's size, while a moving-jaw gripper pushes the object toward the fixed jaw. According to its published specification, the reBot gripper opens from 0 to 100 mm.</p>
+<table>
+<thead>
+<tr>
+<th>Gripper type</th>
+<th>How the jaws move</th>
+<th>Strength</th>
+<th>In this book</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moving-jaw</td>
+<td>One jaw is fixed and one swings shut</td>
+<td>Simple, few parts, easy to print</td>
+<td>SO-ARM101 follower</td>
+</tr>
+<tr>
+<td>Parallel</td>
+<td>Two fingers slide toward each other</td>
+<td>Centers any object it holds</td>
+<td>reBot-DevArm B601</td>
+</tr>
+</tbody>
+</table>
+<p>In the next MicroSim, you meet a schematic six-axis arm and practice naming its seven parts: base, shoulder, upper arm, elbow, forearm, wrist, and end effector. Explore first, and then take the quiz. The quiz asks you to click each part when given its name.</p>
+<h4 id="diagram-robot-arm-part-identifier">Diagram: Robot Arm Part Identifier<a class="headerlink" href="#diagram-robot-arm-part-identifier" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Robot Arm Part Identifier</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> robot-arm-part-identifier<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Remember<br/>
+<strong>Bloom Verb:</strong> identify<br/>
+<strong>Learning Objective:</strong> The learner will identify the seven named parts of a robot arm on a schematic, given each part's name, with at least 6 of 7 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> robot arm, joint, link, base, shoulder, elbow, wrist, end effector (all defined in the sections above this block).</p>
+<p><strong>Evidence of Mastery:</strong> In quiz mode the sim shows one part name and the learner clicks the part of the schematic they believe it names. A click is correct when it lands on the part named, as defined in the part table in Content. Mastery is 6 of 7 correct on the first attempt. Clicking parts in explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) The shoulder is the long piece between the base and the elbow. (The shoulder is a joint, and the long piece is the upper arm, a link.) (2) The wrist is the hand. (The wrist is the joint group that moves the hand; the hand is the end effector.) (3) The base is a joint. (The base is the fixed part that holds the first joint.)</p>
+<p><strong>Instructional Rationale:</strong> A Remember-level identify objective is met by retrieving a name and matching it to a thing. Explore mode builds the association by showing each name with its definition, and quiz mode tests retrieval by giving the name and requiring a location, which is the reverse direction of reading a label.</p>
+<p><strong>Content:</strong></p>
+<p>A side-view schematic of a serial arm drawn as a chain from the table up and out, with seven selectable regions in this order from the table to the tool. Each region reveals its description in explore mode.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Part</th>
+<th>Kind</th>
+<th>Description revealed in explore mode (also shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Base</td>
+<td>Fixed part</td>
+<td>The fixed part that clamps to the table and holds the first motor. Every other part moves relative to it.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Shoulder</td>
+<td>Joint group</td>
+<td>The joints at the base end of the arm. They turn the whole arm left and right and raise and lower it.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Upper arm</td>
+<td>Link</td>
+<td>The rigid link between the shoulder and the elbow.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Elbow</td>
+<td>Joint</td>
+<td>The joint in the middle of the arm that bends the upper arm toward the forearm.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Forearm</td>
+<td>Link</td>
+<td>The rigid link between the elbow and the wrist.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Wrist</td>
+<td>Joint group</td>
+<td>The joints at the tool end of the arm. They tilt and twist the hand.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>End effector</td>
+<td>Tool</td>
+<td>The tool at the end of the chain. A gripper is the most common one. It is the part that touches the world.</td>
+</tr>
+</tbody>
+</table>
+<p>In quiz mode the seven part names are asked in this fixed order: Elbow, Base, Wrist, Upper arm, End effector, Shoulder, Forearm.</p>
+<p><strong>Provenance:</strong> The part names and descriptions come from the chapter sections "Joints and Links" and "Naming the Parts". The schematic is an illustration drawn by the sim, not a photograph of either arm, and the sim labels it "schematic".</p>
+<p><strong>Rules:</strong> There are no adjustable quantities. A click is correct if it falls inside the region of the part being asked about, and wrong if it falls inside any other region. A click on empty space does not count as an answer and the learner may click again. Each of the seven names is asked once.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In explore mode the learner clicks each of the seven regions and reads its description. The learner switches to quiz mode when ready.</li>
+<li>In quiz mode the sim shows a part name. The learner clicks the part of the schematic that has that name.</li>
+<li>The sim says whether the click was correct, highlights the correct part, and shows its description.</li>
+<li>After the seventh name the sim shows the score and the seven parts with their kinds (joint, link, fixed part, tool).</li>
+</ol>
+<p><strong>Feedback:</strong> Seven names, fixed order, one attempt each. Correct: "Correct: <part>. <Description>". Incorrect: "Not quite. You clicked the <part clicked>. The <asked part> is highlighted: <Description>". The correct region is revealed after each click. A running count "Correct: n of 7" is shown, and the final screen says whether mastery (6 of 7) was reached.</p>
+<p><strong>Starting State:</strong> The schematic is shown in explore mode with no region selected and the prompt "Click a part to learn its name and job."</p>
+<p><strong>Chapter Anchors:</strong> The chapter names seven parts of an arm (base, shoulder, upper arm, elbow, forearm, wrist, end effector). The upper arm and forearm are links, and the shoulder, elbow, and wrist are joints or joint groups. Mastery is 6 of 7.</p>
+</details>
+<h2 id="angles-poses-and-limits">Angles, Poses, and Limits<a class="headerlink" href="#angles-poses-and-limits" title="Permanent link">&para;</a></h2>
+<p>You can now name the parts. The next step is to describe <em>where they are</em>. Robot code does this with numbers, and three ideas organize those numbers: the joint angle, the pose, and the joint limit.</p>
+<h3 id="joint-angle">Joint Angle<a class="headerlink" href="#joint-angle" title="Permanent link">&para;</a></h3>
+<p>A <strong>joint angle</strong> is how far a revolute joint has turned, measured from a zero position. The zero position is a reference that the arm's maker or your calibration sets, such as "the elbow straight" or "the forearm pointing forward." Angles are written in degrees (a full turn is 360) or in radians (a full turn is <span class="arithmatex">\( 2\pi \)</span>, about 6.2832). Python's <code>math</code> functions use radians, but people think in degrees. The conversion is <code>math.radians(degrees)</code>.</p>
+<p>Servos have a third unit. The STS3215 servos in the SO-ARM101 report position in <em>ticks</em>, whole numbers where 4096 ticks make one full turn, as Chapter 1 used in <code>degrees_to_ticks</code>. So the same joint angle can be written in three ways. Here is a worked example for a joint turned 30 degrees. The f-string <code>{angle_rad=:.4f}</code> prints the name and the value with four digits after the decimal point.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">angle_deg</span> <span class="o">=</span> <span class="mi">30</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">angle_rad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">ticks</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">angle_deg</span> <span class="o">/</span> <span class="mi">360</span> <span class="o">*</span> <span class="mi">4096</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">angle_deg</span><span class="si">=}</span><span class="s2"> </span><span class="si">{</span><span class="n">angle_rad</span><span class="si">=:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">ticks</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>angle_deg=30 angle_rad=0.5236 ticks=341
+</span></code></pre></div>
+<p>Thirty degrees is one-twelfth of a turn, and one-twelfth of 4096 is 341.33, which rounds to 341 ticks. The table lists the angles you will see most often.</p>
+<table>
+<thead>
+<tr>
+<th>Degrees</th>
+<th>Radians</th>
+<th>Ticks (4096 per turn)</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.0000</td>
+<td>0</td>
+<td>The zero position</td>
+</tr>
+<tr>
+<td>30</td>
+<td>0.5236</td>
+<td>341</td>
+<td>One-twelfth of a turn</td>
+</tr>
+<tr>
+<td>45</td>
+<td>0.7854</td>
+<td>512</td>
+<td>One-eighth of a turn</td>
+</tr>
+<tr>
+<td>90</td>
+<td>1.5708</td>
+<td>1024</td>
+<td>A quarter turn</td>
+</tr>
+<tr>
+<td>180</td>
+<td>3.1416</td>
+<td>2048</td>
+<td>A half turn</td>
+</tr>
+<tr>
+<td>360</td>
+<td>6.2832</td>
+<td>4096</td>
+<td>One full turn</td>
+</tr>
+</tbody>
+</table>
+<p>Two arms can use the same numbers to mean different things, because each maker picks its own zero and its own positive direction. Here is why that matters. Suppose the leader arm of a pair counts a bend toward the front as positive, and the follower counts the same bend as negative. You bend the leader's elbow to +30 degrees, and a program copies that number to the follower. The follower bends 30 degrees the <em>other</em> way, so it looks like a mirror image. Nothing is broken. The two arms simply disagree about the sign.</p>
+<table>
+<thead>
+<tr>
+<th>What you must know</th>
+<th>Why it matters</th>
+<th>If you get it wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The zero position</td>
+<td>Every angle is measured from it</td>
+<td>The whole arm is shifted by a fixed amount</td>
+</tr>
+<tr>
+<td>The positive direction</td>
+<td>It sets which way a positive number turns</td>
+<td>The motion is mirrored</td>
+</tr>
+<tr>
+<td>The unit</td>
+<td>Degrees and radians are different scales</td>
+<td>A number of degrees read as radians is about 57 times too large</td>
+</tr>
+</tbody>
+</table>
+<p>A joint angle is meaningless until you know its zero, its positive direction, and its unit. Chapter 8 calibrates the SO-ARM101 so that the same number means the same physical angle on both of its arms.</p>
+<h3 id="pose">Pose<a class="headerlink" href="#pose" title="Permanent link">&para;</a></h3>
+<p>The word <strong>pose</strong> has two meanings in robotics, and mixing them up is a common source of confusion. Both describe the arm at one instant.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Two Meanings Is Normal</p>
+<p><img alt="Servo giving an encouraging thumbs-up" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+Almost every beginner stumbles when one word means two things. You have handled the same trick before, when a Python <code>list</code> could be a variable or a type. Read each use of "pose" and ask which one it is, and the confusion goes away within a few examples.</p>
+</div>
+<p>A <strong>joint-space pose</strong> lists the angle of every joint at one moment. It says how the arm is <em>bent</em>. For the SO-ARM101 it is six numbers, one for each of the six named joints. In Python, the natural container is a dictionary from joint name to angle in degrees:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">pose</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>    <span class="s2">"shoulder_pan"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="s2">"shoulder_lift"</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="s2">"elbow_flex"</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="s2">"wrist_flex"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="s2">"wrist_roll"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="s2">"gripper"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>An <strong>end-effector pose</strong> gives the position of the tool (three numbers, x, y, and z) and its orientation (which way it points). It says where the <em>hand</em> is. A person asking a robot to "pick up the cup" is thinking in end-effector terms. The motors, however, understand only joint angles.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Joint-space pose</th>
+<th>End-effector pose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Describes</td>
+<td>How each joint is bent</td>
+<td>Where the tool is and which way it points</td>
+</tr>
+<tr>
+<td>Numbers</td>
+<td>One angle per joint (six for the SO-ARM101)</td>
+<td>Position (x, y, z) and orientation</td>
+</tr>
+<tr>
+<td>Easy to command?</td>
+<td>Yes, motors take angles directly</td>
+<td>Needs a calculation to turn it into angles</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Chapters 10 and 11</td>
+<td>Chapter 12, which links the two</td>
+</tr>
+</tbody>
+</table>
+<p>The calculation that turns joint angles into the hand's position is called <em>forward kinematics</em>, and the reverse is <em>inverse kinematics</em>. For now it is enough to know that both descriptions exist and that a pose is a snapshot: a single frozen moment, not a movement.</p>
+<p>Here is one pose in both descriptions, using the flat two-link arm with a 10 cm upper arm and a 15 cm forearm (illustrative lengths). Its joint-space pose is two numbers: a shoulder angle of 45 degrees, measured up from the forward direction, and an elbow bend of -30 degrees, measured from straight. The upper arm points 45 degrees up. The forearm points 45 + (-30) = 15 degrees up, because each joint adds its angle to the one before it. Adding the two links as arrows gives the tip's position:</p>
+<div class="arithmatex">\[ x = 10\cos 45^\circ + 15\cos 15^\circ \approx 21.56 \text{ cm}, \qquad y = 10\sin 45^\circ + 15\sin 15^\circ \approx 10.95 \text{ cm} \]</div>
+<p>So the same pose is "shoulder 45 degrees, elbow -30 degrees" in joint space and "tip at (21.56, 10.95) cm" as an end-effector position. The tip is 24.2 cm from the shoulder, inside the 5 to 25 cm ring you will meet in the workspace section. Going from the angles to the position is the easy direction. Going from a wanted position back to angles is harder, and it is the subject of Chapter 12.</p>
+<h3 id="joint-limits">Joint Limits<a class="headerlink" href="#joint-limits" title="Permanent link">&para;</a></h3>
+<p><strong>Joint limits</strong> are the smallest and largest angles a joint is allowed to reach. A joint may be stopped by a physical part (a printed piece that hits another piece), by a cable that can only twist so far, or by a decision in software to stay in a safe margin. Every real joint has limits, and an arm that ignores them can crash its own parts together.</p>
+<p>Two kinds of limit work together. A <strong>mechanical limit</strong> is a physical stop that the arm cannot pass. A <strong>software limit</strong> is a number your program refuses to command beyond. Always set your software limits <em>inside</em> the mechanical ones, with a margin, so a program never asks a joint to push against a stop. The table shows where limits come from.</p>
+<table>
+<thead>
+<tr>
+<th>Source of the limit</th>
+<th>Example</th>
+<th>Who sets it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mechanical stop</td>
+<td>A printed part meets the next part and cannot turn further</td>
+<td>The arm's design</td>
+</tr>
+<tr>
+<td>Cable or wiring</td>
+<td>A wire can twist only so far before it pulls</td>
+<td>The builder's routing</td>
+</tr>
+<tr>
+<td>Collision with the arm itself or the table</td>
+<td>The gripper would hit the base if the elbow bent further</td>
+<td>The arm's shape and your task</td>
+</tr>
+<tr>
+<td>Software margin</td>
+<td>Stop 5 degrees before the mechanical stop</td>
+<td>You, in the program</td>
+</tr>
+</tbody>
+</table>
+<p>Here is what happens without a software limit. A program commands an elbow to 120 degrees, but the joint stops at 97. The servo keeps pushing toward 120 against the stop. Its motor current rises, it heats up, and the printed parts take the load. With a limit check, the program would have refused the command before anything moved.</p>
+<p>The check itself is one comparison in Python. A chained comparison reads like a sentence: this expression is true when the angle is between the two limits.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">min_deg</span> <span class="o">=</span> <span class="o">-</span><span class="mi">97</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">max_deg</span> <span class="o">=</span> <span class="mi">97</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">target_deg</span> <span class="o">=</span> <span class="mi">120</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">min_deg</span> <span class="o">&lt;=</span> <span class="n">target_deg</span> <span class="o">&lt;=</span> <span class="n">max_deg</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The program prints <code>False</code>, because 120 is outside the range from -97 to 97. In the lab at the end of this chapter you will turn this one line into a function that checks a whole pose against the limits in your <code>arm.json</code> file. The limits in that file are example values. Chapter 8 measures the real range of each joint on your arm during calibration.</p>
+<h3 id="home-position">Home Position<a class="headerlink" href="#home-position" title="Permanent link">&para;</a></h3>
+<p>A <strong>home position</strong> is a pose you choose in advance as a known, safe place to start and finish. Programs begin by moving the arm to home and end by returning to it. Because the arm always starts from the same pose, you always know where it is before the first command, and an arm parked at home is folded close to its base, where it is least likely to hit anything.</p>
+<p>Home is a <em>choice</em>, not a built-in property. You write it down as a joint-space pose, like the dictionary above. It is also different from the pose that calibration uses. During calibration, LeRobot asks you to move every joint to the middle of its range, which is a measuring position and not a resting position. After you calibrate your own arm in Chapter 8, you can choose a home pose for it and save that pose in the configuration file.</p>
+<h2 id="degrees-of-freedom">Degrees of Freedom<a class="headerlink" href="#degrees-of-freedom" title="Permanent link">&para;</a></h2>
+<p>A <strong>degree of freedom</strong> (DOF) is one independent way a mechanism can move. A door on a hinge has one, because it can only swing. A drawer has one, because it can only slide. The number of degrees of freedom tells you how many numbers you need to describe the mechanism's pose completely: one angle for the door, one distance for the drawer.</p>
+<p>For a serial arm built from joints that each move along a single axis, the rule is simple: the DOF is the number of such joints. This is the <strong>counting rule</strong>: <em>count each independent single-axis joint once</em>. Two hinges on the same axis would not be independent, because the second one adds no new way to move.</p>
+<p>How many degrees of freedom does an arm <em>need</em>? A free object in space, like a coffee cup floating in a room, can move in six independent ways. It can translate in three directions (forward and back, left and right, up and down) and rotate around three axes (tilting forward, tilting sideways, and spinning). That makes six. To put a gripper at any position <em>and</em> point it in any direction, an arm therefore needs at least six joints.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Six Numbers Place a Hand</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Three numbers say where the hand is, and three more say which way it points. An arm with fewer than six independent joints cannot choose all six numbers freely, so something about the hand's pose gets tied to something else. That is not a defect. It is the price of a simpler, cheaper arm.</p>
+</div>
+<p>Fewer joints is still useful. A simple pick-and-place arm often works well with five, because many tasks do not need every orientation. A two-joint arm moving in a flat plane has only two DOF and can place its tip at points on a flat sheet.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Count the Motors, Then Decide About the Gripper</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+To find an arm's DOF, count the motors that move it. Then ask whether the person who gave you the number counted the gripper's motor too. Different sources do. If you note which way the count was made, you will never be confused by a datasheet again.</p>
+</div>
+<p>In the next MicroSim, you will use the counting rule on eight mechanisms, from a door hinge to the reBot-DevArm. For each one you read what joints it contains and calculate its degrees of freedom. Every mechanism lists its joints, so the only skill you need is the counting rule.</p>
+<h4 id="diagram-degrees-of-freedom-counter">Diagram: Degrees of Freedom Counter<a class="headerlink" href="#diagram-degrees-of-freedom-counter" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Degrees of Freedom Counter</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> degrees-of-freedom-counter<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Apply<br/>
+<strong>Bloom Verb:</strong> calculate<br/>
+<strong>Learning Objective:</strong> The learner will calculate the degrees of freedom of eight mechanisms by counting their independent single-axis joints, with at least 7 of 8 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> joint, revolute joint, prismatic joint, degree of freedom, the counting rule, gripper (all defined in the sections above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of eight mechanisms the sim lists its joints, and the learner commits a whole-number answer for its degrees of freedom. An answer is correct when it equals the Correct DOF column in Content. Mastery is 7 of 8 correct on the first attempt. Reading the joint lists is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) A robot's DOF is the number of its links. (It is the number of independent joints.) (2) A gripper never counts. (The counting rule counts every independent single-axis joint listed, so it depends on which joints the mechanism includes.) (3) Prismatic joints do not count as degrees of freedom. (They count exactly like revolute joints.)</p>
+<p><strong>Instructional Rationale:</strong> Apply-level calculation needs practice with a rule on new cases, with an immediate check. Giving every joint explicitly removes ambiguity about the mechanism, so a wrong answer reveals a wrong rule and not a hidden assumption. The progression from one-joint mechanisms to the two real arms lets the learner meet the 5-versus-6 counting question with the rule already in hand.</p>
+<p><strong>Content:</strong></p>
+<p>The counting rule shown in the sim: DOF = the number of independent single-axis joints (revolute or prismatic) the mechanism includes.</p>
+<p>Eight mechanisms in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Mechanism</th>
+<th>Joints listed</th>
+<th>Correct DOF</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A door on one hinge</td>
+<td>1 revolute (the hinge)</td>
+<td>1</td>
+<td>One joint, one independent motion: the door swings.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A drawer on one slide</td>
+<td>1 prismatic (the slide)</td>
+<td>1</td>
+<td>A prismatic joint counts like a revolute one: one joint, one DOF.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A flat two-link arm</td>
+<td>2 revolute (shoulder, elbow)</td>
+<td>2</td>
+<td>Two independent joints give two DOF.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A 3D-printer-style gantry</td>
+<td>3 prismatic (X, Y, Z slides)</td>
+<td>3</td>
+<td>Three independent slides give three DOF.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The SO-ARM101 follower, arm joints only</td>
+<td>5 revolute (shoulder pan, shoulder lift, elbow flex, wrist flex, wrist roll)</td>
+<td>5</td>
+<td>Five independent revolute joints. The gripper is not included in this mechanism.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The SO-ARM101 follower, with its gripper</td>
+<td>5 revolute arm joints + 1 gripper jaw joint (revolute)</td>
+<td>6</td>
+<td>The gripper's moving-jaw joint is a sixth independent joint. This is how LeRobot reaches "6 DOF".</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The reBot-DevArm B601, arm joints only</td>
+<td>6 revolute</td>
+<td>6</td>
+<td>Six independent revolute joints.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>The reBot-DevArm B601, with its parallel gripper</td>
+<td>6 revolute arm joints + 1 gripper finger joint (prismatic)</td>
+<td>7</td>
+<td>The gripper adds a seventh joint. The project calls this "6+1".</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> Mechanisms 1 to 4 are written for this sim. Mechanisms 5 and 6 follow the SO-ARM101 joint list in the LeRobot SO-101 documentation (six STS3215 motors named shoulder_pan, shoulder_lift, elbow_flex, wrist_flex, wrist_roll, and gripper). Mechanisms 7 and 8 follow the reBot-DevArm B601 project's published "6 DOF + gripper" specification, checked on 2026-10-07.</p>
+<p><strong>Rules:</strong> The correct DOF is the number of joints listed for the mechanism. The learner's answer is a whole number from 1 to 8 (minimum 1, maximum 8, step 1, unit "degrees of freedom"). No answer is selected at the start.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>The sim shows mechanism 1 with its list of joints and the counting rule.</li>
+<li>The learner chooses a number from 1 to 8 for the mechanism's DOF and commits.</li>
+<li>The sim shows whether the answer was correct and the reason, then presents the next mechanism.</li>
+<li>After mechanism 8, the sim shows the score and the eight mechanisms with their DOF side by side.</li>
+</ol>
+<p><strong>Feedback:</strong> Eight mechanisms, fixed order, one attempt each. Correct: "Correct: <number> DOF. <Why>". Incorrect: "Not quite. Count each independent joint once: this mechanism has <number> DOF. <Why>". The correct answer is revealed after each commitment. A running count "Correct: n of 8" is shown, and the final screen says whether mastery (7 of 8) was reached.</p>
+<p><strong>Starting State:</strong> Mechanism 1, a door on one hinge, is shown with the counting rule and the question "How many degrees of freedom does this mechanism have?"</p>
+<p><strong>Chapter Anchors:</strong> The chapter states the counting rule, that a free object has six degrees of freedom, that the SO-ARM101 has five arm joints plus a gripper joint (six in LeRobot's count), and that the reBot-DevArm B601 is a six-axis arm plus a parallel gripper ("6+1"). The sim has eight mechanisms and mastery is 7 of 8.</p>
+</details>
+<h3 id="the-six-axis-arm">The Six-Axis Arm<a class="headerlink" href="#the-six-axis-arm" title="Permanent link">&para;</a></h3>
+<p>A <strong>six-axis arm</strong> is a serial arm with six revolute joints, which gives it six degrees of freedom. It is the most common general-purpose design, because six is exactly the number needed to place the hand at any position and orientation inside the workspace. Most industrial robot arms are six-axis arms. The reBot-DevArm B601 is one: a six-axis arm plus a parallel gripper, which the project writes as "6+1 DoF."</p>
+<p>The SO-ARM101 needs a more careful description. It has five joints in the arm and a sixth motor in the gripper. LeRobot's documentation describes it as having six degrees of freedom, counting the gripper motor. By the strict definition that counts only the joints that position and orient the hand, it is a <em>five-axis</em> arm with a gripper. Both descriptions are correct, because each counts differently, and the difference has a practical meaning: the SO-ARM101 cannot set all six numbers of the end-effector pose independently.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Read What '6 DOF' Counts</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A listing that says "6 DOF" may include the gripper, and one that says "6+1" does not. If you compare arms without checking, you will think two different machines are equal. Ask how many joints position the <em>hand</em>, and separately whether there is a gripper joint.</p>
+</div>
+<p>A six-axis arm has a catch that Chapter 12 explores: at certain poses, called singular poses, two joints line up and the arm temporarily loses a direction it can move in. Five-axis arms have the same effect in different places. You do not need to worry about this yet.</p>
+<h2 id="frames-and-reach">Frames and Reach<a class="headerlink" href="#frames-and-reach" title="Permanent link">&para;</a></h2>
+<p>So far, positions have been described by joint angles. To describe where the <em>tool</em> is, you need a coordinate system that everyone agrees on.</p>
+<h3 id="the-base-frame">The Base Frame<a class="headerlink" href="#the-base-frame" title="Permanent link">&para;</a></h3>
+<p>The <strong>base frame</strong> is the coordinate system fixed to the arm's base. Its origin, the point where all three axes meet, sits on the table at the center of the base. Because the base never moves, the base frame never moves, and every position on the arm can be measured from it. In the convention used in most robotics software, the three axes point as follows.</p>
+<table>
+<thead>
+<tr>
+<th>Axis</th>
+<th>Points</th>
+<th>Memory aid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>Forward, away from the base toward the front of the arm</td>
+<td>The way the arm reaches</td>
+</tr>
+<tr>
+<td>y</td>
+<td>To the left, as seen from behind the arm</td>
+<td>Left</td>
+</tr>
+<tr>
+<td>z</td>
+<td>Straight up from the table</td>
+<td>Up</td>
+</tr>
+</tbody>
+</table>
+<p>These three axes follow the right-hand rule. Point your right index finger along x, curl your middle finger toward y, and your thumb points along z. The <code>shoulder_pan</code> joint turns the arm around the z axis, so a positive pan angle sweeps the arm toward y in this convention, though your library may choose the opposite sign. Libraries and arms differ, so read the documentation of the arm you are using before you trust a sign.</p>
+<p>Here is a worked example. A gripper that is 0.20 m in front of the base, 0.05 m to the left of the center line, and 0.10 m above the table has the position (x, y, z) = (0.20, 0.05, 0.10) in the base frame. In Python, a position is naturally a tuple in meters:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">gripper_position_m</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">)</span>  <span class="c1"># x forward, y left, z up</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">x_m</span><span class="p">,</span> <span class="n">y_m</span><span class="p">,</span> <span class="n">z_m</span> <span class="o">=</span> <span class="n">gripper_position_m</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x_m</span><span class="si">=}</span><span class="s2"> </span><span class="si">{</span><span class="n">y_m</span><span class="si">=}</span><span class="s2"> </span><span class="si">{</span><span class="n">z_m</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Always state the unit in the variable name. The <code>_m</code> suffix says meters, in the same spirit as the <code>_deg</code> suffix from Chapter 1.</p>
+<p>The base frame also connects to the shoulder-pan joint. Suppose the arm is stretched out so that the tip is 0.25 m from the base axis, measured along the table, and the pan joint has turned 30 degrees to the left of straight ahead. The sine and cosine functions give the tip's x and y position:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="n">reach_m</span> <span class="o">=</span> <span class="mf">0.25</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="n">pan_deg</span> <span class="o">=</span> <span class="mi">30</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="n">x_m</span> <span class="o">=</span> <span class="n">reach_m</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">pan_deg</span><span class="p">))</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="n">y_m</span> <span class="o">=</span> <span class="n">reach_m</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">pan_deg</span><span class="p">))</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x_m</span><span class="si">=:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">y_m</span><span class="si">=:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>x_m=0.2165 y_m=0.1250
+</span></code></pre></div>
+<p>The tip is 0.2165 m forward and 0.1250 m to the left. Turning the pan joint back to 0 degrees would put the tip at x = 0.25 and y = 0, straight ahead. Every position in this book is measured from this one fixed frame, so you can always compare two positions by subtracting them.</p>
+<h3 id="the-workspace">The Workspace<a class="headerlink" href="#the-workspace" title="Permanent link">&para;</a></h3>
+<p>The <strong>workspace</strong> is the set of all positions the end effector can reach. Think of it as the region of space the gripper can touch. It is bounded by two things: the lengths of the links, and the limits of the joints. A longer arm reaches farther, and a joint that can only turn part way blocks some positions.</p>
+<p>A familiar example is the flat two-link arm from earlier, with a 10 cm upper arm and a 15 cm forearm (illustrative lengths). Let <span class="arithmatex">\( r \)</span> be the straight-line distance from the shoulder axis to a target point, so <span class="arithmatex">\( r = \sqrt{x^2 + y^2} \)</span>. If both joints can turn all the way around, the tip can reach the target exactly when</p>
+<div class="arithmatex">\[ |L_1 - L_2| \le r \le L_1 + L_2 \]</div>
+<p>where <span class="arithmatex">\( L_1 \)</span> and <span class="arithmatex">\( L_2 \)</span> are the two link lengths. With <span class="arithmatex">\( L_1 = 10 \)</span> cm and <span class="arithmatex">\( L_2 = 15 \)</span> cm, that means <span class="arithmatex">\( 5 \le r \le 25 \)</span> cm. The workspace is a flat ring, with a hole in the middle where the arm cannot fold tightly enough.</p>
+<p>Test three targets. The point (20, 10) cm has <span class="arithmatex">\( r = \sqrt{500} \approx 22.4 \)</span> cm, which is in range, so it is reachable. The point (30, 0) has <span class="arithmatex">\( r = 30 \)</span> cm, which is too far. The point (3, 2) has <span class="arithmatex">\( r \approx 3.6 \)</span> cm, which is inside the hole and too close.</p>
+<p>Joint limits shrink the ring further. The elbow angle <span class="arithmatex">\( \theta_2 \)</span> is how far the elbow is bent from straight, and for a target at distance <span class="arithmatex">\( r \)</span> the law of cosines gives</p>
+<div class="arithmatex">\[ \cos\theta_2 = \frac{r^2 - L_1^2 - L_2^2}{2\,L_1 L_2} \]</div>
+<p>so the elbow must be bent by <span class="arithmatex">\( +\theta_2 \)</span> or <span class="arithmatex">\( -\theta_2 \)</span>, the same amount in either direction. For the target (20, 10) the cosine is 0.583 and the bend is plus or minus 54.3 degrees. If the elbow can only bend between 0 and 90 degrees, the +54.3 degree solution is allowed, so the target is still reachable. For a target at (7, 0), the cosine is -0.92 and the bend is plus or minus 156.9 degrees. That is inside the ring (since <span class="arithmatex">\( 5 \le 7 \le 25 \)</span>) but needs more bend than the elbow allows, so the limited arm <em>cannot</em> reach it, although an unlimited arm could. You do not need to derive this formula, because Chapter 12 turns it into Python.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Limits Carve the Workspace</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+A workspace is not one number. It is a shape, and every joint limit takes a bite out of it. When your arm cannot reach a point that looks close, ask which joint ran out of travel before you suspect the code.</p>
+</div>
+<p>The <strong>reach</strong> of an arm is the greatest distance it can stretch from its base. For the flat two-link arm, the reach is <span class="arithmatex">\( L_1 + L_2 \)</span>, or 25 cm. Spec sheets must say where reach is measured. The reBot-DevArm B601's project lists a reach of 767 mm with the gripper and 607 mm without it, a difference of 160 mm that comes only from where you stop measuring.</p>
+<p>In this MicroSim, you will solve seven reachability problems for a flat two-link arm. Each gives the link lengths, the elbow limit, and a target point. You decide whether the tip can reach the target. After the seven problems, an exploration mode lets you change the links and the elbow limit and watch the workspace change shape.</p>
+<h4 id="diagram-two-link-workspace-explorer">Diagram: Two-Link Workspace Explorer<a class="headerlink" href="#diagram-two-link-workspace-explorer" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Two-Link Workspace Explorer</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> two-link-workspace-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Apply<br/>
+<strong>Bloom Verb:</strong> solve<br/>
+<strong>Learning Objective:</strong> The learner will solve seven reachability problems for a flat two-link arm by deciding whether a target point lies inside the arm's workspace, with at least 6 of 7 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> link, joint, joint limits, base frame, workspace, reach, the ring formula and the elbow-bend formula (all defined in the section "The Workspace" above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of seven problems the learner commits "Reachable" or "Not reachable". An answer is correct when it matches the Correct column in Content. Mastery is 6 of 7 correct on the first attempt. Changing link lengths and limits in exploration mode is not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) Any point closer than the reach can be touched. (Points inside the central hole are too close.) (2) Joint limits do not change what the arm can reach. (Limits can remove points that are inside the ring.) (3) The workspace is a single number.</p>
+<p><strong>Instructional Rationale:</strong> Apply-level solving requires the learner to carry out a procedure on new inputs: compute the distance, compare it with the ring, then check the elbow bend against its limit. Showing the numbers beside the picture, while hiding the verdict until the learner commits, makes the learner perform the calculation instead of reading the shaded region.</p>
+<p><strong>Content:</strong></p>
+<p>The model: a flat arm in a side view. The shoulder axis is at the origin (0, 0). The x axis points forward and the y axis points up, both in centimeters. The upper arm has length L1 and the forearm has length L2. The shoulder can turn all the way around. The elbow angle is measured from the straight position, where 0 degrees means the forearm continues in a straight line from the upper arm, and positive and negative angles bend it in opposite directions.</p>
+<p>Seven problems in this fixed order. L1 is 10 cm and L2 is 15 cm in every problem. The elbow limit is the allowed range of the elbow angle.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Target (x, y) in cm</th>
+<th>Elbow limit</th>
+<th>Distance r (cm)</th>
+<th>Correct</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>(20, 10)</td>
+<td>-180 to 180 degrees</td>
+<td>22.36</td>
+<td>Reachable</td>
+<td>r is between 5 and 25, and the elbow needs 54.3 degrees of bend, which is allowed.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(30, 0)</td>
+<td>-180 to 180 degrees</td>
+<td>30.00</td>
+<td>Not reachable</td>
+<td>r = 30 is greater than L1 + L2 = 25, so the target is beyond the reach.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(3, 2)</td>
+<td>-180 to 180 degrees</td>
+<td>3.61</td>
+<td>Not reachable</td>
+<td>r = 3.61 is less than L2 - L1 = 5, so the target is inside the hole where the arm cannot fold.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(25, 0)</td>
+<td>-180 to 180 degrees</td>
+<td>25.00</td>
+<td>Reachable</td>
+<td>r equals L1 + L2 exactly, so the arm can just reach it fully stretched.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>(7, 0)</td>
+<td>-180 to 180 degrees</td>
+<td>7.00</td>
+<td>Reachable</td>
+<td>r = 7 is between 5 and 25, and the elbow needs 156.9 degrees of bend, which this limit allows.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>(20, 10)</td>
+<td>0 to 90 degrees</td>
+<td>22.36</td>
+<td>Reachable</td>
+<td>The elbow needs plus or minus 54.3 degrees, and +54.3 degrees is inside the 0 to 90 limit.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>(7, 0)</td>
+<td>0 to 90 degrees</td>
+<td>7.00</td>
+<td>Not reachable</td>
+<td>The elbow needs plus or minus 156.9 degrees, and neither is inside the 0 to 90 limit, even though r = 7 is inside the ring.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The link lengths, targets and limits are written for this sim and are illustrative. The answers follow the ring formula and the elbow-bend formula in the chapter, computed to two decimals for r and one decimal for the angles. Angles are computed from the law of cosines.</p>
+<p><strong>Rules:</strong> Let r = sqrt(x^2 + y^2). A target is reachable when there is an elbow angle theta2, equal to +arccos(c) or -arccos(c) with c = (r^2 - L1^2 - L2^2) / (2 * L1 * L2), that lies inside the elbow limit, and when -1 &lt;= c &lt;= 1. The shoulder is unlimited, so a shoulder angle always exists. A value of c within 0.000001 of -1 or 1 counts as inside the range, so problem 4 is reachable. In exploration mode the learner can set L1 and L2 (minimum 5, maximum 20, step 1, default L1 = 10 and L2 = 15, unit cm), and the elbow limit's lower bound (minimum -180, maximum 0, step 15, default -180, unit degrees) and upper bound (minimum 0, maximum 180, step 15, default 180, unit degrees). The reachable region is shaded and the learner can click any point to test it.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>The learner sees problem 1: the arm, the elbow limit, and the target point marked on the plane, with the distance r written beside it.</li>
+<li>The learner decides "Reachable" or "Not reachable" and commits.</li>
+<li>The sim shows the verdict and the reason. It then draws the arm reaching the target, or shows where it falls short, and presents the next problem.</li>
+<li>After problem 7, the sim shows the score and unlocks exploration mode. The learner changes L1, L2, and the elbow limits and watches the shaded workspace grow, shrink, and gain a hole.</li>
+</ol>
+<p><strong>Feedback:</strong> Seven problems, fixed order, one attempt each. Correct: "Correct: <Reachable or Not reachable>. <Why>". Incorrect: "Not quite. This target is <Reachable or Not reachable>. <Why>". The correct verdict is revealed after each commitment. A running count "Correct: n of 7" is shown, and the final screen says whether mastery (6 of 7) was reached.</p>
+<p><strong>Starting State:</strong> Problem 1 is shown with L1 = 10 cm, L2 = 15 cm, an elbow limit of -180 to 180 degrees, and the target at (20, 10), with the question "Can the tip reach this point?"</p>
+<p><strong>Chapter Anchors:</strong> The chapter states the ring condition |L1 - L2| &lt;= r &lt;= L1 + L2 and uses L1 = 10 cm and L2 = 15 cm, so the ring runs from 5 cm to 25 cm. It works the targets (20, 10), (30, 0), and (3, 2), and then the elbow-limited cases (20, 10) and (7, 0), with a bend of 54.3 degrees and 156.9 degrees. The sim has seven problems and mastery is 6 of 7.</p>
+</details>
+<h2 id="specifications-payload-repeatability-and-accuracy">Specifications: Payload, Repeatability, and Accuracy<a class="headerlink" href="#specifications-payload-repeatability-and-accuracy" title="Permanent link">&para;</a></h2>
+<p>Spec sheets describe an arm's strength and precision with a few standard numbers. Each one is easy to misread, so it pays to know what each really promises.</p>
+<h3 id="payload">Payload<a class="headerlink" href="#payload" title="Permanent link">&para;</a></h3>
+<p>The <strong>payload</strong> of an arm is the greatest mass it can carry at its end effector while still meeting its specifications. The number is only meaningful with its conditions, because the load on a joint depends on how far the load is from that joint. The twisting force a mass exerts on a joint is its <strong>torque</strong>, and for a mass held a horizontal distance <span class="arithmatex">\( d \)</span> from the joint it is</p>
+<div class="arithmatex">\[ \tau = m \, g \, d \]</div>
+<p>where <span class="arithmatex">\( m \)</span> is the mass in kilograms, <span class="arithmatex">\( g \)</span> is 9.81 m/s² (the pull of gravity), and <span class="arithmatex">\( d \)</span> is the distance in meters. The unit is the newton-meter (N·m). Here is a worked example. A 0.5 kg object held 0.30 m from the shoulder gives <span class="arithmatex">\( \tau = 0.5 \times 9.81 \times 0.30 \approx 1.47 \)</span> N·m. The same object held 0.15 m from the shoulder gives only 0.74 N·m, which is half as much, because the distance is half as large. This simple calculation ignores the weight of the arm itself, which makes the real load larger.</p>
+<p>Because torque grows with distance, makers quote payload at a stated position. The reBot-DevArm B601 project lists a payload of 1.5 kg for the Damiao version, and one source for the same arm specifies that this is at 70 percent of full reach and without the gripper. The arm cannot be expected to carry 1.5 kg fully stretched out.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Payload Shrinks as the Arm Stretches</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A payload number is a promise about one posture. At full reach the same arm can carry less, and past that its motors may overheat or stall. Keep heavy objects close to the base, and treat the payload as a ceiling you stay well under, not a target.</p>
+</div>
+<h3 id="repeatability">Repeatability<a class="headerlink" href="#repeatability" title="Permanent link">&para;</a></h3>
+<p><strong>Repeatability</strong> is how closely an arm returns to the same pose when you send it there again and again. Imagine commanding the gripper to a spot ten times and marking where the tip lands each time. If the marks cluster tightly, the repeatability is high, even if the cluster sits away from the spot you aimed at. Spec sheets quote repeatability as a distance, usually in millimeters. The reBot-DevArm B601 project lists repeatability of less than 0.2 mm.</p>
+<p>Here is a worked example with five illustrative landing points. Each is written as an offset (x, y) in millimeters from the target.</p>
+<table>
+<thead>
+<tr>
+<th>Trial</th>
+<th>x offset (mm)</th>
+<th>y offset (mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2.1</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.9</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.2</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.0</td>
+<td>1.1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.8</td>
+<td>0.8</td>
+</tr>
+</tbody>
+</table>
+<p>The average landing point is (2.00, 1.00) mm. The farthest any trial lands from that average is 0.28 mm, so the cluster is tight and the repeatability is about 0.3 mm. The average is 2.24 mm from the target, though, because <span class="arithmatex">\( \sqrt{2.00^2 + 1.00^2} \approx 2.24 \)</span>. This arm is repeatable but not on target, and the second quality has its own name.</p>
+<h3 id="accuracy">Accuracy<a class="headerlink" href="#accuracy" title="Permanent link">&para;</a></h3>
+<p><strong>Accuracy</strong> is how close the arm gets to the point you <em>asked</em> for. In this book it is the distance between the target and the average landing point, which is 2.24 mm in the example above. The industry standard for measuring these qualities (ISO 9283) is more careful than our definitions, but ours capture the idea.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Tight cluster</th>
+<th>Scattered cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Centered on the target</strong></td>
+<td>Accurate and repeatable</td>
+<td>Accurate on average, not repeatable</td>
+</tr>
+<tr>
+<td><strong>Away from the target</strong></td>
+<td>Repeatable, not accurate</td>
+<td>Neither</td>
+</tr>
+</tbody>
+</table>
+<p>Repeatability matters more for most robot work, for a reason that is easy to remember. A repeatable arm that lands 2 mm off the same spot every time can be fixed with calibration, which is one correction applied everywhere. A scattered arm cannot be fixed that way, because its error changes every time.</p>
+<p>In this MicroSim, you will classify four sets of landing points as one of the four boxes above. For each set the sim lists five offsets in millimeters. You decide whether the cluster is centered on the target and whether it is tight.</p>
+<h4 id="diagram-accuracy-and-repeatability-targets">Diagram: Accuracy and Repeatability Targets<a class="headerlink" href="#diagram-accuracy-and-repeatability-targets" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Accuracy and Repeatability Targets</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> accuracy-repeatability-targets<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Understand<br/>
+<strong>Bloom Verb:</strong> classify<br/>
+<strong>Learning Objective:</strong> The learner will classify four sets of landing points as accurate or not and repeatable or not, using a stated distance threshold, with at least 3 of 4 sets classified correctly on the first attempt.</p>
+<p><strong>Prerequisites:</strong> accuracy, repeatability, landing point, offset from the target (all defined in the sections "Repeatability" and "Accuracy" above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of four sets of five landing points, the learner commits one of four labels. A label is correct when it matches the Correct label column in Content. Mastery is 3 of 4 correct on the first attempt. Reading the numbers, and seeing the measured values after an answer, is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) A repeatable arm is also an accurate one. (Repeatability measures the cluster's width, and accuracy measures where it sits.) (2) If the average is on target the arm is precise. (An arm can be centered on average and scattered.) (3) Accuracy and repeatability are two names for the same spec.</p>
+<p><strong>Instructional Rationale:</strong> Understand-level classification means placing an example into the right category and giving a reason. Showing the five points on a target next to their offsets, then asking for a two-part decision (centered? tight?), forces the learner to separate the two qualities that everyday speech runs together.</p>
+<p><strong>Content:</strong></p>
+<p>Each set shows five landing points as offsets (x, y) in millimeters from the target at (0, 0), plotted on a target. The data are illustrative, and the sim labels them "illustrative".</p>
+<table>
+<thead>
+<tr>
+<th>Set</th>
+<th>Landing points (x, y) in mm</th>
+<th>Mean offset (mm)</th>
+<th>Distance of mean from target (mm)</th>
+<th>Largest distance from the mean (mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>(0.1, 0.0), (-0.1, 0.2), (0.2, -0.1), (0.0, 0.1), (-0.2, -0.2)</td>
+<td>(0.00, 0.00)</td>
+<td>0.00</td>
+<td>0.28</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(2.1, 1.0), (1.9, 1.2), (2.2, 0.9), (2.0, 1.1), (1.8, 0.8)</td>
+<td>(2.00, 1.00)</td>
+<td>2.24</td>
+<td>0.28</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(1.8, -1.6), (-1.5, 1.9), (0.4, 2.1), (-2.0, -0.9), (1.3, -1.5)</td>
+<td>(0.00, 0.00)</td>
+<td>0.00</td>
+<td>2.42</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(3.8, -2.6), (0.5, 0.9), (2.4, 1.1), (0.0, -1.9), (3.3, -2.5)</td>
+<td>(2.00, -1.00)</td>
+<td>2.24</td>
+<td>2.42</td>
+</tr>
+</tbody>
+</table>
+<p>The four labels the learner chooses from: "Accurate and repeatable", "Repeatable, not accurate", "Accurate on average, not repeatable", "Neither".</p>
+<table>
+<thead>
+<tr>
+<th>Set</th>
+<th>Correct label</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Accurate and repeatable</td>
+<td>The mean is 0.00 mm from the target (&lt;= 0.5) and no point is more than 0.28 mm from the mean (&lt;= 0.5).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Repeatable, not accurate</td>
+<td>The points are tightly grouped (0.28 mm), but the group sits 2.24 mm from the target.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Accurate on average, not repeatable</td>
+<td>The mean is on the target, but the points are spread up to 2.42 mm from the mean.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Neither</td>
+<td>The group is 2.24 mm from the target and spread up to 2.42 mm.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The point sets are illustrative values written for this sim. Set 2 is the same data as the worked example in the chapter section "Repeatability". The means and distances were computed from the points and rounded to two decimals.</p>
+<p><strong>Rules:</strong> For a set, the mean offset is the average of the five x values and the average of the five y values. Accurate means the distance from the target to the mean offset is &lt;= 0.5 mm. Repeatable means the largest distance from any point to the mean offset is &lt;= 0.5 mm. The 0.5 mm threshold is a teaching value and the sim says so. There are no adjustable quantities.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>The learner sees set 1 as a table of five offsets and as five dots on a target, with a mark for the target center.</li>
+<li>The learner chooses one of the four labels and commits.</li>
+<li>The sim shows the correct label, marks the mean point on the target, draws a circle that contains the points around the mean, and shows the numbers from the table above and the Why text.</li>
+<li>The sim presents the next set. After set 4 it shows the score and all four sets side by side.</li>
+</ol>
+<p><strong>Feedback:</strong> Four sets, fixed order, one attempt each. Correct: "Correct: <label>. <Why>". Incorrect: "Not quite. This set is <label>. <Why>". The correct label is revealed after each commitment. A running count "Correct: n of 4" is shown, and the final screen says whether mastery (3 of 4) was reached.</p>
+<p><strong>Starting State:</strong> Set 1 is shown with the question "Is this arm accurate, repeatable, both, or neither?" and the definitions of accuracy and repeatability in view.</p>
+<p><strong>Chapter Anchors:</strong> The chapter's worked example for repeatability is set 2 with its five points, a mean of (2.00, 1.00) mm, a distance of 2.24 mm from the target, and a spread of 0.28 mm. The chapter's four-box table matches the four labels. Mastery is 3 of 4.</p>
+</details>
+<h2 id="leader-and-follower-arms">Leader and Follower Arms<a class="headerlink" href="#leader-and-follower-arms" title="Permanent link">&para;</a></h2>
+<p>Most of what you can do with a robot arm comes from telling it where to go. The SO-ARM101 offers a more direct way: <em>show</em> it.</p>
+<h3 id="teleoperation">Teleoperation<a class="headerlink" href="#teleoperation" title="Permanent link">&para;</a></h3>
+<p><strong>Teleoperation</strong> means controlling a machine from a distance, in real time, by a person. A drone pilot teleoperates a drone, and a surgeon uses teleoperation to guide instruments inside a patient. With robot arms, teleoperation has an extra benefit that Chapter 14 uses heavily: while a person guides the arm through a task, the program can <em>record</em> what happened, and the recording becomes training data for a robot that learns the task.</p>
+<p>Teleoperation is one of three ways to decide what an arm does. The table compares them.</p>
+<table>
+<thead>
+<tr>
+<th>Way of control</th>
+<th>Who decides each move</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scripted</td>
+<td>A fixed list of moves written ahead of time</td>
+<td>A program that always picks from spot A and places at spot B</td>
+</tr>
+<tr>
+<td>Teleoperated</td>
+<td>A person, in real time</td>
+<td>A person guiding a follower arm by moving a leader arm</td>
+</tr>
+<tr>
+<td>Autonomous</td>
+<td>The robot's software, from what it senses</td>
+<td>An arm that finds a block with a camera and decides how to grasp it</td>
+</tr>
+</tbody>
+</table>
+<p>The three are not rivals. A common workflow uses teleoperation first, to <em>show</em> the robot a task and record it, and then autonomy later, once software has learned from the recordings. This book follows that path.</p>
+<p>A setup that does teleoperation with two arms is called a leader/follower pair.</p>
+<h3 id="the-leader-arm">The Leader Arm<a class="headerlink" href="#the-leader-arm" title="Permanent link">&para;</a></h3>
+<p>The <strong>leader arm</strong> is the arm a person holds and moves by hand. It has the same joints as the follower, in the same order, so every joint on the leader has a twin on the follower. It carries sensors that report each joint angle, and it does not do any work. For the SO-ARM101, the leader ends in a handle with a <strong>trigger</strong> that stands in for the follower's gripper. The printed files <code>Handle_SO101.stl</code> and <code>Trigger_SO101.stl</code> are these parts.</p>
+<p>Because a person must move the leader by hand, it needs motors that are easy to turn. The follower's motors are geared down by 345 to 1 (written 1/345). A <strong>gear ratio</strong> of 1/345 means the motor shaft spins 345 times for one turn of the joint, a trade that gives the joint a lot of strength but makes it hard to turn by hand. The leader uses three different ratios so that it can hold its own weight and still be moved with little force. The LeRobot documentation lists them by joint.</p>
+<table>
+<thead>
+<tr>
+<th>Leader joint</th>
+<th>Motor ID</th>
+<th>Gear ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shoulder pan</td>
+<td>1</td>
+<td>1/191</td>
+</tr>
+<tr>
+<td>Shoulder lift</td>
+<td>2</td>
+<td>1/345</td>
+</tr>
+<tr>
+<td>Elbow flex</td>
+<td>3</td>
+<td>1/191</td>
+</tr>
+<tr>
+<td>Wrist flex</td>
+<td>4</td>
+<td>1/147</td>
+</tr>
+<tr>
+<td>Wrist roll</td>
+<td>5</td>
+<td>1/147</td>
+</tr>
+<tr>
+<td>Gripper (trigger)</td>
+<td>6</td>
+<td>1/147</td>
+</tr>
+</tbody>
+</table>
+<p>The printed parts that differ between the two arms follow the same split. The leader gets the handle and trigger, and a leader-specific wrist-roll piece, <code>Wrist_Roll_SO101.stl</code>. The follower gets the moving jaw, <code>Moving_Jaw_SO101.stl</code>, and its own wrist-roll piece, <code>Wrist_Roll_Follower_SO101.stl</code>, which also forms the fixed half of the gripper.</p>
+<h3 id="the-follower-arm">The Follower Arm<a class="headerlink" href="#the-follower-arm" title="Permanent link">&para;</a></h3>
+<p>The <strong>follower arm</strong> is the arm that does the work. It has a real gripper, and all six of its motors use the 1/345 gearing, so it is strong and holds its position. It does not decide anything by itself. Its job is to match the leader.</p>
+<p>The two arms look alike, so keep the roles straight with this comparison.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Leader arm</th>
+<th>Follower arm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moved by</td>
+<td>A person's hand</td>
+<td>Its own motors</td>
+</tr>
+<tr>
+<td>Motor gearing</td>
+<td>Mixed: 1/147, 1/191, and 1/345</td>
+<td>1/345 on every joint</td>
+</tr>
+<tr>
+<td>Tool at the end</td>
+<td>Handle and trigger</td>
+<td>A working gripper</td>
+</tr>
+<tr>
+<td>Does physical work</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Safety concern</td>
+<td>Almost none</td>
+<td>Pinch points and sudden motion</td>
+</tr>
+</tbody>
+</table>
+<p>The last row is the one to remember. The leader is safe to handle because it only senses. The follower is the arm that can move quickly and pinch, so keep your hands and loose cables clear of it whenever it is powered, even if the leader is the one you are holding.</p>
+<h3 id="how-the-pair-works">How the Pair Works<a class="headerlink" href="#how-the-pair-works" title="Permanent link">&para;</a></h3>
+<p>The follower copies the leader through a loop that repeats many times every second. Each pass has three steps. First, read the angle of every joint on the leader. Second, check that each angle is inside the follower's joint limits, and hold any angle that is not at the nearest limit. Third, command the follower's matching joint to that angle. Chapter 11 builds this loop in Python. For now, the idea matters more than the code.</p>
+<p>When the pair is used to record a task, each pass through the loop produces one row of data. Here are three consecutive rows for the elbow joint, with illustrative values. The follower is a little behind the leader because its motor takes a moment to catch up.</p>
+<table>
+<thead>
+<tr>
+<th>Pass</th>
+<th>Leader elbow (degrees)</th>
+<th>Follower elbow (degrees)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>40.0</td>
+<td>38.5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>42.0</td>
+<td>40.5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>44.0</td>
+<td>42.5</td>
+</tr>
+</tbody>
+</table>
+<p>A recording holds thousands of such rows for all six joints, together with what a camera saw at each moment. A learning program in Chapter 14 reads those rows and learns to produce the leader's angles on its own.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Copy the Angles, Not the Hand</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+The follower never calculates where the hand should go. It copies the leader's <em>joint angles</em>, and because the two arms have the same shape, the same angles produce the same hand pose. That is why the pair needs no kinematics. It also means the two arms must agree on what each number means, which is the job of calibration in Chapter 8.</p>
+</div>
+<p>Two things can make the follower differ from the leader. If a leader angle is outside the follower's limits, the follower stops at its limit. If the two arms were calibrated differently, the follower's physical angle is off by the difference, called a <strong>calibration error</strong>. In the next MicroSim, you predict the follower's joint angle in six scenarios. Use the copy rule, the limits, and any calibration error.</p>
+<h4 id="diagram-leader-and-follower-mirror">Diagram: Leader and Follower Mirror<a class="headerlink" href="#diagram-leader-and-follower-mirror" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Leader and Follower Mirror</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> leader-follower-mirror<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Understand<br/>
+<strong>Bloom Verb:</strong> infer<br/>
+<strong>Learning Objective:</strong> The learner will infer the follower arm's joint angle from the leader's angle, the follower's joint limits, and its calibration error, in six scenarios, with at least 5 of 6 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> leader arm, follower arm, teleoperation, joint angle, joint limits, calibration error (all defined in the sections above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of six scenarios the learner commits one of three angles before the follower moves. An answer is correct when it matches the Correct column in Content. Mastery is 5 of 6 correct on the first attempt. Moving the leader in free mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) The follower always matches the leader exactly. (It stops at its own joint limits.) (2) Calibration does not affect the copy. (A calibration error shifts every angle the follower reaches.) (3) The follower works out where the hand should be. (It copies joint angles one by one.)</p>
+<p><strong>Instructional Rationale:</strong> An Understand-level infer objective asks the learner to apply a rule to a new case and commit to a result. Predicting before the follower moves forces the learner to apply the copy, clamp, and offset rules in order, and watching the result confirms or corrects the prediction.</p>
+<p><strong>Content:</strong></p>
+<p>The follower's joint limits and a calibration error are as stated per scenario. The limits used are the example limits from the chapter's <code>arm.json</code> file: shoulder pan -110 to 110 degrees, elbow flex -97 to 97 degrees, wrist roll -160 to 160 degrees, and gripper 0 to 100 (gripper units).</p>
+<p>Six scenarios in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Joint</th>
+<th>Leader angle</th>
+<th>Follower condition</th>
+<th>Choices</th>
+<th>Correct</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Elbow flex</td>
+<td>40 degrees</td>
+<td>Calibrated, no error</td>
+<td>(a) 20 degrees (b) 40 degrees (c) 97 degrees</td>
+<td>b</td>
+<td>The follower copies the leader's angle and 40 is inside the limits.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Shoulder pan</td>
+<td>-30 degrees</td>
+<td>Calibrated, no error</td>
+<td>(a) -30 degrees (b) 30 degrees (c) 0 degrees</td>
+<td>a</td>
+<td>The follower copies the angle with its sign, so -30 stays -30.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elbow flex</td>
+<td>110 degrees</td>
+<td>Calibrated, no error</td>
+<td>(a) 110 degrees (b) 97 degrees (c) 0 degrees</td>
+<td>b</td>
+<td>110 is above the follower's limit of 97, so the follower stops at 97.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Elbow flex</td>
+<td>40 degrees</td>
+<td>Calibration error of +8 degrees</td>
+<td>(a) 32 degrees (b) 40 degrees (c) 48 degrees</td>
+<td>c</td>
+<td>The follower reaches the commanded 40 degrees plus its 8 degree calibration error.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Gripper</td>
+<td>60</td>
+<td>Calibrated, no error</td>
+<td>(a) 60 (b) 100 (c) 0</td>
+<td>a</td>
+<td>The trigger position is copied as the gripper position, and 60 is inside the 0 to 100 limits.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Wrist roll</td>
+<td>150 degrees</td>
+<td>Calibrated, no error</td>
+<td>(a) 160 degrees (b) 150 degrees (c) 110 degrees</td>
+<td>b</td>
+<td>150 is inside the limits of -160 to 160, so no limit applies. Do not apply a limit that is not reached.</td>
+</tr>
+</tbody>
+</table>
+<p>Free mode lets the learner set each of the three joints (shoulder pan, elbow flex, wrist roll) on the leader and shows the follower's result under the same rules, with a switch for a calibration error of 0 or +8 degrees.</p>
+<p><strong>Provenance:</strong> The copy-then-limit behavior follows the chapter section "How the Pair Works". The limits are the example limits from the chapter's <code>arm.json</code> and are illustrative. The +8 degree calibration error is illustrative.</p>
+<p><strong>Rules:</strong> The follower's commanded angle = the leader's angle, held between the follower's lower limit and upper limit (if the leader angle is above the upper limit the command is the upper limit, and below the lower limit it is the lower limit). The follower's physical angle = the commanded angle + the calibration error. In free mode each leader angle has minimum -180, maximum 180, step 5, default 0, unit degrees, and the calibration error is either 0 or 8 degrees (default 0). The gripper has no free-mode control.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>The learner reads scenario 1: the leader's joint and angle and the follower's condition.</li>
+<li>The learner chooses one of the three angles and commits.</li>
+<li>The sim moves the leader to the stated angle, moves the follower to the correct angle, and shows the result next to the learner's choice with the Why text.</li>
+<li>The learner continues through all six scenarios. After scenario 6, free mode unlocks, and the learner sets leader angles and watches the follower, including when it stops at a limit.</li>
+</ol>
+<p><strong>Feedback:</strong> Six scenarios, fixed order, one attempt each. Correct: "Correct: <angle>. <Why>". Incorrect: "Not quite. The follower ends at <angle>. <Why>". The correct angle is revealed after each commitment. A running count "Correct: n of 6" is shown, and the final screen says whether mastery (5 of 6) was reached.</p>
+<p><strong>Starting State:</strong> The leader and follower are shown side by side at 0 degrees with scenario 1 and the question "Where will the follower's joint end up?"</p>
+<p><strong>Chapter Anchors:</strong> The chapter describes the copy loop as read the leader's angles, hold each angle at the follower's limit if it is outside, and command the follower. It names calibration error as a shift in the follower's angle. The sim has six scenarios and mastery is 5 of 6.</p>
+</details>
+<h3 id="the-bimanual-robot">The Bimanual Robot<a class="headerlink" href="#the-bimanual-robot" title="Permanent link">&para;</a></h3>
+<p>A <strong>bimanual robot</strong> has two arms that work together, like a person using both hands, such as one arm holding a jar steady while the other unscrews the lid. Do not confuse a leader/follower pair with a bimanual setup. A leader/follower pair is <em>one working arm</em> plus one control arm. A bimanual setup has <em>two working arms</em>, and a bimanual teleoperation setup needs two leaders to match, one for each. Chapter 18 returns to bimanual arms as a next step.</p>
+<h2 id="the-arms-in-this-book">The Arms in This Book<a class="headerlink" href="#the-arms-in-this-book" title="Permanent link">&para;</a></h2>
+<p>The two arms in this book sit at opposite ends of the low-cost range. Before comparing them, three ideas set the scene.</p>
+<h3 id="the-desktop-robot-arm">The Desktop Robot Arm<a class="headerlink" href="#the-desktop-robot-arm" title="Permanent link">&para;</a></h3>
+<p>A <strong>desktop robot arm</strong> is a small arm that clamps to a table, runs from a modest power supply, and handles light objects. It is meant for learning, labs, and prototypes, and it is the right size to build and program at home or at school. The table puts desktop arms in context. The ranges are rough and typical, not exact.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Desktop arm</th>
+<th>Collaborative arm</th>
+<th>Industrial arm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size</td>
+<td>Fits on a desk</td>
+<td>About the size of a person's arm</td>
+<td>Up to several meters of reach</td>
+</tr>
+<tr>
+<td>Typical payload</td>
+<td>Up to about two kilograms</td>
+<td>A few to a few tens of kilograms</td>
+<td>Up to hundreds of kilograms</td>
+</tr>
+<tr>
+<td>Where it works</td>
+<td>Classrooms, labs, makerspaces</td>
+<td>Shared with people, often without a fence</td>
+<td>Fenced cells in factories</td>
+</tr>
+<tr>
+<td>Typical cost</td>
+<td>Hundreds to a few thousand dollars</td>
+<td>Tens of thousands of dollars</td>
+<td>Tens to hundreds of thousands of dollars</td>
+</tr>
+</tbody>
+</table>
+<p>Here is a worked example of asking whether a task is desktop-sized. Take the reBot-DevArm B601-DM, whose project lists a payload of 1.5 kg, and compare two objects. A 0.5 kg object is one third of the payload and well within it, as long as you hold it close to the base. A 3 kg bag of flour is twice the payload, so the arm is the wrong tool whatever the posture. The SO-ARM101's project does not publish a payload, so for that arm you test small, light objects and learn its limits by experiment.</p>
+<p>Both of the arms in this book are desktop arms. Small does not mean harmless. An arm that can lift a kilogram can pinch a finger, and Chapter 3 covers the safety rules that apply to every arm in the table.</p>
+<h3 id="open-source-hardware">Open-Source Hardware<a class="headerlink" href="#open-source-hardware" title="Permanent link">&para;</a></h3>
+<p><strong>Open-source hardware</strong> is hardware whose design files are published under a license that lets anyone study, modify, build, and sell it. For a robot arm, those files are the 3D-model files for the printed parts, the bill of materials (the list of every part to buy), the wiring information, and the assembly instructions. The Open Source Hardware Association (OSHWA) runs a certification program for projects that meet its definition.</p>
+<p>A complete open-source hardware project publishes more than a license. The table lists what to look for in a repository, and where the SO-ARM100 repository, which covers both the SO-100 and SO-101, provides each item.</p>
+<table>
+<thead>
+<tr>
+<th>What to look for</th>
+<th>What it lets you do</th>
+<th>In the SO-ARM100 repository</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A license file</td>
+<td>Know what you may do with the design</td>
+<td>An Apache-2.0 license</td>
+</tr>
+<tr>
+<td>Printable part files</td>
+<td>Print every part yourself</td>
+<td>STL files such as <code>Upper_arm_SO101.stl</code></td>
+</tr>
+<tr>
+<td>Print settings</td>
+<td>Get the same strength and fit</td>
+<td>Recommended material, layer height, and infill</td>
+</tr>
+<tr>
+<td>A bill of materials</td>
+<td>Buy every motor, screw, and board</td>
+<td>A parts list with links to sources</td>
+</tr>
+<tr>
+<td>Assembly instructions</td>
+<td>Build it in the right order</td>
+<td>Step-by-step instructions, also in the LeRobot documentation</td>
+</tr>
+</tbody>
+</table>
+<p>Open-source hardware matters to you because it makes the arm <em>knowable</em>. You can read how it is built, print a replacement part when one breaks, change a link to make it longer, and compare your build with others'. Both arms in this book are open source.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SO-ARM100 / SO-ARM101</th>
+<th>reBot-DevArm B601</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>The Robot Studio, in collaboration with Hugging Face</td>
+<td>Seeed Studio</td>
+</tr>
+<tr>
+<td>Repository license</td>
+<td>Apache-2.0</td>
+<td>Hardware CERN-OHL-W-2.0, software Apache-2.0</td>
+</tr>
+<tr>
+<td>OSHWA certified</td>
+<td>Not stated in its repository</td>
+<td>Yes, certification CN000024, dated May 14, 2026</td>
+</tr>
+<tr>
+<td>Where the design lives</td>
+<td>The SO-ARM100 repository on GitHub, which covers both the SO-100 and the SO-101</td>
+<td>The reBot-DevArm repository on GitHub</td>
+</tr>
+</tbody>
+</table>
+<p>The licenses listed are those stated by each project on 2026-10-07. Open source does not mean unsupported by rules. A license may require you to credit the authors or to share changes in some form, so read it before you sell or publish a modified design.</p>
+<div class="admonition mascot-neutral">
+<p class="admonition-title">Where the Details Come Later</p>
+<p><img alt="Servo in a neutral pose" class="mascot-admonition-img" src="../../img/mascot/neutral.png" />
+This chapter only names the arms. Chapter 6 shows how to source the parts, and Chapters 8 and 9 build the SO-ARM101 and the reBot-DevArm step by step.</p>
+</div>
+<h3 id="two-arms-side-by-side">Two Arms Side by Side<a class="headerlink" href="#two-arms-side-by-side" title="Permanent link">&para;</a></h3>
+<p>The <strong>SO-ARM101</strong> is the successor to the SO-ARM100. The project describes it as having improved wiring and easier assembly (no gear removal), with updated motors for the leader arm. Every arm in the pair uses six Feetech STS3215 servo motors, and the leader and follower are built the same except for their gearing and their ends. It is the low-cost entry point: our own motor kit cost $332.04 delivered in October 2026, with the 3D-printed parts extra.</p>
+<p>The <strong>reBot-DevArm B601</strong> comes in two versions that share one arm design. The B601-DM uses Damiao motors and the B601-RS uses Robstride motors. It is a six-axis arm plus a parallel gripper, driven over a CAN bus, and it supports ROS, LeRobot, NVIDIA Isaac Sim, and Pinocchio. Its project lists repeatability of less than 0.2 mm.</p>
+<p>The table lines up the two arms with the terms of this chapter. A dash means the project does not publish a value in the sources checked.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>SO-ARM101</th>
+<th>reBot-DevArm B601-DM</th>
+<th>reBot-DevArm B601-RS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Degrees of freedom</td>
+<td>5 arm joints + gripper (6 in LeRobot's count)</td>
+<td>6 axes + parallel gripper ("6+1")</td>
+<td>6 axes + parallel gripper ("6+1")</td>
+</tr>
+<tr>
+<td>Joint type</td>
+<td>All revolute</td>
+<td>Arm joints revolute; gripper fingers slide</td>
+<td>Arm joints revolute; gripper fingers slide</td>
+</tr>
+<tr>
+<td>Gripper</td>
+<td>Moving jaw</td>
+<td>Parallel, 0 to 100 mm</td>
+<td>Parallel, 0 to 100 mm</td>
+</tr>
+<tr>
+<td>Motors</td>
+<td>6 Feetech STS3215</td>
+<td>7 Damiao (4 DM-J4310, 3 DM-J4340P)</td>
+<td>Robstride</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Serial bus</td>
+<td>CAN bus</td>
+<td>CAN bus</td>
+</tr>
+<tr>
+<td>Supply voltage</td>
+<td>-</td>
+<td>24 V DC</td>
+<td>48 V DC</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>-</td>
+<td>1.5 kg</td>
+<td>2.5 kg</td>
+</tr>
+<tr>
+<td>Reach</td>
+<td>-</td>
+<td>767 mm (607 mm without gripper)</td>
+<td>754 mm</td>
+</tr>
+<tr>
+<td>Repeatability</td>
+<td>-</td>
+<td>less than 0.2 mm</td>
+<td>less than 0.2 mm</td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>-</td>
+<td>about 4.5 kg</td>
+<td>about 6.7 kg</td>
+</tr>
+<tr>
+<td>Leader/follower</td>
+<td>Yes, a matched pair</td>
+<td>Optional separate leader arm (the repository names the Star Arm 102-LD)</td>
+<td>Optional separate leader arm (the repository names the Star Arm 102-LD)</td>
+</tr>
+</tbody>
+</table>
+<p>Specifications and prices for both arms change often, so treat every number here as correct on 2026-10-07 and check the project pages before you buy. The sources are the SO-ARM100 repository, the LeRobot SO-101 documentation, the reBot-DevArm repository, the OSHWA certification record, and CNX Software's April 2026 report on the B601-DM.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Read the Conditions Beside Every Number</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+A spec is a number plus its conditions: payload at what reach, reach measured to where, repeatability under what test. When two arms look equal in a table, compare the conditions before you compare the numbers. A "-" in the table means "not published", not zero.</p>
+</div>
+<h3 id="robot-arm-applications">Robot Arm Applications<a class="headerlink" href="#robot-arm-applications" title="Permanent link">&para;</a></h3>
+<p>The <strong>applications</strong> of robot arms are the tasks they do, and the same anatomy serves all of them. The table lists the main kinds and shows where each appears in this book.</p>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>What the arm does</th>
+<th>Where it appears</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pick and place</td>
+<td>Moves objects from one spot to another</td>
+<td>Chapter 11</td>
+</tr>
+<tr>
+<td>Assembly</td>
+<td>Fits parts together</td>
+<td>Mentioned as a next step</td>
+</tr>
+<tr>
+<td>Machine tending</td>
+<td>Loads and unloads other machines</td>
+<td>Industrial use, not covered</td>
+</tr>
+<tr>
+<td>Welding and painting</td>
+<td>Follows a path with a tool</td>
+<td>Industrial use, not covered</td>
+</tr>
+<tr>
+<td>Laboratory automation</td>
+<td>Handles samples and containers</td>
+<td>Mentioned as a next step</td>
+</tr>
+<tr>
+<td>Teaching and research</td>
+<td>Collects demonstrations to train a learned policy</td>
+<td>Chapter 14</td>
+</tr>
+<tr>
+<td>Desk assistant</td>
+<td>Responds to spoken or typed requests</td>
+<td>Chapters 15 to 18</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lab-describe-your-arm-in-python">Lab: Describe Your Arm in Python<a class="headerlink" href="#lab-describe-your-arm-in-python" title="Permanent link">&para;</a></h2>
+<p>In this lab you will describe the SO-ARM101 as data and write functions that use the vocabulary of this chapter. You will extend the <code>arm-lab</code> project from Chapter 1. Nothing here touches hardware. The program runs on any computer, because it only reads a settings file.</p>
+<p><strong>Step 1. Activate the project.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>~/projects/arm-lab
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><code>git status</code> should say the working tree is clean, which means your Chapter 1 work is committed. If it does not, commit it first.</p>
+<p><strong>Step 2. Add a home pose to the settings file.</strong> Open <code>config/arm.json</code>. The <code>joints</code> object is currently the last item in the file. Add a comma after its closing brace, and then add a <code>home_pose</code> key with one angle in degrees for each joint. Remember the JSON rules from Chapter 1: double quotes, and <em>no comma after the last item</em>. The values are examples that sit inside the example limits. After you calibrate your arm in Chapter 8, you can replace them with your own.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">"home_pose"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">"shoulder_pan"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nt">"shoulder_lift"</span><span class="p">:</span><span class="w"> </span><span class="mi">-90</span><span class="p">,</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nt">"elbow_flex"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nt">"wrist_flex"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="nt">"wrist_roll"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="nt">"gripper"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Run <code>python show_config.py</code> to confirm the file still loads. If you see a <code>JSONDecodeError</code>, read the traceback as you learned to in Chapter 1, and look for a missing or extra comma.</p>
+<p><strong>Step 3. Write the pose module.</strong> Two functions go in a new file, <code>armlab/pose.py</code>. The first, <code>check_pose</code>, takes a pose (a dictionary from joint name to angle in degrees) and the <code>joints</code> dictionary from the configuration, and returns the names of any joints that are outside their limits. The second, <code>clamp_pose</code>, returns a copy of the pose with each angle held inside its limits. <code>max(low, min(angle, high))</code> is a standard way to hold a number between two values. Both functions use the chained comparison from the Joint Limits section.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="sd">"""Check and limit poses for an arm described by a configuration."""</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">check_pose</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">joints</span><span class="p">):</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">    </span><span class="sd">"""Return the names of joints whose target angle is outside its limits.</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="sd">    Args:</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="sd">        pose: Dictionary mapping joint name to target angle in degrees.</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="sd">        joints: The "joints" dictionary from the arm configuration.</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="sd">    Returns:</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="sd">        A list of joint names that are out of range. An empty list means</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="sd">        the whole pose is inside the limits.</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="sd">    """</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a>    <span class="n">out_of_range</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">angle_deg</span> <span class="ow">in</span> <span class="n">pose</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a>        <span class="n">limits</span> <span class="o">=</span> <span class="n">joints</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">limits</span><span class="p">[</span><span class="s2">"min_deg"</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">angle_deg</span> <span class="o">&lt;=</span> <span class="n">limits</span><span class="p">[</span><span class="s2">"max_deg"</span><span class="p">]:</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a>            <span class="n">out_of_range</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a>    <span class="k">return</span> <span class="n">out_of_range</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="k">def</span><span class="w"> </span><span class="nf">clamp_pose</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">joints</span><span class="p">):</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="w">    </span><span class="sd">"""Return a copy of the pose with every angle held inside its limits."""</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a>    <span class="n">safe</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">angle_deg</span> <span class="ow">in</span> <span class="n">pose</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a>        <span class="n">limits</span> <span class="o">=</span> <span class="n">joints</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a>        <span class="n">safe</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">limits</span><span class="p">[</span><span class="s2">"min_deg"</span><span class="p">],</span> <span class="nb">min</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">,</span> <span class="n">limits</span><span class="p">[</span><span class="s2">"max_deg"</span><span class="p">]))</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a>    <span class="k">return</span> <span class="n">safe</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Step 4. Write the script.</strong> The script loads the configuration, counts the motors, and works out the number of arm axes by subtracting one if there is a gripper, following the counting advice in this chapter. It then checks the home pose, builds a target that is 30 degrees past the first joint's upper limit, and shows <code>check_pose</code> catching it and <code>clamp_pose</code> fixing it. <code>next(iter(joints))</code> returns the first key of a dictionary. Create <code>describe_arm.py</code> in the top-level folder:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span>
+<span class="normal"><a href="#__codelineno-10-17">17</a></span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span>
+<span class="normal"><a href="#__codelineno-10-19">19</a></span>
+<span class="normal"><a href="#__codelineno-10-20">20</a></span>
+<span class="normal"><a href="#__codelineno-10-21">21</a></span>
+<span class="normal"><a href="#__codelineno-10-22">22</a></span>
+<span class="normal"><a href="#__codelineno-10-23">23</a></span>
+<span class="normal"><a href="#__codelineno-10-24">24</a></span>
+<span class="normal"><a href="#__codelineno-10-25">25</a></span>
+<span class="normal"><a href="#__codelineno-10-26">26</a></span>
+<span class="normal"><a href="#__codelineno-10-27">27</a></span>
+<span class="normal"><a href="#__codelineno-10-28">28</a></span>
+<span class="normal"><a href="#__codelineno-10-29">29</a></span>
+<span class="normal"><a href="#__codelineno-10-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="sd">"""Describe an arm from its configuration file: joints, limits, and poses."""</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_config</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.pose</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_pose</span><span class="p">,</span> <span class="n">clamp_pose</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="n">CONFIG</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">"config"</span> <span class="o">/</span> <span class="s2">"arm.json"</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a>    <span class="n">config</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">)</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a>    <span class="n">joints</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"joints"</span><span class="p">]</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15"></a>    <span class="n">motors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">joints</span><span class="p">)</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16"></a>    <span class="n">arm_axes</span> <span class="o">=</span> <span class="n">motors</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="s2">"gripper"</span> <span class="ow">in</span> <span class="n">joints</span> <span class="k">else</span> <span class="n">motors</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">config</span><span class="p">[</span><span class="s1">'arm_name'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">motors</span><span class="si">}</span><span class="s2"> motors, </span><span class="si">{</span><span class="n">arm_axes</span><span class="si">}</span><span class="s2"> arm axes plus a gripper"</span><span class="p">)</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18"></a>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19"></a>    <span class="n">home</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"home_pose"</span><span class="p">]</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Home pose out of range: </span><span class="si">{</span><span class="n">check_pose</span><span class="p">(</span><span class="n">home</span><span class="p">,</span><span class="w"> </span><span class="n">joints</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21"></a>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22"></a>    <span class="n">first_joint</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">joints</span><span class="p">))</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23"></a>    <span class="n">target</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">home</span><span class="p">)</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24"></a>    <span class="n">target</span><span class="p">[</span><span class="n">first_joint</span><span class="p">]</span> <span class="o">=</span> <span class="n">joints</span><span class="p">[</span><span class="n">first_joint</span><span class="p">][</span><span class="s2">"max_deg"</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Target out of range:    </span><span class="si">{</span><span class="n">check_pose</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">joints</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Target after clamping:  </span><span class="si">{</span><span class="n">clamp_pose</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">joints</span><span class="p">)[</span><span class="n">first_joint</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27"></a>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28"></a>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Step 5. Run it.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>python<span class="w"> </span>describe_arm.py
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>follower: 6 motors, 5 arm axes plus a gripper
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Home pose out of range: []
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Target out of range:    ['shoulder_pan']
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>Target after clamping:  110
+</span></code></pre></div>
+<p>The first line shows the SO-ARM101's five arm axes plus a gripper. The home pose is inside every limit, so the second line is an empty list. The target is 30 degrees past the <code>shoulder_pan</code> limit of 110, so <code>check_pose</code> reports it, and <code>clamp_pose</code> holds it at 110.</p>
+<p><strong>Step 6. Record your work.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Add home pose and pose-checking functions"</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span></code></pre></div>
+<h3 id="check-your-work">Check Your Work<a class="headerlink" href="#check-your-work" title="Permanent link">&para;</a></h3>
+<p>Your project is complete when all of these are true:</p>
+<ul>
+<li><code>python show_config.py</code> still prints the six joints and now loads a file that contains <code>home_pose</code>.</li>
+<li><code>python describe_arm.py</code> prints "5 arm axes plus a gripper" and an empty list for the home pose.</li>
+<li>The out-of-range target is caught as <code>shoulder_pan</code> and clamped to 110.</li>
+<li><code>git log --oneline</code> shows a second commit.</li>
+</ul>
+<h3 id="challenge-describe-the-other-arm">Challenge: Describe the Other Arm<a class="headerlink" href="#challenge-describe-the-other-arm" title="Permanent link">&para;</a></h3>
+<p>Make <code>describe_arm.py</code> accept a <code>--config</code> option, as <code>show_config.py</code> does. Then write <code>config/rebot.json</code> for a six-axis arm plus a gripper, with joints named <code>joint_1</code> to <code>joint_6</code> and <code>gripper</code>. The reBot-DevArm project does not publish joint names in the sources checked, so these names and the limits are placeholders. Run your script with both files. For the reBot file it should print "7 motors, 6 arm axes plus a gripper".</p>
+<details class="note">
+<summary>Click to see one solution</summary>
+<p>In <code>describe_arm.py</code>, import <code>argparse</code> at the top, rename <code>CONFIG</code> to <code>DEFAULT_CONFIG</code>, and replace the first line of <code>main()</code> with these lines, which are the same pattern as in <code>show_config.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"Describe an arm."</span><span class="p">)</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"--config"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_CONFIG</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a>                    <span class="n">help</span><span class="o">=</span><span class="s2">"path to the JSON configuration file"</span><span class="p">)</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="n">config</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Then create <code>config/rebot.json</code>. The values are placeholders, and the gripper has ID 7 because the arm has six joints before it:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nt">"arm_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rebot"</span><span class="p">,</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COM3"</span><span class="p">,</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nt">"baud_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span><span class="nt">"joints"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="nt">"joint_1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"min_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">-180</span><span class="p">,</span><span class="w"> </span><span class="nt">"max_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">},</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="nt">"joint_2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"min_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">-180</span><span class="p">,</span><span class="w"> </span><span class="nt">"max_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">},</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="nt">"joint_3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"min_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">-180</span><span class="p">,</span><span class="w"> </span><span class="nt">"max_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">},</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="nt">"joint_4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">"min_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">-180</span><span class="p">,</span><span class="w"> </span><span class="nt">"max_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">},</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="nt">"joint_5"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">"min_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">-180</span><span class="p">,</span><span class="w"> </span><span class="nt">"max_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">},</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="nt">"joint_6"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nt">"min_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">-180</span><span class="p">,</span><span class="w"> </span><span class="nt">"max_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">},</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="nt">"gripper"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="nt">"min_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"max_deg"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">}</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">  </span><span class="nt">"home_pose"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">    </span><span class="nt">"joint_1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"joint_2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"joint_3"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">    </span><span class="nt">"joint_4"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"joint_5"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"joint_6"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"gripper"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Run <code>python describe_arm.py --config config/rebot.json</code>. The first line prints <code>rebot: 7 motors, 6 arm axes plus a gripper</code>. The script worked on a different arm without any change to its logic, because the arm's description lives in a data file. Chapter 10 builds the same idea into a Python class, so one program can drive either arm.</p>
+</details>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">&para;</a></h2>
+<p>You now have the words to describe any robot arm, and you have described one in Python.</p>
+<ul>
+<li>A <strong>robot arm</strong> is a programmable chain of <strong>links</strong> and <strong>joints</strong>, which is why it is a <strong>serial manipulator</strong>. Joints move and links do not.</li>
+<li>A <strong>revolute joint</strong> rotates, and a <strong>prismatic joint</strong> slides. Both arms in this book use revolute joints, and the reBot's parallel gripper slides.</li>
+<li>The <strong>shoulder</strong>, <strong>elbow</strong>, and <strong>wrist</strong> are the joint groups from base to tool, and the <strong>end effector</strong>, often a <strong>gripper</strong>, is the tool at the end.</li>
+<li>A <strong>joint angle</strong> is measured from a zero position, in degrees, radians, or ticks, and it is meaningless without its zero, sign, and unit.</li>
+<li>A <strong>pose</strong> is a snapshot, either of the joint angles or of the hand's position and orientation. <strong>Joint limits</strong> bound the angles, and a <strong>home position</strong> is a safe pose you choose.</li>
+<li><strong>Degrees of freedom</strong> count the independent joints. Six place a hand anywhere in the <strong>workspace</strong>. The SO-ARM101 has five arm joints plus a gripper, and the reBot-DevArm is a <strong>six-axis arm</strong> plus a gripper.</li>
+<li>The <strong>base frame</strong> has x forward, y left, and z up. <strong>Reach</strong> is the greatest stretch from the base, and joint limits carve the workspace.</li>
+<li><strong>Payload</strong> depends on distance, because torque is mass times gravity times distance. <strong>Repeatability</strong> is how tight the landing points cluster, and <strong>accuracy</strong> is how close their average is to the target.</li>
+<li>A <strong>leader arm</strong> is moved by hand and a <strong>follower arm</strong> copies its joint angles, which is <strong>teleoperation</strong>. A <strong>bimanual robot</strong> has two working arms.</li>
+<li>A <strong>desktop robot arm</strong> is small and low-cost, and <strong>open-source hardware</strong> publishes its designs under a license, so you can build, repair, and change it.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Describe Any Arm!</p>
+<p><img alt="Servo celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just named every part of a six-axis arm, counted degrees of freedom the careful way, worked out a workspace, and described an arm as data in Python. That is the vocabulary behind every spec sheet and every line of arm code you will read. Let's move it on to Chapter 3!</p>
+</div>
+<h3 id="self-check-questions">Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permanent link">&para;</a></h3>
+<p>Test yourself before you move on. Click each question to reveal an answer.</p>
+<details class="question">
+<summary>1. A datasheet says an arm has '6 DOF'. What two questions should you ask before you assume it can place its hand at any position and orientation?</summary>
+<p>First, do the six include the gripper? If one of the six is the gripper, only five joints position the hand, and the arm cannot set all six numbers of the hand's pose independently. Second, are the six joints all single-axis revolute or prismatic joints, counted by the same rule (each independent single-axis joint counts once)?</p>
+</details>
+<details class="question">
+<summary>2. A flat two-link arm has a 10 cm upper arm and a 15 cm forearm, and both joints can turn all the way around. Can its tip reach a point 4 cm from the shoulder? Can it reach one 26 cm away?</summary>
+<p>Neither. The reachable distances run from <span class="arithmatex">\( |L_1 - L_2| = 5 \)</span> cm to <span class="arithmatex">\( L_1 + L_2 = 25 \)</span> cm. A point 4 cm away is inside the central hole, because the arm cannot fold that tightly. A point 26 cm away is beyond the full stretch of 25 cm.</p>
+</details>
+<details class="question">
+<summary>3. A leader arm's elbow reads 110 degrees, and the follower's elbow limit is 97 degrees. Where does the follower's elbow end up, and why?</summary>
+<p>At 97 degrees. The follower copies the leader's angle but holds each angle at its own joint limit, so a leader angle beyond the limit is clamped to the limit.</p>
+</details>
+<details class="question">
+<summary>4. Arm A lands within 0.3 mm of the same wrong spot every time, but that spot is 2 mm from the target. Arm B lands scattered over a 4 mm circle centered on the target. Which is more repeatable, and which is more accurate?</summary>
+<p>Arm A is more repeatable, because its landing points cluster tightly. Arm B is more accurate on average, because its landing points are centered on the target. Arm A's 2 mm error can be fixed with one correction (calibration), but Arm B's scatter cannot.</p>
+</details>
+<details class="question">
+<summary>5. Why is an arm's payload quoted 'at 70 percent of reach' and not simply as a mass?</summary>
+<p>The torque a load puts on the joints is mass times gravity times distance. The same mass is a much heavier load when held farther from the base, so a payload number only makes sense at a stated position.</p>
+</details>
+<p>In Chapter 3 you will turn from the shape of the arm to what powers it, and learn the electricity and safety rules that keep both you and your arm in one piece.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01-python-setup-for-robotics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Setting Up Python for Robotics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1. Setting Up Python for Robotics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-electricity-power-and-safety/" class="md-footer__link md-footer__link--next" aria-label="Next: 3. Electricity, Power, and Safety Basics">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3. Electricity, Power, and Safety Basics
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

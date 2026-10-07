@@ -135,10 +135,12 @@
    which otherwise stretches tall poses well past --mascot-size. */
 .md-typeset img.mascot-admonition-img {
   float: left;
-  width: var(--mascot-size);
+  /* The pose PNGs are trimmed and not square. Fix the height only and let the
+     width follow the aspect ratio; a fixed square box with object-fit: contain
+     letterboxes narrow poses and adds blank space left and right of Servo. */
+  width: auto;
   height: var(--mascot-size);
   /* margin: top right bottom left */
   margin: 0 .5em 0 0;
-  object-fit: contain;
   pointer-events: none;  /* belt-and-suspenders; real exclusion is via glightbox skip_classes */
 }
