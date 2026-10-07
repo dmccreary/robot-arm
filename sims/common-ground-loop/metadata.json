@@ -1,0 +1,97 @@
+{
+  "title": "Common Ground Loop",
+  "creator": "Dan McCreary",
+  "subject": "Electronics for Robotics",
+  "description": "A 5 V controller and a 12 V motor driver each have their own supply. Predict what the driver's input reads with and without a shared ground wire, and watch the signal's current loop appear and vanish. Used in Chapter 3.",
+  "date": "2026-10-07",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/common-ground-loop/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Common ground between a controller and a motor driver",
+    "learningObjectives": [
+      "Infer what a motor driver's signal input reads when a controller on a separate supply sends it a signal and the supplies' grounds are, or are not, joined, in five situations, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "current",
+      "voltage",
+      "common ground",
+      "power supply"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 562
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "circuit-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict or set a value first, then watch animated current confirm or correct it",
+    "keyQuestions": [
+      "Where does the signal current come back?",
+      "Why do the two positive rails stay separate?"
+    ],
+    "commonMisconceptions": [
+      "The signal wire alone is enough",
+      "Both supplies' positive rails must be joined too",
+      "A LOW signal does not need a ground reference"
+    ],
+    "assessmentOpportunities": [
+      "Five committed predictions; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Predict",
+          "Explore"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "a) b) c) choices"
+      },
+      {
+        "type": "button",
+        "label": "Next situation"
+      },
+      {
+        "type": "checkbox",
+        "label": "Ground wire connected",
+        "default": "default true"
+      },
+      {
+        "type": "button",
+        "label": "Controller output: HIGH / LOW"
+      }
+    ]
+  }
+}

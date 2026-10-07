@@ -1,0 +1,115 @@
+{
+  "title": "Fuse and E-Stop Power Path",
+  "creator": "Dan McCreary",
+  "subject": "Electronics for Robotics",
+  "description": "A 12 V supply, a fuse, an E-stop contact and an arm motor board in series. Predict whether the arm runs, the fuse blows, or the E-stop stops the arm in six situations, watch the current dots stop, then explore your own fuse, load and E-stop settings. Used in Chapter 3.",
+  "date": "2026-10-07",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/protected-power-path/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Fuses and hardware emergency stops in a power path",
+    "learningObjectives": [
+      "Infer whether a robot arm keeps running, loses power through its E-stop, or loses power because its fuse blows, in six situations, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "current",
+      "fuse",
+      "current rating",
+      "hardware E-stop",
+      "series circuit"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 562
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "circuit-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict or set a value first, then watch animated current confirm or correct it",
+    "keyQuestions": [
+      "Why does the fuse survive when the E-stop is pressed?",
+      "What would a bigger fuse do to the wires in a short circuit?"
+    ],
+    "commonMisconceptions": [
+      "A fuse blows whenever current flows",
+      "An E-stop button can blow the fuse",
+      "A larger fuse is always safer"
+    ],
+    "assessmentOpportunities": [
+      "Six committed predictions; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Predict",
+          "Explore"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "a) b) c) choices"
+      },
+      {
+        "type": "button",
+        "label": "Next situation"
+      },
+      {
+        "type": "button",
+        "label": "Press E-stop / Release E-stop"
+      },
+      {
+        "type": "button",
+        "label": "Replace fuse"
+      },
+      {
+        "type": "select",
+        "label": "Fuse",
+        "values": [
+          "5 A",
+          "10 A",
+          "15 A"
+        ]
+      },
+      {
+        "type": "checkbox",
+        "label": "Short circuit (about 40 A)"
+      },
+      {
+        "type": "slider",
+        "label": "Arm load",
+        "range": "0 to 20 amperes, step 1, default 4"
+      }
+    ]
+  }
+}

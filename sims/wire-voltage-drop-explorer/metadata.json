@@ -1,0 +1,107 @@
+{
+  "title": "Wire Voltage-Drop Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Electronics for Robotics",
+  "description": "Choose a wire gauge, a wire length and a load current for a 12 V arm supply and see how much voltage is lost in the wires, with animated current dots and wire thickness that follows the gauge. Then pick the thinnest safe wire for five loads. Used in Chapter 3.",
+  "date": "2026-10-07",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/wire-voltage-drop-explorer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Wire gauge, voltage drop and wire heating",
+    "learningObjectives": [
+      "Solve five wire-selection problems by choosing the thinnest wire gauge that keeps the voltage drop within 5% of a 12 V supply and the current within the wire's limit, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "wire gauge",
+      "AWG",
+      "voltage drop",
+      "current rating",
+      "Ohm's law"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 562
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "circuit-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict or set a value first, then watch animated current confirm or correct it",
+    "keyQuestions": [
+      "Which matters more for a long run: gauge or length?",
+      "Why is the drop counted over the lead and the return wire?"
+    ],
+    "commonMisconceptions": [
+      "Any wire that fits the connector is fine",
+      "A thinner wire is always safe if the current is small",
+      "Wire loses no voltage"
+    ],
+    "assessmentOpportunities": [
+      "Five committed gauges; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Challenges"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Wire gauge",
+        "values": [
+          "AWG 14",
+          "AWG 16",
+          "AWG 18",
+          "AWG 20",
+          "AWG 22",
+          "AWG 24"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Length (one way)",
+        "range": "0.5 to 5 metres, step 0.5, default 2"
+      },
+      {
+        "type": "slider",
+        "label": "Load current",
+        "range": "1 to 8 amperes, step 0.5, default 3"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next challenge"
+      }
+    ]
+  }
+}
