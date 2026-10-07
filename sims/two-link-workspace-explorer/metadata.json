@@ -1,0 +1,117 @@
+{
+  "title": "Two-Link Workspace Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Seven reachability problems for a flat two-link arm: decide whether the tip can reach a target, given the link lengths and an elbow limit. Afterwards, an explore mode lets you change both links and the elbow limit and watch the reachable ring change shape. Used in Chapter 2.",
+  "date": "2026-10-07",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/two-link-workspace-explorer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Workspace and reach of a two-link arm",
+    "learningObjectives": [
+      "Solve seven reachability problems for a flat two-link arm by deciding whether a target point lies inside the arm's workspace, with at least 6 of 7 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "link",
+      "joint limits",
+      "base frame",
+      "workspace",
+      "reach"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 660
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Calculate, commit, then see the arm try: the ring is hidden until the learner commits",
+    "keyQuestions": [
+      "What is r, and is it between |L1 - L2| and L1 + L2?",
+      "How much does the elbow have to bend, and does its limit allow that?"
+    ],
+    "commonMisconceptions": [
+      "Any point closer than the reach can be touched",
+      "Joint limits do not change what the arm can reach",
+      "The workspace is a single number"
+    ],
+    "assessmentOpportunities": [
+      "Seven committed Reachable / Not reachable answers; 6 of 7 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Problems",
+          "Explore"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Reachable"
+      },
+      {
+        "type": "button",
+        "label": "Not reachable"
+      },
+      {
+        "type": "button",
+        "label": "Next problem"
+      },
+      {
+        "type": "slider",
+        "label": "L1",
+        "range": "5-20 cm",
+        "default": 10
+      },
+      {
+        "type": "slider",
+        "label": "L2",
+        "range": "5-20 cm",
+        "default": 15
+      },
+      {
+        "type": "slider",
+        "label": "Elbow min",
+        "range": "-180 to 0 degrees",
+        "default": -180
+      },
+      {
+        "type": "slider",
+        "label": "Elbow max",
+        "range": "0 to 180 degrees",
+        "default": 180
+      }
+    ]
+  }
+}

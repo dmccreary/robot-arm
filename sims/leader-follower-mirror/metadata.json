@@ -1,0 +1,113 @@
+{
+  "title": "Leader and Follower Mirror",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Six scenarios in which you predict where a follower arm's joint ends up when it copies a leader arm, stops at its own joint limits, and adds any calibration error. Afterwards, a free mode lets you move the leader's shoulder pan, elbow flex and wrist roll. Used in Chapter 2.",
+  "date": "2026-10-07",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/leader-follower-mirror/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Leader and follower arms, joint limits and calibration error",
+    "learningObjectives": [
+      "Infer the follower arm's joint angle from the leader's angle, the follower's joint limits, and its calibration error, in six scenarios, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "leader arm",
+      "follower arm",
+      "teleoperation",
+      "joint angle",
+      "joint limits",
+      "calibration error"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 720
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict before the follower moves, then watch it confirm or correct the prediction",
+    "keyQuestions": [
+      "Is the leader's angle inside the follower's limits?",
+      "Is the follower calibrated the same way as the leader?"
+    ],
+    "commonMisconceptions": [
+      "The follower always matches the leader exactly",
+      "Calibration does not affect the copy",
+      "The follower works out where the hand should go"
+    ],
+    "assessmentOpportunities": [
+      "Six committed angle choices; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Scenarios",
+          "Free mode"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "a) b) c) choices"
+      },
+      {
+        "type": "button",
+        "label": "Next scenario"
+      },
+      {
+        "type": "slider",
+        "label": "Leader pan",
+        "range": "-180 to 180 degrees",
+        "default": 0
+      },
+      {
+        "type": "slider",
+        "label": "Leader elbow",
+        "range": "-180 to 180 degrees",
+        "default": 0
+      },
+      {
+        "type": "slider",
+        "label": "Leader roll",
+        "range": "-180 to 180 degrees",
+        "default": 0
+      },
+      {
+        "type": "checkbox",
+        "label": "Calibration error +8 degrees",
+        "default": false
+      }
+    ]
+  }
+}

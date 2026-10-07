@@ -6,30 +6,34 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+        <meta name="description" content="Six scenarios in which you predict where a follower arm's joint ends up when it copies a leader arm, stops at its own joint limits, and adds any calibration error. Afterwards, a free mode lets you move the leader's shoulder pan, elbow flex and wrist roll. Used in Chapter 2.">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/img/mascot/character-sheet/">
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/sims/leader-follower-mirror/">
       
       
+        <link rel="prev" href="../two-link-workspace-explorer/">
       
       
-      <link rel="icon" href="../../favicon.ico">
+        <link rel="next" href="../../appendices/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>Character Sheet: Servo the Robot Arm - Controlling a Robot Arm</title>
+        <title>Leader and Follower Mirror - Controlling a Robot Arm</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,20 +52,22 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-      <link rel="stylesheet" href="../../../css/mascot.css">
+      <link rel="stylesheet" href="../../css/mascot.css">
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  </head>
+    <meta property="og:image" content="https://dmccreary.github.io/robot-arm/sims/leader-follower-mirror/leader-follower-mirror.png">
+  <meta name="twitter:image" content="https://dmccreary.github.io/robot-arm/sims/leader-follower-mirror/leader-follower-mirror.png">
+</head>
   
   
     
@@ -78,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#character-sheet-servo-the-robot-arm" class="md-skip">
+        <a href="#leader-and-follower-mirror" class="md-skip">
           Skip to content
         </a>
       
@@ -94,9 +100,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
-  <img src="../../logo.png" alt="logo">
+  <img src="../../img/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -113,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Character Sheet: Servo the Robot Arm
+              Leader and Follower Mirror
             
           </span>
         </div>
@@ -207,9 +213,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
-  <img src="../../logo.png" alt="logo">
+  <img src="../../img/logo.png" alt="logo">
 
     </a>
     Controlling a Robot Arm
@@ -236,7 +242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -256,7 +262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -276,7 +282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../course-description/" class="md-nav__link">
+      <a href="../../course-description/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -296,7 +302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../procurement-notes/" class="md-nav__link">
+      <a href="../../procurement-notes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -411,7 +417,7 @@
         
   
   
-    <a href="../../../chapters/" class="md-nav__link">
+    <a href="../../chapters/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -468,7 +474,7 @@
         
   
   
-    <a href="../../../learning-graph/" class="md-nav__link">
+    <a href="../../learning-graph/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -491,62 +497,291 @@
       
   
   
+    
   
   
-    
-    
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
-  
-    <a href="../../../sims/" class="md-nav__link">
+    
+    
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     MicroSims
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            MicroSims
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph Viewer
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pwm-vs-bus-servos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hobby PWM Servo vs. Serial Bus Servo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../robot-arm-part-identifier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Arm Part Identifier
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../two-link-workspace-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-Link Workspace Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Leader and Follower Mirror
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Leader and Follower Mirror
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -582,7 +817,7 @@
         
   
   
-    <a href="../../../appendices/" class="md-nav__link">
+    <a href="../../appendices/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -608,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../license/" class="md-nav__link">
+      <a href="../../license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -628,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../contact/" class="md-nav__link">
+      <a href="../../contact/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -668,54 +903,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#identity" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Identity
+      Description
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#visual-description" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Visual Description
+      Lesson Plan
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#personality" class="md-nav__link">
+  <a href="#specification" class="md-nav__link">
     <span class="md-ellipsis">
-      Personality
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#voice" class="md-nav__link">
-    <span class="md-ellipsis">
-      Voice
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pose-set" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pose Set
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-this-mascot" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why This Mascot
+      Specification
     </span>
   </a>
   
@@ -736,7 +944,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/img/mascot/character-sheet.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/sims/leader-follower-mirror/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -744,106 +952,37 @@
   
 
 
-<h1 id="character-sheet-servo-the-robot-arm">Character Sheet: Servo the Robot Arm<a class="headerlink" href="#character-sheet-servo-the-robot-arm" title="Permanent link">&para;</a></h1>
-<p>The canonical identity document for Servo, the pedagogical mascot for the
-<strong>Controlling a Robot Arm</strong> textbook. Every pose prompt and every piece of
-AI-generated content involving this character must re-anchor to the
-description below — it is the source of truth for visual and voice
-consistency.</p>
-<h2 id="identity">Identity<a class="headerlink" href="#identity" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Name:</strong> Servo</li>
-<li><strong>Species:</strong> Robot Arm</li>
-<li><strong>Subject:</strong> Python programming and low-cost robot arms</li>
-<li><strong>Catchphrase:</strong> "Let's move it!"</li>
-</ul>
-<h2 id="visual-description">Visual Description<a class="headerlink" href="#visual-description" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Body color:</strong> Warm orange — hex <code>#F57C00</code></li>
-<li><strong>Accent color:</strong> Indigo — hex <code>#3F51B5</code> (matches the book's indigo theme)</li>
-<li><strong>Face screen:</strong> Soft cream — hex <code>#FFF8E1</code>, with two big round dark-navy eyes (white highlights) and a gentle smile</li>
-<li><strong>Clothing / accessories:</strong> None. Small indigo bolts on the joint caps; a round indigo base disc instead of legs.</li>
-<li><strong>Anatomy:</strong> A round orange head with a cream face screen, a short rounded orange torso on a round indigo base disc, and <strong>one</strong> long articulated arm (two thick orange segments joined by round indigo shoulder, elbow, and wrist caps) ending in a two-finger parallel gripper that serves as Servo's hand. No legs, no second arm.</li>
-<li><strong>Expression:</strong> Friendly, curious, and patient</li>
-<li><strong>Size proportion:</strong> Compact and chibi-proportioned, sized to read clearly at about 90 px</li>
-<li><strong>Art style:</strong> Modern flat vector with clean, consistent dark-indigo outlines and soft, simple shading</li>
-</ul>
-<h2 id="personality">Personality<a class="headerlink" href="#personality" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Curious — always wants to see what happens when the code runs</li>
-<li>Patient — happy to repeat a step until it clicks</li>
-<li>Safety-minded — gently careful around power switches and moving parts</li>
-<li>Playful — celebrates small wins and loves a servo pun</li>
-</ul>
-<h2 id="voice">Voice<a class="headerlink" href="#voice" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Speaks in short, encouraging sentences aimed at readers aged 12 and up</li>
-<li>Uses movement and robot-arm metaphors (joints, angles, "one degree at a time")</li>
-<li>Calls readers "builders" and treats mistakes as normal calibration</li>
-<li>Signature phrases: "Let's move it!", "One joint at a time.", "Simulate first, then power on."</li>
-</ul>
-<h2 id="pose-set">Pose Set<a class="headerlink" href="#pose-set" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Pose</th>
-<th>Filename</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Neutral</td>
-<td><code>neutral.png</code></td>
-<td>General-purpose / sidebars</td>
-</tr>
-<tr>
-<td>Welcome</td>
-<td><code>welcome.png</code></td>
-<td>Chapter openings</td>
-</tr>
-<tr>
-<td>Thinking</td>
-<td><code>thinking.png</code></td>
-<td>Key concepts</td>
-</tr>
-<tr>
-<td>Tip</td>
-<td><code>tip.png</code></td>
-<td>Hints and helpful guidance</td>
-</tr>
-<tr>
-<td>Warning</td>
-<td><code>warning.png</code></td>
-<td>Common mistakes / pitfalls</td>
-</tr>
-<tr>
-<td>Encouraging</td>
-<td><code>encouraging.png</code></td>
-<td>Difficult content / struggle</td>
-</tr>
-<tr>
-<td>Celebration</td>
-<td><code>celebration.png</code></td>
-<td>End of chapter / achievements</td>
-</tr>
-</tbody>
-</table>
-<p>See <a href="../image-prompts/"><code>image-prompts.md</code></a> for the full text of each pose
-prompt. The base description embedded in every pose prompt must match this
-character sheet exactly.</p>
-<h2 id="why-this-mascot">Why This Mascot<a class="headerlink" href="#why-this-mascot" title="Permanent link">&para;</a></h2>
-<p>A robot arm is the book's subject, so the mascot teaches by example: its single
-gripper hand waves, points, and gives a thumbs-up the same way the readers'
-SO-ARM101 will. The name <em>Servo</em> honors the servo motors that drive every joint,
-is short and easy to remember for a 12-year-old, and is gender-neutral. Orange
-and indigo match the site's accent and primary colors.</p>
+<h1 id="leader-and-follower-mirror">Leader and Follower Mirror<a class="headerlink" href="#leader-and-follower-mirror" title="Permanent link">&para;</a></h1>
+<iframe src="main.html" height="722px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="main.html">Run the Leader and Follower Mirror MicroSim Fullscreen</a></p>
+<p>You can include this MicroSim on your website using the following <code>iframe</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/robot-arm/sims/leader-follower-mirror/main.html"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        <span class="na">height</span><span class="o">=</span><span class="s">"722px"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Six scenarios in which you predict where a follower arm's joint ends up when it copies a leader arm, stops at its own joint limits, and adds any calibration error. Afterwards, a free mode lets you move the leader's shoulder pan, elbow flex and wrist roll. Used in Chapter 2.</p>
+<h2 id="lesson-plan">Lesson Plan<a class="headerlink" href="#lesson-plan" title="Permanent link">&para;</a></h2>
+<p><strong>Grade level:</strong> Middle school and up (age 12+).  <strong>Time:</strong> 10 to 15 minutes.</p>
+<ol>
+<li><strong>Predict first.</strong> Read the scenario, choose one of three angles, and commit. The arms move only after you answer.</li>
+<li><strong>Apply the rule in order.</strong> Copy the leader's angle, hold it at the follower's limit if it is outside, then add any calibration error.</li>
+<li><strong>Read the gauges.</strong> Shoulder pan and wrist roll cannot be seen in a side view, so each has a gauge. The shaded wedge on the follower's gauge is its allowed range, and a small tick shows the commanded angle when there is a calibration error.</li>
+<li><strong>Free mode.</strong> After the six scenarios, move the leader's joints past the follower's limits and switch the calibration error on and off.</li>
+</ol>
+<p>The pictures are <strong>schematics</strong>, drawn with the shared <a href="https://github.com/dmccreary/robot-arm/tree/main/skills/robot-arm-drawing">robot-arm drawing library</a>.</p>
+<h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h2>
+<p>The learning objective, evidence of mastery and content for this MicroSim are specified in
+<a href="../../chapters/02-anatomy-of-a-robot-arm/">Chapter 2: Anatomy of a Robot Arm</a>.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -869,6 +1008,44 @@ and indigo match the site's accent and primary colors.</p>
         <footer class="md-footer">
   
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../two-link-workspace-explorer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Two-Link Workspace Explorer">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Two-Link Workspace Explorer
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../appendices/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Appendices">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                List of Appendices
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -891,12 +1068,12 @@ and indigo match the site's accent and primary colors.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../../js/katex.js"></script>
+        <script src="../../js/katex.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
       

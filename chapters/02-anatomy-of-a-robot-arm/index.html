@@ -1413,6 +1413,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -2820,6 +2828,9 @@ A workspace is not one number. It is a shape, and every joint limit takes a bite
 <p>The <strong>reach</strong> of an arm is the greatest distance it can stretch from its base. For the flat two-link arm, the reach is <span class="arithmatex">\( L_1 + L_2 \)</span>, or 25 cm. Spec sheets must say where reach is measured. The reBot-DevArm B601's project lists a reach of 767 mm with the gripper and 607 mm without it, a difference of 160 mm that comes only from where you stop measuring.</p>
 <p>In this MicroSim, you will solve seven reachability problems for a flat two-link arm. Each gives the link lengths, the elbow limit, and a target point. You decide whether the tip can reach the target. After the seven problems, an exploration mode lets you change the links and the elbow limit and watch the workspace change shape.</p>
 <h4 id="diagram-two-link-workspace-explorer">Diagram: Two-Link Workspace Explorer<a class="headerlink" href="#diagram-two-link-workspace-explorer" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/two-link-workspace-explorer/main.html" height="662px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/two-link-workspace-explorer/main.html">Run the Two-Link Workspace Explorer MicroSim fullscreen</a></p>
 <details>
 <summary>Two-Link Workspace Explorer</summary>
 <p>Type: microsim
@@ -3253,6 +3264,9 @@ The follower never calculates where the hand should go. It copies the leader's <
 </div>
 <p>Two things can make the follower differ from the leader. If a leader angle is outside the follower's limits, the follower stops at its limit. If the two arms were calibrated differently, the follower's physical angle is off by the difference, called a <strong>calibration error</strong>. In the next MicroSim, you predict the follower's joint angle in six scenarios. Use the copy rule, the limits, and any calibration error.</p>
 <h4 id="diagram-leader-and-follower-mirror">Diagram: Leader and Follower Mirror<a class="headerlink" href="#diagram-leader-and-follower-mirror" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/leader-follower-mirror/main.html" height="722px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/leader-follower-mirror/main.html">Run the Leader and Follower Mirror MicroSim fullscreen</a></p>
 <details>
 <summary>Leader and Follower Mirror</summary>
 <p>Type: microsim
