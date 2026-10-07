@@ -67,9 +67,8 @@ nav:
 # Theme configuration
 theme:
   name: material
-  # Once a logo is generated, point this at docs/img/logo.png or a mascot pose:
-  # logo: img/logo.png
-  # favicon: img/favicon.ico
+  logo: img/logo.png
+  favicon: img/favicon.ico
   palette:
     primary: 'indigo'
     accent: 'orange'
