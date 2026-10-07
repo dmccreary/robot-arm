@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Visual and pixel-level transparency and trim-border checks for all seven Servo mascot poses.">
+        <meta name="description" content="Why a hobby PWM servo such as the MG995 cannot replace the STS3215 serial bus servos in an SO-ARM100/101 robot arm, with an interactive MicroSim.">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/learning-graph/mascot-test/">
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/appendices/pwm-servos/">
       
       
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../course-description-assessment/">
+        <link rel="next" href="../../license/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Servo Mascot Image Test - Controlling a Robot Arm</title>
+        <title>Appendix A: Why Hobby PWM Servos Won't Work with the SO-ARM - Controlling a Robot Arm</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#servo-mascot-image-test" class="md-skip">
+        <a href="#appendix-a-why-hobby-pwm-servos-wont-work-with-the-so-arm" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Servo Mascot Image Test
+              Appendix A: Why Hobby PWM Servos Won't Work with the SO-ARM
             
           </span>
         </div>
@@ -205,8 +205,6 @@
         <div class="md-main__inner md-grid">
           
             
-              
-                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -406,8 +404,6 @@
       
   
   
-    
-  
   
   
     
@@ -434,17 +430,18 @@
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -458,256 +455,12 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Learning Graph
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Mascot Test
+    </a>
   
 
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Mascot Test
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mascot-admonitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mascot admonitions
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../course-description-assessment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Course Description Assessment
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concept-list/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concept Enumeration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concept-taxonomy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concept Taxonomy
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../quality-metrics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Graph Quality Analysis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../taxonomy-distribution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Taxonomy Distribution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -775,6 +528,8 @@
       
   
   
+    
+  
   
   
     
@@ -791,18 +546,17 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../appendices/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -816,12 +570,221 @@
   
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
   
 
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. Why PWM Servos Won't Work
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. Why PWM Servos Won't Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-a-hobby-servo-listens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a Hobby Servo Listens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-a-bus-servo-listens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a Bus Servo Listens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-swap-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the Swap Fails
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why the Swap Fails">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a-leader-arm-is-only-useful-if-you-can-read-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A Leader Arm Is Only Useful If You Can Read It
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-software-speaks-a-different-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Software Speaks a Different Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-hardware-does-not-fit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Hardware Does Not Fit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side by Side
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-mg995-servos-are-good-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What MG995 Servos Are Good For
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -889,9 +852,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -910,10 +871,115 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mascot-admonitions" class="md-nav__link">
+  <a href="#how-a-hobby-servo-listens" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mascot admonitions
+        How a Hobby Servo Listens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-a-bus-servo-listens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a Bus Servo Listens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-swap-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the Swap Fails
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why the Swap Fails">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a-leader-arm-is-only-useful-if-you-can-read-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A Leader Arm Is Only Useful If You Can Read It
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-software-speaks-a-different-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Software Speaks a Different Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-hardware-does-not-fit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Hardware Does Not Fit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side by Side
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-mg995-servos-are-good-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What MG995 Servos Are Good For
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Check
       
     </span>
   </a>
@@ -932,8 +998,6 @@
             <div class="md-content" data-md-component="content">
               
                 
-
-  
 
 
 
@@ -968,7 +1032,7 @@
         <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    Learning Graph
+    Appendices
   </span>
 
         </a>
@@ -984,12 +1048,10 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-
 
 
   
-    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/learning-graph/mascot-test.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/appendices/pwm-servos/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -997,248 +1059,157 @@
   
 
 
-<h1 id="servo-mascot-image-test">Servo Mascot Image Test<a class="headerlink" href="#servo-mascot-image-test" title="Permanent link">&para;</a></h1>
-<p>This page tests every production mascot PNG in two ways:</p>
+<h1 id="appendix-a-why-hobby-pwm-servos-wont-work-with-the-so-arm">Appendix A: Why Hobby PWM Servos Won't Work with the SO-ARM<a class="headerlink" href="#appendix-a-why-hobby-pwm-servos-wont-work-with-the-so-arm" title="Permanent link">&para;</a></h1>
+<p>If you already own a few hobby servos, such as the popular MG995, it is
+tempting to try them in the SO-ARM100/101. Don't. Strength is not the problem.
+The problem is <strong>information</strong>: the SO-ARM and the LeRobot software that drives
+it depend on each servo <em>reporting back</em>, and a hobby PWM servo has no wire to
+do that.</p>
+<div class="admonition note">
+<p class="admonition-title">Short answer</p>
+<p>A hobby PWM servo accepts a target angle and never tells you anything in
+return. A leader/follower arm needs to read the leader's joint angles, and
+LeRobot needs to record where each follower joint actually is. An MG995
+can do neither.</p>
+</div>
+<h2 id="how-a-hobby-servo-listens">How a Hobby Servo Listens<a class="headerlink" href="#how-a-hobby-servo-listens" title="Permanent link">&para;</a></h2>
+<p>A hobby servo has three wires: power, ground, and one signal wire. The
+controller sends a short pulse about every 20 ms (50 Hz). The pulse width,
+typically between 1 ms and 2 ms, is the target angle: a short pulse means one
+end of travel and a long pulse means the other.</p>
+<p>Inside the case, a potentiometer on the output shaft feeds a small analog
+circuit that drives the motor until the shaft matches the pulse. So a hobby
+servo <em>does</em> have a feedback loop. It is just sealed inside. The reading never
+leaves the case, which makes the loop closed inside and open from the outside.</p>
+<h2 id="how-a-bus-servo-listens">How a Bus Servo Listens<a class="headerlink" href="#how-a-bus-servo-listens" title="Permanent link">&para;</a></h2>
+<p>The STS3215 puts a microcontroller and a magnetic encoder inside the case. The
+encoder resolves 4096 steps per turn, about 0.09° per step. All the servos on an
+arm share a single three-wire cable and talk over a half-duplex serial protocol.
+Each servo has its own ID, set once during assembly. The controller can:</p>
+<ul>
+<li>write a goal position to servo 3</li>
+<li>read servo 3's present position, load, voltage, and temperature</li>
+<li>switch servo 3's torque off so a person can move it by hand</li>
+</ul>
+<h2 id="try-it">Try It<a class="headerlink" href="#try-it" title="Permanent link">&para;</a></h2>
+<iframe src="../../sims/pwm-vs-bus-servos/main.html" height="592px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/pwm-vs-bus-servos/main.html">Open the MicroSim fullscreen</a></p>
+<p>Work through the three views in order, and predict before you touch a control.</p>
 <ol>
-<li>Each image is drawn over checkerboard and dark backgrounds so opaque boxes,
-   halos, and edge contamination are easy to spot.</li>
-<li>A browser-side pixel test checks for an RGBA transparency region, transparent
-   corners, and the <strong>4 px content border</strong> produced by
-   <code>trim-padding-from-image.py</code> (using the script's alpha threshold of 10).</li>
+<li><strong>Command and readback.</strong> Before you move the load slider, predict what each
+   panel will show when the arm is pushed well short of its goal. Then check.</li>
+<li><strong>Leader and follower.</strong> Drag the gold handle. Which follower moves, and why?</li>
+<li><strong>Wiring.</strong> Slide the joint count to 6. How many timing channels does a
+   leader and follower pair need for each servo type?</li>
 </ol>
-<div id="mascot-test-summary" class="mascot-test-summary" role="status">
-  Running pixel checks…
+<h2 id="why-the-swap-fails">Why the Swap Fails<a class="headerlink" href="#why-the-swap-fails" title="Permanent link">&para;</a></h2>
+<h3 id="1-a-leader-arm-is-only-useful-if-you-can-read-it">1. A Leader Arm Is Only Useful If You Can Read It<a class="headerlink" href="#1-a-leader-arm-is-only-useful-if-you-can-read-it" title="Permanent link">&para;</a></h3>
+<p>Teleoperation in the SO-ARM101 is one short loop, repeated many times a second.
+This sketch is pseudocode, not the LeRobot API:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># One step of leader/follower teleoperation (pseudocode)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">leader_angles</span> <span class="o">=</span> <span class="n">read_angles</span><span class="p">(</span><span class="n">leader_bus</span><span class="p">)</span>       <span class="c1"># needs readback</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">write_goals</span><span class="p">(</span><span class="n">follower_bus</span><span class="p">,</span> <span class="n">leader_angles</span><span class="p">)</span>      <span class="c1"># sends goals</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">follower_angles</span> <span class="o">=</span> <span class="n">read_angles</span><span class="p">(</span><span class="n">follower_bus</span><span class="p">)</span>   <span class="c1"># needs readback again</span>
+</span></code></pre></div>
+<p>The first line has no PWM equivalent. The third one matters for learning:
+LeRobot records the leader's joints as the <code>action</code> and the follower's measured
+joints as the <code>observation.state</code>. With PWM servos the measured joints would
+simply be a copy of the commanded ones. The policy would learn from what the
+arm was <em>told</em> to do, not from what it <em>did</em>, and the two diverge exactly when
+the arm touches or lifts something, which is when the data matters most.</p>
+<h3 id="2-the-software-speaks-a-different-protocol">2. The Software Speaks a Different Protocol<a class="headerlink" href="#2-the-software-speaks-a-different-protocol" title="Permanent link">&para;</a></h3>
+<p>LeRobot's motor layer talks to Feetech serial bus servos through a bus adapter
+board and a USB serial port. Its calibration step moves each joint through its
+range by hand with torque off, then records the raw position limits. A PWM servo
+cannot be read, so there is no raw position to record, and there is no driver
+that would turn a PWM channel into a LeRobot motor bus.</p>
+<h3 id="3-the-hardware-does-not-fit">3. The Hardware Does Not Fit<a class="headerlink" href="#3-the-hardware-does-not-fit" title="Permanent link">&para;</a></h3>
+<p>The printed brackets are sized for the STS3215 body and horn, and an MG995 is
+larger. Each arm needs six PWM channels (twelve for a pair) instead of one
+cable per arm. The voltage can also be a problem: the bus board supplies the
+servo supply voltage on the power pin of every connector, and a 12 V supply
+will damage a servo rated for 6 V or 7.2 V. The 3-pin connectors look similar
+but do not carry the same signals.</p>
+<h2 id="side-by-side">Side by Side<a class="headerlink" href="#side-by-side" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MG995-class hobby servo</th>
+<th>STS3215 bus servo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Command</td>
+<td>Pulse width, 1 to 2 ms every 20 ms</td>
+<td>Serial packet addressed by ID</td>
+</tr>
+<tr>
+<td>Reports back</td>
+<td>Nothing</td>
+<td>Position, speed, load, voltage, temperature</td>
+</tr>
+<tr>
+<td>Position resolution</td>
+<td>Analog potentiometer plus deadband, commonly about a degree or worse</td>
+<td>4096 steps per turn, about 0.09°</td>
+</tr>
+<tr>
+<td>Wires for a 6-joint arm</td>
+<td>6 signal wires plus power</td>
+<td>1 shared cable</td>
+</tr>
+<tr>
+<td>Torque off by command</td>
+<td>No, only by removing power or signal</td>
+<td>Yes, per servo</td>
+</tr>
+<tr>
+<td>Works with LeRobot</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Check the datasheet</p>
+<p>These are typical values. Hobby servo clones vary widely between vendors,
+and the STS3215 comes in several voltage and gear-ratio variants. Confirm
+the numbers for the exact parts you buy.</p>
 </div>
-
-<div class="mascot-test-grid">
-  <article class="mascot-test-card" data-name="Neutral" data-src="../../img/mascot/neutral.png">
-    <h2>Neutral</h2>
-    <div class="mascot-test-swatches">
-      <div class="mascot-test-swatch checker"><img src="../../img/mascot/neutral.png" alt="Servo in a neutral pose on a checkerboard transparency test"></div>
-      <div class="mascot-test-swatch dark"><img src="../../img/mascot/neutral.png" alt="Servo in a neutral pose on a dark transparency test"></div>
-    </div>
-    <p class="mascot-test-result">Waiting for pixel test…</p>
-  </article>
-
-  <article class="mascot-test-card" data-name="Welcome" data-src="../../img/mascot/welcome.png">
-    <h2>Welcome</h2>
-    <div class="mascot-test-swatches">
-      <div class="mascot-test-swatch checker"><img src="../../img/mascot/welcome.png" alt="Servo waving on a checkerboard transparency test"></div>
-      <div class="mascot-test-swatch dark"><img src="../../img/mascot/welcome.png" alt="Servo waving on a dark transparency test"></div>
-    </div>
-    <p class="mascot-test-result">Waiting for pixel test…</p>
-  </article>
-
-  <article class="mascot-test-card" data-name="Thinking" data-src="../../img/mascot/thinking.png">
-    <h2>Thinking</h2>
-    <div class="mascot-test-swatches">
-      <div class="mascot-test-swatch checker"><img src="../../img/mascot/thinking.png" alt="Servo thinking on a checkerboard transparency test"></div>
-      <div class="mascot-test-swatch dark"><img src="../../img/mascot/thinking.png" alt="Servo thinking on a dark transparency test"></div>
-    </div>
-    <p class="mascot-test-result">Waiting for pixel test…</p>
-  </article>
-
-  <article class="mascot-test-card" data-name="Tip" data-src="../../img/mascot/tip.png">
-    <h2>Tip</h2>
-    <div class="mascot-test-swatches">
-      <div class="mascot-test-swatch checker"><img src="../../img/mascot/tip.png" alt="Servo pointing upward on a checkerboard transparency test"></div>
-      <div class="mascot-test-swatch dark"><img src="../../img/mascot/tip.png" alt="Servo pointing upward on a dark transparency test"></div>
-    </div>
-    <p class="mascot-test-result">Waiting for pixel test…</p>
-  </article>
-
-  <article class="mascot-test-card" data-name="Warning" data-src="../../img/mascot/warning.png">
-    <h2>Warning</h2>
-    <div class="mascot-test-swatches">
-      <div class="mascot-test-swatch checker"><img src="../../img/mascot/warning.png" alt="Servo warning the reader on a checkerboard transparency test"></div>
-      <div class="mascot-test-swatch dark"><img src="../../img/mascot/warning.png" alt="Servo warning the reader on a dark transparency test"></div>
-    </div>
-    <p class="mascot-test-result">Waiting for pixel test…</p>
-  </article>
-
-  <article class="mascot-test-card" data-name="Encouraging" data-src="../../img/mascot/encouraging.png">
-    <h2>Encouraging</h2>
-    <div class="mascot-test-swatches">
-      <div class="mascot-test-swatch checker"><img src="../../img/mascot/encouraging.png" alt="Servo giving a thumbs-up on a checkerboard transparency test"></div>
-      <div class="mascot-test-swatch dark"><img src="../../img/mascot/encouraging.png" alt="Servo giving a thumbs-up on a dark transparency test"></div>
-    </div>
-    <p class="mascot-test-result">Waiting for pixel test…</p>
-  </article>
-
-  <article class="mascot-test-card" data-name="Celebration" data-src="../../img/mascot/celebration.png">
-    <h2>Celebration</h2>
-    <div class="mascot-test-swatches">
-      <div class="mascot-test-swatch checker"><img src="../../img/mascot/celebration.png" alt="Servo celebrating on a checkerboard transparency test"></div>
-      <div class="mascot-test-swatch dark"><img src="../../img/mascot/celebration.png" alt="Servo celebrating on a dark transparency test"></div>
-    </div>
-    <p class="mascot-test-result">Waiting for pixel test…</p>
-  </article>
-</div>
-
-<noscript>
-JavaScript is required for the pixel-level checks. The visual transparency
-swatches above still work without it.
-</noscript>
-
-<h2 id="mascot-admonitions">Mascot admonitions<a class="headerlink" href="#mascot-admonitions" title="Permanent link">&para;</a></h2>
-<div class="admonition mascot-neutral">
-<p class="admonition-title">General Note</p>
-<p><img alt="Servo neutral pose" class="mascot-admonition-img" src="../../img/mascot/neutral.png" />
-This is the neutral style, used for general sidebars or introductions.</p>
-</div>
-<div class="admonition mascot-welcome">
-<p class="admonition-title">Welcome!</p>
-<p><img alt="Servo waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
-This is the welcome style, used at chapter openings.</p>
-</div>
-<div class="admonition mascot-thinking">
-<p class="admonition-title">Key Insight</p>
-<p><img alt="Servo thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
-This is the thinking style, used for key concepts.</p>
-</div>
-<div class="admonition mascot-tip">
-<p class="admonition-title">Helpful Tip</p>
-<p><img alt="Servo giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
-This is the tip style, used for hints and advice.</p>
-</div>
-<div class="admonition mascot-warning">
-<p class="admonition-title">Watch Out!</p>
-<p><img alt="Servo warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
-This is the warning style, used for common mistakes.</p>
-</div>
-<div class="admonition mascot-encourage">
-<p class="admonition-title">Keep Going!</p>
-<p><img alt="Servo encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
-This is the encouraging style, used for difficult content.</p>
-</div>
-<div class="admonition mascot-celebration">
-<p class="admonition-title">Well Done!</p>
-<p><img alt="Servo celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
-This is the celebration style, used for achievements.</p>
-</div>
-<style>
-.mascot-test-summary {
-  margin: 1rem 0;
-  padding: .75rem 1rem;
-  border: 2px solid #546e7a;
-  border-radius: .4rem;
-  font-weight: 700;
-}
-.mascot-test-summary.pass { border-color: #2e7d32; background: #e8f5e9; color: #1b5e20; }
-.mascot-test-summary.fail { border-color: #c62828; background: #ffebee; color: #b71c1c; }
-.mascot-test-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 1rem;
-}
-.mascot-test-card {
-  margin: 0;
-  padding: .8rem;
-  border: 2px solid #90a4ae;
-  border-radius: .5rem;
-}
-.mascot-test-card.pass { border-color: #43a047; }
-.mascot-test-card.fail { border-color: #e53935; }
-.mascot-test-card h2 { margin: 0 0 .6rem; }
-.mascot-test-swatches { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-.mascot-test-swatch {
-  display: grid;
-  place-items: center;
-  min-height: 13rem;
-  padding: .5rem;
-  overflow: hidden;
-  border: 1px solid rgba(127, 127, 127, .5);
-}
-.mascot-test-swatch.checker {
-  background-color: #fff;
-  background-image:
-    linear-gradient(45deg, #cfd8dc 25%, transparent 25%),
-    linear-gradient(-45deg, #cfd8dc 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #cfd8dc 75%),
-    linear-gradient(-45deg, transparent 75%, #cfd8dc 75%);
-  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
-  background-size: 16px 16px;
-}
-.mascot-test-swatch.dark { background: #17131f; }
-.mascot-test-swatch img { display: block; width: 100%; height: 12rem; object-fit: contain; }
-.mascot-test-result { margin: .7rem 0 0; font-size: .82rem; line-height: 1.45; }
-.mascot-test-result strong { display: inline-block; margin-right: .25rem; }
-</style>
-
-<script>
-(() => {
-  const threshold = 10;
-  const expectedBorder = 4;
-  const cards = [...document.querySelectorAll('.mascot-test-card[data-src]')];
-  const summary = document.getElementById('mascot-test-summary');
-
-  function inspect(card) {
-    return new Promise((resolve) => {
-      const image = new Image();
-      image.onload = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = image.naturalWidth;
-        canvas.height = image.naturalHeight;
-        const context = canvas.getContext('2d', { willReadFrequently: true });
-        context.drawImage(image, 0, 0);
-        const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
-        let minX = canvas.width;
-        let minY = canvas.height;
-        let maxX = -1;
-        let maxY = -1;
-        let transparent = 0;
-
-        for (let y = 0; y < canvas.height; y += 1) {
-          for (let x = 0; x < canvas.width; x += 1) {
-            const alpha = pixels[((y * canvas.width + x) * 4) + 3];
-            if (alpha === 0) transparent += 1;
-            if (alpha > threshold) {
-              minX = Math.min(minX, x);
-              minY = Math.min(minY, y);
-              maxX = Math.max(maxX, x);
-              maxY = Math.max(maxY, y);
-            }
-          }
-        }
-
-        const cornerOffsets = [
-          3,
-          ((canvas.width - 1) * 4) + 3,
-          (((canvas.height - 1) * canvas.width) * 4) + 3,
-          ((((canvas.height - 1) * canvas.width) + canvas.width - 1) * 4) + 3
-        ];
-        const cornersTransparent = cornerOffsets.every((offset) => pixels[offset] === 0);
-        const margins = [minX, minY, canvas.width - 1 - maxX, canvas.height - 1 - maxY];
-        const trimPass = maxX >= 0 && margins.every((margin) => margin === expectedBorder);
-        const alphaPass = transparent > 0 && cornersTransparent;
-        const pass = alphaPass && trimPass;
-        const result = card.querySelector('.mascot-test-result');
-
-        card.classList.add(pass ? 'pass' : 'fail');
-        result.innerHTML = `<strong>${pass ? 'PASS' : 'FAIL'}</strong> ` +
-          `${canvas.width}×${canvas.height}px · RGBA transparency: ${alphaPass ? 'pass' : 'fail'} · ` +
-          `content margins L/T/R/B: ${margins.join('/')}px (${trimPass ? 'pass' : 'expected 4/4/4/4'})`;
-        resolve(pass);
-      };
-      image.onerror = () => {
-        card.classList.add('fail');
-        card.querySelector('.mascot-test-result').innerHTML = '<strong>FAIL</strong> Image could not be loaded.';
-        resolve(false);
-      };
-      image.src = card.dataset.src;
-    });
-  }
-
-  Promise.all(cards.map(inspect)).then((results) => {
-    const passed = results.filter(Boolean).length;
-    const allPass = passed === results.length;
-    summary.classList.add(allPass ? 'pass' : 'fail');
-    summary.textContent = allPass
-      ? `PASS — all ${passed} mascot PNGs have transparency and the expected 4 px trim border.`
-      : `FAIL — ${passed} of ${results.length} mascot PNGs passed. Review the failed cards below.`;
-  });
-})();
-</script>
+<h2 id="what-mg995-servos-are-good-for">What MG995 Servos Are Good For<a class="headerlink" href="#what-mg995-servos-are-good-for" title="Permanent link">&para;</a></h2>
+<p>They are good for learning, which is why this book covers them.</p>
+<ul>
+<li><strong>Open-loop labs.</strong> A two- or three-joint arm driven from a microcontroller
+  or a PCA9685 servo driver is a cheap way to see PWM, and to see exactly what
+  you lose without feedback.</li>
+<li><strong>Accessories.</strong> A pan-tilt mount for a camera, or a simple gripper on your
+  own bracket, does not need readback.</li>
+<li><strong>Feedback mods.</strong> It is possible to tap the potentiometer wire of a hobby
+  servo, or to buy a feedback-ready model. You then get a position reading
+  through an analog input per servo, but still no load or temperature, and
+  still no LeRobot driver.</li>
+</ul>
+<h2 id="self-check">Self-Check<a class="headerlink" href="#self-check" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>Why can't a hobby servo's internal feedback loop be used for a leader arm?</summary>
+<p>The loop is sealed inside the case. The potentiometer reading is used by
+the servo's own circuit and is never sent out on the signal wire, so the
+controller has nothing to read.</p>
+</details>
+<details class="question">
+<summary>Two MG995 servos push an arm against the same load and stall short of the goal. What does the PWM controller see?</summary>
+<p>Nothing. It sent a pulse for the goal angle and has no reply, so it still
+believes the arm is at the goal. A bus servo would report a position short
+of the goal along with a high load.</p>
+</details>
+<details class="question">
+<summary>A leader and follower pair has six joints per arm. How many PWM channels versus serial ports does each design need?</summary>
+<p>Twelve PWM channels for the PWM design, and two serial ports for the bus
+design, one per arm.</p>
+</details>
 
 
 
@@ -1251,8 +1222,6 @@ This is the celebration style, used for achievements.</p>
 
 
 
-
-  
 
 
 
@@ -1276,12 +1245,10 @@ This is the celebration style, used for achievements.</p>
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Appendices">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1291,20 +1258,20 @@ This is the celebration style, used for achievements.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Introduction
+                List of Appendices
               </div>
             </div>
           </a>
         
         
           
-          <a href="../course-description-assessment/" class="md-footer__link md-footer__link--next" aria-label="Next: Course Description Assessment">
+          <a href="../../license/" class="md-footer__link md-footer__link--next" aria-label="Next: License">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Course Description Assessment
+                License
               </div>
             </div>
             <div class="md-footer__button md-icon">

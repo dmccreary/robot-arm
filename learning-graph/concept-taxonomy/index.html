@@ -6,37 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+        <meta name="description" content="Categories used to group the concepts in the learning graph">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/procurement-notes/">
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/learning-graph/concept-taxonomy/">
       
       
-        <link rel="prev" href="../course-description/">
+        <link rel="prev" href="../concept-list/">
       
       
-        <link rel="next" href="../chapters/">
+        <link rel="next" href="../quality-metrics/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Procurement Notes - Controlling a Robot Arm</title>
+        <title>Concept Taxonomy for Controlling a Robot Arm - Controlling a Robot Arm</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,11 +55,11 @@
       
     
     
-      <link rel="stylesheet" href="../css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-      <link rel="stylesheet" href="../css/mascot.css">
+      <link rel="stylesheet" href="../../css/mascot.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#procurement-notes" class="md-skip">
+        <a href="#concept-taxonomy" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Procurement Notes
+              Concept Taxonomy for Controlling a Robot Arm
             
           </span>
         </div>
@@ -215,7 +215,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -245,7 +245,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -272,7 +272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -299,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../course-description/" class="md-nav__link">
+      <a href="../../course-description/" class="md-nav__link">
         
   
   
@@ -323,37 +323,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Procurement Notes
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../procurement-notes/" class="md-nav__link">
         
   
   
@@ -369,159 +342,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#so-arm101-kit-aliexpress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SO-ARM101 Kit (AliExpress)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SO-ARM101 Kit (AliExpress)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#order-total-breakdown" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Order total breakdown
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-the-listing-showed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What the listing showed
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cost-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cost notes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3d-printed-parts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3D-Printed Parts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3D-Printed Parts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-parts-print-for-both-arms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common parts (print for both arms)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#leader-only-parts-the-arm-you-move-by-hand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Leader-only parts (the arm you move by hand)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#follower-only-parts-the-arm-that-does-the-work" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Follower-only parts (the arm that does the work)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#print-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Print settings
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional-add-ons" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional add-ons
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#open-questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Open questions
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -554,7 +374,7 @@
   
   
   
-    <a href="../chapters/" class="md-nav__link">
+    <a href="../../chapters/" class="md-nav__link">
       
   
   
@@ -584,6 +404,8 @@
       
   
   
+    
+  
   
   
     
@@ -610,18 +432,17 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../learning-graph/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -635,12 +456,410 @@
   
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learning Graph
   
 
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mascot-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mascot Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description-assessment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python-setup-and-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Setup and Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-arm-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Robot Arm Fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actuators-and-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actuators and Sensors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-buses-and-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Communication Buses and Protocols
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcing-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sourcing Parts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fabrication-and-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fabrication and Building
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-motion-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Motion Programming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinematics-and-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kinematics and Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perception-and-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perception and Learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agents-and-openclaw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Agents and OpenClaw
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-safety-and-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Safety and Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects-operations-and-teaching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects, Operations, and Teaching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-path-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Path Mathematics
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Quality Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../taxonomy-distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taxonomy Distribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -678,7 +897,7 @@
   
   
   
-    <a href="../sims/" class="md-nav__link">
+    <a href="../../sims/" class="md-nav__link">
       
   
   
@@ -734,7 +953,7 @@
   
   
   
-    <a href="../appendices/" class="md-nav__link">
+    <a href="../../appendices/" class="md-nav__link">
       
   
   
@@ -767,7 +986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../license/" class="md-nav__link">
+      <a href="../../license/" class="md-nav__link">
         
   
   
@@ -794,7 +1013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contact/" class="md-nav__link">
+      <a href="../../contact/" class="md-nav__link">
         
   
   
@@ -841,135 +1060,167 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#so-arm101-kit-aliexpress" class="md-nav__link">
+  <a href="#python-setup-and-tools" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SO-ARM101 Kit (AliExpress)
+        Python Setup and Tools
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="SO-ARM101 Kit (AliExpress)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#order-total-breakdown" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Order total breakdown
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-the-listing-showed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What the listing showed
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cost-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cost notes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3d-printed-parts" class="md-nav__link">
+  <a href="#robot-arm-fundamentals" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3D-Printed Parts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3D-Printed Parts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-parts-print-for-both-arms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common parts (print for both arms)
+        Robot Arm Fundamentals
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#leader-only-parts-the-arm-you-move-by-hand" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#actuators-and-sensors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Leader-only parts (the arm you move by hand)
+        Actuators and Sensors
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#follower-only-parts-the-arm-that-does-the-work" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#communication-buses-and-protocols" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Follower-only parts (the arm that does the work)
+        Communication Buses and Protocols
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#print-settings" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#power-systems" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Print settings
+        Power Systems
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#optional-add-ons" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#safety" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optional add-ons
+        Safety
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#open-questions" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#sourcing-parts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Open questions
+        Sourcing Parts
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#fabrication-and-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fabrication and Building
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-motion-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Motion Programming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinematics-and-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kinematics and Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perception-and-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perception and Learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agents-and-openclaw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Agents and OpenClaw
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-safety-and-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Safety and Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects-operations-and-teaching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects, Operations, and Teaching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-path-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Path Mathematics
+      
+    </span>
+  </a>
   
 </li>
       
@@ -991,6 +1242,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -998,7 +1289,7 @@
 
 
   
-    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/procurement-notes.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/learning-graph/concept-taxonomy.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1006,231 +1297,63 @@
   
 
 
-<h1 id="procurement-notes">Procurement Notes<a class="headerlink" href="#procurement-notes" title="Permanent link">&para;</a></h1>
-<p>Running notes on what we bought to build the robot arm, where we bought it,
-and what it really cost. Prices include shipping and sales tax unless noted,
-because the landed cost is what a student actually pays.</p>
-<h2 id="so-arm101-kit-aliexpress">SO-ARM101 Kit (AliExpress)<a class="headerlink" href="#so-arm101-kit-aliexpress" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Date purchased</td>
-<td>2026-10-06</td>
-</tr>
-<tr>
-<td>Vendor</td>
-<td>AliExpress</td>
-</tr>
-<tr>
-<td>Shipped to</td>
-<td>Minnesota</td>
-</tr>
-<tr>
-<td>Item</td>
-<td>SO-ARM101 Kit Pro Low-Cost AI Robotic Arm Robot Servo Motor Kit for LeRobot Hugging Face Projects (Without 3D Printed Parts)</td>
-</tr>
-<tr>
-<td>Variant</td>
-<td>Arm Motor Kit Pro</td>
-</tr>
-<tr>
-<td><strong>Total paid (shipping and sales tax included)</strong></td>
-<td><strong>$332.04</strong></td>
-</tr>
-</tbody>
-</table>
-<p><img alt="SO-ARM101 Kit Pro listing on AliExpress" src="../img/so-arm101-on-aliexpress.png" /></p>
-<h3 id="order-total-breakdown">Order total breakdown<a class="headerlink" href="#order-total-breakdown" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Line</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Subtotal (kit)</td>
-<td>$258.94</td>
-</tr>
-<tr>
-<td>Shipping</td>
-<td>$46.55</td>
-</tr>
-<tr>
-<td>Sales tax</td>
-<td>$26.05</td>
-</tr>
-<tr>
-<td>Retail Delivery Fee</td>
-<td>$0.50</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>$332.04</strong></td>
-</tr>
-</tbody>
-</table>
-<p>AliExpress groups the sales tax and the Retail Delivery Fee under "Additional
-charges" ($26.55) at checkout. Neither is a tariff.</p>
-<ul>
-<li><strong>Sales tax:</strong> AliExpress is a marketplace facilitator, so state law
-  requires it to collect sales tax and pass it to the tax authorities.</li>
-<li><strong>Retail Delivery Fee:</strong> Colorado and Minnesota charge this fee on orders
-  with at least one taxable item shipped to those states. This order shipped
-  to Minnesota. The fee is non-refundable once the goods have shipped.</li>
-</ul>
-<h3 id="what-the-listing-showed">What the listing showed<a class="headerlink" href="#what-the-listing-showed" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Sale price at the time of purchase: $258.94 (list $323.68, sale ended Oct 7).</li>
-<li>Package: 33 x 25 x 11 cm, 1.9 kg.</li>
-<li>4.3 stars from 13 reviews, 366 sold.</li>
-<li>This is the <strong>motor kit only</strong>. The listing states that the 3D-printed
-  structural parts are sold separately and must be purchased or printed on
-  your own.</li>
-</ul>
-<h3 id="cost-notes">Cost notes<a class="headerlink" href="#cost-notes" title="Permanent link">&para;</a></h3>
-<ul>
-<li>The landed cost of $332.04 is well above the $258.94 sticker price. Shipping,
-  sales tax and the delivery fee add $73.10 (about 28%), so budget for them when you tell
-  students what the kit costs.</li>
-<li>Still to source: the 3D-printed parts for the arm (print them ourselves or
-  order them). See the parts list below.</li>
-</ul>
-<h2 id="3d-printed-parts">3D-Printed Parts<a class="headerlink" href="#3d-printed-parts" title="Permanent link">&para;</a></h2>
-<p>The SO-ARM101 is a <strong>leader and follower pair</strong>. You move the leader by hand
-and the follower copies it, so most parts are printed once for each arm. The
-file names come from the open-source
-<a href="https://github.com/TheRobotStudio/SO-ARM100">SO-ARM100 repository</a>, which
-also covers the SO-101.</p>
-<h3 id="common-parts-print-for-both-arms">Common parts (print for both arms)<a class="headerlink" href="#common-parts-print-for-both-arms" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>STL file</th>
-<th>What it is</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Base_SO101.stl</code></td>
-<td>Base plate that clamps to the table and carries the shoulder-pan motor.</td>
-</tr>
-<tr>
-<td><code>Base_motor_holder_SO101.stl</code></td>
-<td>Cradle that holds the shoulder-pan motor in the base.</td>
-</tr>
-<tr>
-<td><code>Motor_holder_SO101_Base.stl</code></td>
-<td>Bracket for the shoulder-lift motor, mounted on the base side.</td>
-</tr>
-<tr>
-<td><code>Under_arm_SO101.stl</code></td>
-<td>Forearm link between the elbow and the wrist.</td>
-</tr>
-<tr>
-<td><code>Upper_arm_SO101.stl</code></td>
-<td>Upper arm link between the shoulder and the elbow.</td>
-</tr>
-<tr>
-<td><code>Rotation_Pitch_SO101.stl</code></td>
-<td>Joint piece that rotates the shoulder and holds the upper arm.</td>
-</tr>
-<tr>
-<td><code>Motor_holder_SO101_Wrist.stl</code></td>
-<td>Bracket for the wrist-flex motor.</td>
-</tr>
-<tr>
-<td><code>Wrist_Roll_Pitch_SO101.stl</code></td>
-<td>Wrist housing that gives the wrist its pitch and roll.</td>
-</tr>
-<tr>
-<td><code>WaveShare_Mounting_Plate_SO101.stl</code></td>
-<td>Plate that mounts the Waveshare servo driver board.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="leader-only-parts-the-arm-you-move-by-hand">Leader-only parts (the arm you move by hand)<a class="headerlink" href="#leader-only-parts-the-arm-you-move-by-hand" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>STL file</th>
-<th>What it is</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Handle_SO101.stl</code></td>
-<td>Grip you hold to move the leader.</td>
-</tr>
-<tr>
-<td><code>Trigger_SO101.stl</code></td>
-<td>Trigger that stands in for the follower's gripper.</td>
-</tr>
-<tr>
-<td><code>Wrist_Roll_SO101.stl</code></td>
-<td>The leader's wrist roll piece.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="follower-only-parts-the-arm-that-does-the-work">Follower-only parts (the arm that does the work)<a class="headerlink" href="#follower-only-parts-the-arm-that-does-the-work" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>STL file</th>
-<th>What it is</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Moving_Jaw_SO101.stl</code></td>
-<td>Movable jaw of the gripper.</td>
-</tr>
-<tr>
-<td><code>Wrist_Roll_Follower_SO101.stl</code></td>
-<td>The follower's wrist roll piece, which also forms the fixed half of the gripper.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="print-settings">Print settings<a class="headerlink" href="#print-settings" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Material:</strong> PLA+</li>
-<li><strong>Nozzle and layer height:</strong> 0.4 mm nozzle at 0.2 mm layers, or 0.6 mm
-  nozzle at 0.4 mm layers</li>
-<li><strong>Infill:</strong> 15%</li>
-<li><strong>Supports:</strong> everywhere, ignoring slopes steeper than 45°. Avoid supports
-  inside horizontal screw holes.</li>
-<li><strong>Bed:</strong> The repository provides pre-arranged single-file plates for
-  220×220 mm beds (Ender 3 class) and 205×250 mm beds (Prusa/UP class).</li>
-</ul>
-<h3 id="optional-add-ons">Optional add-ons<a class="headerlink" href="#optional-add-ons" title="Permanent link">&para;</a></h3>
-<p>The repository also lists compliant grippers, wrist-camera mounts, overhead
-camera mounts, and tactile sensor parts. None are needed for the baseline arm.</p>
-<h3 id="open-questions">Open questions<a class="headerlink" href="#open-questions" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Quantities:</strong> The repository lists unique files, not counts. We assume the
-  common parts are printed twice, once per arm. Confirm this against the
-  assembly guide before printing.</li>
-<li><strong>Infill:</strong> Some commercial kits use 30% infill for the follower and 15% for
-  the leader and clamps. We use the repository's 15% as the baseline.</li>
-<li><strong>Table clamps:</strong> Each base needs a clamp to hold it to the desk. Confirm
-  whether these are printed parts and add them to the list.</li>
-<li><strong>Buy instead of print:</strong> Seeed sells
-  <a href="https://uk.robotshop.com/products/seeedstudio-so-arm101-ai-arm-3d-printed-parts">both arms' printed parts</a>
-  as a product, if you don't have a printer.</li>
-</ul>
+<h1 id="concept-taxonomy">Concept Taxonomy<a class="headerlink" href="#concept-taxonomy" title="Permanent link">&para;</a></h1>
+<p>The concepts in the learning graph are grouped into the following categories. Each category has a short TaxonomyID that appears in <code>learning-graph.csv</code> and a color in the graph viewer.</p>
+<p>The <strong>Advanced Path Mathematics</strong> category is the optional advanced chapter. No concept in any other category depends on it.</p>
+<h2 id="python-setup-and-tools">Python Setup and Tools<a class="headerlink" href="#python-setup-and-tools" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> PYS</p>
+<p>Review of the Learning Python skills plus the tooling (virtual environments, pip, packages, JSON, command line, git) that every lab uses.</p>
+<h2 id="robot-arm-fundamentals">Robot Arm Fundamentals<a class="headerlink" href="#robot-arm-fundamentals" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> ARM</p>
+<p>Links, joints, degrees of freedom, workspace, payload, repeatability, leader and follower arms, and the vocabulary of arm design.</p>
+<h2 id="actuators-and-sensors">Actuators and Sensors<a class="headerlink" href="#actuators-and-sensors" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> ACT</p>
+<p>Servos, brushless actuators, gear ratios, torque, encoders, feedback, and the control that holds a joint in position.</p>
+<h2 id="communication-buses-and-protocols">Communication Buses and Protocols<a class="headerlink" href="#communication-buses-and-protocols" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> COMM</p>
+<p>Serial and CAN buses, packets, bytes, registers, device IDs, and the Python libraries that talk to motors.</p>
+<h2 id="power-systems">Power Systems<a class="headerlink" href="#power-systems" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> POWR</p>
+<p>Voltage, current, power supplies, wiring, fuses, distribution, and the electrical problems that cause failures.</p>
+<h2 id="safety">Safety<a class="headerlink" href="#safety" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> SAFE</p>
+<p>Pinch points, limits, emergency stops, safe power-up and shutdown, supervision, and fail-safe design.</p>
+<h2 id="sourcing-parts">Sourcing Parts<a class="headerlink" href="#sourcing-parts" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> SORC</p>
+<p>Bills of materials, kits versus self-sourcing, vendors, lead times, costs, revisions, and the SO-ARM100 and reBot-DevArm product lines.</p>
+<h2 id="fabrication-and-building">Fabrication and Building<a class="headerlink" href="#fabrication-and-building" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> BUILD</p>
+<p>3D printing, fasteners, and tools, then assembling, calibrating, troubleshooting, and comparing the SO-ARM100 and reBot-DevArm.</p>
+<h2 id="python-motion-programming">Python Motion Programming<a class="headerlink" href="#python-motion-programming" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> PYMO</p>
+<p>Hardware abstraction classes, fake arms, joint-space moves, trajectories, control loops, pick and place, teleoperation, logging, plotting, and testing.</p>
+<h2 id="kinematics-and-simulation">Kinematics and Simulation<a class="headerlink" href="#kinematics-and-simulation" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> KINE</p>
+<p>Coordinate frames, forward and inverse kinematics, Cartesian motion, workspace analysis, simulation, and the ROS 2 tour.</p>
+<h2 id="perception-and-learning">Perception and Learning<a class="headerlink" href="#perception-and-learning" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> PERC</p>
+<p>Cameras, OpenCV, calibration, mapping pixels to the arm, and learning from demonstration with LeRobot.</p>
+<h2 id="ai-agents-and-openclaw">AI Agents and OpenClaw<a class="headerlink" href="#ai-agents-and-openclaw" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> AGNT</p>
+<p>The agent loop, tool calling, OpenClaw and its skills, natural-language control, planning, vision-language models, and agent interfaces such as MCP.</p>
+<h2 id="agent-safety-and-evaluation">Agent Safety and Evaluation<a class="headerlink" href="#agent-safety-and-evaluation" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> AGSF</p>
+<p>Safety layers, validation, dry-run modes, prompt injection and other agent risks, and testing and evaluating agent-controlled systems.</p>
+<h2 id="projects-operations-and-teaching">Projects, Operations, and Teaching<a class="headerlink" href="#projects-operations-and-teaching" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> PROJ</p>
+<p>Capstone projects, startup and shutdown, maintenance, classroom and makerspace use, and next steps.</p>
+<h2 id="advanced-path-mathematics">Advanced Path Mathematics<a class="headerlink" href="#advanced-path-mathematics" title="Permanent link">&para;</a></h2>
+<p><strong>TaxonomyID:</strong> ADV</p>
+<p>Optional advanced chapter: orientation math, the Jacobian, trajectory polynomials, path planning, and predicting and measuring arm paths.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1260,7 +1383,7 @@ camera mounts, and tactile sensor parts. None are needed for the baseline arm.</
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../course-description/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Course Description">
+          <a href="../concept-list/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Concept Enumeration">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1270,20 +1393,20 @@ camera mounts, and tactile sensor parts. None are needed for the baseline arm.</
                 Previous
               </span>
               <div class="md-ellipsis">
-                Course Description
+                Concept Enumeration
               </div>
             </div>
           </a>
         
         
           
-          <a href="../chapters/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Chapters">
+          <a href="../quality-metrics/" class="md-footer__link md-footer__link--next" aria-label="Next: Graph Quality Analysis">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                List of Chapters
+                Graph Quality Analysis
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1319,10 +1442,10 @@ camera mounts, and tactile sensor parts. None are needed for the baseline arm.</
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

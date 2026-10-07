@@ -25,6 +25,14 @@
          <lastmod>2026-10-07</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/appendices/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/appendices/pwm-servos/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/</loc>
          <lastmod>2026-10-07</lastmod>
     </url>
@@ -37,6 +45,14 @@
          <lastmod>2026-10-07</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/learning-graph/concept-list/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/learning-graph/concept-taxonomy/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/course-description-assessment/</loc>
          <lastmod>2026-10-07</lastmod>
     </url>
@@ -45,7 +61,23 @@
          <lastmod>2026-10-07</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/learning-graph/quality-metrics/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/learning-graph/taxonomy-distribution/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/graph-viewer/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/pwm-vs-bus-servos/</loc>
          <lastmod>2026-10-07</lastmod>
     </url>
 </urlset>

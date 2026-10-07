@@ -1,0 +1,75 @@
+{
+  "title": "Hobby PWM Servo vs. Serial Bus Servo",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Interactive p5.js MicroSim comparing a hobby PWM servo (MG995) with a serial bus servo (STS3215): command and readback, leader/follower teleoperation, and wiring. Explains why hobby PWM servos cannot replace the STS3215 servos in an SO-ARM100/101 robot arm.",
+  "date": "2026-10-06",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/pwm-vs-bus-servos/",
+  "contributor": ["Claude Code"],
+  "educational": {
+    "gradeLevel": ["Undergraduate", "Maker"],
+    "subjectArea": "Robotics",
+    "topic": "Hobby PWM servos versus serial bus servos",
+    "learningObjectives": [
+      "Explain why a hobby PWM servo cannot replace an STS3215 bus servo in a leader/follower robot arm",
+      "Compare what a PWM servo and a bus servo report back to the controller",
+      "Compare the wiring needed for PWM and serial bus servos as the number of joints grows"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "10-15 minutes",
+    "prerequisites": ["Knows that a servo turns to a commanded angle"],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 590
+    },
+    "responsive": true,
+    "dependencies": ["p5.js CDN"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict, observe, explain with side-by-side comparison",
+    "keyQuestions": [
+      "What does the controller learn about the servo when the arm is pushed short of its goal?",
+      "What would a leader arm have to read from a PWM servo?",
+      "How many wires does a 12-joint leader/follower pair need with each servo type?"
+    ],
+    "commonMisconceptions": [
+      "A servo with an internal feedback loop must be able to report its position",
+      "More torque makes a hobby servo a suitable replacement"
+    ],
+    "assessmentOpportunities": [
+      "Predict the readback of each servo before changing the load",
+      "Explain in two sentences why six MG995 servos cannot drive an SO-ARM101"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {"type": "select", "label": "View", "values": ["Command and readback", "Leader and follower", "Wiring"]},
+      {"type": "slider", "label": "Command angle", "range": "0-180 degrees", "default": 120},
+      {"type": "slider", "label": "Load on arm", "range": "0-100 percent", "default": 70},
+      {"type": "slider", "label": "Joints per arm", "range": "1-6", "default": 6},
+      {"type": "drag", "label": "Leader handle", "range": "0-180 degrees", "default": 90}
+    ]
+  },
+  "simulation": {
+    "modelType": "Illustrative comparison",
+    "variables": ["command angle", "load", "shortfall", "leader angle", "joint count"],
+    "equations": ["shortfall = 55 * (load / 100)^2 degrees", "pulse width = 1 + angle / 180 ms", "raw position = angle / 360 * 4096"],
+    "assumptions": ["Both servos drive the same arm against the same load so only the telemetry differs"],
+    "limitations": ["Load, shortfall, and temperature are teaching values, not datasheet measurements"]
+  },
+  "library": "p5.js",
+  "chapter": ""
+}

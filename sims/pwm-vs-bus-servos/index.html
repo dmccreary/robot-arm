@@ -6,37 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+        <meta name="description" content="An interactive side-by-side comparison showing why a hobby PWM servo such as the MG995 cannot replace the STS3215 serial bus servos in an SO-ARM100/101 robot arm.">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/license/">
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/sims/pwm-vs-bus-servos/">
       
       
-        <link rel="prev" href="../appendices/pwm-servos/">
+        <link rel="prev" href="../graph-viewer/">
       
       
-        <link rel="next" href="../contact/">
+        <link rel="next" href="../../appendices/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>License - Controlling a Robot Arm</title>
+        <title>Hobby PWM Servo vs. Serial Bus Servo - Controlling a Robot Arm</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,17 +55,19 @@
       
     
     
-      <link rel="stylesheet" href="../css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-      <link rel="stylesheet" href="../css/mascot.css">
+      <link rel="stylesheet" href="../../css/mascot.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  </head>
+    <meta property="og:image" content="https://dmccreary.github.io/robot-arm/sims/pwm-vs-bus-servos/pwm-vs-bus-servos.png">
+  <meta name="twitter:image" content="https://dmccreary.github.io/robot-arm/sims/pwm-vs-bus-servos/pwm-vs-bus-servos.png">
+</head>
   
   
     
@@ -82,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creative-commons-license" class="md-skip">
+        <a href="#hobby-pwm-servo-vs-serial-bus-servo" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +100,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -118,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              License
+              Hobby PWM Servo vs. Serial Bus Servo
             
           </span>
         </div>
@@ -215,7 +217,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -245,7 +247,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -272,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -299,7 +301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../course-description/" class="md-nav__link">
+      <a href="../../course-description/" class="md-nav__link">
         
   
   
@@ -326,7 +328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../procurement-notes/" class="md-nav__link">
+      <a href="../../procurement-notes/" class="md-nav__link">
         
   
   
@@ -374,7 +376,7 @@
   
   
   
-    <a href="../chapters/" class="md-nav__link">
+    <a href="../../chapters/" class="md-nav__link">
       
   
   
@@ -440,7 +442,7 @@
   
   
   
-    <a href="../learning-graph/" class="md-nav__link">
+    <a href="../../learning-graph/" class="md-nav__link">
       
   
   
@@ -470,6 +472,8 @@
       
   
   
+    
+  
   
   
     
@@ -488,18 +492,17 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../sims/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -513,12 +516,254 @@
   
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MicroSims
   
 
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hobby PWM Servo vs. Serial Bus Servo
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hobby PWM Servo vs. Serial Bus Servo
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lesson Plan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audience-and-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audience and Duration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assessment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -554,7 +799,7 @@
   
   
   
-    <a href="../appendices/" class="md-nav__link">
+    <a href="../../appendices/" class="md-nav__link">
       
   
   
@@ -584,37 +829,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    License
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
         
   
   
@@ -630,81 +848,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#license-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        License Type
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#link-to-license-agreement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Link to License Agreement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#your-rights" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Your Rights
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restrictions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restrictions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commercial-licensing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Commercial Licensing
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -716,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contact/" class="md-nav__link">
+      <a href="../../contact/" class="md-nav__link">
         
   
   
@@ -763,10 +906,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#license-type" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
       
-        License Type
+        Description
       
     </span>
   </a>
@@ -774,10 +917,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#link-to-license-agreement" class="md-nav__link">
+  <a href="#how-to-use" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Link to License Agreement
+        How to Use
       
     </span>
   </a>
@@ -785,32 +928,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#your-rights" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Your Rights
+        Lesson Plan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objective
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#restrictions" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#audience-and-duration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Restrictions
+        Audience and Duration
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#commercial-licensing" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commercial Licensing
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assessment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -835,6 +1028,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -842,7 +1075,7 @@
 
 
   
-    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/license.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/sims/pwm-vs-bus-servos/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -850,41 +1083,82 @@
   
 
 
-<h1 id="creative-commons-license">Creative Commons License<a class="headerlink" href="#creative-commons-license" title="Permanent link">&para;</a></h1>
-<p><img alt="License" src="../img/license.png" /></p>
-<p>All content in this repository is governed by the following license agreement:</p>
-<h2 id="license-type">License Type<a class="headerlink" href="#license-type" title="Permanent link">&para;</a></h2>
-<p>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0 DEED)</p>
-<h2 id="link-to-license-agreement">Link to License Agreement<a class="headerlink" href="#link-to-license-agreement" title="Permanent link">&para;</a></h2>
-<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en</a></p>
-<h2 id="your-rights">Your Rights<a class="headerlink" href="#your-rights" title="Permanent link">&para;</a></h2>
-<p>You are free to:</p>
-<ul>
-<li><strong>Share</strong> — copy and redistribute the material in any medium or format</li>
-<li><strong>Adapt</strong> — remix, transform, and build upon the material</li>
-</ul>
-<p>The licensor cannot revoke these freedoms as long as you follow the license terms.</p>
-<h2 id="restrictions">Restrictions<a class="headerlink" href="#restrictions" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Attribution</strong> — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li>
-<li><strong>NonCommercial</strong> — You may not use the material for commercial purposes.</li>
-<li><strong>ShareAlike</strong> — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</li>
-<li><strong>No additional restrictions</strong> — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</li>
-</ul>
-<div class="admonition notices">
-<p class="admonition-title">Notices</p>
-<p>You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.</p>
-<p>No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.</p>
-<p>This deed highlights only some of the key features and terms of the actual license. It is not a license and has no legal value. You should carefully review all of the terms and conditions of the actual license before using the licensed material.</p>
-</div>
-<h2 id="commercial-licensing">Commercial Licensing<a class="headerlink" href="#commercial-licensing" title="Permanent link">&para;</a></h2>
-<p>Commercial rights are reserved by the copyright holder. For commercial licensing, publication inquiries, or permission to use this work in commercial contexts, please contact <a href="https://www.linkedin.com/in/danmccreary/">Dan McCreary</a>.</p>
+<h1 id="hobby-pwm-servo-vs-serial-bus-servo">Hobby PWM Servo vs. Serial Bus Servo<a class="headerlink" href="#hobby-pwm-servo-vs-serial-bus-servo" title="Permanent link">&para;</a></h1>
+<iframe src="main.html" height="592px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="main.html">Run the Hobby PWM Servo vs. Serial Bus Servo MicroSim Fullscreen</a></p>
+<p>This MicroSim is the interactive core of
+<a href="../../appendices/pwm-servos/">Appendix A: Why Hobby PWM Servos Won't Work with the SO-ARM</a>.</p>
+<p>You can include this MicroSim on your website using the following <code>iframe</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/robot-arm/sims/pwm-vs-bus-servos/main.html"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        <span class="na">height</span><span class="o">=</span><span class="s">"592px"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>The MicroSim puts a hobby PWM servo (an MG995) and a serial bus servo (an
+STS3215) side by side and asks one question: <em>what does the controller learn
+about the servo?</em> Three views answer it.</p>
+<ol>
+<li><strong>Command and readback.</strong> Set a command angle and a load. Both servos drive
+   the same arm against the same load, so both fall the same distance short of
+   the goal. Only the bus servo reports its position, load, and temperature.
+   The PWM controller sees nothing and still believes the arm is at the goal.</li>
+<li><strong>Leader and follower.</strong> Drag the gold handle on a leader arm. The bus
+   follower copies the angle it reads from the leader. The PWM follower has no
+   angle to copy, because a PWM servo has no wire to report one.</li>
+<li><strong>Wiring.</strong> Slide the number of joints per arm from 1 to 6. PWM needs one
+   timing wire per joint. A bus chain needs one cable per arm, with an ID for
+   each servo.</li>
+</ol>
+<p>The load, shortfall, and temperature values are teaching values, not datasheet
+measurements. The pulse widths (1 to 2 ms every 20 ms) and the 4096 steps per
+turn of the STS3215 are typical published figures.</p>
+<h2 id="how-to-use">How to Use<a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Pick a view with the <strong>View</strong> menu.</li>
+<li>In <em>Command and readback</em>, predict what each panel will show before you
+   raise the <strong>Load on arm</strong> slider, then check your prediction.</li>
+<li>In <em>Leader and follower</em>, drag the gold handle left and right.</li>
+<li>In <em>Wiring</em>, move <strong>Joints per arm</strong> from 1 up to 6 and watch the wire count.</li>
+</ol>
+<h2 id="lesson-plan">Lesson Plan<a class="headerlink" href="#lesson-plan" title="Permanent link">&para;</a></h2>
+<h3 id="learning-objective">Learning Objective<a class="headerlink" href="#learning-objective" title="Permanent link">&para;</a></h3>
+<p>Students will be able to explain why a hobby PWM servo cannot replace an
+STS3215 bus servo in a leader/follower robot arm, by comparing what each servo
+reports back, whether a leader arm can be read, and how many wires each needs.</p>
+<h3 id="audience-and-duration">Audience and Duration<a class="headerlink" href="#audience-and-duration" title="Permanent link">&para;</a></h3>
+<p>Makers, undergraduates, and self-taught roboticists. Allow 10 to 15 minutes.</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<p>Students should know that a servo turns to a commanded angle. No programming
+is needed.</p>
+<h3 id="activities">Activities<a class="headerlink" href="#activities" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Predict (3 min).</strong> Before touching the load slider, write down what each
+   panel will report when the arm is pushed 25° short of its goal.</li>
+<li><strong>Explore (5 min).</strong> Work through all three views. In the leader/follower
+   view, find the angle at which the bus follower lags the leader the most.</li>
+<li><strong>Explain (5 min).</strong> In two sentences, tell a classmate who owns six MG995
+   servos why they cannot use them in an SO-ARM101.</li>
+</ol>
+<h3 id="assessment">Assessment<a class="headerlink" href="#assessment" title="Permanent link">&para;</a></h3>
+<p>A student can be asked to name the three things a leader/follower system needs
+from each servo (a readable position, a unique address on a shared bus, and
+the ability to go limp) and to say which of them an MG995 provides.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://github.com/TheRobotStudio/SO-ARM100">SO-ARM100 and SO-ARM101 open-source arm design</a>, The Robot Studio. Bill of materials and assembly notes.</li>
+<li><a href="https://huggingface.co/docs/lerobot/so101">SO-101 documentation</a>, Hugging Face LeRobot.</li>
+<li><a href="https://en.wikipedia.org/wiki/Servo_(radio_control)">Servo (radio control)</a>, Wikipedia. How hobby servos use a pulse width and an internal potentiometer.</li>
+<li><a href="https://en.wikipedia.org/wiki/Pulse-width_modulation">Pulse-width modulation</a>, Wikipedia.</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -914,7 +1188,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../appendices/pwm-servos/" class="md-footer__link md-footer__link--prev" aria-label="Previous: A. Why PWM Servos Won&#39;t Work">
+          <a href="../graph-viewer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Learning Graph Viewer">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -924,20 +1198,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                A. Why PWM Servos Won't Work
+                Learning Graph Viewer
               </div>
             </div>
           </a>
         
         
           
-          <a href="../contact/" class="md-footer__link md-footer__link--next" aria-label="Next: Contact">
+          <a href="../../appendices/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Appendices">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Contact
+                List of Appendices
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -973,10 +1247,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
