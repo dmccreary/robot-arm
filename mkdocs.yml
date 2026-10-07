@@ -73,6 +73,9 @@ nav:
       - List of MicroSims: sims/index.md
       - Learning Graph Viewer: sims/graph-viewer/index.md
       - Hobby PWM Servo vs. Serial Bus Servo: sims/pwm-vs-bus-servos/index.md
+      - Robot Arm Part Identifier: sims/robot-arm-part-identifier/index.md
+      - Two-Link Workspace Explorer: sims/two-link-workspace-explorer/index.md
+      - Leader and Follower Mirror: sims/leader-follower-mirror/index.md
 
   - Appendices:
       - List of Appendices: appendices/index.md

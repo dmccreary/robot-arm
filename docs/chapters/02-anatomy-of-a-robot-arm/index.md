@@ -144,6 +144,10 @@ In the next MicroSim, you meet a schematic six-axis arm and practice naming its 
 
 #### Diagram: Robot Arm Part Identifier
 
+<iframe src="../../sims/robot-arm-part-identifier/main.html" height="522px" width="100%" scrolling="no"></iframe>
+
+[Run the Robot Arm Part Identifier MicroSim fullscreen](../../sims/robot-arm-part-identifier/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Robot Arm Part Identifier</summary>
 Type: microsim
@@ -472,6 +476,10 @@ In this MicroSim, you will solve seven reachability problems for a flat two-link
 
 #### Diagram: Two-Link Workspace Explorer
 
+<iframe src="../../sims/two-link-workspace-explorer/main.html" height="662px" width="100%" scrolling="no"></iframe>
+
+[Run the Two-Link Workspace Explorer MicroSim fullscreen](../../sims/two-link-workspace-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Two-Link Workspace Explorer</summary>
 Type: microsim
@@ -703,6 +711,10 @@ A recording holds thousands of such rows for all six joints, together with what 
 Two things can make the follower differ from the leader. If a leader angle is outside the follower's limits, the follower stops at its limit. If the two arms were calibrated differently, the follower's physical angle is off by the difference, called a **calibration error**. In the next MicroSim, you predict the follower's joint angle in six scenarios. Use the copy rule, the limits, and any calibration error.
 
 #### Diagram: Leader and Follower Mirror
+
+<iframe src="../../sims/leader-follower-mirror/main.html" height="722px" width="100%" scrolling="no"></iframe>
+
+[Run the Leader and Follower Mirror MicroSim fullscreen](../../sims/leader-follower-mirror/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Leader and Follower Mirror</summary>

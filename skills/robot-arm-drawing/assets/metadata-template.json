@@ -1,0 +1,38 @@
+{
+  "title": "SIM_TITLE",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "SIM_DESCRIPTION",
+  "date": "YYYY-MM-DD",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/SIM_ID/",
+  "contributor": ["Claude Code"],
+  "educational": {
+    "gradeLevel": ["Middle School", "High School", "Maker"],
+    "subjectArea": "Robotics",
+    "topic": "TOPIC",
+    "learningObjectives": ["LEARNING_OBJECTIVE"],
+    "bloomsTaxonomy": "BLOOM_LEVEL",
+    "duration": "5-10 minutes",
+    "prerequisites": [],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": { "width": "responsive", "height": 0 },
+    "responsive": true,
+    "dependencies": ["p5.js CDN", "robot-arm-lib.js"],
+    "accessibility": { "hasAltText": true, "keyboardNavigable": false }
+  },
+  "pedagogical": {
+    "teachingStrategy": "STRATEGY",
+    "keyQuestions": [],
+    "commonMisconceptions": [],
+    "assessmentOpportunities": []
+  },
+  "ui": { "controls": [] }
+}

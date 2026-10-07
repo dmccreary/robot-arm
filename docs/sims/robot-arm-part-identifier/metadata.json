@@ -1,0 +1,84 @@
+{
+  "title": "Robot Arm Part Identifier",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "A labeling MicroSim for a six-axis robot arm: explore the seven named parts (base, shoulder, upper arm, elbow, forearm, wrist and end effector), then click each part as it is named. Used in Chapter 2.",
+  "date": "2026-10-07",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/robot-arm-part-identifier/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Naming the parts of a robot arm",
+    "learningObjectives": [
+      "Identify the seven named parts of a robot arm on a schematic, given each part's name, with at least 6 of 7 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Remember",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "robot arm",
+      "joint",
+      "link",
+      "end effector"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Explore then retrieve: learn each name and job, then locate each part from its name",
+    "keyQuestions": [
+      "Which parts are joints and which are links?",
+      "Is the shoulder the long piece or the joint?"
+    ],
+    "commonMisconceptions": [
+      "The shoulder is the long piece between the base and the elbow",
+      "The wrist is the hand",
+      "The base is a joint"
+    ],
+    "assessmentOpportunities": [
+      "Quiz mode: 7 clicks, 6 correct for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Quiz"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Next name / See score / Try again"
+      }
+    ]
+  }
+}
