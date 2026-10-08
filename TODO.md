@@ -1,6 +1,6 @@
 # TODO
 
-Observations from generating Chapters 3 to 6, written down so they are not lost. The first
+Observations from generating Chapters 3 to 9, written down so they are not lost. The first
 section lists skills that would have saved work, the second lists facts that still need a human
 check, and the third lists what is not built yet.
 
@@ -55,6 +55,56 @@ check, and the third lists what is not built yet.
    its tables into the CSV files used by the Chapter 6 lab would keep the book and the notes
    in step.
 
+### Added while writing Chapters 7 to 9
+
+10. **lab-assembler** (chapter template with `@@FILE path@@` and `@@RUN command@@` markers). For
+    Chapters 7 to 9 each chapter was written as a template, and a 40-line script filled the
+    markers: `FILE` pastes a lab file into a fence (python fences get `linenums="1"`), and `RUN`
+    executes a command in the scratch lab project and pastes its real output. This removed
+    the hand-copy step that caused mismatches in earlier chapters. It belongs with item 4
+    (`chapter-lab-verifier`): the same tool can check an existing chapter by re-running every
+    command and diffing the `text` blocks. It also needs a reference copy of the cumulative
+    `arm-lab` (today it exists only in session scratch folders, and each chapter's lab begins
+    by copying the previous ones).
+11. **spec-lint script** (item 3 made concrete). A 30-line check over every `<details>` block
+    caught three "such as" phrases in the Chapter 7 and 8 specs on the first run. It checks the
+    Bloom verb against the level, `Library`, `Status`, the eleven required fields, and the
+    forbidden words. It should be saved as `scripts/spec-lint.py` and run by the skill.
+12. **Three sim families, not one.** The new specs fall into three shapes that a generator
+    could template: pick-one cases (`tolerance-fit-explorer`, `print-defect-diagnoser`,
+    `calibration-range-recorder`, `assembly-fault-finder`, `platform-chooser`), order-the-cards
+    (`servo-id-setup-sequencer`, like Chapter 3's `safe-power-up-sequencer`), and type-a-number
+    drills (`mit-frame-packer`, like `landed-cost-calculator` and `packet-checksum-calculator`).
+    Item 2 (`predict-commit-sim-generator`) should become a family with these three templates.
+    `multimeter-practice` is a fourth shape (set several controls, then commit).
+13. **upstream-doc-drift-checker** (extends item 8). Between the older docs and the LeRobot
+    commit read on 2026-10-07 (`ca69a20`), the SO-101 class moved from `so101_follower/` to
+    `so_follower/`, `use_degrees` flipped from False to True, and Python 3.12 and the
+    `core_scripts` extra became required. A skill should record, per chapter, the commit that
+    each quoted command, class name and default was checked against, and re-run the checks when
+    the upstream moves. The Chapter 8 text now names the version it was read against.
+14. **fact-sheet-gatherer** (feeds item 5). The three research agents for these chapters each
+    returned a fact sheet with every claim tagged primary, secondary, or unverified. That
+    format is what produced the lists below, and it took the author out of the loop. It
+    should be a skill that writes the same facts to `facts.csv` (claim, value, tag, URL, date)
+    instead of prose. Two of the three agents stalled or ran for about 20 minutes, so the skill
+    needs a time limit and a "write what you have" step.
+15. **stl-and-gcode-inspector** (the Chapter 7 lab as a tool). `armlab/stl.py` and `gcode.py`
+    read binary and ASCII STL (size, volume, bounding box, bed fit) and G-code (filament used).
+    Used on the repository's four print plates, they found a real hazard: the Prusa-bed plate
+    is 243.4 x 204.9 mm and fits a 205 x 250 mm bed by 0.1 mm, and does not fit an Ender bed.
+    A classroom tool that checks every plate against a chosen printer would catch that before
+    a failed print.
+16. **calibration-file-linter** (Chapter 8 follow-on). Read a LeRobot calibration JSON and check
+    it: six joints, ids 1 to 6, `range_min` below `range_max`, offsets within the 11-bit
+    sign-magnitude limit of 2047, a wrist roll of 0 to 4095, and a "drift" check against a
+    live reading at the middle pose. Chapters 10, 11 and 13 will all depend on a good file.
+17. **can-frame-codec** (Chapters 4, 9 and 10). Chapter 9 hand-writes the Damiao MIT frame
+    packer (`armlab/damiao.py`) and a pretend motor. Chapter 10's hardware library needs the
+    same code for the DM motors and a different one for RobStride's 29-bit protocol. One shared
+    codec, with a round-trip test (`pack` then `unpack` within one quantization step), should
+    serve the labs, the sim `mit-frame-packer`, and Chapter 10.
+
 ## Facts to check by a human
 
 - **Chapter 3 states a 5 V supply for the SO-ARM101** (from the SO-ARM100 README's parts list).
@@ -65,9 +115,10 @@ check, and the third lists what is not built yet.
   reseller listing of the DM-J4310-2EC V1.2 gives 3.5 and 12.5 N·m. Chapter 6 mentions the
   conflict as an example of fact-checking, but the right value for the B601-DM needs a
   primary source.
-- **The 13-servo Pro kit** and the $247 deal price came from retail and deal-site listings, not
-  the project's own page. Chapter 6 mentions only the 13 servos. Confirm against the listing
-  that was purchased.
+- **The $247 deal price** came from a deal-site listing, not the project's own page. The listing
+  that was purchased shows $258.94. An earlier draft of Chapter 6 said the kit has 13 servos,
+  from a retail listing; the purchased listing's photograph and the author's count show 12, and
+  Chapter 6 now says there is no spare servo.
 - **Chapter 4, step 7 (real servo bus) was not run on hardware.** `find_port.py` and
   `read_servo.py` use the documented protocol, but the adapter echo behavior and the reply sizes
   are unverified. The python-can SocketCAN snippet was also not run on a real adapter.
@@ -137,6 +188,10 @@ all read on 2026-10-07.
 
 **Chapter 6**
 
+- **The $350 SO-ARM101 total** is the $332.04 kit plus a $20-or-more allowance for printed parts, as
+  the author specified. Replace the allowance with the real filament or print-service cost. The
+  Chapter 6 budget also adds one spare servo at the BOM price of $13.89 (about $364 in all), with
+  no shipping on the spare.
 - **All prices** are as of 2026-10-07: the SO-ARM100 bill of materials ($13.89 servo, $229.88
   and $121.94 totals), the reBot B601-DM and B601-RS bills of materials, and the ~€1,120
   starting price from a CNX Software article. They will drift. Re-check before publishing.
@@ -152,6 +207,88 @@ all read on 2026-10-07.
   The explanation of the Minnesota and Colorado retail delivery fee is in those notes and was
   not independently checked.
 
+### Chapters 7 to 9: unverified facts
+
+All read on 2026-10-07. Tags follow the research sheets: a claim from a primary document is
+not listed. Everything here came from a retailer, a wiki, a search summary, or my own inference.
+
+**Chapter 7**
+
+- **Fastener totals.** "About two dozen M2 x 6 and about forty to fifty M3 x 6 per follower" is
+  my own count of the LeRobot assembly text, which gives no totals. The thread type
+  (self-tapping or machine) and what each servo bag contains are not stated anywhere I found.
+  Count a real kit.
+- **Print plates.** The size (243.4 x 204.9 x 87.0 mm), 96,584 triangles and volume of the
+  Prusa follower plate were measured from the downloaded file, and the Ender plates are ASCII
+  STL. The repository may change them. The per-arm quantity of each part is not published, and
+  the README (15 percent) and the print-service instructions (20 percent) disagree on infill.
+- **PLA and PETG numbers** (glass transition 60 to 65 and about 80 degrees C, nozzle and bed
+  ranges, hot-car temperatures) come from vendor blogs and a search summary of Prusa's
+  material table. The chapter tells readers to follow the spool label.
+- **FDM tolerance** (about 0.1 to 0.3 mm) and **0.15 to 0.2 mm clearance** come from service
+  providers' blogs. Measure the author's own printer with the repository's gauges.
+- **Connector name.** Feetech's data sheet says "5264-3P"; one site calls it JST. The chapter
+  uses 5264 and 2.54 mm pitch. The **KK-type crimp terminal figures** (22 to 30 AWG, strip about
+  3 mm, about 4 A) come from distributor listings, not a Molex drawing.
+- **Soldering iron range** (315 to 425 degrees C), the **printer-safety** advice and the
+  **multimeter** rules are from university and vendor safety pages, not a standard.
+- **Heat-set insert hole** (about 4 mm for an M3 insert) is from a retailer. The SO-101 does
+  not use inserts.
+- **PLA density** (1.24 g per cm cubed) and the illustrative **$20 per kg** filament price are
+  typical values. Use the label and receipt of the real spool.
+
+**Chapter 8**
+
+- **Feetech protections** (torque off above 70 degrees C, overload at 80 percent of stall for 2 s,
+  over-current above 2 A for 2 s, voltage outside 4 to 7.4 V) come from a machine-translated
+  copy of the data sheet, dated 2020-04-10. The status-register bit meanings and the
+  `Max_Temperature_Limit` default were not confirmed.
+- **Waveshare board input range.** The Waveshare wiki says "9 to 12.6 V, must match servo
+  voltage", the SO-ARM100 README says a 5 V supply for the 7.4 V motors. This is the same open
+  question as the first item under Chapter 3, and Chapter 8 tells readers to use exactly the
+  BOM's supply. A person must settle it.
+- **Calibration file path.** The folder name (`so_follower` in current LeRobot, `so101_follower`
+  in older versions) and the file format were derived from the source, not from a run on a
+  machine. Run `lerobot-calibrate` once and replace the paragraph with what it prints.
+- **Jitter** has no authoritative LeRobot source. The chapter lists the plausible causes and
+  says to fix mechanical play first. The 60 degrees C pre-flight limit and the 2 degrees
+  drift limit are my choices.
+- **Real-fault reports** (the 16 V "12 V" adapter, the burnt gripper) are from LeRobot GitHub
+  issues 3394 and 2819, which are single reports.
+- **SO-101 release date** is not stated in the repository, so the chapter does not give one.
+- **Open pull requests** (auto-calibration, gripper limits, udev rules) are not taught. Check
+  them at the next revision.
+
+**Chapter 9**
+
+- **Damiao frame details.** The MIT packing, ranges, `PMAX`, `VMAX` and `TMAX` defaults, the
+  feedback layout and the FC (enable) frame come from the Damiao Python library in Seeed's wiki.
+  The **status nibble codes** and the **FD (disable) and set-zero** byte strings were not read
+  in Damiao's protocol PDF. Chapter 9 does not teach the status codes or a set-zero frame, and
+  Chapter 4's FD frame is still from the wiki only.
+- **4340P speed limit.** The wiki table says 8 rad/s for the 48 V version and the library says
+  10. The chapter tells readers to read the limit from the tool.
+- **DM4310 torque.** Still unresolved. The catalogue (V1.1) gives 3 and 7 N m, resellers list
+  the newer part at 3.5 and 12.5 N m, and Seeed's BOM says "V4". The chapter says the peak
+  is unconfirmed. Chapter 5 still states 3 and 7 without the caveat.
+- **RobStride** torque and protocol details were not re-verified. The only new RS facts used are
+  from Seeed's wiki and BOM (motor counts, prices, the 48 V supply).
+- **Quasi-direct drive** (low ratio, backdrivable, torque from current) is a general definition
+  that no fetched source states. The ratios (10:1, 40:1) are from Damiao's catalogue.
+- **Zeroing.** The set-zero procedure is only in Seeed's video and the MotorBridge Studio web
+  tool, which I could not see. The chapter points readers to it and does not give steps.
+- **No fuse, E-stop or reverse-polarity protection** appears in either BOM or wiki. The chapter
+  says so and tells readers to add a fuse and an E-stop (Chapter 3 rules). Confirm with
+  Seeed whether the production kit has any.
+- **Prices.** The $1,387.35 sum is my addition of seven priced BOM lines. The $1,517.58 store
+  bundle and the SO-ARM101 payload of about 0.5 kg came from retail pages and a search summary.
+  The SO-ARM101's reach and weight were not found in the sources used, and the comparison
+  table says so.
+- **Voltage standards.** "Below 60 V DC" is from a secondary summary of IEC 62368-1.
+- **Windows-only DM_Tools, Ubuntu 24.04, 921,600 baud** are from Seeed's wiki as of
+  2026-09-23. A Linux or macOS tool may exist.
+- **The decision-matrix scores** in `platform-chooser` are my judgments, labeled as such.
+
 ## Not built yet
 
 - Chapter 3: `power-budget-sizer`, `workcell-hazard-spotter`, `safe-power-up-sequencer`
@@ -160,6 +297,12 @@ all read on 2026-10-07.
 - Chapter 5: `gear-ratio-explorer`, `encoder-resolution-reader`, `actuator-type-matcher`,
   `pid-step-response`, `joint-limit-chooser`
 - Chapter 6: `landed-cost-calculator`, `sourcing-listing-checker`
+- Chapter 7: `tolerance-fit-explorer`, `print-defect-diagnoser`, `multimeter-practice`
+- Chapter 8: `servo-id-setup-sequencer`, `calibration-range-recorder`, `assembly-fault-finder`
+- Chapter 9: `mit-frame-packer`, `platform-chooser`
 - Social-preview PNGs for the five built circuit sims (Chapters 3 and 5), named in each sim's
   `index.md`.
-- Chapters 4 to 6 are generated but not committed or deployed.
+- Chapters 7 to 9 are generated but not committed or deployed. Chapters 4 to 6 were committed
+  in `314c316`, and it is not recorded whether they were deployed.
+- `docs/labs/` is still untracked (the lab idea list, written before these chapters).
+- Chapter 5's torque figures for the DM4310 should get the same caveat that Chapter 9 now has.

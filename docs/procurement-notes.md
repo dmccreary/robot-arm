@@ -51,7 +51,8 @@ charges" ($26.55) at checkout. Neither is a tariff.
   sales tax and the delivery fee add $73.10 (about 28%), so budget for them when you tell
   students what the kit costs.
 - Still to source: the 3D-printed parts for the arm (print them ourselves or
-  order them). See the parts list below.
+  order them). See the parts list below. The printed parts are budgeted at
+  $20 or more, so the whole pair comes to about $350 ($332.04 for the kit).
 
 ## 3D-Printed Parts
 

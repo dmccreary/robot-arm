@@ -823,7 +823,7 @@ The licenses listed are those stated by each project on 2026-10-07. Open source 
 
 ### Two Arms Side by Side
 
-The **SO-ARM101** is the successor to the SO-ARM100. The project describes it as having improved wiring and easier assembly (no gear removal), with updated motors for the leader arm. Every arm in the pair uses six Feetech STS3215 servo motors, and the leader and follower are built the same except for their gearing and their ends. It is the low-cost entry point: our own motor kit cost $332.04 delivered in October 2026, with the 3D-printed parts extra.
+The **SO-ARM101** is the successor to the SO-ARM100. The project describes it as having improved wiring and easier assembly (no gear removal), with updated motors for the leader arm. Every arm in the pair uses six Feetech STS3215 servo motors, and the leader and follower are built the same except for their gearing and their ends. It is the low-cost entry point: our own motor kit cost $332.04 delivered in October 2026, and the 3D-printed parts add $20 or more, so the whole pair costs about $350.
 
 The **reBot-DevArm B601** comes in two versions that share one arm design. The B601-DM uses Damiao motors and the B601-RS uses Robstride motors. It is a six-axis arm plus a parallel gripper, driven over a CAN bus, and it supports ROS, LeRobot, NVIDIA Isaac Sim, and Pinocchio. Its project lists repeatability of less than 0.2 mm.
 

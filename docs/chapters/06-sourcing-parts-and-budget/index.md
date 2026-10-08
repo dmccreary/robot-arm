@@ -84,7 +84,7 @@ The **SO-ARM100** is the open-source arm from The Robot Studio, designed with Hu
 | Leader arm motors | Earlier selection | Updated motors with mixed gear ratios (Chapter 2) |
 | Parts compatibility | Printed parts differ from the SO-ARM101's | Use the SO-ARM101's parts and instructions |
 
-An arm of this family is built from the same parts list each time: twelve STS3215 servos for the pair (six for the follower and six for the leader), two servo control boards, cables, two power supplies, clamps, and the 3D-printed parts. The follower's motors can be the 7.4 V or the 12 V version, and the leader's are always 7.4 V, which is why Chapter 3 told you to check the voltage on every part. It is a low-cost entry: the project's own list prices the follower arm's parts at about $122, and the leader and follower pair at about $230, without the printed parts.
+An arm of this family is built from the same parts list each time: twelve STS3215 servos for the pair (six for the follower and six for the leader), two servo control boards, cables, two power supplies, clamps, and the 3D-printed parts. The follower's motors can be the 7.4 V or the 12 V version, and the leader's are always 7.4 V, which is why Chapter 3 told you to check the voltage on every part. It is a low-cost entry: the project's own list prices the follower arm's parts at about $122, and the leader and follower pair at about $230, without the printed parts. This book's own build comes to about $350: the motor kit was $332.04 delivered, and the printed parts add $20 or more.
 
 ### The reBot-DevArm
 
@@ -96,7 +96,7 @@ The **reBot-DevArm** is Seeed Studio's open-source arm. It comes in two versions
 | Motor cost in the project's bill of materials | $13.89 each | $120 (DM4310) and $175 (DM4340P) | $125 (RS00) and $210 (RS06) |
 | Supply voltage | 5 V (7.4 V motors) | 24 V | 48 V |
 | Frame parts | 3D-printed | 3D-printed and CNC-machined | 3D-printed and CNC-machined |
-| Order of magnitude | A few hundred dollars | About $1,200 to $1,500 | About $1,400 and up |
+| Approximate Cost | $350 | About $1,200 to $1,500 | About $1,400 and up |
 
 ## Reading a Bill of Materials
 
@@ -136,7 +136,7 @@ The same arm can be bought in several ways, and each trades money against time a
 | Direct from the manufacturer | Order from the maker of a part | Authentic parts, official support | Shipping from abroad, minimum quantities |
 | Online marketplace | Order from a marketplace seller | Low price, many choices | Quality varies, long shipping |
 
-An **official kit** is a bundle that the project or its partner vendors sell: the SO-ARM100 repository names Seeed Studio, WowRobo, Robonine, PartaBot, ForgeMotion Labs, RoboSEasy and Autodiscovery, and says that vendors offer printed-part kits, assembled versions, electronics kits and complete arm kits. A **kit build** is the middle path this project took: the motor kit arrives with the servos, boards and cables, and the frame comes separately. The project's order, on 2026-10-06, was the SO-ARM101 "Kit Pro" motor kit from a marketplace seller, and the listing states plainly that the 3D-printed parts are *not* included. A retail listing of the same kit counts 13 STS3215 servos, one more than the twelve that the pair needs, so the kit comes with a spare.
+An **official kit** is a bundle that the project or its partner vendors sell: the SO-ARM100 repository names Seeed Studio, WowRobo, Robonine, PartaBot, ForgeMotion Labs, RoboSEasy and Autodiscovery, and says that vendors offer printed-part kits, assembled versions, electronics kits and complete arm kits. A **kit build** is the middle path this project took: the motor kit arrives with the servos, boards and cables, and the frame comes separately. The project's order, on 2026-10-06, was the SO-ARM101 "Kit Pro" motor kit from a marketplace seller, and the listing states plainly that the 3D-printed parts are *not* included. The listing's photograph of the kit shows twelve STS3215 servos, each with its own small bag of horns and screws, plus two control boards, two power supplies and the cables. Twelve is exactly what the pair needs, so the kit has no spare servo.
 
 A **self-sourced build** means you buy each part in the BOM yourself, from the links the repository gives for the United States, Europe, China and Japan. It can give the lowest list price, but it is also the most work: a dozen orders from several sellers, each with its own shipping. A **distributor** is a company that stocks parts from many manufacturers and sells them in small quantities, and it is the usual source for the commodity parts of a BOM, such as connectors, cables, power supplies and fasteners. Buying **direct from the manufacturer** is the route for a specialised part, such as a Damiao motor from Damiao's own channels, and it gives the best guarantee that the part is genuine and the best access to documentation. An **online marketplace** is a site where many independent sellers list the same kinds of parts. Prices are often the lowest, and the quality, the labelling and the shipping time vary the most.
 
@@ -200,11 +200,13 @@ The landed cost of $332.04 is $73.10 above the sticker price, an overhead of \( 
 | Budget line | How to estimate it | Example for this project |
 |---|---|---|
 | Motor kit, landed | Sticker price plus shipping, tax and fees | $332.04 (the project's order) |
-| 3D-printed parts | Filament if you print, or the vendor's price | To be recorded in Chapter 7 |
+| 3D-printed parts | Filament if you print, or the vendor's price | $20 or more if you print them (Chapter 7) |
 | Power supplies | The BOM's line, with shipping | $10 each in the repository's list |
 | Fasteners and tools | The BOM's lines, with shipping | A screwdriver set at $6 in the list |
-| Spare parts | A percentage of the servos and cables | One servo costs $13.89 |
+| Spare parts | A percentage of the servos and cables | One spare STS3215 servo at $13.89, before shipping (the kit has none) |
 | Margin | 10 percent of the total | Decided before ordering |
+| **Approximate total for the pair** | Motor kit plus printed parts, before the margin | **About $350** ($332.04 + $20 or more) |
+| **Total with one spare servo** | The total above plus the spare | **About $364** ($350 + $13.89) |
 
 !!! mascot-tip "Write the Source and the Date Beside Every Price"
     ![Servo pointing upward with a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
@@ -212,7 +214,7 @@ The landed cost of $332.04 is $73.10 above the sticker price, an overhead of \( 
 
 ### Spare Parts
 
-**Spare parts** are extra units you buy now because you may need them later. Two kinds of failure justify them. Servos can burn out or strip their gears when a joint is overloaded, which is the risk Chapter 5 described, and a build with no spare servo stops until a replacement arrives, a wait that can be weeks from an overseas seller. Printed parts crack, and you can reprint them, but only if the file and a printer are at hand. A common plan is one or two spare servos for each pair of arms (the 13-servo kit has one), a spare cable of each kind, and a few spare screws. The extra cost is small next to the weeks it saves.
+**Spare parts** are extra units you buy now because you may need them later. Two kinds of failure justify them. Servos can burn out or strip their gears when a joint is overloaded, which is the risk Chapter 5 described, and a build with no spare servo stops until a replacement arrives, a wait that can be weeks from an overseas seller. Printed parts crack, and you can reprint them, but only if the file and a printer are at hand. A common plan is one or two spare servos for each pair of arms (the kit we bought has none, so a spare is an extra purchase, and the budget above includes one), a spare cable of each kind, and a few spare screws. The extra cost is small next to the weeks it saves.
 
 ### Classroom Parts Orders
 
@@ -261,7 +263,7 @@ Five problems in this fixed order:
 | 2 | For the order in problem 1, what is the overhead as a percentage of the sticker price? | percent | 28.2 | (332.04 − 258.94) / 258.94 × 100 = 28.23. |
 | 3 | A $120 motor has $15 shipping and 7 percent sales tax on the item price only. What is the landed cost? | USD | 143.40 | Tax is 0.07 × 120 = 8.40, and 120 + 15 + 8.40 = 143.40. |
 | 4 | Four motors at $120 and three at $175, with $60 shipping and no tax. What is the landed cost? | USD | 1065.00 | 4 × 120 + 3 × 175 = 1005, and 1005 + 60 = 1065. |
-| 5 | You have $350 and place the order in problem 1. How much is left? | USD | 17.96 | 350 − 332.04 = 17.96. |
+| 5 | You have $350 and place the order in problem 1. How much is left? | USD | 17.96 | 350 − 332.04 = 17.96, which is less than the $20 or more that the printed parts cost. |
 
 **Provenance:** Problems 1, 2 and 5 use the project's order from the procurement notes (2026-10-06). The motor prices in problem 4 are from the reBot B601-DM bill of materials. Problem 3 is illustrative.
 
@@ -328,7 +330,7 @@ The reference plan for every listing is an SO-ARM101 build that uses 7.4 V STS32
 | 1 | "STS3215 servo, 7.4 V, 1/345 gear, model C001, $13.89" | Buy | It matches the BOM line in model, voltage, gear ratio and price. |
 | 2 | "Bus servo, compatible with SO-ARM, $4.99, no model number or gear ratio given" | Avoid | The price is far below the BOM's $13.89 and the listing names no model, which are signs of a counterfeit or a wrong part. |
 | 3 | "STS3215 servo, 12 V version, 1/345 gear, $17.50" | Check first | It is a genuine option, but it needs a 12 V supply of 5 A or more, which the plan does not have. |
-| 4 | "SO-ARM101 motor kit, 13 servos, boards and cables" with no line about printed parts | Check first | The listing does not say whether the printed frame is included, and it must be stated before paying. |
+| 4 | "SO-ARM101 motor kit, 12 servos, boards and cables" with no line about printed parts | Check first | The listing does not say whether the printed frame is included, and it must be stated before paying. |
 | 5 | "Power supply, 5 V, 4 A, 5.5 × 2.1 mm barrel plug, polarity diagram shown" | Buy | It matches the plan's voltage and plug, and the polarity is documented. |
 | 6 | "Motor control board, works with any servo", photographs show three-pin PWM headers only | Avoid | PWM headers drive hobby servos, not serial bus servos. |
 | 7 | "SO-ARM100 printed parts, old version" for an SO-ARM101 build | Avoid | The SO-ARM101 changed the wiring and assembly, so the older printed parts are the wrong revision. |
@@ -364,7 +366,7 @@ source .venv/bin/activate
 git status
 ```
 
-**Step 2. Write the parts list.** The file is the SO-ARM100 repository's bill of materials for two arms, with the screwdriver set marked as optional and one spare servo added (as the 13-servo kit has). The first line names the columns. `spares` counts extra units, and `required` is `yes` or `no`. Create `config/so101_two_arms.csv`:
+**Step 2. Write the parts list.** The file is the SO-ARM100 repository's bill of materials for two arms, with the screwdriver set marked as optional and one spare servo added, as the spare-parts plan above recommends (the kit we bought has none). The first line names the columns. `spares` counts extra units, and `required` is `yes` or `no`. Create `config/so101_two_arms.csv`:
 
 ```text
 part,qty,spares,unit_usd,required
@@ -585,7 +587,7 @@ Add a function `classroom_servos(pairs, spare_fraction=0.10)` to `armlab/budget.
 
 You can now plan an order and total what it will really cost.
 
-- The **SO-ARM100** and its successor the **SO-ARM101** are the low-cost, serial-bus entry (about $230 for a pair's parts, before printing). The **reBot-DevArm**, in its **B601-DM** (24 V) and **B601-RS** (48 V) versions, uses CAN-bus motors and costs several times as much.
+- The **SO-ARM100** and its successor the **SO-ARM101** are the low-cost, serial-bus entry (about $350 for a pair: a $332.04 motor kit plus $20 or more of printed parts). The **reBot-DevArm**, in its **B601-DM** (24 V) and **B601-RS** (48 V) versions, uses CAN-bus motors and costs several times as much.
 - A **bill of materials** lists every part, its quantity, supplier and price. Mark each line as a **required part** or an **optional part**, and check each against its **datasheet**, the **vendor documentation**, and the **part revision**. Save the list as a **CSV parts list** so that a program can read it.
 - You can buy as an **official kit**, a **kit build**, a **self-sourced build**, **direct from the manufacturer**, from a **distributor**, or on an **online marketplace**. Each trades price against time and risk.
 - **Lead time** is set by the slowest part, and **order tracking** catches a late parcel. **Shipping and customs** add to the sticker price, so the **total build cost** is the **landed cost**. The project's kit rose from $258.94 to $332.04, an overhead of 28.2 percent. **Budgeting** plans the total, with **spare parts** and a margin.
