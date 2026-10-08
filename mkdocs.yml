@@ -86,6 +86,10 @@ nav:
       - Common Ground Loop: sims/common-ground-loop/index.md
       - H-Bridge Current Paths: sims/h-bridge-current-paths/index.md
 
+  - Stories:
+      - Story Ideas: stories/story-ideas.md
+      - "The Lobster and the Arm (OpenClaw)": stories/openclaw-lobster-and-the-arm/index.md
+
   - Appendices:
       - List of Appendices: appendices/index.md
       - "A. Why PWM Servos Won't Work": appendices/pwm-servos/index.md

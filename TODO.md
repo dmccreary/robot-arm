@@ -289,6 +289,29 @@ not listed. Everything here came from a retailer, a wiki, a search summary, or m
   2026-09-23. A Linux or macOS tool may exist.
 - **The decision-matrix scores** in `platform-chooser` are my judgments, labeled as such.
 
+## Labs section: decisions needed
+
+From `docs/labs/list-of-ideas.md` (53 candidate labs, none written yet). The answers decide
+which labs get written and which parts go on the station kit.
+
+1. **Which mini arm for Track E?** A laser-cut MG90S arm, a printed arm, or a purchased kit of
+   about $25. Labs E1 to E8, H1, H3 and H7 depend on this choice.
+2. **Can a Pico drive an STS3215 bus servo reliably?** The servo uses half-duplex TTL serial at
+   up to 1 Mbaud. Confirm that a Pico plus an adapter board works before writing F6 and F7. If
+   it does not, run those two labs from the laptop with `pyserial` instead.
+3. **Keep or cut the CAN labs (F8 and F9)?** The Pico has no CAN controller, so they need two
+   MCP2515 modules and terminators. They are the costliest and least reusable labs.
+4. **Which Pico?** The list assumes the Pico 2 W. A plain Pico is about $4 cheaper and runs every
+   lab except the Wi-Fi ones.
+5. **Lab numbering.** Keep track letters (A to H), or number the labs in one global order like a
+   course?
+6. **Where do answers go?** Instructor guides are a separate section in this book and do not use
+   the mascot. Decide whether lab answer keys live there or beside each lab.
+7. **Verify the station kit prices.** The roughly $63 core and $170 full-add-on totals in the
+   draft kit table are estimates, not quotes.
+8. **Mermaid is not enabled** in `mkdocs.yml`, so the dependency map is a table. Turn on
+   Mermaid support only if more diagrams will need it.
+
 ## Not built yet
 
 - Chapter 3: `power-budget-sizer`, `workcell-hazard-spotter`, `safe-power-up-sequencer`
