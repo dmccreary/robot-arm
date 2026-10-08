@@ -94,6 +94,7 @@ nav:
       - List of Appendices: appendices/index.md
       - "A. Why PWM Servos Won't Work": appendices/pwm-servos/index.md
 
+  - Glossary: glossary.md
   - License: license.md
   - Contact: contact.md
 

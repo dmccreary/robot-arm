@@ -15,7 +15,7 @@ The reBot arm falls into this range, so safety practices step up.
 
 #### 3D Printer Safety
 
-Practices for operating printers safely, including avoiding hot nozzles and beds, ensuring ventilation, and never leaving heating machines unattended.
+The set of precautions around a heated-nozzle plastic printer, covering burn hazards from the hot end and bed, fumes from melting filament, moving parts, and fire risk, relevant when printing arm brackets and links.
 
 Printing the arm's parts is a core activity.
 
@@ -23,7 +23,7 @@ Printing the arm's parts is a core activity.
 
 #### 3D Printing
 
-A manufacturing process that builds a physical object by depositing material layer by layer from a digital model.
+Additive manufacturing in which a machine builds a solid object from a digital model by laying down thin layers of material, used here to produce the brackets, links, and housings of low-cost arms.
 
 It makes the structural parts of the SO-ARM101 affordable and customizable.
 
@@ -31,7 +31,7 @@ It makes the structural parts of the SO-ARM101 affordable and customizable.
 
 #### Acceleration Limit
 
-A cap on how quickly speed may change.
+A ceiling on how quickly a joint's speed may change, expressed in degrees or radians per second squared, which keeps motions gentle, reduces mechanical shock to gears, and prevents the arm from throwing a held object.
 
 Limits prevent shaking, tipping, or dropping objects.
 
@@ -47,7 +47,7 @@ Low-cost arms have limited accuracy because of backlash and calibration error.
 
 #### ACT Policy
 
-A transformer-based imitation-learning model, Action Chunking with Transformers, that predicts a short sequence of future actions at once.
+A transformer-based imitation-learning model, short for Action Chunking with Transformers, that looks at camera images and joint positions and outputs a short block of future joint targets, popular for low-cost arms trained on small demonstration sets.
 
 It performs well with small demonstration datasets on low-cost arms.
 
@@ -55,7 +55,7 @@ It performs well with small demonstration datasets on low-cost arms.
 
 #### Actuator
 
-A device that converts electrical energy into mechanical motion, such as rotation or linear movement.
+The component in a joint that turns electrical power into mechanical motion, such as a servo or brushless motor with gearbox, determining how strongly, quickly, and precisely each link of the arm can move.
 
 Actuators are what make every joint of the arm move.
 
@@ -63,7 +63,7 @@ Actuators are what make every joint of the arm move.
 
 #### Adult Supervision
 
-The presence of a responsible adult who oversees activities involving tools, power, or hazards that minors undertake.
+The presence of a responsible adult who oversees younger learners during activities involving power tools, soldering irons, heated printers, or energized motors, ready to stop work and respond if something goes wrong.
 
 It applies to soldering, printing, and powering the larger arms in school settings.
 
@@ -79,7 +79,7 @@ A clear architecture makes behavior understandable and checkable.
 
 #### Agent Evaluation Suite
 
-A collection of test cases with expected outcomes that measures an agent's performance and safety.
+A fixed collection of test requests paired with expected outcomes, such as which tools get called and which are never called, run repeatedly to score how reliably and safely a robot-controlling agent behaves.
 
 It tracks improvement and catches regressions.
 
@@ -97,7 +97,7 @@ See also: Safety Layer
 
 #### Agent Loop
 
-The repeating cycle in which an agent observes the situation, decides what to do, acts, and examines the result.
+The repeating cycle in which a language-model agent examines the current situation, chooses a tool, executes it, reads the result, and decides the next step until the goal is met or abandoned.
 
 Tasks emerge from many such cycles.
 
@@ -105,7 +105,7 @@ Tasks emerge from many such cycles.
 
 #### Agent Planner
 
-The component of an agent that breaks a goal into steps and decides which tools to use.
+The part of an agent system, typically driven by a language model, that turns a high-level goal into an ordered list of steps and selects which tool handles each step, leaving low-level motion to other components.
 
 It handles reasoning, not low-level motion.
 
@@ -121,7 +121,7 @@ Skills reuse know-how.
 
 #### Agent Testing
 
-Checking how reliably and safely an agent behaves across varied requests and conditions.
+The practice of exercising a language-model agent with many varied requests, including unclear and hostile ones, to measure how often it chooses correct tools, respects limits, and produces safe arm behavior.
 
 Agents are unpredictable and need systematic checks.
 
@@ -129,7 +129,7 @@ Agents are unpredictable and need systematic checks.
 
 #### Agent Tool
 
-A function made available to an agent that performs an action or retrieves information.
+A named function that an AI agent is allowed to invoke to affect or sense the world, such as moving the arm, opening the gripper, or reading a camera, described by a schema the model can follow.
 
 Tools are the agent's hands.
 
@@ -145,7 +145,7 @@ It adds natural-language control and planning on top of the arm.
 
 #### Ambiguous Instructions
 
-Requests that can be read in more than one way, so the intended action is unclear.
+Requests whose meaning can be read in more than one way, such as "put it over there", leaving the target object, location, or speed unclear and creating the risk that an agent acts on a wrong guess.
 
 Acting on a wrong guess can cause errors or harm.
 
@@ -169,7 +169,7 @@ It saves learners from hand-parsing `sys.argv` and gives clear errors for bad in
 
 #### Arm Class
 
-A Python class that represents a whole robot arm, bundling its connection, joints, and motion methods behind one object.
+A Python class that models an entire robot arm as one object, holding its connection, its joints, and methods for reading positions and commanding motion so that scripts do not touch low-level protocols directly.
 
 It organizes the control library.
 
@@ -177,7 +177,7 @@ It organizes the control library.
 
 #### Arm Comparison
 
-A side-by-side evaluation of different robot arms across measures such as cost, payload, reach, and complexity.
+A structured side-by-side review of candidate robot arms along measures such as price, reach, carrying capacity, accuracy, software support, and assembly effort, used to decide which platform fits a given classroom or project.
 
 It supports platform choice.
 
@@ -185,7 +185,7 @@ It supports platform choice.
 
 #### Asking a Human
 
-Deliberately requesting guidance or confirmation from a person when an agent is uncertain or a step is risky.
+A deliberate agent behavior in which the system pauses and requests clarification or approval from a person when instructions are unclear, a grasp keeps failing, or the next action carries meaningful risk.
 
 It prevents guessing in unclear situations.
 
@@ -193,7 +193,7 @@ It prevents guessing in unclear situations.
 
 #### Assembly Guide
 
-A step-by-step document, often with photos or video, showing how to put a product together.
+A step-by-step document with photographs, diagrams, or video that walks a builder through fitting printed parts, servos, fasteners, and cables together in the intended order to complete a working arm.
 
 Following it in order prevents rework.
 
@@ -201,7 +201,7 @@ Following it in order prevents rework.
 
 #### Assembly Tools
 
-The hand tools used to build the arm, including screwdrivers, hex keys, pliers, and cutters.
+The hand tools used during a build, typically small screwdrivers, hex keys, pliers, flush cutters, and a hobby knife, chosen to match the small fasteners and plastic parts of desktop arms.
 
 Using the right ones avoids stripped screws.
 
@@ -209,7 +209,7 @@ Using the right ones avoids stripped screws.
 
 #### Assessment Rubric
 
-A scoring guide that lists criteria and performance levels for judging student work.
+A scoring guide that lists criteria, such as working code, safe operation, testing, and documentation, along with descriptions of each performance level, so an instructor grades arm projects consistently and learners know the expectations.
 
 It makes grading of projects clear and consistent.
 
@@ -217,7 +217,7 @@ It makes grading of projects clear and consistent.
 
 #### Audit Log
 
-A tamper-resistant record of actions taken, including who or what requested them, when, and with what result.
+A chronological record of each command an agent or user issued to the arm, including time, parameters, and outcome, kept so that unexpected behavior can be reviewed and explained afterward.
 
 It supports review after problems.
 
@@ -225,7 +225,7 @@ It supports review after problems.
 
 #### Axis-Angle Rotation
 
-A way to describe a 3D rotation by a unit axis direction and an angle about it.
+A description of a three-dimensional rotation using a unit vector for the axis of turning plus a single angle about that axis, which is intuitive to picture and convertible to matrices or quaternions.
 
 It is intuitive and converts to other forms.
 
@@ -233,7 +233,7 @@ It is intuitive and converts to other forms.
 
 #### B601 Body Structure
 
-The mechanical layout of the reBot B601 arm, including its link construction, joint arrangement, and mounting points for actuators.
+The mechanical frame of the reBot B601 arm, comprising its base column, shoulder housing, upper arm, forearm, and wrist sections that carry the CAN-controlled actuators and define the arm's geometry.
 
 Understanding it guides assembly and kinematic modeling.
 
@@ -241,7 +241,7 @@ Understanding it guides assembly and kinematic modeling.
 
 #### Back-EMF
 
-The voltage produced by a spinning motor that opposes the supply voltage, rising with speed.
+The voltage generated by a spinning motor that opposes the applied supply voltage and grows with speed, limiting how fast the motor can turn and sending energy back toward the supply during braking.
 
 It limits top speed and can push energy back into the supply when braking.
 
@@ -267,7 +267,7 @@ See also: Coordinate Frame
 
 #### Battery
 
-A device that stores chemical energy and supplies it as direct-current electricity.
+An electrochemical device that stores energy and delivers it as direct current, offering portable power for a mobile robot but limited in the surge current it can supply compared with a bench supply.
 
 It enables a portable or mobile robot but has limited current capacity.
 
@@ -275,7 +275,7 @@ It enables a portable or mobile robot but has limited current capacity.
 
 #### Baud Rate
 
-The number of signal changes per second on a serial link, which for simple serial equals bits per second.
+The signaling speed of a serial connection, measured in symbols per second and equal to bits per second for simple links, which both the controller and every servo on a bus have to be configured to match.
 
 Both ends must use the same value to understand each other.
 
@@ -283,7 +283,7 @@ Both ends must use the same value to understand each other.
 
 #### Bill of Materials
 
-A complete list of every part needed to build a product, with quantities, descriptions, and often suppliers and costs.
+A complete itemized list of every part needed to build a product, with quantities, descriptions, suppliers, and prices, serving as the shopping list and cost basis for building a robot arm.
 
 It is the shopping list for an arm build.
 
@@ -291,7 +291,7 @@ It is the shopping list for an arm build.
 
 #### Bimanual Robot
 
-A robot with two arms that can work together on a single task.
+A robot equipped with two arms that can cooperate on one task, such as holding a jar with one while the other unscrews the lid, mimicking the two-handed work humans do.
 
 Two-handed tasks like folding or passing objects need this arrangement.
 
@@ -299,7 +299,7 @@ Two-handed tasks like folding or passing objects need this arrangement.
 
 #### Bimanual Setup
 
-Arranging two arms with their leaders, cameras, and workspace so they can cooperate.
+The physical arrangement of two arms, their leader devices, cameras, and shared workspace so that they can be operated together, which doubles wiring, calibration, and safety concerns compared with a single arm.
 
 Two arms double the wiring, calibration, and safety needs.
 
@@ -307,7 +307,7 @@ Two arms double the wiring, calibration, and safety needs.
 
 #### Bit Operations
 
-Operations that act directly on the individual binary digits of integers, including AND, OR, XOR, and shifts.
+Low-level arithmetic acting on the individual binary digits of integers, including AND, OR, XOR, and left or right shifts, used to pack and unpack fields inside bytes sent to servos and motors.
 
 They assemble and extract fields in compact messages.
 
@@ -323,7 +323,7 @@ Blocking calls can freeze a program that must still watch for a stop signal.
 
 #### Boundary Conditions
 
-The starting and ending requirements for a motion, such as positions, velocities, and accelerations at each end.
+The specified values at the start and end of a motion, such as position, velocity, and acceleration, which a trajectory formula is fitted to satisfy so that moves begin and finish smoothly.
 
 Polynomial trajectories are fitted to meet them.
 
@@ -331,7 +331,7 @@ Polynomial trajectories are fitted to meet them.
 
 #### Bounded Commands
 
-Commands whose parameters are limited to safe ranges and a fixed menu of actions.
+Agent-facing instructions whose parameters are limited to a small, pre-approved set of actions and numeric ranges, so that even a mistaken or manipulated request cannot drive the arm outside safe limits.
 
 They shrink the damage a mistaken request can cause.
 
@@ -339,7 +339,7 @@ They shrink the damage a mistaken request can cause.
 
 #### Brown-Out
 
-A temporary dip in supply voltage low enough to make electronics reset or misbehave.
+A temporary sag in supply voltage, often triggered when several motors draw heavy current at once, that causes controllers to reset or behave erratically while the power source recovers.
 
 Several motors starting at once can trigger it.
 
@@ -355,7 +355,7 @@ It powers the high-performance actuators of the reBot arm.
 
 #### Budgeting
 
-Planning how money will be spent on a project, with limits for each category and a reserve for surprises.
+The activity of allocating limited funds across parts, shipping, tools, and spares before purchasing, with a reserve for replacements, so that a class or individual can finish a build without running out of money.
 
 Classrooms with fixed funds need it before ordering.
 
@@ -363,7 +363,7 @@ Classrooms with fixed funds need it before ordering.
 
 #### Bus Scan
 
-A routine that pings every possible ID on a bus to discover which devices are connected.
+A diagnostic routine that sends a ping to each possible device identifier on a shared communication line and lists which ones reply, revealing missing, duplicated, or misconfigured servos and motors.
 
 It reveals missing or duplicate IDs fast.
 
@@ -379,7 +379,7 @@ Serial packets are built and parsed with them.
 
 #### Cable Management
 
-Arranging and securing wires so they do not tangle, snag, or get pinched as the arm moves.
+The arrangement of wires using clips, sleeves, ties, and slack loops so they follow arm movement without tangling, snagging, being pinched, or pulling on connectors, reducing intermittent faults.
 
 Loose cables are a common cause of faults.
 
@@ -427,7 +427,7 @@ Following the same steps gives repeatable results.
 
 #### Camera
 
-A device that captures light from a scene and turns it into digital images.
+An imaging device that converts light from a scene into digital frames, giving the arm's software something to detect objects, estimate positions, and record demonstrations from.
 
 It gives the arm the ability to see objects.
 
@@ -435,7 +435,7 @@ It gives the arm the ability to see objects.
 
 #### Camera Calibration
 
-Determining a camera's internal parameters and lens distortion by imaging a known pattern.
+The procedure of photographing a known pattern, such as a checkerboard, from several views to compute a camera's focal length, optical center, and lens distortion so pixel measurements can be related to real geometry.
 
 It is needed to measure real-world positions from pictures.
 
@@ -443,7 +443,7 @@ It is needed to measure real-world positions from pictures.
 
 #### Camera Extrinsics
 
-The position and orientation of a camera relative to another frame, such as the robot base.
+The position and orientation of a camera relative to another coordinate frame, such as the robot's base, which change whenever the camera is moved and link image locations to arm positions.
 
 They change when the camera is moved.
 
@@ -461,7 +461,7 @@ See also: Camera Extrinsics
 
 #### CAN Adapter
 
-A device that connects a computer to a CAN bus, translating between USB or another interface and CAN frames.
+A hardware interface, often a small USB dongle, that connects a computer to a CAN network by translating between the computer's USB or serial link and electrical CAN frames.
 
 Python needs one to speak to the reBot actuators.
 
@@ -485,7 +485,7 @@ It isolates wiring problems from software ones.
 
 #### CAN Bus
 
-A two-wire differential serial network where many nodes share the same lines and messages are prioritized by identifier.
+A two-wire differential communication network on which many nodes share the same lines, exchanging short frames prioritized by identifier, which carries commands and feedback for the reBot arm's actuators.
 
 It is the communication backbone of the reBot arm.
 
@@ -501,7 +501,7 @@ Motor commands and status all travel in frames.
 
 #### CAN Motor Configuration
 
-The process of setting up a CAN actuator's parameters, including its ID, bit rate, mode, and limits, before use.
+The setup of a CAN-connected actuator's parameters, such as its identifier, communication speed, control mode, and limits, carried out before the motors can share one network and work as an arm.
 
 Each motor must be configured to coexist on a shared bus.
 
@@ -509,7 +509,7 @@ Each motor must be configured to coexist on a shared bus.
 
 #### CAN Termination
 
-A 120-ohm resistor placed at each physical end of a CAN bus to absorb signal reflections.
+The practice of placing a resistor, normally 120 ohms, across the two data lines at each physical end of a CAN network to absorb signal reflections and keep communication reliable.
 
 Without it, long or fast buses become unreliable.
 
@@ -517,7 +517,7 @@ Without it, long or fast buses become unreliable.
 
 #### Capstone Project
 
-A final, larger project in which learners combine skills from throughout the course to build something complete.
+A culminating assignment in which learners combine many earlier skills, such as hardware assembly, control code, vision, and testing, to deliver a complete working robot arm application with documentation.
 
 It demonstrates integrated understanding.
 
@@ -525,7 +525,7 @@ It demonstrates integrated understanding.
 
 #### Cartesian Coordinates
 
-A system that locates a point by its distances along perpendicular axes, usually x, y, and z.
+A way of locating a point in space by its signed distances along perpendicular x, y, and z axes, the natural language for stating where the arm's gripper is headed.
 
 Humans describe where to place the gripper this way.
 
@@ -533,7 +533,7 @@ Humans describe where to place the gripper this way.
 
 #### Cartesian Motion
 
-Movement planned in terms of the end effector's position in space rather than individual joint values.
+Movement planned in terms of the gripper's position and orientation in space rather than individual joint angles, requiring inverse kinematics to convert each step into joint commands.
 
 It lets users command where the tool goes.
 
@@ -549,7 +549,7 @@ It is the usual path for pick and place approach.
 
 #### Chat-Controlled Arm
 
-A project in which a user commands the arm through a messaging app via an agent.
+A project in which a person issues instructions to the arm through a messaging app, with an AI agent translating the text into validated tool calls that move the hardware.
 
 It shows natural-language control with safety layers.
 
@@ -565,7 +565,7 @@ It catches noise on the servo bus.
 
 #### Class Interface
 
-The set of public methods and attributes a class offers to users, separate from how they are implemented.
+The collection of public methods and attributes a class exposes to the rest of a program, defining how it is used while hiding its internal workings and allowing implementations to be swapped.
 
 A stable interface lets implementations change without breaking programs.
 
@@ -573,7 +573,7 @@ A stable interface lets implementations change without breaking programs.
 
 #### Classroom Parts Order
 
-A coordinated purchase of components for a whole class, with quantities for each team plus spares.
+A single coordinated purchase of components for an entire class, specifying quantities per team plus spares, designed to simplify shipping, reduce cost, and ensure every group has compatible hardware.
 
 Planning it carefully saves money and time.
 
@@ -581,7 +581,7 @@ Planning it carefully saves money and time.
 
 #### Classroom Use
 
-Applying the arm in group teaching, including shared equipment, schedules, supervision, and lesson planning.
+The adoption of arms in group teaching settings, involving shared equipment, scheduled access, supervision, safety rules, and lesson plans that fit time slots and varying student experience.
 
 Arms in school need extra care for safety and access.
 
@@ -589,7 +589,7 @@ Arms in school need extra care for safety and access.
 
 #### Cloud Agent
 
-An agent that relies on a remote server or hosted model to reason, with network access needed.
+An AI agent whose language model runs on remote servers reached over the internet, offering strong reasoning at the cost of network delay, usage fees, and sending data to an outside provider.
 
 It offers stronger models but adds delay, cost, and data sharing.
 
@@ -597,7 +597,7 @@ It offers stronger models but adds delay, cost, and data sharing.
 
 #### Code Editor
 
-A program for writing and editing source code, offering features such as syntax highlighting, indentation help, and integrated terminals.
+A program for writing source code that offers syntax coloring, indentation help, search, and an integrated terminal, helping learners write and run arm control scripts with fewer typing errors.
 
 A good editor catches typos in register addresses before they reach the hardware.
 
@@ -605,7 +605,7 @@ A good editor catches typos in register addresses before they reach the hardware
 
 #### Collision
 
-An unintended contact between the arm and an object, a person, or itself.
+An unintended contact between the arm and an obstacle, a person, or its own body, which can damage gears, spill held objects, or cause injury.
 
 Detecting and avoiding them protects the hardware and people.
 
@@ -613,7 +613,7 @@ Detecting and avoiding them protects the hardware and people.
 
 #### Collision Checking
 
-Testing whether a planned pose or path would make the arm hit an obstacle or itself.
+A computation that tests whether a pose or path would make the arm's links intersect with obstacles or one another, performed before motion so unsafe plans are rejected.
 
 It is needed before executing motion in clutter.
 
@@ -629,7 +629,7 @@ It integrates vision, kinematics, and motion.
 
 #### Color Space
 
-A system for representing colors as numbers, such as RGB, BGR, or HSV.
+A mathematical model for describing colors as numbers, such as RGB, BGR, or HSV, where the choice affects how easily software can pick out a colored object under changing lighting.
 
 Choosing a convenient one makes color detection reliable.
 
@@ -637,7 +637,7 @@ Choosing a convenient one makes color detection reliable.
 
 #### Color Thresholding
 
-Selecting the pixels in an image whose color values fall within a chosen range, producing a mask.
+A simple vision method that keeps only the pixels whose color values fall within a chosen range, producing a mask that highlights, for example, every red block in a camera frame.
 
 It finds colored objects simply.
 
@@ -645,7 +645,7 @@ It finds colored objects simply.
 
 #### Command Dataclass
 
-A dataclass that packages a motion request, such as target values, speed, and duration, into one object.
+A small Python data container that bundles the parts of a motion request, such as target angles, speed, and duration, into one named object that is easy to validate, log, and pass between functions.
 
 Bundling makes commands easy to validate and log.
 
@@ -663,7 +663,7 @@ See also: Argparse Module
 
 #### Command Parsing
 
-Turning an input, such as a text message, into a structured command with a name and parameters.
+The step of converting a raw instruction, such as a typed chat message, into a structured command with a recognized action name and typed parameters that code can execute.
 
 It connects human phrasing to program calls.
 
@@ -671,7 +671,7 @@ It connects human phrasing to program calls.
 
 #### Command Validation
 
-Checking each command for correctness and safety before execution.
+The verification that a requested action is well formed and within permitted limits before any signal reaches the motors, rejecting or adjusting values that are out of range or unsafe.
 
 It stops bad requests early.
 
@@ -687,7 +687,7 @@ Without it, signals between boards are unreliable.
 
 #### Communication Errors
 
-Failures in sending or receiving data, including corrupted bytes, missing replies, collisions, and mismatched settings.
+Failures when exchanging data with servos or motors, such as corrupted bytes, failed checksums, missing replies, mismatched speeds, or collisions on a shared line, which a driver has to detect and report.
 
 Handling them cleanly prevents commands from being silently lost.
 
@@ -695,7 +695,7 @@ Handling them cleanly prevents commands from being silently lost.
 
 #### Communication Timeout
 
-The maximum time a program waits for a reply before treating the exchange as failed.
+The longest period a program waits for a reply from a device before declaring the exchange failed, which prevents a script from freezing when a cable is loose or a servo is unpowered.
 
 Proper timeouts stop a program from hanging forever when a cable is loose.
 
@@ -719,7 +719,7 @@ It lets the same script run on different arms and classroom computers.
 
 #### Configuration Space
 
-The space of all possible joint-value combinations of an arm, in which each point represents one complete arm pose.
+The abstract space whose coordinates are the arm's joint values, so each point stands for one complete arm pose, in which motion planners search for routes that avoid obstacles.
 
 Planning is often done there.
 
@@ -727,7 +727,7 @@ Planning is often done there.
 
 #### Confirmation Step
 
-A pause in which a person must approve a planned action before it proceeds.
+A deliberate pause in which a person reviews a proposed action or plan and approves it before the arm carries it out, adding human judgment ahead of risky or irreversible moves.
 
 It adds human judgment to risky actions.
 
@@ -735,7 +735,7 @@ It adds human judgment to risky actions.
 
 #### Connect and Disconnect
 
-Methods that open and close the communication link to hardware, and leave it in a safe state.
+The paired operations that open communication with the arm hardware at the start of a session and release it at the end, including leaving motors in a known state and freeing the port.
 
 Every session depends on them being paired properly.
 
@@ -751,7 +751,7 @@ It guarantees cleanup of hardware connections.
 
 #### Contour Detection
 
-Finding the outlines of connected regions in a binary image.
+An image-processing step that finds the boundary curves of connected regions in a binary mask, turning a patch of matching pixels into an object outline whose size and center can be measured.
 
 It turns a mask into distinct object shapes.
 
@@ -759,7 +759,7 @@ It turns a mask into distinct object shapes.
 
 #### Control Loop
 
-A repeating cycle in which a program reads sensors, decides on actions, and sends commands to actuators.
+A repeating cycle in which software reads sensors, computes the next action, and sends commands to actuators, forming the basis for anything that reacts to the arm's changing state.
 
 Nearly every robot behavior runs inside one.
 
@@ -767,7 +767,7 @@ Nearly every robot behavior runs inside one.
 
 #### Control Rate
 
-The number of control loop cycles completed per second, in hertz.
+The number of times per second a control loop runs, measured in hertz, which sets how smoothly and responsively the arm tracks targets and is bounded by communication speed and computing time.
 
 Higher rates give smoother and more responsive motion until the bus or computer cannot keep up.
 
@@ -785,7 +785,7 @@ See also: Base Frame
 
 #### Cost Calculator
 
-A tool, often a short script or spreadsheet, that sums prices and quantities to produce a project cost.
+A small program or spreadsheet that multiplies quantities by prices, adds shipping and tax, and reports the total expense of a build, making it quick to compare alternatives.
 
 It makes comparing options quick and repeatable.
 
@@ -793,7 +793,7 @@ It makes comparing options quick and repeatable.
 
 #### Cost Comparison
 
-An evaluation of what each option costs in total, including parts, shipping, tools, and time.
+An evaluation of competing options by their full expense, including parts, shipping, tools, and the learner's time, so that the cheapest sticker price does not hide hidden extra costs.
 
 Price alone can mislead.
 
@@ -801,7 +801,7 @@ Price alone can mislead.
 
 #### Counterfeit Parts
 
-Imitation components made to look like genuine branded ones, often of lower quality or with false specifications.
+Imitation components marketed under a known brand but made to lower quality or with misleading specifications, such as servos with plastic gears, which can fail early or behave differently from published datasheets.
 
 Fake servos can fail early or behave differently from the datasheet.
 
@@ -817,7 +817,7 @@ Servo cables often need new connectors made this way.
 
 #### CSV Logging
 
-Recording data rows, such as time and joint angles, into a comma-separated values file for later analysis.
+The practice of writing measurements as rows of comma-separated values, such as a timestamp followed by six joint angles, to a text file that spreadsheets and plotting scripts can open easily.
 
 It is simple and opens in any spreadsheet.
 
@@ -833,7 +833,7 @@ Python can read it to total costs automatically.
 
 #### Cubic Polynomial Trajectory
 
-A motion plan using a third-degree polynomial in time, fitting start and end positions and velocities.
+A motion plan in which a joint's angle follows a third-degree polynomial of time, chosen to meet specified start and end positions and velocities so the move is continuous in speed.
 
 It gives smooth position and velocity.
 
@@ -841,7 +841,7 @@ It gives smooth position and velocity.
 
 #### Cubic Spline
 
-A piecewise third-degree polynomial curve that passes through given points with continuous slope and curvature.
+A smooth curve built from third-degree polynomial pieces joined at data points so that slope and curvature match across each join, used to pass a joint through a series of waypoints gracefully.
 
 It gives smooth paths through many waypoints.
 
@@ -849,7 +849,7 @@ It gives smooth paths through many waypoints.
 
 #### Current
 
-The flow of electric charge through a conductor, measured in amperes.
+The rate of flow of electric charge through a conductor, measured in amperes, which rises as a motor works harder and determines the wire thickness and supply capacity an arm requires.
 
 Motors draw more current under load, so supplies must be sized for peaks.
 
@@ -857,7 +857,7 @@ Motors draw more current under load, so supplies must be sized for peaks.
 
 #### Current Rating
 
-The maximum current a component, wire, or supply can carry continuously without overheating.
+The largest steady current a wire, connector, fuse, or power supply is designed to carry without overheating, which has to exceed what the connected servos or motors draw.
 
 Choosing parts with sufficient ratings avoids fires and brown-outs.
 
@@ -865,7 +865,7 @@ Choosing parts with sufficient ratings avoids fires and brown-outs.
 
 #### Current Sensing
 
-Measuring the electric current flowing into a motor, which is roughly proportional to the torque it produces.
+The measurement of how much electric current flows to a motor, which is roughly proportional to its torque and lets software notice strain, stalls, or contact with an object.
 
 It lets software detect strain or collisions.
 
@@ -873,7 +873,7 @@ It lets software detect strain or collisions.
 
 #### Custom Exceptions
 
-User-defined exception classes that name specific problems in a program.
+Error classes that a programmer defines by extending Python's built-in exception types, giving specific names to arm problems like a joint limit violation so they can be caught and handled separately.
 
 They give clearer error handling than generic errors.
 
@@ -889,7 +889,7 @@ It keeps wiring tidy on a multi-joint arm.
 
 #### Damiao Actuator
 
-A compact brushless joint motor with an integrated gearbox, encoder, and controller made by Damiao, commanded over CAN bus.
+A compact brushless joint module from Damiao that integrates a motor, gearbox, encoder, and drive electronics in one housing and is commanded over CAN bus, as used on the reBot B601-DM arm.
 
 It supports torque, velocity, and position control, which suits the reBot B601-DM arm.
 
@@ -899,7 +899,7 @@ See also: reBot B601-DM, CAN Bus
 
 #### Damped Least Squares
 
-A stable way to invert the Jacobian by adding a small damping term, trading accuracy for stability near singularities.
+A numerically stable way to invert a Jacobian by adding a small damping term, trading a little accuracy for avoiding huge joint velocities when the arm approaches a singular pose.
 
 It prevents extreme joint speeds.
 
@@ -907,7 +907,7 @@ It prevents extreme joint speeds.
 
 #### Data Collection Station
 
-A fixed setup with arms, cameras, and lighting arranged for recording consistent demonstrations.
+A fixed workspace with arms, cameras, lighting, and marked object positions arranged so that many demonstrations can be recorded under consistent conditions, producing cleaner data for training learned policies.
 
 Consistent conditions improve training data.
 
@@ -915,7 +915,7 @@ Consistent conditions improve training data.
 
 #### Dataclass
 
-A Python class decorated with `@dataclass` that automatically generates initialization and representation methods for storing simple data.
+A Python class created with the `@dataclass` decorator from the standard library, which automatically generates its initializer and printable form from annotated fields, making small data holders such as poses short to write.
 
 It makes small data containers short.
 
@@ -923,7 +923,7 @@ It makes small data containers short.
 
 #### Dataset
 
-An organized collection of data used for training or evaluation, with consistent format.
+An organized collection of examples used for training or evaluating a model, such as recorded episodes pairing camera images and joint positions with the actions taken, stored in a consistent format.
 
 Learning needs well-structured data.
 
@@ -931,7 +931,7 @@ Learning needs well-structured data.
 
 #### Datasheet
 
-A manufacturer's technical document listing a component's specifications, limits, pin assignments, and operating conditions.
+The manufacturer's technical document for a component, listing electrical limits, torque or current ratings, dimensions, pin assignments, and communication details, and serving as the authoritative reference for specifications.
 
 It is the authoritative source for voltage, torque, and protocol details.
 
@@ -947,7 +947,7 @@ It is the simplest motor inside a servo.
 
 #### Defense in Depth
 
-Using several independent protective layers so that if one fails, others still protect.
+A safety strategy that stacks several independent protections, such as prompt rules, software validation, speed limits, and a physical stop button, so that the failure of any single layer does not cause harm.
 
 No single control is trusted alone.
 
@@ -955,7 +955,7 @@ No single control is trusted alone.
 
 #### Degrees and Radians
 
-Two units for measuring angles: a full circle is 360 degrees or 2 pi radians.
+Two units for measuring angle, where a full turn is 360 degrees or 2 pi radians, with people favoring degrees and math libraries and many robot interfaces expecting radians.
 
 Humans prefer degrees while math libraries expect radians.
 
@@ -971,7 +971,7 @@ It determines which poses the arm can reach and how much computation inverse kin
 
 #### Demonstration Data
 
-Recorded examples of a task being done correctly, typically images and joint positions over time.
+Recorded examples of a human performing a task correctly, typically synchronized camera frames and joint positions, from which imitation learning methods build a policy that copies the behavior.
 
 The quality of the demonstrations limits the learned policy.
 
@@ -1003,7 +1003,7 @@ They allow an agent to correct its request.
 
 #### Desk Assistant Project
 
-A capstone-style build in which the arm helps with small desk tasks, such as handing over or tidying items.
+A build in which the arm performs small tabletop helper tasks, such as handing over a pen or tidying items, combining hardware control, vision, and an agent that interprets requests.
 
 It combines hardware, vision, and agent skills.
 
@@ -1011,7 +1011,7 @@ It combines hardware, vision, and agent skills.
 
 #### Desktop Robot Arm
 
-A small, low-cost arm designed to sit on a table, with modest reach and payload, for education and research.
+A compact, low-cost manipulator sized to sit on a table, with modest reach, payload, and precision, designed to make hands-on robotics affordable for classrooms, hobbyists, and researchers.
 
 These arms make hands-on robotics affordable for classrooms.
 
@@ -1027,7 +1027,7 @@ Two units with the same ID collide, so every joint needs its own.
 
 #### Dimensional Tolerance
 
-The permitted amount by which a measured size may differ from its intended size.
+The allowed variation between a part's intended size and its actual size, which matters for printed parts because holes often print smaller than designed and may need adjustment to fit screws or servos.
 
 Printed holes and slots often need adjusting so parts fit.
 
@@ -1035,7 +1035,7 @@ Printed holes and slots often need adjusting so parts fit.
 
 #### Direct from Manufacturer
 
-Buying a product straight from the company that makes it, without an intermediary.
+Buying a component straight from the company that produces it rather than through a reseller, which can ensure authentic parts and support but may bring longer shipping and customs steps.
 
 It can give authentic parts and technical support, but may involve longer shipping.
 
@@ -1043,7 +1043,7 @@ It can give authentic parts and technical support, but may involve longer shippi
 
 #### Distributor
 
-A company that buys products from manufacturers and resells them to customers, often carrying a wide range of parts.
+A company that stocks products from many manufacturers and resells them, often with warranty support and genuine-part guarantees, offering a safer source of components than anonymous sellers.
 
 Authorized distributors help avoid counterfeits.
 
@@ -1059,7 +1059,7 @@ Good docstrings tell a classmate what units a function expects, such as degrees 
 
 #### Dry-Run Mode
 
-An operating mode in which commands are checked and reported but not sent to the hardware.
+An operating setting in which the system computes and reports the commands it would send, such as target angles, without actually driving the motors, letting users inspect plans safely.
 
 It lets users see what would happen.
 
@@ -1067,7 +1067,7 @@ It lets users see what would happen.
 
 #### Edge AI Computer
 
-A small, low-power computer designed to run AI models near the robot instead of in a data center.
+A small, power-efficient computer, often with a neural-network accelerator, placed next to the robot to run models locally, avoiding network delay and keeping camera data on site.
 
 It provides local inference at modest cost.
 
@@ -1075,7 +1075,7 @@ It provides local inference at modest cost.
 
 #### Elbow
 
-The joint between the upper arm and forearm that bends to extend or fold the arm.
+The joint between the upper arm and forearm that bends to extend or fold the arm, working with the shoulder to set how far the gripper reaches and how high it sits.
 
 Together with the shoulder it sets how far the gripper reaches.
 
@@ -1099,7 +1099,7 @@ It sizes supplies and wiring.
 
 #### Emergency Stop
 
-A prominent control or action that immediately halts all dangerous motion, overriding normal operation.
+A prominent, easily reached control or action that quickly halts all hazardous motion and overrides normal operation, providing a last line of defense when something goes wrong.
 
 Every setup in this book needs one that is quick to reach.
 
@@ -1115,7 +1115,7 @@ Servos use it to know where the joint is.
 
 #### End Effector
 
-The tool or device at the free end of a robot arm that interacts with the world.
+The tool mounted at the free end of the arm that touches the world, such as a two-finger gripper, and whose position and orientation kinematics calculations usually aim to control.
 
 Kinematics usually computes where this point ends up in space.
 
@@ -1123,7 +1123,7 @@ Kinematics usually computes where this point ends up in space.
 
 #### Environment Variables
 
-Named values stored by the operating system outside any program, which processes can read at run time.
+Named text values held by the operating system outside any program, which scripts can read at run time, commonly used to supply settings and secrets like API keys without writing them into code.
 
 They are the safe place to keep secrets such as API keys, away from source code.
 
@@ -1131,7 +1131,7 @@ They are the safe place to keep secrets such as API keys, away from source code.
 
 #### Euler Angles
 
-A way to describe 3D orientation as three successive rotations about chosen axes, commonly called roll, pitch, and yaw.
+A way of describing three-dimensional orientation as three successive rotations, commonly called roll, pitch, and yaw, which is easy to read but suffers from ambiguity at certain orientations.
 
 They are easy to read but have pitfalls.
 
@@ -1155,7 +1155,7 @@ Hardware fails in ways ordinary programs do not.
 
 #### Fact-Checking Specifications
 
-The practice of verifying claimed specifications such as torque, price, or voltage against primary sources or measurement.
+The habit of verifying claimed figures, such as torque, voltage, or price, against datasheets, official repositories, or direct measurement before relying on them, since seller listings are often optimistic or wrong.
 
 Marketing numbers are often optimistic.
 
@@ -1163,7 +1163,7 @@ Marketing numbers are often optimistic.
 
 #### Fail-Safe Behavior
 
-A design in which a failure leads to the safest available state rather than a dangerous one.
+A design approach in which any fault, such as lost communication or a crashed program, drives the system into its least dangerous state, for instance stopping or lowering the arm slowly.
 
 Arms should stop or go limp gently, not run away.
 
@@ -1171,7 +1171,7 @@ Arms should stop or go limp gently, not run away.
 
 #### Failed Grasp Recovery
 
-Actions taken after detecting that a grasp did not secure the object, such as retrying or asking for help.
+The set of actions taken after the system detects that an object was not securely picked up, such as reopening the gripper, re-observing the scene, retrying, or asking a person for help.
 
 It makes pick tasks robust.
 
@@ -1179,7 +1179,7 @@ It makes pick tasks robust.
 
 #### Fake Arm
 
-A software stand-in that has the same interface as a real arm but moves only numbers in memory.
+A software stand-in that offers the same methods as a real arm but only stores numbers in memory, allowing programs and tests to run without hardware and without any risk of motion.
 
 It allows code to be tested safely without hardware.
 
@@ -1189,7 +1189,7 @@ See also: Mock Hardware
 
 #### Fasteners
 
-Hardware items such as screws, nuts, and bolts used to join parts mechanically.
+Mechanical hardware such as screws, nuts, bolts, and washers that hold the printed parts, servos, and brackets of an arm together, available in standard metric sizes like M2 and M3.
 
 The arm's structure and servos are held together with them.
 
@@ -1205,7 +1205,7 @@ It is the common, low-cost machine used for arm parts.
 
 #### Fiducial Markers
 
-Printed black-and-white square patterns with unique codes that cameras can detect easily and use to measure position and orientation.
+Printed square patterns with unique black-and-white codes that a camera algorithm can detect and use to compute position and orientation, serving as dependable reference points for calibration and localization.
 
 They provide reliable reference points.
 
@@ -1213,7 +1213,7 @@ They provide reliable reference points.
 
 #### Filament
 
-The thin plastic strand, usually 1.75 mm in diameter, that an FDM printer melts to form parts.
+The thin plastic strand, usually 1.75 millimeters in diameter and sold on spools, that an FDM printer melts and extrudes layer by layer to form parts, available in materials such as PLA and PETG.
 
 Its type sets strength, heat resistance, and print difficulty.
 
@@ -1229,7 +1229,7 @@ Wrong paths are a common reason a calibration file fails to load.
 
 #### First Power-On
 
-The first time electric power is applied to a newly built or rewired arm.
+The first time electricity is applied to a newly assembled or rewired arm, done slowly with the workspace clear and wiring checked, to catch mistakes before they damage components.
 
 Doing it carefully catches wiring mistakes before they cause damage.
 
@@ -1237,7 +1237,7 @@ Doing it carefully catches wiring mistakes before they cause damage.
 
 #### Follower Arm
 
-The arm that reproduces the joint positions of the leader arm, carrying out the physical work.
+The arm that reproduces the joint positions of the leader and performs the physical work, handling objects and generating the camera and joint data recorded for training.
 
 It is the arm that touches objects and records camera data during demonstrations.
 
@@ -1245,7 +1245,7 @@ It is the arm that touches objects and records camera data during demonstrations
 
 #### Follower Assembly
 
-The sequence of building the follower arm, including mounting servos, attaching links, installing the gripper, and routing cables.
+The sequence of building the working arm, covering mounting servos in brackets, linking segments, attaching the gripper, and routing cables from the base outward to the end effector.
 
 It produces the arm that does the actual work.
 
@@ -1253,7 +1253,7 @@ It produces the arm that does the actual work.
 
 #### Force Limit
 
-A cap on the force or torque the arm may apply, often through torque limits or current limits.
+A restriction on how much force or torque the arm may exert, often implemented by capping motor torque or current, protecting objects, the mechanism, and nearby people from crushing or impact.
 
 It prevents crushing objects and injuring people.
 
@@ -1261,7 +1261,7 @@ It prevents crushing objects and injuring people.
 
 #### Forward Kinematics
 
-Computing the end effector's position and orientation from known joint values.
+The calculation that takes the arm's joint values and link dimensions and returns the position and orientation of the end effector, answering the question of where the gripper currently is.
 
 It answers where the gripper is.
 
@@ -1269,7 +1269,7 @@ It answers where the gripper is.
 
 #### Forward Simulation of Paths
 
-Computing the end effector positions that result from a sequence of joint commands.
+The process of applying a motion model, usually forward kinematics, to each commanded joint set in a plan to preview where the gripper would travel before any movement happens.
 
 It shows what a plan will do.
 
@@ -1277,7 +1277,7 @@ It shows what a plan will do.
 
 #### Fuse
 
-A protective component containing a thin conductor that melts and opens the circuit when current exceeds its rating.
+A protective component containing a thin conductor that melts and breaks the circuit when current exceeds its rating, preventing short circuits from overheating wires or damaging the controller and motors.
 
 It stops short circuits from damaging wiring or starting fires.
 
@@ -1301,7 +1301,7 @@ A higher ratio gives more lifting strength but slower motion.
 
 #### Gearbox
 
-An assembly of gears that transmits motion from a motor to a joint while trading speed for torque.
+A set of meshing gears between a motor and its output shaft that lowers rotation speed and multiplies torque, and that is also a main source of backlash and wear in inexpensive servos.
 
 It is also a main source of backlash and wear in cheap servos.
 
@@ -1309,7 +1309,7 @@ It is also a main source of backlash and wear in cheap servos.
 
 #### Geometric Inverse Kinematics
 
-A closed-form solution to inverse kinematics found using geometry and trigonometry, such as the law of cosines.
+A closed-form way of finding joint angles from a target position using trigonometry and geometry, such as the law of cosines, which is fast and exact for simple arms like a two-link planar mechanism.
 
 It is fast and exact for simple arms.
 
@@ -1333,7 +1333,7 @@ Learners use it to keep arm code and calibration files safe and to fetch open-so
 
 #### Go Home Tool
 
-An agent tool that returns the arm to its home position by a safe route.
+An agent-callable function that sends the arm to its defined resting configuration by a safe route, giving the system a reliable way to reset after a task or an error.
 
 It gives the agent a reliable reset.
 
@@ -1349,7 +1349,7 @@ It makes policy training practical.
 
 #### Grasp Force
 
-The amount of squeezing force a gripper applies to an object.
+The squeezing force a gripper applies to an object, which has to be great enough to hold it against gravity yet low enough to avoid denting or breaking it.
 
 Too little drops it, too much crushes it.
 
@@ -1357,7 +1357,7 @@ Too little drops it, too much crushes it.
 
 #### Gravity Load on Joints
 
-The torque exerted on joints by the weight of the arm and any payload.
+The torque that the weight of the links and any carried object produces about each joint axis, largest when the arm is stretched out horizontally and smallest when folded upright.
 
 It is greatest when the arm extends horizontally.
 
@@ -1365,7 +1365,7 @@ It is greatest when the arm extends horizontally.
 
 #### Gripper
 
-An end effector that grasps and releases objects by closing and opening its fingers or jaws.
+The end effector that grasps and releases objects by opening and closing a pair of fingers or jaws, driven on desktop arms by a single servo.
 
 Picking tasks depend on controlling its opening and grip strength.
 
@@ -1373,7 +1373,7 @@ Picking tasks depend on controlling its opening and grip strength.
 
 #### Gripper Control
 
-Software for opening and closing the gripper to desired widths with chosen force.
+The software that opens and closes the gripper to a requested opening with an appropriate effort, hiding raw servo values behind a simple call such as setting a percentage open.
 
 Grasping depends on it.
 
@@ -1381,7 +1381,7 @@ Grasping depends on it.
 
 #### Gripper Width
 
-The distance between the gripper jaws, or the opening value that represents it.
+The gap between the gripper's fingers, or the number representing that gap, which has to be compared with an object's size when planning an approach and a grasp.
 
 It must match the object size.
 
@@ -1389,7 +1389,7 @@ It must match the object size.
 
 #### Group Parts Ordering
 
-Coordinating purchases of parts for multiple teams in a single order to save money and shipping.
+The coordination of component purchases for several teams in one order, using a shared list and deadline to save on shipping and make sure every team receives compatible items.
 
 It needs a shared list and deadline.
 
@@ -1397,7 +1397,7 @@ It needs a shared list and deadline.
 
 #### Hallucinated Tool Calls
 
-Calls made by a model to tools or parameters that do not exist, or with invented values.
+Invocations a language model produces for functions or arguments that do not exist or were never offered, reflecting invented content that validation code has to catch before reaching hardware.
 
 Validation must catch them.
 
@@ -1439,7 +1439,7 @@ Plastic threads wear out, but inserts stay firm.
 
 #### Hexadecimal
 
-A base-16 number system using digits 0-9 and letters A-F, so one byte fits in exactly two characters.
+A base-16 number notation using digits 0-9 and letters A-F, in which each byte takes exactly two characters, making it the standard way to display register addresses and raw packet contents.
 
 Packet dumps and register addresses are written this way.
 
@@ -1447,7 +1447,7 @@ Packet dumps and register addresses are written this way.
 
 #### High-Voltage Power Distribution
 
-The arrangement of fused supply lines, connectors, and switches that carry higher-voltage power, such as 24 V, to motors.
+The arrangement of fused supply lines, switches, and connectors that carries higher-voltage power, such as 24 V, to larger actuators, requiring more careful design because fault currents and stored energy are greater.
 
 Care is needed because energy and fault currents are larger.
 
@@ -1463,7 +1463,7 @@ It is the cheapest way to move a joint but gives no feedback to the computer.
 
 #### Home Position
 
-A known, safe resting configuration the arm returns to at startup and shutdown.
+A known, safe resting configuration to which the arm returns at startup and shutdown, giving every session a predictable starting pose and a convenient place to park the arm.
 
 A consistent starting point makes motions predictable.
 
@@ -1473,7 +1473,7 @@ See also: Homing Position
 
 #### Homing Position
 
-The reference pose in which every joint is placed during calibration so the software knows a zero point.
+The reference pose in which all joints are placed during calibration, such as every joint at mid-range, so that software can record a consistent zero point for later conversion of readings to angles.
 
 A consistent pose makes calibration repeatable.
 
@@ -1491,7 +1491,7 @@ It lets chained frames be combined cleanly.
 
 #### HTTP API
 
-A programming interface in which clients send requests over the web protocol HTTP to specific addresses and receive responses.
+A programming interface that lets one program control another by sending web requests to specific addresses and reading the replies, commonly used to expose arm functions to agents and other services.
 
 It is a common way to expose the arm to other programs.
 
@@ -1499,7 +1499,7 @@ It is a common way to expose the arm to other programs.
 
 #### Hugging Face Hub
 
-An online platform for hosting and sharing models and datasets.
+An online platform for storing and sharing machine-learning models and datasets, which the LeRobot library uses to publish recorded demonstrations and trained policies for others to download.
 
 LeRobot uses it to store demonstrations and trained policies.
 
@@ -1515,7 +1515,7 @@ Vision code processes one at a time.
 
 #### Image-to-Arm Coordinates
 
-Converting positions found in a camera image into positions in the arm's base frame.
+The conversion of a location found in a camera image into a position in the arm's base frame, which relies on camera calibration and lets the arm reach an object it sees.
 
 It ties vision to motion.
 
@@ -1523,7 +1523,7 @@ It ties vision to motion.
 
 #### Imitation Learning
 
-Training a robot to perform a task by copying demonstrations from a human instead of programming rules.
+A machine-learning approach in which a model is trained to reproduce the actions shown in human demonstrations, letting a robot acquire a skill without anyone writing explicit rules for it.
 
 It is the book's route to learned behavior.
 
@@ -1539,7 +1539,7 @@ Imports bring in `serial`, `struct`, and `numpy` so the program can use them.
 
 #### Incompatible Parts
 
-Components that cannot work together because of mismatched voltage, connectors, protocols, or dimensions.
+Components that cannot work together because of mismatched voltage, connectors, communication protocols, or physical dimensions, such as a 7.4 V servo connected to a 12 V supply.
 
 Checking compatibility before ordering saves money.
 
@@ -1547,7 +1547,7 @@ Checking compatibility before ordering saves money.
 
 #### Infill
 
-The internal pattern and density printed inside a part's outer walls, expressed as a percentage.
+The internal pattern, such as a grid or honeycomb, that a printer lays inside a part's outer walls, set as a percentage that trades strength and weight against print time and filament use.
 
 Higher infill adds strength and weight.
 
@@ -1555,7 +1555,7 @@ Higher infill adds strength and weight.
 
 #### Inheritance for Drivers
 
-Creating specialized driver classes that extend a common base class, so they share structure but implement hardware-specific details.
+An object-oriented technique in which hardware-specific driver classes extend a shared base class, inheriting common structure while overriding the methods that talk to a particular servo or CAN device.
 
 It supports multiple arm types.
 
@@ -1589,7 +1589,7 @@ It is hard to diagnose because symptoms come and go.
 
 #### Interpolation
 
-Computing intermediate values between known points to produce a smooth progression.
+The calculation of intermediate values between known points, such as generating many in-between joint angles from a start and an end pose so that motion is a smooth sequence of small steps.
 
 It fills the gaps between waypoints.
 
@@ -1597,7 +1597,7 @@ It fills the gaps between waypoints.
 
 #### Inverse Kinematics
 
-Computing the joint values needed to put the end effector at a desired position and orientation.
+The calculation that takes a desired gripper position and orientation and returns the joint values that achieve it, often with several valid answers or none when the target lies out of reach.
 
 It answers what angles reach there.
 
@@ -1605,7 +1605,7 @@ It answers what angles reach there.
 
 #### Isaac Sim Tour
 
-An introductory walk-through of NVIDIA's Isaac Sim robot simulator, showing how to load an arm and run it virtually.
+A guided introduction to NVIDIA's Isaac Sim robotics simulator, showing how a robot model is loaded, driven, and observed in a physically realistic virtual world.
 
 It shows how professional simulation looks and works.
 
@@ -1613,7 +1613,7 @@ It shows how professional simulation looks and works.
 
 #### Jacobian
 
-A matrix that relates small changes in joint values to resulting changes in the end effector's position and orientation.
+A matrix of partial derivatives that links small changes in joint values to the resulting velocity of the end effector, central to velocity control, singularity analysis, and iterative inverse kinematics.
 
 It drives velocity control and numerical IK.
 
@@ -1629,7 +1629,7 @@ It allows velocity control for redundant arms.
 
 #### Jacobian-Based IK
 
-An inverse kinematics method that repeatedly uses the Jacobian to adjust joint values toward the target.
+An iterative inverse-kinematics approach that repeatedly uses the Jacobian to convert the remaining position error into small joint adjustments until the end effector reaches the target within a tolerance.
 
 It generalizes to many arms.
 
@@ -1637,7 +1637,7 @@ It generalizes to many arms.
 
 #### Jerk
 
-The rate of change of acceleration, the third derivative of position.
+The rate at which acceleration changes, the third derivative of position, where large values produce sudden jolts, vibration, and wear, so smooth trajectories deliberately keep it low.
 
 High values cause shaking and wear.
 
@@ -1645,7 +1645,7 @@ High values cause shaking and wear.
 
 #### Jitter
 
-Small, rapid, unwanted back-and-forth movement of a joint around its target.
+Small, rapid, unwanted back-and-forth motion of a joint around its target position, usually pointing to excessive gain, an unstable power supply, noisy readings, or mechanical looseness.
 
 It signals gain, power, or mechanical problems.
 
@@ -1653,7 +1653,7 @@ It signals gain, power, or mechanical problems.
 
 #### Joint
 
-A connection between two links that allows relative motion between them, usually rotation about an axis.
+The connection between two adjacent links that allows relative motion between them, usually rotation, and which is normally driven by one actuator on the arms in this book.
 
 Each joint is typically driven by one motor, so the joint count sets how many commands the arm needs.
 
@@ -1661,7 +1661,7 @@ Each joint is typically driven by one motor, so the joint count sets how many co
 
 #### Joint Angle
 
-The rotation of a revolute joint measured from a defined zero reference, usually in degrees or radians.
+The amount a revolute joint has turned from its defined zero reference, expressed in degrees or radians, with the set of all such values fully describing the arm's configuration.
 
 The list of all such values completely describes the arm's configuration.
 
@@ -1677,7 +1677,7 @@ Wrong order may block access to screws.
 
 #### Joint Class
 
-A Python class that represents one joint, holding its ID, limits, calibration, and methods to read and command it.
+A Python class representing one joint of the arm, storing its identifier, limits, and calibration, and offering methods to read its position and command a new target.
 
 It keeps joint-specific logic in one place.
 
@@ -1685,7 +1685,7 @@ It keeps joint-specific logic in one place.
 
 #### Joint Limits
 
-The minimum and maximum values a joint is permitted to reach, set by mechanical stops, cabling, or software.
+The smallest and largest values a joint is permitted to reach, set by mechanical stops, cabling, or software checks, which bound the workspace and protect the hardware.
 
 They protect the hardware and bound the workspace.
 
@@ -1693,7 +1693,7 @@ They protect the hardware and bound the workspace.
 
 #### Joint-Limit Constrained Planning
 
-Planning motions that keep every joint within its allowed range at all points.
+Motion planning that restricts every joint to its allowed range throughout a path, discarding routes or inverse-kinematics answers that would push any joint past its mechanical or software boundary.
 
 Paths that violate limits are unsafe.
 
@@ -1701,7 +1701,7 @@ Paths that violate limits are unsafe.
 
 #### Joint-Space Motion
 
-Movement described by specifying target values for each joint rather than the position of the end effector.
+Movement specified directly as target values for each joint, with all joints driven toward them together, which is simple to command but traces a curved path for the gripper.
 
 It is the simplest motion type to command.
 
@@ -1717,7 +1717,7 @@ This book stores calibration values and waypoints in it.
 
 #### JSON Requests
 
-Messages that carry structured data formatted as JSON in the body of a network call.
+Messages carrying structured data written in JSON text, sent as the body of a network call, so that an agent or script can tell an arm service what to do in a format both can read.
 
 They are easy for both programs and agents to read.
 
@@ -1725,7 +1725,7 @@ They are easy for both programs and agents to read.
 
 #### Kit Build
 
-Building a robot from a packaged set of parts that a vendor has gathered together.
+Constructing an arm from a packaged set of parts gathered by a vendor, offering the fastest, lowest-risk route to a working robot because compatibility has already been checked.
 
 It is the quickest and lowest-risk route.
 
@@ -1733,7 +1733,7 @@ It is the quickest and lowest-risk route.
 
 #### Lab Schedule
 
-A timetable that assigns time slots on shared equipment to groups.
+A timetable that assigns blocks of time on shared arms, printers, and workstations to groups, ensuring fair access and the presence of supervision during powered work.
 
 It ensures fair access and safe supervision.
 
@@ -1741,7 +1741,7 @@ It ensures fair access and safe supervision.
 
 #### Large Language Model
 
-A neural network trained on huge amounts of text that can understand and generate language and follow instructions.
+A neural network trained on enormous amounts of text to understand and generate language and follow instructions, serving here as the reasoning component that interprets requests and chooses tools.
 
 It is the reasoning engine of the book's agents.
 
@@ -1749,7 +1749,7 @@ It is the reasoning engine of the book's agents.
 
 #### Larger Arms
 
-Robot arms with greater reach, payload, and power than desktop models, needing stronger safety measures.
+Robot manipulators with more reach, payload, and power than desktop models, such as industrial arms, which carry greater hazards and need stronger guarding, procedures, and training.
 
 They indicate where the field leads.
 
@@ -1757,7 +1757,7 @@ They indicate where the field leads.
 
 #### Latency
 
-The delay between an action or input and its effect or response.
+The delay between an action or input and the response it causes, such as the lag between moving the leader arm and the follower following, which degrades control quality.
 
 Delay in teleoperation or camera feeds reduces control quality.
 
@@ -1765,7 +1765,7 @@ Delay in teleoperation or camera feeds reduces control quality.
 
 #### Latency and Cost
 
-The trade-off between response delay and money spent on running an agent, especially with remote models.
+The trade-off between how quickly an AI system answers and how much it costs to run, since larger remote models typically reason better but respond more slowly and charge per use.
 
 Choices here shape which design is practical.
 
@@ -1773,7 +1773,7 @@ Choices here shape which design is practical.
 
 #### Layer Height
 
-The thickness of each deposited layer in a print, usually between 0.1 and 0.3 mm.
+The thickness of each horizontal slice that a fused-filament printer deposits, commonly between 0.1 and 0.3 millimeters, trading surface smoothness against total print time for arm parts.
 
 Thinner layers give a smoother surface but take longer.
 
@@ -1781,7 +1781,7 @@ Thinner layers give a smoother surface but take longer.
 
 #### Lead Time
 
-The delay between placing an order and receiving the goods.
+The interval between ordering an item and receiving it, which has to be included in project schedules because late parts can stall an entire class build.
 
 It shapes class schedules, since late parts delay builds.
 
@@ -1799,7 +1799,7 @@ See also: Follower Arm, Teleoperation
 
 #### Leader Assembly
 
-The sequence of building the lighter leader arm, including its servos and the handle used to guide it.
+The sequence of building the lighter, hand-guided arm, including fitting servos with their chosen gearing and attaching the handle and trigger that the operator holds.
 
 It results in the arm the human holds.
 
@@ -1823,7 +1823,7 @@ It provides natural control of opening and closing.
 
 #### Leader-Follower Mapping
 
-The rule that converts leader arm readings into follower commands, including calibration and unit conversion.
+The rule that translates each reading from the hand-guided arm into a command for the matching joint of the working arm, accounting for calibration offsets and unit differences between the two.
 
 Poor mapping makes the follower mimic imprecisely.
 
@@ -1831,7 +1831,7 @@ Poor mapping makes the follower mimic imprecisely.
 
 #### Learned Policy Executor
 
-The component that carries out a step by running a trained policy to produce motions.
+The component of an agent system that carries out a requested step by running a trained neural-network policy, supplying skilled, adaptive motion for tasks that are hard to script by hand.
 
 It provides skilled movement for tasks hard to script.
 
@@ -1839,7 +1839,7 @@ It provides skilled movement for tasks hard to script.
 
 #### Learning Curve
 
-The rate at which a learner gains skill with a tool or platform, affected by documentation and complexity.
+The relationship between time spent and skill gained with a tool or platform, where a steep curve means a lot of difficulty up front before progress becomes comfortable.
 
 A steep curve can discourage beginners.
 
@@ -1855,7 +1855,7 @@ This book builds directly on those skills and does not re-teach them.
 
 #### Least Privilege
 
-A security principle in which a component is given only the permissions and tools it needs for its job.
+A security principle of granting a program only the access and tools its job needs, which limits the damage a mistaken or compromised agent can do to the arm and surroundings.
 
 It limits what a compromised or mistaken agent can do.
 
@@ -1871,7 +1871,7 @@ It supplies the driver, calibration, recording, and training tools used in this 
 
 #### Lift and Retreat
 
-The motion that raises an object after grasping and moves away from the pick location.
+The motion segment after a grasp in which the arm raises the object straight up and then withdraws from the pick location, clearing obstacles and avoiding dragging the item across surfaces.
 
 It clears obstacles and avoids dragging.
 
@@ -1879,7 +1879,7 @@ It clears obstacles and avoids dragging.
 
 #### Linear Algebra with NumPy
 
-Using NumPy functions to perform vector and matrix operations such as products, inverses, and decompositions.
+The use of NumPy functions to carry out vector and matrix operations such as products, transposes, inverses, and pseudoinverses, which form the computational backbone of kinematics code.
 
 It is the toolkit for kinematics.
 
@@ -1887,7 +1887,7 @@ It is the toolkit for kinematics.
 
 #### Linear Interpolation
 
-Interpolation that changes a value at a constant rate along a straight line between two points.
+Blending between two values at a constant rate along a straight line, simple to compute but producing abrupt starts and stops of speed when used for joint motion.
 
 It is the simplest method, though speed starts and stops abruptly.
 
@@ -1895,7 +1895,7 @@ It is the simplest method, though speed starts and stops abruptly.
 
 #### Link
 
-A rigid segment of a manipulator that connects one joint to the next and moves as a single body.
+A rigid segment of the arm connecting one joint to the next and moving as a single body, whose length contributes to reach and appears in every kinematics equation.
 
 Link lengths determine reach and appear in every kinematics equation.
 
@@ -1903,7 +1903,7 @@ Link lengths determine reach and appear in every kinematics equation.
 
 #### Link Lengths
 
-The fixed distances between consecutive joint axes along an arm.
+The fixed distances between consecutive joint axes along the arm, measured from the model or the real hardware, which enter forward and inverse kinematics calculations directly.
 
 They appear in every kinematics equation.
 
@@ -1911,7 +1911,7 @@ They appear in every kinematics equation.
 
 #### Little-Endian Byte Order
 
-A way of storing multi-byte numbers with the least significant byte first.
+A convention for storing a multi-byte number with its least significant byte first, followed by increasingly significant ones, which software has to respect when assembling values read from device registers.
 
 Feetech servo registers use it, so bytes must be reassembled in that order.
 
@@ -1927,7 +1927,7 @@ It supports gentle gripping and stall detection.
 
 #### Local Agent
 
-An agent whose model and tools run on the user's own computer rather than on a remote service.
+An AI agent whose language model and tools execute on the user's own computer, offering privacy and offline operation at the cost of the smaller, less capable models that local hardware can run.
 
 It improves privacy and offline use, but small local models may be less capable.
 
@@ -1935,7 +1935,7 @@ It improves privacy and offline use, but small local models may be less capable.
 
 #### Log Levels
 
-Named severity categories such as DEBUG, INFO, WARNING, ERROR, and CRITICAL that classify log messages.
+Named severity categories, such as DEBUG, INFO, WARNING, ERROR, and CRITICAL, attached to log messages so output can be filtered to show only events of a chosen importance.
 
 They let users filter noise from important events.
 
@@ -1943,7 +1943,7 @@ They let users filter noise from important events.
 
 #### Logging Module
 
-The standard library module that records messages from a program with levels, timestamps, and destinations.
+Python's standard library facility for recording program events with timestamps, severity levels, and configurable destinations, a more organized alternative to scattering print statements through arm code.
 
 It replaces scattered print statements with organized records.
 
@@ -1951,7 +1951,7 @@ It replaces scattered print statements with organized records.
 
 #### Loose Gears
 
-Excess free play inside a servo's gear train, from wear or damage, that lets the output shaft wobble.
+Excess free play in a servo's gear train, caused by wear, damage, or stripped teeth, that lets the output shaft wobble and reduces positioning accuracy, often with an audible clicking.
 
 It reduces accuracy and may precede failure.
 
@@ -1975,7 +1975,7 @@ Learners use low-voltage supplies and leave mains wiring to certified products.
 
 #### Maintenance Schedule
 
-A planned timetable for inspecting, cleaning, tightening, and replacing parts.
+A planned timetable for periodically inspecting, cleaning, tightening screws, lubricating, and replacing arm components, intended to catch wear and loosening before they cause failure or unsafe behavior.
 
 Regular care prevents unexpected failures.
 
@@ -1983,7 +1983,7 @@ Regular care prevents unexpected failures.
 
 #### Makerspace Use
 
-Operating the arm in an open workshop shared by members with varying experience.
+Operating the arm in a shared workshop used by members of varying experience, which calls for posted rules, required training, and clear procedures for powering and storing equipment.
 
 Shared spaces need clear rules and signage.
 
@@ -1991,7 +1991,7 @@ Shared spaces need clear rules and signage.
 
 #### Manipulability
 
-A measure of how easily an arm can move its end effector in all directions at a given configuration.
+A numerical measure, derived from the Jacobian, of how freely the end effector can move in every direction at a given pose, with small values warning that the arm is near a singular configuration.
 
 Low values warn of nearness to a singular pose.
 
@@ -2007,7 +2007,7 @@ It makes manipulability visible.
 
 #### Matplotlib Animation
 
-Producing moving plots with the Matplotlib `animation` tools, redrawing a figure frame by frame.
+The Matplotlib toolset that redraws a figure repeatedly, frame by frame, to produce a moving plot, such as a stick-figure arm sweeping through a planned trajectory.
 
 It lets learners watch the arm move over time.
 
@@ -2015,7 +2015,7 @@ It lets learners watch the arm move over time.
 
 #### Matplotlib Plot
 
-A chart drawn by the Matplotlib Python library, such as a line plot or scatter plot.
+A graph produced with the Matplotlib library, such as a line chart of joint angle against time, used to visualize logged data and spot problems that raw numbers hide.
 
 Plots reveal patterns invisible in raw numbers.
 
@@ -2023,7 +2023,7 @@ Plots reveal patterns invisible in raw numbers.
 
 #### Matrix Multiplication
 
-An operation that combines two grids of numbers by multiplying rows with columns, used to chain transformations.
+An operation that combines two rectangular grids of numbers by multiplying rows by columns, used to chain transformations so that successive joint rotations and translations combine into one overall transform.
 
 It underlies kinematics.
 
@@ -2031,7 +2031,7 @@ It underlies kinematics.
 
 #### Maximum Deviation
 
-The largest single difference between expected and actual values over a run.
+The single largest difference between expected and actual values over an entire run, which captures the worst-case error that an average measure such as RMSE can hide.
 
 It reveals the worst case.
 
@@ -2039,7 +2039,7 @@ It reveals the worst case.
 
 #### MCP Server
 
-A program that exposes tools, data, or prompts to AI applications following the Model Context Protocol.
+A program that offers tools, data, or prompts to AI applications over the Model Context Protocol, here wrapping arm functions so that any compatible agent can call them in a uniform way.
 
 It wraps the arm so agents can use it safely.
 
@@ -2047,7 +2047,7 @@ It wraps the arm so agents can use it safely.
 
 #### Minimum-Jerk Trajectory
 
-A motion that minimizes total jerk, giving bell-shaped speed and very smooth movement resembling natural human reaching.
+A motion profile chosen to minimize the total change of acceleration over the move, producing a bell-shaped speed curve and gentle, human-like reaching that is easy on gears.
 
 It is gentle on hardware.
 
@@ -2055,7 +2055,7 @@ It is gentle on hardware.
 
 #### Mobile Manipulation
 
-Combining a movable base with an arm so a robot can both travel and handle objects.
+The combination of a wheeled or legged base with an arm, letting a robot both travel between locations and handle objects, extending reach well beyond a fixed workspace.
 
 It extends reach beyond a fixed workspace.
 
@@ -2063,7 +2063,7 @@ It extends reach beyond a fixed workspace.
 
 #### Mock Hardware
 
-Test replacements that mimic the behavior of real devices so code can be tested without them.
+Test doubles that imitate the behavior of real devices, such as a pretend serial port returning prepared replies, so code can be checked quickly, safely, and repeatably without equipment connected.
 
 Mocks make tests fast, safe, and repeatable.
 
@@ -2071,7 +2071,7 @@ Mocks make tests fast, safe, and repeatable.
 
 #### Model Context Protocol
 
-An open standard for connecting AI applications to tools and data sources through a common message format.
+An open standard that defines a common message format for connecting AI applications to external tools and data sources, so one tool server can be used by many different agents.
 
 It lets one tool server work with many agents.
 
@@ -2081,7 +2081,7 @@ See also: MCP Server
 
 #### Moment Arm
 
-The perpendicular distance from a joint's axis to the line along which a force acts.
+The perpendicular distance from a joint's rotation axis to the line along which a force acts; multiplied by the force, it gives the torque the joint resists.
 
 Torque equals force times this distance.
 
@@ -2089,7 +2089,7 @@ Torque equals force times this distance.
 
 #### Monitoring
 
-Watching system values such as temperature, current, and errors while it runs.
+Continuous observation of values such as servo temperature, current, load, and error counts while the arm runs, intended to reveal developing problems before they cause failures.
 
 It catches problems before they fail.
 
@@ -2097,7 +2097,7 @@ It catches problems before they fail.
 
 #### Motor Controller
 
-An electronic circuit that takes commands and supplies the appropriate voltage and current to run a motor.
+An electronic circuit that receives commands and supplies the right voltage and current to drive a motor, which in a servo is built in and in simple motors is a separate board.
 
 Every actuator needs one, whether inside the servo or separate.
 
@@ -2105,7 +2105,7 @@ Every actuator needs one, whether inside the servo or separate.
 
 #### Motor ID Assignment
 
-Giving each motor on a shared bus a different identifier so frames reach only the intended one.
+The step of giving every motor on a shared bus a different identifier, so command frames reach only the intended unit, since duplicates cause conflicting replies.
 
 Duplicate IDs cause conflicting replies.
 
@@ -2113,7 +2113,7 @@ Duplicate IDs cause conflicting replies.
 
 #### Motor Mode Selection
 
-Choosing how an actuator is commanded, such as position, velocity, or torque (MIT-style) control.
+Choosing how an actuator interprets commands, such as position, velocity, or torque control, which determines what values each command carries and how the joint responds to disturbances.
 
 The mode decides which values a command must carry.
 
@@ -2121,7 +2121,7 @@ The mode decides which values a command must carry.
 
 #### Motor Speed
 
-How fast a motor's shaft turns, expressed as rotations per minute, degrees per second, or radians per second.
+How fast a motor's shaft turns, expressed in revolutions per minute or in radians or degrees per second, typically falling as the load on the joint increases.
 
 Speed limits keep motion safe and smooth.
 
@@ -2137,7 +2137,7 @@ An unmounted arm can lurch when it accelerates.
 
 #### Move to Pose Tool
 
-An agent tool that moves the arm to a given pose, checking validity and limits before executing.
+An agent-callable function that moves the arm to a requested gripper pose after checking that the target is valid and within limits, serving as the main motion action available to a language-model agent.
 
 It is the agent's main motion action.
 
@@ -2145,7 +2145,7 @@ It is the agent's main motion action.
 
 #### MoveIt Planning
 
-Using the MoveIt motion planning framework in ROS to compute collision-free paths for arms.
+The use of the MoveIt framework in ROS to compute collision-free arm motions from a robot description and a scene, a widely used professional planning toolkit.
 
 It shows how professional planners work.
 
@@ -2153,7 +2153,7 @@ It shows how professional planners work.
 
 #### Multi-Joint Move
 
-A motion command that changes several joints at once toward their targets.
+A command that changes several joints at once toward their targets, usually timed so all arrive together and give a coordinated, smooth motion rather than joints finishing at different moments.
 
 Coordinated timing makes the path smooth.
 
@@ -2161,7 +2161,7 @@ Coordinated timing makes the path smooth.
 
 #### Multimeter
 
-A handheld instrument that measures voltage, current, and resistance, and often tests continuity.
+A handheld instrument that measures voltage, current, and resistance and often tests continuity, used to check supply voltage, polarity, and wiring before and during arm builds.
 
 It is the main tool for checking wiring and power.
 
@@ -2169,7 +2169,7 @@ It is the main tool for checking wiring and power.
 
 #### Multiple IK Solutions
 
-The fact that more than one set of joint values can reach the same target.
+The situation in which more than one set of joint values places the gripper at the same target, as with elbow-up and elbow-down arrangements, forcing software to pick one.
 
 Software must choose among them.
 
@@ -2177,7 +2177,7 @@ Software must choose among them.
 
 #### Naming Conventions
 
-The agreed patterns for naming variables, functions, classes, and constants, such as `snake_case` for functions and `CapWords` for classes.
+Agreed patterns for choosing names of variables, functions, classes, and constants, such as lowercase words with underscores for functions, that make code readable and consistent across a team.
 
 Consistent names make robot code readable and reduce wiring-up mistakes between modules.
 
@@ -2185,7 +2185,7 @@ Consistent names make robot code readable and reduce wiring-up mistakes between 
 
 #### Natural-Language Control
 
-Operating a robot using everyday sentences instead of code or buttons.
+Operating a machine with everyday spoken or written sentences instead of code or buttons, made possible for robot arms by language models that translate requests into tool calls.
 
 It lowers the barrier to using robots.
 
@@ -2193,7 +2193,7 @@ It lowers the barrier to using robots.
 
 #### Numerical Differentiation
 
-Estimating a derivative from sampled values by dividing differences by the step size.
+Estimating a derivative from sampled data by dividing differences between neighboring values by the time step, for example turning logged joint angles into joint velocities.
 
 It turns logged positions into velocities.
 
@@ -2201,7 +2201,7 @@ It turns logged positions into velocities.
 
 #### Numerical Inverse Kinematics
 
-An iterative method that adjusts joint values step by step until the computed end effector position matches the target.
+An iterative way of finding joint values for a target pose by repeatedly adjusting them and checking forward kinematics, useful when no simple closed-form formula exists.
 
 It handles arms without simple formulas.
 
@@ -2209,7 +2209,7 @@ It handles arms without simple formulas.
 
 #### Numerical Jacobian
 
-A Jacobian estimated by making small changes to each joint and measuring the resulting end effector movement.
+A Jacobian estimated by nudging each joint by a tiny amount and measuring the resulting change in end effector position, avoiding the work of deriving derivative formulas by hand.
 
 It avoids deriving formulas by hand.
 
@@ -2217,7 +2217,7 @@ It avoids deriving formulas by hand.
 
 #### NumPy Array
 
-A fixed-type, multi-dimensional grid of numbers from the NumPy library that supports fast math on whole collections at once.
+A fixed-type, multidimensional grid of numbers from the NumPy library that supports fast arithmetic on whole collections at once, the standard container for vectors and matrices in kinematics code.
 
 It is the standard container for vectors and matrices in kinematics code.
 
@@ -2225,7 +2225,7 @@ It is the standard container for vectors and matrices in kinematics code.
 
 #### Object Centroid
 
-The center point of an object's shape in an image, found from its pixels or contour.
+The geometric center of an object's pixels or outline in an image, giving a single point that the arm can use as an aiming target.
 
 It gives one location to aim at.
 
@@ -2233,7 +2233,7 @@ It gives one location to aim at.
 
 #### Object Detection
 
-Locating and identifying objects in an image, often returning boxes and labels.
+A vision task that finds and labels objects in an image, usually returning bounding boxes and class names, letting an arm discover what is on the table and where.
 
 It lets an arm find what to pick up.
 
@@ -2241,7 +2241,7 @@ It lets an arm find what to pick up.
 
 #### Object Localization
 
-Determining where in an image or workspace a specific object is.
+Determining where a particular object is, in a camera image or in the workspace, which converts recognition into a position that motion planning and grasping can use.
 
 It turns recognition into a target for the arm.
 
@@ -2257,7 +2257,7 @@ A policy learns to map the first to the second.
 
 #### Obstacle Representation
 
-The method of describing obstacles to a planner, such as boxes, spheres, or grids.
+The way a motion planner describes things to avoid, such as boxes, spheres, or grids of occupied cells, which defines the arm poses treated as blocked.
 
 It defines which poses are blocked.
 
@@ -2265,7 +2265,7 @@ It defines which poses are blocked.
 
 #### Official Kit
 
-A kit sold by the design's creators or their authorized partners, with parts tested to work together.
+A kit sold by a design's creators or their authorized partners, with parts chosen and tested to work together, reducing surprises about compatibility and support.
 
 It reduces compatibility surprises.
 
@@ -2281,7 +2281,7 @@ It explains heating, voltage drops, and resistor choices.
 
 #### Online Marketplace
 
-A website where many independent sellers list products, with prices and quality that vary by seller.
+A website where many independent sellers list products, offering low prices and wide choice for arm parts but varying quality, so seller reputation and authenticity need checking.
 
 It often has low prices, but vetting sellers is necessary.
 
@@ -2289,7 +2289,7 @@ It often has low prices, but vetting sellers is necessary.
 
 #### Open Gripper Tool
 
-An agent tool that opens the gripper to a safe width.
+An agent-callable function that opens the gripper to a safe, bounded width, the simple release action used when placing an object, recovering from a failed grasp, or resetting.
 
 It is a simple action to release an object.
 
@@ -2297,7 +2297,7 @@ It is a simple action to release an object.
 
 #### Open-Source Contribution
 
-Giving back to a public project by improving code, documentation, designs, or reporting issues.
+Giving back to a public project by submitting code, designs, documentation, or bug reports, such as a pull request fixing an error in an arm's assembly guide.
 
 It strengthens the community the book relies on.
 
@@ -2329,7 +2329,7 @@ It serves as the agent platform in this book's later chapters.
 
 #### OpenClaw Installation
 
-The steps to install and configure OpenClaw on a computer, including its dependencies and model access.
+The process of installing and configuring the OpenClaw agent framework on a computer, including its dependencies and access to a language model, so it can later be given arm skills.
 
 A working installation is the base for agent projects.
 
@@ -2337,7 +2337,7 @@ A working installation is the base for agent projects.
 
 #### OpenClaw Messaging Interface
 
-The connection through which OpenClaw receives instructions and sends replies using a chat service.
+The link through which OpenClaw receives user instructions and sends back replies using a chat service, letting a person direct the arm by sending messages from a phone or computer.
 
 It lets users control the arm by messages.
 
@@ -2353,7 +2353,7 @@ They define what the agent knows how to do.
 
 #### OpenCV Library
 
-An open-source computer vision library, imported in Python as `cv2`, with functions for capturing, filtering, and analyzing images.
+An open-source computer vision library, imported in Python as `cv2`, offering functions to capture camera frames, convert color spaces, find contours, and detect markers for arm vision tasks.
 
 It is the main tool for the vision chapters.
 
@@ -2361,7 +2361,7 @@ It is the main tool for the vision chapters.
 
 #### Optional Parts
 
-Items that improve convenience, appearance, or capability but are not needed for basic operation.
+Items that add convenience, appearance, or capability but are not needed for basic operation of the arm, such as a camera mount, and which can be bought later as budget allows.
 
 They can be added later as budget allows.
 
@@ -2369,7 +2369,7 @@ They can be added later as budget allows.
 
 #### Order Tracking
 
-Following a shipment's progress using a carrier's tracking number.
+Following the progress of a shipment using the carrier's tracking number, which helps schedule the build, anticipate customs delays, and spot lost or delayed parcels of arm components early.
 
 It helps plan the build and catch lost packages early.
 
@@ -2377,7 +2377,7 @@ It helps plan the build and catch lost packages early.
 
 #### Orientation Control
 
-Commanding and keeping the direction the end effector faces as well as its position.
+Commanding and holding the direction the end effector faces, not just its position, such as keeping the gripper pointing straight down while sliding across a table.
 
 Grasping often needs the gripper pointing downward.
 
@@ -2385,7 +2385,7 @@ Grasping often needs the gripper pointing downward.
 
 #### Overfitting
 
-When a model memorizes training examples and fails on new situations.
+The condition in which a trained model has memorized its training examples so closely that it performs poorly on new situations, for instance succeeding only with a block at one exact spot.
 
 It makes a policy work only in the conditions seen in the demonstrations.
 
@@ -2393,7 +2393,7 @@ It makes a policy work only in the conditions seen in the demonstrations.
 
 #### Overload Protection
 
-A built-in feature that cuts or limits motor output when load, current, or temperature crosses a safe threshold.
+A built-in servo feature that reduces or cuts motor output when load, current, or temperature passes a threshold, guarding against burnout but sometimes making a joint suddenly go limp.
 
 It protects servos from burnout, but it can also make an arm go limp in the middle of a task.
 
@@ -2417,7 +2417,7 @@ The jaw gap maps neatly to a single width value.
 
 #### Parameter Validation
 
-Checking that the inputs to a command are acceptable in type, range, and meaning before acting on them.
+The checking of every input to a command for correct type, range, and meaning before using it, rejecting dangerous or nonsensical values such as an angle far outside a joint's range.
 
 It blocks dangerous or nonsensical requests.
 
@@ -2425,7 +2425,7 @@ It blocks dangerous or nonsensical requests.
 
 #### Part Revisions
 
-Updated versions of a component or design, identified by version numbers, that may change dimensions or behavior.
+Updated versions of a component or design, identified by numbers or letters, that may change dimensions, connectors, or behavior, so mixing revisions can create fit or software problems.
 
 Mixing revisions can create fit or software problems.
 
@@ -2441,7 +2441,7 @@ It separates geometry from speed.
 
 #### Path Prediction
 
-Calculating in advance where the arm will go along a command, using a model.
+The use of a model to forecast in advance where the arm will travel for a given command, enabling previews and checks before real movement.
 
 It enables preview and checks.
 
@@ -2457,7 +2457,7 @@ It prevents harmful motion.
 
 #### Path Smoothing
 
-Adjusting a planned path to remove unnecessary bends and jerky motion.
+Adjusting a planned route to remove needless detours, sharp corners, and jerky segments, since paths produced by random-sampling planners tend to wander and cause unnecessary arm motion.
 
 Raw sampled paths wander.
 
@@ -2473,7 +2473,7 @@ Two motions can share a path but differ in speed.
 
 #### Payload
 
-The maximum mass an arm can carry at its end effector while meeting its performance specifications.
+The greatest mass the arm can carry at its end effector while meeting its specifications, which drops as the load is held farther from the base.
 
 Payload falls as the load is held farther from the base.
 
@@ -2481,7 +2481,7 @@ Payload falls as the load is held farther from the base.
 
 #### Payload Comparison
 
-A comparison of how much mass different arms can carry, using the same test conditions.
+A comparison of the masses that different arms can carry under the same test conditions, helping match an arm, such as a servo-based versus a CAN-actuator model, to a task.
 
 It matches the arm to the task.
 
@@ -2489,7 +2489,7 @@ It matches the arm to the task.
 
 #### Perceive Plan Act Observe
 
-A four-stage cycle describing agent behavior: take in information, decide a plan, execute a step, then check the outcome.
+A four-stage description of agent behavior: take in information, decide what to do, carry out a step, then check the outcome, repeating until the goal is reached.
 
 It frames how an arm agent behaves.
 
@@ -2497,7 +2497,7 @@ It frames how an arm agent behaves.
 
 #### PETG
 
-A tougher, more heat-tolerant thermoplastic filament that prints at higher temperatures than PLA and resists impact better.
+A tough, moderately heat-resistant thermoplastic filament that prints at higher temperatures than PLA and tolerates impact better, suited to parts that endure stress such as gripper fingers.
 
 It suits parts that see heat or stress.
 
@@ -2505,7 +2505,7 @@ It suits parts that see heat or stress.
 
 #### Physics Simulator
 
-Software that models forces, collisions, and motion according to physical laws so virtual robots behave realistically.
+Software that models forces, contacts, and motion according to physical laws so virtual robots and objects behave realistically, supporting safe testing and policy training without wear or risk.
 
 It allows testing and training without wear or risk.
 
@@ -2513,7 +2513,7 @@ It allows testing and training without wear or risk.
 
 #### Pick and Place
 
-A task in which a robot picks up an object at one location and puts it down at another.
+A classic manipulation task in which the arm grasps an object at one location and releases it at another, combining approach, grasp, lift, transport, and release steps.
 
 It is the classic demonstration of arm control.
 
@@ -2537,7 +2537,7 @@ Arms have many, especially at joints and gripper jaws.
 
 #### Ping Command
 
-A minimal instruction that asks a device to reply with its status without changing anything.
+A minimal instruction asking a device to reply with its status without altering anything, used to confirm that a servo is present, powered, and answering on the bus.
 
 It confirms a servo is present, powered, and talking.
 
@@ -2545,7 +2545,7 @@ It confirms a servo is present, powered, and talking.
 
 #### Pinocchio Library
 
-An open-source rigid-body dynamics and kinematics library, usable from Python, that computes transforms, Jacobians, and dynamics from a URDF.
+An open-source library for rigid-body kinematics and dynamics that loads a robot description and quickly computes transforms, Jacobians, and joint torques, usable from Python for arm calculations.
 
 It offers fast, tested kinematics.
 
@@ -2561,7 +2561,7 @@ Nearly every dependency in this book, from `pyserial` to `numpy`, arrives throug
 
 #### Pixel-to-World Mapping
 
-Converting a point's pixel coordinates in an image into physical coordinates on the work surface.
+The conversion of coordinates in an image into physical positions on the work surface, often through a calibrated transform, so that something detected in a picture can be reached by the arm.
 
 It is how a detected block becomes a pick target.
 
@@ -2569,7 +2569,7 @@ It is how a detected block becomes a pick target.
 
 #### PLA
 
-A biodegradable thermoplastic filament that prints easily at low temperatures but softens at around 60 degrees Celsius.
+A biodegradable, easy-to-print filament plastic that melts at low temperatures but softens near 60 degrees Celsius, the usual default material for printing arm parts in classrooms.
 
 It is the default material for classroom arm parts.
 
@@ -2587,7 +2587,7 @@ It keeps slow reasoning apart from fast control.
 
 #### Platform Selection Criteria
 
-The factors used to choose an arm platform, such as budget, payload, accuracy, software support, and classroom needs.
+The factors weighed when choosing which arm to build, such as budget, payload, accuracy, software support, community help, and the experience level of the learners using it.
 
 Stating them first makes the choice rational.
 
@@ -2595,7 +2595,7 @@ Stating them first makes the choice rational.
 
 #### Plotting Trajectories
 
-Drawing planned or measured motion paths as graphs of position, velocity, or acceleration against time.
+Drawing planned or recorded motions as graphs of position, velocity, or acceleration against time, letting learners judge smoothness and compare commanded with measured joint behavior.
 
 It lets learners judge smoothness.
 
@@ -2603,7 +2603,7 @@ It lets learners judge smoothness.
 
 #### Plotting Workspace
 
-Drawing the points the end effector can reach as a scatter or surface.
+Drawing the set of points the end effector can reach as a scatter or surface plot, showing at a glance where tasks are physically possible.
 
 It shows where tasks are possible.
 
@@ -2611,7 +2611,7 @@ It shows where tasks are possible.
 
 #### Policy
 
-A function, often a neural network, that chooses the robot's action given the current observation.
+A function, usually a neural network, that maps the robot's current observation, such as images and joint positions, to the next action, acting as the learned controller in imitation learning.
 
 It is the learned controller.
 
@@ -2619,7 +2619,7 @@ It is the learned controller.
 
 #### Policy Failure Modes
 
-The typical ways a learned policy goes wrong, such as hesitating, missing the object, or drifting.
+The characteristic ways a learned controller goes wrong, such as hovering without descending, missing the object, drifting, or repeating a motion, which guide what data or training changes are needed.
 
 Knowing them guides data and training improvements.
 
@@ -2651,7 +2651,7 @@ Without it, the arm would have to guess its pose.
 
 #### Power Budget
 
-An estimate of the total power every component might draw, compared to what the supply can deliver.
+An estimate of the total electrical power each component could draw, summed and compared with the supply's capacity, used to avoid choosing an undersized power source.
 
 It prevents undersized supplies.
 
@@ -2659,7 +2659,7 @@ It prevents undersized supplies.
 
 #### Power Connectors
 
-The plugs and sockets that join power sources to circuits, such as barrel jacks, XT30, XT60, and screw terminals.
+The plugs and sockets that join power sources to circuits, such as barrel jacks, XT30, XT60, and screw terminals, chosen to carry the needed current and to prevent reversed polarity.
 
 The right connector keeps polarity correct and contact resistance low.
 
@@ -2667,7 +2667,7 @@ The right connector keeps polarity correct and contact resistance low.
 
 #### Power Distribution Board
 
-A board that splits one power source into several protected outputs with common connectors.
+A circuit board that splits one power input into several outputs, often individually fused, so that multiple actuators can be fed neatly and protected from each other's faults.
 
 It keeps the arm's wiring neat and shares current safely among actuators.
 
@@ -2675,7 +2675,7 @@ It keeps the arm's wiring neat and shares current safely among actuators.
 
 #### Power Supply
 
-A device that converts mains electricity or another source into the steady voltage and current a circuit needs.
+A device that converts wall or other source electricity into the steady voltage and current a circuit needs, required to match the arm's servos or actuators in voltage and capacity.
 
 The arm's motors depend on a supply that matches their rating.
 
@@ -2683,7 +2683,7 @@ The arm's motors depend on a supply that matches their rating.
 
 #### Pre-Grasp Approach
 
-The motion to a position just above or beside an object, before the final move to grasp it.
+The motion to a point just above or beside an object before the final move to grasp it, so the gripper arrives aligned and avoids bumping the target.
 
 It avoids bumping the object.
 
@@ -2691,7 +2691,7 @@ It avoids bumping the object.
 
 #### Predicted vs Measured Path
 
-A comparison between the path a model forecasts and the path the real arm follows.
+A comparison between the route a model forecasts for the gripper and the route the real arm follows, whose differences expose calibration and modeling errors.
 
 Differences reveal calibration and modeling errors.
 
@@ -2715,7 +2715,7 @@ It is the quickest way to see raw values returned from a servo.
 
 #### Print Orientation
 
-The way a part is positioned on the print bed, which sets layer direction and the need for supports.
+The way a part is positioned on the print bed, which decides the direction of its layers, the need for supports, and the strength along different axes.
 
 Layers are weakest in peeling, so orientation affects strength.
 
@@ -2723,7 +2723,7 @@ Layers are weakest in peeling, so orientation affects strength.
 
 #### Print Quality Inspection
 
-Examining a finished print for defects such as gaps, stringing, rough surfaces, and dimensional errors before using it.
+A visual and tactile check of a finished print for gaps, stringing, rough surfaces, cracks between layers, and dimensional errors, performed before a part is trusted to carry servo loads.
 
 A bad part can fail under servo load.
 
@@ -2731,7 +2731,7 @@ A bad part can fail under servo load.
 
 #### Print Settings
 
-The group of parameters chosen for a print, including layer height, infill, speed, temperature, and supports.
+The group of parameters chosen in the slicer for a given job, including layer height, infill, speed, temperatures, and supports, which together set quality, strength, and print time.
 
 Good settings give strong parts without waste.
 
@@ -2739,7 +2739,7 @@ Good settings give strong parts without waste.
 
 #### Prismatic Joint
 
-A joint that permits straight-line sliding along one axis instead of rotation.
+A joint that allows straight-line sliding along one axis instead of rotation, found on gantry and linear-axis robots and contrasting with the rotating joints of the book's arms.
 
 It appears in gantry and linear-axis robots and contrasts with the rotating joints used on the book's arms.
 
@@ -2747,7 +2747,7 @@ It appears in gantry and linear-axis robots and contrasts with the rotating join
 
 #### Privacy Considerations
 
-Concerns about what personal data, such as camera images or conversations, is collected, stored, or shared with outside services.
+Concerns about what personal information, such as camera images or conversations, a robot or agent gathers, stores, or sends to outside services, particularly when the arm sits in a classroom or home.
 
 Camera-equipped agents can capture private scenes.
 
@@ -2755,7 +2755,7 @@ Camera-equipped agents can capture private scenes.
 
 #### Project Documentation
 
-Written and visual records explaining what a project does, how it was built, and how to run it.
+Written and visual records explaining what a project does, how it was built, and how to run it, such as a README with parts list, wiring photos, and setup commands.
 
 Good documentation lets others reproduce the work.
 
@@ -2763,7 +2763,7 @@ Good documentation lets others reproduce the work.
 
 #### Project Folder Layout
 
-The agreed arrangement of directories and files in a project, separating source code, tests, data, and documentation.
+The agreed arrangement of directories and files in a project, separating source code, tests, data, and documentation so that anyone can quickly find the arm driver, calibration files, and tests.
 
 A consistent layout lets learners and teammates find the arm driver, calibration files, and tests quickly.
 
@@ -2787,7 +2787,7 @@ Hobby servos read its pulse width as a target angle.
 
 #### Pyserial Library
 
-A Python library that opens serial ports and reads and writes bytes on them across Windows, macOS, and Linux.
+A Python package that opens serial ports and reads and writes bytes on them across Windows, macOS, and Linux, used to talk to servo bus controllers directly.
 
 Early chapters use it to talk to the servos directly.
 
@@ -2795,7 +2795,7 @@ Early chapters use it to talk to the servos directly.
 
 #### Pytest
 
-A Python testing framework that discovers functions beginning with `test_` and reports which pass or fail.
+A Python testing framework that discovers functions named with a `test_` prefix, runs them, and reports which pass or fail, automating verification of arm code.
 
 It automates verification of arm code.
 
@@ -2811,7 +2811,7 @@ Every script that talks to a robot arm runs inside an interpreter on the learner
 
 #### Python Module
 
-A single Python file whose functions, classes, and variables can be loaded into other programs by name.
+A single Python file whose functions, classes, and variables can be loaded into other programs by name, letting arm code be divided into focused, reusable pieces.
 
 Splitting arm code into modules keeps the servo driver separate from the motion planner.
 
@@ -2837,7 +2837,7 @@ Scripts are the first unit of robot control in this book, such as a short file t
 
 #### Python-CAN Library
 
-A Python package that gives a common interface to many CAN adapters, for sending and receiving frames.
+A Python package that provides a common interface to many CAN adapters for sending and receiving frames, letting learners control CAN actuators without writing low-level drivers.
 
 It lets learners control CAN actuators without writing low-level drivers.
 
@@ -2853,7 +2853,7 @@ It gives smooth, responsive force behavior.
 
 #### Quaternion
 
-A four-number representation of 3D orientation with no gimbal lock and efficient composition.
+A four-number representation of three-dimensional orientation that avoids the ambiguity of Euler angles and composes efficiently, widely used in robotics libraries, simulators, and smooth orientation interpolation.
 
 Libraries and simulators use it widely.
 
@@ -2861,7 +2861,7 @@ Libraries and simulators use it widely.
 
 #### Quaternion Rotation
 
-Using a unit quaternion to rotate vectors or combine orientations by quaternion multiplication.
+The use of a unit quaternion to rotate vectors or to combine orientations through quaternion multiplication, a compact and numerically stable alternative to rotation matrices for gripper orientation.
 
 It is stable and compact.
 
@@ -2869,7 +2869,7 @@ It is stable and compact.
 
 #### Quintic Polynomial Trajectory
 
-A motion plan using a fifth-degree polynomial in time, fitting positions, velocities, and accelerations at both ends.
+A motion plan in which a joint follows a fifth-degree polynomial of time, fitted to start and end positions, velocities, and accelerations so even the acceleration changes smoothly.
 
 It adds smoothness in acceleration.
 
@@ -2877,7 +2877,7 @@ It adds smoothness in acceleration.
 
 #### Range of Motion Limits
 
-The measured minimum and maximum readings each joint can reach, recorded during calibration.
+The measured smallest and largest sensor readings that each joint can reach, captured during calibration by sweeping the joint, and later used to bound the commands sent to it.
 
 They bound later commands.
 
@@ -2885,7 +2885,7 @@ They bound later commands.
 
 #### Rate Limiting
 
-Restricting how often commands or requests may be made within a period.
+A restriction on how many commands or requests may be issued within a period, preventing floods of instructions, runaway costs, and overly rapid action by an agent.
 
 It prevents floods of commands or runaway costs.
 
@@ -2901,7 +2901,7 @@ Drivers must convert from them.
 
 #### Reach
 
-The maximum distance from the base to the end effector when the arm is fully stretched.
+The greatest distance from the base to the end effector when the arm is fully stretched, the first number to compare when judging whether an arm suits a task.
 
 It is the first number to compare when choosing an arm for a task.
 
@@ -2909,7 +2909,7 @@ It is the first number to compare when choosing an arm for a task.
 
 #### Reachability Map
 
-A plot or table showing which points in space the end effector can reach, and sometimes how well.
+A plot or table showing which points in space the end effector can reach, and sometimes how dexterously, guiding where to place objects and fixtures.
 
 It guides task layout.
 
@@ -2917,7 +2917,7 @@ It guides task layout.
 
 #### Reading a Register
 
-Requesting and decoding the value stored at a specific address in a device's memory.
+Requesting the value stored at a specific memory address inside a device and decoding the returned bytes, the way software obtains position, temperature, load, and other servo states.
 
 It is how software learns position, temperature, and load.
 
@@ -2933,7 +2933,7 @@ Most hardware failures, such as a missing serial port, first show up as a traceb
 
 #### Reading Joint Positions
 
-Querying the servos or motors for their present angles and returning them in useful units.
+Querying the servos or motors for their present angles and returning them in useful units, the foundation of control loops, logging, calibration checks, and teleoperation.
 
 Control and logging begin with accurate readings.
 
@@ -2941,7 +2941,7 @@ Control and logging begin with accurate readings.
 
 #### reBot B601-DM
 
-The reBot arm variant that uses Damiao CAN actuators in its joints.
+The variant of Seeed's reBot B601 arm whose joints use Damiao CAN-controlled actuators, so its software has to speak Damiao's message format rather than the format of the RobStride variant.
 
 Its commands follow the Damiao protocol.
 
@@ -2949,7 +2949,7 @@ Its commands follow the Damiao protocol.
 
 #### reBot B601-RS
 
-The reBot arm variant that uses RobStride CAN actuators in its joints.
+The variant of Seeed's reBot B601 arm whose joints use RobStride CAN-controlled actuators, so its software has to follow RobStride's message format, which differs from the Damiao-based variant.
 
 Its commands follow the RobStride protocol, which differs from the Damiao one.
 
@@ -2957,7 +2957,7 @@ Its commands follow the RobStride protocol, which differs from the Damiao one.
 
 #### reBot Gripper Assembly
 
-The steps for building and mounting the gripper on the reBot arm, including its actuator, fingers, and cabling.
+The steps for building the end effector of the reBot arm, including mounting its actuator and fingers to the wrist flange and routing its power and CAN cabling along the arm.
 
 The gripper is the tool that touches objects.
 
@@ -2965,7 +2965,7 @@ The gripper is the tool that touches objects.
 
 #### reBot Wrist Assembly
 
-The steps for building and installing the wrist on the reBot arm, including its joints, actuators, and cabling.
+The steps for building and attaching the wrist of the reBot arm, bolting its actuators together at the correct angles, connecting them to the CAN line, and fitting them to the forearm.
 
 The wrist sets how well the gripper can be oriented.
 
@@ -2973,7 +2973,7 @@ The wrist sets how well the gripper can be oriented.
 
 #### reBot-DevArm
 
-A larger open-source robot arm from Seeed Studio that uses CAN-bus actuators, aimed at developers moving beyond hobby servos.
+An open-source developer robot arm from Seeed Studio that uses CAN-bus actuators instead of hobby servos, aimed at users who want higher performance and a path beyond low-cost desktop arms.
 
 It is the book's higher-performance platform.
 
@@ -2981,7 +2981,7 @@ It is the book's higher-performance platform.
 
 #### Recording Episodes
 
-Saving a time-ordered set of observations and actions, such as images and joint positions, for a complete task attempt.
+Saving a time-ordered set of observations and actions, such as camera frames and joint positions, for one complete attempt at a task, producing the examples used to train a learned policy.
 
 These recordings become training data.
 
@@ -2997,7 +2997,7 @@ It is the manual a programmer uses to control a servo.
 
 #### Regression Testing
 
-Re-running tests after changes to confirm that earlier working behavior has not been broken.
+Re-running an existing set of tests after code changes to confirm that behavior which used to work has not been broken by the new edits.
 
 It keeps improvements from reintroducing old bugs.
 
@@ -3005,7 +3005,7 @@ It keeps improvements from reintroducing old bugs.
 
 #### Repeatability
 
-How closely an arm returns to the same position when commanded there many times, under the same conditions.
+How closely an arm returns to the same position when commanded there again and again under identical conditions, which matters more than absolute accuracy for taught pick-and-place points.
 
 Good repeatability matters more than raw accuracy for pick-and-place when targets are taught by example.
 
@@ -3015,7 +3015,7 @@ See also: Accuracy
 
 #### Repeatability Test
 
-A procedure that repeats the same task many times to measure consistency.
+A procedure that commands the same pose many times and records the spread of the positions actually reached, measuring the arm's consistency separately from its correctness.
 
 It shows whether a result was luck.
 
@@ -3033,7 +3033,7 @@ See also: Python Interpreter, Terminal
 
 #### Replanning
 
-Revising a plan when conditions change or a step fails.
+Revising a plan when conditions change or a step fails, for example finding a displaced block again and computing a new approach, because real environments seldom follow the first plan.
 
 Real environments rarely follow the first plan.
 
@@ -3041,7 +3041,7 @@ Real environments rarely follow the first plan.
 
 #### Replay Testing
 
-Re-running recorded requests or logged sessions against a system to see whether behavior matches earlier results.
+Feeding recorded requests or logged sessions back into a revised system to check that its behavior matches earlier results, testing changes without needing fresh human input.
 
 It checks changes without new human input.
 
@@ -3049,7 +3049,7 @@ It checks changes without new human input.
 
 #### Replaying Motion
 
-Playing back recorded joint positions on the arm to reproduce a previously performed movement.
+Playing back previously recorded joint positions on the arm to reproduce a movement, used to check that a recording is good and to repeat fixed tasks.
 
 It checks recordings and repeats fixed tasks.
 
@@ -3057,7 +3057,7 @@ It checks recordings and repeats fixed tasks.
 
 #### Repository Version History
 
-The recorded sequence of changes to a project's files, showing what changed, when, and by whom.
+The recorded sequence of changes to a project's files, showing what changed, when, and by whom, which can explain why parts or instructions differ between design revisions.
 
 It reveals why parts differ between revisions.
 
@@ -3065,7 +3065,7 @@ It reveals why parts differ between revisions.
 
 #### Requests Library
 
-A popular Python package for sending HTTP requests and handling responses.
+A widely used Python package that simplifies sending HTTP requests and reading responses, used by scripts to call tool servers, web services, and arm APIs.
 
 It lets scripts talk to tool servers and web services.
 
@@ -3073,7 +3073,7 @@ It lets scripts talk to tool servers and web services.
 
 #### Required Parts
 
-The items that must be obtained for the build to work at all.
+The components that have to be obtained for a build to function at all, such as servos, a controller board, a power supply, and structural parts, as distinct from optional upgrades.
 
 Knowing them prevents getting stuck midway.
 
@@ -3089,7 +3089,7 @@ It makes a classroom of identical arm setups reproducible.
 
 #### Responsible Robotics
 
-Building and using robots with attention to safety, privacy, fairness, and effects on people.
+Building and operating robots with attention to safety, privacy, fairness, and consequences for people, treating technical choices about arms and agents as having ethical dimensions as well.
 
 It frames technical decisions as ethical ones too.
 
@@ -3097,7 +3097,7 @@ It frames technical decisions as ethical ones too.
 
 #### Reverse Polarity Protection
 
-Circuitry or connectors that prevent damage when power is connected with positive and negative swapped.
+Circuitry or connector design that prevents damage when power is attached with positive and negative swapped, such as a keyed plug or a series diode in the supply line.
 
 A single swapped wire can destroy a controller board.
 
@@ -3105,7 +3105,7 @@ A single swapped wire can destroy a controller board.
 
 #### Revolute Joint
 
-A joint that permits rotation about a single fixed axis, like a door hinge.
+A joint that permits rotation about one fixed axis, like a door hinge, and is the type found in nearly every joint of the arms used in this book.
 
 Almost every joint in the arms used in this book is of this kind.
 
@@ -3131,7 +3131,7 @@ It condenses a whole path comparison into one number.
 
 #### Robot Arm
 
-A programmable mechanical manipulator made of rigid segments connected by joints that moves a tool or hand through space.
+A programmable mechanical manipulator made of rigid links joined by joints, which positions a tool or hand in space and is the subject of this book's control programs.
 
 Controlling one with Python is the subject of the whole book.
 
@@ -3147,7 +3147,7 @@ Knowing the uses helps match arm size and accuracy to the job.
 
 #### Robot Arm Skill
 
-An agent skill specifically for operating the robot arm, listing the available tools, limits, and safe usage.
+An agent skill dedicated to operating the arm, listing the available tools, their limits, and usage conventions, so a language model knows what the arm can do and how to ask.
 
 It focuses the agent on the arm's capabilities.
 
@@ -3155,7 +3155,7 @@ It focuses the agent on the arm's capabilities.
 
 #### Robot Safety
 
-The practices, devices, and habits that prevent a robot from harming people, itself, or its surroundings.
+The practices, devices, and habits that prevent a robot from injuring people, damaging itself, or harming its surroundings, applied before any motion experiment with the arm begins.
 
 It comes before every motion experiment in this book.
 
@@ -3163,7 +3163,7 @@ It comes before every motion experiment in this book.
 
 #### RobStride Actuator
 
-A brushless joint motor with integrated gearbox and drive electronics made by RobStride and controlled over CAN bus.
+A compact brushless joint module from RobStride that combines a motor, gearbox, and drive electronics and is controlled over CAN bus, as used on the reBot B601-RS arm.
 
 It is the actuator choice for the reBot B601-RS arm.
 
@@ -3173,7 +3173,7 @@ See also: reBot B601-RS, CAN Bus
 
 #### ROS 2 Bridge
 
-A connector that translates between an agent's tool calls and ROS 2 messages or services.
+A connector that translates between an agent's tool calls and ROS 2 messages or services, allowing language-model agents to drive robots that are organized as ROS 2 systems.
 
 It lets agents drive ROS-based robots.
 
@@ -3181,7 +3181,7 @@ It lets agents drive ROS-based robots.
 
 #### ROS 2 Tour
 
-An introductory walk-through of the Robot Operating System 2 framework and its nodes, topics, and tools.
+A guided introduction to the Robot Operating System 2 framework, covering its nodes, topics, and command-line tools, showing how robot software is built from cooperating programs.
 
 It shows how robots are built from cooperating programs.
 
@@ -3189,7 +3189,7 @@ It shows how robots are built from cooperating programs.
 
 #### ROS Node
 
-A single running program in ROS 2 that performs one function and communicates with other nodes.
+A single running program in a ROS 2 system that performs one job, such as reading joint states or sending commands, and exchanges messages with other nodes.
 
 Systems are built by combining nodes.
 
@@ -3197,7 +3197,7 @@ Systems are built by combining nodes.
 
 #### ROS Topic
 
-A named channel in ROS 2 on which nodes publish and subscribe to messages of a given type.
+A named communication channel in ROS 2 on which nodes publish messages of a defined type and others subscribe, forming the main route for streaming robot data.
 
 It is the main way robot data flows.
 
@@ -3205,7 +3205,7 @@ It is the main way robot data flows.
 
 #### Rotation
 
-A turning of an object about an axis, described by an angle and axis, a matrix, or a quaternion.
+A turning of an object about an axis, described mathematically by an angle and axis, a matrix, Euler angles, or a quaternion, and used to orient links and tools.
 
 It orients the tool and links.
 
@@ -3213,7 +3213,7 @@ It orients the tool and links.
 
 #### Rotation Matrix
 
-A square matrix that rotates a vector from one orientation to another while preserving lengths.
+A square matrix that rotates vectors from one orientation to another while preserving lengths and angles, encoding three-dimensional orientation in forward and inverse kinematics calculations.
 
 It encodes orientation in 3D.
 
@@ -3229,7 +3229,7 @@ It finds paths in high-dimensional spaces.
 
 #### Runaway Motion
 
-Unintended continued or accelerating movement of the arm that the program is not commanding or cannot stop.
+Unintended continued or accelerating movement of the arm that the program is not commanding or can no longer stop, one of the main hazards of software-driven hardware.
 
 It is one of the main hazards of software-controlled hardware.
 
@@ -3245,7 +3245,7 @@ Doing so avoids sudden unexpected motion.
 
 #### Safe Shutdown
 
-An ordered sequence that brings the arm to a safe pose, disables torque, and removes power without sudden drops.
+An ordered sequence that brings the arm to a rest pose, waits for motion to stop, disables torque, and removes power, avoiding sudden drops and protecting any held object.
 
 It protects the arm and anything in its grasp.
 
@@ -3253,7 +3253,7 @@ It protects the arm and anything in its grasp.
 
 #### Safe Work Envelope
 
-The region of space the arm is allowed to move in, kept clear of people and fragile objects.
+The region of space the arm is permitted to move through, kept clear of people and fragile objects and often marked on the table or enforced by software limits.
 
 Marking it prevents accidents.
 
@@ -3269,7 +3269,7 @@ It makes safety routine rather than memory-dependent.
 
 #### Safety Layer
 
-A program component between the agent and hardware that checks and limits every command before it reaches the arm.
+A software component placed between an agent and the hardware that inspects and limits every command before it reaches the arm, working regardless of what the agent decides.
 
 It protects regardless of what the agent decides.
 
@@ -3277,7 +3277,7 @@ It protects regardless of what the agent decides.
 
 #### Sampling-Based Planning
 
-A family of path-planning methods that randomly sample poses and connect valid ones, rather than searching every possibility.
+A family of path-planning methods that draw random poses and connect the valid ones into routes rather than exhaustively searching, making planning practical for arms with many joints.
 
 It handles many joints.
 
@@ -3285,7 +3285,7 @@ It handles many joints.
 
 #### Scene Description
 
-A text summary of what is visible in an image, naming objects and their layout.
+A text summary of what a camera sees, naming objects and their arrangement, such as three blocks on a table, which gives a language-model agent awareness of the workspace.
 
 It gives an agent awareness of the workspace.
 
@@ -3293,7 +3293,7 @@ It gives an agent awareness of the workspace.
 
 #### SciPy Interpolation
 
-Functions from the SciPy library, such as `interp1d` and `CubicSpline`, for estimating values between known data points.
+Functions in the SciPy library, such as `interp1d` and `CubicSpline`, that estimate values between known data points, saving learners from writing numerical interpolation code themselves.
 
 They save writing numerical code.
 
@@ -3301,7 +3301,7 @@ They save writing numerical code.
 
 #### SciPy Optimize
 
-The SciPy submodule that finds parameter values minimizing a function, such as `minimize` and `least_squares`.
+The SciPy submodule that searches for parameter values minimizing a function, used in this book for fitting models and for solving inverse kinematics numerically when no formula exists.
 
 It fits models or solves inverse kinematics numerically.
 
@@ -3309,7 +3309,7 @@ It fits models or solves inverse kinematics numerically.
 
 #### Screws
 
-Threaded fasteners driven into a hole or nut to hold parts together, classed by diameter, length, and head type.
+Threaded fasteners driven into a hole or nut to clamp parts together, classified by diameter, length, and head type, where wrong lengths can crack plastic or fail to engage.
 
 Using the wrong length can crack plastic or miss the thread.
 
@@ -3325,7 +3325,7 @@ Each suits different tasks and risks.
 
 #### Self-Sourced Build
 
-Building a robot by purchasing each part individually from various suppliers and printing others.
+Constructing an arm by buying each component separately from different suppliers and printing the structure, which can cost less and teaches sourcing skills but needs more care about compatibility.
 
 It can cost less and teaches sourcing skills but needs more care.
 
@@ -3351,7 +3351,7 @@ It is how a computer talks to servos with few wires.
 
 #### Serial Manipulator
 
-A robot arm whose links are connected one after another in a single chain from base to end effector.
+A robot arm whose links are connected one after another in a single chain from base to end effector, so its forward kinematics is a product of one transform per joint.
 
 Its forward kinematics reduces to multiplying one transform per joint in order.
 
@@ -3359,7 +3359,7 @@ Its forward kinematics reduces to multiplying one transform per joint in order.
 
 #### Serial Port
 
-The software handle, such as `COM3` or `/dev/ttyUSB0`, through which a program sends and receives serial data.
+The software handle through which a program sends and receives serial data, appearing as a name like `COM3` or `/dev/ttyUSB0`, that the program opens to reach the arm.
 
 Programs must open the right one to reach the arm.
 
@@ -3383,7 +3383,7 @@ Some softness protects against shocks and makes contact gentler.
 
 #### Servo Horn
 
-The attachment piece that mounts onto the servo's output shaft and carries the arm segment or gripper.
+The attachment piece that fits onto a servo's output shaft and carries the next link or gripper, transferring the servo's rotation to the arm structure.
 
 It transfers the servo's rotation to the link.
 
@@ -3399,7 +3399,7 @@ Servos make hobby-grade arms practical because the control loop is built in.
 
 #### Servo Not Found
 
-A fault where a bus scan or command gets no reply from a servo.
+A fault in which a bus scan or command receives no reply from a servo, caused by absent power, a wrong identifier or communication speed, or a damaged or loose cable.
 
 Causes include missing power, wrong ID, wrong baud rate, or broken cable.
 
@@ -3407,7 +3407,7 @@ Causes include missing power, wrong ID, wrong baud rate, or broken cable.
 
 #### Servo Overheating
 
-A condition where a servo's temperature rises dangerously, often from holding heavy loads or being blocked.
+A condition in which a servo's internal temperature climbs toward unsafe levels, often from holding heavy loads or being blocked, leading to reduced torque, shutdown, or permanent damage.
 
 The servo may shut down or be damaged.
 
@@ -3415,7 +3415,7 @@ The servo may shut down or be damaged.
 
 #### Servo Preparation
 
-The steps taken before assembly to make servos ready, such as assigning IDs, setting baud rate, and testing movement.
+The steps carried out before assembly to ready each servo, such as assigning its identifier, setting communication speed, and testing movement, avoiding later disassembly of the arm.
 
 Doing it first avoids having to take the arm apart later.
 
@@ -3423,7 +3423,7 @@ Doing it first avoids having to take the arm apart later.
 
 #### Servo Replacement
 
-Removing a worn or failed servo and installing a new one, then restoring its ID, settings, and calibration.
+Removing a worn or failed servo and installing a new one, then restoring its identifier, communication settings, and calibration so the arm behaves as it did before.
 
 Servos eventually wear out.
 
@@ -3431,7 +3431,7 @@ Servos eventually wear out.
 
 #### Servo Testing
 
-Running simple movements on a servo before installing it to confirm it works, centers correctly, and reads back values.
+Running simple movements on a servo, before installing it, to confirm that it responds, reaches its range, and reads back values, which exposes faulty units early.
 
 It catches faulty units early.
 
@@ -3439,7 +3439,7 @@ It catches faulty units early.
 
 #### Servo Torque Margin
 
-The amount by which a servo's available torque exceeds the torque needed, often shown as a ratio or percentage.
+The amount by which a servo's available torque exceeds the torque a pose requires, expressed as a ratio or percentage, where a comfortable margin avoids stalling and overheating.
 
 A comfortable margin avoids stalls and overheating.
 
@@ -3447,7 +3447,7 @@ A comfortable margin avoids stalls and overheating.
 
 #### Setting Baud Rate
 
-Configuring a servo's serial speed so it matches the controller's.
+Configuring a servo's communication speed by writing to its settings, so that every device on a bus agrees with the controller and can understand its packets.
 
 All devices on one bus must agree.
 
@@ -3465,7 +3465,7 @@ See also: Device ID
 
 #### Shipping and Customs
 
-The transportation of goods between locations and the border inspections, duties, and taxes that apply to international orders.
+The transportation of goods and the border inspections, duties, and taxes that apply to international orders, which add cost and delay beyond the listed price of arm parts.
 
 These add cost and delay that the sticker price hides.
 
@@ -3489,7 +3489,7 @@ Its motors carry the heaviest loads.
 
 #### Shutdown Procedure
 
-The ordered steps followed to stop the system safely, such as returning home, releasing torque, and removing power.
+The ordered steps for stopping the system, such as returning the arm home, releasing torque, closing the port, and switching off power, protecting hardware and nearby people.
 
 It protects both the hardware and the people.
 
@@ -3505,7 +3505,7 @@ Skills learned virtually may fail on hardware.
 
 #### Simulation
 
-Running a computer model of a robot and its environment to predict behavior without physical hardware.
+Running a computer model of a robot and its environment to predict behavior without physical hardware, allowing fast, safe, and repeatable experiments with arm motion and control code.
 
 It enables safe, fast testing.
 
@@ -3513,7 +3513,7 @@ It enables safe, fast testing.
 
 #### Simulation Mode
 
-An operating mode in which commands drive a virtual arm instead of the real one.
+An operating setting in which commands drive a virtual arm instead of the real one, letting people rehearse scripts and agent behavior before connecting any hardware or moving a motor.
 
 It allows safe rehearsal of agent behavior.
 
@@ -3529,7 +3529,7 @@ They appear in every arm geometry formula.
 
 #### Single-Joint Move
 
-A motion command that changes just one joint while the others hold still.
+A motion command that changes just one joint while all others hold still, usually the first movement a learner tests when bringing up a new arm.
 
 It is the first movement learners test.
 
@@ -3545,7 +3545,7 @@ Arms behave badly near them.
 
 #### Singularity Avoidance
 
-Techniques that steer the arm away from singular poses or reduce speeds near them.
+Techniques that steer the arm away from singular poses or reduce commanded speeds near them, preventing the wild joint motions that inverse kinematics produces there.
 
 They prevent wild joint motions.
 
@@ -3561,7 +3561,7 @@ It is the industrial standard layout that the larger reBot arm follows.
 
 #### SLERP
 
-Spherical linear interpolation, a way of smoothly blending between two orientations at constant angular speed along the shortest rotation.
+Spherical linear interpolation, a method for blending between two orientations at constant angular speed along the shortest rotation, giving natural-looking and smooth changes of gripper direction.
 
 It produces natural orientation changes.
 
@@ -3569,7 +3569,7 @@ It produces natural orientation changes.
 
 #### Slicer
 
-Software that cuts a 3D model into layers and produces the printing path instructions for a printer.
+Software that cuts a three-dimensional model into thin layers and generates the machine instructions a printer follows, with settings that decide quality, strength, and print time.
 
 Its settings decide quality, strength, and time.
 
@@ -3577,7 +3577,7 @@ Its settings decide quality, strength, and time.
 
 #### Smooth Velocity Profile
 
-A speed plan with gradual changes, such as an S-curve or minimum-jerk shape, that reduces abrupt acceleration.
+A speed plan with gradual changes, such as an S-curve or bell shape, that reduces abrupt acceleration, giving gentler motion and less mechanical stress than a plain trapezoid.
 
 It gives gentler motion and less mechanical stress.
 
@@ -3595,7 +3595,7 @@ See also: SO-ARM101
 
 #### SO-ARM100 vs SO-ARM101
 
-A comparison of the two designs, covering wiring, assembly effort, gearing, and the changes made between versions.
+A comparison of the two generations of the open-source desktop arm, covering differences in wiring, assembly effort, and leader-arm gearing, which helps learners choose and interpret older tutorials.
 
 It helps learners choose and understand older tutorials.
 
@@ -3619,7 +3619,7 @@ It is convenient but cannot be trusted alone, since the program can fail.
 
 #### Soldering
 
-Joining metal parts by melting a filler metal, solder, around them so it cools into a strong electrical connection.
+Joining metal parts by melting a filler alloy around them so it cools into a strong electrical connection, used for attaching power wires and connectors on arm electronics.
 
 Used for wiring power leads and connectors.
 
@@ -3635,7 +3635,7 @@ Wire connections for the arm often involve soldering.
 
 #### Spare Parts
 
-Extra components kept on hand to replace those that fail or break during use.
+Extra components kept on hand to replace those that fail, wear out, or get damaged during use, especially servos, cables, and fasteners in classroom settings.
 
 Classrooms need them because wear and mistakes are common.
 
@@ -3643,7 +3643,7 @@ Classrooms need them because wear and mistakes are common.
 
 #### Speed Limit
 
-A cap on how fast a joint or end effector may move, enforced in software or hardware.
+A cap on how fast a joint or the end effector may move, enforced in software or by the servo, giving people time to react and lowering impact forces.
 
 Lower speeds give people time to react and reduce impact forces.
 
@@ -3651,7 +3651,7 @@ Lower speeds give people time to react and reduce impact forces.
 
 #### Stall Torque
 
-The maximum torque a motor can produce when its shaft is held still and not allowed to turn.
+The maximum torque a motor can produce while its shaft is held still, the headline figure on a datasheet and one that real arms cannot sustain without overheating.
 
 It is the headline figure on a servo's datasheet and is not safe to sustain.
 
@@ -3659,7 +3659,7 @@ It is the headline figure on a servo's datasheet and is not safe to sustain.
 
 #### Standard Library
 
-The collection of modules that ships with Python itself and needs no separate installation.
+The collection of modules that ships with Python itself and needs no separate installation, including `struct`, `time`, `json`, `argparse`, and `logging`, which carry much of the early arm code.
 
 Modules such as `struct`, `time`, `json`, and `argparse` do much of the work in the early chapters.
 
@@ -3667,7 +3667,7 @@ Modules such as `struct`, `time`, `json`, and `argparse` do much of the work in 
 
 #### Startup Procedure
 
-The ordered steps followed to start the system safely, such as checking the workspace, powering on, connecting, and homing.
+The ordered steps for starting the system safely, such as clearing the workspace, applying power, connecting software, and moving to the home pose, so every session begins predictably.
 
 A routine prevents surprises.
 
@@ -3683,7 +3683,7 @@ It organizes multi-step tasks and makes error handling clear.
 
 #### Static Torque Estimate
 
-A calculation of the torque each joint needs to hold the arm still against gravity at a given pose.
+A calculation of the torque each joint has to supply to hold the arm still against gravity at a given pose, used to check whether the chosen servos are strong enough.
 
 It checks that servos are strong enough.
 
@@ -3691,7 +3691,7 @@ It checks that servos are strong enough.
 
 #### Status Packet
 
-The reply a servo sends back after an instruction, carrying its ID, an error byte, and any requested data.
+The reply a servo sends after receiving an instruction, carrying its identifier, an error indication, and any requested data, which confirms that the command was received and reports results.
 
 Reading it confirms the command succeeded.
 
@@ -3707,7 +3707,7 @@ It lets users modify dimensions before printing.
 
 #### STL File
 
-A common 3D model format describing a surface as a mesh of triangles, widely used as input to slicers.
+A common three-dimensional model format that describes a surface as a mesh of triangles, widely used as the input to slicers and the format in which arm repositories publish printable parts.
 
 Arm repositories publish parts in it.
 
@@ -3723,7 +3723,7 @@ It offers a clean way to end motion.
 
 #### Stop Tool
 
-An agent tool that immediately halts motion, usually by disabling torque or commanding a stop.
+An agent-callable function that immediately halts motion, for example by disabling torque or commanding a stop, giving a user or agent a way to interrupt activity.
 
 It lets a user or agent interrupt activity.
 
@@ -3731,7 +3731,7 @@ It lets a user or agent interrupt activity.
 
 #### Straight-Line Motion
 
-Movement of the end effector along a straight line in Cartesian space.
+Movement of the end effector along a straight line in space, which requires coordinated, non-uniform motion of several joints calculated through inverse kinematics at many points along the line.
 
 Straight lines in space need coordinated, non-uniform joint motion.
 
@@ -3739,7 +3739,7 @@ Straight lines in space need coordinated, non-uniform joint motion.
 
 #### Strain Relief
 
-A feature that absorbs pulling and bending forces at a cable's connection point so the joint is not stressed.
+A feature or technique that absorbs pulling and bending forces at a cable's connection point, such as a clipped loop of wire, so the connector and joints are not stressed.
 
 It extends cable life.
 
@@ -3747,7 +3747,7 @@ It extends cable life.
 
 #### Struct Module
 
-A standard library module that converts between Python values and packed binary bytes according to a format string.
+A standard library module that converts between Python values and packed binary bytes according to a format string, used to decode multi-byte register values from servos.
 
 It decodes multi-byte register values from a servo.
 
@@ -3763,7 +3763,7 @@ Knowing its limits, such as its 4096-count resolution, shapes every driver in th
 
 #### Substitute Parts
 
-Alternative components that can replace specified ones with comparable function, voltage, and dimensions.
+Alternative components that can take the place of specified ones with comparable function, voltage, and dimensions, helpful when stock runs out but needing a compatibility check.
 
 They help when stock runs out, but compatibility must be checked.
 
@@ -3771,7 +3771,7 @@ They help when stock runs out, but compatibility must be checked.
 
 #### Success Rate
 
-The fraction of attempts in which a task is completed correctly.
+The fraction of attempts in which a task is completed correctly, such as blocks placed in a bin out of trials run, the principal number for judging a learned policy or agent.
 
 It is the main measure of a policy or agent.
 
@@ -3779,7 +3779,7 @@ It is the main measure of a policy or agent.
 
 #### Supervised Operation
 
-Running a robot only while a trained person watches and can intervene immediately.
+Running a robot only while a trained person watches and is ready to intervene immediately, the normal condition for first tests of any new code.
 
 New code always starts this way.
 
@@ -3787,7 +3787,7 @@ New code always starts this way.
 
 #### Support Material
 
-Temporary structure printed beneath overhangs so they do not sag, removed after printing.
+Temporary structure printed beneath overhanging features so they do not sag in mid-air, removed after printing and affecting both the surface finish and the print time of arm parts.
 
 It affects finish and print time.
 
@@ -3795,7 +3795,7 @@ It affects finish and print time.
 
 #### Task Decomposition
 
-Breaking a large goal into smaller, manageable subtasks.
+Breaking a large goal into smaller, manageable subtasks, such as splitting "tidy the desk" into separately picking and placing each item, so an agent can plan and execute them in turn.
 
 It makes complex requests feasible.
 
@@ -3803,7 +3803,7 @@ It makes complex requests feasible.
 
 #### Task Planning
 
-Deciding the ordered steps needed to reach a goal.
+Deciding the ordered steps needed to reach a goal, such as open the gripper, approach, grasp, lift, move, and release, so an agent can handle multi-step jobs.
 
 It lets agents handle multi-step jobs.
 
@@ -3811,7 +3811,7 @@ It lets agents handle multi-step jobs.
 
 #### Teleoperation
 
-Controlling a robot remotely in real time by a human operator, whose movements are transmitted to the machine.
+Controlling a robot remotely in real time by a human operator whose movements are transmitted to the machine, the way demonstration data is collected for learning.
 
 It is how learning-from-demonstration data is collected.
 
@@ -3819,7 +3819,7 @@ It is how learning-from-demonstration data is collected.
 
 #### Teleoperation Loop
 
-The repeating cycle that reads the leader arm's joint positions and writes them to the follower arm.
+The repeating cycle that reads the hand-guided arm's joint positions and writes them as targets to the working arm, forming the core of demonstration recording.
 
 It is the core of demonstration data collection.
 
@@ -3827,7 +3827,7 @@ It is the core of demonstration data collection.
 
 #### Temperature Sensing
 
-Reading the internal temperature of a motor or servo to detect overheating before damage occurs.
+Reading the internal temperature of a servo or motor so that overheating can be detected before damage occurs, since hot servos lose torque and may shut down.
 
 Hot servos reduce torque and may shut down.
 
@@ -3843,7 +3843,7 @@ Installing packages, running scripts, and finding serial ports all happen here.
 
 #### Test Coverage
 
-A measure of how much of the code is executed when the tests run.
+A measure of how much of a program's code is executed while the tests run, where low coverage indicates parts of the arm library that have never been checked.
 
 Low coverage hides untested paths.
 
@@ -3851,7 +3851,7 @@ Low coverage hides untested paths.
 
 #### Test Fixtures
 
-Reusable setup code that supplies tests with objects or data they need, defined with `@pytest.fixture`.
+Reusable setup routines, declared with `@pytest.fixture`, that supply tests with the objects or data they need, such as a fake arm, keeping tests short and consistent.
 
 They keep tests short and consistent.
 
@@ -3859,7 +3859,7 @@ They keep tests short and consistent.
 
 #### Testing Safety Limits
 
-Writing tests that confirm commands outside allowed ranges are rejected or clipped.
+Writing tests that confirm commands outside allowed ranges are rejected or clipped, verifying in simulation or with a fake arm that protections work before they are relied on with real hardware.
 
 It verifies protections work before they matter.
 
@@ -3867,7 +3867,7 @@ It verifies protections work before they matter.
 
 #### Threads
 
-Independent sequences of execution within a single program that run concurrently.
+Independent sequences of execution inside a single program that run concurrently, letting a control loop keep running while another part of the program handles user input or monitoring.
 
 They let a robot control loop run while another part handles user input.
 
@@ -3875,7 +3875,7 @@ They let a robot control loop run while another part handles user input.
 
 #### Time Module
 
-The standard library module that provides clock readings, timing measurements, and delays.
+The standard library module providing clock readings, elapsed-time measurements, and delays such as `sleep`, which learners use to pace control loops and measure how long arm motions take.
 
 It paces control loops.
 
@@ -3883,7 +3883,7 @@ It paces control loops.
 
 #### Time Scaling
 
-Changing how fast a planned path is traversed without altering its shape.
+Changing how fast a planned path is traversed without altering its geometric shape, used to stretch or compress a motion so it fits speed and acceleration limits.
 
 It adjusts speed to fit limits.
 
@@ -3891,7 +3891,7 @@ It adjusts speed to fit limits.
 
 #### Timing Jitter
 
-Variation in the time between loop cycles that should be evenly spaced.
+Variation in the interval between control-loop cycles that are meant to be evenly spaced, caused by a busy computer or communication delays, which makes motion uneven.
 
 It makes motion uneven.
 
@@ -3915,7 +3915,7 @@ Clear schemas reduce wrong calls.
 
 #### Tool Server
 
-A service that hosts a set of tools and runs them on request from clients such as agents.
+A service that hosts a set of tools and runs them on request from clients such as agents, keeping safety logic and hardware access separate from the model.
 
 It separates safety logic and hardware access from the model.
 
@@ -3931,7 +3931,7 @@ Torque determines what loads a joint can hold or lift.
 
 #### Torque Enable
 
-A servo setting that switches the motor's drive on or off; when off, the joint moves freely by hand.
+A servo setting that switches the motor's drive on or off, where turning it off lets the joint be moved freely by hand, which is how leader arms are positioned.
 
 It is the quickest way to release or lock a joint in software.
 
@@ -3941,7 +3941,7 @@ See also: Torque Release
 
 #### Torque Limit
 
-A setting that caps the maximum torque or output a servo may apply.
+A setting that caps the maximum torque or output a servo may apply, preventing crushed objects and protecting gears, as when softening the gripper's squeeze.
 
 It prevents crushing objects and protects the gears.
 
@@ -3949,7 +3949,7 @@ It prevents crushing objects and protects the gears.
 
 #### Torque Release
 
-Switching off a servo's holding torque so the joint becomes free to move.
+Switching off a servo's holding torque so the joint becomes free to move, allowing a person to reposition a stuck arm, though gravity may then drop the limbs.
 
 It lets a person move a stuck arm, though gravity may then drop the limbs.
 
@@ -3957,7 +3957,7 @@ It lets a person move a stuck arm, though gravity may then drop the limbs.
 
 #### Total Build Cost
 
-The full cost of a finished build, including parts, shipping, taxes, tools, and consumables.
+The full expense of a finished build, including parts, shipping, taxes, tools, and consumables, which gives an honest basis for comparing arm platforms rather than relying on a kit's headline price.
 
 It supports honest comparison between platforms.
 
@@ -3965,7 +3965,7 @@ It supports honest comparison between platforms.
 
 #### Totaling Costs in Python
 
-Using a short program to read a parts list and add up the quantity times price for every item.
+Using a short program to read a parts list and add up quantity times price for every item, turning a bill of materials into a total.
 
 It turns a bill of materials into a total build cost.
 
@@ -3973,7 +3973,7 @@ It turns a bill of materials into a total build cost.
 
 #### Tracking Error
 
-The difference between a commanded position and the actual position at the same moment.
+The difference between a commanded joint position and the actual position at the same moment, which grows with lag, heavy load, or limits and reveals how well the arm follows its plan.
 
 Large errors indicate lag, load, or limits.
 
@@ -3981,7 +3981,7 @@ Large errors indicate lag, load, or limits.
 
 #### Training a Policy
 
-Adjusting a model's parameters using data so its predicted actions match demonstrations.
+Adjusting a model's parameters using recorded data so that its predicted actions match the demonstrations, the process by which an arm gains a learned skill.
 
 This is how the arm gains learned skills.
 
@@ -3989,7 +3989,7 @@ This is how the arm gains learned skills.
 
 #### Training Loss
 
-A number measuring how far a model's predictions are from the desired outputs, which training tries to reduce.
+A number measuring how far a model's predictions are from the desired outputs, which training tries to reduce and which is watched to see whether learning is progressing.
 
 Watching it reveals whether learning is progressing.
 
@@ -3997,7 +3997,7 @@ Watching it reveals whether learning is progressing.
 
 #### Trajectory
 
-A path through space together with timing, specifying where the arm should be at each moment.
+A path through space combined with timing, specifying where each joint or the gripper is at every moment, so it defines both position and speed over time.
 
 It defines both position and speed over time.
 
@@ -4029,7 +4029,7 @@ Hardware projects always need it.
 
 #### Try Finally
 
-A Python structure where the `finally` block always executes after the `try` block, whether or not an error occurred.
+A Python structure in which the `finally` block always runs after the `try` block, whether or not an error occurred, ensuring that torque is released and ports are closed.
 
 It ensures torque is released and ports closed.
 
@@ -4045,7 +4045,7 @@ The STS3215 servo bus works this way.
 
 #### Two-Link Arm
 
-A planar arm with two links and two revolute joints, the simplest model for learning kinematics.
+A planar arm with two links and two revolute joints, the simplest useful model for learning kinematics, for which closed-form forward and inverse kinematics solutions exist.
 
 Closed-form formulas exist for it.
 
@@ -4053,7 +4053,7 @@ Closed-form formulas exist for it.
 
 #### Type Hints
 
-Annotations that tell readers and tools the expected types of variables, parameters, and return values in Python code.
+Annotations that tell readers and tools the expected types of variables, parameters, and return values in Python code, documenting interfaces for the arm library and catching mistakes early.
 
 They catch mistakes early and document interfaces.
 
@@ -4061,7 +4061,7 @@ They catch mistakes early and document interfaces.
 
 #### Typed Parameters
 
-Tool inputs with declared types, such as number, string, or enumerated choice, so wrong kinds of input are rejected.
+Tool inputs with declared types, such as number, string, or fixed choices, so that inputs of the wrong kind are rejected and calls stay predictable.
 
 They make calls predictable.
 
@@ -4077,7 +4077,7 @@ It is the foundation of the servo bus and many USB adapters.
 
 #### Unit Conversion
 
-Translating a quantity from one unit to another using a known factor.
+Translating a quantity from one unit to another using a known factor, such as raw servo counts to degrees, where mistakes send the arm to wrong places.
 
 Mistakes in conversion cause arms to move to the wrong place.
 
@@ -4085,7 +4085,7 @@ Mistakes in conversion cause arms to move to the wrong place.
 
 #### Unit Test
 
-An automated test that checks a small piece of code, such as one function, in isolation.
+An automated test that exercises a small piece of code, such as a single conversion function, in isolation, catching bugs before any hardware is involved in the check.
 
 It catches bugs before hardware is involved.
 
@@ -4093,7 +4093,7 @@ It catches bugs before hardware is involved.
 
 #### Unreachable Target
 
-A requested position that lies outside the arm's workspace, so no joint values can achieve it.
+A requested position lying outside the arm's workspace, so that no set of joint values can achieve it, which well-written code detects and reports before attempting any motion.
 
 Good code detects this and reports it.
 
@@ -4101,7 +4101,7 @@ Good code detects this and reports it.
 
 #### Untrusted Input
 
-Data from sources not controlled by the system's owner, which may be wrong or malicious.
+Data from sources outside the system owner's control, such as web pages or unknown senders, which may be wrong or malicious and which agents treat as data rather than commands.
 
 Agents must treat it as data, not as commands.
 
@@ -4109,7 +4109,7 @@ Agents must treat it as data, not as commands.
 
 #### URDF Model
 
-An XML file format describing a robot's links, joints, shapes, and limits for use by simulators and planners.
+An XML description of a robot's links, joints, shapes, and limits, the standard format by which simulators and motion planners share and load arm models.
 
 It is the standard way to share arm models.
 
@@ -4127,7 +4127,7 @@ See also: Serial Port, Servo Bus Controller Board
 
 #### USB Webcam
 
-A low-cost camera that connects over USB and presents itself to the computer as a video device.
+A low-cost camera that connects over USB and appears to the computer as a standard video device, the usual choice for desktop arm vision and demonstration recording.
 
 It is the usual choice for desk arms.
 
@@ -4135,7 +4135,7 @@ It is the usual choice for desk arms.
 
 #### Vector
 
-A quantity with both magnitude and direction, written as a list of numbers.
+A quantity with both magnitude and direction, written as a list of numbers, used to represent positions, velocities, and forces in arm calculations and stored as NumPy arrays.
 
 Positions, velocities, and forces are vectors.
 
@@ -4151,7 +4151,7 @@ It enables smooth motion and damping.
 
 #### Velocity Kinematics
 
-The relationship between joint speeds and end effector speed, described by the Jacobian.
+The relationship between joint speeds and the resulting velocity of the end effector, expressed through the Jacobian, which supports smooth control of gripper motion through space.
 
 It supports smooth Cartesian control.
 
@@ -4159,7 +4159,7 @@ It supports smooth Cartesian control.
 
 #### Velocity Limit Scaling
 
-Slowing an entire motion proportionally so that no joint exceeds its allowed speed.
+Slowing an entire motion proportionally so that no joint exceeds its allowed speed, which preserves the shape of the path while honoring the limits of the servos.
 
 It preserves path shape while enforcing limits.
 
@@ -4167,7 +4167,7 @@ It preserves path shape while enforcing limits.
 
 #### Vendor Documentation
 
-The manuals, guides, and software notes supplied by a seller or manufacturer for their products.
+The manuals, guides, and software notes supplied by a seller or manufacturer for their products, explaining setup steps, wiring, and interfaces, though with variable quality and sometimes out of date.
 
 It explains setup steps, though quality varies.
 
@@ -4175,7 +4175,7 @@ It explains setup steps, though quality varies.
 
 #### Vendor SDK
 
-A software kit supplied by a hardware maker that wraps the device's protocol in ready-made functions or classes.
+A software kit provided by a hardware maker that wraps the device's protocol in ready-made functions or classes, shortening driver work but tying code to one manufacturer.
 
 It shortcuts driver work but ties code to one manufacturer.
 
@@ -4183,7 +4183,7 @@ It shortcuts driver work but ties code to one manufacturer.
 
 #### Via-Point Trajectory
 
-A trajectory that passes through chosen intermediate points between start and end.
+A trajectory that passes through chosen intermediate points between its start and end, letting a planner steer around obstacles or approach an object from above.
 
 It lets planners steer around obstacles.
 
@@ -4199,7 +4199,7 @@ It keeps the LeRobot installation separate from other Python work on the same co
 
 #### Vision-Language Model
 
-A model that accepts both images and text and produces text answers about what it sees.
+A model that accepts both images and text and produces text answers about what it sees, letting an agent describe scenes and identify objects in camera images.
 
 It lets an agent describe and locate objects in camera images.
 
@@ -4207,7 +4207,7 @@ It lets an agent describe and locate objects in camera images.
 
 #### Voltage
 
-The electrical potential difference between two points, measured in volts, which pushes current through a circuit.
+The electrical potential difference between two points, measured in volts, which pushes current through a circuit and has to match what the servos and controllers are built for.
 
 Supplying the wrong voltage can damage servos.
 
@@ -4215,7 +4215,7 @@ Supplying the wrong voltage can damage servos.
 
 #### Voltage Drop
 
-The reduction in voltage along a wire or connector caused by resistance as current flows through it.
+The reduction in voltage along a wire or connector caused by resistance as current flows, which can leave distant servos underpowered when wires are long or thin.
 
 Long thin wires can leave distant servos underpowered.
 
@@ -4223,7 +4223,7 @@ Long thin wires can leave distant servos underpowered.
 
 #### Voltage Rating
 
-The range of supply voltage a component is designed to accept without damage or malfunction.
+The range of supply voltage a component is designed to accept without damage or malfunction, such as a servo built for 7.4 V, beyond which electronics can be destroyed.
 
 Exceeding it can destroy electronics.
 
@@ -4231,7 +4231,7 @@ Exceeding it can destroy electronics.
 
 #### Warping
 
-A defect where the corners of a print lift off the bed as the plastic cools and shrinks unevenly.
+A print defect in which corners of a part lift away from the bed as the plastic cools and shrinks unevenly, ruining flatness and fit.
 
 It ruins the fit of arm parts.
 
@@ -4255,7 +4255,7 @@ Chains of them describe tasks.
 
 #### Waypoint List
 
-An ordered collection of waypoints that defines a motion sequence.
+An ordered collection of target poses that defines a motion sequence, stored and replayed so the arm can repeat a task step by step through a series of positions.
 
 It is stored and replayed to repeat tasks.
 
@@ -4263,7 +4263,7 @@ It is stored and replayed to repeat tasks.
 
 #### Wear and Lubrication
 
-The gradual loss of material from moving parts, and the use of lubricants to reduce friction and slow it.
+The gradual loss of material from moving parts through friction, together with the use of greases or oils to reduce friction and slow that loss, extending the life of gears and joints.
 
 Attention extends the life of gears and joints.
 
@@ -4279,7 +4279,7 @@ Thin wires overheat and drop voltage on high-current motors.
 
 #### With Statement
 
-The Python statement that uses a context manager to run a block between setup and automatic cleanup.
+The Python statement that runs a block of code between the setup and automatic cleanup defined by a context manager, replacing manual open and close calls.
 
 It replaces manual open and close calls.
 
@@ -4287,7 +4287,7 @@ It replaces manual open and close calls.
 
 #### Workspace
 
-The set of all positions the end effector can reach, bounded by link lengths and joint limits.
+The set of all positions the end effector can reach, bounded by link lengths and joint limits, which is the first thing to check when planning a task.
 
 Planning a task starts by checking that the target lies inside it.
 
@@ -4303,7 +4303,7 @@ They shrink the area of possible harm.
 
 #### Workspace Sampling
 
-Estimating an arm's workspace by computing end effector positions for many joint combinations.
+Estimating an arm's reachable region by computing end effector positions for many joint combinations with forward kinematics, then plotting the results, which reveals the workspace's shape without needing any algebra.
 
 It reveals reach shape without algebra.
 
@@ -4311,7 +4311,7 @@ It reveals reach shape without algebra.
 
 #### Wrist
 
-The joints near the end of the arm that orient the end effector without much changing its position.
+The joints near the end of the arm that orient the end effector without changing its position much, typically built with smaller, lighter motors than the shoulder.
 
 Wrist joints are light, so smaller motors serve them.
 
@@ -4319,7 +4319,7 @@ Wrist joints are light, so smaller motors serve them.
 
 #### Writing a Register
 
-Sending a value to a specific address in a device's memory to change a setting or issue a command.
+Sending a value to a specific memory address inside a device to change a setting or issue a command, the way programs set goal positions, speeds, and torque enable.
 
 It is how programs set goal positions, speeds, and torque enable.
 
@@ -4327,7 +4327,7 @@ It is how programs set goal positions, speeds, and torque enable.
 
 #### Writing Target Positions
 
-Sending goal angles to the joints so they move to the commanded pose.
+Sending goal angles to the joints so they move to the commanded pose, the basic output action of an arm controller, usually after unit conversion and limit checks.
 
 It is the basic output action of an arm controller.
 
@@ -4335,7 +4335,7 @@ It is the basic output action of an arm controller.
 
 #### Zero Offset
 
-The stored difference between a sensor's raw zero and the chosen physical zero position of a joint.
+The stored difference between a sensor's raw zero and the chosen physical zero position of a joint, subtracted from raw readings to convert them to meaningful angles.
 
 Subtracting it converts raw readings to meaningful angles.
 
@@ -4343,11 +4343,10 @@ Subtracting it converts raw readings to meaningful angles.
 
 #### Zeroing
 
-Setting the current joint position as the reference zero angle for a motor or encoder.
+Declaring the joint's present position to be the reference zero angle for an encoder or motor, which defines where angle zero lies for all later commands.
 
 It defines where angle zero lies for later commands.
 
 **Example:** Placing the arm in its straight pose and sending each actuator a command to treat that spot as zero.
 
 See also: Zero Offset
-
