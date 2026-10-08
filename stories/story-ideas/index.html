@@ -1,0 +1,1867 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Mini graphic novel ideas about world models, centered on Fei-Fei Li's World Labs and Yann LeCun's AMI Labs, and how they connect to building and programming a low-cost robot arm.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/stories/story-ideas/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../openclaw-lobster-and-the-arm/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Story Ideas for Controlling a Robot Arm - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+    <meta property="og:image" content="https://dmccreary.github.io/robot-arm/img/cover.png">
+  <meta name="twitter:image" content="https://dmccreary.github.io/robot-arm/img/cover.png">
+</head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#story-ideas-for-controlling-a-robot-arm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Story Ideas for Controlling a Robot Arm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Stories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Story Ideas
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Story Ideas
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#selection-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selection Criteria
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#world-labs-story-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      World Labs Story Ideas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="World Labs Story Ideas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-teaching-computers-to-see-fei-fei-li-and-imagenet" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Teaching Computers to See: Fei-Fei Li and ImageNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-a-room-that-never-existed" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. A Room That Never Existed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-chip-company-that-bought-a-dream" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. The Chip Company That Bought a Dream
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ami-labs-story-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMI Labs Story Ideas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AMI Labs Story Ideas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-the-dissenter-a-different-road-to-machine-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The Dissenter: A Different Road to Machine Intelligence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-imagine-before-you-move" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Imagine Before You Move
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-the-glass-of-water-problem-moravecs-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. The Glass of Water Problem (Moravec's Paradox)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-jepa-for-twelve-year-olds" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. JEPA for Twelve-Year-Olds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-the-robot-that-asks-what-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. The Robot That Asks "What If?"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synthesis-story-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synthesis Story Ideas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synthesis Story Ideas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9-two-bets-on-the-same-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Two Bets on the Same Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-the-student-who-folded-the-laundry-capstone" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. The Student Who Folded the Laundry (Capstone)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#facts-to-verify-before-generating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Facts to Verify Before Generating
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-generate-a-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Generate a Story
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openclaw-lobster-and-the-arm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Lobster and the Arm (OpenClaw)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#selection-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selection Criteria
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#world-labs-story-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      World Labs Story Ideas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="World Labs Story Ideas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-teaching-computers-to-see-fei-fei-li-and-imagenet" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Teaching Computers to See: Fei-Fei Li and ImageNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-a-room-that-never-existed" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. A Room That Never Existed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-chip-company-that-bought-a-dream" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. The Chip Company That Bought a Dream
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ami-labs-story-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMI Labs Story Ideas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AMI Labs Story Ideas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-the-dissenter-a-different-road-to-machine-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The Dissenter: A Different Road to Machine Intelligence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-imagine-before-you-move" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Imagine Before You Move
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-the-glass-of-water-problem-moravecs-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. The Glass of Water Problem (Moravec's Paradox)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-jepa-for-twelve-year-olds" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. JEPA for Twelve-Year-Olds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-the-robot-that-asks-what-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. The Robot That Asks "What If?"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synthesis-story-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synthesis Story Ideas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synthesis Story Ideas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9-two-bets-on-the-same-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Two Bets on the Same Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-the-student-who-folded-the-laundry-capstone" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. The Student Who Folded the Laundry (Capstone)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#facts-to-verify-before-generating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Facts to Verify Before Generating
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-generate-a-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Generate a Story
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/stories/story-ideas.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="story-ideas-for-controlling-a-robot-arm">Story Ideas for Controlling a Robot Arm<a class="headerlink" href="#story-ideas-for-controlling-a-robot-arm" title="Permanent link">&para;</a></h1>
+<p>These mini-graphic novel ideas are designed to inspire young readers by
+connecting the subject matter of this textbook to the people and companies
+shaping the field. This first set is about <strong>world models</strong>, the idea that a
+machine can build an internal picture of how the world behaves and use it to
+predict what will happen before it acts. Two newly funded companies are
+betting on that idea in different ways:</p>
+<ul>
+<li><strong>World Labs</strong>, founded by Fei-Fei Li, builds spatial-intelligence models
+  that generate, reconstruct, and simulate interactive 3D environments, and
+  technology for robotic learning and simulation. On September 28, 2026, AMD
+  agreed to acquire it in an all-stock deal valued at about $8.2 billion. The
+  deal is expected to close by the end of 2026.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>AMI Labs</strong> (Advanced Machine Intelligence), co-founded by Yann LeCun after
+  he left Meta, raised $1.03 billion in seed funding at a valuation of about
+  $3.5 billion in March 2026. It is building world models based on LeCun's
+  Joint Embedding Predictive Architecture (JEPA) for robotics, industrial,
+  and healthcare uses.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+</ul>
+<p>Each story can be generated using the book-media-generator story route, with
+the suggested panel count or your own override via <code>--panels N</code>.</p>
+<h2 id="selection-criteria">Selection Criteria<a class="headerlink" href="#selection-criteria" title="Permanent link">&para;</a></h2>
+<p>Stories were selected for:</p>
+<ul>
+<li><strong>Relevance</strong> — direct connection to the textbook's key concepts, such as
+  perception, simulation, planning, and safety</li>
+<li><strong>Contrast</strong> — two different approaches to the same big question</li>
+<li><strong>Inspiration</strong> — themes that resonate with students who are building their
+  first arm</li>
+<li><strong>Drama</strong> — compelling narrative arcs with conflict and resolution</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Fact-check before generating images</p>
+<p>The companies in these stories are new and the facts are still changing.
+The World Labs deal had not closed as of October 7, 2026. Before you
+generate a story, re-check the details in the
+<a href="#facts-to-verify-before-generating">facts to verify</a> list at the end of this page.</p>
+</div>
+<h2 id="world-labs-story-ideas">World Labs Story Ideas<a class="headerlink" href="#world-labs-story-ideas" title="Permanent link">&para;</a></h2>
+<h3 id="1-teaching-computers-to-see-fei-fei-li-and-imagenet">1. Teaching Computers to See: Fei-Fei Li and ImageNet<a class="headerlink" href="#1-teaching-computers-to-see-fei-fei-li-and-imagenet" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>Fei-Fei Li (born 1976), United States</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>A big, unfashionable idea: give machines enough examples to learn from</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Chapter 14 (cameras, perception, and learning from demonstration); the idea that data, not just clever code, teaches a machine</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>12</strong> — a full life-and-career arc from early curiosity to the founding of World Labs</td>
+</tr>
+</tbody>
+</table>
+<p>Li helped build ImageNet, a large labeled image collection that changed how
+researchers trained computers to recognize objects. The story follows the
+doubts she faced, the long slog of labeling, and the moment the approach
+paid off. The final panels ask the next question: if machines can learn to
+see pictures, can they learn to understand <em>places</em>?</p>
+<p><em>Why this inspires:</em> A big dataset looks boring until it changes a whole field,
+which is a good lesson for any student with a tedious but important project.</p>
+<hr />
+<h3 id="2-a-room-that-never-existed">2. A Room That Never Existed<a class="headerlink" href="#2-a-room-that-never-existed" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Setting</strong></td>
+<td>A school robotics club, present day (fictional case study)</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>Practice in imagination before you risk the real thing</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Chapter 13 (simulation and testing); "Simulate first, then power on"</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>8</strong> — a linear discovery: problem, idea, attempt, test, result</td>
+</tr>
+</tbody>
+</table>
+<p>Maya's team wants their arm to sort objects in a kitchen they have never seen.
+They use a model that builds a 3D room from a few photos, and their
+program rehearses a hundred pickups in the imagined room before the arm moves
+a millimeter. The story shows what a generated 3D environment is good for and
+where it still fails, such as a real cup that is slipperier than the
+simulated one.</p>
+<p><em>Why this inspires:</em> Students see that a simulator is a rehearsal space, not a
+replacement for the real world.</p>
+<hr />
+<h3 id="3-the-chip-company-that-bought-a-dream">3. The Chip Company That Bought a Dream<a class="headerlink" href="#3-the-chip-company-that-bought-a-dream" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>Fei-Fei Li, Lisa Su, and the AMD–World Labs deal (2026)</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>Why hardware makers care about the <em>models</em> that will run on their chips</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Chapter 6 (budgets and sourcing); the idea that software and hardware co-evolve</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>8</strong> — a "follow the money" explainer with a human face</td>
+</tr>
+</tbody>
+</table>
+<p>A researcher who spent years teaching machines to see joins a company that
+designs the processors those machines run on. The story explains, in plain
+language, what an all-stock acquisition is, why a chip company would want to
+shape its next processors around world models, and why a deal like this is a
+bet and not a guarantee. It ends with a question for the reader: what would
+you build if the cost of a robot's "imagination" kept dropping?</p>
+<p><em>Why this inspires:</em> Students learn that the robot in front of them sits at
+the end of a long chain of research, software, and silicon.</p>
+<hr />
+<h2 id="ami-labs-story-ideas">AMI Labs Story Ideas<a class="headerlink" href="#ami-labs-story-ideas" title="Permanent link">&para;</a></h2>
+<h3 id="4-the-dissenter-a-different-road-to-machine-intelligence">4. The Dissenter: A Different Road to Machine Intelligence<a class="headerlink" href="#4-the-dissenter-a-different-road-to-machine-intelligence" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>Yann LeCun (born 1960), France and United States</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>Courage to question the most popular approach, and the work of proving it</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Chapter 15 (AI agents and tools); why an agent that only predicts text may not understand a physical task</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>12</strong> — a full career arc from early neural networks to leaving Meta and starting AMI Labs</td>
+</tr>
+</tbody>
+</table>
+<p>LeCun spent years arguing that systems built only to predict the next word are
+not enough for human-level reasoning and autonomy, and that machines need
+models of how the physical world works. The story follows the moment he
+leaves a large company to test that belief with his own startup. It shows both
+the risk and the discipline: a bold claim is only worth something if you build
+the thing that proves it.</p>
+<p><em>Why this inspires:</em> Disagreeing with the crowd is easier to admire than to do,
+and this story shows what comes after the disagreement.</p>
+<hr />
+<h3 id="5-imagine-before-you-move">5. Imagine Before You Move<a class="headerlink" href="#5-imagine-before-you-move" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Setting</strong></td>
+<td>A makerspace with an SO-ARM101 arm (fictional case study)</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>Planning by predicting consequences</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Chapter 12 (kinematics), Chapter 17 (safety layers); an action-conditioned world model predicts what happens after each possible move</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>8</strong> — a linear discovery that mirrors a plan-predict-choose loop</td>
+</tr>
+</tbody>
+</table>
+<p>Servo the Robot Arm wants to pour water into a cup without spilling. Instead
+of trying moves at random, Servo imagines five different pours, predicts
+where the water will go for each one, discards the risky ones, and then
+performs the best plan. A final panel shows the safety rule behind it: the
+arm only moves if the predicted outcome stays inside safe limits.</p>
+<p><em>Why this inspires:</em> "Think first, then move" is a skill every builder can
+practice with their own arm.</p>
+<hr />
+<h3 id="6-the-glass-of-water-problem-moravecs-paradox">6. The Glass of Water Problem (Moravec's Paradox)<a class="headerlink" href="#6-the-glass-of-water-problem-moravecs-paradox" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>Hans Moravec (born 1948) and the paradox that carries his name</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>The easy-looking things are the hard things</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Chapter 5 (actuators and sensors), Chapter 11 (grippers); why grasping a glass is harder than writing an essay</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>9</strong> — a mystery, a reveal, and a multi-step explanation</td>
+</tr>
+</tbody>
+</table>
+<p>A student asks why an AI can write a poem in seconds but their robot arm
+knocks over a glass of water. The story follows the clues: hundreds of
+millions of years of evolution behind a toddler's grasp, the gravity and
+inertia we never think about, and why video, audio, and touch sensors
+together may help a machine learn this "common sense" of physics.</p>
+<p><em>Why this inspires:</em> It turns a frustrating failure into a famous, respectable
+research question.</p>
+<hr />
+<h3 id="7-jepa-for-twelve-year-olds">7. JEPA for Twelve-Year-Olds<a class="headerlink" href="#7-jepa-for-twelve-year-olds" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>The Joint Embedding Predictive Architecture (JEPA), proposed by Yann LeCun</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>Predict the <em>idea</em>, not every pixel</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Chapter 14 (perception and learning); Chapter 19 (the mathematics of arm paths: vectors and distances)</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>10</strong> — a concept story that builds the math one step at a time</td>
+</tr>
+</tbody>
+</table>
+<p>A student tries to guess where a friend will be after school. Predicting every
+leaf that flutters on the way is hopeless, but predicting "she'll be at the
+library" is easy and useful. The story uses that idea to explain JEPA at a
+high-school level, in four steps:</p>
+<ol>
+<li>An <strong>encoder</strong> turns what the machine sees now (picture <em>x</em>) into a short
+   list of numbers, a vector called an embedding.</li>
+<li>The same encoder turns what happens next (picture <em>y</em>) into another vector.</li>
+<li>A <strong>predictor</strong> takes the first vector, plus the action taken, and guesses
+   the second vector.</li>
+<li>The <strong>loss</strong> is just the distance between the guess and the real second
+   vector. Training shrinks that distance.</li>
+</ol>
+<p>The story's twist is a trap the student discovers: if the encoder outputs the
+same vector for everything, the distance is always zero and nothing was
+learned. The panels show why the training method has to prevent that
+collapse. Keep the math to vectors and distances, which students can compute in
+short Python functions, matching the book's "math is computed, not memorized"
+rule. A good companion MicroSim would let students drag two points in a 2D
+"embedding space" and watch the loss change.</p>
+<p><em>Why this inspires:</em> Students see that a cutting-edge AI idea is built from
+vectors and distances they already know.</p>
+<hr />
+<h3 id="8-the-robot-that-asks-what-if">8. The Robot That Asks "What If?"<a class="headerlink" href="#8-the-robot-that-asks-what-if" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Setting</strong></td>
+<td>A home, ten years from now (fictional case study)</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>How people will talk to robots that can predict consequences</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Chapter 16 (agent planning and vision), Chapter 18 (projects and teaching); the human-robot interface</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>8</strong> — a short day-in-the-life story</td>
+</tr>
+</tbody>
+</table>
+<p>Instead of memorizing buttons or writing code, a family member says "put the
+dishes away, but don't stack the glasses." The robot imagines a few ways to do
+it, asks one clarifying question ("Should I use the top shelf?"), and shows
+the planned motion before it moves. The story is a thought experiment about
+trust: a robot that can explain what it expects to happen is easier to
+supervise.</p>
+<p><em>Why this inspires:</em> It invites students to design the conversation, not just
+the motors.</p>
+<hr />
+<h2 id="synthesis-story-ideas">Synthesis Story Ideas<a class="headerlink" href="#synthesis-story-ideas" title="Permanent link">&para;</a></h2>
+<h3 id="9-two-bets-on-the-same-problem">9. Two Bets on the Same Problem<a class="headerlink" href="#9-two-bets-on-the-same-problem" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>Fei-Fei Li and Yann LeCun (2026)</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>Different paths to the same goal: a machine that understands the physical world</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>Whole book; compares building a detailed 3D world to simulate in with learning an abstract model to plan with</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>14</strong> — a two-track narrative with a shared ending</td>
+</tr>
+</tbody>
+</table>
+<p>Two researchers, one startup each, one shared question. One company builds
+spatial models that generate and simulate 3D worlds. The other builds
+abstract models that predict consequences without drawing every detail. The
+story alternates between the two, showing a robot arm using each approach on
+the same task, and ends by asking students which approach they would try
+first and what experiment would tell them which is better.</p>
+<p><em>Why this inspires:</em> It shows that science is a contest of ideas that has to be
+settled by experiments.</p>
+<hr />
+<h3 id="10-the-student-who-folded-the-laundry-capstone">10. The Student Who Folded the Laundry (Capstone)<a class="headerlink" href="#10-the-student-who-folded-the-laundry-capstone" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Setting</strong></td>
+<td>A high school robotics club, near future (fictional case study)</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>A hard, ordinary problem as a test of everything in the book</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>The <a href="../../about/#the-laundry-challenge">Laundry Challenge</a>; Chapters 10 through 17 combined</td>
+</tr>
+<tr>
+<td><strong>Panels</strong></td>
+<td><strong>16</strong> — a capstone montage across the book's skills</td>
+</tr>
+</tbody>
+</table>
+<p>A student takes up the author's open challenge: build a low-cost robot that
+does the laundry. The story walks through each stage: choose an arm, teleoperate
+it to record demonstrations, test in simulation, let a world model predict how
+cloth behaves, add safety limits, and fail on a stubborn sock. It ends with a
+folded towel and a question about what to try next.</p>
+<p><em>Why this inspires:</em> It makes a famously hard problem feel like a project a
+student could actually start.</p>
+<hr />
+<h2 id="facts-to-verify-before-generating">Facts to Verify Before Generating<a class="headerlink" href="#facts-to-verify-before-generating" title="Permanent link">&para;</a></h2>
+<p>These details came from a draft note or from secondary coverage and should be
+checked against primary sources before they appear in a published story:</p>
+<ul>
+<li><strong>AMI Labs investors.</strong> NVIDIA and Bezos Expeditions were named in the coverage
+  checked. The draft note also lists Samsung and Toyota Ventures, which we have
+  not confirmed.</li>
+<li><strong>"Dead end" quote.</strong> The draft note says LeCun calls large language models a
+  "dead end" for physical intelligence. Confirm the exact words and context
+  before quoting; the stories above paraphrase his view instead.</li>
+<li><strong>Open-source claim.</strong> The draft note says AMI Labs positions its technology as
+  an open-source foundation layer. We have not confirmed this.</li>
+<li><strong>World Labs deal status.</strong> The AMD acquisition was announced on September 28,
+  2026 and is subject to regulatory approval. Update the wording if it closes
+  or changes.</li>
+<li><strong>Biographical details.</strong> Birth years and career milestones for Fei-Fei Li,
+  Yann LeCun, and Hans Moravec should be checked before each story is written.</li>
+<li><strong>JEPA details.</strong> For Story 7, check the explanation against LeCun's 2022
+  position paper, <em>A Path Towards Autonomous Machine Intelligence</em>.</li>
+</ul>
+<h2 id="how-to-generate-a-story">How to Generate a Story<a class="headerlink" href="#how-to-generate-a-story" title="Permanent link">&para;</a></h2>
+<p>To turn any of these ideas into a full graphic novel with generated images,
+use:</p>
+<blockquote>
+<p>book-media-generator (story route): {Story Title} --panels {N}</p>
+</blockquote>
+<p>Provide the story's title (and optionally <code>--panels N</code> to override the
+suggested count) and the skill will handle the rest: writing the narrative,
+creating image prompts, and optionally generating all panel images via
+multiple text-to-image APIs (Google Gemini, OpenAI gpt-image-1, or others).
+Current cost for high-quality images with accurate text placement is
+approximately <strong>$0.039 per image</strong>, so $0.039 × (N + 1) per story: about
+$0.27 for 6 panels and $0.51 for 12 panels.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>AMD. (2026, September 28). <em>AMD to Acquire World Labs to Advance the Future of AI Compute</em>. https://newsroom.amd.com/news/amd-acquire-world-labs/&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Silicon Republic. (2026, March). <em>Yann LeCun's AI Start-up AMI Raises $1.03bn in Seed Funding</em>. https://www.siliconrepublic.com/start-ups/yann-lecun-ai-start-up-ami-raises-seed-funding-world-model&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Stories">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                List of Stories
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../openclaw-lobster-and-the-arm/" class="md-footer__link md-footer__link--next" aria-label="Next: The Lobster and the Arm (OpenClaw)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                The Lobster and the Arm (OpenClaw)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

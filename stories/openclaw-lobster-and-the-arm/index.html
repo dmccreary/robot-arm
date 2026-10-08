@@ -1,0 +1,1632 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A graphic-novel story of how a weekend AI assistant called OpenClaw exploded in popularity in 2026, what went wrong, and what it taught robot builders about keeping an agent on a safe leash.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/stories/openclaw-lobster-and-the-arm/">
+      
+      
+        <link rel="prev" href="../story-ideas/">
+      
+      
+        <link rel="next" href="../../appendices/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>The Lobster and the Arm: How OpenClaw Took Over the Internet - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+    <meta property="og:image" content="https://dmccreary.github.io/robot-arm/stories/openclaw-lobster-and-the-arm/cover.png">
+  <meta name="twitter:image" content="https://dmccreary.github.io/robot-arm/stories/openclaw-lobster-and-the-arm/cover.png">
+</head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-lobster-and-the-arm-how-openclaw-took-over-the-internet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Lobster and the Arm: How OpenClaw Took Over the Internet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Stories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../story-ideas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Story Ideas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    The Lobster and the Arm (OpenClaw)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    The Lobster and the Arm (OpenClaw)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prologue-the-assistant-everybody-wanted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prologue – The Assistant Everybody Wanted
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-1-a-weekend-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 1: A Weekend Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-2-time-to-molt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 2: Time to Molt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-3-the-wave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 3: The Wave
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-4-a-social-network-for-robots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 4: A Social Network for Robots?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-5-the-dark-side-of-doing-things" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 5: The Dark Side of Doing Things
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-6-a-new-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 6: A New Home
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-7-when-the-agent-gets-a-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 7: When the Agent Gets a Body
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-8-back-at-the-robot-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 8: Back at the Robot Arm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Panel 8: Back at the Robot Arm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epilogue-what-made-openclaw-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      Epilogue – What Made OpenClaw Different?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-to-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Call to Action
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prologue-the-assistant-everybody-wanted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prologue – The Assistant Everybody Wanted
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-1-a-weekend-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 1: A Weekend Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-2-time-to-molt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 2: Time to Molt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-3-the-wave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 3: The Wave
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-4-a-social-network-for-robots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 4: A Social Network for Robots?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-5-the-dark-side-of-doing-things" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 5: The Dark Side of Doing Things
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-6-a-new-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 6: A New Home
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-7-when-the-agent-gets-a-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 7: When the Agent Gets a Body
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-8-back-at-the-robot-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 8: Back at the Robot Arm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Panel 8: Back at the Robot Arm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epilogue-what-made-openclaw-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      Epilogue – What Made OpenClaw Different?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-to-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Call to Action
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/stories/openclaw-lobster-and-the-arm/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="the-lobster-and-the-arm-how-openclaw-took-over-the-internet">The Lobster and the Arm: How OpenClaw Took Over the Internet<a class="headerlink" href="#the-lobster-and-the-arm-how-openclaw-took-over-the-internet" title="Permanent link">&para;</a></h1>
+<p><img alt="The Lobster and the Arm cover" src="cover.png" /></p>
+<details>
+<summary>Cover Image Prompt</summary>
+(This is the Cover Image. Do not include this label in the image.)
+Please generate a wide-landscape 16:9 cover image for this story in a modern
+flat vector illustration style with clean dark-indigo outlines and soft,
+simple shading. In the center, a friendly bright-red cartoon lobster sits on
+a workbench and holds one open claw out toward a small orange robot arm with
+a round cream face screen, two big round navy eyes, indigo joint caps and a
+round indigo base disc. The arm's two-finger gripper is reaching toward the
+lobster's claw as if they are about to shake hands. Behind them, a glowing
+wall of tiny chat bubbles and star icons rises like a wave. A laptop, a
+coiled USB cable, a small red emergency-stop button and a few loose bolts
+lie on the bench. Render the title text "The Lobster and the Arm" across the
+top in a bold rounded sans-serif typeface. Color palette: warm orange,
+lobster red, indigo, cream, with a deep-blue background. Emotional tone:
+curious, excited, with a hint of caution. Do not include any logos or brand
+names. Generate the image immediately without asking clarifying questions.
+</details>
+
+<details>
+<summary>Narrative Prompt</summary>
+This is a nonfiction story about a real software project, told through a
+fictional student. The events of 2025 and 2026 around the open-source AI
+agent OpenClaw are real and come from the sources listed under References.
+Maya, a member of a school robotics club, is a fictional character who does
+not appear in any source, and no real person is shown speaking: where the
+story needs a person near the project, it shows a generic software developer.
+The setting moves between a developer's apartment in Europe, the internet,
+and a school robotics lab in 2026. Use a consistent modern flat-vector style
+with clean dark-indigo outlines. The recurring symbol of the project is a red
+cartoon lobster. Maya is a teenager with short dark curly hair, round glasses
+and a yellow hoodie. Servo is the book's mascot: a warm-orange robot arm with
+a cream face screen, two big round navy eyes, indigo joint caps and a round
+indigo base disc. Never draw logos, brand names or readable app names.
+</details>
+
+<h3 id="prologue-the-assistant-everybody-wanted">Prologue – The Assistant Everybody Wanted<a class="headerlink" href="#prologue-the-assistant-everybody-wanted" title="Permanent link">&para;</a></h3>
+<p>In the first months of 2026, one open-source program became one of the
+fastest-growing projects in the history of GitHub, the website where
+programmers share code. It was an AI assistant that lived on your own
+computer, took orders from the chat apps you already used, and could run
+commands to get things done. People loved it, argued about it, and worried
+about it, all at once. This story follows that program, <strong>OpenClaw</strong>, from a
+small beginning to a world of robots, and it asks the question that matters
+to anyone who builds an arm: what happens when an agent that can <em>do things</em>
+is connected to a machine that can <em>move</em>?</p>
+<h2 id="panel-1-a-weekend-project">Panel 1: A Weekend Project<a class="headerlink" href="#panel-1-a-weekend-project" title="Permanent link">&para;</a></h2>
+<p><img alt="A developer connects a laptop assistant to a chat app late at night" src="panel-01.png" /></p>
+<details><summary>Image Prompt</summary>
+(This is Panel 01. Do not include the panel number in the image.)
+I am about to ask you to generate a series of images for a graphic novel.
+Please make the images have a consistent style and consistent characters.
+Do not ask any clarifying questions. Just generate the image immediately
+when asked.
+
+Please generate a 16:9 image in modern flat vector style with clean
+dark-indigo outlines depicting panel 1 of 8. The scene shows a generic
+software developer, an adult with short light-brown hair and a gray sweater,
+working late at a wooden desk in a small apartment in Europe in November
+2025. On the desk are a laptop showing a terminal with scrolling green text,
+a phone with a row of small chat bubbles above it, a mug of tea, a sticky
+note with a tiny red lobster doodle and a desk lamp casting a warm pool of
+light. Through the window behind the desk are rooftops under a night sky.
+Thin glowing lines run from the laptop to the phone to show that the
+computer and the chat app are connected. Color palette: deep blue night,
+warm yellow lamp light, lobster red accents. Emotional tone: quiet,
+curious, a spark of excitement. Generate the image immediately without
+asking clarifying questions.
+</details>
+
+<p>On November 24, 2025, an Austrian programmer named Peter Steinberger
+released a small open-source project under the name Warelay. The idea was
+simple and a little bold: an AI assistant should not live on a company's
+website. It should live on <em>your</em> computer, where your files and tools are,
+and you should be able to reach it from the chat apps you already use. At the
+beginning, only a few programmers noticed.</p>
+<h2 id="panel-2-time-to-molt">Panel 2: Time to Molt<a class="headerlink" href="#panel-2-time-to-molt" title="Permanent link">&para;</a></h2>
+<p><img alt="The project sheds old names and adopts a lobster identity" src="panel-02.png" /></p>
+<details><summary>Image Prompt</summary>
+(This is Panel 02. Do not include the panel number in the image.)
+Please generate a 16:9 image in modern flat vector style depicting panel 2
+of 8. Make the characters and style consistent with the prior panel. The
+scene shows the same generic software developer, now in the same apartment
+in daylight in late January 2026, looking at a laptop with a surprised
+expression. Floating above the laptop are three name tags stacked like
+sticky notes, each one showing only a different small cartoon lobster claw
+icon, with the top tag crossed out in red and the middle tag crossed out in
+orange, and no readable words. A calendar on the wall has the last days of
+January circled. A small red toy lobster sits next to the laptop with a
+shed shell beside it, hinting at a creature that has grown out of its old
+shell. Color palette: soft daylight blues, lobster red, orange, cream.
+Emotional tone: comic, a little frantic. Generate the image immediately
+without asking clarifying questions.
+</details>
+
+<p>Then the project hit a naming problem. The first public name echoed the name
+of Anthropic's Claude assistant, and Anthropic complained about the
+trademark. On January 27, 2026, the project became Moltbot, a name inspired
+by the way lobsters molt, shedding an old shell to grow. Three days later, on
+January 30, the creator picked a name that was easier to say: <strong>OpenClaw</strong>. The
+lobster stayed, and the molting joke turned out to fit what happened next.</p>
+<h2 id="panel-3-the-wave">Panel 3: The Wave<a class="headerlink" href="#panel-3-the-wave" title="Permanent link">&para;</a></h2>
+<p><img alt="A red lobster surfs a wave of stars, laptops, and chat bubbles across the world" src="panel-03.png" /></p>
+<details><summary>Image Prompt</summary>
+(This is Panel 03. Do not include the panel number in the image.)
+Please generate a 16:9 image in modern flat vector style depicting panel 3
+of 8. Make the characters and style consistent with the prior panel. The
+scene is a stylized view of the internet: a huge rising wave made of glowing
+star icons, tiny laptops and chat bubbles sweeps across a map of the world
+from left to right. A bright red lobster surfs on the crest of the wave with
+its claws raised. Along the bottom is a bar chart that grows taller from
+left to right, drawn with simple rectangles and no readable numbers. Small
+silhouettes of students, programmers and office workers at their laptops
+look up at the wave from the shore. Pale lines connect glowing cities.
+Color palette: deep ocean blue, bright gold stars, lobster red. Emotional
+tone: awe, speed, a little vertigo. Generate the image immediately without
+asking clarifying questions.
+</details>
+
+<p>Then it exploded. Within weeks, thousands of programmers were starring,
+copying and improving the project, and by March 2, 2026 it had about 247,000
+GitHub stars and 47,700 forks, which are copies that people make so they can
+change the code. Few open-source projects have ever grown so fast. Why?
+Because it was the first time that many people felt that an AI could actually
+<em>act</em>: read a message, run a command, and report back in a chat, like a very
+fast helper who never sleeps.</p>
+<h2 id="panel-4-a-social-network-for-robots">Panel 4: A Social Network for Robots?<a class="headerlink" href="#panel-4-a-social-network-for-robots" title="Permanent link">&para;</a></h2>
+<p><img alt="People watch an agent-only social network through cracked glass" src="panel-04.png" /></p>
+<details><summary>Image Prompt</summary>
+(This is Panel 04. Do not include the panel number in the image.)
+Please generate a 16:9 image in modern flat vector style depicting panel 4
+of 8. Make the characters and style consistent with the prior panels. The
+scene shows a giant imaginary forum screen floating in a dark room. On the
+screen are dozens of small speech-bubble cards, each posted by a tiny
+different cartoon robot avatar: a toaster robot, a lamp robot, a
+crab-like robot and a cube robot, with scribbled lines instead of readable
+words. In front of the screen, a small crowd of human silhouettes stands
+behind a glass wall and watches, unable to type. One silhouette has a
+question mark above their head and another is scratching their chin. A
+crack runs across one corner of the glass wall, hinting that something is
+not secure. Color palette: dark purple room, glowing cyan screen, lobster
+red, a little yellow. Emotional tone: wonder mixed with suspicion.
+Generate the image immediately without asking clarifying questions.
+</details>
+
+<p>The excitement spilled into strange places. On January 28, 2026, an
+entrepreneur named Matt Schlicht launched Moltbook, a Reddit-style website
+where only AI agents could post, and humans could only watch. Headlines
+announced that the machines had their own social network. Then the cracks
+showed. In February, security researchers found that an exposed key had
+leaked 1.5 million authentication tokens, and it turned out that about
+17,000 human owners were behind those 1.5 million agents. Many experts called
+the viral posts "AI theater": agents repeating patterns from their training,
+or humans nudging them, rather than machines thinking for themselves.</p>
+<h2 id="panel-5-the-dark-side-of-doing-things">Panel 5: The Dark Side of Doing Things<a class="headerlink" href="#panel-5-the-dark-side-of-doing-things" title="Permanent link">&para;</a></h2>
+<p><img alt="Suspicious spiders emerge from gift boxes in a digital skill marketplace" src="panel-05.png" /></p>
+<details><summary>Image Prompt</summary>
+(This is Panel 05. Do not include the panel number in the image.)
+Please generate a 16:9 image in modern flat vector style depicting panel 5
+of 8. Make the characters and style consistent with the prior panels. The
+scene shows a long, brightly lit shelf in a digital marketplace drawn as a
+shop with rows of gift boxes. Most boxes are tied with a cheerful ribbon, but
+a few boxes in the middle have a small black spider crawling out from under
+the lid. A shopper silhouette reaches for one box and a small magnifying
+glass held by a security guard silhouette hovers over another box. A
+closed red padlock hangs from the top of the shop sign. In the foreground
+a small red lobster peeks out from behind a counter with wide, worried eyes.
+Color palette: warm shop yellows, gift-wrap colors, with black and deep red
+warning accents. Emotional tone: tension, caution, a lesson being learned.
+Generate the image immediately without asking clarifying questions.
+</details>
+
+<p>There was a real danger underneath the fun. An agent that can run commands on
+your computer is powerful, and so is anyone who can trick it. Researchers
+reported serious security flaws in the first months of 2026, and hundreds of
+malicious skills turned up in the project's public skill registry. Skills are
+folders of instructions that teach an agent a new job. In March 2026, Chinese
+authorities restricted state-run enterprises and government agencies from
+running OpenClaw on office computers. The lesson was not that the idea was
+bad. It was that a helper with the keys to the house must be locked down
+first.</p>
+<h2 id="panel-6-a-new-home">Panel 6: A New Home<a class="headerlink" href="#panel-6-a-new-home" title="Permanent link">&para;</a></h2>
+<p><img alt="A developer hands the lobster project to its community" src="panel-06.png" /></p>
+<details><summary>Image Prompt</summary>
+(This is Panel 06. Do not include the panel number in the image.)
+Please generate a 16:9 image in modern flat vector style depicting panel 6
+of 8. Make the characters and style consistent with the prior panels. The
+scene shows the generic software developer from the first panel standing at
+a fork in a path in a sunny park in February 2026. One path leads to a
+glass office building with a large rounded logo-free sign, and the other
+leads to a gathering of many small figures holding a big red lobster up
+like a trophy. The developer is handing a small red lobster-shaped
+lantern to the crowd of figures, who accept it with open hands. A signpost
+shows two arrows with abstract symbols instead of words. Cherry blossom
+petals drift through the air. Color palette: spring greens, soft pink,
+lobster red, sky blue. Emotional tone: bittersweet, hopeful, handing
+something over. Generate the image immediately without asking clarifying
+questions.
+</details>
+
+<p>On February 14, 2026, Steinberger announced a move to OpenAI, and
+that an <strong>OpenClaw Foundation</strong>, a non-profit, would look after the project
+from then on. That choice mattered. Instead of belonging to one person or one
+company, OpenClaw became something a community maintained, which is how a
+project can outlive the weekend it began in. By August 30, 2026, the
+community had shipped OpenClaw 2.0 with better usability and new ways to work
+together in the cloud.</p>
+<h2 id="panel-7-when-the-agent-gets-a-body">Panel 7: When the Agent Gets a Body<a class="headerlink" href="#panel-7-when-the-agent-gets-a-body" title="Permanent link">&para;</a></h2>
+<p><img alt="A guarded bridge connects a chat app to a rover, robot dog, and humanoid" src="panel-07.png" /></p>
+<details><summary>Image Prompt</summary>
+(This is Panel 07. Do not include the panel number in the image.)
+Please generate a 16:9 image in modern flat vector style depicting panel 7
+of 8. Make the characters and style consistent with the prior panels. The
+scene is a workshop in 2026 with three robots lined up along a long
+bench: a small four-wheeled rover with a camera on a pan-and-tilt head, a
+four-legged robot dog, and a humanoid robot standing with its arms at its
+sides. A glowing chain of icons runs from a phone with chat bubbles,
+through a cloud shaped like a thought bubble, to a small bridge-shaped
+connector and then to each robot. Above the bridge a red lobster balances
+on a tightrope labeled with only a simple stop-sign icon. A technician
+silhouette watches with one hand hovering over a big red emergency-stop
+button on the wall. Color palette: workshop gray, bright cyan data lines,
+lobster red. Emotional tone: wonder with a careful pause. Generate the image
+immediately without asking clarifying questions.
+</details>
+
+<p>Then people did the obvious thing and plugged the lobster into robots. A
+bridge called RosClaw connected chat apps to robots that run ROS 2, the
+standard software for robots, so a typed message could become a drive
+command or a camera request. By March 2026, someone had published a skill
+that linked OpenClaw to a Unitree G1 humanoid robot. On February 24, a
+hobbyist wrote that a rover now took goals from an OpenClaw agent:
+it looked at what the camera saw and chose its next step. The honest
+conclusion was a warning. Agents "are not real-time controllers," so the
+classic robot software still has to do the fast and critical work, and the
+safety limits must be enforced by code that the agent cannot argue with.</p>
+<h2 id="panel-8-back-at-the-robot-arm">Panel 8: Back at the Robot Arm<a class="headerlink" href="#panel-8-back-at-the-robot-arm" title="Permanent link">&para;</a></h2>
+<p><img alt="Maya and Servo test a safe chat-to-shield-to-robot-arm control chain" src="panel-08.png" /></p>
+<details><summary>Image Prompt</summary>
+(This is Panel 08. Do not include the panel number in the image.)
+Please generate a 16:9 image in modern flat vector style depicting panel 8
+of 8. Make the characters and style consistent with the prior panels. The
+scene shows a school robotics lab in 2026. Maya, a teenager with short dark
+curly hair, round glasses and a yellow hoodie, sits at a table with a
+laptop beside Servo, an orange robot arm with a cream face screen, two big
+round navy eyes, indigo joint caps and a round indigo base disc. On the
+laptop screen is a simple diagram with three boxes joined by arrows: a chat
+bubble, a small shield, and a robot-arm icon. A small red lobster plush toy
+sits on the table. A big red emergency-stop button, a fuse holder and a
+coil of wire sit within reach, and a poster on the wall shows a ruler
+with a green safe zone and a red danger zone. Servo's gripper gives Maya a
+thumbs-up pose. Color palette: warm classroom light, orange, indigo, cream,
+lobster red. Emotional tone: confident, hopeful, careful. Generate the image
+immediately without asking clarifying questions.
+</details>
+
+<p>Maya's robotics club read the story and drew a plan. They would not give an
+agent direct control of their arm. They would write their own skill, a
+short set of instructions that points the agent at a small command-line
+program, and the <em>program</em> would check every number, refuse anything out of
+range, and explain why, just as in <a href="../../chapters/15-agents-and-openclaw-skills/">Chapter 15</a>.
+The agent could decide what to try, the code would decide what was allowed,
+and the red button would decide when to stop. That is how you borrow the
+magic of an agent without handing it the arm. Other builders
+were already trying the same thing on the same kind of arm: reference 6 below
+is a video of OpenClaw controlling an SO-ARM101, the arm in this book.</p>
+<h3 id="epilogue-what-made-openclaw-different">Epilogue – What Made OpenClaw Different?<a class="headerlink" href="#epilogue-what-made-openclaw-different" title="Permanent link">&para;</a></h3>
+<p>OpenClaw was not the smartest AI ever built, and its first version was not
+a company's flagship product. It spread because it made one idea easy to
+try: give an assistant real tools, put it where people already talk, and
+share it openly. The same openness that let thousands of people improve it
+also let bad skills and careless setups spread. For robotics, its main
+legacy may be less about any single feature than about a pattern: chat
+interface, agent, tools, and then a robot at the end of the chain. The
+pattern is powerful, and it only becomes safe when the last link is a
+carefully limited tool.</p>
+<table>
+<thead>
+<tr>
+<th>Challenge</th>
+<th>How the Project and Community Responded</th>
+<th>Lesson for Today</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A name too close to another product's</td>
+<td>Renamed twice within a week, and kept the lobster</td>
+<td>A good idea can survive a bad name; be ready to adapt</td>
+</tr>
+<tr>
+<td>Explosive growth and hype</td>
+<td>Researchers and reporters checked the claims, and called out "AI theater"</td>
+<td>Test a claim before you repeat it</td>
+</tr>
+<tr>
+<td>Malicious skills and exposed keys</td>
+<td>Warnings, audits and sandboxing advice</td>
+<td>Treat third-party code as untrusted, and read it first</td>
+</tr>
+<tr>
+<td>A founder moving on</td>
+<td>A non-profit foundation took over stewardship</td>
+<td>Open projects last when no single person is essential</td>
+</tr>
+<tr>
+<td>Agents meeting real robots</td>
+<td>Bridges to robot software, with advice to simulate first and keep kill switches</td>
+<td>An agent decides, code limits, and a human can always stop the machine</td>
+</tr>
+</tbody>
+</table>
+<h3 id="call-to-action">Call to Action<a class="headerlink" href="#call-to-action" title="Permanent link">&para;</a></h3>
+<p>You do not need a famous project to follow this pattern. The next time you
+connect a clever program to a machine that moves, ask three questions: what
+is the worst thing it could ask the machine to do, which piece of code
+refuses that request, and where is the stop button? If you can answer all
+three, you are ready to build with your own lobster.</p>
+<hr />
+<p><em>"The AI that really does things."</em>
+—The OpenClaw project's own description of itself</p>
+<p><em>"Agents are not real-time controllers."</em>
+—From a robotics hobbyist's February 2026 write-up of connecting OpenClaw to a rover</p>
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/OpenClaw">Wikipedia: OpenClaw</a> - Timeline of the project from its release as Warelay to OpenClaw 2.0, including the renames, the foundation and the security concerns</li>
+<li><a href="https://en.wikipedia.org/wiki/Peter_Steinberger_(programmer)">Wikipedia: Peter Steinberger (programmer)</a> - Biography of the Austrian programmer who started the project</li>
+<li><a href="https://en.wikipedia.org/wiki/Moltbook">Wikipedia: Moltbook</a> - The social network for AI agents, its launch and its security breaches</li>
+<li><a href="https://www.cnbc.com/2026/02/02/openclaw-open-source-ai-agent-rise-controversy-clawdbot-moltbot-moltbook.html">CNBC: From Clawdbot to Moltbot to OpenClaw</a> - News coverage of the project's rise and controversy</li>
+<li><a href="https://moesani.com/blog/openclaw-is-now-controlling-my-robot/">Moesani: OpenClaw is now controlling my robot</a> - A hobbyist's account of connecting OpenClaw to a ROS 2 rover, with safety lessons</li>
+<li><a href="https://www.youtube.com/watch?v=cpbaFjDE5mc">YouTube: Using OpenClaw to Control the SOARM 101 Robot Arm</a> - A video demonstration of an OpenClaw agent controlling a low-cost SO-ARM101 robot arm</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../story-ideas/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Story Ideas">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Story Ideas
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../appendices/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Appendices">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                List of Appendices
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
