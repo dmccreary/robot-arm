@@ -59,6 +59,10 @@ nav:
       - "18. Projects, Operation, and Teaching": chapters/18-projects-operation-and-teaching/index.md
       - "19. Optional Advanced Chapter: The Mathematics of Arm Paths": chapters/19-advanced-arm-path-mathematics/index.md
 
+  - Labs:
+      - Hands-On Labs: labs/index.md
+      - List of Lab Ideas: labs/list-of-ideas.md
+
   - Learning Graph:
       - Introduction: learning-graph/index.md
       - Mascot Test: learning-graph/mascot-test.md
@@ -80,6 +84,7 @@ nav:
       - Wire Voltage-Drop Explorer: sims/wire-voltage-drop-explorer/index.md
       - Fuse and E-Stop Power Path: sims/protected-power-path/index.md
       - Common Ground Loop: sims/common-ground-loop/index.md
+      - H-Bridge Current Paths: sims/h-bridge-current-paths/index.md
 
   - Appendices:
       - List of Appendices: appendices/index.md

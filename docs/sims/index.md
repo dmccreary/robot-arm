@@ -56,6 +56,11 @@ Plotly, Venn.js).
     Predict what a motor driver's input reads with and without a shared ground wire, and watch the signal current loop appear and vanish.
     Used in [Chapter 3](../chapters/03-electricity-power-and-safety/index.md).
 
+- **[H-Bridge Current Paths](h-bridge-current-paths/index.md)**
+
+    Set the four switches of an H-bridge and predict whether the motor runs forward, reverses, coasts, brakes or short-circuits, with animated current dots.
+    Used in [Chapter 5](../chapters/05-actuators-and-sensors/index.md).
+
 </div>
 
 <!-- Add new MicroSims to the catalog as they are built. -->

@@ -1,0 +1,95 @@
+{
+  "title": "H-Bridge Current Paths",
+  "creator": "Dan McCreary",
+  "subject": "Electronics for Robotics",
+  "description": "Set the four switches of an H-bridge motor driver and predict whether the motor runs forward, runs in reverse, coasts, brakes, or short-circuits the supply, then watch animated current dots follow the closed path. Used in Chapter 5.",
+  "date": "2026-10-07",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/h-bridge-current-paths/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "H-bridge motor drivers: direction, braking and the forbidden short-circuit state",
+    "learningObjectives": [
+      "Infer what a DC motor does for six combinations of H-bridge switch settings, choosing among forward, reverse, coasts, brakes and short circuit, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "DC motor",
+      "current",
+      "circuit",
+      "motor controller",
+      "H-bridge",
+      "short circuit"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 562
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "circuit-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict first, then watch animated current confirm or correct the prediction",
+    "keyQuestions": [
+      "Which path does the current take from the supply to ground?",
+      "Why must the two switches of one leg never close together?"
+    ],
+    "commonMisconceptions": [
+      "Any two closed switches drive the motor",
+      "With all switches open the motor stops instantly",
+      "A motor can only run in one direction"
+    ],
+    "assessmentOpportunities": [
+      "Six committed predictions; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Predict",
+          "Explore"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "a) to e) outcome choices"
+      },
+      {
+        "type": "button",
+        "label": "Next combination"
+      },
+      {
+        "type": "checkbox",
+        "label": "S1 closed, S2 closed, S3 closed, S4 closed",
+        "default": "set by the combination"
+      }
+    ]
+  }
+}
