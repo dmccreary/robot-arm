@@ -10,7 +10,7 @@ social:
 
 # The Lobster and the Arm: How OpenClaw Took Over the Internet
 
-<!-- ![](./cover.png) -->
+![The Lobster and the Arm cover](./cover.png)
 <details>
 <summary>Cover Image Prompt</summary>
 (This is the Cover Image. Do not include this label in the image.)
@@ -61,7 +61,7 @@ is connected to a machine that can *move*?
 
 ## Panel 1: A Weekend Project
 
-<!-- ![](./panel-01.png) -->
+![A developer connects a laptop assistant to a chat app late at night](./panel-01.png)
 <details><summary>Image Prompt</summary>
 (This is Panel 01. Do not include the panel number in the image.)
 I am about to ask you to generate a series of images for a graphic novel.
@@ -93,7 +93,7 @@ beginning, only a few programmers noticed.
 
 ## Panel 2: Time to Molt
 
-<!-- ![](./panel-02.png) -->
+![The project sheds old names and adopts a lobster identity](./panel-02.png)
 <details><summary>Image Prompt</summary>
 (This is Panel 02. Do not include the panel number in the image.)
 Please generate a 16:9 image in modern flat vector style depicting panel 2
@@ -120,7 +120,7 @@ lobster stayed, and the molting joke turned out to fit what happened next.
 
 ## Panel 3: The Wave
 
-<!-- ![](./panel-03.png) -->
+![A red lobster surfs a wave of stars, laptops, and chat bubbles across the world](./panel-03.png)
 <details><summary>Image Prompt</summary>
 (This is Panel 03. Do not include the panel number in the image.)
 Please generate a 16:9 image in modern flat vector style depicting panel 3
@@ -147,7 +147,7 @@ fast helper who never sleeps.
 
 ## Panel 4: A Social Network for Robots?
 
-<!-- ![](./panel-04.png) -->
+![People watch an agent-only social network through cracked glass](./panel-04.png)
 <details><summary>Image Prompt</summary>
 (This is Panel 04. Do not include the panel number in the image.)
 Please generate a 16:9 image in modern flat vector style depicting panel 4
@@ -177,7 +177,7 @@ or humans nudging them, rather than machines thinking for themselves.
 
 ## Panel 5: The Dark Side of Doing Things
 
-<!-- ![](./panel-05.png) -->
+![Suspicious spiders emerge from gift boxes in a digital skill marketplace](./panel-05.png)
 <details><summary>Image Prompt</summary>
 (This is Panel 05. Do not include the panel number in the image.)
 Please generate a 16:9 image in modern flat vector style depicting panel 5
@@ -206,7 +206,7 @@ first.
 
 ## Panel 6: A New Home
 
-<!-- ![](./panel-06.png) -->
+![A developer hands the lobster project to its community](./panel-06.png)
 <details><summary>Image Prompt</summary>
 (This is Panel 06. Do not include the panel number in the image.)
 Please generate a 16:9 image in modern flat vector style depicting panel 6
@@ -234,7 +234,7 @@ together in the cloud.
 
 ## Panel 7: When the Agent Gets a Body
 
-<!-- ![](./panel-07.png) -->
+![A guarded bridge connects a chat app to a rover, robot dog, and humanoid](./panel-07.png)
 <details><summary>Image Prompt</summary>
 (This is Panel 07. Do not include the panel number in the image.)
 Please generate a 16:9 image in modern flat vector style depicting panel 7
@@ -265,7 +265,7 @@ safety limits must be enforced by code that the agent cannot argue with.
 
 ## Panel 8: Back at the Robot Arm
 
-<!-- ![](./panel-08.png) -->
+![Maya and Servo test a safe chat-to-shield-to-robot-arm control chain](./panel-08.png)
 <details><summary>Image Prompt</summary>
 (This is Panel 08. Do not include the panel number in the image.)
 Please generate a 16:9 image in modern flat vector style depicting panel 8

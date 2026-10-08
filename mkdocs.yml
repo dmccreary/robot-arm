@@ -163,6 +163,10 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  # Emoji and Material/FontAwesome icons: :smile:, :material-rocket-launch:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   # Currency-safe math, rendered by KaTeX (see extra_javascript below).
   # Backslash delimiters only: inline \(...\), display \[...\].
   # Neither $ nor $$ starts math, so prices such as $20 are plain text.
