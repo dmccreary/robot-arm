@@ -1,0 +1,98 @@
+{
+  "title": "Polynomial Order Chooser",
+  "creator": "Dan McCreary",
+  "subject": "Robot Motion Planning",
+  "description": "Compare a cubic, a quintic and a cubic spline: what each can control, and what the position and the acceleration of an example move look like. Then decide which kind each of eight trajectory requirements needs. Used in Chapter 19.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/polynomial-order-chooser/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Choosing a cubic, a quintic or a cubic spline trajectory from its boundary conditions",
+    "learningObjectives": [
+      "Differentiate eight trajectory requirements as needing a cubic, a quintic or a cubic spline, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "differentiate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "boundary conditions",
+      "cubic polynomial trajectory",
+      "quintic polynomial trajectory",
+      "via points",
+      "cubic spline"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 595
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Compare the three kinds by what they control and how their acceleration looks, then separate similar-looking requirements by counting conditions",
+    "keyQuestions": [
+      "How many conditions does each requirement state?",
+      "What can a quintic control that a cubic cannot?"
+    ],
+    "commonMisconceptions": [
+      "A higher degree is always smoother",
+      "One polynomial can pass through any number of via points well",
+      "A cubic can keep the acceleration continuous with the last move"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed choices, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight requirements"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Draw",
+        "values": [
+          "Cubic",
+          "Quintic",
+          "Cubic spline"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Cubic / Quintic / Cubic spline"
+      },
+      {
+        "type": "button",
+        "label": "Next requirement / See score / Try again"
+      }
+    ]
+  }
+}

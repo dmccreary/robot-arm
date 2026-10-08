@@ -1,0 +1,92 @@
+{
+  "title": "Bus Fault Finder",
+  "creator": "Dan McCreary",
+  "subject": "Serial Communication for Robotics",
+  "description": "Read eight symptom reports from a servo bus, each with a scan result and the bytes received, and choose the most likely of six causes: wrong port, no motor power, baud rate mismatch, duplicate ID, broken chain link, or noise and a missing ground. Used in Chapter 4.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/bus-fault-finder/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Troubleshooting serial bus communication errors",
+    "learningObjectives": [
+      "Differentiate six causes of serial bus failure by choosing the most likely cause for each of eight symptom reports, with at least 6 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "baud rate",
+      "serial port",
+      "device ID",
+      "daisy chain wiring",
+      "bus scan",
+      "checksum",
+      "communication timeout",
+      "communication errors",
+      "common ground"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 620
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Compare similar-looking failures and separate them by the evidence in the scan result and the raw bytes",
+    "keyQuestions": [
+      "What is the difference between silence and garbage?",
+      "Why does a partial scan point to the chain and not to the adapter?"
+    ],
+    "commonMisconceptions": [
+      "Silence always means the motor is broken",
+      "Garbage means the cable is bad",
+      "A partial scan means a bad adapter"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed choices, one attempt each; 6 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight reports"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Wrong port / No motor power / Baud rate mismatch / Duplicate ID / Broken chain link / Noise or missing ground"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next report"
+      }
+    ]
+  }
+}

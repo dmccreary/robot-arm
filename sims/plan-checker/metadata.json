@@ -1,0 +1,96 @@
+{
+  "title": "Plan Checker",
+  "creator": "Dan McCreary",
+  "subject": "AI Agents for Robotics",
+  "description": "Check eight pick-and-place plans before the arm moves. Each plan is a numbered list of tool calls, and you name the one problem with it or say that the plan is valid. Used in Chapter 16.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/plan-checker/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Task planning, task decomposition and checking a plan before it runs",
+    "learningObjectives": [
+      "Examine eight pick-and-place plans written as lists of tool calls and name the problem with each, or say that the plan is valid, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "task planning",
+      "task decomposition",
+      "planner-executor split",
+      "the ten-step plan",
+      "tool schemas and their ranges"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 628
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Break each plan into its steps and test them against rules and against their neighbors, with the correct outcome and the reason shown after each commit",
+    "keyQuestions": [
+      "Which check does this plan fail, if any?",
+      "Why does the order of the steps matter when every step is legal?"
+    ],
+    "commonMisconceptions": [
+      "A plan is fine if each step is individually legal",
+      "A plan that the model wrote needs no checking",
+      "The executor can fix a bad plan as it goes"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed outcomes; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight plans"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Valid plan",
+          "Missing status check",
+          "Gripper closed on approach",
+          "Value out of range",
+          "No grasp check before lifting",
+          "Uses a tool that does not exist"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next plan / See score / Try again"
+      }
+    ]
+  }
+}

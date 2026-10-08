@@ -1,0 +1,95 @@
+{
+  "title": "HTTP Status Reader",
+  "creator": "Dan McCreary",
+  "subject": "AI Agents for Robotics",
+  "description": "Read eight HTTP status codes that come back from the arm's tool server or from a model provider, and choose what the client should do about each one. Used in Chapter 16.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/http-status-reader/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "HTTP APIs, status codes and what a client should do about each one",
+    "learningObjectives": [
+      "Interpret eight HTTP status codes returned by the arm's tool server or a model provider by choosing what the client should do, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "HTTP API",
+      "status code",
+      "requests library",
+      "API key"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 548
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Connect each code to the party at fault and to the remedy, with the right action and the reason shown after each commit",
+    "keyQuestions": [
+      "Whose problem is it, the client's or the server's?",
+      "What should the client change before it tries again?"
+    ],
+    "commonMisconceptions": [
+      "Any error means that the server is broken",
+      "A 401 means that the request body is wrong",
+      "A 429 should be retried at once"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed actions; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight responses"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Use the answer",
+          "Fix the request",
+          "Fix the key or the permission",
+          "Fix the address or the name",
+          "Slow down and retry later",
+          "Server problem: retry after a wait, then report"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next response / See score / Try again"
+      }
+    ]
+  }
+}

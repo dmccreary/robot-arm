@@ -1,0 +1,92 @@
+{
+  "title": "Actuator Type Matcher",
+  "creator": "Dan McCreary",
+  "subject": "Actuators for Robotics",
+  "description": "Read a comparison of three families of actuator, the hobby servo, the serial bus servo and the brushless CAN actuator, and then match eight short descriptions to the family each one fits. Used in Chapter 5.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/actuator-type-matcher/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Hobby servos, serial bus servos and brushless CAN actuators",
+    "learningObjectives": [
+      "Classify eight descriptions of an actuator as a hobby servo, a serial bus servo or a brushless CAN actuator, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "actuator",
+      "hobby servo",
+      "PWM signal",
+      "serial bus servo",
+      "STS3215 servo",
+      "brushless motor",
+      "Damiao actuator",
+      "RobStride actuator",
+      "position feedback"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 540
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Read a comparison table, then place each new description into a family by one distinguishing feature",
+    "keyQuestions": [
+      "Which family cannot tell your program where it is?",
+      "Which two features separate a serial bus servo from a brushless CAN actuator?"
+    ],
+    "commonMisconceptions": [
+      "All servos are controlled by a pulse width",
+      "A bus servo and a CAN actuator are the same thing",
+      "A hobby servo reports its position"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed choices, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight descriptions"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Hobby servo / Serial bus servo / Brushless CAN actuator"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next"
+      }
+    ]
+  }
+}

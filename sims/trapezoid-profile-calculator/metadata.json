@@ -1,0 +1,104 @@
+{
+  "title": "Trapezoid Profile Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Set a distance, a speed limit and an acceleration limit and watch the speed graph of a joint move change between a trapezoid and a triangle. Then calculate the times and the peak speed for six problems. Used in Chapter 11.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/trapezoid-profile-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Trapezoidal velocity profile: speed limit, acceleration limit and move time",
+    "learningObjectives": [
+      "Calculate the acceleration time, cruise time, total time and peak speed of a joint move under a trapezoidal velocity profile, for six problems, to within the tolerance shown, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "calculate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "trajectory",
+      "velocity profile",
+      "speed limit",
+      "acceleration limit",
+      "trapezoidal velocity profile"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 640
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Repeated calculation on new numbers with an immediate check, including a short move that forces the learner to test the condition before choosing a formula",
+    "keyQuestions": [
+      "Does this move reach the speed limit? How do you know?",
+      "Which parts of the move take the extra time beyond distance divided by speed?"
+    ],
+    "commonMisconceptions": [
+      "The move always reaches the speed limit",
+      "The time is the distance divided by the speed limit",
+      "A higher acceleration limit changes the cruise speed"
+    ],
+    "assessmentOpportunities": [
+      "Six typed numeric answers, one attempt each, checked against a tolerance; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Distance D",
+        "range": "5 to 180 degrees, step 5, default 90"
+      },
+      {
+        "type": "slider",
+        "label": "Speed limit v",
+        "range": "10 to 120 degrees per second, step 10, default 60"
+      },
+      {
+        "type": "slider",
+        "label": "Acceleration limit a",
+        "range": "20 to 400 degrees per second squared, step 20, default 120"
+      },
+      {
+        "type": "input",
+        "label": "Your answer"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next problem / See score / Try again"
+      }
+    ]
+  }
+}

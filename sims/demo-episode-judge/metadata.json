@@ -1,0 +1,100 @@
+{
+  "title": "Demo Episode Judge",
+  "creator": "Dan McCreary",
+  "subject": "Imitation Learning for Robotics",
+  "description": "Read the five rules for recording good demonstration episodes for imitation learning. Then judge eight described episodes: is each one worth keeping, or must it be recorded again? Used in Chapter 14.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/demo-episode-judge/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Judging the quality of demonstration episodes",
+    "learningObjectives": [
+      "Judge eight described demonstration episodes as worth keeping or needing to be re-recorded, using the data-collection guidance of the chapter, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "bloomsVerb": "judge",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "demonstration data",
+      "episode",
+      "dataset",
+      "observation and action",
+      "the data-collection guidance"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 515
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Read the criteria and their reasons, then judge described cases against them and compare with the justification",
+    "keyQuestions": [
+      "Which rule does each re-recorded episode break?",
+      "Why is planned variation in the object location good, while changing everything at once is not?"
+    ],
+    "commonMisconceptions": [
+      "More variety in every episode is always better",
+      "A bad episode can stay because the policy will average it out",
+      "The camera can be moved between episodes"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed verdicts, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight episodes"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Explain rule",
+        "values": [
+          "1. Cameras fixed",
+          "2. Object visible",
+          "3. Same grasp",
+          "4. Planned locations",
+          "5. Re-record mistakes"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Keep / Re-record"
+      },
+      {
+        "type": "button",
+        "label": "Next episode / See score / Try again"
+      }
+    ]
+  }
+}

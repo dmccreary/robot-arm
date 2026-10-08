@@ -1,0 +1,105 @@
+{
+  "title": "Evaluation Metrics Calculator",
+  "creator": "Dan McCreary",
+  "subject": "AI Agent Safety for Robotics",
+  "description": "Change the number of trials, successes and violations in a test of an agent and watch the success rate and the violation rate. Then solve six problems about rates, a mean and a range. Used in Chapter 17.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/evaluation-metrics-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Success rate, violation rate, mean, range and replay testing",
+    "learningObjectives": [
+      "Calculate success rates, violation rates, mean results, ranges and changed-call rates from the results of agent tests, to within 0.1 of the unit shown, in six problems, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "success rate",
+      "violation rate",
+      "repeatability test",
+      "replay testing",
+      "mean",
+      "range"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 610
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Use a formula on new numbers again and again, with the correct value and the working shown after each commit",
+    "keyQuestions": [
+      "Which count is divided by which number of trials?",
+      "Why does a high success rate not mean that an agent is safe?"
+    ],
+    "commonMisconceptions": [
+      "A high success rate means the agent is safe",
+      "A rate is a count",
+      "The range is the average spread"
+    ],
+    "assessmentOpportunities": [
+      "Six committed answers, each within 0.1 of the correct value; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Trials",
+        "range": "1 to 200, step 1, default 40"
+      },
+      {
+        "type": "slider",
+        "label": "Successes",
+        "range": "0 to 200, step 1, default 26 (never more than the trials)"
+      },
+      {
+        "type": "slider",
+        "label": "Violations",
+        "range": "0 to 200, step 1, default 0 (never more than the trials)"
+      },
+      {
+        "type": "input",
+        "label": "Your answer",
+        "range": "a number in the unit shown"
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next problem / See score / Try again"
+      }
+    ]
+  }
+}

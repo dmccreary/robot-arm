@@ -1,0 +1,99 @@
+{
+  "title": "Driver Swap Tracer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Trace one call, move_to with shoulder_pan = 10 degrees, down through the layers of the arm library for three drivers: FakeArm, FeetechArm and DamiaoArm. Then choose what six calls do underneath. Used in Chapter 10.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/driver-swap-tracer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "The hardware abstraction layer: one Arm interface, three drivers",
+    "learningObjectives": [
+      "Interpret what a call on the Arm interface does underneath for each of three drivers, in six calls, by choosing the correct low-level action, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "interpret",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "class interface",
+      "Arm class",
+      "hardware abstraction layer",
+      "inheritance for drivers",
+      "fake arm",
+      "unit conversion"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 642
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Show one high-level call and ask for its low-level translation, so the learner traces through the layers and the unit conversions",
+    "keyQuestions": [
+      "Which layer does this work: the base class or the driver?",
+      "What unit does this arm use underneath, and what message carries it?"
+    ],
+    "commonMisconceptions": [
+      "The same call sends the same bytes on every arm",
+      "The limit check is done by the driver",
+      "A fake arm does nothing"
+    ],
+    "assessmentOpportunities": [
+      "Six committed choices from six low-level actions, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore the layers",
+          "Six calls"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Driver",
+        "values": [
+          "FakeArm",
+          "FeetechArm",
+          "DamiaoArm"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "a / b / c / d / e / f (the six actions)"
+      },
+      {
+        "type": "button",
+        "label": "Next / See score / Try again"
+      }
+    ]
+  }
+}

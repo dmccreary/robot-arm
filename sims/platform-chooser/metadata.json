@@ -1,0 +1,96 @@
+{
+  "title": "Platform Chooser",
+  "creator": "Dan McCreary",
+  "subject": "Choosing a Robot Arm",
+  "description": "Set a weight for each of five criteria and watch the weighted totals of three robot arms reorder. Then recommend the SO-ARM101, the reBot B601-DM or the reBot B601-RS for six project situations, applying each requirement as a filter before weighing the rest. Used in Chapter 9.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/platform-chooser/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Platform selection criteria: cost, payload, learning curve, software and power",
+    "learningObjectives": [
+      "Recommend one of three robot arms (the SO-ARM101, the reBot B601-DM or the reBot B601-RS) for each of six project situations by applying the platform selection criteria, with at least 5 of 6 recommendations correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "SO-ARM101",
+      "reBot B601-DM",
+      "reBot B601-RS",
+      "payload",
+      "landed cost",
+      "supervision",
+      "supply voltage",
+      "platform selection criteria"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 700
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Separate requirements from preferences: filter the arms by the requirements in a situation, then judge what remains against the criteria",
+    "keyQuestions": [
+      "Which facts in the situation are requirements, and which are preferences?",
+      "Can a high weighted total rescue an arm that fails a requirement?"
+    ],
+    "commonMisconceptions": [
+      "The most capable arm is always the best choice",
+      "A weighted score decides a hard requirement",
+      "The cheapest arm can do any job"
+    ],
+    "assessmentOpportunities": [
+      "Six committed recommendations, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six situations"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Weight of each of five criteria",
+        "range": "0 to 5, step 1, default 3"
+      },
+      {
+        "type": "button",
+        "label": "SO-ARM101 / reBot B601-DM / reBot B601-RS"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next"
+      }
+    ]
+  }
+}

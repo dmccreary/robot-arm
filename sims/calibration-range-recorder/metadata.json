@@ -1,0 +1,105 @@
+{
+  "title": "Calibration Range Recorder",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Set the raw position of one joint at its middle pose and at the two ends of its sweep, and see the homing offset, the recorded range and its width in degrees. Then predict the result of a calibration run in six situations. Used in Chapter 8.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/calibration-range-recorder/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "The two steps of calibration: homing offset and range of motion limits",
+    "learningObjectives": [
+      "Infer the result of a calibration run from a description of what the builder did in each of its two steps, in six situations, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "infer",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "calibration",
+      "homing position",
+      "homing offset",
+      "range of motion limits",
+      "calibration file",
+      "calibration drift"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 600
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Trace which stored number a change in the procedure affects, commit to a result, then read the reason",
+    "keyQuestions": [
+      "Which stored number does this action change: the offset or a range limit?",
+      "What does the program do when a joint never moved?"
+    ],
+    "commonMisconceptions": [
+      "The homing position is the arm's resting pose",
+      "The calibrated range is the range the servo can physically turn",
+      "A calibration file stays right forever"
+    ],
+    "assessmentOpportunities": [
+      "Six committed choices from five results, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six situations"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Middle pose",
+        "range": "0 to 4095 steps, step 1, default 2105"
+      },
+      {
+        "type": "slider",
+        "label": "One sweep end",
+        "range": "0 to 4095 steps, step 1, default 800"
+      },
+      {
+        "type": "slider",
+        "label": "Other sweep end",
+        "range": "0 to 4095 steps, step 1, default 3300"
+      },
+      {
+        "type": "button",
+        "label": "a / b / c / d / e (the five results)"
+      },
+      {
+        "type": "button",
+        "label": "Next / See score / Try again"
+      }
+    ]
+  }
+}

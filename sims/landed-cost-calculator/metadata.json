@@ -1,0 +1,23 @@
+{
+  "title": "Landed Cost Calculator",
+  "description": "The learner will calculate the landed cost, the overhead percentage or the remaining budget of a parts order from its sticker price, shipping, tax and fees, to within one cent (or 0.1 percent), in five problems, with at least 4 of 5 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "landed-cost-calculator",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 6,
+  "chapter_title": "Sourcing Parts and Planning a Budget",
+  "chapter_dir": "06-sourcing-parts-and-budget",
+  "chapter_rel_dir": "chapters/06-sourcing-parts-and-budget"
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Accuracy and Repeatability Targets",
+  "creator": "Dan McCreary",
+  "subject": "Robot Arm Anatomy",
+  "description": "Classify four sets of five landing points on a target as accurate, repeatable, both or neither, then see the mean point and the spread that decide the answer. Used in Chapter 2.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/accuracy-repeatability-targets/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Accuracy and repeatability of a robot arm",
+    "learningObjectives": [
+      "Classify four sets of landing points as accurate or not and repeatable or not, using a stated distance threshold, with at least 3 of 4 sets classified correctly on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "accuracy",
+      "repeatability",
+      "landing point",
+      "offset from the target"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 512
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Show the five points on a target beside their offsets and ask for a two-part decision (centered? tight?), then reveal the mean and the spread that settle it",
+    "keyQuestions": [
+      "Is the group of points centered on the target?",
+      "Is the group tight?",
+      "Which of the two problems can calibration fix?"
+    ],
+    "commonMisconceptions": [
+      "A repeatable arm is also an accurate one",
+      "If the average is on target the arm is precise",
+      "Accuracy and repeatability are two names for the same spec"
+    ],
+    "assessmentOpportunities": [
+      "Four committed labels, one attempt each; 3 of 4 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Label",
+        "values": [
+          "Accurate and repeatable",
+          "Repeatable, not accurate",
+          "Accurate on average, not repeatable",
+          "Neither"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Check / Next set / See score / Try again"
+      }
+    ]
+  }
+}

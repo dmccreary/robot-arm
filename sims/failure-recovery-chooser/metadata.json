@@ -1,0 +1,94 @@
+{
+  "title": "Failure Recovery Chooser",
+  "creator": "Dan McCreary",
+  "subject": "AI Agents for Robotics",
+  "description": "Choose the best next action for an agent in eight situations where something has gone wrong. The four actions are retry once, replan, ask a human and stop the arm. Used in Chapter 16.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/failure-recovery-chooser/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Replanning, failed grasp recovery, asking a human and the stop tool",
+    "learningObjectives": [
+      "Recommend the best next action for each of eight situations an agent meets, choosing among retry once, replan, ask a human and stop the arm, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "replanning",
+      "failed grasp recovery",
+      "asking a human",
+      "the stop tool"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Weigh four courses of action against each situation, with the best action and the reason shown after each commit",
+    "keyQuestions": [
+      "Is this a first failure or a repeated one?",
+      "Does the error message say how to fix the plan?",
+      "Could a guess move the wrong object?"
+    ],
+    "commonMisconceptions": [
+      "The agent should keep retrying until it works",
+      "Ambiguity should be settled by a best guess",
+      "A stopped arm can be restarted by the agent"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed recommendations; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight situations"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Retry once",
+          "Replan",
+          "Ask a human",
+          "Stop the arm"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next situation / See score / Try again"
+      }
+    ]
+  }
+}

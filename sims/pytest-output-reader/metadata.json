@@ -1,0 +1,91 @@
+{
+  "title": "Pytest Output Reader",
+  "creator": "Dan McCreary",
+  "subject": "Software Testing for Robotics",
+  "description": "Read six real pytest failure messages from the lab's code, each with a bug put in on purpose, and decide which of six causes each one points to. Explore mode explains every cause and the fix it usually needs. Used in Chapter 13.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/pytest-output-reader/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Reading pytest failure messages",
+    "learningObjectives": [
+      "Attribute each of six pytest failure messages to its most likely cause, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "attribute",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "unit test",
+      "pytest",
+      "assertion",
+      "fixture",
+      "pytest.approx",
+      "pytest.raises",
+      "the Python path"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 640
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Read each cause and its usual fix, then attribute real failure messages to their causes",
+    "keyQuestions": [
+      "Which messages show a problem in the test and not in the code?",
+      "Why does assert (0.1 + 0.2) == 0.3 fail?"
+    ],
+    "commonMisconceptions": [
+      "A failing test always means that the code is wrong",
+      "Exact equality is fine for decimals",
+      "An error before any test runs is a test failure"
+    ],
+    "assessmentOpportunities": [
+      "Six committed attributions, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six messages"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Six cause buttons (Explore: read about a cause; quiz: commit an answer)"
+      },
+      {
+        "type": "button",
+        "label": "Next message / See score / Try again"
+      }
+    ]
+  }
+}

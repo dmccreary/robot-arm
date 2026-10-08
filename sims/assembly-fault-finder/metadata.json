@@ -1,0 +1,92 @@
+{
+  "title": "Assembly Fault Finder",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Read six causes of faults on an SO-ARM101, each with what it looks like and what to check first. Then read eight symptoms and choose the most likely cause of each. Used in Chapter 8.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/assembly-fault-finder/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Troubleshooting an assembled arm: matching a symptom to its most likely cause",
+    "learningObjectives": [
+      "Differentiate six causes of SO-ARM101 faults from eight written symptoms, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "differentiate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "servo not found",
+      "intermittent wiring",
+      "loose gears",
+      "jitter",
+      "servo overheating",
+      "calibration drift",
+      "duplicate ID",
+      "supply voltage"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 582
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Pick out the one distinguishing clue in each symptom and match it to a cause, with the reason shown after each choice",
+    "keyQuestions": [
+      "When does the fault appear: always, in one pose, or after some time?",
+      "What did the measurement read, and which cause does that point to?"
+    ],
+    "commonMisconceptions": [
+      "A servo that does not answer is broken",
+      "A joint that goes limp is faulty",
+      "Every fault needs software changes"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed choices from six causes, one attempt each; 7 of 8 for mastery; the final screen lists the causes that were missed"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore the six causes",
+          "Eight symptoms"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "a / b / c / d / e / f (the six causes)"
+      },
+      {
+        "type": "button",
+        "label": "Next / See score / Try again"
+      }
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "title": "Skill File Checker",
+  "creator": "Dan McCreary",
+  "subject": "AI Agents for Robotics",
+  "description": "Check eight skill-file headers against the five rules of the OpenClaw skill format. For each header, say that it is valid or name the one rule that it breaks. Used in Chapter 15.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/skill-file-checker/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "OpenClaw skill files and the rules of their front matter",
+    "learningObjectives": [
+      "Validate eight skill-file headers against the rules of the OpenClaw skill format, naming the one rule that each breaks or saying that it is valid, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "agent skill",
+      "OpenClaw skill files",
+      "front matter",
+      "the name and description rules"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 638
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Check each item against stated criteria and name the criterion that fails, with the correct outcome and the reason shown after each commit",
+    "keyQuestions": [
+      "Which rule, if any, does this header break?",
+      "Why must a description with a colon and a space be in quotes?"
+    ],
+    "commonMisconceptions": [
+      "The skill's rules are enforced by the agent's good behavior",
+      "Capital letters and underscores are fine in a name",
+      "A colon in a description is harmless"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed outcomes; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight headers"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Valid",
+          "Invalid: bad name",
+          "Invalid: missing field",
+          "Invalid: name and folder differ",
+          "Invalid: description too long",
+          "Invalid: unquoted colon"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next header / See score / Try again"
+      }
+    ]
+  }
+}

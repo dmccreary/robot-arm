@@ -1,0 +1,92 @@
+{
+  "title": "Python Run Stage Sorter",
+  "creator": "Dan McCreary",
+  "subject": "Python for Robotics",
+  "description": "Open the six stages a Python script passes through between pressing Enter and seeing output, then sort five real error messages onto the stage that produces each one. Used in Chapter 1.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/python-run-stage-sorter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "The stages of running a Python script and the error each stage produces",
+    "learningObjectives": [
+      "Classify each of five Python error messages by the stage of running a script that produces it, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "terminal",
+      "shell",
+      "interpreter",
+      "script",
+      "import statement",
+      "PATH",
+      "syntax",
+      "traceback"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 572
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Open every stage definition first, then sort real messages onto the visible sequence with one attempt each and immediate feedback",
+    "keyQuestions": [
+      "Which messages come from the shell, and which come from Python?",
+      "Why does a SyntaxError appear before any print output?",
+      "Why does a missing module show up only when its import line runs?"
+    ],
+    "commonMisconceptions": [
+      "Python checks the whole program for every kind of error before running any line",
+      "command not found is a Python error",
+      "A ModuleNotFoundError means the module file is broken"
+    ],
+    "assessmentOpportunities": [
+      "Five committed stage choices, one attempt each; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Stage",
+        "values": [
+          "Choose a stage",
+          "1 to 6, the six stages in order"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start sorting / Check / Next message / See score / Try again"
+      },
+      {
+        "type": "canvas click",
+        "label": "Click a stage row to open it or to choose it as the answer"
+      }
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "title": "Encoder Resolution Reader",
+  "creator": "Dan McCreary",
+  "subject": "Sensors for Robotics",
+  "description": "Turn a shaft and change the number of encoder bits, and watch the step number, the step size and the reported angle on a dial with a magnified strip that shows single steps. Then solve five problems on step size, steps and degrees, and speed from two readings. Used in Chapter 5.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/encoder-resolution-reader/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Encoder resolution, steps and degrees",
+    "learningObjectives": [
+      "Calculate the step size of an encoder, convert between encoder steps and degrees, and find a speed from two position readings, to within 1 percent, in five problems, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "encoder",
+      "magnetic encoder",
+      "absolute and incremental encoders",
+      "resolution",
+      "bits",
+      "position feedback",
+      "velocity feedback"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 590
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "See the steps appear on a magnified strip as the shaft turns, then apply the conversions to new numbers with an immediate check",
+    "keyQuestions": [
+      "What happens to the size of one step when you add one bit?",
+      "Why does the reported angle sometimes differ from the shaft angle?"
+    ],
+    "commonMisconceptions": [
+      "More bits means a larger step",
+      "The encoder reports total turns",
+      "A fine encoder is an accurate joint"
+    ],
+    "assessmentOpportunities": [
+      "Five typed answers, one attempt each; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Encoder bits",
+        "range": "8 to 16, step 1, default 12"
+      },
+      {
+        "type": "slider",
+        "label": "Shaft angle",
+        "range": "0 to 359.9 degrees, step 0.1, default 90"
+      },
+      {
+        "type": "input",
+        "label": "Your answer",
+        "range": "0 to 10000, step 0.00001, no default"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next problem"
+      }
+    ]
+  }
+}

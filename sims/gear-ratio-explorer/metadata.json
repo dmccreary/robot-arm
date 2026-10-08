@@ -1,0 +1,111 @@
+{
+  "title": "Gear Ratio Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Actuators for Robotics",
+  "description": "Set a gear ratio, a motor speed, a motor torque and an efficiency, and watch a small motor gear turn many times for each turn of the output while the output speed and torque update. Then solve five gear problems. Used in Chapter 5.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/gear-ratio-explorer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Gear ratio, speed, torque and efficiency",
+    "learningObjectives": [
+      "Calculate the output speed or torque of a geared actuator, or the motor speed or torque behind it, from the gear ratio and efficiency, to within 2 percent, in five problems, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "torque",
+      "motor speed",
+      "gearbox",
+      "gear ratio",
+      "stall torque",
+      "efficiency",
+      "newton-metre"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 660
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "See the motor turn many times for each output turn, then apply the two gear formulas to new numbers with an immediate check",
+    "keyQuestions": [
+      "What happens to the output speed and the output torque when N doubles?",
+      "Where does the missing torque go when the efficiency is 60 percent?"
+    ],
+    "commonMisconceptions": [
+      "A higher gear ratio makes the output faster",
+      "Gears create torque from nothing",
+      "Efficiency does not matter"
+    ],
+    "assessmentOpportunities": [
+      "Five typed answers, one attempt each; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Gear ratio N",
+        "range": "1 to 400, step 1, default 100"
+      },
+      {
+        "type": "slider",
+        "label": "Motor speed",
+        "range": "0 to 20000 rpm, step 100, default 12000"
+      },
+      {
+        "type": "slider",
+        "label": "Motor torque",
+        "range": "0 to 50 mN·m, step 1, default 10"
+      },
+      {
+        "type": "slider",
+        "label": "Efficiency",
+        "range": "20 to 100 percent, step 5, default 60"
+      },
+      {
+        "type": "input",
+        "label": "Your answer",
+        "range": "0 to 100000, step 0.01, no default"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next problem"
+      }
+    ]
+  }
+}

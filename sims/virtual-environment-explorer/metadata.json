@@ -1,0 +1,115 @@
+{
+  "title": "Virtual Environment Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Python for Robotics",
+  "description": "Predict what an import or a pip install does in eight terminal situations while the package lists of system Python and two virtual environments stay in view, then run your own commands. Used in Chapter 1.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/virtual-environment-explorer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Virtual environments, the active environment and pip",
+    "learningObjectives": [
+      "Infer what an import or a pip command does in each of eight terminal situations, given which environment is active and which packages each environment contains, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "virtual environment",
+      "active environment",
+      "system Python",
+      "pip",
+      "package",
+      "library",
+      "ModuleNotFoundError"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 600
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Commit a prediction first, then watch a pretend shell run the command against three visible package lists; free exploration follows the eight scenarios",
+    "keyQuestions": [
+      "Which package list does Python look in when you type import?",
+      "Where does pip install put a library?",
+      "Why can old-project keep numpy 1.26 while arm-lab has numpy 2.1?"
+    ],
+    "commonMisconceptions": [
+      "pip install installs a library for the whole computer",
+      "A library installed in one project environment is available to other projects",
+      "The environment folder holds the project code"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed predictions, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Predict (8 scenarios)",
+          "Explore (after scenario 8)"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Three answer buttons: a, b and c"
+      },
+      {
+        "type": "button",
+        "label": "Next scenario / See score / Try again"
+      },
+      {
+        "type": "select",
+        "label": "Command (Explore mode)",
+        "values": [
+          "activate arm-lab",
+          "activate old-project",
+          "deactivate",
+          "pip install numpy",
+          "pip install pyserial",
+          "pip install matplotlib",
+          "python -c \"import numpy\"",
+          "python -c \"import serial\"",
+          "python -c \"import matplotlib\"",
+          "pip list"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Run (Explore mode)"
+      },
+      {
+        "type": "button",
+        "label": "Reset (Explore mode)"
+      }
+    ]
+  }
+}

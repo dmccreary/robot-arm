@@ -1,0 +1,94 @@
+{
+  "title": "Agent or Workflow Sorter",
+  "creator": "Dan McCreary",
+  "subject": "AI Agents for Robotics",
+  "description": "Sort eight described systems into four classes: ordinary program, chatbot, workflow or agent. The deciding question is who chooses the next step, the code or the model, and whether there are tools. Used in Chapter 15.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/agent-or-workflow-sorter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Ordinary programs, chatbots, workflows and agents",
+    "learningObjectives": [
+      "Classify eight described systems as an ordinary program, a chatbot, a workflow or an agent, according to who decides the next step and whether tools are used, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "large language model",
+      "AI agent",
+      "agent loop",
+      "tool",
+      "workflow"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 508
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Classify examples by one rule, with the correct class and the reason shown after each commit",
+    "keyQuestions": [
+      "Who decides the next step, the code or the model?",
+      "Does the system have a model, and does the model have tools?"
+    ],
+    "commonMisconceptions": [
+      "Any program that uses a language model is an agent",
+      "A chatbot with a tool is a workflow",
+      "A fixed sequence is safe because it uses a model"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed classifications; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight systems"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Ordinary program",
+          "Chatbot",
+          "Workflow",
+          "Agent"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next system / See score / Try again"
+      }
+    ]
+  }
+}

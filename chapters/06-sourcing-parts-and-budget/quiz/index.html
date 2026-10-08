@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/06-sourcing-parts-and-budget/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-sourcing-parts-and-planning-a-budget" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-python-setup-for-robotics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Setting Up Python for Robotics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-anatomy-of-a-robot-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-electricity-power-and-safety/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Electricity, Power, and Safety Basics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-serial-and-can-communication/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Serial and CAN Communication
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-actuators-and-sensors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Actuators and Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    6. Sourcing Parts and Planning a Budget
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            6. Sourcing Parts and Planning a Budget
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-does-the-term-landed-cost-mean-for-a-parts-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What does the term "landed cost" mean for a parts order?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-a-build-needs-several-parts-that-arrive-at-different-times-what-sets-the-date-on-which-you-can-start-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. A build needs several parts that arrive at different times. What sets the date on which you can start assembly?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-marketplace-order-has-a-sticker-price-of-12000-shipping-of-1800-sales-tax-of-960-and-a-retail-delivery-fee-of-050-what-is-the-landed-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A marketplace order has a sticker price of $120.00, shipping of $18.00, sales tax of $9.60, and a retail delivery fee of $0.50. What is the landed cost?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-class-of-16-students-works-in-pairs-and-each-pair-builds-one-leader-and-follower-set-that-needs-12-servos-the-teacher-adds-a-10-percent-spare-allowance-rounded-up-how-many-servos-should-the-class-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. A class of 16 students works in pairs, and each pair builds one leader-and-follower set that needs 12 servos. The teacher adds a 10 percent spare allowance, rounded up. How many servos should the class order?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-would-ordering-twelve-servos-with-the-same-part-code-c001-be-a-mistake-for-a-leader-and-follower-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why would ordering twelve servos with the same part code (C001) be a mistake for a leader and follower pair?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-does-reading-a-servos-model-number-register-only-partly-verify-that-the-servo-is-genuine" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why does reading a servo's model number register only partly verify that the servo is genuine?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-which-item-does-the-listing-for-the-so-arm101-motor-kit-used-in-this-project-state-is-not-included" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Which item does the listing for the SO-ARM101 motor kit used in this project state is not included?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-seeeds-guide-lists-the-dm4310-with-a-rated-torque-of-3-nm-and-a-peak-of-7-nm-a-resellers-listing-for-a-dm-j4310-2ec-v12-gives-35-nm-rated-and-125-nm-peak-what-is-the-best-way-to-handle-the-disagreement" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Seeed's guide lists the DM4310 with a rated torque of 3 N·m and a peak of 7 N·m. A reseller's listing for a DM-J4310-2EC V1.2 gives 3.5 N·m rated and 12.5 N·m peak. What is the best way to handle the disagreement?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-which-substitution-is-safe-according-to-the-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Which substitution is safe according to the chapter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-an-order-is-placed-on-2026-10-06-the-parts-have-transit-times-of-14-days-5-days-and-30-days-on-which-date-can-you-start-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. An order is placed on 2026-10-06. The parts have transit times of 14 days, 5 days, and 30 days. On which date can you start building?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-printing-fasteners-and-tools/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. 3D Printing, Fasteners, and Tools
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-building-the-so-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Building and Calibrating the SO-ARM100
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-building-the-rebot-devarm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Building the reBot-DevArm and Choosing a Platform
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-python-hardware-library/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. A Python Hardware Library for Robot Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-moving-the-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-kinematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Kinematics: Where Is the Hand and How Do I Get There
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-logging-testing-simulation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Logging, Testing, Simulation, and ROS 2
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-perception-and-learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Cameras, Perception, and Learning from Demonstration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-agents-and-openclaw-skills/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. AI Agents, Tools, and OpenClaw Skills
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-agent-planning-and-vision/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. Agent Planning, Vision, and Interfaces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-agent-safety-and-evaluation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Safety Layers and Evaluation for Agent-Controlled Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-projects-operation-and-teaching/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Projects, Operation, and Teaching
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-advanced-arm-path-mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Optional Advanced Chapter: The Mathematics of Arm Paths
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-does-the-term-landed-cost-mean-for-a-parts-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What does the term "landed cost" mean for a parts order?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-a-build-needs-several-parts-that-arrive-at-different-times-what-sets-the-date-on-which-you-can-start-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. A build needs several parts that arrive at different times. What sets the date on which you can start assembly?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-marketplace-order-has-a-sticker-price-of-12000-shipping-of-1800-sales-tax-of-960-and-a-retail-delivery-fee-of-050-what-is-the-landed-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A marketplace order has a sticker price of $120.00, shipping of $18.00, sales tax of $9.60, and a retail delivery fee of $0.50. What is the landed cost?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-class-of-16-students-works-in-pairs-and-each-pair-builds-one-leader-and-follower-set-that-needs-12-servos-the-teacher-adds-a-10-percent-spare-allowance-rounded-up-how-many-servos-should-the-class-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. A class of 16 students works in pairs, and each pair builds one leader-and-follower set that needs 12 servos. The teacher adds a 10 percent spare allowance, rounded up. How many servos should the class order?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-would-ordering-twelve-servos-with-the-same-part-code-c001-be-a-mistake-for-a-leader-and-follower-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why would ordering twelve servos with the same part code (C001) be a mistake for a leader and follower pair?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-does-reading-a-servos-model-number-register-only-partly-verify-that-the-servo-is-genuine" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why does reading a servo's model number register only partly verify that the servo is genuine?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-which-item-does-the-listing-for-the-so-arm101-motor-kit-used-in-this-project-state-is-not-included" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Which item does the listing for the SO-ARM101 motor kit used in this project state is not included?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-seeeds-guide-lists-the-dm4310-with-a-rated-torque-of-3-nm-and-a-peak-of-7-nm-a-resellers-listing-for-a-dm-j4310-2ec-v12-gives-35-nm-rated-and-125-nm-peak-what-is-the-best-way-to-handle-the-disagreement" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Seeed's guide lists the DM4310 with a rated torque of 3 N·m and a peak of 7 N·m. A reseller's listing for a DM-J4310-2EC V1.2 gives 3.5 N·m rated and 12.5 N·m peak. What is the best way to handle the disagreement?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-which-substitution-is-safe-according-to-the-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Which substitution is safe according to the chapter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-an-order-is-placed-on-2026-10-06-the-parts-have-transit-times-of-14-days-5-days-and-30-days-on-which-date-can-you-start-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. An order is placed on 2026-10-06. The parts have transit times of 14 days, 5 days, and 30 days. On which date can you start building?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/06-sourcing-parts-and-budget/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-sourcing-parts-and-planning-a-budget">Quiz: Sourcing Parts and Planning a Budget<a class="headerlink" href="#quiz-sourcing-parts-and-planning-a-budget" title="Permanent link">&para;</a></h1>
+<p>Test your understanding of bills of materials, ways to buy, landed cost, lead time, and sourcing pitfalls with these review questions.</p>
+<hr />
+<h4 id="1-what-does-the-term-landed-cost-mean-for-a-parts-order">1. What does the term "landed cost" mean for a parts order?<a class="headerlink" href="#1-what-does-the-term-landed-cost-mean-for-a-parts-order" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The sticker price shown on the seller's listing</li>
+<li>The price of the parts in the bill of materials, without any shipping</li>
+<li>The sticker price plus shipping, tax, and fees, as it arrives at your door</li>
+<li>The price after any refund for returned or broken parts</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The landed cost is the number that appears on your card statement. For the project's SO-ARM101 motor kit it was $258.94 + $46.55 + $26.05 + $0.50 = $332.04, an overhead of about 28.2 percent over the sticker price. Quote landed costs to students and parents, and keep the sticker price in a separate column so that you can see how much the extras added.</p>
+<p><strong>Concept Tested:</strong> Total Build Cost</p>
+<p><strong>See:</strong> <a href="../#total-build-cost-and-budgeting">Total Build Cost and Budgeting</a></p>
+</details>
+<hr />
+<h4 id="2-a-build-needs-several-parts-that-arrive-at-different-times-what-sets-the-date-on-which-you-can-start-assembly">2. A build needs several parts that arrive at different times. What sets the date on which you can start assembly?<a class="headerlink" href="#2-a-build-needs-several-parts-that-arrive-at-different-times-what-sets-the-date-on-which-you-can-start-assembly" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The slowest part, because you cannot start without the last one</li>
+<li>The average arrival date of all the parts</li>
+<li>The fastest part, because it starts the clock</li>
+<li>The seller's processing time for the first order placed</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Lead time is the time from placing an order to receiving the goods, made up of processing time and transit time. For a build, it is set by the slowest part. The chapter's <code>max(arrivals.values())</code> line expresses this in Python. A listing usually shows only one estimate, so ask the seller or read the shipping options before you pay.</p>
+<p><strong>Concept Tested:</strong> Lead Time</p>
+<p><strong>See:</strong> <a href="../#lead-time-and-order-tracking">Lead Time and Order Tracking</a></p>
+</details>
+<hr />
+<h4 id="3-a-marketplace-order-has-a-sticker-price-of-12000-shipping-of-1800-sales-tax-of-960-and-a-retail-delivery-fee-of-050-what-is-the-landed-cost">3. A marketplace order has a sticker price of $120.00, shipping of $18.00, sales tax of $9.60, and a retail delivery fee of $0.50. What is the landed cost?<a class="headerlink" href="#3-a-marketplace-order-has-a-sticker-price-of-12000-shipping-of-1800-sales-tax-of-960-and-a-retail-delivery-fee-of-050-what-is-the-landed-cost" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>$129.60</li>
+<li>$148.10</li>
+<li>$147.60</li>
+<li>$138.00</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The landed cost is the sum of the sticker price and every extra: 120.00 + 18.00 + 9.60 + 0.50 = $148.10. That is $28.10 above the sticker price, an overhead of about 23.4 percent. Option A leaves out shipping and the fee, option C leaves out only the $0.50 fee, and option D leaves out the tax and the fee. In <code>armlab/budget.py</code>, the <code>landed_cost</code> function does this addition.</p>
+<p><strong>Concept Tested:</strong> Shipping and Customs</p>
+<p><strong>See:</strong> <a href="../#shipping-and-customs">Shipping and Customs</a></p>
+</details>
+<hr />
+<h4 id="4-a-class-of-16-students-works-in-pairs-and-each-pair-builds-one-leader-and-follower-set-that-needs-12-servos-the-teacher-adds-a-10-percent-spare-allowance-rounded-up-how-many-servos-should-the-class-order">4. A class of 16 students works in pairs, and each pair builds one leader-and-follower set that needs 12 servos. The teacher adds a 10 percent spare allowance, rounded up. How many servos should the class order?<a class="headerlink" href="#4-a-class-of-16-students-works-in-pairs-and-each-pair-builds-one-leader-and-follower-set-that-needs-12-servos-the-teacher-adds-a-10-percent-spare-allowance-rounded-up-how-many-servos-should-the-class-order" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>96</li>
+<li>105</li>
+<li>116</li>
+<li>106</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. Sixteen students in pairs make 8 sets, and 8 × 12 = 96 servos. Ten percent of 96 is 9.6, which rounds up to 10 spares, so the class orders 106. Option A forgets the spares, and option B rounds the spares down to 9. Rounding down leaves the class short of a motor. Option C adds 10 spares per set instead of 10 percent of the total.</p>
+<p><strong>Concept Tested:</strong> Classroom Parts Order</p>
+<p><strong>See:</strong> <a href="../#classroom-parts-orders">Classroom Parts Orders</a></p>
+</details>
+<hr />
+<h4 id="5-why-would-ordering-twelve-servos-with-the-same-part-code-c001-be-a-mistake-for-a-leader-and-follower-pair">5. Why would ordering twelve servos with the same part code (C001) be a mistake for a leader and follower pair?<a class="headerlink" href="#5-why-would-ordering-twelve-servos-with-the-same-part-code-c001-be-a-mistake-for-a-leader-and-follower-pair" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The leader uses mixed gear ratios, so some servos have different part codes</li>
+<li>The C001 servo is the 12 V version, which the leader cannot use</li>
+<li>The leader arm uses hobby PWM servos instead of bus servos</li>
+<li>Twelve servos are too many for one pair of arms</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The same STS3215 motor is sold in different gear ratios with different part codes. The follower uses 1/345 throughout, while the leader mixes 1/191 (C044), 1/147 (C046), and 1/345, as Chapter 2 described. Twelve servos is exactly right for a pair, and the leader's motors are always 7.4 V. Reading the BOM lines, and not just the picture, prevents this error.</p>
+<p><strong>Concept Tested:</strong> Bill of Materials</p>
+<p><strong>See:</strong> <a href="../#reading-a-bill-of-materials">Reading a Bill of Materials</a></p>
+</details>
+<hr />
+<h4 id="6-why-does-reading-a-servos-model-number-register-only-partly-verify-that-the-servo-is-genuine">6. Why does reading a servo's model number register only partly verify that the servo is genuine?<a class="headerlink" href="#6-why-does-reading-a-servos-model-number-register-only-partly-verify-that-the-servo-is-genuine" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The register exists only on counterfeit servos</li>
+<li>The model number cannot be read over the bus</li>
+<li>A clone can copy the number, so a match proves little, but a wrong number proves the part is not what the listing said</li>
+<li>The model number changes with the gear ratio, so it differs on every servo</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The model number sits at address 3 with a size of 2 bytes, and LeRobot's tables list 777 for the STS3215. A counterfeit can copy that value, so a match does not prove the part is genuine. A wrong number, such as 2825 in the lab, proves that the servo is a different model from the one on the listing. Finding that on arrival is far cheaper than finding it after the build.</p>
+<p><strong>Concept Tested:</strong> Counterfeit Parts</p>
+<p><strong>See:</strong> <a href="../#pitfalls">Pitfalls</a></p>
+</details>
+<hr />
+<h4 id="7-which-item-does-the-listing-for-the-so-arm101-motor-kit-used-in-this-project-state-is-not-included">7. Which item does the listing for the SO-ARM101 motor kit used in this project state is <em>not</em> included?<a class="headerlink" href="#7-which-item-does-the-listing-for-the-so-arm101-motor-kit-used-in-this-project-state-is-not-included" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The twelve STS3215 servos</li>
+<li>The two motor control boards</li>
+<li>The two power supplies</li>
+<li>The 3D-printed parts</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The kit build comes with the servos, boards, power supplies, and cables, and the listing states plainly that the 3D-printed parts are not included. The frame comes separately, either printed at home, from a printing service, or as a ready-made set. Reading the "includes" and "does not include" lines before paying, and ticking each BOM line against them, finds these gaps while they are still cheap to fix.</p>
+<p><strong>Concept Tested:</strong> Kit Build</p>
+<p><strong>See:</strong> <a href="../#ways-to-buy">Ways to Buy</a></p>
+</details>
+<hr />
+<h4 id="8-seeeds-guide-lists-the-dm4310-with-a-rated-torque-of-3-nm-and-a-peak-of-7-nm-a-resellers-listing-for-a-dm-j4310-2ec-v12-gives-35-nm-rated-and-125-nm-peak-what-is-the-best-way-to-handle-the-disagreement">8. Seeed's guide lists the DM4310 with a rated torque of 3 N·m and a peak of 7 N·m. A reseller's listing for a DM-J4310-2EC V1.2 gives 3.5 N·m rated and 12.5 N·m peak. What is the best way to handle the disagreement?<a class="headerlink" href="#8-seeeds-guide-lists-the-dm4310-with-a-rated-torque-of-3-nm-and-a-peak-of-7-nm-a-resellers-listing-for-a-dm-j4310-2ec-v12-gives-35-nm-rated-and-125-nm-peak-what-is-the-best-way-to-handle-the-disagreement" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Average the two sets of values and design around the result</li>
+<li>Treat both as claims, since they may describe different revisions or one may be wrong, then find the primary datasheet and record which source you trusted</li>
+<li>Trust the reseller's numbers, because a higher peak gives more safety margin</li>
+<li>Trust the cheaper listing, because the lowest price is the best evidence of a genuine part</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Specifications in articles, listings, and even repositories can disagree. The safest habit is to treat each number as a claim until two independent sources agree, find the primary source such as the datasheet or the maker's documentation, and write down which source you trusted and when. The two listings could describe different revisions. Averaging, or choosing the larger number, builds on a value nobody has verified.</p>
+<p><strong>Concept Tested:</strong> Fact-Checking Specifications</p>
+<p><strong>See:</strong> <a href="../#fact-checking-specifications">Fact-Checking Specifications</a></p>
+</details>
+<hr />
+<h4 id="9-which-substitution-is-safe-according-to-the-chapter">9. Which substitution is safe according to the chapter?<a class="headerlink" href="#9-which-substitution-is-safe-according-to-the-chapter" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A servo with a different gear ratio for a leader arm joint</li>
+<li>A 12 V servo on a 5 V supply because it is the same size</li>
+<li>A power supply with the same voltage and polarity but a higher current rating</li>
+<li>A servo board for hobby PWM servos in a build of bus servos</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A substitute is safe when you can show from datasheets that every number that matters is equal or better. A supply with the same voltage and polarity and a larger current rating is correct, because the load decides how much current flows (Chapter 3). A different gear ratio changes how the joint moves and breaks the leader and follower match. The other options are incompatible parts, which are the most expensive mistake.</p>
+<p><strong>Concept Tested:</strong> Substitute Parts</p>
+<p><strong>See:</strong> <a href="../#pitfalls">Pitfalls</a></p>
+</details>
+<hr />
+<h4 id="10-an-order-is-placed-on-2026-10-06-the-parts-have-transit-times-of-14-days-5-days-and-30-days-on-which-date-can-you-start-building">10. An order is placed on 2026-10-06. The parts have transit times of 14 days, 5 days, and 30 days. On which date can you start building?<a class="headerlink" href="#10-an-order-is-placed-on-2026-10-06-the-parts-have-transit-times-of-14-days-5-days-and-30-days-on-which-date-can-you-start-building" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>2026-11-05</li>
+<li>2026-10-20</li>
+<li>2026-10-11</li>
+<li>2026-10-26</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The slowest part decides the start date, so add 30 days to October 6. October has 31 days, so 25 days brings the date to October 31, and the remaining 5 days land on November 5. Option B is the date of the 14-day part, and option C is the date of the 5-day part. In Python, <code>date(2026, 10, 6) + timedelta(days=30)</code> gives the same result.</p>
+<p><strong>Concept Tested:</strong> Order Tracking</p>
+<p><strong>See:</strong> <a href="../#lead-time-and-order-tracking">Lead Time and Order Tracking</a></p>
+</details>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

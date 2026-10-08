@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/10-python-hardware-library/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-a-python-hardware-library-for-robot-arms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-python-setup-for-robotics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Setting Up Python for Robotics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-anatomy-of-a-robot-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-electricity-power-and-safety/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Electricity, Power, and Safety Basics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-serial-and-can-communication/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Serial and CAN Communication
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-actuators-and-sensors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Actuators and Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-sourcing-parts-and-budget/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Sourcing Parts and Planning a Budget
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-printing-fasteners-and-tools/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. 3D Printing, Fasteners, and Tools
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-building-the-so-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Building and Calibrating the SO-ARM100
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-building-the-rebot-devarm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Building the reBot-DevArm and Choosing a Platform
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_11" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    10. A Python Hardware Library for Robot Arms
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_11" id="__nav_5_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_11">
+            <span class="md-nav__icon md-icon"></span>
+            10. A Python Hardware Library for Robot Arms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-does-python-do-when-you-try-to-create-an-object-from-a-subclass-of-an-abstract-base-class-that-has-not-filled-in-every-abstractmethod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What does Python do when you try to create an object from a subclass of an abstract base class that has not filled in every @abstractmethod?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-arm-classs-__exit__-method-returns-false-what-does-that-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. The Arm class's __exit__ method returns False. What does that mean?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-joints-calibrated-range-is-raw-1000-to-3000-so-its-middle-is-2000-there-are-4095360-11375-steps-per-degree-a-raw-reading-of-2228-corresponds-to-what-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A joint's calibrated range is raw 1000 to 3000, so its middle is 2000. There are 4095/360 ≈ 11.375 steps per degree. A raw reading of 2228 corresponds to what angle?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-shoulder-pans-calibrated-range-is-raw-742-to-3242-with-a-middle-of-1992-a-driver-is-asked-to-write-a-target-of-150-degrees-which-raw-value-does-deg_to_raw-produce" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The shoulder pan's calibrated range is raw 742 to 3242 with a middle of 1992. A driver is asked to write a target of 150 degrees. Which raw value does deg_to_raw produce?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-program-calls-armconnect-then-armmove_to-and-the-write-raises-a-communicationerror-that-the-program-catches-there-is-no-with-block-and-no-finally-what-is-the-state-of-the-torque-afterward" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A program calls arm.connect(), then arm.move_to(...), and the write raises a CommunicationError that the program catches. There is no with block and no finally. What is the state of the torque afterward?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-is-the-joint-limit-check-written-in-the-arm-base-class-and-not-in-each-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why is the joint-limit check written in the Arm base class and not in each driver?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-does-the-rule-convert-at-the-edge-mean-for-the-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What does the rule "convert at the edge" mean for the library?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-why-does-feetecharm-catch-a-low-level-valueerror-and-raise-a-communicationerror-using-raise-from-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Why does FeetechArm catch a low-level ValueError and raise a CommunicationError using raise ... from error?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-a-teammates-program-contains-if-isinstancearm-feetecharm-before-it-moves-a-joint-what-does-this-indicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. A teammate's program contains if isinstance(arm, FeetechArm): before it moves a joint. What does this indicate?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-in-the-lab-the-fake-arm-reads-exactly-000-degrees-at-the-start-but-the-rebot-driver-on-the-pretend-can-bus-reads-001-degrees-for-the-same-starting-pose-what-best-explains-the-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. In the lab, the fake arm reads exactly 0.00 degrees at the start, but the reBot driver on the pretend CAN bus reads −0.01 degrees for the same starting pose. What best explains the difference?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-moving-the-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-kinematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Kinematics: Where Is the Hand and How Do I Get There
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-logging-testing-simulation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Logging, Testing, Simulation, and ROS 2
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-perception-and-learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Cameras, Perception, and Learning from Demonstration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-agents-and-openclaw-skills/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. AI Agents, Tools, and OpenClaw Skills
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-agent-planning-and-vision/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. Agent Planning, Vision, and Interfaces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-agent-safety-and-evaluation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Safety Layers and Evaluation for Agent-Controlled Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-projects-operation-and-teaching/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Projects, Operation, and Teaching
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-advanced-arm-path-mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Optional Advanced Chapter: The Mathematics of Arm Paths
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-does-python-do-when-you-try-to-create-an-object-from-a-subclass-of-an-abstract-base-class-that-has-not-filled-in-every-abstractmethod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What does Python do when you try to create an object from a subclass of an abstract base class that has not filled in every @abstractmethod?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-arm-classs-__exit__-method-returns-false-what-does-that-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. The Arm class's __exit__ method returns False. What does that mean?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-joints-calibrated-range-is-raw-1000-to-3000-so-its-middle-is-2000-there-are-4095360-11375-steps-per-degree-a-raw-reading-of-2228-corresponds-to-what-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A joint's calibrated range is raw 1000 to 3000, so its middle is 2000. There are 4095/360 ≈ 11.375 steps per degree. A raw reading of 2228 corresponds to what angle?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-shoulder-pans-calibrated-range-is-raw-742-to-3242-with-a-middle-of-1992-a-driver-is-asked-to-write-a-target-of-150-degrees-which-raw-value-does-deg_to_raw-produce" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The shoulder pan's calibrated range is raw 742 to 3242 with a middle of 1992. A driver is asked to write a target of 150 degrees. Which raw value does deg_to_raw produce?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-program-calls-armconnect-then-armmove_to-and-the-write-raises-a-communicationerror-that-the-program-catches-there-is-no-with-block-and-no-finally-what-is-the-state-of-the-torque-afterward" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A program calls arm.connect(), then arm.move_to(...), and the write raises a CommunicationError that the program catches. There is no with block and no finally. What is the state of the torque afterward?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-is-the-joint-limit-check-written-in-the-arm-base-class-and-not-in-each-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why is the joint-limit check written in the Arm base class and not in each driver?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-does-the-rule-convert-at-the-edge-mean-for-the-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What does the rule "convert at the edge" mean for the library?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-why-does-feetecharm-catch-a-low-level-valueerror-and-raise-a-communicationerror-using-raise-from-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Why does FeetechArm catch a low-level ValueError and raise a CommunicationError using raise ... from error?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-a-teammates-program-contains-if-isinstancearm-feetecharm-before-it-moves-a-joint-what-does-this-indicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. A teammate's program contains if isinstance(arm, FeetechArm): before it moves a joint. What does this indicate?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-in-the-lab-the-fake-arm-reads-exactly-000-degrees-at-the-start-but-the-rebot-driver-on-the-pretend-can-bus-reads-001-degrees-for-the-same-starting-pose-what-best-explains-the-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. In the lab, the fake arm reads exactly 0.00 degrees at the start, but the reBot driver on the pretend CAN bus reads −0.01 degrees for the same starting pose. What best explains the difference?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/10-python-hardware-library/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-a-python-hardware-library-for-robot-arms">Quiz: A Python Hardware Library for Robot Arms<a class="headerlink" href="#quiz-a-python-hardware-library-for-robot-arms" title="Permanent link">&para;</a></h1>
+<p>Test your understanding of unit conversion, class interfaces, drivers, fake arms, and exception handling for hardware with these review questions.</p>
+<hr />
+<h4 id="1-what-does-python-do-when-you-try-to-create-an-object-from-a-subclass-of-an-abstract-base-class-that-has-not-filled-in-every-abstractmethod">1. What does Python do when you try to create an object from a subclass of an abstract base class that has not filled in every <code>@abstractmethod</code>?<a class="headerlink" href="#1-what-does-python-do-when-you-try-to-create-an-object-from-a-subclass-of-an-abstract-base-class-that-has-not-filled-in-every-abstractmethod" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>It creates the object, and fails later when the missing method is called</li>
+<li>It refuses to create the object, so the missing method is caught when the program starts</li>
+<li>It fills in a default version of each missing method</li>
+<li>It silently skips the missing methods</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A class that inherits from <code>ABC</code> and marks methods with <code>@abstractmethod</code> cannot be used directly, and neither can a subclass that leaves any abstract method unfilled. The check catches a missing method when the program starts and not in the middle of a move. This is how the <code>Arm</code> class forces every driver to supply <code>_open</code>, <code>_close</code>, <code>_read</code>, and <code>_write</code>.</p>
+<p><strong>Concept Tested:</strong> Class Interface</p>
+<p><strong>See:</strong> <a href="../#class-interface">Class Interface</a></p>
+</details>
+<hr />
+<h4 id="2-the-arm-classs-__exit__-method-returns-false-what-does-that-mean">2. The <code>Arm</code> class's <code>__exit__</code> method returns <code>False</code>. What does that mean?<a class="headerlink" href="#2-the-arm-classs-__exit__-method-returns-false-what-does-that-mean" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Any error raised inside the <code>with</code> block is suppressed</li>
+<li>The <code>with</code> block restarts from the beginning</li>
+<li>The arm disconnects a second time</li>
+<li>The error is not hidden and continues upward after the arm disconnects</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. A context manager's <code>__exit__</code> runs at the end of the block, always, even when an error was raised inside. Returning <code>False</code> means "do not hide the error," so the exception continues to the caller after the arm has been disconnected and its torque switched off. Returning <code>True</code> would swallow the error and let the program carry on as if nothing had happened, which is dangerous for a machine.</p>
+<p><strong>Concept Tested:</strong> Context Manager</p>
+<p><strong>See:</strong> <a href="../#try-finally-and-the-with-statement">Try, Finally, and the With Statement</a></p>
+</details>
+<hr />
+<h4 id="3-a-joints-calibrated-range-is-raw-1000-to-3000-so-its-middle-is-2000-there-are-4095360-11375-steps-per-degree-a-raw-reading-of-2228-corresponds-to-what-angle">3. A joint's calibrated range is raw 1000 to 3000, so its middle is 2000. There are 4095/360 ≈ 11.375 steps per degree. A raw reading of 2228 corresponds to what angle?<a class="headerlink" href="#3-a-joints-calibrated-range-is-raw-1000-to-3000-so-its-middle-is-2000-there-are-4095360-11375-steps-per-degree-a-raw-reading-of-2228-corresponds-to-what-angle" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>About 20.0 degrees</li>
+<li>About 15.8 degrees</li>
+<li>About 195.9 degrees</li>
+<li>About 228 degrees</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The conversion is degrees = (raw − middle) / (4095 / 360). The middle is (1000 + 3000) / 2 = 2000, so (2228 − 2000) / 11.375 ≈ 20.0 degrees. Option B uses 2048 as the middle instead of the calibrated middle, option C forgets to subtract the middle, and option D forgets to divide. The raw number means nothing without the joint's calibration.</p>
+<p><strong>Concept Tested:</strong> Unit Conversion</p>
+<p><strong>See:</strong> <a href="../#unit-conversion">Unit Conversion</a></p>
+</details>
+<hr />
+<h4 id="4-the-shoulder-pans-calibrated-range-is-raw-742-to-3242-with-a-middle-of-1992-a-driver-is-asked-to-write-a-target-of-150-degrees-which-raw-value-does-deg_to_raw-produce">4. The shoulder pan's calibrated range is raw 742 to 3242 with a middle of 1992. A driver is asked to write a target of 150 degrees. Which raw value does <code>deg_to_raw</code> produce?<a class="headerlink" href="#4-the-shoulder-pans-calibrated-range-is-raw-742-to-3242-with-a-middle-of-1992-a-driver-is-asked-to-write-a-target-of-150-degrees-which-raw-value-does-deg_to_raw-produce" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>3698</li>
+<li>2504</li>
+<li>3242</li>
+<li>150</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The unclamped calculation gives 1992 + 150 × 11.375 ≈ 3698, which is outside the calibrated range. The conversion function keeps the raw value inside the range, so it is held at 3242, which reads back as 109.89 degrees. Option B is the raw value for 45 degrees. In the library, the <code>Arm</code> base class also rejects a 150-degree target earlier with a <code>JointLimitError</code>.</p>
+<p><strong>Concept Tested:</strong> Raw Servo Units</p>
+<p><strong>See:</strong> <a href="../#unit-conversion">Unit Conversion</a></p>
+</details>
+<hr />
+<h4 id="5-a-program-calls-armconnect-then-armmove_to-and-the-write-raises-a-communicationerror-that-the-program-catches-there-is-no-with-block-and-no-finally-what-is-the-state-of-the-torque-afterward">5. A program calls <code>arm.connect()</code>, then <code>arm.move_to(...)</code>, and the write raises a <code>CommunicationError</code> that the program catches. There is no <code>with</code> block and no <code>finally</code>. What is the state of the torque afterward?<a class="headerlink" href="#5-a-program-calls-armconnect-then-armmove_to-and-the-write-raises-a-communicationerror-that-the-program-catches-there-is-no-with-block-and-no-finally-what-is-the-state-of-the-torque-afterward" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Off, because an exception automatically calls <code>disconnect</code></li>
+<li>Still on, because nothing ever called <code>disconnect</code></li>
+<li>Off, because the fake arm resets itself after a failure</li>
+<li>Undefined, because Python cannot catch errors from hardware</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Catching the error does not clean up. The torque comes on in <code>_open</code> and goes off only in <code>_close</code>, which runs from <code>disconnect</code>. In the lab's case 4, the torque is still on after the failure, with the motors holding and nobody commanding them. In case 3, with a <code>with arm:</code> block, the same failure leaves the torque off. Use <code>with</code> or <code>try</code> and <code>finally</code> every time.</p>
+<p><strong>Concept Tested:</strong> Try Finally</p>
+<p><strong>See:</strong> <a href="../#try-finally-and-the-with-statement">Try, Finally, and the With Statement</a></p>
+</details>
+<hr />
+<h4 id="6-why-is-the-joint-limit-check-written-in-the-arm-base-class-and-not-in-each-driver">6. Why is the joint-limit check written in the <code>Arm</code> base class and not in each driver?<a class="headerlink" href="#6-why-is-the-joint-limit-check-written-in-the-arm-base-class-and-not-in-each-driver" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The check runs faster in the base class than in a driver</li>
+<li>Python does not allow a subclass to compare numbers</li>
+<li>The limits are stored only in the fake arm</li>
+<li>A driver that forgot the check would be a safety hole, so the check sits where no driver can skip it</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The chapter puts safety rules in the layer that cannot be bypassed. Because <code>move_to</code> checks every target before it calls the driver's <code>_write</code>, a new driver for a third arm inherits the check for free and cannot forget it. This idea grows into the safety layers of Chapter 17. Speed and language rules play no part here.</p>
+<p><strong>Concept Tested:</strong> Arm Class</p>
+<p><strong>See:</strong> <a href="../#reading-and-writing-positions">Reading and Writing Positions</a></p>
+</details>
+<hr />
+<h4 id="7-what-does-the-rule-convert-at-the-edge-mean-for-the-library">7. What does the rule "convert at the edge" mean for the library?<a class="headerlink" href="#7-what-does-the-rule-convert-at-the-edge-mean-for-the-library" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Programs use one unit per joint, and raw steps and radians exist only inside a driver, which converts on the way in and out</li>
+<li>Every function converts its arguments to raw steps before it does any work</li>
+<li>Conversions are done only when a pose is saved to a file</li>
+<li>Each program should choose its own units for each joint</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Inside programs, every joint value has one unit: degrees for the arm's joints and percent for a gripper. Raw steps and radians appear only inside a driver, which converts on the way in and out. Mixed units cause more robot bugs than any other mistake, such as passing degrees to <code>math.sin</code>, which expects radians. Letting each program choose its own units would bring those bugs back.</p>
+<p><strong>Concept Tested:</strong> Unit Conversion</p>
+<p><strong>See:</strong> <a href="../#unit-conversion">Unit Conversion</a></p>
+</details>
+<hr />
+<h4 id="8-why-does-feetecharm-catch-a-low-level-valueerror-and-raise-a-communicationerror-using-raise-from-error">8. Why does <code>FeetechArm</code> catch a low-level <code>ValueError</code> and raise a <code>CommunicationError</code> using <code>raise ... from error</code>?<a class="headerlink" href="#8-why-does-feetecharm-catch-a-low-level-valueerror-and-raise-a-communicationerror-using-raise-from-error" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Python requires every error to be converted into the <code>Exception</code> class</li>
+<li>The original error is deleted so that the program cannot see it</li>
+<li>The program sees one family of arm errors, and the original error stays attached as the cause for debugging</li>
+<li>The <code>ValueError</code> can only be raised by the fake arm</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A "bad checksum" <code>ValueError</code> means nothing to a program that does not know about packets. The driver translates it into a <code>CommunicationError</code>, which belongs to the <code>ArmError</code> family that a program can catch as a whole. Using <code>from error</code> keeps the original attached as <code>__cause__</code>, so the details are still there for anyone debugging. In the lab, the cause prints as a <code>ValueError</code>.</p>
+<p><strong>Concept Tested:</strong> Custom Exceptions</p>
+<p><strong>See:</strong> <a href="../#custom-exceptions">Custom Exceptions</a></p>
+</details>
+<hr />
+<h4 id="9-a-teammates-program-contains-if-isinstancearm-feetecharm-before-it-moves-a-joint-what-does-this-indicate">9. A teammate's program contains <code>if isinstance(arm, FeetechArm):</code> before it moves a joint. What does this indicate?<a class="headerlink" href="#9-a-teammates-program-contains-if-isinstancearm-feetecharm-before-it-moves-a-joint-what-does-this-indicate" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>It is the recommended way to make a program safe</li>
+<li>The arm must be connected before the call</li>
+<li>The program is running on the fake arm</li>
+<li>The abstraction has leaked, and the missing feature should be added to the interface with a version for every driver</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. A program that checks which driver it has, or mentions a raw step, depends on the hardware underneath the interface, and it will break on the next arm. If a program needs something the interface does not offer, add it to the <code>Arm</code> interface with an implementation in every driver, and do not reach under it. The chapter says that if you ever catch a program checking which arm it has, the interface is missing something.</p>
+<p><strong>Concept Tested:</strong> Hardware Abstraction Layer</p>
+<p><strong>See:</strong> <a href="../#inheritance-for-drivers">Inheritance for Drivers</a></p>
+</details>
+<hr />
+<h4 id="10-in-the-lab-the-fake-arm-reads-exactly-000-degrees-at-the-start-but-the-rebot-driver-on-the-pretend-can-bus-reads-001-degrees-for-the-same-starting-pose-what-best-explains-the-difference">10. In the lab, the fake arm reads exactly 0.00 degrees at the start, but the reBot driver on the pretend CAN bus reads −0.01 degrees for the same starting pose. What best explains the difference?<a class="headerlink" href="#10-in-the-lab-the-fake-arm-reads-exactly-000-degrees-at-the-start-but-the-rebot-driver-on-the-pretend-can-bus-reads-001-degrees-for-the-same-starting-pose-what-best-explains-the-difference" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A 16-bit position field has an even number of steps, so no whole number sits exactly at zero</li>
+<li>The pretend motor moves slowly toward its start position</li>
+<li>The driver adds a small bias on purpose to protect the joint</li>
+<li>The fake arm is less accurate than the reBot driver</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The MIT frame stores position as a 16-bit whole number over a range that is symmetric about zero. With 65,536 values, the zero value falls between two neighbouring steps, so 0 maps to just below the middle and reads back as a tiny negative number. The error is far smaller than the motor's accuracy. The fake arm keeps plain Python floats in a dictionary, so it has no such rounding.</p>
+<p><strong>Concept Tested:</strong> Fake Arm</p>
+<p><strong>See:</strong> <a href="../#the-fake-arm">The Fake Arm</a></p>
+</details>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,98 @@
+{
+  "title": "Log Level Sorter",
+  "creator": "Dan McCreary",
+  "subject": "Python Logging for Robotics",
+  "description": "Set the minimum log level and watch which of eight messages from an arm program stay on the console. Then sort the same eight messages into the five log levels DEBUG, INFO, WARNING, ERROR and CRITICAL. Used in Chapter 13.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/log-level-sorter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "The five log levels of the Python logging module",
+    "learningObjectives": [
+      "Classify eight log messages from an arm program into the five log levels DEBUG, INFO, WARNING, ERROR and CRITICAL, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "classify",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "logging module",
+      "logger",
+      "log levels and their numbers"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 625
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Filter a realistic message stream by level, then sort each message by the meaning of the five levels",
+    "keyQuestions": [
+      "Which messages disappear when the minimum level is raised from DEBUG to WARNING?",
+      "What is the difference between a WARNING and an ERROR?"
+    ],
+    "commonMisconceptions": [
+      "Every message should be an error so that it is not missed",
+      "A warning means the program stopped",
+      "A failed operation that the program recovers from is critical"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed classifications, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight messages"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Minimum level",
+        "values": [
+          "DEBUG (10)",
+          "INFO (20)",
+          "WARNING (30)",
+          "ERROR (40)",
+          "CRITICAL (50)"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "DEBUG / INFO / WARNING / ERROR / CRITICAL"
+      },
+      {
+        "type": "button",
+        "label": "Next message / See score / Try again"
+      }
+    ]
+  }
+}

@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/04-serial-and-can-communication/">
       
       
-        <link rel="prev" href="../03-electricity-power-and-safety/">
+        <link rel="prev" href="../03-electricity-power-and-safety/references/">
       
       
-        <link rel="next" href="../05-actuators-and-sensors/">
+        <link rel="next" href="quiz/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -61,6 +61,16 @@
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
     
     
@@ -329,79 +339,41 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
     
@@ -450,16 +422,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../01-python-setup-for-robotics/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../01-python-setup-for-robotics/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     1. Setting Up Python for Robotics
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -471,16 +472,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../02-anatomy-of-a-robot-arm/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../02-anatomy-of-a-robot-arm/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     2. Anatomy of a Robot Arm
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -492,16 +522,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../03-electricity-power-and-safety/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../03-electricity-power-and-safety/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     3. Electricity, Power, and Safety Basics
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -515,477 +574,73 @@
   
   
   
-    <li class="md-nav__item md-nav__item--active">
+    
+    
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+        
+          
+        
       
         
       
+        
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        
           
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
   
   <span class="md-ellipsis">
     4. Serial and CAN Communication
   </span>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Serial and CAN Communication
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quiz/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    4. Serial and CAN Communication
+    Quiz
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#serial-communication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Serial Communication
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Serial Communication">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uart-and-baud-rate" class="md-nav__link">
-    <span class="md-ellipsis">
-      UART and Baud Rate
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UART and Baud Rate">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#diagram-uart-frame-timeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagram: UART Frame Timeline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ttl-half-duplex-serial-and-daisy-chains" class="md-nav__link">
-    <span class="md-ellipsis">
-      TTL Half-Duplex Serial and Daisy Chains
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bytes-in-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bytes in Python
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#from-the-computer-to-the-bus" class="md-nav__link">
-    <span class="md-ellipsis">
-      From the Computer to the Bus
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#packets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Packets
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Packets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#device-id" class="md-nav__link">
-    <span class="md-ellipsis">
-      Device ID
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instruction-packet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Instruction Packet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checksum" class="md-nav__link">
-    <span class="md-ellipsis">
-      Checksum
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Checksum">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#diagram-packet-checksum-calculator" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagram: Packet Checksum Calculator
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#status-packet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Status Packet
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Status Packet">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#diagram-status-packet-decoder" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagram: Status Packet Decoder
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ping-command-and-bus-scan" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ping Command and Bus Scan
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#registers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Registers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Registers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reading-a-register" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reading a Register
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#writing-a-register" class="md-nav__link">
-    <span class="md-ellipsis">
-      Writing a Register
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-vendor-sdk-and-the-lerobot-library" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Vendor SDK and the LeRobot Library
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-communication-fails" class="md-nav__link">
-    <span class="md-ellipsis">
-      When Communication Fails
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="When Communication Fails">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#communication-timeout" class="md-nav__link">
-    <span class="md-ellipsis">
-      Communication Timeout
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#communication-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Communication Errors
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Communication Errors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#diagram-bus-fault-finder" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagram: Bus Fault Finder
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#watchdog-timer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Watchdog Timer
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fail-safe-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fail-Safe Behavior
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#can-bus" class="md-nav__link">
-    <span class="md-ellipsis">
-      CAN Bus
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CAN Bus">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#can-frame" class="md-nav__link">
-    <span class="md-ellipsis">
-      CAN Frame
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#can-bit-rate" class="md-nav__link">
-    <span class="md-ellipsis">
-      CAN Bit Rate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#can-termination" class="md-nav__link">
-    <span class="md-ellipsis">
-      CAN Termination
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CAN Termination">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#diagram-can-termination-meter" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagram: CAN Termination Meter
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#can-adapter" class="md-nav__link">
-    <span class="md-ellipsis">
-      CAN Adapter
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#python-can-library" class="md-nav__link">
-    <span class="md-ellipsis">
-      Python-CAN Library
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lab-talk-to-a-pretend-bus" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lab: Talk to a Pretend Bus
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Lab: Talk to a Pretend Bus">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work" class="md-nav__link">
-    <span class="md-ellipsis">
-      Check Your Work
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#challenge-read-all-the-positions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Challenge: Read All the Positions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-and-key-takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary and Key Takeaways
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Summary and Key Takeaways">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#self-check-questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Self-Check Questions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -998,15 +653,73 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-actuators-and-sensors/" class="md-nav__link">
+      <a href="references/" class="md-nav__link">
         
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../05-actuators-and-sensors/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     5. Actuators and Sensors
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1018,16 +731,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../06-sourcing-parts-and-budget/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../06-sourcing-parts-and-budget/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     6. Sourcing Parts and Planning a Budget
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1039,16 +781,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../07-printing-fasteners-and-tools/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../07-printing-fasteners-and-tools/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     7. 3D Printing, Fasteners, and Tools
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1060,16 +831,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../08-building-the-so-arm/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../08-building-the-so-arm/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     8. Building and Calibrating the SO-ARM100
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1081,16 +881,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../09-building-the-rebot-devarm/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../09-building-the-rebot-devarm/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     9. Building the reBot-DevArm and Choosing a Platform
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1102,16 +931,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../10-python-hardware-library/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../10-python-hardware-library/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     10. A Python Hardware Library for Robot Arms
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1123,16 +981,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../11-moving-the-arm/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../11-moving-the-arm/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     11. Moving the Arm: Trajectories, Grippers, and Teleoperation
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1144,16 +1031,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../12-kinematics/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../12-kinematics/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     12. Kinematics: Where Is the Hand and How Do I Get There
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1165,16 +1081,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../13-logging-testing-simulation/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../13-logging-testing-simulation/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     13. Logging, Testing, Simulation, and ROS 2
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1186,16 +1131,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../14-perception-and-learning/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../14-perception-and-learning/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     14. Cameras, Perception, and Learning from Demonstration
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1207,16 +1181,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../15-agents-and-openclaw-skills/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../15-agents-and-openclaw-skills/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     15. AI Agents, Tools, and OpenClaw Skills
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1228,16 +1231,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../16-agent-planning-and-vision/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../16-agent-planning-and-vision/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     16. Agent Planning, Vision, and Interfaces
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1249,16 +1281,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../17-agent-safety-and-evaluation/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../17-agent-safety-and-evaluation/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     17. Safety Layers and Evaluation for Agent-Controlled Arms
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1270,16 +1331,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../18-projects-operation-and-teaching/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../18-projects-operation-and-teaching/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     18. Projects, Operation, and Teaching
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1291,16 +1381,45 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../19-advanced-arm-path-mathematics/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../19-advanced-arm-path-mathematics/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     19. Optional Advanced Chapter: The Mathematics of Arm Paths
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1391,6 +1510,8 @@
       
         
       
+        
+      
     
     
     
@@ -1431,6 +1552,250 @@
   
     
     
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
       
         
           
@@ -2432,6 +2797,9 @@ Picture one narrow hallway that six people share. Only one person can talk at a 
 </table>
 <p>The next MicroSim practises the formula. You choose a baud rate and a packet, watch the ten-bit frames line up on a time line, and then answer five timing questions.</p>
 <h4 id="diagram-uart-frame-timeline">Diagram: UART Frame Timeline<a class="headerlink" href="#diagram-uart-frame-timeline" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/uart-frame-timeline/main.html" height="622px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/uart-frame-timeline/main.html">Run the UART Frame Timeline MicroSim fullscreen</a></p>
 <details>
 <summary>UART Frame Timeline</summary>
 <p>Type: microsim
@@ -2747,6 +3115,9 @@ The header says "a message starts here", the ID is the address, the length says 
 </span></code></pre></div>
 <p>In the next MicroSim you calculate the checksum byte of six packets. Each shows its ID, instruction and parameters, and you type the hex value of the final byte before the sim reveals the full packet.</p>
 <h4 id="diagram-packet-checksum-calculator">Diagram: Packet Checksum Calculator<a class="headerlink" href="#diagram-packet-checksum-calculator" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/packet-checksum-calculator/main.html" height="652px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/packet-checksum-calculator/main.html">Run the Packet Checksum Calculator MicroSim fullscreen</a></p>
 <details>
 <summary>Packet Checksum Calculator</summary>
 <p>Type: microsim
@@ -2848,6 +3219,9 @@ A reply that looks like data can still be damaged or can report a fault, and cod
 </div>
 <p>The next MicroSim practises reading replies. You are shown six reply packets as hex bytes, and you classify each as a valid reading, a bad checksum, a servo-reported error, or not a packet at all.</p>
 <h4 id="diagram-status-packet-decoder">Diagram: Status Packet Decoder<a class="headerlink" href="#diagram-status-packet-decoder" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/status-packet-decoder/main.html" height="562px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/status-packet-decoder/main.html">Run the Status Packet Decoder MicroSim fullscreen</a></p>
 <details>
 <summary>Status Packet Decoder</summary>
 <p>Type: microsim
@@ -3103,6 +3477,9 @@ The <code>ID</code> and <code>Baud_Rate</code> registers are saved permanently, 
 </table>
 <p>The next MicroSim turns the table into a troubleshooting exercise. It shows eight symptom reports from a real-looking bus session, and you choose the most likely cause for each.</p>
 <h4 id="diagram-bus-fault-finder">Diagram: Bus Fault Finder<a class="headerlink" href="#diagram-bus-fault-finder" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/bus-fault-finder/main.html" height="622px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/bus-fault-finder/main.html">Run the Bus Fault Finder MicroSim fullscreen</a></p>
 <details>
 <summary>Bus Fault Finder</summary>
 <p>Type: microsim
@@ -3340,6 +3717,9 @@ Three terminators is as wrong as none, and the meter shows it: 40 Ω instead of 
 </div>
 <p>In the next MicroSim you read a resistance from a virtual meter across a CAN bus and say what it shows about the terminators. In Explore mode you can add and remove terminators and see the meter respond.</p>
 <h4 id="diagram-can-termination-meter">Diagram: CAN Termination Meter<a class="headerlink" href="#diagram-can-termination-meter" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/can-termination-meter/main.html" height="672px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/can-termination-meter/main.html">Run the CAN Termination Meter MicroSim fullscreen</a></p>
 <details>
 <summary>CAN Termination Meter</summary>
 <p>Type: microsim
@@ -4073,6 +4453,7 @@ You just built a packet by hand, checked a reply byte by byte, scanned a bus, an
 <p>The software watchdog runs in your program, so if the whole program or the computer freezes, the check never runs, which is the weakness of every software stop in Chapter 3. The watchdog in the motor counts the silence itself and needs nothing from your computer to trigger.</p>
 </details>
 <p>In Chapter 5 you will look inside the motors that these packets control, and learn how a joint holds a position and how to set limits that keep it safe.</p>
+<p><a href="references/">See Annotated References</a></p>
 
 
 
@@ -4084,6 +4465,8 @@ You just built a packet by hand, checked a reply byte by byte, scanned a bus, an
   
 
 
+
+  
 
 
 
@@ -4111,7 +4494,7 @@ You just built a packet by hand, checked a reply byte by byte, scanned a bus, an
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../03-electricity-power-and-safety/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3. Electricity, Power, and Safety Basics">
+          <a href="../03-electricity-power-and-safety/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4121,20 +4504,20 @@ You just built a packet by hand, checked a reply byte by byte, scanned a bus, an
                 Previous
               </span>
               <div class="md-ellipsis">
-                3. Electricity, Power, and Safety Basics
+                Annotated References
               </div>
             </div>
           </a>
         
         
           
-          <a href="../05-actuators-and-sensors/" class="md-footer__link md-footer__link--next" aria-label="Next: 5. Actuators and Sensors">
+          <a href="quiz/" class="md-footer__link md-footer__link--next" aria-label="Next: Quiz">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                5. Actuators and Sensors
+                Quiz
               </div>
             </div>
             <div class="md-footer__button md-icon">

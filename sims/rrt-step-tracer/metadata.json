@@ -1,0 +1,120 @@
+{
+  "title": "RRT Step Tracer",
+  "creator": "Dan McCreary",
+  "subject": "Robot Motion Planning",
+  "description": "Grow a small RRT tree one step at a time: move a random point, see which node is nearest, and watch the new node appear one step toward the point. Then carry out the step by hand in six problems. Used in Chapter 19.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/rrt-step-tracer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "One step of the RRT sampling-based planning algorithm",
+    "learningObjectives": [
+      "Execute one step of the RRT algorithm by hand, finding the distance to the nearest node and the coordinates of the new node, to within 0.1 of the unit shown, in six problems, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "execute",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "configuration space",
+      "tree",
+      "nearest node",
+      "step size",
+      "steering"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 675
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Carry out a three-part procedure by hand on easy numbers after watching it grow a tree",
+    "keyQuestions": [
+      "Is the new node the random point?",
+      "Which node does a step start from: the newest or the nearest?"
+    ],
+    "commonMisconceptions": [
+      "The new node is the random point",
+      "The nearest node is the most recent one",
+      "The step moves the tree toward the goal"
+    ],
+    "assessmentOpportunities": [
+      "Six typed answers, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Step size",
+        "range": "0.5 to 3.0 grid units, step 0.5, default 1.0"
+      },
+      {
+        "type": "slider",
+        "label": "Random point x",
+        "range": "0 to 10 grid units, step 0.1, default 3.0"
+      },
+      {
+        "type": "slider",
+        "label": "Random point y",
+        "range": "0 to 10 grid units, step 0.1, default 4.0"
+      },
+      {
+        "type": "drag",
+        "label": "Drag or tap the random point on the grid"
+      },
+      {
+        "type": "button",
+        "label": "Add node"
+      },
+      {
+        "type": "button",
+        "label": "Reset"
+      },
+      {
+        "type": "input",
+        "label": "Answer in grid units"
+      },
+      {
+        "type": "button",
+        "label": "Check"
+      },
+      {
+        "type": "button",
+        "label": "Next problem / See score / Try again"
+      }
+    ]
+  }
+}

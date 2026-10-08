@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/04-serial-and-can-communication/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-serial-and-can-communication" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-python-setup-for-robotics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Setting Up Python for Robotics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-anatomy-of-a-robot-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-electricity-power-and-safety/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Electricity, Power, and Safety Basics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    4. Serial and CAN Communication
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Serial and CAN Communication
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-does-the-baud-rate-of-a-serial-link-specify" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What does the baud rate of a serial link specify?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-with-8n1-framing-at-500000-baud-how-long-does-it-take-to-send-an-8-byte-packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. With 8N1 framing at 500,000 baud, how long does it take to send an 8-byte packet?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-servo-answers-a-position-read-with-the-data-bytes-e8-03-the-feetech-motors-use-little-endian-order-what-position-does-the-servo-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A servo answers a position read with the data bytes E8 03. The Feetech motors use little-endian order. What position does the servo report?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-the-checksum-byte-of-a-ping-instruction-packet-for-servo-3-whose-bytes-after-the-header-are-id-03-length-02-and-instruction-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is the checksum byte of a PING instruction packet for servo 3, whose bytes after the header are ID 03, length 02, and instruction 01?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-which-device-id-is-the-broadcast-id-on-an-sts3215-bus-meaning-everyone" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Which device ID is the broadcast ID on an STS3215 bus, meaning "everyone"?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-does-the-chapter-warn-you-never-to-write-the-id-or-baud_rate-register-of-a-motor-you-have-not-read-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why does the chapter warn you never to write the ID or Baud_Rate register of a motor you have not read first?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-your-program-opens-the-port-with-power-on-but-every-reply-from-every-servo-is-garbage-with-no-valid-headers-or-checksums-which-cause-best-explains-this-symptom" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Your program opens the port with power on, but every reply from every servo is garbage with no valid headers or checksums. Which cause best explains this symptom?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-with-the-power-off-a-meter-across-can_h-and-can_l-reads-about-40-what-does-this-tell-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. With the power off, a meter across CAN_H and CAN_L reads about 40 Ω. What does this tell you?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-what-does-busrecvtimeout02-return-in-python-can-if-no-frame-arrives-within-02-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. What does bus.recv(timeout=0.2) return in python-can if no frame arrives within 0.2 seconds?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-on-a-can-bus-what-does-the-identifier-carried-in-each-frame-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. On a CAN bus, what does the identifier carried in each frame label?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-actuators-and-sensors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Actuators and Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-sourcing-parts-and-budget/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Sourcing Parts and Planning a Budget
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-printing-fasteners-and-tools/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. 3D Printing, Fasteners, and Tools
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-building-the-so-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Building and Calibrating the SO-ARM100
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-building-the-rebot-devarm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Building the reBot-DevArm and Choosing a Platform
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-python-hardware-library/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. A Python Hardware Library for Robot Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-moving-the-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-kinematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Kinematics: Where Is the Hand and How Do I Get There
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-logging-testing-simulation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Logging, Testing, Simulation, and ROS 2
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-perception-and-learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Cameras, Perception, and Learning from Demonstration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-agents-and-openclaw-skills/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. AI Agents, Tools, and OpenClaw Skills
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-agent-planning-and-vision/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. Agent Planning, Vision, and Interfaces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-agent-safety-and-evaluation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Safety Layers and Evaluation for Agent-Controlled Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-projects-operation-and-teaching/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Projects, Operation, and Teaching
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-advanced-arm-path-mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Optional Advanced Chapter: The Mathematics of Arm Paths
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-does-the-baud-rate-of-a-serial-link-specify" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What does the baud rate of a serial link specify?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-with-8n1-framing-at-500000-baud-how-long-does-it-take-to-send-an-8-byte-packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. With 8N1 framing at 500,000 baud, how long does it take to send an 8-byte packet?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-servo-answers-a-position-read-with-the-data-bytes-e8-03-the-feetech-motors-use-little-endian-order-what-position-does-the-servo-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A servo answers a position read with the data bytes E8 03. The Feetech motors use little-endian order. What position does the servo report?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-the-checksum-byte-of-a-ping-instruction-packet-for-servo-3-whose-bytes-after-the-header-are-id-03-length-02-and-instruction-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is the checksum byte of a PING instruction packet for servo 3, whose bytes after the header are ID 03, length 02, and instruction 01?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-which-device-id-is-the-broadcast-id-on-an-sts3215-bus-meaning-everyone" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Which device ID is the broadcast ID on an STS3215 bus, meaning "everyone"?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-does-the-chapter-warn-you-never-to-write-the-id-or-baud_rate-register-of-a-motor-you-have-not-read-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why does the chapter warn you never to write the ID or Baud_Rate register of a motor you have not read first?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-your-program-opens-the-port-with-power-on-but-every-reply-from-every-servo-is-garbage-with-no-valid-headers-or-checksums-which-cause-best-explains-this-symptom" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Your program opens the port with power on, but every reply from every servo is garbage with no valid headers or checksums. Which cause best explains this symptom?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-with-the-power-off-a-meter-across-can_h-and-can_l-reads-about-40-what-does-this-tell-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. With the power off, a meter across CAN_H and CAN_L reads about 40 Ω. What does this tell you?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-what-does-busrecvtimeout02-return-in-python-can-if-no-frame-arrives-within-02-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. What does bus.recv(timeout=0.2) return in python-can if no frame arrives within 0.2 seconds?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-on-a-can-bus-what-does-the-identifier-carried-in-each-frame-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. On a CAN bus, what does the identifier carried in each frame label?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/04-serial-and-can-communication/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-serial-and-can-communication">Quiz: Serial and CAN Communication<a class="headerlink" href="#quiz-serial-and-can-communication" title="Permanent link">&para;</a></h1>
+<p>Test your understanding of baud rates, packets, checksums, registers, timeouts, and CAN buses with these review questions.</p>
+<hr />
+<h4 id="1-what-does-the-baud-rate-of-a-serial-link-specify">1. What does the baud rate of a serial link specify?<a class="headerlink" href="#1-what-does-the-baud-rate-of-a-serial-link-specify" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The number of bytes in each packet</li>
+<li>The number of devices that can share the bus</li>
+<li>The number of bits per second on the wire, which both ends must use</li>
+<li>The voltage swing of the logic signals</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A UART has no shared clock wire, so both ends agree in advance on the speed, and that speed is the baud rate in bits per second. For the STS3215 servos the factory setting is 1,000,000 baud. If the two ends disagree, the receiver samples the wire at the wrong moments and reads garbage, even though every wire is connected correctly.</p>
+<p><strong>Concept Tested:</strong> Baud Rate</p>
+<p><strong>See:</strong> <a href="../#uart-and-baud-rate">UART and Baud Rate</a></p>
+</details>
+<hr />
+<h4 id="2-with-8n1-framing-at-500000-baud-how-long-does-it-take-to-send-an-8-byte-packet">2. With 8N1 framing at 500,000 baud, how long does it take to send an 8-byte packet?<a class="headerlink" href="#2-with-8n1-framing-at-500000-baud-how-long-does-it-take-to-send-an-8-byte-packet" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>16 µs</li>
+<li>160 µs</li>
+<li>128 µs</li>
+<li>1.6 ms</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Each byte travels as ten bits on the wire: a start bit, 8 data bits, and a stop bit. The time is bytes × 10 / baud, so 8 × 10 / 500,000 = 160 µs. Option C counts only the 64 data bits and forgets the start and stop bits. Options A and D are off by a factor of ten because of slips in the arithmetic.</p>
+<p><strong>Concept Tested:</strong> UART</p>
+<p><strong>See:</strong> <a href="../#uart-and-baud-rate">UART and Baud Rate</a></p>
+</details>
+<hr />
+<h4 id="3-a-servo-answers-a-position-read-with-the-data-bytes-e8-03-the-feetech-motors-use-little-endian-order-what-position-does-the-servo-report">3. A servo answers a position read with the data bytes <code>E8 03</code>. The Feetech motors use little-endian order. What position does the servo report?<a class="headerlink" href="#3-a-servo-answers-a-position-read-with-the-data-bytes-e8-03-the-feetech-motors-use-little-endian-order-what-position-does-the-servo-report" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>59,395 steps</li>
+<li>232 steps</li>
+<li>1,512 steps</li>
+<li>1,000 steps</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. Little-endian order puts the low byte first, so <code>E8 03</code> is read as <code>0x03E8</code>, which is 1,000 steps. In Python, <code>int.from_bytes(data, "little")</code> does the conversion. Option A reads the bytes in the wrong order as <code>0xE803</code>, and option B keeps only the first byte. At 4096 steps per turn, 1,000 steps is about 87.9 degrees.</p>
+<p><strong>Concept Tested:</strong> Little-Endian Byte Order</p>
+<p><strong>See:</strong> <a href="../#bytes-in-python">Bytes in Python</a></p>
+</details>
+<hr />
+<h4 id="4-what-is-the-checksum-byte-of-a-ping-instruction-packet-for-servo-3-whose-bytes-after-the-header-are-id-03-length-02-and-instruction-01">4. What is the checksum byte of a PING instruction packet for servo 3, whose bytes after the header are ID <code>03</code>, length <code>02</code>, and instruction <code>01</code>?<a class="headerlink" href="#4-what-is-the-checksum-byte-of-a-ping-instruction-packet-for-servo-3-whose-bytes-after-the-header-are-id-03-length-02-and-instruction-01" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li><code>0xF9</code></li>
+<li><code>0xFA</code></li>
+<li><code>0x06</code></li>
+<li><code>0x03</code></li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The checksum adds the bytes from the ID through the last parameter, keeps the low byte of the sum, and flips every bit. Here 3 + 2 + 1 = 6, and the bitwise NOT of <code>0x06</code> is <code>0xF9</code>. In Python that is <code>~sum(body) &amp; 0xFF</code>. Option B is the checksum for servo 2, option C forgets to flip the bits, and option D is just the ID.</p>
+<p><strong>Concept Tested:</strong> Checksum</p>
+<p><strong>See:</strong> <a href="../#checksum">Checksum</a></p>
+</details>
+<hr />
+<h4 id="5-which-device-id-is-the-broadcast-id-on-an-sts3215-bus-meaning-everyone">5. Which device ID is the broadcast ID on an STS3215 bus, meaning "everyone"?<a class="headerlink" href="#5-which-device-id-is-the-broadcast-id-on-an-sts3215-bus-meaning-everyone" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>0</li>
+<li>1</li>
+<li>255</li>
+<li>254 (<code>0xFE</code>)</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. Device IDs for the STS3215 run from 0 to 253, and the value 254 (<code>0xFE</code>) is reserved as the broadcast ID. Because every motor hears every packet on the shared data wire, the ID is the only thing that tells them apart, so each servo needs a unique value. A brand-new motor usually ships with ID 1, which is why setup connects the motors one at a time.</p>
+<p><strong>Concept Tested:</strong> Device ID</p>
+<p><strong>See:</strong> <a href="../#device-id">Device ID</a></p>
+</details>
+<hr />
+<h4 id="6-why-does-the-chapter-warn-you-never-to-write-the-id-or-baud_rate-register-of-a-motor-you-have-not-read-first">6. Why does the chapter warn you never to write the <code>ID</code> or <code>Baud_Rate</code> register of a motor you have not read first?<a class="headerlink" href="#6-why-does-the-chapter-warn-you-never-to-write-the-id-or-baud_rate-register-of-a-motor-you-have-not-read-first" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Writes to those registers are slow and block the bus for several seconds</li>
+<li>They are saved permanently, and a baud rate your adapter does not use makes the servo seem to vanish</li>
+<li>A WRITE instruction only works after a READ has been sent to the same register</li>
+<li>Writing them makes the joint move to its limit</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The <code>ID</code> and <code>Baud_Rate</code> registers are stored in non-volatile memory, so the new value survives a power cycle. A servo set to a baud rate your adapter does not use stops answering. The safe habit is to read first, change one register at a time, and write down the old value so that you can restore it. Writing <code>Goal_Position</code>, not these registers, is what moves a joint.</p>
+<p><strong>Concept Tested:</strong> Writing a Register</p>
+<p><strong>See:</strong> <a href="../#writing-a-register">Writing a Register</a></p>
+</details>
+<hr />
+<h4 id="7-your-program-opens-the-port-with-power-on-but-every-reply-from-every-servo-is-garbage-with-no-valid-headers-or-checksums-which-cause-best-explains-this-symptom">7. Your program opens the port with power on, but every reply from every servo is garbage with no valid headers or checksums. Which cause best explains this symptom?<a class="headerlink" href="#7-your-program-opens-the-port-with-power-on-but-every-reply-from-every-servo-is-garbage-with-no-valid-headers-or-checksums-which-cause-best-explains-this-symptom" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Two motors share one device ID</li>
+<li>The daisy chain has a broken link in the middle</li>
+<li>The port's baud rate differs from the motors' baud rate</li>
+<li>One of the CAN terminators is missing</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. When the two ends disagree about the baud rate, the receiver samples the wire at the wrong moments, so every byte is misread even though the wiring is perfect. A broken link would silence only the motors beyond it, and a shared ID would give mixed replies from one ID. CAN termination applies to the reBot's CAN bus, not to the serial bus. The fix is to set the port to the motor's rate, 1,000,000 by default.</p>
+<p><strong>Concept Tested:</strong> Communication Errors</p>
+<p><strong>See:</strong> <a href="../#communication-errors">Communication Errors</a></p>
+</details>
+<hr />
+<h4 id="8-with-the-power-off-a-meter-across-can_h-and-can_l-reads-about-40-what-does-this-tell-you">8. With the power off, a meter across CAN_H and CAN_L reads about 40 Ω. What does this tell you?<a class="headerlink" href="#8-with-the-power-off-a-meter-across-can_h-and-can_l-reads-about-40-what-does-this-tell-you" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>There is an extra terminator, because three 120 Ω resistors in parallel give 40 Ω</li>
+<li>One terminator is missing, because a single 120 Ω resistor gives 40 Ω</li>
+<li>The bus is healthy, because two terminators give 40 Ω</li>
+<li>A short circuit joins the two wires</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. A healthy CAN bus has a 120 Ω terminator at each of its two ends. Two in parallel read 60 Ω. Three 120 Ω resistors in parallel give 40 Ω, which means an extra terminator is switched on somewhere. One missing terminator would read about 120 Ω, and a short circuit would read near 0 Ω. Switch on terminators only at the two physical ends of the bus.</p>
+<p><strong>Concept Tested:</strong> CAN Termination</p>
+<p><strong>See:</strong> <a href="../#can-termination">CAN Termination</a></p>
+</details>
+<hr />
+<h4 id="9-what-does-busrecvtimeout02-return-in-python-can-if-no-frame-arrives-within-02-seconds">9. What does <code>bus.recv(timeout=0.2)</code> return in python-can if no frame arrives within 0.2 seconds?<a class="headerlink" href="#9-what-does-busrecvtimeout02-return-in-python-can-if-no-frame-arrives-within-02-seconds" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>An empty bytes object, <code>b""</code></li>
+<li>A <code>can.Message</code> with all data bytes set to zero</li>
+<li><code>None</code></li>
+<li>It never returns, because <code>recv</code> always waits for a frame</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. With a timeout, <code>recv</code> waits up to that many seconds and returns <code>None</code> if nothing arrived, so your code must handle the <code>None</code>. A bare <code>bus.recv()</code> with no timeout waits forever, and a program that hangs while a motor is enabled is exactly the failure Chapter 3 warned about. The empty <code>b""</code> result belongs to pyserial's <code>read</code>, not to python-can.</p>
+<p><strong>Concept Tested:</strong> Python-CAN Library</p>
+<p><strong>See:</strong> <a href="../#python-can-library">Python-CAN Library</a></p>
+</details>
+<hr />
+<h4 id="10-on-a-can-bus-what-does-the-identifier-carried-in-each-frame-label">10. On a CAN bus, what does the identifier carried in each frame label?<a class="headerlink" href="#10-on-a-can-bus-what-does-the-identifier-carried-in-each-frame-label" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The message itself, so devices decide which identifiers they care about</li>
+<li>The reader of the message, as an address that only one device may use</li>
+<li>The baud rate at which the frame was sent</li>
+<li>The number of data bytes that follow in the frame</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. A CAN frame says what the message is about, and every device decides which identifiers it listens for. The serial bus differs, because its packet names the servo it is for. For the reBot's Damiao motors the identifier works like an address, since each motor listens to its CAN ID and replies from its Master ID. A lower identifier wins arbitration, so a lower number means a higher priority.</p>
+<p><strong>Concept Tested:</strong> CAN Frame</p>
+<p><strong>See:</strong> <a href="../#can-bus">CAN Bus</a></p>
+</details>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

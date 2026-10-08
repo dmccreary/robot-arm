@@ -1,0 +1,122 @@
+{
+  "title": "MIT Frame Packer",
+  "creator": "Dan McCreary",
+  "subject": "CAN Motor Control for Robotics",
+  "description": "Set the position, speed, Kp, Kd and torque of an MIT-mode command for a Damiao motor and see each value become a whole number, its hexadecimal form and the eight bytes of the CAN frame. Then work out the whole number yourself in six problems. Used in Chapter 9.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/mit-frame-packer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Packing an MIT-mode command into a CAN frame",
+    "learningObjectives": [
+      "Calculate the whole number that a value becomes when it is packed into an MIT-mode field of a Damiao motor, in six problems, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "CAN frame",
+      "MIT mode",
+      "bits",
+      "PMAX, VMAX and TMAX",
+      "the packing formula"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 670
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Watch five values become integers and bytes, then carry out the formula by hand on new values with the working shown after each answer",
+    "keyQuestions": [
+      "Why does a speed of 0 not pack to exactly the middle number?",
+      "Why do Kp and Kd use a different range from the torque?"
+    ],
+    "commonMisconceptions": [
+      "A value of zero maps to the middle number exactly",
+      "All the fields have the same range",
+      "The conversion rounds to the nearest whole number"
+    ],
+    "assessmentOpportunities": [
+      "Six typed whole numbers, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Model",
+        "values": [
+          "DM4310",
+          "DM4340P"
+        ]
+      },
+      {
+        "type": "input",
+        "label": "Position",
+        "range": "-12.5 to 12.5 rad, step 0.1, default 1.0"
+      },
+      {
+        "type": "input",
+        "label": "Speed",
+        "range": "plus or minus the model's limit in rad/s, step 0.1, default 0.0"
+      },
+      {
+        "type": "input",
+        "label": "Kp",
+        "range": "0 to 500, step 1, default 20"
+      },
+      {
+        "type": "input",
+        "label": "Kd",
+        "range": "0 to 5, step 0.1, default 1.0"
+      },
+      {
+        "type": "input",
+        "label": "Torque",
+        "range": "plus or minus the model's limit in N·m, step 0.1, default 0.0"
+      },
+      {
+        "type": "input",
+        "label": "Your answer",
+        "range": "a whole number from 0 to 2^bits - 1, no default"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next problem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "title": "File Path Resolver",
+  "creator": "Dan McCreary",
+  "subject": "Python for Robotics",
+  "description": "Work out which file a path reaches from a given working directory in eight problems on a small project folder tree, see each step of the resolution, then try your own paths. Used in Chapter 1.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/file-path-resolver/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Absolute paths, relative paths and the working directory",
+    "learningObjectives": [
+      "Solve eight path problems by determining which file, or no file, a path reaches from a given working directory, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "file path",
+      "absolute path",
+      "relative path",
+      "working directory",
+      "parent folder",
+      ". and ..",
+      "__file__",
+      "pathlib.Path"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 624
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Carry out the resolution on a visible folder tree, commit an answer, then compare it with the steps the sim took; a free-trial mode resolves any typed path",
+    "keyQuestions": [
+      "Where does a relative path start: at the script or at the working directory?",
+      "What is the difference between . and ..?",
+      "Why does a path built from __file__ work from any folder?"
+    ],
+    "commonMisconceptions": [
+      "A relative path starts from the folder the script is saved in",
+      ". and .. mean the same thing",
+      "An absolute path depends on the working directory",
+      "Code that builds a path from __file__ fails when run from another folder"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed answers, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Problems (8)",
+          "Free trial (after problem 8)"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Answer",
+        "values": [
+          "the six files in the tree",
+          "No such file"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Check / Next problem / See score / Try again"
+      },
+      {
+        "type": "canvas click",
+        "label": "Click a file in the tree, or the No such file box"
+      },
+      {
+        "type": "select",
+        "label": "Working directory (Free trial)",
+        "values": [
+          "/home/maker",
+          "/home/maker/arm-lab",
+          "/home/maker/arm-lab/config",
+          "/home/maker/arm-lab/armlab"
+        ]
+      },
+      {
+        "type": "input",
+        "label": "Path (Free trial)"
+      }
+    ]
+  }
+}

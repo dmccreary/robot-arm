@@ -1,0 +1,129 @@
+{
+  "title": "Packet Checksum Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Serial Communication for Robotics",
+  "description": "Build a servo instruction packet and watch its checksum worked out in three steps: add from the ID, keep the low byte, flip every bit. Then calculate the checksum of six packets yourself. Used in Chapter 4.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/packet-checksum-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Instruction packets and the checksum byte",
+    "learningObjectives": [
+      "Calculate the checksum byte of six instruction packets from their ID, instruction and parameters, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "packet structure",
+      "device ID",
+      "instruction packet",
+      "hexadecimal",
+      "checksum",
+      "bit operations"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 650
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Watch the procedure worked in steps, then repeat it on new packets with the working revealed after each answer",
+    "keyQuestions": [
+      "Which bytes of the packet are added up, and which are left out?",
+      "Why does the Length byte say 5 when the packet has 9 bytes?"
+    ],
+    "commonMisconceptions": [
+      "The checksum includes the two header bytes",
+      "The checksum is the plain sum",
+      "The Length field counts every byte of the packet"
+    ],
+    "assessmentOpportunities": [
+      "Six typed checksums, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six packets"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Servo ID",
+        "values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Instruction",
+        "values": [
+          "PING",
+          "READ",
+          "WRITE"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Register",
+        "values": [
+          "ID (5)",
+          "Baud_Rate (6)",
+          "Torque_Enable (40)",
+          "Goal_Position (42)",
+          "Present_Position (56)",
+          "Present_Voltage (62)",
+          "Present_Temperature (63)"
+        ]
+      },
+      {
+        "type": "input",
+        "label": "Value",
+        "range": "0 to 255 for a 1-byte register, 0 to 4095 for Goal_Position"
+      },
+      {
+        "type": "input",
+        "label": "Checksum",
+        "range": "two hex digits, no default"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next packet"
+      }
+    ]
+  }
+}

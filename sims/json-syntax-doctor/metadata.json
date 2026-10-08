@@ -1,0 +1,106 @@
+{
+  "title": "JSON Syntax Doctor",
+  "creator": "Dan McCreary",
+  "subject": "Python for Robotics",
+  "description": "Judge six short JSON settings files against five JSON rules: mark the line that breaks a rule and name the rule, or decide that the file is valid. Used in Chapter 1.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/json-syntax-doctor/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "The five syntax rules of the JSON file format",
+    "learningObjectives": [
+      "Critique six short JSON settings files by marking the line that breaks a JSON rule and naming the rule, or by judging the file correct, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "JSON",
+      "object",
+      "double quotes",
+      "comma",
+      "trailing comma",
+      "comment",
+      "true, false and null"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 604
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Judge each file against five explicit rules and commit a line and a rule; one valid file tests whether the learner can decide that nothing is wrong",
+    "keyQuestions": [
+      "Which of the five rules does this line break?",
+      "Why does a missing comma belong to the line above the one where the parser complains?",
+      "How do you decide that a file has no error at all?"
+    ],
+    "commonMisconceptions": [
+      "Single quotes work in JSON as they do in Python",
+      "A trailing comma is harmless, as in Python lists",
+      "Comments starting with # or // are allowed",
+      "JSON booleans are spelled True and False",
+      "A file that looks unusual must be wrong"
+    ],
+    "assessmentOpportunities": [
+      "Six committed judgments, one attempt each, line and rule both required; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "canvas click",
+        "label": "Click a line of the file or the No error box, then click a rule"
+      },
+      {
+        "type": "select",
+        "label": "Line",
+        "values": [
+          "Choose a line",
+          "Line 1 to Line 5",
+          "No error"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Rule",
+        "values": [
+          "Choose a rule",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Check / Next file / See score / Try again"
+      }
+    ]
+  }
+}

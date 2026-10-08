@@ -1,0 +1,100 @@
+{
+  "title": "Loop Rate Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Set a target rate and the work done in each cycle, and compare the rate that a naive loop and a scheduled loop really achieve. Then calculate six periods and rates yourself. Used in Chapter 11.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/loop-rate-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Control loop period and the achieved rate of naive and scheduled loops",
+    "learningObjectives": [
+      "Calculate the period of a control loop and the rate that a naive loop and a scheduled loop actually achieve, for six loops, to within 0.1 of the unit shown, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "calculate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "control loop",
+      "control rate",
+      "period",
+      "naive loop",
+      "scheduled loop",
+      "work time"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 602
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Repeated calculation with three short formulas and an immediate check, comparing the naive and scheduled answers for the same numbers",
+    "keyQuestions": [
+      "How long is one whole cycle of this loop, counting the work and the waiting?",
+      "Does the work fit inside the period?"
+    ],
+    "commonMisconceptions": [
+      "A loop that sleeps one period after its work runs at the target rate",
+      "A scheduled loop can always keep the target rate",
+      "A faster target rate is always better"
+    ],
+    "assessmentOpportunities": [
+      "Six typed numeric answers, one attempt each, correct within 0.1; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Target rate",
+        "range": "10 to 200 Hz, step 10, default 50"
+      },
+      {
+        "type": "slider",
+        "label": "Work per cycle",
+        "range": "0 to 50 ms, step 1, default 8"
+      },
+      {
+        "type": "input",
+        "label": "Your answer"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next problem / See score / Try again"
+      }
+    ]
+  }
+}

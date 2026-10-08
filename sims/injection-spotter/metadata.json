@@ -1,0 +1,92 @@
+{
+  "title": "Injection Spotter",
+  "creator": "Dan McCreary",
+  "subject": "AI Agent Safety for Robotics",
+  "description": "Sort eight pieces of text that an agent might read into three classes: a real request from the user, plain data, or an injection that tries to give the agent an order. Used in Chapter 17.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/injection-spotter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Untrusted input and prompt injection",
+    "learningObjectives": [
+      "Distinguish eight pieces of text that an agent might read as a real request from the user, plain data, or an injection, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "untrusted input",
+      "prompt injection",
+      "direct and indirect injection",
+      "least privilege"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 488
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Separate cases that look alike by their source and their intent, with the correct class and the reason shown after each commit",
+    "keyQuestions": [
+      "Who wrote this text?",
+      "Does the text try to give the agent an instruction?"
+    ],
+    "commonMisconceptions": [
+      "Text that sounds like an order is an order",
+      "An injection must look dangerous",
+      "Anything in a camera picture is safe"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed classifications; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight texts"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Request from the user",
+          "Data",
+          "Injection"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next text / See score / Try again"
+      }
+    ]
+  }
+}

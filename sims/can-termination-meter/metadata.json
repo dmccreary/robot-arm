@@ -1,0 +1,103 @@
+{
+  "title": "CAN Termination Meter",
+  "creator": "Dan McCreary",
+  "subject": "CAN Bus for Robotics",
+  "description": "Switch 120 ohm terminators on and off on a CAN bus and watch a resistance meter between CAN_H and CAN_L respond. Then diagnose six meter readings as healthy, one terminator missing, none or a broken wire, an extra terminator, or a short circuit. Used in Chapter 4.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/can-termination-meter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "CAN termination and parallel resistance",
+    "learningObjectives": [
+      "Infer the state of a CAN bus's termination from the resistance a meter reads between CAN_H and CAN_L, in six readings, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "CAN bus",
+      "CAN_H and CAN_L",
+      "CAN termination",
+      "resistance",
+      "parallel resistors",
+      "Ohm's law"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 670
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "circuit-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Change the bus and watch the meter, then reason backward from a reading to the state of the bus",
+    "keyQuestions": [
+      "Why does a healthy bus read 60 ohms and not 120 ohms?",
+      "Can the meter tell you where a terminator is, or only how many there are?"
+    ],
+    "commonMisconceptions": [
+      "Every motor on the bus needs its own terminator",
+      "The reading should be 120 ohms",
+      "More terminators are safer"
+    ],
+    "assessmentOpportunities": [
+      "Six committed diagnoses, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six readings"
+        ]
+      },
+      {
+        "type": "checkbox",
+        "label": "End A terminator / Middle terminator / End B terminator"
+      },
+      {
+        "type": "select",
+        "label": "Fault",
+        "values": [
+          "No fault",
+          "Broken wire",
+          "Short circuit"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Healthy: two terminators / One terminator missing / No terminators or a broken wire / Extra terminator / Short circuit"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next reading"
+      }
+    ]
+  }
+}

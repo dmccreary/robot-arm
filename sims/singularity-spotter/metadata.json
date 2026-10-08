@@ -1,0 +1,95 @@
+{
+  "title": "Singularity Spotter",
+  "creator": "Dan McCreary",
+  "subject": "Robot Kinematics",
+  "description": "Bend the elbow of a two-link arm and watch the determinant fall, the condition number climb and the joint speeds grow as the arm straightens or folds. Then classify eight elbow angles as safe, near a singularity, or singular, from the size of sin(theta2). Used in Chapter 12.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/singularity-spotter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Singular poses of a two-link arm and the determinant of the Jacobian",
+    "learningObjectives": [
+      "Classify eight elbow angles of a two-link arm as safe, near a singularity, or singular, from the value of sin(theta2), with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "classify",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Jacobian",
+      "determinant",
+      "singular pose",
+      "condition number",
+      "two-link arm"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 625
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Watch a number change with a picture of a straightening arm, then sort angles by a rule on that number",
+    "keyQuestions": [
+      "Why is a pose near a straight arm a problem, and not only the perfectly straight one?",
+      "Why is a folded arm singular too?"
+    ],
+    "commonMisconceptions": [
+      "Only a perfectly straight arm is a problem",
+      "A folded arm is safe",
+      "A negative bend is different from a positive one"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed classifications, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight angles"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "theta2",
+        "range": "-180 to 180 degrees, step 1, default 90"
+      },
+      {
+        "type": "button",
+        "label": "Safe / Near a singularity / Singular"
+      },
+      {
+        "type": "button",
+        "label": "Next angle / See score / Try again"
+      }
+    ]
+  }
+}

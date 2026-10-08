@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/12-kinematics/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-kinematics-where-is-the-hand-and-how-do-i-get-there" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-python-setup-for-robotics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Setting Up Python for Robotics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-anatomy-of-a-robot-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-electricity-power-and-safety/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Electricity, Power, and Safety Basics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-serial-and-can-communication/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Serial and CAN Communication
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-actuators-and-sensors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Actuators and Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-sourcing-parts-and-budget/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Sourcing Parts and Planning a Budget
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-printing-fasteners-and-tools/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. 3D Printing, Fasteners, and Tools
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-building-the-so-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Building and Calibrating the SO-ARM100
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-building-the-rebot-devarm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Building the reBot-DevArm and Choosing a Platform
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-python-hardware-library/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. A Python Hardware Library for Robot Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-moving-the-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    12. Kinematics: Where Is the Hand and How Do I Get There
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_13" id="__nav_5_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_13">
+            <span class="md-nav__icon md-icon"></span>
+            12. Kinematics: Where Is the Hand and How Do I Get There
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-do-forward-kinematics-and-inverse-kinematics-differ-in-the-number-of-answers-they-give" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. How do forward kinematics and inverse kinematics differ in the number of answers they give?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-does-a-homogeneous-transform-combine-in-one-4-by-4-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What does a homogeneous transform combine in one 4 by 4 matrix?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-flat-two-link-arm-has-both-links-010-m-long-with-1-0-and-2-90-where-is-the-tip-as-x-z" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A flat two-link arm has both links 0.10 m long. With θ1 = 0° and θ2 = 90°, where is the tip, as (x, z)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-two-link-arm-has-l1-0116-m-and-l2-0135-m-and-both-joints-can-turn-all-the-way-around-which-target-in-its-plane-x-z-is-unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. A two-link arm has l1 = 0.116 m and l2 = 0.135 m, and both joints can turn all the way around. Which target in its plane (x, z) is unreachable?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-transform-turns-90-degrees-about-z-and-then-moves-02-m-along-x-where-does-the-point-01-0-0-given-in-the-arms-own-frame-end-up-in-the-base-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A transform turns 90 degrees about z and then moves 0.2 m along x. Where does the point (0.1, 0, 0), given in the arm's own frame, end up in the base frame?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-does-the-closed-form-inverse-kinematics-of-a-two-link-arm-give-two-solutions-for-most-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why does the closed-form inverse kinematics of a two-link arm give two solutions for most targets?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-does-the-chapter-warn-that-a-straight-arm-is-dangerous-for-cartesian-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Why does the chapter warn that a straight arm is dangerous for Cartesian motion?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-in-the-lab-moving-each-joint-in-a-straight-line-in-joint-space-strays-335-mm-from-a-straight-vertical-line-while-cartesian-motion-with-ik-at-every-step-strays-0008-mm-what-explains-the-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. In the lab, moving each joint in a straight line in joint space strays 33.5 mm from a straight vertical line, while Cartesian motion with IK at every step strays 0.008 mm. What explains the difference?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-numerical-ik-on-the-so-101-for-the-tip-target-025-010-returns-liftelbowwrist-angles-of-6312-6767-2566-from-one-starting-guess-and-7545-8348-1057-from-another-which-explanation-fits" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Numerical IK on the SO-101 for the tip target (0.25, 0.10) returns lift/elbow/wrist angles of [−63.12, 67.67, 25.66] from one starting guess, and [−75.45, 83.48, 10.57] from another. Which explanation fits?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-the-solver-cannot-reach-025-010-with-the-gripper-pointing-straight-down-though-it-reaches-that-point-easily-with-the-gripper-tilted-what-does-this-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. The solver cannot reach (0.25, 0.10) with the gripper pointing straight down, though it reaches that point easily with the gripper tilted. What does this show?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-logging-testing-simulation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Logging, Testing, Simulation, and ROS 2
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-perception-and-learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Cameras, Perception, and Learning from Demonstration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-agents-and-openclaw-skills/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. AI Agents, Tools, and OpenClaw Skills
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-agent-planning-and-vision/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. Agent Planning, Vision, and Interfaces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-agent-safety-and-evaluation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Safety Layers and Evaluation for Agent-Controlled Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-projects-operation-and-teaching/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Projects, Operation, and Teaching
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-advanced-arm-path-mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Optional Advanced Chapter: The Mathematics of Arm Paths
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-do-forward-kinematics-and-inverse-kinematics-differ-in-the-number-of-answers-they-give" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. How do forward kinematics and inverse kinematics differ in the number of answers they give?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-does-a-homogeneous-transform-combine-in-one-4-by-4-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What does a homogeneous transform combine in one 4 by 4 matrix?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-flat-two-link-arm-has-both-links-010-m-long-with-1-0-and-2-90-where-is-the-tip-as-x-z" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A flat two-link arm has both links 0.10 m long. With θ1 = 0° and θ2 = 90°, where is the tip, as (x, z)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-two-link-arm-has-l1-0116-m-and-l2-0135-m-and-both-joints-can-turn-all-the-way-around-which-target-in-its-plane-x-z-is-unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. A two-link arm has l1 = 0.116 m and l2 = 0.135 m, and both joints can turn all the way around. Which target in its plane (x, z) is unreachable?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-transform-turns-90-degrees-about-z-and-then-moves-02-m-along-x-where-does-the-point-01-0-0-given-in-the-arms-own-frame-end-up-in-the-base-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A transform turns 90 degrees about z and then moves 0.2 m along x. Where does the point (0.1, 0, 0), given in the arm's own frame, end up in the base frame?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-does-the-closed-form-inverse-kinematics-of-a-two-link-arm-give-two-solutions-for-most-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why does the closed-form inverse kinematics of a two-link arm give two solutions for most targets?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-does-the-chapter-warn-that-a-straight-arm-is-dangerous-for-cartesian-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Why does the chapter warn that a straight arm is dangerous for Cartesian motion?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-in-the-lab-moving-each-joint-in-a-straight-line-in-joint-space-strays-335-mm-from-a-straight-vertical-line-while-cartesian-motion-with-ik-at-every-step-strays-0008-mm-what-explains-the-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. In the lab, moving each joint in a straight line in joint space strays 33.5 mm from a straight vertical line, while Cartesian motion with IK at every step strays 0.008 mm. What explains the difference?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-numerical-ik-on-the-so-101-for-the-tip-target-025-010-returns-liftelbowwrist-angles-of-6312-6767-2566-from-one-starting-guess-and-7545-8348-1057-from-another-which-explanation-fits" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Numerical IK on the SO-101 for the tip target (0.25, 0.10) returns lift/elbow/wrist angles of [−63.12, 67.67, 25.66] from one starting guess, and [−75.45, 83.48, 10.57] from another. Which explanation fits?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-the-solver-cannot-reach-025-010-with-the-gripper-pointing-straight-down-though-it-reaches-that-point-easily-with-the-gripper-tilted-what-does-this-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. The solver cannot reach (0.25, 0.10) with the gripper pointing straight down, though it reaches that point easily with the gripper tilted. What does this show?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/12-kinematics/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-kinematics-where-is-the-hand-and-how-do-i-get-there">Quiz: Kinematics: Where Is the Hand and How Do I Get There<a class="headerlink" href="#quiz-kinematics-where-is-the-hand-and-how-do-i-get-there" title="Permanent link">&para;</a></h1>
+<p>Test your understanding of transforms, forward and inverse kinematics, the Jacobian, singularities, and Cartesian motion with these review questions.</p>
+<hr />
+<h4 id="1-how-do-forward-kinematics-and-inverse-kinematics-differ-in-the-number-of-answers-they-give">1. How do forward kinematics and inverse kinematics differ in the number of answers they give?<a class="headerlink" href="#1-how-do-forward-kinematics-and-inverse-kinematics-differ-in-the-number-of-answers-they-give" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Forward kinematics has exactly one answer for a set of joint angles, and inverse kinematics can have many answers or none</li>
+<li>Forward kinematics can have many answers, and inverse kinematics always has exactly one</li>
+<li>Both always have exactly one answer</li>
+<li>Both can have many answers for the same input</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Forward kinematics computes the hand's position from the joint angles, and one set of angles gives one hand position. Inverse kinematics turns the question around, and a target can be reached by several joint sets, as with elbow up and elbow down, or by none when it is outside the workspace. Most of the interesting problems in the chapter live in the inverse direction.</p>
+<p><strong>Concept Tested:</strong> Forward Kinematics</p>
+<p><strong>See:</strong> <a href="../#forward-kinematics">Forward Kinematics</a></p>
+</details>
+<hr />
+<h4 id="2-what-does-a-homogeneous-transform-combine-in-one-4-by-4-matrix">2. What does a homogeneous transform combine in one 4 by 4 matrix?<a class="headerlink" href="#2-what-does-a-homogeneous-transform-combine-in-one-4-by-4-matrix" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A position and a velocity</li>
+<li>Two separate rotations about different axes</li>
+<li>A rotation and a translation, so that a point can be rotated and then moved in a single multiplication</li>
+<li>A joint angle and a joint torque</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A rotation turns but cannot move, and moving is an addition, so combining the two normally takes two operations. A homogeneous transform places the 3 by 3 rotation in the top left, the translation in the top right, and a bottom row of 0, 0, 0, 1. To use it, you write a point as (x, y, z, 1), multiply, and drop the 1. The result is R·p + t.</p>
+<p><strong>Concept Tested:</strong> Homogeneous Transform</p>
+<p><strong>See:</strong> <a href="../#homogeneous-transforms">Homogeneous Transforms</a></p>
+</details>
+<hr />
+<h4 id="3-a-flat-two-link-arm-has-both-links-010-m-long-with-1-0-and-2-90-where-is-the-tip-as-x-z">3. A flat two-link arm has both links 0.10 m long. With θ1 = 0° and θ2 = 90°, where is the tip, as (x, z)?<a class="headerlink" href="#3-a-flat-two-link-arm-has-both-links-010-m-long-with-1-0-and-2-90-where-is-the-tip-as-x-z" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>(0.200, 0.000) m</li>
+<li>(0.100, 0.100) m</li>
+<li>(0.000, 0.200) m</li>
+<li>(0.141, 0.000) m</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The forward kinematics formulas are x = l1·cos θ1 + l2·cos(θ1 + θ2) and z = l1·sin θ1 + l2·sin(θ1 + θ2). With θ1 = 0 and θ2 = 90°, x = 0.1 + 0.1·cos 90° = 0.1 and z = 0 + 0.1·sin 90° = 0.1. The second link points at the sum of the two angles, because the elbow's bend is measured from the first link. Option A is the fully straight arm.</p>
+<p><strong>Concept Tested:</strong> Two-Link Arm</p>
+<p><strong>See:</strong> <a href="../#forward-kinematics">Forward Kinematics</a></p>
+</details>
+<hr />
+<h4 id="4-a-two-link-arm-has-l1-0116-m-and-l2-0135-m-and-both-joints-can-turn-all-the-way-around-which-target-in-its-plane-x-z-is-unreachable">4. A two-link arm has l1 = 0.116 m and l2 = 0.135 m, and both joints can turn all the way around. Which target in its plane (x, z) is unreachable?<a class="headerlink" href="#4-a-two-link-arm-has-l1-0116-m-and-l2-0135-m-and-both-joints-can-turn-all-the-way-around-which-target-in-its-plane-x-z-is-unreachable" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>(0.10, 0.10) m</li>
+<li>(0.15, 0.10) m</li>
+<li>(0.25, 0.00) m</li>
+<li>(0.20, 0.20) m</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The reachable distances run from |l1 − l2| = 0.019 m to l1 + l2 = 0.251 m. The point (0.20, 0.20) is √(0.04 + 0.04) ≈ 0.283 m from the shoulder, beyond the full stretch of 0.251 m. The other points are at 0.141 m, 0.180 m, and 0.250 m, all inside the ring. For an unreachable target, the cosine in the formula is greater than 1 or less than −1, and the library raises an <code>UnreachableError</code>.</p>
+<p><strong>Concept Tested:</strong> Unreachable Target</p>
+<p><strong>See:</strong> <a href="../#unreachable-targets">Unreachable Targets</a></p>
+</details>
+<hr />
+<h4 id="5-a-transform-turns-90-degrees-about-z-and-then-moves-02-m-along-x-where-does-the-point-01-0-0-given-in-the-arms-own-frame-end-up-in-the-base-frame">5. A transform turns 90 degrees about z and then moves 0.2 m along x. Where does the point (0.1, 0, 0), given in the arm's own frame, end up in the base frame?<a class="headerlink" href="#5-a-transform-turns-90-degrees-about-z-and-then-moves-02-m-along-x-where-does-the-point-01-0-0-given-in-the-arms-own-frame-end-up-in-the-base-frame" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>(0.2, 0.1, 0)</li>
+<li>(0, 0.3, 0)</li>
+<li>(0.3, 0, 0)</li>
+<li>(0.1, 0.2, 0)</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The transform rotates first and then moves, giving R·p + t. The point (0.1, 0, 0) is rotated to (0, 0.1, 0), and then moved 0.2 m along x to (0.2, 0.1, 0). Doing the same two steps in the other order, moving first and rotating second, gives (0, 0.3, 0), which is option B. Order matters, and it is the most common source of kinematics bugs.</p>
+<p><strong>Concept Tested:</strong> Transform Chain</p>
+<p><strong>See:</strong> <a href="../#homogeneous-transforms">Homogeneous Transforms</a></p>
+</details>
+<hr />
+<h4 id="6-why-does-the-closed-form-inverse-kinematics-of-a-two-link-arm-give-two-solutions-for-most-targets">6. Why does the closed-form inverse kinematics of a two-link arm give two solutions for most targets?<a class="headerlink" href="#6-why-does-the-closed-form-inverse-kinematics-of-a-two-link-arm-give-two-solutions-for-most-targets" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The two links have different lengths</li>
+<li>The law of cosines gives cos θ2, and both +θ2 and −θ2 satisfy it, which are the elbow-down and elbow-up poses</li>
+<li>The joint limits always allow two different angles</li>
+<li>Numerical errors make the result unreliable</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The cosine gives two angles of the same size and opposite sign, so the same hand position can be reached with the elbow above or below the line from the shoulder to the hand. For the target (0.15, 0.10) the solutions are θ2 = +88.5° with θ1 = −14.8°, and θ2 = −88.5° with θ1 = +82.2°. A program must pick one, usually the one nearest the present pose, and discard any solution outside the joint limits.</p>
+<p><strong>Concept Tested:</strong> Multiple IK Solutions</p>
+<p><strong>See:</strong> <a href="../#multiple-solutions-and-elbow-up-and-down">Multiple Solutions and Elbow Up and Down</a></p>
+</details>
+<hr />
+<h4 id="7-why-does-the-chapter-warn-that-a-straight-arm-is-dangerous-for-cartesian-motion">7. Why does the chapter warn that a straight arm is dangerous for Cartesian motion?<a class="headerlink" href="#7-why-does-the-chapter-warn-that-a-straight-arm-is-dangerous-for-cartesian-motion" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A straight arm cannot hold any load</li>
+<li>A straight arm always collides with the table</li>
+<li>Near full stretch the Jacobian becomes singular, so a tiny hand motion can demand a huge joint speed</li>
+<li>The forward kinematics gives two answers for a straight arm</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. For the two-link arm, the Jacobian's determinant is l1·l2·sin θ2, which is zero when the elbow is straight or fully folded. At full stretch the hand cannot move along the arm, and near it the joint speeds needed grow without limit. The lab's table shows 17 and 23 degrees per second at θ2 = 90°, but thousands of degrees per second at 1°. Watch the condition number and let the speed limit catch what remains.</p>
+<p><strong>Concept Tested:</strong> Singular Pose</p>
+<p><strong>See:</strong> <a href="../#singular-poses">Singular Poses</a></p>
+</details>
+<hr />
+<h4 id="8-in-the-lab-moving-each-joint-in-a-straight-line-in-joint-space-strays-335-mm-from-a-straight-vertical-line-while-cartesian-motion-with-ik-at-every-step-strays-0008-mm-what-explains-the-difference">8. In the lab, moving each joint in a straight line in joint space strays 33.5 mm from a straight vertical line, while Cartesian motion with IK at every step strays 0.008 mm. What explains the difference?<a class="headerlink" href="#8-in-the-lab-moving-each-joint-in-a-straight-line-in-joint-space-strays-335-mm-from-a-straight-vertical-line-while-cartesian-motion-with-ik-at-every-step-strays-0008-mm-what-explains-the-difference" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Joint-space motion ignores the joint limits</li>
+<li>Cartesian motion uses larger motors</li>
+<li>Joint-space motion uses radians and Cartesian motion uses degrees</li>
+<li>Equal steps in each joint angle do not move the hand in a straight line, so the path must be built from the hand's own positions</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. Joint-space interpolation (Chapter 11) moves every joint by the same fraction of its distance, which makes the hand follow a curve. Cartesian motion divides the line into small steps, solves inverse kinematics at each, and uses the previous answer as the next starting guess so the elbow does not flip. Use Cartesian motion when the hand must carry a full cup or slide along a wall, and joint-space motion when it just has to get from one pose to another.</p>
+<p><strong>Concept Tested:</strong> Straight-Line Motion</p>
+<p><strong>See:</strong> <a href="../#cartesian-motion-and-straight-line-motion">Cartesian Motion and Straight-Line Motion</a></p>
+</details>
+<hr />
+<h4 id="9-numerical-ik-on-the-so-101-for-the-tip-target-025-010-returns-liftelbowwrist-angles-of-6312-6767-2566-from-one-starting-guess-and-7545-8348-1057-from-another-which-explanation-fits">9. Numerical IK on the SO-101 for the tip target (0.25, 0.10) returns lift/elbow/wrist angles of [−63.12, 67.67, 25.66] from one starting guess, and [−75.45, 83.48, 10.57] from another. Which explanation fits?<a class="headerlink" href="#9-numerical-ik-on-the-so-101-for-the-tip-target-025-010-returns-liftelbowwrist-angles-of-6312-6767-2566-from-one-starting-guess-and-7545-8348-1057-from-another-which-explanation-fits" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The target has many solutions, and the solver returns whichever one is nearer its starting guess</li>
+<li>One of the two answers must be wrong, because a target has only one solution</li>
+<li>The solver ignores the joint limits in the second run</li>
+<li>The forward kinematics changed between the two runs</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The SO-101 has three joints in its plane, which is more than the two needed to place the tip, so many angle sets reach the same point. Numerical IK improves a guess step by step and stops at the nearest solution. Each answer was put back through forward kinematics and matched the target. The chapter's advice is to always run an IK answer forward to check it, whichever method produced it.</p>
+<p><strong>Concept Tested:</strong> Numerical Inverse Kinematics</p>
+<p><strong>See:</strong> <a href="../#numerical-inverse-kinematics-and-orientation-control">Numerical Inverse Kinematics and Orientation Control</a></p>
+</details>
+<hr />
+<h4 id="10-the-solver-cannot-reach-025-010-with-the-gripper-pointing-straight-down-though-it-reaches-that-point-easily-with-the-gripper-tilted-what-does-this-show">10. The solver cannot reach (0.25, 0.10) with the gripper pointing straight down, though it reaches that point easily with the gripper tilted. What does this show?<a class="headerlink" href="#10-the-solver-cannot-reach-025-010-with-the-gripper-pointing-straight-down-though-it-reaches-that-point-easily-with-the-gripper-tilted-what-does-this-show" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The target is outside the arm's reach no matter how the gripper points</li>
+<li>Requiring an orientation uses up the spare joint, so the set of reachable points shrinks</li>
+<li>The pitch is computed in radians and the target in degrees</li>
+<li>The inverse kinematics code has a bug that appears only for downward grasps</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Position alone leaves one joint free in the plane. Orientation control uses that extra joint to hold the gripper's pitch (lift + elbow + wrist) at a chosen value, such as 90 degrees for pointing straight down. With the extra freedom spent, fewer points can be reached. In the lab, the tip can reach 7 cm up at 0.20 m out with the gripper down but not 9 cm, and tilting to 60 degrees brings 13 cm into reach. That is why a pre-grasp approach sometimes tilts.</p>
+<p><strong>Concept Tested:</strong> Orientation Control</p>
+<p><strong>See:</strong> <a href="../#numerical-inverse-kinematics-and-orientation-control">Numerical Inverse Kinematics and Orientation Control</a></p>
+</details>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,94 @@
+{
+  "title": "Status Packet Decoder",
+  "creator": "Dan McCreary",
+  "subject": "Serial Communication for Robotics",
+  "description": "Click the bytes of a servo reply to see which field each one belongs to. Then classify six replies as a valid reading, a bad checksum, a servo-reported error or not a packet, by checking the header, length, checksum and error byte in order. Used in Chapter 4.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/status-packet-decoder/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Status packets, the error byte and the checksum",
+    "learningObjectives": [
+      "Classify six reply packets as a valid reading, a bad checksum, a servo-reported error or not a packet, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "packet structure",
+      "status packet",
+      "error byte",
+      "checksum",
+      "little-endian byte order",
+      "hexadecimal"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Name the fields of one concrete reply, then sort new replies into four classes with a fixed four-step check",
+    "keyQuestions": [
+      "Which check do you make first, and why does the order matter?",
+      "Can a reply have a correct checksum and still be bad news?"
+    ],
+    "commonMisconceptions": [
+      "Any reply that starts with FF FF is valid",
+      "A non-zero error byte means the data is wrong",
+      "A wrong checksum can be ignored if the data looks plausible"
+    ],
+    "assessmentOpportunities": [
+      "Six committed classifications, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six replies"
+        ]
+      },
+      {
+        "type": "canvas",
+        "label": "Byte boxes",
+        "range": "click a byte to see its field"
+      },
+      {
+        "type": "button",
+        "label": "Valid reading / Bad checksum / Servo reports an error / Not a packet"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next reply"
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "title": "Traceback Detective",
+  "creator": "Dan McCreary",
+  "subject": "Python for Robotics",
+  "description": "Read five real Python tracebacks. For each one, click the line that names the error type, then click the frame you would check first, and see why. Used in Chapter 1.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/traceback-detective/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Reading a Python traceback: the error-type line and the frames",
+    "learningObjectives": [
+      "Distinguish the error-type line from the frames of a Python traceback, and identify the frame to check first, in each of five tracebacks, with at least 8 of 10 answers correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "traceback",
+      "frame",
+      "exception",
+      "error type",
+      "library",
+      "project folder"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 622
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Click the parts of a real traceback and commit each choice; tracebacks with library frames test whether the learner can separate their own code from the library code",
+    "keyQuestions": [
+      "Which line of a traceback names the type of error?",
+      "Which frames are inside your own project folder, and which belong to Python?",
+      "Why is the deepest project frame the first place to look?"
+    ],
+    "commonMisconceptions": [
+      "The top line of a traceback shows the cause",
+      "If the bottom frames are inside a library, the library has a bug",
+      "A longer traceback means a harder bug"
+    ],
+    "assessmentOpportunities": [
+      "Ten committed clicks across five tracebacks, one attempt each; 8 of 10 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "canvas click",
+        "label": "Click a line (first question) or a frame (second question) of the traceback"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next traceback / See score / Try again"
+      }
+    ]
+  }
+}

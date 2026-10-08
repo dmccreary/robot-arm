@@ -1,0 +1,108 @@
+{
+  "title": "Pinhole Projection Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Computer Vision for Robotics",
+  "description": "Move a point in front of a pinhole camera and watch the pixel where it lands. Then use the pinhole formula in six problems: five ask for a pixel coordinate, and one runs the formula backward from a pixel and a depth to a distance. Used in Chapter 14.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/pinhole-projection-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "The pinhole camera model and camera intrinsics",
+    "learningObjectives": [
+      "Calculate the pixel position of a point, or the sideways distance of a point from its pixel and depth, using the pinhole camera model with fx = fy = 500 and the principal point (320, 240), for six problems, to within the tolerance shown, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "calculate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "camera intrinsics",
+      "focal length",
+      "principal point",
+      "pinhole model",
+      "pixel"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 600
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Move a point and watch its pixel, then apply the projection formula to new numbers with an immediate check",
+    "keyQuestions": [
+      "What happens to the pixel offset from the centre when the depth doubles?",
+      "Why is depth needed to turn a pixel back into a position?"
+    ],
+    "commonMisconceptions": [
+      "A point twice as far away has twice the pixel offset",
+      "The pixel (0, 0) is the middle of the picture",
+      "Pixels and metres are the same scale everywhere"
+    ],
+    "assessmentOpportunities": [
+      "Six typed answers, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "X (right of the view axis)",
+        "range": "-0.50 to 0.50 m, step 0.01, default 0.10"
+      },
+      {
+        "type": "slider",
+        "label": "Y (below the view axis)",
+        "range": "-0.50 to 0.50 m, step 0.01, default 0.05"
+      },
+      {
+        "type": "slider",
+        "label": "Z (depth)",
+        "range": "0.10 to 2.00 m, step 0.01, default 0.50"
+      },
+      {
+        "type": "input",
+        "label": "Answer in pixels or metres"
+      },
+      {
+        "type": "button",
+        "label": "Check"
+      },
+      {
+        "type": "button",
+        "label": "Next problem / See score / Try again"
+      }
+    ]
+  }
+}

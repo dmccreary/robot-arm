@@ -1,0 +1,104 @@
+{
+  "title": "Tolerance Fit Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Set a designed hole size, a printer size error and a mating part size, and see whether the printed hole is too tight, snug, a good sliding fit or loose. Then predict the outcome for six cases before it is shown. Used in Chapter 7.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/tolerance-fit-explorer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Dimensional tolerance and clearance in 3D-printed parts",
+    "learningObjectives": [
+      "Infer whether a printed hole is too tight, snug, a good sliding fit, or loose from its designed size, the printer's size error and the size of the part that goes into it, in six cases, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "infer",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "3D printing",
+      "dimensional tolerance",
+      "clearance",
+      "printed hole size",
+      "mating part"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 650
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict the outcome from the numbers and commit, then see the picture and the clearance confirm or correct it",
+    "keyQuestions": [
+      "How much smaller does the hole print than it was designed?",
+      "What is the clearance, and which of the four zones is it in?"
+    ],
+    "commonMisconceptions": [
+      "A hole prints at exactly the size that was designed",
+      "A bigger hole is always safer",
+      "Zero clearance is a perfect fit"
+    ],
+    "assessmentOpportunities": [
+      "Six committed outcomes, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six cases"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Designed hole",
+        "range": "2.5 to 26.0 mm, step 0.05, default 25.0"
+      },
+      {
+        "type": "slider",
+        "label": "Printer error",
+        "range": "-0.40 to 0.40 mm, step 0.05, default -0.10"
+      },
+      {
+        "type": "slider",
+        "label": "Mating part",
+        "range": "2.5 to 26.0 mm, step 0.05, default 24.7"
+      },
+      {
+        "type": "button",
+        "label": "Too tight / Snug / Good sliding fit / Loose"
+      },
+      {
+        "type": "button",
+        "label": "Next case / See score / Try again"
+      }
+    ]
+  }
+}

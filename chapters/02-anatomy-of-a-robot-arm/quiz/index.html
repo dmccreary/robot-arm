@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/02-anatomy-of-a-robot-arm/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-anatomy-of-a-robot-arm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-python-setup-for-robotics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Setting Up Python for Robotics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Anatomy of a Robot Arm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-kind-of-motion-does-a-revolute-joint-produce-and-how-is-that-motion-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What kind of motion does a revolute joint produce, and how is that motion measured?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-the-end-effector-of-a-robot-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is the end effector of a robot arm?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-does-the-joint-nearest-the-base-of-a-serial-arm-have-to-work-harder-than-the-joint-nearest-the-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Why does the joint nearest the base of a serial arm have to work harder than the joint nearest the tool?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-rebot-devarms-parallel-gripper-is-driven-by-a-motor-that-turns-yet-the-chapter-calls-its-finger-motion-prismatic-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The reBot-DevArm's parallel gripper is driven by a motor that turns, yet the chapter calls its finger motion prismatic. Why?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-is-the-smallest-number-of-independent-joints-an-arm-needs-to-place-its-gripper-at-any-position-and-point-it-in-any-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What is the smallest number of independent joints an arm needs to place its gripper at any position and point it in any direction?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-flat-two-link-arm-has-a-12-cm-upper-arm-and-a-20-cm-forearm-and-both-joints-can-turn-all-the-way-around-which-target-distance-from-the-shoulder-can-its-tip-reach" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A flat two-link arm has a 12 cm upper arm and a 20 cm forearm, and both joints can turn all the way around. Which target distance from the shoulder can its tip reach?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-should-software-joint-limits-be-set-inside-the-mechanical-limits-with-a-margin" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Why should software joint limits be set inside the mechanical limits, with a margin?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-you-bend-the-leader-arms-elbow-to-30-degrees-and-a-program-copies-that-number-to-the-follower-which-bends-30-degrees-the-opposite-way-nothing-is-broken-what-is-the-most-likely-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. You bend the leader arm's elbow to +30 degrees and a program copies that number to the follower, which bends 30 degrees the opposite way. Nothing is broken. What is the most likely cause?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-five-trials-with-the-same-command-all-land-within-03-mm-of-one-another-but-the-cluster-is-2-mm-from-the-target-how-should-this-arm-be-described" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Five trials with the same command all land within 0.3 mm of one another, but the cluster is 2 mm from the target. How should this arm be described?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-which-arm-carries-a-handle-and-a-trigger-and-does-no-physical-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Which arm carries a handle and a trigger and does no physical work?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-electricity-power-and-safety/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Electricity, Power, and Safety Basics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-serial-and-can-communication/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Serial and CAN Communication
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-actuators-and-sensors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Actuators and Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-sourcing-parts-and-budget/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Sourcing Parts and Planning a Budget
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-printing-fasteners-and-tools/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. 3D Printing, Fasteners, and Tools
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-building-the-so-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Building and Calibrating the SO-ARM100
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-building-the-rebot-devarm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Building the reBot-DevArm and Choosing a Platform
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-python-hardware-library/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. A Python Hardware Library for Robot Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-moving-the-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-kinematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Kinematics: Where Is the Hand and How Do I Get There
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-logging-testing-simulation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Logging, Testing, Simulation, and ROS 2
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-perception-and-learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Cameras, Perception, and Learning from Demonstration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-agents-and-openclaw-skills/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. AI Agents, Tools, and OpenClaw Skills
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-agent-planning-and-vision/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. Agent Planning, Vision, and Interfaces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-agent-safety-and-evaluation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Safety Layers and Evaluation for Agent-Controlled Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-projects-operation-and-teaching/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Projects, Operation, and Teaching
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-advanced-arm-path-mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Optional Advanced Chapter: The Mathematics of Arm Paths
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-kind-of-motion-does-a-revolute-joint-produce-and-how-is-that-motion-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What kind of motion does a revolute joint produce, and how is that motion measured?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-the-end-effector-of-a-robot-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is the end effector of a robot arm?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-does-the-joint-nearest-the-base-of-a-serial-arm-have-to-work-harder-than-the-joint-nearest-the-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Why does the joint nearest the base of a serial arm have to work harder than the joint nearest the tool?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-rebot-devarms-parallel-gripper-is-driven-by-a-motor-that-turns-yet-the-chapter-calls-its-finger-motion-prismatic-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The reBot-DevArm's parallel gripper is driven by a motor that turns, yet the chapter calls its finger motion prismatic. Why?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-is-the-smallest-number-of-independent-joints-an-arm-needs-to-place-its-gripper-at-any-position-and-point-it-in-any-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What is the smallest number of independent joints an arm needs to place its gripper at any position and point it in any direction?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-flat-two-link-arm-has-a-12-cm-upper-arm-and-a-20-cm-forearm-and-both-joints-can-turn-all-the-way-around-which-target-distance-from-the-shoulder-can-its-tip-reach" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A flat two-link arm has a 12 cm upper arm and a 20 cm forearm, and both joints can turn all the way around. Which target distance from the shoulder can its tip reach?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-should-software-joint-limits-be-set-inside-the-mechanical-limits-with-a-margin" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Why should software joint limits be set inside the mechanical limits, with a margin?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-you-bend-the-leader-arms-elbow-to-30-degrees-and-a-program-copies-that-number-to-the-follower-which-bends-30-degrees-the-opposite-way-nothing-is-broken-what-is-the-most-likely-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. You bend the leader arm's elbow to +30 degrees and a program copies that number to the follower, which bends 30 degrees the opposite way. Nothing is broken. What is the most likely cause?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-five-trials-with-the-same-command-all-land-within-03-mm-of-one-another-but-the-cluster-is-2-mm-from-the-target-how-should-this-arm-be-described" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Five trials with the same command all land within 0.3 mm of one another, but the cluster is 2 mm from the target. How should this arm be described?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-which-arm-carries-a-handle-and-a-trigger-and-does-no-physical-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Which arm carries a handle and a trigger and does no physical work?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/02-anatomy-of-a-robot-arm/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-anatomy-of-a-robot-arm">Quiz: Anatomy of a Robot Arm<a class="headerlink" href="#quiz-anatomy-of-a-robot-arm" title="Permanent link">&para;</a></h1>
+<p>Test your understanding of joints, links, poses, degrees of freedom, workspace, and leader and follower arms with these review questions.</p>
+<hr />
+<h4 id="1-what-kind-of-motion-does-a-revolute-joint-produce-and-how-is-that-motion-measured">1. What kind of motion does a revolute joint produce, and how is that motion measured?<a class="headerlink" href="#1-what-kind-of-motion-does-a-revolute-joint-produce-and-how-is-that-motion-measured" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>It slides along a straight line and is measured as a distance</li>
+<li>It grips an object and is measured as a force</li>
+<li>It rotates around a fixed axis and is measured as an angle</li>
+<li>It bends a rigid piece and is measured as a curvature</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A revolute joint rotates around a fixed line called its axis, like a door on a hinge, and its motion is measured in degrees or radians. Option A describes a prismatic joint, which slides like a drawer. Links never bend, so option D is wrong. Every joint in the SO-ARM101 is revolute, each driven by a motor that turns a shaft.</p>
+<p><strong>Concept Tested:</strong> Revolute Joint</p>
+<p><strong>See:</strong> <a href="../#joints-and-links">Joints and Links</a></p>
+</details>
+<hr />
+<h4 id="2-what-is-the-end-effector-of-a-robot-arm">2. What is the end effector of a robot arm?<a class="headerlink" href="#2-what-is-the-end-effector-of-a-robot-arm" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The tool at the very end of the chain, which is the part that touches the world</li>
+<li>The first motor in the chain, which is fixed to the table</li>
+<li>The rigid piece between the elbow and the wrist</li>
+<li>The coordinate system fixed to the base of the arm</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The end effector is the tool at the end of the chain, such as a gripper, a suction cup, a pen holder, or a camera. It is called an effector because it is where the robot has its effect. Option B describes the base, option C describes a link, and option D describes the base frame. Naming parts from the base outward ends with the end effector.</p>
+<p><strong>Concept Tested:</strong> End Effector</p>
+<p><strong>See:</strong> <a href="../#naming-the-parts">Naming the Parts</a></p>
+</details>
+<hr />
+<h4 id="3-why-does-the-joint-nearest-the-base-of-a-serial-arm-have-to-work-harder-than-the-joint-nearest-the-tool">3. Why does the joint nearest the base of a serial arm have to work harder than the joint nearest the tool?<a class="headerlink" href="#3-why-does-the-joint-nearest-the-base-of-a-serial-arm-have-to-work-harder-than-the-joint-nearest-the-tool" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Revolute joints near the base are always built with weaker gearing</li>
+<li>The base joint must also keep the table from moving</li>
+<li>Joints near the tool are prismatic, so they need no torque</li>
+<li>Weight adds up along the chain, so the base joint carries the whole arm plus the load</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. In a serial manipulator the joints form a single chain, and each joint moves and supports everything beyond it. Motion adds up along the chain, and so does weight. The joint nearest the base carries the entire arm and whatever the gripper holds, while the joint nearest the tool carries only a small part of the weight. The other options invent causes that the chapter does not describe.</p>
+<p><strong>Concept Tested:</strong> Serial Manipulator</p>
+<p><strong>See:</strong> <a href="../#what-is-a-robot-arm">What Is a Robot Arm?</a></p>
+</details>
+<hr />
+<h4 id="4-the-rebot-devarms-parallel-gripper-is-driven-by-a-motor-that-turns-yet-the-chapter-calls-its-finger-motion-prismatic-why">4. The reBot-DevArm's parallel gripper is driven by a motor that turns, yet the chapter calls its finger motion prismatic. Why?<a class="headerlink" href="#4-the-rebot-devarms-parallel-gripper-is-driven-by-a-motor-that-turns-yet-the-chapter-calls-its-finger-motion-prismatic-why" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Prismatic joints are defined as any joint that is driven by a motor</li>
+<li>The kind of joint is decided by the motion at the output, and the fingers slide along a line</li>
+<li>The gripper has no motor, so it must be a different kind of joint</li>
+<li>A parallel gripper is always classified as a revolute joint at its base</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A mechanism can change one kind of motion into another, so the type of joint depends on the motion you get at the output, not on the motor behind it. The reBot's fingers slide toward each other along a line, which is prismatic motion, measured as a distance. Option A is not a definition, option C is false because the gripper is motorized, and option D contradicts the chapter's table.</p>
+<p><strong>Concept Tested:</strong> Prismatic Joint</p>
+<p><strong>See:</strong> <a href="../#joints-and-links">Joints and Links</a></p>
+</details>
+<hr />
+<h4 id="5-what-is-the-smallest-number-of-independent-joints-an-arm-needs-to-place-its-gripper-at-any-position-and-point-it-in-any-direction">5. What is the smallest number of independent joints an arm needs to place its gripper at any position and point it in any direction?<a class="headerlink" href="#5-what-is-the-smallest-number-of-independent-joints-an-arm-needs-to-place-its-gripper-at-any-position-and-point-it-in-any-direction" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Three, because there are three position axes</li>
+<li>Four, because most industrial arms have four</li>
+<li>Six, because a free object has three translations and three rotations</li>
+<li>Seven, because the gripper needs its own motor as well</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A free object in space can move in six independent ways: three translations (forward and back, left and right, up and down) and three rotations (tilting forward, tilting sideways, and spinning). To choose all six numbers freely, an arm needs at least six joints. Arms with fewer joints are still useful, but some part of the hand's pose is tied to another part.</p>
+<p><strong>Concept Tested:</strong> Degrees of Freedom</p>
+<p><strong>See:</strong> <a href="../#degrees-of-freedom">Degrees of Freedom</a></p>
+</details>
+<hr />
+<h4 id="6-a-flat-two-link-arm-has-a-12-cm-upper-arm-and-a-20-cm-forearm-and-both-joints-can-turn-all-the-way-around-which-target-distance-from-the-shoulder-can-its-tip-reach">6. A flat two-link arm has a 12 cm upper arm and a 20 cm forearm, and both joints can turn all the way around. Which target distance from the shoulder can its tip reach?<a class="headerlink" href="#6-a-flat-two-link-arm-has-a-12-cm-upper-arm-and-a-20-cm-forearm-and-both-joints-can-turn-all-the-way-around-which-target-distance-from-the-shoulder-can-its-tip-reach" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>25 cm</li>
+<li>6 cm</li>
+<li>34 cm</li>
+<li>7 cm</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. A fully rotating two-link arm reaches distances from |L1 − L2| to L1 + L2. Here that is |12 − 20| = 8 cm up to 12 + 20 = 32 cm. A distance of 25 cm is inside that ring. Targets at 6 cm and 7 cm fall in the central hole where the arm cannot fold tightly enough, and 34 cm is beyond the full stretch of 32 cm.</p>
+<p><strong>Concept Tested:</strong> Workspace</p>
+<p><strong>See:</strong> <a href="../#the-workspace">The Workspace</a></p>
+</details>
+<hr />
+<h4 id="7-why-should-software-joint-limits-be-set-inside-the-mechanical-limits-with-a-margin">7. Why should software joint limits be set inside the mechanical limits, with a margin?<a class="headerlink" href="#7-why-should-software-joint-limits-be-set-inside-the-mechanical-limits-with-a-margin" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Mechanical limits are only suggestions that the motors ignore</li>
+<li>Software limits run faster than mechanical stops</li>
+<li>A smaller range makes the arm easier to calibrate</li>
+<li>A program should never ask a joint to push against a stop, where current rises, the motor heats up, and printed parts take the load</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. If a program commands 120 degrees but the joint stops at 97, the servo keeps pushing against the stop. Its motor current rises, it heats up, and the printed parts carry the load. A software limit with a margin, such as stopping 5 degrees before the mechanical stop, refuses the command before anything moves. Mechanical stops are real physical barriers, so option A is wrong.</p>
+<p><strong>Concept Tested:</strong> Joint Limits</p>
+<p><strong>See:</strong> <a href="../#joint-limits">Joint Limits</a></p>
+</details>
+<hr />
+<h4 id="8-you-bend-the-leader-arms-elbow-to-30-degrees-and-a-program-copies-that-number-to-the-follower-which-bends-30-degrees-the-opposite-way-nothing-is-broken-what-is-the-most-likely-cause">8. You bend the leader arm's elbow to +30 degrees and a program copies that number to the follower, which bends 30 degrees the opposite way. Nothing is broken. What is the most likely cause?<a class="headerlink" href="#8-you-bend-the-leader-arms-elbow-to-30-degrees-and-a-program-copies-that-number-to-the-follower-which-bends-30-degrees-the-opposite-way-nothing-is-broken-what-is-the-most-likely-cause" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The follower's gripper is a parallel gripper and not a moving-jaw gripper</li>
+<li>The two arms disagree about the positive direction, so the same number means mirrored motion</li>
+<li>The follower's motors use a 1/345 gear ratio and the leader's do not</li>
+<li>The follower is outside its workspace, so it reflects the command</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Each maker picks its own zero position and positive direction, so the same number can mean different physical motions on two arms. If the leader counts a forward bend as positive and the follower counts it as negative, the follower looks like a mirror image. Gear ratio changes how hard a joint is to turn, not which way it moves. Calibration in Chapter 8 makes the same number mean the same angle on both arms.</p>
+<p><strong>Concept Tested:</strong> Joint Angle</p>
+<p><strong>See:</strong> <a href="../#joint-angle">Joint Angle</a></p>
+</details>
+<hr />
+<h4 id="9-five-trials-with-the-same-command-all-land-within-03-mm-of-one-another-but-the-cluster-is-2-mm-from-the-target-how-should-this-arm-be-described">9. Five trials with the same command all land within 0.3 mm of one another, but the cluster is 2 mm from the target. How should this arm be described?<a class="headerlink" href="#9-five-trials-with-the-same-command-all-land-within-03-mm-of-one-another-but-the-cluster-is-2-mm-from-the-target-how-should-this-arm-be-described" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Repeatable but not accurate</li>
+<li>Accurate but not repeatable</li>
+<li>Both accurate and repeatable</li>
+<li>Neither accurate nor repeatable</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Repeatability is how tightly the landing points cluster, and accuracy is how close their average is to the point you asked for. This cluster is tight, so the arm is repeatable, but its average sits 2 mm from the target, so it is not accurate. A repeatable arm can be fixed with one correction from calibration. A scattered arm cannot, because its error changes every time.</p>
+<p><strong>Concept Tested:</strong> Repeatability</p>
+<p><strong>See:</strong> <a href="../#repeatability">Repeatability</a></p>
+</details>
+<hr />
+<h4 id="10-which-arm-carries-a-handle-and-a-trigger-and-does-no-physical-work">10. Which arm carries a handle and a trigger and does no physical work?<a class="headerlink" href="#10-which-arm-carries-a-handle-and-a-trigger-and-does-no-physical-work" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The follower arm</li>
+<li>The bimanual arm</li>
+<li>The leader arm</li>
+<li>The parallel arm</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The leader arm is the one a person holds and moves by hand. It senses joint angles and ends in a handle with a trigger that stands in for the follower's gripper. The follower does the work and has a real gripper. A bimanual robot has two working arms, which is a different idea from a leader and follower pair. A parallel gripper is a type of end effector, not a kind of arm.</p>
+<p><strong>Concept Tested:</strong> Leader Arm</p>
+<p><strong>See:</strong> <a href="../#the-leader-arm">The Leader Arm</a></p>
+</details>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

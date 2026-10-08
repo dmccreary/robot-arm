@@ -1,0 +1,91 @@
+{
+  "title": "Power Budget Sizer",
+  "creator": "Dan McCreary",
+  "subject": "Electronics for Robotics",
+  "description": "Add the motor currents of four arm setups, apply the 1.25 margin factor, type the current the supply must deliver, then choose among three supplies. Used in Chapter 3.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/power-budget-sizer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Power budget, margin factor and supply current rating",
+    "learningObjectives": [
+      "Calculate the supply current needed for four arm setups by adding the motor currents and applying a 1.25 margin factor, to within 0.05 A, with at least 3 of 4 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "current",
+      "electrical power",
+      "power supply",
+      "current rating",
+      "power budget",
+      "margin factor"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 522
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Type the result of the add-then-multiply procedure before the answer is shown, then link the number to a buying decision by choosing a supply",
+    "keyQuestions": [
+      "What is the total current, and what is it after the margin?",
+      "Which supply ratings are at or above the needed current?",
+      "Why is a supply with a larger current rating safe for the arm?"
+    ],
+    "commonMisconceptions": [
+      "The supply should match the total of the stall currents",
+      "A supply with a larger current rating can damage the arm",
+      "The margin factor can be skipped"
+    ],
+    "assessmentOpportunities": [
+      "Four typed currents, one attempt each, correct within 0.05 A; 3 of 4 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "input",
+        "label": "Needed supply current (A)",
+        "range": "0 to 50 amperes, step 0.05, no default"
+      },
+      {
+        "type": "button",
+        "label": "Check"
+      },
+      {
+        "type": "button",
+        "label": "Three supply buttons (a follow-up choice, not scored)"
+      },
+      {
+        "type": "button",
+        "label": "Next setup / See score / Try again"
+      }
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "title": "Print Defect Diagnoser",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Read about five common 3D print faults, each with what you see, its usual cause and its usual remedy. Then read eight descriptions of failed prints and decide which fault each one is. Used in Chapter 7.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/print-defect-diagnoser/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Print quality inspection and common FDM print faults",
+    "learningObjectives": [
+      "Distinguish five common FDM print faults from eight written descriptions of failed prints, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "distinguish",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "FDM printer",
+      "nozzle",
+      "bed",
+      "layer",
+      "filament",
+      "warping",
+      "print quality inspection"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 562
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Classify unlabeled symptom descriptions into fault categories, with an explanation of the deciding evidence after each choice",
+    "keyQuestions": [
+      "Which feature of the description separates this fault from the others?",
+      "What is the usual cause, and what would you change before printing again?"
+    ],
+    "commonMisconceptions": [
+      "Every print failure comes from the settings",
+      "A curled corner is harmless",
+      "Stringing and under-extrusion are the same fault"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed choices, one attempt each; 7 of 8 for mastery; the final screen lists the faults that were missed"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore the five faults",
+          "Eight descriptions"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Warping / Stringing / Under-extrusion / Layer shift / Poor first layer"
+      },
+      {
+        "type": "button",
+        "label": "Next / See score / Try again"
+      }
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "title": "Manipulability Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Robot Kinematics",
+  "description": "Bend the elbow of a two-link arm and watch its manipulability, its condition number and the ellipse at its tip. Then calculate the manipulability in six problems with the formula w = l1 × l2 × |sin(bend)|. Used in Chapter 19.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/manipulability-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Manipulability of a two-link arm and the manipulability ellipse",
+    "learningObjectives": [
+      "Calculate the manipulability of a two-link arm from its link lengths and elbow bend, and compare two poses, to within 0.1 of the unit shown, in six problems, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "calculate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Jacobian",
+      "determinant",
+      "manipulability",
+      "singular pose",
+      "sine"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 610
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Watch a measure and its picture change with one angle, then use the formula on new numbers with an immediate check",
+    "keyQuestions": [
+      "Why does the shoulder angle not change the manipulability?",
+      "How many times smaller is w at a bend of 5 degrees than at 90 degrees?"
+    ],
+    "commonMisconceptions": [
+      "Manipulability depends on the shoulder angle",
+      "A straight arm is the most manipulable",
+      "Halving the bend halves the manipulability"
+    ],
+    "assessmentOpportunities": [
+      "Six typed answers, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Elbow bend",
+        "range": "0 to 180 degrees, step 1, default 90"
+      },
+      {
+        "type": "slider",
+        "label": "Shoulder angle",
+        "range": "0 to 180 degrees, step 5, default 30"
+      },
+      {
+        "type": "input",
+        "label": "Answer (w × 1000, or a ratio)"
+      },
+      {
+        "type": "button",
+        "label": "Check"
+      },
+      {
+        "type": "button",
+        "label": "Next problem / See score / Try again"
+      }
+    ]
+  }
+}

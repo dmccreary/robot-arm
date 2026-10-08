@@ -1,0 +1,110 @@
+{
+  "title": "PID Step Response",
+  "creator": "Dan McCreary",
+  "subject": "Control for Robotics",
+  "description": "Set the gains Kp, Ki and Kd of a toy joint, switch gravity on or off, and watch the plot of its step response with the overshoot, the settling time and the final angle. Then look at five responses and choose the gain change that fixes each one. Used in Chapter 5.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/pid-step-response/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "PID control: proportional, integral and derivative gains",
+    "learningObjectives": [
+      "Infer which gain change fixes a given step response (raise Kp, add Kd, add Ki, lower Ki, or no change) in five scenarios, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "position feedback",
+      "error",
+      "PID control",
+      "proportional, integral and derivative terms",
+      "overshoot",
+      "settling time",
+      "steady-state error"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 635
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Change one gain at a time and watch the curve, then reason from a symptom on a plotted response to the one term that treats it",
+    "keyQuestions": [
+      "What does Kd do to a joint that overshoots?",
+      "Why does gravity leave a gap that Kp alone cannot close?"
+    ],
+    "commonMisconceptions": [
+      "A higher Kp is always better",
+      "The integral term makes the response faster",
+      "The derivative term pushes toward the goal"
+    ],
+    "assessmentOpportunities": [
+      "Five committed choices, one attempt each; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Five scenarios"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Kp",
+        "range": "0 to 100, step 5, default 40"
+      },
+      {
+        "type": "slider",
+        "label": "Ki",
+        "range": "0 to 300, step 10, default 0"
+      },
+      {
+        "type": "slider",
+        "label": "Kd",
+        "range": "0 to 30, step 1, default 0"
+      },
+      {
+        "type": "checkbox",
+        "label": "Gravity (200)",
+        "range": "off or on, default off"
+      },
+      {
+        "type": "button",
+        "label": "Raise Kp / Add Kd / Add Ki / Lower Ki / No change"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next scenario"
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "title": "Degrees of Freedom Counter",
+  "creator": "Dan McCreary",
+  "subject": "Robot Arm Anatomy",
+  "description": "Use the counting rule on eight mechanisms, from a door hinge to the reBot-DevArm: read the joints each one contains and work out its degrees of freedom. Used in Chapter 2.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/degrees-of-freedom-counter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Degrees of freedom and the counting rule",
+    "learningObjectives": [
+      "Calculate the degrees of freedom of eight mechanisms by counting their independent single-axis joints, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "joint",
+      "revolute joint",
+      "prismatic joint",
+      "degree of freedom",
+      "the counting rule",
+      "gripper"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 542
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Practice one rule on new cases with every joint listed, so a wrong answer shows a wrong rule and not a hidden assumption; the cases build from one joint up to the two real arms",
+    "keyQuestions": [
+      "Does a prismatic joint count the same as a revolute joint?",
+      "Why is the SO-ARM101 called a 5 DOF arm in some places and a 6 DOF arm in others?",
+      "What does the 6+1 in the reBot-DevArm description mean?"
+    ],
+    "commonMisconceptions": [
+      "The DOF of a robot is the number of its links",
+      "A gripper never counts",
+      "Prismatic joints do not count as degrees of freedom"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed whole-number answers, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Degrees of freedom",
+        "range": "1 to 8, step 1, nothing chosen at the start"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next mechanism / See score / Try again"
+      }
+    ]
+  }
+}

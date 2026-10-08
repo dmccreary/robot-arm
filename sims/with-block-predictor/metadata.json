@@ -1,0 +1,110 @@
+{
+  "title": "With Block Predictor",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Step through six short Python programs that use a fake robot arm and watch what happens to the error and to the torque. Then predict the outcome of each program before it is run. Used in Chapter 10.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/with-block-predictor/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "try/finally, the with statement and context managers for hardware cleanup",
+    "learningObjectives": [
+      "Infer the outcome of six short programs that use a fake arm, by choosing what happens to the error and to the torque, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "infer",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "connect and disconnect",
+      "exception handling for hardware",
+      "custom exceptions",
+      "try finally",
+      "with statement",
+      "context manager"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 662
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict the outcome of a program and commit, then see the program run as an ordered list of events with the final torque and error state",
+    "keyQuestions": [
+      "Which line runs the cleanup when the error is raised?",
+      "Does the error stop here, or does it continue upward?"
+    ],
+    "commonMisconceptions": [
+      "A with block hides errors",
+      "An error that is caught inside a with block leaves the torque on",
+      "Code after a failed call still runs"
+    ],
+    "assessmentOpportunities": [
+      "Six committed choices from four outcomes, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore: step through",
+          "Six programs: predict"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Program",
+        "values": [
+          "Program 1",
+          "Program 2",
+          "Program 3",
+          "Program 4",
+          "Program 5",
+          "Program 6"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Step"
+      },
+      {
+        "type": "button",
+        "label": "Reset"
+      },
+      {
+        "type": "button",
+        "label": "a / b / c / d (the four outcomes)"
+      },
+      {
+        "type": "button",
+        "label": "Next / See score / Try again"
+      }
+    ]
+  }
+}

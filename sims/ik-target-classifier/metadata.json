@@ -1,0 +1,105 @@
+{
+  "title": "IK Target Classifier",
+  "creator": "Dan McCreary",
+  "subject": "Robot Kinematics",
+  "description": "Move a target around a two-link arm and see the ring of positions the tip can reach, with the elbow-up and elbow-down arms that reach it. Then classify eight targets as having two solutions, one solution, or being too far or too close to reach. Used in Chapter 12.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/ik-target-classifier/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Inverse kinematics of a two-link arm: multiple solutions and unreachable targets",
+    "learningObjectives": [
+      "Differentiate eight targets for a two-link arm (l1 = 0.116 m, l2 = 0.135 m) as having two solutions, one solution, or being unreachable too far or too close, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "differentiate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "inverse kinematics",
+      "geometric inverse kinematics",
+      "multiple IK solutions",
+      "elbow up and elbow down",
+      "unreachable target",
+      "workspace ring"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 660
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Explore the reachable ring by moving a target, then classify targets by their distance from the shoulder",
+    "keyQuestions": [
+      "Why can a target inside the outer circle still be out of reach?",
+      "Where does a target have exactly one solution?"
+    ],
+    "commonMisconceptions": [
+      "Every target inside the outer circle can be reached",
+      "Every reachable target has exactly one solution",
+      "The elbow can be placed anywhere"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed classifications, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight targets"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Target x",
+        "range": "-0.30 to 0.30 m, step 0.005, default 0.150"
+      },
+      {
+        "type": "slider",
+        "label": "Target z",
+        "range": "-0.30 to 0.30 m, step 0.005, default 0.100"
+      },
+      {
+        "type": "drag",
+        "label": "Drag or tap the target on the plot"
+      },
+      {
+        "type": "button",
+        "label": "Two solutions / One solution / Too far to reach / Too close to reach"
+      },
+      {
+        "type": "button",
+        "label": "Next target / See score / Try again"
+      }
+    ]
+  }
+}

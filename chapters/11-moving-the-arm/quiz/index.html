@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/11-moving-the-arm/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-moving-the-arm-trajectories-grippers-and-teleoperation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-python-setup-for-robotics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Setting Up Python for Robotics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-anatomy-of-a-robot-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-electricity-power-and-safety/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Electricity, Power, and Safety Basics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-serial-and-can-communication/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Serial and CAN Communication
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-actuators-and-sensors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Actuators and Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-sourcing-parts-and-budget/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Sourcing Parts and Planning a Budget
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-printing-fasteners-and-tools/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. 3D Printing, Fasteners, and Tools
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-building-the-so-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Building and Calibrating the SO-ARM100
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-building-the-rebot-devarm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Building the reBot-DevArm and Choosing a Platform
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-python-hardware-library/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. A Python Hardware Library for Robot Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_12" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-which-python-function-should-a-control-loop-use-to-measure-how-long-something-took" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Which Python function should a control loop use to measure how long something took?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-the-recommended-way-to-end-a-loop-that-is-moving-the-arm-from-a-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is the recommended way to end a loop that is moving the arm from a thread?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-naive-loop-does-12-ms-of-work-and-then-sleeps-one-period-of-20-ms-about-what-rate-does-it-really-run-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A naive loop does 12 ms of work and then sleeps one period of 20 ms. About what rate does it really run at?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-multi-joint-move-sends-the-shoulder-pan-80-degrees-and-the-elbow-20-degrees-with-a-speed-limit-of-40-degrees-per-second-how-fast-does-the-elbow-move" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. A multi-joint move sends the shoulder pan 80 degrees and the elbow 20 degrees, with a speed limit of 40 degrees per second. How fast does the elbow move?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-joint-moves-120-degrees-with-a-speed-limit-of-60-degrees-per-second-and-an-acceleration-limit-of-120-degrees-per-second-squared-using-a-trapezoidal-profile-how-long-does-the-move-take" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A joint moves 120 degrees with a speed limit of 60 degrees per second and an acceleration limit of 120 degrees per second squared, using a trapezoidal profile. How long does the move take?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-does-a-linear-move-cause-a-jolt-and-how-does-the-smooth-velocity-profile-avoid-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why does a linear move cause a jolt, and how does the smooth velocity profile avoid it?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-should-the-whole-waypoint-list-be-checked-before-anything-moves" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Why should the whole waypoint list be checked before anything moves?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-in-a-pick-and-place-routine-the-program-commands-the-gripper-to-0-percent-and-reads-it-back-how-does-it-decide-whether-the-grasp-worked" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. In a pick-and-place routine, the program commands the gripper to 0 percent and reads it back. How does it decide whether the grasp worked?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-in-the-lab-a-scheduled-loop-at-50-hz-is-given-30-ms-of-work-per-tick-when-a-tick-is-late-the-code-sets-next_time-clock-what-does-this-accomplish" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. In the lab, a scheduled loop at 50 Hz is given 30 ms of work per tick. When a tick is late, the code sets next_time = clock(). What does this accomplish?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-in-the-labs-second-pick-and-place-run-the-object-is-missing-the-machine-tries-twice-and-ends-in-failed-what-would-happen-if-the-program-skipped-the-grasp-check-and-went-straight-to-lift" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. In the lab's second pick-and-place run, the object is missing. The machine tries twice and ends in FAILED. What would happen if the program skipped the grasp check and went straight to LIFT?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-kinematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Kinematics: Where Is the Hand and How Do I Get There
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-logging-testing-simulation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Logging, Testing, Simulation, and ROS 2
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-perception-and-learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Cameras, Perception, and Learning from Demonstration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-agents-and-openclaw-skills/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. AI Agents, Tools, and OpenClaw Skills
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-agent-planning-and-vision/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. Agent Planning, Vision, and Interfaces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-agent-safety-and-evaluation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Safety Layers and Evaluation for Agent-Controlled Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-projects-operation-and-teaching/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Projects, Operation, and Teaching
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-advanced-arm-path-mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Optional Advanced Chapter: The Mathematics of Arm Paths
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-which-python-function-should-a-control-loop-use-to-measure-how-long-something-took" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Which Python function should a control loop use to measure how long something took?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-the-recommended-way-to-end-a-loop-that-is-moving-the-arm-from-a-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is the recommended way to end a loop that is moving the arm from a thread?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-naive-loop-does-12-ms-of-work-and-then-sleeps-one-period-of-20-ms-about-what-rate-does-it-really-run-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A naive loop does 12 ms of work and then sleeps one period of 20 ms. About what rate does it really run at?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-multi-joint-move-sends-the-shoulder-pan-80-degrees-and-the-elbow-20-degrees-with-a-speed-limit-of-40-degrees-per-second-how-fast-does-the-elbow-move" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. A multi-joint move sends the shoulder pan 80 degrees and the elbow 20 degrees, with a speed limit of 40 degrees per second. How fast does the elbow move?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-joint-moves-120-degrees-with-a-speed-limit-of-60-degrees-per-second-and-an-acceleration-limit-of-120-degrees-per-second-squared-using-a-trapezoidal-profile-how-long-does-the-move-take" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A joint moves 120 degrees with a speed limit of 60 degrees per second and an acceleration limit of 120 degrees per second squared, using a trapezoidal profile. How long does the move take?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-does-a-linear-move-cause-a-jolt-and-how-does-the-smooth-velocity-profile-avoid-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Why does a linear move cause a jolt, and how does the smooth velocity profile avoid it?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-should-the-whole-waypoint-list-be-checked-before-anything-moves" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Why should the whole waypoint list be checked before anything moves?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-in-a-pick-and-place-routine-the-program-commands-the-gripper-to-0-percent-and-reads-it-back-how-does-it-decide-whether-the-grasp-worked" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. In a pick-and-place routine, the program commands the gripper to 0 percent and reads it back. How does it decide whether the grasp worked?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-in-the-lab-a-scheduled-loop-at-50-hz-is-given-30-ms-of-work-per-tick-when-a-tick-is-late-the-code-sets-next_time-clock-what-does-this-accomplish" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. In the lab, a scheduled loop at 50 Hz is given 30 ms of work per tick. When a tick is late, the code sets next_time = clock(). What does this accomplish?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-in-the-labs-second-pick-and-place-run-the-object-is-missing-the-machine-tries-twice-and-ends-in-failed-what-would-happen-if-the-program-skipped-the-grasp-check-and-went-straight-to-lift" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. In the lab's second pick-and-place run, the object is missing. The machine tries twice and ends in FAILED. What would happen if the program skipped the grasp check and went straight to LIFT?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/11-moving-the-arm/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-moving-the-arm-trajectories-grippers-and-teleoperation">Quiz: Moving the Arm: Trajectories, Grippers, and Teleoperation<a class="headerlink" href="#quiz-moving-the-arm-trajectories-grippers-and-teleoperation" title="Permanent link">&para;</a></h1>
+<p>Test your understanding of control loops, velocity profiles, waypoints, pick-and-place state machines, and teleoperation with these review questions.</p>
+<hr />
+<h4 id="1-which-python-function-should-a-control-loop-use-to-measure-how-long-something-took">1. Which Python function should a control loop use to measure how long something took?<a class="headerlink" href="#1-which-python-function-should-a-control-loop-use-to-measure-how-long-something-took" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li><code>time.time()</code>, because it gives the real clock time</li>
+<li><code>time.sleep()</code>, because it pauses for a measured time</li>
+<li><code>time.perf_counter()</code>, because it is fine-grained and only goes forward</li>
+<li><code>time.localtime()</code>, because it handles time zones</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The wall clock from <code>time.time()</code> can jump when the computer corrects its clock over the network or the user changes the time zone, so a loop that measured a step with it could see a step that lasted minus two seconds. <code>time.perf_counter()</code> has very fine resolution and cannot go backward. <code>time.monotonic()</code> is the coarser option for timeouts and deadlines, and <code>time.time()</code> is for log time stamps.</p>
+<p><strong>Concept Tested:</strong> Time Module</p>
+<p><strong>See:</strong> <a href="../#the-time-module">The Time Module</a></p>
+</details>
+<hr />
+<h4 id="2-what-is-the-recommended-way-to-end-a-loop-that-is-moving-the-arm-from-a-thread">2. What is the recommended way to end a loop that is moving the arm from a thread?<a class="headerlink" href="#2-what-is-the-recommended-way-to-end-a-loop-that-is-moving-the-arm-from-a-thread" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Set a <code>threading.Event</code> stop flag that the loop checks at the top of every cycle</li>
+<li>Kill the thread from outside in the middle of a command</li>
+<li>Wait for the operator to press the E-stop</li>
+<li>Call <code>time.sleep()</code> with a long delay in the main program</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The main program calls <code>stop.set()</code>, and the loop notices within one period and shuts down cleanly, so its last act is the clean <code>finally</code> of Chapter 10. A loop that moves the arm must never be killed from outside in the middle of a command. The E-stop is the last resort and not the usual way to stop. <code>time.sleep()</code> blocks the program and would make it deaf to a stop request.</p>
+<p><strong>Concept Tested:</strong> Stop Flag</p>
+<p><strong>See:</strong> <a href="../#blocking-threads-and-the-stop-flag">Blocking, Threads, and the Stop Flag</a></p>
+</details>
+<hr />
+<h4 id="3-a-naive-loop-does-12-ms-of-work-and-then-sleeps-one-period-of-20-ms-about-what-rate-does-it-really-run-at">3. A naive loop does 12 ms of work and then sleeps one period of 20 ms. About what rate does it really run at?<a class="headerlink" href="#3-a-naive-loop-does-12-ms-of-work-and-then-sleeps-one-period-of-20-ms-about-what-rate-does-it-really-run-at" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>50 Hz, because the period is 20 ms</li>
+<li>About 31 Hz, because each cycle lasts 32 ms</li>
+<li>About 62 Hz, because the work and sleep overlap</li>
+<li>About 20 Hz, because the work doubles the period</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. In the naive version, every cycle lasts the work plus the sleep: 12 + 20 = 32 ms, and 1 / 0.032 ≈ 31 Hz. The chapter's example with 8 ms of work gives 28 ms and about 36 Hz instead of 50. The fix is to schedule each cycle from the start time, so that the loop sleeps only for the time that is left, and the rate is exact on average.</p>
+<p><strong>Concept Tested:</strong> Control Rate</p>
+<p><strong>See:</strong> <a href="../#the-control-loop">The Control Loop</a></p>
+</details>
+<hr />
+<h4 id="4-a-multi-joint-move-sends-the-shoulder-pan-80-degrees-and-the-elbow-20-degrees-with-a-speed-limit-of-40-degrees-per-second-how-fast-does-the-elbow-move">4. A multi-joint move sends the shoulder pan 80 degrees and the elbow 20 degrees, with a speed limit of 40 degrees per second. How fast does the elbow move?<a class="headerlink" href="#4-a-multi-joint-move-sends-the-shoulder-pan-80-degrees-and-the-elbow-20-degrees-with-a-speed-limit-of-40-degrees-per-second-how-fast-does-the-elbow-move" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>40 degrees per second</li>
+<li>20 degrees per second</li>
+<li>5 degrees per second</li>
+<li>10 degrees per second</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The joint with the longest way to go sets the time: T = 80 / 40 = 2 seconds. Every joint uses the same fraction t at every tick, so the elbow covers its 20 degrees in the same 2 seconds, at 20 / 2 = 10 degrees per second. All joints start and arrive together, and only the joint with the longest distance travels at the speed limit.</p>
+<p><strong>Concept Tested:</strong> Multi-Joint Move</p>
+<p><strong>See:</strong> <a href="../#multi-joint-moves-and-the-speed-limit">Multi-Joint Moves and the Speed Limit</a></p>
+</details>
+<hr />
+<h4 id="5-a-joint-moves-120-degrees-with-a-speed-limit-of-60-degrees-per-second-and-an-acceleration-limit-of-120-degrees-per-second-squared-using-a-trapezoidal-profile-how-long-does-the-move-take">5. A joint moves 120 degrees with a speed limit of 60 degrees per second and an acceleration limit of 120 degrees per second squared, using a trapezoidal profile. How long does the move take?<a class="headerlink" href="#5-a-joint-moves-120-degrees-with-a-speed-limit-of-60-degrees-per-second-and-an-acceleration-limit-of-120-degrees-per-second-squared-using-a-trapezoidal-profile-how-long-does-the-move-take" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>2.0 seconds</li>
+<li>2.5 seconds</li>
+<li>3.0 seconds</li>
+<li>1.5 seconds</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The distance 120 is at least v²/a = 60² / 120 = 30, so the profile is a trapezoid. The total time is T = D / v + v / a = 120 / 60 + 60 / 120 = 2.0 + 0.5 = 2.5 seconds. That is a 0.5 s speed-up, a 1.5 s cruise, and a 0.5 s slow-down. Option A is the time for a linear move at the speed limit, which jumps to full speed.</p>
+<p><strong>Concept Tested:</strong> Trapezoidal Velocity Profile</p>
+<p><strong>See:</strong> <a href="../#velocity-profiles-and-the-acceleration-limit">Velocity Profiles and the Acceleration Limit</a></p>
+</details>
+<hr />
+<h4 id="6-why-does-a-linear-move-cause-a-jolt-and-how-does-the-smooth-velocity-profile-avoid-it">6. Why does a linear move cause a jolt, and how does the smooth velocity profile avoid it?<a class="headerlink" href="#6-why-does-a-linear-move-cause-a-jolt-and-how-does-the-smooth-velocity-profile-avoid-it" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A linear move jumps from rest to full speed at the first tick, which is an infinite acceleration, while the smooth profile starts and ends at zero speed</li>
+<li>A linear move is always faster, and the smooth profile is always slower</li>
+<li>A linear move ignores the joint limits, and the smooth profile checks them</li>
+<li>A linear move uses degrees, and the smooth profile uses radians</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. At the first tick, a linear move goes from standing still to full speed at once, and the same happens at the end. The servo, gears, and printed parts feel this as a jolt. The smooth profile replaces t with 3t² − 2t³, which starts and ends at zero speed and is steepest in the middle. The price is time, because it needs 1.5 times as long for the same peak speed.</p>
+<p><strong>Concept Tested:</strong> Smooth Velocity Profile</p>
+<p><strong>See:</strong> <a href="../#velocity-profiles-and-the-acceleration-limit">Velocity Profiles and the Acceleration Limit</a></p>
+</details>
+<hr />
+<h4 id="7-why-should-the-whole-waypoint-list-be-checked-before-anything-moves">7. Why should the whole waypoint list be checked before anything moves?<a class="headerlink" href="#7-why-should-the-whole-waypoint-list-be-checked-before-anything-moves" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Checking first makes the arm move faster</li>
+<li>A checked list is sorted by joint name</li>
+<li>A bad pose should fail on the first line with a message naming the waypoint and joint, and not on the fifth waypoint with the arm half way through a task</li>
+<li>The gripper cannot open until the list is checked</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A waypoint list with a pose outside a joint's limit should be rejected before any motion begins. The lab's <code>check_waypoints</code> returns every problem in the list at once, such as "pick: elbow_flex = 120 is outside −97 to 97". A failure partway through leaves the arm stranded in the middle of a task, perhaps holding an object. Checking has no effect on speed or sorting.</p>
+<p><strong>Concept Tested:</strong> Waypoint List</p>
+<p><strong>See:</strong> <a href="../#waypoints-and-waypoint-lists">Waypoints and Waypoint Lists</a></p>
+</details>
+<hr />
+<h4 id="8-in-a-pick-and-place-routine-the-program-commands-the-gripper-to-0-percent-and-reads-it-back-how-does-it-decide-whether-the-grasp-worked">8. In a pick-and-place routine, the program commands the gripper to 0 percent and reads it back. How does it decide whether the grasp worked?<a class="headerlink" href="#8-in-a-pick-and-place-routine-the-program-commands-the-gripper-to-0-percent-and-reads-it-back-how-does-it-decide-whether-the-grasp-worked" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The grasp worked if the gripper reads exactly 100 percent</li>
+<li>The grasp worked if the move finished without raising an error</li>
+<li>The grasp worked if the gripper's temperature rose</li>
+<li>The grasp worked if the gripper stopped above a small threshold such as 5 percent, because the object stopped it</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. An empty gripper closes to about 0 percent. A gripper that holds an object stops where the object stops it, for example at 20 percent. This is the same idea as the stall check of Chapter 5, and it is the program's only way to know whether the grasp worked. The check belongs right when the gripper closes, so that a missed grasp is found before the lift and transport.</p>
+<p><strong>Concept Tested:</strong> Gripper Control</p>
+<p><strong>See:</strong> <a href="../#gripper-control-width-and-force">Gripper Control, Width, and Force</a></p>
+</details>
+<hr />
+<h4 id="9-in-the-lab-a-scheduled-loop-at-50-hz-is-given-30-ms-of-work-per-tick-when-a-tick-is-late-the-code-sets-next_time-clock-what-does-this-accomplish">9. In the lab, a scheduled loop at 50 Hz is given 30 ms of work per tick. When a tick is late, the code sets <code>next_time = clock()</code>. What does this accomplish?<a class="headerlink" href="#9-in-the-lab-a-scheduled-loop-at-50-hz-is-given-30-ms-of-work-per-tick-when-a-tick-is-late-the-code-sets-next_time-clock-what-does-this-accomplish" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>It makes the loop run exactly at 50 Hz by shortening the work</li>
+<li>It stops the loop with an error</li>
+<li>It starts scheduling again from now, so the loop settles at the rate the work allows and does not send a burst of commands to catch up</li>
+<li>It doubles the sleep delay on the next tick</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. When the work takes longer than the 20 ms period, there is no time left to sleep. A loop that tried to catch up by rushing through the next cycles would send a burst of commands to the arm. Resetting the schedule from now accepts a lower rate, about 1 / 0.030 ≈ 33 Hz, and keeps the loop steady. The honest answer to work that cannot fit in the period is a lower rate or less work per tick.</p>
+<p><strong>Concept Tested:</strong> Timing Jitter</p>
+<p><strong>See:</strong> <a href="../#the-control-loop">The Control Loop</a></p>
+</details>
+<hr />
+<h4 id="10-in-the-labs-second-pick-and-place-run-the-object-is-missing-the-machine-tries-twice-and-ends-in-failed-what-would-happen-if-the-program-skipped-the-grasp-check-and-went-straight-to-lift">10. In the lab's second pick-and-place run, the object is missing. The machine tries twice and ends in <code>FAILED</code>. What would happen if the program skipped the grasp check and went straight to <code>LIFT</code>?<a class="headerlink" href="#10-in-the-labs-second-pick-and-place-run-the-object-is-missing-the-machine-tries-twice-and-ends-in-failed-what-would-happen-if-the-program-skipped-the-grasp-check-and-went-straight-to-lift" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The arm would carry an empty gripper across the table and place "nothing", with no sign that the task had failed</li>
+<li>The gripper would refuse to open at the place position</li>
+<li>The state machine would raise a <code>JointLimitError</code></li>
+<li>The arm would stay at the pick position until the thread stopped</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The grasp state is where the decision is made: it closes the gripper, reads it, and returns <code>LIFT</code> only if the reading is above 5 percent. Without the check, the machine would go through lift, transport, lower, and release as if it held an object. A three-line check is the difference between a task that fails safely and one that carries nothing across the table. Reading the world before each commitment turns a script into a task you can trust.</p>
+<p><strong>Concept Tested:</strong> State Machine</p>
+<p><strong>See:</strong> <a href="../#the-pick-and-place-state-machine">The Pick-and-Place State Machine</a></p>
+</details>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

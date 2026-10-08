@@ -1,0 +1,100 @@
+{
+  "title": "Joint Limit Chooser",
+  "creator": "Dan McCreary",
+  "subject": "Safe Control for Robotics",
+  "description": "Move a torque limit against the torque a task needs and watch a joint hold with margin, hold with little margin, or stall. Then recommend a torque limit for five joint tasks with the rule of thumb: the smallest limit that is at least 1.5 times the need. Used in Chapter 5.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/joint-limit-chooser/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Torque limits, margin and overload",
+    "learningObjectives": [
+      "Recommend the torque limit for each of five joint tasks, choosing the smallest option that is at least 1.5 times the torque the task needs, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "torque",
+      "torque limit",
+      "stall torque",
+      "force limit",
+      "overload protection",
+      "servo compliance",
+      "runaway motion"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 636
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Weigh two risks, too little torque and too much, against an explicit margin rule, with feedback on what each option would cause",
+    "keyQuestions": [
+      "What happens when the limit is below the torque the task needs?",
+      "Why is the highest limit not the safest choice?"
+    ],
+    "commonMisconceptions": [
+      "The highest limit is the safest because the joint never fails",
+      "The lowest limit is the safest",
+      "The limit should equal the torque the task needs"
+    ],
+    "assessmentOpportunities": [
+      "Five committed recommendations, one attempt each; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Five tasks"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Torque limit",
+        "range": "0 to 100 percent, step 5, default 50"
+      },
+      {
+        "type": "slider",
+        "label": "Torque needed",
+        "range": "10 to 90 percent, step 10, default 30"
+      },
+      {
+        "type": "button",
+        "label": "Three torque-limit options for each task"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next task"
+      }
+    ]
+  }
+}

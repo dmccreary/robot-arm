@@ -1,0 +1,107 @@
+{
+  "title": "Quaternion Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Robot Kinematics",
+  "description": "Choose an axis and an angle and read the four numbers of the unit quaternion for that turn, with a picture of the half angle that the formula uses. Then calculate quaternion components, turn angles and SLERP angles in six problems. Used in Chapter 19.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/quaternion-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Unit quaternions, the half angle, and SLERP",
+    "learningObjectives": [
+      "Calculate quaternion components, turn angles and SLERP angles from given rotations, to within 0.1 of the unit shown, in six problems, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "calculate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "quaternion",
+      "unit quaternion",
+      "axis and angle",
+      "SLERP",
+      "dot product"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "See the half angle in a picture, then use a few formulas on new numbers with an immediate check",
+    "keyQuestions": [
+      "Why is w the cosine of half the angle and not of the whole angle?",
+      "What angle lies between two rotations whose quaternions have a dot product of 0.5?"
+    ],
+    "commonMisconceptions": [
+      "The w of a quaternion is the cosine of the full angle",
+      "SLERP at one quarter of the way is a quarter of the numbers",
+      "The angle between two rotations is the arccosine of the dot product"
+    ],
+    "assessmentOpportunities": [
+      "Six typed answers, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Axis",
+        "values": [
+          "x",
+          "y",
+          "z"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Angle",
+        "range": "0 to 180 degrees, step 5, default 90"
+      },
+      {
+        "type": "input",
+        "label": "Answer (w × 100 or degrees)"
+      },
+      {
+        "type": "button",
+        "label": "Check"
+      },
+      {
+        "type": "button",
+        "label": "Next problem / See score / Try again"
+      }
+    ]
+  }
+}

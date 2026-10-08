@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/19-advanced-arm-path-mathematics/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-optional-advanced-chapter-the-mathematics-of-arm-paths" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-python-setup-for-robotics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Setting Up Python for Robotics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-anatomy-of-a-robot-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Anatomy of a Robot Arm
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-electricity-power-and-safety/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Electricity, Power, and Safety Basics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-serial-and-can-communication/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Serial and CAN Communication
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-actuators-and-sensors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Actuators and Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-sourcing-parts-and-budget/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Sourcing Parts and Planning a Budget
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-printing-fasteners-and-tools/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. 3D Printing, Fasteners, and Tools
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-building-the-so-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Building and Calibrating the SO-ARM100
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-building-the-rebot-devarm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Building the reBot-DevArm and Choosing a Platform
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-python-hardware-library/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. A Python Hardware Library for Robot Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-moving-the-arm/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-kinematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Kinematics: Where Is the Hand and How Do I Get There
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-logging-testing-simulation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Logging, Testing, Simulation, and ROS 2
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-perception-and-learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Cameras, Perception, and Learning from Demonstration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-agents-and-openclaw-skills/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. AI Agents, Tools, and OpenClaw Skills
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-agent-planning-and-vision/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. Agent Planning, Vision, and Interfaces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-agent-safety-and-evaluation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Safety Layers and Evaluation for Agent-Controlled Arms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-projects-operation-and-teaching/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Projects, Operation, and Teaching
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_20" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    19. Optional Advanced Chapter: The Mathematics of Arm Paths
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_20" id="__nav_5_20_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_20_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_20">
+            <span class="md-nav__icon md-icon"></span>
+            19. Optional Advanced Chapter: The Mathematics of Arm Paths
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-jerk" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is jerk?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-gimbal-lock-in-euler-angles" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is gimbal lock in Euler angles?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-is-damped-least-squares-dls-safer-than-the-jacobian-pseudoinverse-near-a-singular-pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Why is damped least squares (DLS) safer than the Jacobian pseudoinverse near a singular pose?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-is-a-quintic-polynomial-trajectory-gentler-at-its-ends-than-a-cubic-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Why is a quintic polynomial trajectory gentler at its ends than a cubic one?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-minimum-jerk-move-has-a-peak-speed-of-08-unitss-and-a-peak-acceleration-of-24-unitss2-the-duration-is-stretched-to-three-times-as-long-with-the-same-path-what-are-the-new-peak-speed-and-peak-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A minimum-jerk move has a peak speed of 0.8 units/s and a peak acceleration of 2.4 units/s². The duration is stretched to three times as long with the same path. What are the new peak speed and peak acceleration?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-minimum-jerk-move-of-90-degrees-must-keep-its-peak-speed-under-60-degrees-per-second-the-peak-speed-is-1875t-what-is-the-shortest-duration-that-meets-the-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A minimum-jerk move of 90 degrees must keep its peak speed under 60 degrees per second. The peak speed is 1.875Δ/T. What is the shortest duration that meets the limit?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-servo-has-a-stall-torque-of-1913-nm-and-a-pose-puts-a-static-load-of-06-nm-on-its-joint-what-is-the-servo-torque-margin" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A servo has a stall torque of 1.913 N·m, and a pose puts a static load of 0.6 N·m on its joint. What is the servo torque margin?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-the-predicted-and-measured-tip-paths-look-the-same-on-a-plot-yet-the-tracking-error-has-an-rmse-of-162-mm-and-a-maximum-of-258-mm-near-the-middle-of-the-move-what-explains-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. The predicted and measured tip paths look the same on a plot, yet the tracking error has an RMSE of 16.2 mm and a maximum of 25.8 mm near the middle of the move. What explains this?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-the-lab-measures-each-error-source-alone-servo-lag-delay-calibration-offset-gear-backlash-and-sensor-noise-after-fitting-the-time-constant-and-delay-of-the-lag-model-which-source-can-the-fit-not-remove" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. The lab measures each error source alone: servo lag, delay, calibration offset, gear backlash, and sensor noise. After fitting the time constant and delay of the lag model, which source can the fit NOT remove?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-an-rrt-planner-finds-a-path-around-an-obstacle-and-shortcut-smoothing-then-cuts-it-from-64-points-to-6-which-judgment-of-the-result-is-best" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. An RRT planner finds a path around an obstacle, and shortcut smoothing then cuts it from 64 points to 6. Which judgment of the result is best?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-jerk" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is jerk?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-gimbal-lock-in-euler-angles" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is gimbal lock in Euler angles?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-is-damped-least-squares-dls-safer-than-the-jacobian-pseudoinverse-near-a-singular-pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Why is damped least squares (DLS) safer than the Jacobian pseudoinverse near a singular pose?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-is-a-quintic-polynomial-trajectory-gentler-at-its-ends-than-a-cubic-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Why is a quintic polynomial trajectory gentler at its ends than a cubic one?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-minimum-jerk-move-has-a-peak-speed-of-08-unitss-and-a-peak-acceleration-of-24-unitss2-the-duration-is-stretched-to-three-times-as-long-with-the-same-path-what-are-the-new-peak-speed-and-peak-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A minimum-jerk move has a peak speed of 0.8 units/s and a peak acceleration of 2.4 units/s². The duration is stretched to three times as long with the same path. What are the new peak speed and peak acceleration?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-minimum-jerk-move-of-90-degrees-must-keep-its-peak-speed-under-60-degrees-per-second-the-peak-speed-is-1875t-what-is-the-shortest-duration-that-meets-the-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A minimum-jerk move of 90 degrees must keep its peak speed under 60 degrees per second. The peak speed is 1.875Δ/T. What is the shortest duration that meets the limit?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-servo-has-a-stall-torque-of-1913-nm-and-a-pose-puts-a-static-load-of-06-nm-on-its-joint-what-is-the-servo-torque-margin" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A servo has a stall torque of 1.913 N·m, and a pose puts a static load of 0.6 N·m on its joint. What is the servo torque margin?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-the-predicted-and-measured-tip-paths-look-the-same-on-a-plot-yet-the-tracking-error-has-an-rmse-of-162-mm-and-a-maximum-of-258-mm-near-the-middle-of-the-move-what-explains-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. The predicted and measured tip paths look the same on a plot, yet the tracking error has an RMSE of 16.2 mm and a maximum of 25.8 mm near the middle of the move. What explains this?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-the-lab-measures-each-error-source-alone-servo-lag-delay-calibration-offset-gear-backlash-and-sensor-noise-after-fitting-the-time-constant-and-delay-of-the-lag-model-which-source-can-the-fit-not-remove" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. The lab measures each error source alone: servo lag, delay, calibration offset, gear backlash, and sensor noise. After fitting the time constant and delay of the lag model, which source can the fit NOT remove?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-an-rrt-planner-finds-a-path-around-an-obstacle-and-shortcut-smoothing-then-cuts-it-from-64-points-to-6-which-judgment-of-the-result-is-best" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. An RRT planner finds a path around an obstacle, and shortcut smoothing then cuts it from 64 points to 6. Which judgment of the result is best?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/19-advanced-arm-path-mathematics/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-optional-advanced-chapter-the-mathematics-of-arm-paths">Quiz: Optional Advanced Chapter: The Mathematics of Arm Paths<a class="headerlink" href="#quiz-optional-advanced-chapter-the-mathematics-of-arm-paths" title="Permanent link">&para;</a></h1>
+<p>Test your understanding of rotations, damped least squares, polynomial trajectories, torque margins, RRT planning, and path prediction with these review questions.</p>
+<hr />
+<h4 id="1-what-is-jerk">1. What is jerk?<a class="headerlink" href="#1-what-is-jerk" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The rate of change of position</li>
+<li>The rate of change of speed</li>
+<li>The rate of change of acceleration</li>
+<li>The rate of change of torque</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Speed is the rate of change of position, acceleration is the rate of change of speed, and jerk is the rate of change of acceleration. It measures how suddenly the acceleration itself changes, and so how hard the arm is jolted. A joint standing still has a flat position curve, and a trajectory with a jump in acceleration has an infinite jerk for an instant.</p>
+<p><strong>Concept Tested:</strong> Derivative as Rate of Change</p>
+<p><strong>See:</strong> <a href="../#derivative-as-rate-of-change">Derivative as Rate of Change</a></p>
+</details>
+<hr />
+<h4 id="2-what-is-gimbal-lock-in-euler-angles">2. What is gimbal lock in Euler angles?<a class="headerlink" href="#2-what-is-gimbal-lock-in-euler-angles" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>When the middle angle is ±90°, the first and third turns act about the same axis, and one degree of freedom is lost</li>
+<li>When two quaternions have the same length</li>
+<li>When a rotation is written as a single turn about one axis</li>
+<li>When the pseudoinverse of a Jacobian does not exist</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. With a yaw, pitch, and roll sequence, a pitch of ±90° makes the yaw and roll act about the same axis. In the lab, a yaw of 0.5 rad with a roll of 0.2 rad and a pitch of 90° is exactly the same rotation as a yaw of 0.3 rad with no roll, and the two original angles cannot be recovered from the matrix. Quaternions and axis-angle forms avoid it, which is why robot libraries use quaternions inside.</p>
+<p><strong>Concept Tested:</strong> Euler Angles and Gimbal Lock</p>
+<p><strong>See:</strong> <a href="../#euler-angles-and-gimbal-lock">Euler Angles and Gimbal Lock</a></p>
+</details>
+<hr />
+<h4 id="3-why-is-damped-least-squares-dls-safer-than-the-jacobian-pseudoinverse-near-a-singular-pose">3. Why is damped least squares (DLS) safer than the Jacobian pseudoinverse near a singular pose?<a class="headerlink" href="#3-why-is-damped-least-squares-dls-safer-than-the-jacobian-pseudoinverse-near-a-singular-pose" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>DLS always solves the problem in a single step</li>
+<li>DLS bounds the largest gain to about 1/(2λ), while the pseudoinverse can reach 1/σ_min, which grows without limit as σ_min approaches zero</li>
+<li>DLS ignores the error between the tip and the target</li>
+<li>DLS uses quaternions instead of matrices</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Near a singular pose, the Jacobian has a tiny singular value, and its pseudoinverse has a huge one, so a small error in the unlucky direction asks for an enormous joint motion. In the lab, the pseudoinverse winds the elbow to 814° for an unreachable target, with one step as large as 427.6°, while DLS takes steps of at most 4.6° and settles at the nearest reachable point. DLS trades a little exactness for a lot of safety.</p>
+<p><strong>Concept Tested:</strong> Jacobian-Based IK</p>
+<p><strong>See:</strong> <a href="../#jacobian-based-ik-the-pseudoinverse-and-damped-least-squares">Jacobian-Based IK, the Pseudoinverse and Damped Least Squares</a></p>
+</details>
+<hr />
+<h4 id="4-why-is-a-quintic-polynomial-trajectory-gentler-at-its-ends-than-a-cubic-one">4. Why is a quintic polynomial trajectory gentler at its ends than a cubic one?<a class="headerlink" href="#4-why-is-a-quintic-polynomial-trajectory-gentler-at-its-ends-than-a-cubic-one" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A quintic has fewer coefficients, so it is simpler</li>
+<li>A quintic always moves faster</li>
+<li>A quintic ignores the boundary conditions</li>
+<li>A quintic can fix the acceleration at both ends, while a cubic's acceleration jumps from zero to a large value at the start</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. A polynomial of degree n has n + 1 coefficients, so it can meet n + 1 boundary conditions. A cubic meets four (position and speed at both ends), while a quintic meets six, adding the acceleration at both ends. For a rest-to-rest cubic, the acceleration starts at 6Δ/T², which is an instantly large force and a jolt. The quintic with zero acceleration at both ends builds up force gradually, and it is exactly the minimum-jerk trajectory.</p>
+<p><strong>Concept Tested:</strong> Quintic Polynomial Trajectory</p>
+<p><strong>See:</strong> <a href="../#quintic-polynomial-trajectory">Quintic Polynomial Trajectory</a></p>
+</details>
+<hr />
+<h4 id="5-a-minimum-jerk-move-has-a-peak-speed-of-08-unitss-and-a-peak-acceleration-of-24-unitss2-the-duration-is-stretched-to-three-times-as-long-with-the-same-path-what-are-the-new-peak-speed-and-peak-acceleration">5. A minimum-jerk move has a peak speed of 0.8 units/s and a peak acceleration of 2.4 units/s². The duration is stretched to three times as long with the same path. What are the new peak speed and peak acceleration?<a class="headerlink" href="#5-a-minimum-jerk-move-has-a-peak-speed-of-08-unitss-and-a-peak-acceleration-of-24-unitss2-the-duration-is-stretched-to-three-times-as-long-with-the-same-path-what-are-the-new-peak-speed-and-peak-acceleration" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Speed 0.267, acceleration 0.800</li>
+<li>Speed 0.267, acceleration 0.089</li>
+<li>Speed 0.089, acceleration 0.267</li>
+<li>Speed 0.267, acceleration 0.267</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. If the duration T becomes kT, speeds fall by a factor of k, accelerations by k², and jerks by k³. With k = 3, the speed is 0.8 / 3 ≈ 0.267 and the acceleration is 2.4 / 9 ≈ 0.267. In the lab, doubling the duration halves the peak speed and quarters the peak acceleration. Option B divides the acceleration by 27, which is the factor for jerk.</p>
+<p><strong>Concept Tested:</strong> Time Scaling</p>
+<p><strong>See:</strong> <a href="../#time-scaling-and-velocity-limit-scaling">Time Scaling and Velocity Limit Scaling</a></p>
+</details>
+<hr />
+<h4 id="6-a-minimum-jerk-move-of-90-degrees-must-keep-its-peak-speed-under-60-degrees-per-second-the-peak-speed-is-1875t-what-is-the-shortest-duration-that-meets-the-limit">6. A minimum-jerk move of 90 degrees must keep its peak speed under 60 degrees per second. The peak speed is 1.875Δ/T. What is the shortest duration that meets the limit?<a class="headerlink" href="#6-a-minimum-jerk-move-of-90-degrees-must-keep-its-peak-speed-under-60-degrees-per-second-the-peak-speed-is-1875t-what-is-the-shortest-duration-that-meets-the-limit" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>About 2.81 seconds</li>
+<li>About 1.50 seconds</li>
+<li>About 3.75 seconds</li>
+<li>About 1.88 seconds</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Solving 1.875Δ/T ≤ v_max for T gives T = 1.875 × 90 / 60 = 2.8125 seconds. A shorter time would make the peak speed exceed the limit. For an acceleration limit the shortest duration is T = √(5.77Δ/a_max), and you take the larger of the two answers. When several joints must arrive together, the slowest joint sets the common duration, and the others are slowed to match.</p>
+<p><strong>Concept Tested:</strong> Velocity Limit Scaling</p>
+<p><strong>See:</strong> <a href="../#time-scaling-and-velocity-limit-scaling">Time Scaling and Velocity Limit Scaling</a></p>
+</details>
+<hr />
+<h4 id="7-a-servo-has-a-stall-torque-of-1913-nm-and-a-pose-puts-a-static-load-of-06-nm-on-its-joint-what-is-the-servo-torque-margin">7. A servo has a stall torque of 1.913 N·m, and a pose puts a static load of 0.6 N·m on its joint. What is the servo torque margin?<a class="headerlink" href="#7-a-servo-has-a-stall-torque-of-1913-nm-and-a-pose-puts-a-static-load-of-06-nm-on-its-joint-what-is-the-servo-torque-margin" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>About 0.31</li>
+<li>About 3.2</li>
+<li>About 1.15</li>
+<li>About 2.0</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The margin is the stall torque divided by the load: 1.913 / 0.6 ≈ 3.2. Below 1 the servo cannot hold the load. A margin of at least 2 is a comfortable classroom target, since a joint working near its stall torque draws a large current and heats up, though the figure of 2 is a rule of thumb and not a manufacturer's number. Option A inverts the ratio.</p>
+<p><strong>Concept Tested:</strong> Servo Torque Margin</p>
+<p><strong>See:</strong> <a href="../#servo-torque-margin">Servo Torque Margin</a></p>
+</details>
+<hr />
+<h4 id="8-the-predicted-and-measured-tip-paths-look-the-same-on-a-plot-yet-the-tracking-error-has-an-rmse-of-162-mm-and-a-maximum-of-258-mm-near-the-middle-of-the-move-what-explains-this">8. The predicted and measured tip paths look the same on a plot, yet the tracking error has an RMSE of 16.2 mm and a maximum of 25.8 mm near the middle of the move. What explains this?<a class="headerlink" href="#8-the-predicted-and-measured-tip-paths-look-the-same-on-a-plot-yet-the-tracking-error-has-an-rmse-of-162-mm-and-a-maximum-of-258-mm-near-the-middle-of-the-move-what-explains-this" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The planner chose the wrong route in space</li>
+<li>The inverse kinematics failed</li>
+<li>A lagging joint travels the same route but later, so the error is in the timing, and it is largest where the speed is highest</li>
+<li>The plot was drawn in the wrong coordinate frame</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A lagging joint closes only a fraction of the remaining gap at each step, so at each instant the arm is a little behind where the plan says it should be. The path in space is the same, but the trajectory, which includes timing, differs. This is the difference between a path and a trajectory once more. The error peaks near the middle of the move, where the speed is highest, because the lag error grows with speed.</p>
+<p><strong>Concept Tested:</strong> Predicted vs Measured Path</p>
+<p><strong>See:</strong> <a href="../#predicted-vs-measured-path-tracking-error-rmse-and-maximum-deviation">Predicted vs Measured Path, Tracking Error, RMSE and Maximum Deviation</a></p>
+</details>
+<hr />
+<h4 id="9-the-lab-measures-each-error-source-alone-servo-lag-delay-calibration-offset-gear-backlash-and-sensor-noise-after-fitting-the-time-constant-and-delay-of-the-lag-model-which-source-can-the-fit-not-remove">9. The lab measures each error source alone: servo lag, delay, calibration offset, gear backlash, and sensor noise. After fitting the time constant and delay of the lag model, which source can the fit NOT remove?<a class="headerlink" href="#9-the-lab-measures-each-error-source-alone-servo-lag-delay-calibration-offset-gear-backlash-and-sensor-noise-after-fitting-the-time-constant-and-delay-of-the-lag-model-which-source-can-the-fit-not-remove" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The calibration offset, because it is a constant that needs the calibration of Chapter 8</li>
+<li>The servo lag, because it changes with speed</li>
+<li>The delay, because it is too small to measure</li>
+<li>The time constant, because it is built into the servo</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The lag dominates at 12.75 mm RMSE, and the fit captures it, which cuts the total RMSE from 16.2 mm to 0.81 mm. A calibration offset of 1° contributes 5.45 mm RMSE, and no fit of lag and delay can remove a constant. Backlash and sensor noise set the floor. A slower move reduces the lag error, which grows with speed, and leaves the constant errors as they were.</p>
+<p><strong>Concept Tested:</strong> Prediction Error Sources</p>
+<p><strong>See:</strong> <a href="../#prediction-error-sources">Prediction Error Sources</a></p>
+</details>
+<hr />
+<h4 id="10-an-rrt-planner-finds-a-path-around-an-obstacle-and-shortcut-smoothing-then-cuts-it-from-64-points-to-6-which-judgment-of-the-result-is-best">10. An RRT planner finds a path around an obstacle, and shortcut smoothing then cuts it from 64 points to 6. Which judgment of the result is best?<a class="headerlink" href="#10-an-rrt-planner-finds-a-path-around-an-obstacle-and-shortcut-smoothing-then-cuts-it-from-64-points-to-6-which-judgment-of-the-result-is-best" title="Permanent link">&para;</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The shorter path is safe, because it was built from points the planner had already tested</li>
+<li>The path is a plan only after a safety check walks every segment at a resolution finer than the smallest obstacle, because shortcuts join points the planner never connected</li>
+<li>The smoothed path is unusable, because smoothing always makes paths longer</li>
+<li>The RRT path should be discarded, because the algorithm finds only the shortest path</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A shortcut joins two points with a straight segment that the planner never tested, and that segment may touch the obstacle. The path safety check walks every segment of the final path at a fine resolution, such as 1.5°, and tests every sample for collisions and limits. A coarse check can step over a thin obstacle. A path that has not been checked at this level is not a plan, only a hope. RRT finds a path if one exists, but not the shortest one.</p>
+<p><strong>Concept Tested:</strong> Path Safety Check</p>
+<p><strong>See:</strong> <a href="../#path-smoothing-shortcut-smoothing-and-the-path-safety-check">Path Smoothing, Shortcut Smoothing and the Path Safety Check</a></p>
+</details>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

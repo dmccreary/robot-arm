@@ -1,0 +1,99 @@
+{
+  "title": "Defense Layer Matcher",
+  "creator": "Dan McCreary",
+  "subject": "AI Agent Safety for Robotics",
+  "description": "Match eight requests from an agent to the safety layer that refuses each one first. The six layers are role, rate limit, schema, workspace, confirmation and the stop state. Used in Chapter 17.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/defense-layer-matcher/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Defense in depth: role, rate limit, schema, workspace limits, confirmation step and the stop state",
+    "learningObjectives": [
+      "Attribute each of eight agent requests to the one safety layer that refuses it first, among six layers, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "safety layer",
+      "defense in depth",
+      "least privilege",
+      "command validation",
+      "workspace limits",
+      "rate limiting",
+      "confirmation step",
+      "the stop tool"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 648
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Work out which of several mechanisms is responsible for a refusal, with the layer and the reason shown after each commit",
+    "keyQuestions": [
+      "Which layer's rule does this request break first?",
+      "Why does a request that passes the schema still get refused?"
+    ],
+    "commonMisconceptions": [
+      "One strong check is enough",
+      "The schema check covers every limit",
+      "The agent can approve its own risky moves"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed attributions; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight requests"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Role",
+          "Rate limit",
+          "Schema",
+          "Workspace",
+          "Confirmation",
+          "Stop state"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next request / See score / Try again"
+      }
+    ]
+  }
+}

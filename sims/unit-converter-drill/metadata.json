@@ -1,0 +1,115 @@
+{
+  "title": "Unit Converter Drill",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Set a joint position in raw steps, degrees, radians or percent and see the other three units for a calibrated range you choose. Then calculate six conversions yourself and type the answers. Used in Chapter 10.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/unit-converter-drill/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Converting between raw servo steps, degrees, radians and percent with a joint calibration",
+    "learningObjectives": [
+      "Calculate conversions between raw servo steps, degrees, radians and percent for a calibrated joint, to within 0.1 degree, 0.001 radian, 1 step or 0.1 percent as asked, in six problems, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "calculate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "raw servo units",
+      "degrees",
+      "radians",
+      "calibration range",
+      "middle of the range",
+      "unit conversion"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 620
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Repeated calculation on new numbers with one fixed calibration, each answer checked at once against a stated tolerance, with the working shown",
+    "keyQuestions": [
+      "What is the middle of this range, and what angle is it?",
+      "What happens to a target that lies beyond the end of the range?"
+    ],
+    "commonMisconceptions": [
+      "The same raw number means the same angle on every joint",
+      "Zero degrees is raw 2048",
+      "A target beyond the range moves the joint beyond it"
+    ],
+    "assessmentOpportunities": [
+      "Six typed numeric answers, one attempt each, checked against a tolerance; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Unit of the value",
+        "values": [
+          "raw steps",
+          "degrees",
+          "radians",
+          "percent"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Value",
+        "range": "raw 0 to 4095 step 1 (default 1992); degrees -180 to 180; radians -3.14 to 3.14; percent 0 to 100"
+      },
+      {
+        "type": "slider",
+        "label": "range_min",
+        "range": "0 to 4095 steps, step 1, default 742"
+      },
+      {
+        "type": "slider",
+        "label": "range_max",
+        "range": "0 to 4095 steps, step 1, default 3242"
+      },
+      {
+        "type": "input",
+        "label": "Your answer"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next problem / See score / Try again"
+      }
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "UART Frame Timeline",
+  "creator": "Dan McCreary",
+  "subject": "Serial Communication for Robotics",
+  "description": "Choose a baud rate and a packet and see every byte laid out as a ten-bit frame on a time line, with the total time to send it. Then answer five timing problems with the formula bytes times 10 divided by baud. Used in Chapter 4.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/uart-frame-timeline/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "UART framing, baud rate and transfer time",
+    "learningObjectives": [
+      "Calculate the time to send a given number of bytes at a given baud rate using 8N1 framing, to within 1 percent, in five problems, with at least 4 of 5 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "serial communication",
+      "bit and byte",
+      "UART",
+      "baud rate",
+      "8N1 framing",
+      "start bit and stop bit"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 620
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "See the ten-bit frames before calculating, then apply one formula to new numbers with an immediate check",
+    "keyQuestions": [
+      "Why does one byte take ten bit times on the wire?",
+      "What changes when the baud rate is halved, and what stays the same?"
+    ],
+    "commonMisconceptions": [
+      "A byte is 8 bits on the wire",
+      "A higher baud rate sends bytes with fewer bits",
+      "Both ends can use different baud rates"
+    ],
+    "assessmentOpportunities": [
+      "Five typed times, one attempt each; 4 of 5 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Problems"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Baud rate",
+        "values": [
+          "1,000,000",
+          "500,000",
+          "250,000",
+          "128,000",
+          "115,200",
+          "57,600",
+          "38,400",
+          "19,200"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Packet",
+        "values": [
+          "Ping request (6 bytes)",
+          "Position-read request (8 bytes)",
+          "Position-read reply (8 bytes)"
+        ]
+      },
+      {
+        "type": "input",
+        "label": "Your answer",
+        "range": "0 to 1000, step 0.01, no default"
+      },
+      {
+        "type": "button",
+        "label": "Check / Next problem"
+      }
+    ]
+  }
+}

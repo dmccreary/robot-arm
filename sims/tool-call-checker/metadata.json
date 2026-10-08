@@ -1,0 +1,98 @@
+{
+  "title": "Tool Call Checker",
+  "creator": "Dan McCreary",
+  "subject": "AI Agents for Robotics",
+  "description": "Act as the validator for the arm's move_to_pose tool. Check eight tool calls against the schema and name the first problem with each one, or say that the call is valid. Used in Chapter 15.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/tool-call-checker/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Tool schemas, typed and bounded parameters, and parameter validation",
+    "learningObjectives": [
+      "Examine eight tool calls against the schema of the arm's move_to_pose tool and identify the first problem with each, or that it is valid, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "tool schema",
+      "typed parameters",
+      "bounded commands",
+      "parameter validation",
+      "command parsing"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 598
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Break each call into its parts and test them in a fixed order, with the correct outcome and the reason shown after each commit",
+    "keyQuestions": [
+      "Which check fails first for this call?",
+      "Why is a number in quotes refused?",
+      "Why is a value just outside the range refused and not rounded?"
+    ],
+    "commonMisconceptions": [
+      "A number inside quotes is still a number",
+      "An unknown parameter is ignored",
+      "A value slightly outside the range is rounded to the limit"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed outcomes; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight calls"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Valid",
+          "Not valid JSON",
+          "Unknown tool",
+          "Missing parameter",
+          "Unknown parameter",
+          "Wrong type",
+          "Out of range"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next call / See score / Try again"
+      }
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "title": "Workcell Hazard Spotter",
+  "creator": "Dan McCreary",
+  "subject": "Robot Safety",
+  "description": "Look at eight numbered items in a schematic desk scene with a robot arm and classify each one as a pinch point, a collision hazard, an electrical hazard or acceptable. Used in Chapter 3.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/workcell-hazard-spotter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Spotting pinch-point, collision and electrical hazards around a desk robot arm",
+    "learningObjectives": [
+      "Distinguish pinch-point, collision and electrical hazards from acceptable items in a desk robot-arm scene, in eight items, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "pinch point",
+      "collision",
+      "safe work envelope",
+      "mains power safety",
+      "current rating",
+      "risk assessment"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 544
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Read the items in an explore mode first, then classify each one by its mechanism of harm (trapping, striking, shocking or none) with one attempt each",
+    "keyQuestions": [
+      "What could trap a finger or a sleeve here?",
+      "What could the arm strike as it moves?",
+      "Which items near the arm are good practice and not hazards?"
+    ],
+    "commonMisconceptions": [
+      "Only the gripper can pinch",
+      "Anything near the arm is a hazard",
+      "Water near a power supply is only a spill risk"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed classes, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore: read the names",
+          "Quiz: classify 8 items"
+        ]
+      },
+      {
+        "type": "canvas click",
+        "label": "Explore mode: hover over or click a numbered ring to read the item name"
+      },
+      {
+        "type": "button",
+        "label": "Four class buttons: Pinch point, Collision, Electrical, Acceptable"
+      },
+      {
+        "type": "button",
+        "label": "Next item / See score / Try again"
+      }
+    ]
+  }
+}

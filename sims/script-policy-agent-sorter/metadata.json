@@ -1,0 +1,93 @@
+{
+  "title": "Script Policy Agent Sorter",
+  "creator": "Dan McCreary",
+  "subject": "Robot Arm Projects",
+  "description": "Sort eight situations into three kinds of control: a script, a learned policy or an agent. The deciding question is who chooses the next move: fixed code, a trained model, or a language model choosing tools. Used in Chapter 18.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/script-policy-agent-sorter/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Script, learned policy and agent: three ways of deciding what the arm does next",
+    "learningObjectives": [
+      "Differentiate eight situations as a script, a learned policy or an agent, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "script",
+      "learned policy",
+      "agent",
+      "demonstrations",
+      "tools"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 546
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Separate things that look alike by asking who decides each move, with the correct kind and the reason shown after each commit",
+    "keyQuestions": [
+      "Who decides the next move?",
+      "Where did the knowledge come from?"
+    ],
+    "commonMisconceptions": [
+      "A camera makes a program an agent",
+      "Anything with a neural network is an agent",
+      "An agent is always better"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed classifications; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight situations"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "Script",
+          "Learned policy",
+          "Agent"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next situation / See score / Try again"
+      }
+    ]
+  }
+}

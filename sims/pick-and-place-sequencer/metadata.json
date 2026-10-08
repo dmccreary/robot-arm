@@ -1,0 +1,97 @@
+{
+  "title": "Pick and Place Sequencer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Read the eight steps of a pick-and-place task, each with the reason it comes where it does. Then put eight shuffled step cards into the right order, with three attempts to get them all in place. Used in Chapter 11.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/pick-and-place-sequencer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "The order of the steps in a pick-and-place task",
+    "learningObjectives": [
+      "Organize the eight steps of a pick-and-place task into their correct order, with at least 7 of the 8 steps in their correct positions within three attempts"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "organize",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "pick and place",
+      "pre-grasp approach",
+      "lift and retreat",
+      "gripper control",
+      "state machine"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 654
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Order shuffled procedure cards by their dependencies, with a count of correct positions after each attempt and the reasons revealed at the end",
+    "keyQuestions": [
+      "Which step must happen before the gripper closes?",
+      "Which moves are straight up or straight down, and why?"
+    ],
+    "commonMisconceptions": [
+      "The arm should go straight to the object's height from home",
+      "The gripper closes at the same time as the arm descends",
+      "The arm can move away as soon as the gripper opens"
+    ],
+    "assessmentOpportunities": [
+      "One ordering exercise with up to three checked attempts; mastery is 7 or more of 8 cards in the correct position"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore the steps",
+          "Exercise: put in order"
+        ]
+      },
+      {
+        "type": "canvas",
+        "label": "Tap a card to select it"
+      },
+      {
+        "type": "button",
+        "label": "Move up"
+      },
+      {
+        "type": "button",
+        "label": "Move down"
+      },
+      {
+        "type": "button",
+        "label": "Check / Try again"
+      }
+    ]
+  }
+}

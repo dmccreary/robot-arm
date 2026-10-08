@@ -1,0 +1,3383 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Turn a shaft and change the number of encoder bits, and watch the step number, the step size and the reported angle on a dial with a magnified strip that shows single steps. Then solve five problems on step size, steps and degrees, and speed from two readings. Used in Chapter 5.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/sims/encoder-resolution-reader/">
+      
+      
+        <link rel="prev" href="../gear-ratio-explorer/">
+      
+      
+        <link rel="next" href="../actuator-type-matcher/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Encoder Resolution Reader - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-RM2RYMCZQ1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-RM2RYMCZQ1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-RM2RYMCZQ1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+    <meta property="og:image" content="https://dmccreary.github.io/robot-arm/sims/encoder-resolution-reader/encoder-resolution-reader.png">
+  <meta name="twitter:image" content="https://dmccreary.github.io/robot-arm/sims/encoder-resolution-reader/encoder-resolution-reader.png">
+</head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#encoder-resolution-reader" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Encoder Resolution Reader
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            MicroSims
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph Viewer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pwm-vs-bus-servos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hobby PWM Servo vs. Serial Bus Servo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-run-stage-sorter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Run Stage Sorter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-environment-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Virtual Environment Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traceback-detective/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Traceback Detective
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-path-resolver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Path Resolver
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-syntax-doctor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON Syntax Doctor
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../robot-arm-part-identifier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Arm Part Identifier
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../degrees-of-freedom-counter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Degrees of Freedom Counter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../two-link-workspace-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-Link Workspace Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accuracy-repeatability-targets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accuracy and Repeatability Targets
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leader-follower-mirror/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Leader and Follower Mirror
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ohms-law-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ohm's Law Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wire-voltage-drop-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wire Voltage-Drop Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common-ground-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Ground Loop
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../power-budget-sizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Budget Sizer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workcell-hazard-spotter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workcell Hazard Spotter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protected-power-path/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fuse and E-Stop Power Path
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safe-power-up-sequencer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Safe Power-Up Sequencer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uart-frame-timeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UART Frame Timeline
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packet-checksum-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packet Checksum Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status-packet-decoder/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status Packet Decoder
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bus-fault-finder/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bus Fault Finder
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../can-termination-meter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CAN Termination Meter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h-bridge-current-paths/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H-Bridge Current Paths
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gear-ratio-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gear Ratio Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Encoder Resolution Reader
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Encoder Resolution Reader
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actuator-type-matcher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actuator Type Matcher
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pid-step-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PID Step Response
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joint-limit-chooser/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Joint Limit Chooser
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../landed-cost-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Landed Cost Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--scaffold" title="Scaffold — placeholder, not yet implemented">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-listing-checker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sourcing Listing Checker
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--scaffold" title="Scaffold — placeholder, not yet implemented">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tolerance-fit-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tolerance Fit Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print-defect-diagnoser/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Print Defect Diagnoser
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multimeter-practice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multimeter Practice
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../servo-id-setup-sequencer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servo ID Setup Sequencer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calibration-range-recorder/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Calibration Range Recorder
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assembly-fault-finder/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assembly Fault Finder
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mit-frame-packer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MIT Frame Packer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platform-chooser/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Platform Chooser
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-converter-drill/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Converter Drill
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../driver-swap-tracer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Driver Swap Tracer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../with-block-predictor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    With Block Predictor
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loop-rate-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loop Rate Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trapezoid-profile-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trapezoid Profile Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pick-and-place-sequencer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pick and Place Sequencer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transform-chain-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transform Chain Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ik-target-classifier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IK Target Classifier
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../singularity-spotter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Singularity Spotter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-level-sorter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log Level Sorter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytest-output-reader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytest Output Reader
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ros-concept-matcher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROS Concept Matcher
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hsv-color-classifier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HSV Color Classifier
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-projection-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pinhole Projection Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo-episode-judge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo Episode Judge
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent-or-workflow-sorter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agent or Workflow Sorter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool-call-checker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tool Call Checker
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-file-checker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Skill File Checker
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plan-checker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan Checker
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../failure-recovery-chooser/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Failure Recovery Chooser
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-status-reader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Status Reader
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../defense-layer-matcher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Defense Layer Matcher
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../injection-spotter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Injection Spotter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluation-metrics-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evaluation Metrics Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../script-policy-agent-sorter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Script Policy Agent Sorter
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../startup-order-sequencer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Startup Order Sequencer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintenance-due-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance Due Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quaternion-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quaternion Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manipulability-calculator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manipulability Calculator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polynomial-order-chooser/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polynomial Order Chooser
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rrt-step-tracer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RRT Step Tracer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/sims/encoder-resolution-reader/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="encoder-resolution-reader">Encoder Resolution Reader<a class="headerlink" href="#encoder-resolution-reader" title="Permanent link">&para;</a></h1>
+<iframe src="main.html" height="592px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="main.html">Run the Encoder Resolution Reader MicroSim Fullscreen</a></p>
+<p>You can include this MicroSim on your website using the following <code>iframe</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/robot-arm/sims/encoder-resolution-reader/main.html"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        <span class="na">height</span><span class="o">=</span><span class="s">"592px"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Turn a shaft and change the number of encoder bits, and watch the step number, the step size and the reported angle on a dial with a magnified strip that shows single steps. Then solve five problems on step size, steps and degrees, and speed from two readings. Used in Chapter 5.</p>
+<p>The dial shows the true angle of the shaft. The rows beside it show what the encoder makes of that angle: the number of steps in one turn, the size of one step, the step number, and the angle the encoder reports, which is the start of that step. The strip under the dial magnifies 3 degrees around the pointer, and each box in it is one encoder step.</p>
+<h2 id="lesson-plan">Lesson Plan<a class="headerlink" href="#lesson-plan" title="Permanent link">&para;</a></h2>
+<p><strong>Grade level:</strong> Middle school and up (age 12+).  <strong>Time:</strong> 10 to 15 minutes.</p>
+<ol>
+<li><strong>Predict first.</strong> A 12-bit encoder has 4096 steps in a turn. Before you move the slider, say how many a 13-bit encoder has, and what that does to the step size.</li>
+<li><strong>Explore.</strong> Set 8 bits and turn the shaft slowly. The reported angle jumps while the shaft moves smoothly. Now add bits one at a time and watch the boxes in the strip get narrower.</li>
+<li><strong>Problems.</strong> Five problems in a fixed order. Type the answer in the unit shown and press Check. You get one try for each problem, and 4 of 5 is mastery.</li>
+<li><strong>Think about it.</strong> A 16-bit encoder has steps 16 times finer than a 12-bit one. Does that make the joint 16 times more accurate?</li>
+</ol>
+<p>The 12-bit resolution is the STS3215's 4096 steps per turn, and 16 bits is the listed value for the Damiao DM-J4310. The readings in problems 3 to 5 are illustrative.</p>
+<h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h2>
+<p>The learning objective, evidence of mastery and content for this MicroSim are specified in
+<a href="../../chapters/05-actuators-and-sensors/">Chapter 5: Actuators and Sensors</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../gear-ratio-explorer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Gear Ratio Explorer">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Gear Ratio Explorer
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../actuator-type-matcher/" class="md-footer__link md-footer__link--next" aria-label="Next: Actuator Type Matcher">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Actuator Type Matcher
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

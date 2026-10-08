@@ -1,0 +1,106 @@
+{
+  "title": "HSV Color Classifier",
+  "creator": "Dan McCreary",
+  "subject": "Computer Vision for Robotics",
+  "description": "Set the hue, saturation and value of one pixel and see its color and which of the chapter's three color ranges contains it. Then classify eight pixels, given as OpenCV HSV values, as red, green, blue, or none of the three. Used in Chapter 14.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/hsv-color-classifier/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "HSV color thresholding with OpenCV ranges",
+    "learningObjectives": [
+      "Classify eight pixels given as OpenCV HSV values as red, green, blue, or none of the three, according to the thresholds of the chapter, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "classify",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "color space",
+      "HSV",
+      "hue",
+      "saturation",
+      "value",
+      "color thresholding",
+      "the red wrap-around"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 650
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Change one channel at a time and watch the swatch and the class, then sort pixels by a three-part rule",
+    "keyQuestions": [
+      "Why does red need two hue ranges?",
+      "Why is a pixel with a green hue not always green?"
+    ],
+    "commonMisconceptions": [
+      "Red is one range of hues",
+      "Any pixel with a blue hue is blue",
+      "Hue alone decides the color"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed classifications, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight pixels"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Hue",
+        "range": "0 to 179, step 1, default 60"
+      },
+      {
+        "type": "slider",
+        "label": "Saturation",
+        "range": "0 to 255, step 1, default 255"
+      },
+      {
+        "type": "slider",
+        "label": "Value",
+        "range": "0 to 255, step 1, default 255"
+      },
+      {
+        "type": "button",
+        "label": "Red / Green / Blue / None of the three"
+      },
+      {
+        "type": "button",
+        "label": "Next pixel / See score / Try again"
+      }
+    ]
+  }
+}

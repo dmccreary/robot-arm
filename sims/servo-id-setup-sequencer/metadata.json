@@ -1,0 +1,97 @@
+{
+  "title": "Servo ID Setup Sequencer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Read the eight steps of giving one servo its ID, each with the reason it comes where it does. Then put eight shuffled step cards into the right order, with three attempts to get them all in place. Used in Chapter 8.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/servo-id-setup-sequencer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Setting servo IDs one servo at a time with lerobot-setup-motors",
+    "learningObjectives": [
+      "Organize the eight steps of setting one servo's ID into their correct order, with at least 7 of the 8 steps in their correct positions within three attempts"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "organize",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "servo bus controller board",
+      "setting servo IDs",
+      "setting the baud rate",
+      "serial port",
+      "EEPROM"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 694
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Order shuffled procedure cards by their dependencies, with a count of correct positions after each attempt and the reasons revealed at the end",
+    "keyQuestions": [
+      "Which step must come before this one, and why?",
+      "What would go wrong if two new servos were on the bus at once?"
+    ],
+    "commonMisconceptions": [
+      "All six servos can be connected and given IDs together",
+      "The ID is lost when the power is switched off",
+      "The order of motors does not matter"
+    ],
+    "assessmentOpportunities": [
+      "One ordering exercise with up to three checked attempts; mastery is 7 or more of 8 cards in the correct position"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore the steps",
+          "Exercise: put in order"
+        ]
+      },
+      {
+        "type": "canvas",
+        "label": "Tap a card to select it"
+      },
+      {
+        "type": "button",
+        "label": "Move up"
+      },
+      {
+        "type": "button",
+        "label": "Move down"
+      },
+      {
+        "type": "button",
+        "label": "Check / Try again"
+      }
+    ]
+  }
+}

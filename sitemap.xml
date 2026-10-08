@@ -49,7 +49,23 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/01-python-setup-for-robotics/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/01-python-setup-for-robotics/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/02-anatomy-of-a-robot-arm/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/02-anatomy-of-a-robot-arm/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/02-anatomy-of-a-robot-arm/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -57,7 +73,23 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/03-electricity-power-and-safety/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/03-electricity-power-and-safety/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/04-serial-and-can-communication/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/04-serial-and-can-communication/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/04-serial-and-can-communication/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -65,7 +97,23 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/05-actuators-and-sensors/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/05-actuators-and-sensors/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/06-sourcing-parts-and-budget/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/06-sourcing-parts-and-budget/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/06-sourcing-parts-and-budget/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -73,7 +121,23 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/07-printing-fasteners-and-tools/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/07-printing-fasteners-and-tools/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/08-building-the-so-arm/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/08-building-the-so-arm/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/08-building-the-so-arm/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -81,7 +145,23 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/09-building-the-rebot-devarm/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/09-building-the-rebot-devarm/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/10-python-hardware-library/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/10-python-hardware-library/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/10-python-hardware-library/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -89,7 +169,23 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/11-moving-the-arm/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/11-moving-the-arm/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/12-kinematics/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/12-kinematics/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/12-kinematics/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -97,7 +193,23 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/13-logging-testing-simulation/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/13-logging-testing-simulation/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/14-perception-and-learning/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/14-perception-and-learning/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/14-perception-and-learning/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -105,7 +217,23 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/15-agents-and-openclaw-skills/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/15-agents-and-openclaw-skills/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/16-agent-planning-and-vision/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/16-agent-planning-and-vision/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/16-agent-planning-and-vision/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -113,11 +241,35 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/17-agent-safety-and-evaluation/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/17-agent-safety-and-evaluation/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/18-projects-operation-and-teaching/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/18-projects-operation-and-teaching/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/18-projects-operation-and-teaching/references/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/19-advanced-arm-path-mathematics/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/19-advanced-arm-path-mathematics/quiz/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/chapters/19-advanced-arm-path-mathematics/references/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -173,6 +325,10 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/learning-graph/quiz-generation-report/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/taxonomy-distribution/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
@@ -181,7 +337,71 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/accuracy-repeatability-targets/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/actuator-type-matcher/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/agent-or-workflow-sorter/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/assembly-fault-finder/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/bus-fault-finder/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/calibration-range-recorder/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/can-termination-meter/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/common-ground-loop/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/defense-layer-matcher/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/degrees-of-freedom-counter/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/demo-episode-judge/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/driver-swap-tracer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/encoder-resolution-reader/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/evaluation-metrics-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/failure-recovery-chooser/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/file-path-resolver/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/gear-ratio-explorer/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -193,11 +413,99 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/hsv-color-classifier/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/http-status-reader/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/ik-target-classifier/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/injection-spotter/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/joint-limit-chooser/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/json-syntax-doctor/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/landed-cost-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/leader-follower-mirror/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/log-level-sorter/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/loop-rate-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/maintenance-due-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/manipulability-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/mit-frame-packer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/multimeter-practice/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/ohms-law-explorer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/packet-checksum-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/pick-and-place-sequencer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/pid-step-response/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/pinhole-projection-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/plan-checker/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/platform-chooser/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/polynomial-order-chooser/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/power-budget-sizer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/print-defect-diagnoser/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -209,7 +517,79 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/pytest-output-reader/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/python-run-stage-sorter/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/quaternion-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/robot-arm-part-identifier/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/ros-concept-matcher/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/rrt-step-tracer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/safe-power-up-sequencer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/script-policy-agent-sorter/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/servo-id-setup-sequencer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/singularity-spotter/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/skill-file-checker/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/sourcing-listing-checker/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/startup-order-sequencer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/status-packet-decoder/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/tolerance-fit-explorer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/tool-call-checker/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/traceback-detective/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/transform-chain-calculator/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/trapezoid-profile-calculator/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -217,7 +597,27 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/uart-frame-timeline/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/unit-converter-drill/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/virtual-environment-explorer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/wire-voltage-drop-explorer/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/with-block-predictor/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/workcell-hazard-spotter/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>

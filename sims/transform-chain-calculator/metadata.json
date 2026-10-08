@@ -1,0 +1,104 @@
+{
+  "title": "Transform Chain Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Robot Kinematics",
+  "description": "Turn the two joints of a flat two-link arm and watch the two link vectors add up to the position of the tip. Then work out one coordinate of the tip in six problems, using the forward kinematics formulas, and check each answer. Used in Chapter 12.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/transform-chain-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Forward kinematics of a flat two-link arm",
+    "learningObjectives": [
+      "Calculate the tip position of a flat two-link arm from its joint angles using the forward kinematics equations, to within 0.001 m, in six problems, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "calculate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "sine and cosine",
+      "vector",
+      "two-link arm",
+      "link lengths",
+      "forward kinematics"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 660
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN",
+      "robot-arm-lib.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Explore the two link vectors with sliders, then calculate a tip coordinate and get an immediate check",
+    "keyQuestions": [
+      "Why does the second link point at theta1 + theta2 and not at theta2 alone?",
+      "What happens to the tip when only theta1 changes?"
+    ],
+    "commonMisconceptions": [
+      "The second link points at the angle theta2 alone",
+      "Angles in degrees can be passed straight to sine and cosine in code",
+      "The tip position is the sum of the two angles"
+    ],
+    "assessmentOpportunities": [
+      "Six typed answers, one attempt each; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "theta1",
+        "range": "-90 to 180 degrees, step 5, default 30"
+      },
+      {
+        "type": "slider",
+        "label": "theta2",
+        "range": "-150 to 150 degrees, step 5, default 60"
+      },
+      {
+        "type": "input",
+        "label": "Answer in metres"
+      },
+      {
+        "type": "button",
+        "label": "Check"
+      },
+      {
+        "type": "button",
+        "label": "Next problem / See score / Try again"
+      }
+    ]
+  }
+}

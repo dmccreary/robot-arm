@@ -1,0 +1,103 @@
+{
+  "title": "Maintenance Due Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Operating a Robot Arm",
+  "description": "Move three sliders to see when a maintenance task becomes due: the hours of use now, the hours at which the task was last done, and its interval. Then solve six problems about hours left, percent used and weeks until due. Used in Chapter 18.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/maintenance-due-calculator/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Maintenance schedules counted in hours of use",
+    "learningObjectives": [
+      "Calculate the hours left before a maintenance task is due, the percent of its interval used, and the weeks until it is due, to within 0.1 of the unit shown, in six problems, with at least 5 of 6 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "maintenance schedule",
+      "interval",
+      "hours of use",
+      "due and soon states"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 660
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Choose and use one of a few formulas on new numbers again and again, with the correct value and the working shown after each commit",
+    "keyQuestions": [
+      "How many hours has the arm run since the task was last done?",
+      "What does a negative number of hours left mean?"
+    ],
+    "commonMisconceptions": [
+      "The interval is counted in calendar days",
+      "Hours left is the interval minus the hours now",
+      "An overdue task has zero hours left"
+    ],
+    "assessmentOpportunities": [
+      "Six committed answers, each within 0.1 of the correct value; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Six problems"
+        ]
+      },
+      {
+        "type": "slider",
+        "label": "Hours now",
+        "range": "0 to 200 hours, step 1, default 42"
+      },
+      {
+        "type": "slider",
+        "label": "Last done at",
+        "range": "0 to 200 hours, step 1, default 30 (never more than the hours now)"
+      },
+      {
+        "type": "slider",
+        "label": "Interval",
+        "range": "10 to 100 hours, step 5, default 10"
+      },
+      {
+        "type": "input",
+        "label": "Your answer",
+        "range": "a number in the unit shown; negative when a task is overdue"
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next problem / See score / Try again"
+      }
+    ]
+  }
+}

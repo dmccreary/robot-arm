@@ -1,0 +1,126 @@
+{
+  "title": "Multimeter Practice",
+  "creator": "Dan McCreary",
+  "subject": "Robotics",
+  "description": "Set a virtual multimeter's mode, choose whether the circuit power is on, and connect the probes across two points or in series, then read the display. Six tasks from this book's circuits check that you can make all three choices correctly. Used in Chapter 7.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/multimeter-practice/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Using a multimeter: mode, power state and connection",
+    "learningObjectives": [
+      "Use a virtual multimeter by choosing the correct mode, power state and connection for six measuring tasks from this book's circuits, with at least 5 of 6 tasks fully correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "use",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "multimeter",
+      "DC voltage",
+      "resistance",
+      "continuity",
+      "DC current",
+      "parallel and series connection",
+      "CAN termination"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 640
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Carry out the whole measuring procedure by setting mode, power and connection, then see the reading that those settings produce",
+    "keyQuestions": [
+      "Is this measurement a difference between two points or a flow through a wire?",
+      "Does this mode need the power on or off, and why?"
+    ],
+    "commonMisconceptions": [
+      "Current is measured across two points, like voltage",
+      "Resistance can be measured in a live circuit",
+      "Continuity is the same as voltage"
+    ],
+    "assessmentOpportunities": [
+      "Six committed settings of three choices each, one attempt each, no partial credit; 5 of 6 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "View",
+        "values": [
+          "Explore",
+          "Six tasks"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Circuit",
+        "values": [
+          "5 V supply plug",
+          "One wire of a servo cable",
+          "CAN bus terminators",
+          "A fuse",
+          "Red and black supply wires",
+          "Arm supply wire"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Meter mode",
+        "values": [
+          "DC voltage",
+          "AC voltage",
+          "Resistance",
+          "Continuity",
+          "DC current"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Power",
+        "values": [
+          "Power on",
+          "Power off"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Connection",
+        "values": [
+          "Across the points",
+          "In series (open the wire)"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Check / Next task / See score / Try again"
+      }
+    ]
+  }
+}

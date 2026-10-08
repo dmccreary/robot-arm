@@ -1,0 +1,103 @@
+{
+  "title": "ROS Concept Matcher",
+  "creator": "Dan McCreary",
+  "subject": "Robot Software (ROS 2)",
+  "description": "Read six ROS 2 and robot-description terms beside a picture of two nodes joined by one topic. Then match eight short descriptions to the terms Node, Topic, Message, Publisher, Subscriber and URDF. Used in Chapter 13.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/ros-concept-matcher/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "ROS 2 vocabulary: node, topic, message, publisher, subscriber, and URDF",
+    "learningObjectives": [
+      "Identify the ROS 2 or robot-description term that matches each of eight short descriptions, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Remember",
+    "bloomsVerb": "identify",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "ROS 2",
+      "ROS node",
+      "ROS topic",
+      "message",
+      "publisher",
+      "subscriber",
+      "URDF"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 595
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Read each term beside a labelled picture, then recognize the term from a description",
+    "keyQuestions": [
+      "What is the difference between a node and a topic?",
+      "Why does a publisher not need to know who its subscribers are?"
+    ],
+    "commonMisconceptions": [
+      "ROS is an operating system",
+      "A topic is a program",
+      "A publisher sends to a particular subscriber"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed matches, one attempt each; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight descriptions"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Show in the picture",
+        "values": [
+          "Node",
+          "Topic",
+          "Message",
+          "Publisher",
+          "Subscriber",
+          "URDF"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Node / Topic / Message / Publisher / Subscriber / URDF"
+      },
+      {
+        "type": "button",
+        "label": "Next description / See score / Try again"
+      }
+    ]
+  }
+}

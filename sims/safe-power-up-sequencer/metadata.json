@@ -1,0 +1,97 @@
+{
+  "title": "Safe Power-Up Sequencer",
+  "creator": "Dan McCreary",
+  "subject": "Robot Safety",
+  "description": "Put the seven shuffled steps of the safe power-up sequence into the order you would do them, commit once, then read why each step sits where it does. Used in Chapter 3.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/safe-power-up-sequencer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "The safe power-up sequence for a robot arm",
+    "learningObjectives": [
+      "Implement the safe power-up sequence by arranging seven shuffled steps in the correct order, with at least 6 of the 7 steps in their correct positions on the first attempt"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "work envelope",
+      "polarity",
+      "fuse",
+      "hardware E-stop",
+      "torque",
+      "simulation"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 584
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Perform the procedure by ordering its steps, commit the whole arrangement once, then compare it with the correct order and the reason for each position",
+    "keyQuestions": [
+      "Which steps must be finished before the supply is switched on?",
+      "Why does the simulation come before any power?",
+      "Why is the first move small and slow?"
+    ],
+    "commonMisconceptions": [
+      "Power on first, then check",
+      "Simulating the program is optional",
+      "The E-stop can be reached for later"
+    ],
+    "assessmentOpportunities": [
+      "One committed arrangement of seven steps; 6 of 7 in the correct position on the first Check for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "canvas click",
+        "label": "Click a step to select it"
+      },
+      {
+        "type": "select",
+        "label": "Step",
+        "values": [
+          "the seven steps, in their current order"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Move up / Previous step"
+      },
+      {
+        "type": "button",
+        "label": "Move down / Next step"
+      },
+      {
+        "type": "button",
+        "label": "Check / Shuffle"
+      }
+    ]
+  }
+}

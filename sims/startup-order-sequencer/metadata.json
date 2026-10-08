@@ -1,0 +1,91 @@
+{
+  "title": "Startup Order Sequencer",
+  "creator": "Dan McCreary",
+  "subject": "Operating a Robot Arm",
+  "description": "Put the four startup steps and the three shutdown steps of a robot arm in order. In each of eight rounds you see the steps that are already done and choose the next one from three choices. Used in Chapter 18.",
+  "date": "2026-10-08",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/robot-arm/sims/startup-order-sequencer/",
+  "contributor": [
+    "Claude Code"
+  ],
+  "educational": {
+    "gradeLevel": [
+      "Middle School",
+      "High School",
+      "Maker"
+    ],
+    "subjectArea": "Robotics",
+    "topic": "Startup procedure, shutdown procedure and the stop that only a person can clear",
+    "learningObjectives": [
+      "Organize the four startup steps and the three shutdown steps of the chapter into their correct order, choosing the next step in each of eight rounds, with at least 7 of 8 correct on the first attempt"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "5-10 minutes",
+    "prerequisites": [
+      "startup procedure",
+      "shutdown procedure",
+      "stop",
+      "home pose",
+      "pre-flight check"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.2",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 598
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js CDN"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Choose the next part of a procedure again and again, with the correct step and the reason shown after each commit",
+    "keyQuestions": [
+      "What does this step make safe for the next one?",
+      "Which steps can only a person do?"
+    ],
+    "commonMisconceptions": [
+      "The stop can be cleared first so that the checks can move the arm",
+      "The agent can clear the stop",
+      "Torque is cut first and the arm is parked afterwards"
+    ],
+    "assessmentOpportunities": [
+      "Eight committed choices of the next step; 7 of 8 for mastery"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "type": "select",
+        "label": "Mode",
+        "values": [
+          "Explore",
+          "Eight rounds"
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Your answer",
+        "values": [
+          "three choices of the next step, different in each round"
+        ]
+      },
+      {
+        "type": "button",
+        "label": "Start / Check / Next round / See score / Try again"
+      }
+    ]
+  }
+}
