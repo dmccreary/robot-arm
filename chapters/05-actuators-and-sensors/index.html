@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+        <meta name="description" content="How the motors and sensors in a robot arm work: DC and brushless motors, gearboxes, encoders and feedback, hobby servos, serial bus servos, and CAN actuators, plus PID control and the torque, speed, and overload limits that keep a joint safe.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -26,7 +26,7 @@
     
     
       
-        <title>5. Actuators and Sensors - Controlling a Robot Arm</title>
+        <title>Actuators and Sensors - Controlling a Robot Arm</title>
       
     
     
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. Actuators and Sensors
+              Actuators and Sensors
             
           </span>
         </div>
@@ -607,6 +607,408 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#actuators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actuators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dc-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      DC Motor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Controller
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motor Controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-h-bridge-motor-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: H-Bridge Motor Driver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram-h-bridge-current-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: H-Bridge Current Paths
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brushless-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Brushless Motor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gears-and-torque" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gears and Torque
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gears and Torque">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-gear-ratio-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Gear Ratio Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-how-a-joint-knows-what-it-is-doing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback: How a Joint Knows What It Is Doing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback: How a Joint Knows What It Is Doing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-encoder-resolution-reader" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Encoder Resolution Reader
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Position Feedback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#velocity-load-and-current-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Velocity, Load, and Current Feedback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temperature-sensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temperature Sensing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Motors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Motors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hobby-servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hobby Servo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hobby Servo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-hobby-pwm-servo-vs-serial-bus-servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Hobby PWM Servo vs. Serial Bus Servo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serial-bus-servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serial Bus Servo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sts3215-servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      STS3215 Servo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Compliance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#damiao-actuator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Damiao Actuator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robstride-actuator" class="md-nav__link">
+    <span class="md-ellipsis">
+      RobStride Actuator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RobStride Actuator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-actuator-type-matcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Actuator Type Matcher
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holding-a-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      Holding a Position
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Holding a Position">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pid-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PID Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pid-step-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: PID Step Response
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torque-enable-release-and-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Torque Enable, Release, and Limit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speed-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed Limit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runaway-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runaway Motion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runaway Motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-joint-limit-chooser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Joint Limit Chooser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-read-tune-and-guard-a-joint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab: Read, Tune, and Guard a Joint
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab: Read, Tune, and Guard a Joint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-tune-it-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge: Tune It Yourself
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-check-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Check Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -932,6 +1334,53 @@
       
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
         
       
         
@@ -982,6 +1431,10 @@
   
     
     
+      
+        
+          
+        
       
         
           
@@ -1197,6 +1650,408 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#actuators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actuators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dc-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      DC Motor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Controller
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motor Controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-h-bridge-motor-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: H-Bridge Motor Driver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram-h-bridge-current-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: H-Bridge Current Paths
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brushless-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Brushless Motor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gears-and-torque" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gears and Torque
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gears and Torque">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-gear-ratio-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Gear Ratio Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-how-a-joint-knows-what-it-is-doing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback: How a Joint Knows What It Is Doing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback: How a Joint Knows What It Is Doing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-encoder-resolution-reader" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Encoder Resolution Reader
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Position Feedback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#velocity-load-and-current-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Velocity, Load, and Current Feedback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temperature-sensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temperature Sensing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Motors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Motors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hobby-servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hobby Servo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hobby Servo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-hobby-pwm-servo-vs-serial-bus-servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Hobby PWM Servo vs. Serial Bus Servo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serial-bus-servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serial Bus Servo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sts3215-servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      STS3215 Servo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Compliance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#damiao-actuator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Damiao Actuator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robstride-actuator" class="md-nav__link">
+    <span class="md-ellipsis">
+      RobStride Actuator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RobStride Actuator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-actuator-type-matcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Actuator Type Matcher
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holding-a-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      Holding a Position
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Holding a Position">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pid-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PID Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pid-step-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: PID Step Response
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torque-enable-release-and-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Torque Enable, Release, and Limit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speed-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed Limit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runaway-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runaway Motion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runaway Motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-joint-limit-chooser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Joint Limit Chooser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-read-tune-and-guard-a-joint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab: Read, Tune, and Guard a Joint
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab: Read, Tune, and Guard a Joint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-tune-it-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge: Tune It Yourself
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-check-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Check Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1383,13 +2238,1664 @@
 <li><a href="../04-serial-and-can-communication/">Chapter 4: Serial and CAN Communication</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Let's Look Inside a Joint!</p>
+<p><img alt="Servo waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Every joint of mine is a tiny machine with a motor, gears, a sensor, and a brain, and today we open one up. You will learn why a joint can hold still against gravity, how to read what it feels, and how to set limits so it never pushes too hard. Let's move it!</p>
+</div>
+<p>Chapters 3 and 4 showed how a joint gets its power and its commands. This chapter looks at what happens <em>inside</em> the joint when it gets them. A joint is more than a motor. It turns electricity into rotation, it gears that rotation down so that it is strong enough to lift the arm, it measures its own angle, and it keeps adjusting itself until the angle matches the goal. Each of those jobs has a part with a name, and each part has settings that you control from Python.</p>
+<p>The chapter follows the signal through a joint. It starts with the <strong>actuator</strong>, the part that makes the motion, and the motors inside it. Then it covers the gears that make the motion strong enough, the sensors that report what the joint is doing, and the three families of complete actuators in this book. The last section explains the control loop that holds a joint at an angle and the limits that stop it from pushing too hard.</p>
+<h2 id="actuators">Actuators<a class="headerlink" href="#actuators" title="Permanent link">&para;</a></h2>
+<p>An <strong>actuator</strong> is a device that converts energy, here electrical energy, into motion. Every joint of a robot arm has one. The word is used for any part that makes something move, so a small motor is an actuator, and so is a complete package that includes the motor, gears, sensor and controller. This book meets three families of the second kind, and the table compares them. The costs for the motors in the two arms come from the bills of materials that each project publishes.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hobby servo</th>
+<th>Serial bus servo</th>
+<th>Brushless CAN actuator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Example</td>
+<td>MG995</td>
+<td>STS3215 (SO-ARM101)</td>
+<td>Damiao DM4310 or RobStride RS00 (reBot-DevArm)</td>
+</tr>
+<tr>
+<td>How you command it</td>
+<td>A pulse width on one signal wire</td>
+<td>Packets on a shared serial bus</td>
+<td>Frames on a CAN bus</td>
+</tr>
+<tr>
+<td>What it reports back</td>
+<td>Nothing your program can read</td>
+<td>Position, speed, load, current, voltage, temperature</td>
+<td>Position, speed, torque, temperatures</td>
+</tr>
+<tr>
+<td>Supply voltage</td>
+<td>About 5 to 6 V</td>
+<td>5 to 12 V (Chapter 3)</td>
+<td>24 V or 48 V</td>
+</tr>
+<tr>
+<td>Cost of one in the arm's bill of materials</td>
+<td>Not used in either arm</td>
+<td>$13.89</td>
+<td>$120 to $210</td>
+</tr>
+<tr>
+<td>Used in this book</td>
+<td>Appendix A only</td>
+<td>SO-ARM101</td>
+<td>reBot-DevArm B601</td>
+</tr>
+</tbody>
+</table>
+<p>The cost row is worth a calculation. The SO-ARM100 repository prices the STS3215 servo at $13.89 each, so the six motors of one follower arm cost 6 × $13.89 = $83.34. The reBot-DevArm B601-DM's published bill of materials lists four DM4310 motors at $120 and three DM4340P motors at $175, a total of <span class="arithmatex">\( 4 \times 120 + 3 \times 175 = \$1005 \)</span> for the motors alone, about 12 times as much. What the extra money buys is torque, accuracy, and a higher-grade bus, and Chapter 6 weighs whether you need them.</p>
+<p>Every actuator in the table has the same four layers, and the rest of the chapter takes them one at a time: a <strong>motor</strong> makes the rotation, a <strong>gearbox</strong> trades speed for strength, a <strong>sensor</strong> measures the result, and a <strong>controller</strong> decides what the motor should do next.</p>
+<h2 id="motors">Motors<a class="headerlink" href="#motors" title="Permanent link">&para;</a></h2>
+<h3 id="dc-motor">DC Motor<a class="headerlink" href="#dc-motor" title="Permanent link">&para;</a></h3>
+<p>A <strong>DC motor</strong> (brushed DC motor) is a coil of wire that turns between magnets when direct current flows through it. Two small contacts called brushes pass current to the spinning coil. It has two properties that explain almost everything about how a motor behaves in a robot arm. The <strong>torque</strong> a DC motor produces is proportional to the <em>current</em> that flows through it, and its <em>speed</em> is proportional to the <em>voltage</em> across it, less a loss that comes from the next paragraph.</p>
+<p>The loss is <strong>back-EMF</strong>, the voltage that a spinning motor generates in its own coil, opposing the supply. A motor is also a generator, and the faster it spins, the larger the voltage it makes against you. The current in a spinning motor is therefore the <em>difference</em> between the supply voltage and the back-EMF, divided by the coil's resistance:</p>
+<div class="arithmatex">\[ I = \frac{V - V_{\text{back}}}{R} \]</div>
+<p>where <span class="arithmatex">\( V \)</span> is the supply voltage, <span class="arithmatex">\( V_{\text{back}} \)</span> is the back-EMF, and <span class="arithmatex">\( R \)</span> is the resistance of the winding. Here is a worked example using the STS3215. The seller's listing gives a stall current of 2.0 A at 6 V. With the motor blocked there is no back-EMF at all, so Ohm's law from Chapter 3 gives an effective resistance of <span class="arithmatex">\( 6 / 2.0 = 3 \)</span> Ω. The numbers in the table are an illustration based on that estimate, not a measurement of the real motor.</p>
+<table>
+<thead>
+<tr>
+<th>State of the motor (6 V supply)</th>
+<th>Back-EMF</th>
+<th>Current</th>
+<th>Torque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stalled</strong>: blocked, not turning</td>
+<td>0 V</td>
+<td><span class="arithmatex">\( 6 / 3 = 2.0 \)</span> A</td>
+<td>Maximum (the stall torque)</td>
+</tr>
+<tr>
+<td><strong>Lifting a load</strong>: turning slowly</td>
+<td>4.5 V</td>
+<td><span class="arithmatex">\( (6 - 4.5) / 3 = 0.5 \)</span> A</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Spinning freely</strong>: no load</td>
+<td>5.55 V</td>
+<td><span class="arithmatex">\( (6 - 5.55) / 3 = 0.15 \)</span> A</td>
+<td>Almost none</td>
+</tr>
+</tbody>
+</table>
+<p>The table shows why a stalled motor is dangerous. All of the supply voltage is across the coil's small resistance, so the current is at its highest and the heating is at its worst (recall from Chapter 3 that heat grows with the square of the current). It also shows <strong>inrush current</strong>: at the instant a motor starts, it is not turning yet, so it has no back-EMF and draws the stall current for a moment. Six motors starting together can briefly ask the supply for far more than they draw once moving, and a supply with little headroom will sag. The remedies are the ones from the power budget: a supply with margin, and starting motions gently (the servos have an acceleration setting).</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Torque Follows Current</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+The single most useful fact about a motor is that its torque is proportional to its current. That means current is a window onto force: a motor that is pushing hard draws a lot of amps, and a motor that is idle draws almost none. Later in this chapter you will use that to tell when a joint is pushing on something.</p>
+</div>
+<h3 id="motor-controller">Motor Controller<a class="headerlink" href="#motor-controller" title="Permanent link">&para;</a></h3>
+<p>A motor needs a <strong>motor controller</strong>, the electronics that supply it with the right voltage and current and let it run in either direction. A DC motor's direction depends on which way the current flows through it, so the standard controller is an <strong>H-bridge</strong>: four switches arranged in the shape of the letter H, with the motor as the crossbar. In a real controller the switches are transistors. Closing the top-left and bottom-right switches sends current through the motor from left to right, and closing the other diagonal reverses it.</p>
+<h4 id="diagram-h-bridge-motor-driver">Diagram: H-Bridge Motor Driver<a class="headerlink" href="#diagram-h-bridge-motor-driver" title="Permanent link">&para;</a></h4>
+<figure>
+  <img alt="An H-bridge: a positive supply rail on top, a ground rail on the bottom, two vertical legs each with two switches, and a motor between the middle of the two legs" src="diagrams/h-bridge.svg" />
+  <figcaption>An H-bridge. S1 and S4 closed push current through the motor from left to right, and S2 and S3 closed push it from right to left. Closing both switches of one leg, such as S1 and S3, connects the supply directly to ground. Source: diagrams/h-bridge.py.</figcaption>
+</figure>
+<p>The last sentence of the caption is the one rule of the H-bridge: the two switches in the same leg must never be closed together. They would connect the supply straight to ground through two switches that have almost no resistance, and the current would be enormous. Controllers are built so that this cannot happen, and the next MicroSim lets you see it.</p>
+<p>A controller also sets how <em>fast</em> the motor spins. It does this by switching its transistors on and off thousands of times a second, a technique called <strong>PWM</strong> (pulse-width modulation). The fraction of each cycle that the switch is on is the <em>duty cycle</em>, and the motor sees the average. A 50 percent duty cycle on a 6 V supply gives an average of 3 V. The same words have a second, separate use, which is worth keeping apart. A hobby servo's <strong>PWM signal</strong> is not power at all: it is a <em>command</em>, a pulse once every 20 ms, whose width (1 ms to 2 ms) tells the servo what angle to go to. The hobby servo section below returns to it.</p>
+<p>In the next MicroSim you set the four switches of an H-bridge and predict what the motor will do. Orange dots show the current: they follow the closed switches from the supply, through the motor in one direction or the other, and to ground. Pick a combination that the diagram forbids and the sim shows the short circuit.</p>
+<h4 id="diagram-h-bridge-current-paths">Diagram: H-Bridge Current Paths<a class="headerlink" href="#diagram-h-bridge-current-paths" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/h-bridge-current-paths/main.html" height="562px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/h-bridge-current-paths/main.html">Run the H-Bridge Current Paths MicroSim fullscreen</a></p>
+<details>
+<summary>H-Bridge Current Paths</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> h-bridge-current-paths<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Understand<br/>
+<strong>Bloom Verb:</strong> infer<br/>
+<strong>Learning Objective:</strong> The learner will infer what a DC motor does for six combinations of H-bridge switch settings, choosing among forward, reverse, coasts, brakes and short circuit, with at least 5 of 6 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> DC motor, torque, current, circuit, motor controller, H-bridge, short circuit, fuse (all defined in the sections above this block and in Chapter 3).</p>
+<p><strong>Evidence of Mastery:</strong> For each of six switch combinations the learner chooses one of five outcomes before the circuit runs, and commits. A choice is correct when it matches the Correct column in Content. Mastery is 5 of 6 correct on the first attempt. Setting the switches freely in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) Any two closed switches drive the motor. (Two switches in one leg make a short circuit.) (2) With all switches open the motor stops instantly. (It coasts to a stop.) (3) A motor can only run in one direction. (Reversing the diagonal reverses it.)</p>
+<p><strong>Instructional Rationale:</strong> An Understand-level infer objective asks the learner to apply a rule to a new case and commit to a result. Predicting before the current dots appear forces the learner to trace the path from the supply to ground through the closed switches.</p>
+<p><strong>Content:</strong></p>
+<p>The circuit is the schematic in the chapter figure: a supply rail, four switches S1 (top left), S2 (top right), S3 (bottom left) and S4 (bottom right), a motor between the two leg midpoints, and a ground rail. "Forward" means current flows through the motor from left to right. When a closed path from the supply to ground exists, orange conventional-current dots flow along it with a speed proportional to the current. The five outcomes are: (a) Forward, (b) Reverse, (c) Coasts to a stop, (d) Brakes, (e) Short circuit.</p>
+<p>Six combinations in this fixed order (C means closed, O means open):</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+<th>S4</th>
+<th>Correct</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>C</td>
+<td>O</td>
+<td>O</td>
+<td>C</td>
+<td>(a) Forward</td>
+<td>The path is supply, S1, motor from left to right, S4, ground.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>O</td>
+<td>C</td>
+<td>C</td>
+<td>O</td>
+<td>(b) Reverse</td>
+<td>The path is supply, S2, motor from right to left, S3, ground.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+<td>(c) Coasts to a stop</td>
+<td>No path to the supply or ground, so no current is driven, and the motor spins down on its own.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>C</td>
+<td>O</td>
+<td>C</td>
+<td>O</td>
+<td>(e) Short circuit</td>
+<td>S1 and S3 are in the same leg and connect the supply straight to ground, bypassing the motor.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>O</td>
+<td>O</td>
+<td>C</td>
+<td>C</td>
+<td>(d) Brakes</td>
+<td>Both motor terminals connect to ground, so the motor's own back-EMF drives current through the closed loop and slows it quickly. No current comes from the supply.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>O</td>
+<td>C</td>
+<td>O</td>
+<td>C</td>
+<td>(e) Short circuit</td>
+<td>S2 and S4 are in the same leg and connect the supply straight to ground.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The switch combinations are written for this sim from the chapter section "Motor Controller". The schematic is drawn from the same design as <code>diagrams/h-bridge.svg</code>. The short-circuit warning follows the H-bridge rule stated in the chapter.</p>
+<p><strong>Rules:</strong> A short circuit exists when S1 and S3 are both closed, or S2 and S4 are both closed. Otherwise, forward is S1 and S4 closed with S2 and S3 open, reverse is S2 and S3 closed with S1 and S4 open, brake is S3 and S4 both closed (or S1 and S2 both closed) with the other two open, and every other combination with no closed path leaves the motor coasting. The sim does not model speed. In Explore mode the learner toggles each of the four switches, and a short circuit shows the fastest dots and the message "short circuit: the fuse would blow".</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner toggles the four switches and watches the current dots, the motor's direction mark and the message. The learner should notice that only one diagonal at a time gives a clean path through the motor.</li>
+<li>The learner switches to the six combinations. Combination 1 is shown with the switches set and the circuit idle.</li>
+<li>The learner chooses one of the five outcomes and commits.</li>
+<li>The circuit runs: the dots flow along the path (or not), and the sim shows whether the answer was correct and the Why text. After combination 6 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Six combinations, fixed order, one attempt each. Correct: "Correct: <outcome>. <Why>". Incorrect: "Not quite. The result is: <outcome>. <Why>". The correct outcome is revealed after each commit. A running count "Correct: n of 6" is shown and the final screen says whether mastery (5 of 6) was reached.</p>
+<p><strong>Starting State:</strong> Predict mode, combination 1 of 6, with S1 and S4 closed, the circuit idle, and the question "What does the motor do?"</p>
+<p><strong>Chapter Anchors:</strong> The chapter says that S1 and S4 closed drive the motor from left to right, that S2 and S3 closed reverse it, and that two switches in one leg make a short circuit. The sim has six combinations and mastery is 5 of 6.</p>
+</details>
+<h3 id="brushless-motor">Brushless Motor<a class="headerlink" href="#brushless-motor" title="Permanent link">&para;</a></h3>
+<p>A <strong>brushless motor</strong> removes the brushes. The coils stay still, and the magnets are on the part that spins. Because the coils no longer move, the controller must switch the current from coil to coil in the right order to keep the magnets turning, and it must know where the magnets are, which takes a sensor in the motor. The result costs more to drive but has real advantages. There are no brushes to wear out, less friction, less electrical noise, and more torque for the weight. These are the reasons that the reBot-DevArm's actuators are brushless.</p>
+<p>The controller of a brushless motor is more complex than an H-bridge, and in the Damiao and RobStride actuators it is <em>inside the actuator</em>, along with the sensors and the CAN interface, so you see only a box with power wires and two CAN wires. Their documentation describes them as integrated actuators with a field-oriented-control (FOC) drive, which is the standard method of driving this kind of motor smoothly.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Brushed DC motor</th>
+<th>Brushless motor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moving parts that wear</td>
+<td>Brushes and commutator</td>
+<td>Bearings only</td>
+</tr>
+<tr>
+<td>Needs</td>
+<td>Two wires and an H-bridge</td>
+<td>A three-phase driver and a position sensor</td>
+</tr>
+<tr>
+<td>Efficiency and life</td>
+<td>Lower</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td>Cost to drive</td>
+<td>Low</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td>Found in</td>
+<td>STS3215 servos, hobby servos</td>
+<td>Damiao and RobStride actuators</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gears-and-torque">Gears and Torque<a class="headerlink" href="#gears-and-torque" title="Permanent link">&para;</a></h2>
+<p>A small motor spins fast but is weak. A robot joint needs the opposite: slow and strong. A <strong>gearbox</strong> is a set of gears that makes that trade. The <strong>gear ratio</strong> says how many times the motor turns for each turn of the output, and the STS3215 servos are sold in 1/345, 1/191 and 1/147 versions (Chapter 2). A ratio of 1/345 means that the motor shaft turns 345 times while the output turns once. The output turns 345 times slower and, losing a little to friction, about 345 times stronger.</p>
+<p>The <strong>motor speed</strong> is how fast something turns, and the usual units are revolutions per minute (rpm) or degrees per second. The <strong>torque</strong> at a joint is the twisting force, measured in newton-metres (N·m), as in Chapter 2's payload formula <span class="arithmatex">\( \tau = m g d \)</span>. Spec sheets for small servos often give torque in kilogram-centimetres, the pull of that many kilograms at a distance of 1 cm, and the conversion is <span class="arithmatex">\( 1 \text{ kg·cm} = 0.0981 \text{ N·m} \)</span>. With a gear ratio <span class="arithmatex">\( N \)</span> (such as 345) and an efficiency <span class="arithmatex">\( \eta \)</span> (the fraction left after friction), the output follows from the motor:</p>
+<div class="arithmatex">\[ \omega_{\text{out}} = \frac{\omega_{\text{motor}}}{N}, \qquad \tau_{\text{out}} = \tau_{\text{motor}} \times N \times \eta \]</div>
+<p>Here is a worked example with the STS3215. Its listing gives a stall torque of 16.5 kg·cm at 6 V, which is <span class="arithmatex">\( 16.5 \times 0.0981 \approx 1.62 \)</span> N·m, and a no-load speed of 0.238 seconds for 60 degrees, which is <span class="arithmatex">\( 60 / 0.238 \approx 252 \)</span> degrees per second, or about 42 rpm. Suppose the servo has the 1/345 gearbox (the listing figure applies to one version). Then the motor shaft spins at <span class="arithmatex">\( 42 \times 345 \approx 14500 \)</span> rpm, and for an efficiency of 50 percent (an illustrative value), the motor itself produces only <span class="arithmatex">\( 1.62 / (345 \times 0.5) \approx 0.0094 \)</span> N·m, or 9.4 millinewton-metres. The gearbox is doing almost all the work of making the joint strong.</p>
+<p><strong>Stall torque</strong> is the largest torque the actuator can produce while blocked, which is also when it draws its stall current. A joint must be chosen with a stall torque comfortably above what it holds, and a joint that holds a load near its stall torque draws its stall current <em>all the time</em> and overheats. The gearbox has a cost too. Gears do not mesh perfectly, and the small gap that lets them turn is called <strong>backlash</strong>: when the direction reverses, the motor turns a little before the output moves. A 1/345 gearbox is strong but has noticeable backlash and resists being turned by hand, while the 1/147 gearing in the leader arm is easier to move and makes the leader's job possible. Where the encoder sits matters, as the next section explains.</p>
+<table>
+<thead>
+<tr>
+<th>Choice</th>
+<th>Higher gear ratio number (such as 1/345)</th>
+<th>Lower ratio number (such as 1/147)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Output speed for the same motor</td>
+<td>Slower</td>
+<td>About 2.35 times faster (345 / 147)</td>
+</tr>
+<tr>
+<td>Output torque</td>
+<td>Higher</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td>Easy to turn by hand</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Used in the SO-ARM101 for</td>
+<td>The follower's joints</td>
+<td>The leader's wrist and gripper</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Convert Units Before You Compare</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Servo datasheets mix kg·cm, N·m, and oz·in, and a "19 kg" servo is not 19 kilograms of anything. Convert every torque to N·m (multiply kg·cm by 0.0981) before you compare two actuators, and then compare it with <span class="arithmatex">\( m g d \)</span> for your own load.</p>
+</div>
+<p>In the next MicroSim you use the gear equations on five problems: speeds, torques, and a comparison of two ratios.</p>
+<h4 id="diagram-gear-ratio-explorer">Diagram: Gear Ratio Explorer<a class="headerlink" href="#diagram-gear-ratio-explorer" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Gear Ratio Explorer</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> gear-ratio-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Apply<br/>
+<strong>Bloom Verb:</strong> calculate<br/>
+<strong>Learning Objective:</strong> The learner will calculate the output speed or torque of a geared actuator, or the motor speed or torque behind it, from the gear ratio and efficiency, to within 2 percent, in five problems, with at least 4 of 5 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> torque, motor speed, gearbox, gear ratio, stall torque, efficiency, newton-metre (all defined in the section above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of five problems the learner types a number in the unit shown and commits. An answer is correct when it is within 2 percent of the Correct column in Content. Mastery is 4 of 5 correct on the first attempt. Changing the ratio and the motor in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) A higher gear ratio makes the output faster. (It makes it slower and stronger.) (2) Gears create torque from nothing. (Power is conserved apart from friction, so the speed falls as the torque rises.) (3) Efficiency does not matter. (It reduces the output torque.)</p>
+<p><strong>Instructional Rationale:</strong> An Apply-level calculate objective needs practice with a formula on new numbers. The sim shows the motor turning many times for each output turn, so the sign of the speed-for-torque trade is seen before it is calculated.</p>
+<p><strong>Content:</strong></p>
+<p>Explore mode shows a motor gear turning <span class="arithmatex">\( N \)</span> times for each turn of the output gear. The learner can set the motor speed, the motor torque, the ratio N and the efficiency. Formulas: output speed = motor speed / N; output torque = motor torque × N × efficiency.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Min</th>
+<th>Max</th>
+<th>Step</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gear ratio N</td>
+<td>1</td>
+<td>400</td>
+<td>1</td>
+<td>100</td>
+<td>: 1</td>
+</tr>
+<tr>
+<td>Motor speed</td>
+<td>0</td>
+<td>20000</td>
+<td>100</td>
+<td>12000</td>
+<td>rpm</td>
+</tr>
+<tr>
+<td>Motor torque</td>
+<td>0</td>
+<td>50</td>
+<td>1</td>
+<td>10</td>
+<td>mN·m</td>
+</tr>
+<tr>
+<td>Efficiency</td>
+<td>20</td>
+<td>100</td>
+<td>5</td>
+<td>60</td>
+<td>percent</td>
+</tr>
+</tbody>
+</table>
+<p>Five problems in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Problem</th>
+<th>Unit asked</th>
+<th>Correct</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A motor turns at 12000 rpm through a 100 : 1 gearbox. What is the output speed?</td>
+<td>rpm</td>
+<td>120</td>
+<td>12000 / 100 = 120 rpm.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The STS3215's output turns at 42 rpm through a 345 : 1 gearbox. How fast is the motor shaft?</td>
+<td>rpm</td>
+<td>14490</td>
+<td>42 × 345 = 14490 rpm.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A motor makes 10 mN·m through a 100 : 1 gearbox at 60 percent efficiency. What is the output torque?</td>
+<td>N·m</td>
+<td>0.6</td>
+<td>0.010 × 100 × 0.6 = 0.6 N·m.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>An output needs 1.62 N·m through a 345 : 1 gearbox at 50 percent efficiency. What motor torque is needed?</td>
+<td>mN·m</td>
+<td>9.39</td>
+<td>1.62 / (345 × 0.5) = 0.00939 N·m = 9.39 mN·m.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The same motor drives a 147 : 1 joint and a 345 : 1 joint. How many times faster is the 147 : 1 joint?</td>
+<td>times</td>
+<td>2.35</td>
+<td>345 / 147 = 2.347 times faster, and it is that much weaker.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The 42 rpm and 1.62 N·m figures follow the STS3215 listing values in the chapter's worked example (0.238 s per 60 degrees and 16.5 kg·cm at 6 V). The other numbers are illustrative, and the sim labels them "illustrative".</p>
+<p><strong>Rules:</strong> Output speed = motor speed / N, output torque = motor torque × N × (efficiency / 100). A typed answer is correct when |typed − correct| / correct &lt;= 0.02 in the unit shown. The typed value has minimum 0, maximum 100000, step 0.01, and no default.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner changes the ratio, speed, torque and efficiency and watches the output speed and torque update. The learner should notice that raising N lowers the speed and raises the torque by the same factor, apart from efficiency.</li>
+<li>The learner switches to the five problems. Problem 1 is shown with the quantities it uses.</li>
+<li>The learner types an answer and presses Check to commit.</li>
+<li>The sim shows whether the answer was correct, the working and the Why text, then moves on. After problem 5 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Five problems, fixed order, one attempt each. Correct: "Correct: <value> <unit>. <Why>". Incorrect: "Not quite. Speed goes down by N and torque goes up by N times the efficiency: <value> <unit>. <Why>". The correct value is revealed after each commit. A running count "Correct: n of 5" is shown and the final screen says whether mastery (4 of 5) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with the default values, showing an output speed of 120 rpm and an output torque of 0.6 N·m.</p>
+<p><strong>Chapter Anchors:</strong> The chapter's worked example is 16.5 kg·cm = 1.62 N·m, 252 degrees per second = 42 rpm, about 14500 rpm at the motor (14490 exactly), and 9.4 mN·m at the motor for 50 percent efficiency. The ratio comparison is 345 / 147 = 2.35. The sim has five problems and mastery is 4 of 5.</p>
+</details>
+<h2 id="feedback-how-a-joint-knows-what-it-is-doing">Feedback: How a Joint Knows What It Is Doing<a class="headerlink" href="#feedback-how-a-joint-knows-what-it-is-doing" title="Permanent link">&para;</a></h2>
+<p>A motor that cannot sense its own motion is working blind. Think of walking to a door with your eyes closed: you might get there, but only if nothing is in the way. A joint opens its eyes with <strong>feedback</strong>, sensors that report what the joint is really doing so the controller can correct it. This section covers the sensors in the actuators of this book.</p>
+<h3 id="encoder">Encoder<a class="headerlink" href="#encoder" title="Permanent link">&para;</a></h3>
+<p>An <strong>encoder</strong> is a sensor that turns the angle of a shaft into a number. Three kinds are common, and the table compares them.</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>How it works</th>
+<th>Strengths</th>
+<th>Weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Potentiometer</td>
+<td>A wiper slides on a resistive track, so the voltage depends on the angle</td>
+<td>Cheap and simple</td>
+<td>Wears out, noisy</td>
+</tr>
+<tr>
+<td>Optical</td>
+<td>A slotted disk interrupts a light beam</td>
+<td>Precise</td>
+<td>Needs clean, aligned parts</td>
+</tr>
+<tr>
+<td>Magnetic</td>
+<td>A magnet on the shaft, with a sensor chip that reads the direction of its field</td>
+<td>No contact, no wear, absolute</td>
+<td>Needs the magnet to be well placed</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>magnetic encoder</strong> is the one used by the actuators in this book: the STS3215 has a 12-bit magnetic encoder, and the Damiao motors have two magnetic encoders each. It is <em>absolute</em>, which means it reports the true angle at power-up, with no need to move to a home switch first. (An <em>incremental</em> encoder only reports changes, and must be told where it started.) It is also <em>single-turn</em> here: it gives the angle within one turn, from 0 to just under 360 degrees, and the number wraps from the highest value back to 0.</p>
+<p>The <em>resolution</em> of an encoder is the smallest angle it can tell apart, and it is set by the number of bits. A 12-bit encoder has <span class="arithmatex">\( 2^{12} = 4096 \)</span> steps per turn, so one step is <span class="arithmatex">\( 360 / 4096 \approx 0.088 \)</span> degrees (the figure you used in Chapter 1). A 16-bit encoder, which the Damiao listing gives for its motors, has <span class="arithmatex">\( 2^{16} = 65536 \)</span> steps and <span class="arithmatex">\( 360 / 65536 \approx 0.0055 \)</span> degrees per step, 16 times finer. Resolution is not the same as accuracy: a fine encoder can still be placed badly, as Chapter 2's accuracy and repeatability section showed.</p>
+<p>In the next MicroSim you work with encoder numbers: the size of one step, the conversion between steps and degrees, and a speed calculated from two position readings.</p>
+<h4 id="diagram-encoder-resolution-reader">Diagram: Encoder Resolution Reader<a class="headerlink" href="#diagram-encoder-resolution-reader" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Encoder Resolution Reader</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> encoder-resolution-reader<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Apply<br/>
+<strong>Bloom Verb:</strong> calculate<br/>
+<strong>Learning Objective:</strong> The learner will calculate the step size of an encoder, convert between encoder steps and degrees, and find a speed from two position readings, to within 1 percent, in five problems, with at least 4 of 5 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> encoder, magnetic encoder, absolute and incremental, resolution, bits, position feedback, velocity feedback (all defined in the sections above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of five problems the learner types a number in the unit shown and commits. An answer is correct when it is within 1 percent of the Correct column in Content. Mastery is 4 of 5 correct on the first attempt. Turning the dial and changing the bit count in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) More bits means a larger step. (It means a smaller step.) (2) The encoder reports total turns. (This one reports the angle within one turn.) (3) A fine encoder is an accurate joint. (Resolution and accuracy are different.)</p>
+<p><strong>Instructional Rationale:</strong> An Apply-level calculate objective needs repeated use of a conversion on new numbers. A dial that shows the steps appear as the shaft turns, with the step size shrinking as the bit count rises, makes the relation visible before it is calculated.</p>
+<p><strong>Content:</strong></p>
+<p>Explore mode shows a shaft angle dial with an encoder of 8 to 16 bits, and the step number, step size and angle update as the learner turns the shaft. The formulas: step size = 360 / 2^bits; angle = steps / 2^bits × 360; steps = angle / 360 × 2^bits; speed = change in angle / time.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Min</th>
+<th>Max</th>
+<th>Step</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Encoder bits</td>
+<td>8</td>
+<td>16</td>
+<td>1</td>
+<td>12</td>
+<td>bits</td>
+</tr>
+<tr>
+<td>Shaft angle</td>
+<td>0</td>
+<td>359.9</td>
+<td>0.1</td>
+<td>90</td>
+<td>degrees</td>
+</tr>
+</tbody>
+</table>
+<p>Five problems in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Problem</th>
+<th>Unit asked</th>
+<th>Correct</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>How large is one step of a 12-bit encoder?</td>
+<td>degrees</td>
+<td>0.0879</td>
+<td>360 / 4096 = 0.08789 degrees.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>How large is one step of a 16-bit encoder?</td>
+<td>degrees</td>
+<td>0.00549</td>
+<td>360 / 65536 = 0.005493 degrees.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A 12-bit encoder reads 3072. What is the angle?</td>
+<td>degrees</td>
+<td>270</td>
+<td>3072 / 4096 × 360 = 270 degrees.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>What step number is 45 degrees on a 12-bit encoder?</td>
+<td>steps</td>
+<td>512</td>
+<td>45 / 360 × 4096 = 512.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A 12-bit encoder reads 1000 and then 1100, 0.05 s later. How fast is the joint turning?</td>
+<td>degrees per second</td>
+<td>175.8</td>
+<td>100 steps is 100 / 4096 × 360 = 8.789 degrees, and 8.789 / 0.05 = 175.8 degrees per second.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The 12-bit resolution is the STS3215's 4096 steps per turn (LeRobot motor tables). The 16-bit value is the Damiao DM-J4310 listing. The readings in problems 3 to 5 are illustrative.</p>
+<p><strong>Rules:</strong> Step size = 360 / 2^bits. A typed answer is correct when |typed − correct| / correct &lt;= 0.01 in the unit shown. The typed value has minimum 0, maximum 10000, step 0.00001, and no default. Angles wrap: 360 degrees reads as step 0.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner turns the shaft and changes the bit count, and watches the step number and the step size. The learner should notice that adding one bit halves the step.</li>
+<li>The learner switches to the five problems. Problem 1 is shown.</li>
+<li>The learner types an answer and presses Check to commit.</li>
+<li>The sim shows whether the answer was correct, the working and the Why text, then moves on. After problem 5 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Five problems, fixed order, one attempt each. Correct: "Correct: <value> <unit>. <Why>". Incorrect: "Not quite. One turn is 2^bits steps, so <value> <unit>. <Why>". The correct value is revealed after each commit. A running count "Correct: n of 5" is shown and the final screen says whether mastery (4 of 5) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with a 12-bit encoder at 90 degrees, showing step 1024 and a step size of 0.0879 degrees.</p>
+<p><strong>Chapter Anchors:</strong> The chapter states 4096 steps and about 0.088 degrees for a 12-bit encoder, and 65536 steps and about 0.0055 degrees for 16 bits. The sim has five problems and mastery is 4 of 5.</p>
+</details>
+<h3 id="position-feedback">Position Feedback<a class="headerlink" href="#position-feedback" title="Permanent link">&para;</a></h3>
+<p><strong>Position feedback</strong> is the encoder's reading, returned to the controller so that it can compare where the joint <em>is</em> with where it should be. A controller that uses feedback is a <strong>closed-loop</strong> controller: the output (the joint's angle) is measured and fed back to the input. An <strong>open-loop</strong> controller sends a command and hopes. A stepper motor driven without a sensor is open-loop, and so is a hobby servo from the viewpoint of your program, because the servo knows its angle but never tells you.</p>
+<p>The difference between the goal and the feedback is the <em>error</em>, and it is the signal that every controller in this chapter works on. In Chapter 2's leader and follower table, the leader's elbow read 40.0 degrees while the follower read 38.5, so the follower was behind by an error of 1.5 degrees. With a servo bus, your program can read that feedback as the <code>Present_Position</code> register at about the rate the bus allows, and compute the error itself.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Feedback Closes the Loop</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Without feedback a joint obeys; with feedback a joint <em>corrects</em>. That one wire from the sensor back to the controller is what lets an arm hold a position while its load changes, and it is why everything from here on is about the error.</p>
+</div>
+<h3 id="velocity-load-and-current-feedback">Velocity, Load, and Current Feedback<a class="headerlink" href="#velocity-load-and-current-feedback" title="Permanent link">&para;</a></h3>
+<p>Position is not the only thing worth knowing. <strong>Velocity feedback</strong> reports how fast the joint is turning. You can calculate it yourself from two position readings, speed = change in position / change in time (the last problem in the encoder MicroSim), and the STS3215 also reports it in a register. <strong>Load feedback</strong> reports how hard the joint is working, as a number related to the torque it is producing. <strong>Current sensing</strong> reports the motor's current directly. Because torque is proportional to current, the current is the best view into the force at a joint. The STS3215's <code>Present_Current</code> register counts in units of about 6.5 milliamps, so a raw reading of 200 means <span class="arithmatex">\( 200 \times 6.5 = 1300 \)</span> mA, or 1.3 A.</p>
+<h3 id="temperature-sensing">Temperature Sensing<a class="headerlink" href="#temperature-sensing" title="Permanent link">&para;</a></h3>
+<p><strong>Temperature sensing</strong> reports how hot the motor is. A motor heats up from the current through its coil (the <span class="arithmatex">\( I^2 R \)</span> heat of Chapter 3), and a joint that holds a heavy load or pushes on an obstacle can heat up in minutes. The STS3215 reports its temperature in degrees Celsius in the <code>Present_Temperature</code> register. Choose a warning threshold below the limit in your servo's manual, and stop the arm when the reading passes it. For example, if the manual lists a limit of 70 degrees, a warning at 55 degrees leaves time to react. Those two numbers are only an illustration: read your own motor's manual.</p>
+<p>The table collects the feedback registers of the STS3215 that you can read with the Chapter 4 toolkit. The addresses come from the LeRobot motor tables and the Feetech memory table, and the units from the Feetech memory table.</p>
+<table>
+<thead>
+<tr>
+<th>Feedback</th>
+<th>Register</th>
+<th>Address</th>
+<th>Size (bytes)</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Position</td>
+<td><code>Present_Position</code></td>
+<td>56</td>
+<td>2</td>
+<td>Steps (4096 per turn)</td>
+</tr>
+<tr>
+<td>Velocity</td>
+<td><code>Present_Velocity</code></td>
+<td>58</td>
+<td>2</td>
+<td>Steps per second, with a sign bit (bit 15)</td>
+</tr>
+<tr>
+<td>Load</td>
+<td><code>Present_Load</code></td>
+<td>60</td>
+<td>2</td>
+<td>A load value with a sign bit (10 magnitude bits)</td>
+</tr>
+<tr>
+<td>Voltage</td>
+<td><code>Present_Voltage</code></td>
+<td>62</td>
+<td>1</td>
+<td>0.1 V</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td><code>Present_Temperature</code></td>
+<td>63</td>
+<td>1</td>
+<td>Degrees Celsius</td>
+</tr>
+<tr>
+<td>Current</td>
+<td><code>Present_Current</code></td>
+<td>69</td>
+<td>2</td>
+<td>About 6.5 mA</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Log Current and Temperature Every Cycle</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Reading position alone shows you what the joint did, but reading current and temperature shows you what it <em>cost</em>. Add both to your logs from the start (Chapter 13 builds the logger), and you will spot a joint that is working too hard long before it burns out.</p>
+</div>
+<h2 id="servo-motors">Servo Motors<a class="headerlink" href="#servo-motors" title="Permanent link">&para;</a></h2>
+<p>A <strong>servo motor</strong> (or servo) is a complete actuator that includes a motor, a gearbox, an encoder and a controller in one case, and that is built to go to the <em>angle you ask for</em> and hold it. You give it a goal; it closes the position loop itself. This is the whole point: your program is relieved of running the loop, so one program can command many servos at once. The three families of actuators in this book are all servos in this sense, and they differ in how you give the goal and how much they tell you back.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">A Servo Is a Loop in a Box</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Every servo is the same loop wrapped in a case: read the angle, compare it with the goal, push the motor, repeat. The three families differ in how you set the goal and how much of the loop's inner state they let you see.</p>
+</div>
+<h3 id="hobby-servo">Hobby Servo<a class="headerlink" href="#hobby-servo" title="Permanent link">&para;</a></h3>
+<p>A <strong>hobby servo</strong> is the cheap servo of radio-controlled models. It listens for a PWM signal: a pulse every 20 ms (50 times a second), whose width is the command. A pulse of 1.0 ms drives the output to one end of its travel, 1.5 ms to the centre, and 2.0 ms to the other end. The servo measures each pulse and moves to match it, using a potentiometer inside as its feedback. That feedback never leaves the case, so your program cannot read the angle, and there is no way to ask for temperature or load. The servo also has no address, so each one needs its own signal wire. These properties are why a hobby servo cannot serve as the joint of a leader and follower pair, and the appendix on hobby servos tells the story at length. The MicroSim below puts a hobby servo and a bus servo side by side.</p>
+<h4 id="diagram-hobby-pwm-servo-vs-serial-bus-servo">Diagram: Hobby PWM Servo vs. Serial Bus Servo<a class="headerlink" href="#diagram-hobby-pwm-servo-vs-serial-bus-servo" title="Permanent link">&para;</a></h4>
+<iframe src="../../sims/pwm-vs-bus-servos/main.html" height="592px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="../../sims/pwm-vs-bus-servos/main.html">Run the Hobby PWM Servo vs. Serial Bus Servo MicroSim fullscreen</a></p>
+<p>See <a href="../../appendices/pwm-servos/">Appendix A: Why Hobby PWM Servos Won't Work with the SO-ARM</a> for the full argument.</p>
+<h3 id="serial-bus-servo">Serial Bus Servo<a class="headerlink" href="#serial-bus-servo" title="Permanent link">&para;</a></h3>
+<p>A <strong>serial bus servo</strong> keeps everything good about the hobby servo and fixes what limits it. It has the same four layers inside, but its command is a <em>packet</em> on a shared digital bus (Chapter 4) instead of a pulse width. Each servo has an ID, so one pair of wires serves the whole arm. Each can report position, speed, load, voltage, temperature and current, and each exposes its settings, such as its torque limit and PID gains, as registers that you can read and write. For a robot arm that you want to program, read, and record, those properties are what make it the right choice.</p>
+<h3 id="sts3215-servo">STS3215 Servo<a class="headerlink" href="#sts3215-servo" title="Permanent link">&para;</a></h3>
+<p>The <strong>STS3215</strong> from Feetech is the serial bus servo inside the SO-ARM101. The table collects its main numbers from the seller's data sheet, the LeRobot tables and the SO-ARM100 repository. Where a figure applies only to one voltage or gear ratio, the table says so.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control</td>
+<td>Serial bus, protocol 0, model number 777</td>
+<td>LeRobot motor tables</td>
+</tr>
+<tr>
+<td>Position sensing</td>
+<td>12-bit magnetic encoder, 4096 steps per turn</td>
+<td>LeRobot motor tables</td>
+</tr>
+<tr>
+<td>Gear ratios in the SO-ARM101</td>
+<td>1/345, 1/191, 1/147</td>
+<td>LeRobot SO-101 documentation</td>
+</tr>
+<tr>
+<td>Stall torque, 7.4 V version</td>
+<td>16.5 kg·cm at 6 V, 19.5 kg·cm at 7.4 V</td>
+<td>Seller data sheet</td>
+</tr>
+<tr>
+<td>Stall torque, 12 V version</td>
+<td>30 kg·cm</td>
+<td>SO-ARM100 repository</td>
+</tr>
+<tr>
+<td>No-load speed</td>
+<td>0.238 s per 60 degrees at 6 V</td>
+<td>Seller data sheet</td>
+</tr>
+<tr>
+<td>Stall current</td>
+<td>2.0 A at 6 V</td>
+<td>Seller data sheet</td>
+</tr>
+<tr>
+<td>No-load current</td>
+<td>0.15 A at 6 V</td>
+<td>Seller data sheet</td>
+</tr>
+<tr>
+<td>Registers used in Chapter 4</td>
+<td><code>Present_Position</code>, <code>Goal_Position</code> and others</td>
+<td>LeRobot motor tables</td>
+</tr>
+<tr>
+<td>Cost in the SO-ARM100 bill of materials</td>
+<td>$13.89 each</td>
+<td>SO-ARM100 repository</td>
+</tr>
+</tbody>
+</table>
+<h3 id="servo-compliance">Servo Compliance<a class="headerlink" href="#servo-compliance" title="Permanent link">&para;</a></h3>
+<p><strong>Servo compliance</strong> is how much a joint gives way when something pushes on it. A stiff joint fights every disturbance with a big torque and barely moves. A compliant joint gives way and then pushes back gently. Compliance comes from the controller's settings, mostly the proportional gain and the torque limit that the next section explains: lower them and the joint becomes softer. A compliant joint is kinder to a hand or an object in the gripper, and a stiff one is more accurate.</p>
+<h3 id="damiao-actuator">Damiao Actuator<a class="headerlink" href="#damiao-actuator" title="Permanent link">&para;</a></h3>
+<p>The <strong>Damiao actuators</strong> in the reBot-DevArm B601-DM are brushless, integrated joint modules on a CAN bus. Seeed's documentation covers two models, which the project uses in different joints: the DM4310 and the larger DM4340P. Both run from a 24 V supply (15 to 32 V) or a 48 V supply (15 to 52 V), carry two magnetic encoders, and take commands over CAN at 1 Mbps, with a CAN ID for commands and a Master ID for feedback (Chapter 4).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>DM4310</th>
+<th>DM4340P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rated torque</td>
+<td>3 N·m</td>
+<td>9 N·m</td>
+</tr>
+<tr>
+<td>Peak torque</td>
+<td>7 N·m</td>
+<td>27 N·m</td>
+</tr>
+<tr>
+<td>Supply voltage</td>
+<td>24 V (15-32 V) or 48 V (15-52 V)</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Count in the B601-DM</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Price in the B601-DM bill of materials</td>
+<td>$120</td>
+<td>$175</td>
+</tr>
+</tbody>
+</table>
+<p>The rated torque is what the motor can supply continuously, and the peak torque is what it can supply for a short time before it overheats. The distinction is the same as the one between a runner's pace and a sprint. A joint that holds a load all day should be sized against the <em>rated</em> torque.</p>
+<p>The Damiao motors offer a control mode called <strong>MIT mode</strong>, which gives you the control loop of the next section in the motor itself. A single CAN frame carries a desired position <span class="arithmatex">\( q_{des} \)</span>, a desired speed <span class="arithmatex">\( \dot q_{des} \)</span>, two gains <span class="arithmatex">\( K_p \)</span> and <span class="arithmatex">\( K_d \)</span>, and a feed-forward torque <span class="arithmatex">\( \tau_{ff} \)</span>, and the motor's drive computes the torque </p>
+<div class="arithmatex">\[ \tau = K_p (q_{des} - q) + K_d (\dot q_{des} - \dot q) + \tau_{ff} \]</div>
+<p>many times a second. The Seeed guide's Python call has the matching form <code>controlMIT(motor, kp, kd, q, dq, tau)</code>. A stiff or a compliant joint is therefore simply a choice of <span class="arithmatex">\( K_p \)</span> and <span class="arithmatex">\( K_d \)</span>.</p>
+<h3 id="robstride-actuator">RobStride Actuator<a class="headerlink" href="#robstride-actuator" title="Permanent link">&para;</a></h3>
+<p>The <strong>RobStride actuators</strong> in the reBot-DevArm B601-RS are the same idea at a higher voltage: 48 V brushless modules with two magnetic encoders and CAN control. The B601-RS uses four RS00 modules (rated torque 5 N·m, peak 14 N·m) and three RS06 modules (rated 11 N·m, peak 36 N·m). Their bill of materials lists them at $125 and $210 each, and the arm needs a 48 V supply, which Chapter 3 covered.</p>
+<p>The next MicroSim practises telling the three families apart. You read eight short descriptions and decide which family each one fits.</p>
+<h4 id="diagram-actuator-type-matcher">Diagram: Actuator Type Matcher<a class="headerlink" href="#diagram-actuator-type-matcher" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Actuator Type Matcher</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> actuator-type-matcher<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Understand<br/>
+<strong>Bloom Verb:</strong> classify<br/>
+<strong>Learning Objective:</strong> The learner will classify eight descriptions of an actuator as a hobby servo, a serial bus servo or a brushless CAN actuator, with at least 7 of 8 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> actuator, hobby servo, PWM signal, serial bus servo, STS3215 servo, brushless motor, Damiao actuator, RobStride actuator, position feedback (all defined in the sections above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of eight descriptions the learner chooses one of three families and commits. A choice is correct when it matches the Family column in Content. Mastery is 7 of 8 correct on the first attempt. Reading the comparison table in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) All servos are controlled by a pulse width. (Only hobby servos are.) (2) A bus servo and a CAN actuator are the same thing. (They use different buses and voltages.) (3) A hobby servo reports its position. (It does not.)</p>
+<p><strong>Instructional Rationale:</strong> An Understand-level classify objective asks the learner to place an example into a category on its features. Using one distinguishing feature per description makes the learner attend to the command method, the feedback, the voltage and the price, which are the properties that separate the three families.</p>
+<p><strong>Content:</strong></p>
+<p>The three families: "Hobby servo", "Serial bus servo", "Brushless CAN actuator". Eight descriptions in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Description</th>
+<th>Family</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Its command is a pulse of 1.5 ms sent every 20 ms.</td>
+<td>Hobby servo</td>
+<td>The command is a pulse width, which is the PWM signal of a hobby servo.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Each motor on the three-wire daisy chain has an ID, and the program can read its position, load and temperature.</td>
+<td>Serial bus servo</td>
+<td>A shared digital bus with IDs and readable registers is a serial bus servo.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>It accepts MIT-mode frames with a position, a speed, Kp, Kd and a feed-forward torque.</td>
+<td>Brushless CAN actuator</td>
+<td>MIT mode is the Damiao actuators' control mode over CAN.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Your program has no way to read how far it has turned.</td>
+<td>Hobby servo</td>
+<td>The potentiometer feedback stays inside the case.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>It is listed at $13.89 each in the SO-ARM100 bill of materials.</td>
+<td>Serial bus servo</td>
+<td>That is the STS3215 price.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>It runs from a 24 V or 48 V supply.</td>
+<td>Brushless CAN actuator</td>
+<td>The reBot-DevArm's actuators run at 24 V (B601-DM) or 48 V (B601-RS).</td>
+</tr>
+<tr>
+<td>7</td>
+<td>It has a 12-bit magnetic encoder and a 1/345 gearbox.</td>
+<td>Serial bus servo</td>
+<td>Those are the STS3215's encoder and the follower's gear ratio.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>It is a low-cost servo with one signal wire and no ID, and the MG995 is an example.</td>
+<td>Hobby servo</td>
+<td>One signal wire per servo and no address are properties of a hobby servo.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The descriptions are written for this sim from the chapter's comparison table and the sections on each family. The $13.89 price is from the SO-ARM100 bill of materials, and the voltages are from the reBot-DevArm repository.</p>
+<p><strong>Rules:</strong> Each description has exactly one correct family. A choice is scored once and cannot be changed after it is committed.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner reads the three-column comparison of command, feedback, voltage and cost.</li>
+<li>The learner switches to the eight descriptions. Description 1 is shown.</li>
+<li>The learner chooses a family and commits.</li>
+<li>The sim shows whether the choice was correct, the Why text, and the matching row of the comparison. After description 8 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Eight descriptions, fixed order, one attempt each. Correct: "Correct: <family>. <Why>". Incorrect: "Not quite. This is a <family>. <Why>". The correct family is revealed after each commit. A running count "Correct: n of 8" is shown and the final screen says whether mastery (7 of 8) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with the comparison table of the three families and the prompt "Read the table, then try the descriptions."</p>
+<p><strong>Chapter Anchors:</strong> The chapter's comparison table gives the three families' command, feedback, voltage and cost, and the sim has eight descriptions with mastery at 7 of 8.</p>
+</details>
+<h2 id="holding-a-position">Holding a Position<a class="headerlink" href="#holding-a-position" title="Permanent link">&para;</a></h2>
+<p>A servo holds an angle by running a loop thousands of times a second: read the angle, compare it with the goal, push the motor a little harder or softer, and repeat. The rule that turns the error into a push is the heart of the servo.</p>
+<h3 id="pid-control">PID Control<a class="headerlink" href="#pid-control" title="Permanent link">&para;</a></h3>
+<p><strong>PID control</strong> is the most common such rule. It computes the motor's torque as the sum of three terms, each answering a different question about the error <span class="arithmatex">\( e \)</span>, which is the goal minus the measured position:</p>
+<div class="arithmatex">\[ u = K_p \, e \; + \; K_i \int e \, dt \; - \; K_d \, \dot{q} \]</div>
+<p>where <span class="arithmatex">\( u \)</span> is the command (a torque), <span class="arithmatex">\( K_p \)</span>, <span class="arithmatex">\( K_i \)</span> and <span class="arithmatex">\( K_d \)</span> are three gains that you choose, and <span class="arithmatex">\( \dot q \)</span> is the joint's speed. Each term has a plain meaning:</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Name</th>
+<th>Question it answers</th>
+<th>Effect when raised</th>
+<th>Danger when too high</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\( K_p e \)</span></td>
+<td>Proportional</td>
+<td>How far off am I now?</td>
+<td>Faster, stiffer response</td>
+<td>Overshoot and oscillation</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\( K_i \int e \, dt \)</span></td>
+<td>Integral</td>
+<td>How long have I been off?</td>
+<td>Removes a steady error, such as the pull of gravity</td>
+<td>Overshoot (the sum keeps growing while it waits)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\( K_d \dot q \)</span></td>
+<td>Derivative (damping)</td>
+<td>How fast am I moving?</td>
+<td>Calms oscillation</td>
+<td>Slow, sluggish, and noisy response</td>
+</tr>
+</tbody>
+</table>
+<p>Put in a sentence: P pushes toward the goal, D brakes the push as the joint speeds up, and I keeps pushing until the last bit of error is gone. The STS3215 has three registers for the position loop (at addresses 21 to 23 in the Feetech memory table), and LeRobot sets them as the <code>P_Coefficient</code>, <code>I_Coefficient</code> and <code>D_Coefficient</code> of each motor. A Damiao motor's <span class="arithmatex">\( K_p \)</span> and <span class="arithmatex">\( K_d \)</span> come with every MIT-mode frame.</p>
+<p>Here are the results of the toy joint of the lab, a joint model with made-up units that is tuned to show each effect. The goal is 90 degrees, and the table shows the final angle, the overshoot, and the time to settle within 2 percent. The <em>gravity</em> row adds a constant downward pull, as the weight of an arm does.</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Gains</th>
+<th>Final angle</th>
+<th>Overshoot</th>
+<th>Settles in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A: gentle</td>
+<td><span class="arithmatex">\( K_p = 5 \)</span></td>
+<td>90.0</td>
+<td>0.1%</td>
+<td>2.09 s</td>
+</tr>
+<tr>
+<td>B: stiff but unbraked</td>
+<td><span class="arithmatex">\( K_p = 40 \)</span></td>
+<td>90.0</td>
+<td>34.7%</td>
+<td>1.74 s</td>
+</tr>
+<tr>
+<td>C: stiff and braked</td>
+<td><span class="arithmatex">\( K_p = 40, K_d = 10 \)</span></td>
+<td>90.0</td>
+<td>0.0%</td>
+<td>1.12 s</td>
+</tr>
+<tr>
+<td>D: C with gravity</td>
+<td>same as C</td>
+<td>85.0</td>
+<td>0.0%</td>
+<td>never</td>
+</tr>
+<tr>
+<td>E: D plus integral</td>
+<td><span class="arithmatex">\( K_i = 100 \)</span> added</td>
+<td>90.0</td>
+<td>35.5%</td>
+<td>2.60 s</td>
+</tr>
+</tbody>
+</table>
+<p>Case B overshoots because the joint arrives at the goal with speed and cannot stop in time. Case C brakes it with <span class="arithmatex">\( K_d \)</span>. Case D shows the problem that the integral fixes. With gravity pulling, the proportional push needs an error to exist, <span class="arithmatex">\( 200 / 40 = 5 \)</span> degrees in this model, so the joint settles short of its goal. Case E adds <span class="arithmatex">\( K_i \)</span>, which keeps growing while the error remains and finally pushes the joint to 90, though it overshoots on the way.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">PID Tuning Is Hard for Everyone</p>
+<p><img alt="Servo giving an encouraging thumbs-up" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+Engineers who tune controllers for a living still do it by trying a value and watching the response. You have already used the same loop to debug code: change one thing, run, look. Change one gain at a time, and keep the arm unloaded while you learn what each does.</p>
+</div>
+<p>In the next MicroSim you tune the toy joint. Sliders set the three gains and a gravity switch, and a plot shows the response. After you explore, five scenarios show a response and its gains, and you choose the change that would fix it.</p>
+<h4 id="diagram-pid-step-response">Diagram: PID Step Response<a class="headerlink" href="#diagram-pid-step-response" title="Permanent link">&para;</a></h4>
+<details>
+<summary>PID Step Response</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> pid-step-response<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Understand<br/>
+<strong>Bloom Verb:</strong> infer<br/>
+<strong>Learning Objective:</strong> The learner will infer which gain change fixes a given step response (raise Kp, add Kd, add Ki, lower Ki, or no change) in five scenarios, with at least 4 of 5 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> position feedback, error, PID control, proportional, integral and derivative terms, overshoot, settling time, steady-state error (all defined in the section above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of five scenarios the learner sees a plotted response and its gains and chooses one of five changes before the fix is applied. A choice is correct when it matches the Correct column in Content. Mastery is 4 of 5 correct on the first attempt. Moving the gain sliders in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) A higher Kp is always better. (It overshoots when it is not braked.) (2) The integral term makes the response faster. (It removes a steady error and can add overshoot.) (3) The derivative term pushes toward the goal. (It brakes the motion.)</p>
+<p><strong>Instructional Rationale:</strong> An Understand-level infer objective asks the learner to reason from a symptom to a cause and a remedy. Showing the response curve with its numbers before the learner chooses links each symptom (slow, overshoot, steady error) to the one term that treats it.</p>
+<p><strong>Content:</strong></p>
+<p>The model is the toy joint from the chapter: unit inertia, friction 4, a goal of 90 degrees, and a time step of 0.01 s over 8 seconds. Each step: error = goal − angle; the integral sum adds error × 0.01; torque = Kp × error + Ki × sum − Kd × speed; speed += (torque − 4 × speed − gravity) × 0.01; angle += speed × 0.01. Gravity is 0 or 200. The units are made up and the sim labels them "illustrative".</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Min</th>
+<th>Max</th>
+<th>Step</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kp</td>
+<td>0</td>
+<td>100</td>
+<td>5</td>
+<td>40</td>
+<td>gain</td>
+</tr>
+<tr>
+<td>Ki</td>
+<td>0</td>
+<td>300</td>
+<td>10</td>
+<td>0</td>
+<td>gain</td>
+</tr>
+<tr>
+<td>Kd</td>
+<td>0</td>
+<td>30</td>
+<td>1</td>
+<td>0</td>
+<td>gain</td>
+</tr>
+<tr>
+<td>Gravity</td>
+<td>0</td>
+<td>200</td>
+<td>200</td>
+<td>0</td>
+<td>torque</td>
+</tr>
+</tbody>
+</table>
+<p>The five changes: "Raise Kp", "Add Kd", "Add Ki", "Lower Ki", "No change". Five scenarios in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Gains and gravity</th>
+<th>Observed response</th>
+<th>Correct</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Kp 5, Ki 0, Kd 0, gravity 0</td>
+<td>Overshoot 0.1%, settles in 2.09 s, final angle 90.0</td>
+<td>Raise Kp</td>
+<td>The response is correct but sluggish, and a higher Kp pushes harder.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kp 40, Ki 0, Kd 0, gravity 0</td>
+<td>Overshoot 34.7%, settles in 1.74 s</td>
+<td>Add Kd</td>
+<td>The joint arrives with speed and overshoots, and Kd brakes it.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kp 40, Ki 0, Kd 10, gravity 200</td>
+<td>Overshoot 0.0%, never settles, final angle 85.0</td>
+<td>Add Ki</td>
+<td>Gravity leaves a steady error of 5 degrees, which the integral term removes.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Kp 40, Ki 200, Kd 10, gravity 200</td>
+<td>Overshoot 55.1%, settles in 3.37 s, final angle 90.0</td>
+<td>Lower Ki</td>
+<td>The integral has wound up and overshoots, so a smaller Ki is gentler.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kp 40, Ki 0, Kd 10, gravity 0</td>
+<td>Overshoot 0.0%, settles in 1.12 s, final angle 90.0</td>
+<td>No change</td>
+<td>Fast, no overshoot and no steady error. Leave it alone.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The model and the values are written for this sim and are the same as the chapter's table and the lab's <code>armlab/joint.py</code>. The values in the observed-response column were computed from that model.</p>
+<p><strong>Rules:</strong> Overshoot = (maximum angle − 90) / 90 × 100, floored at 0. Settling time is the earliest time after which the angle stays within 2 percent (±1.8 degrees) of 90, and "never" means it has not settled by 8 seconds. The final angle is the value at 8 seconds. In Explore mode the plot and these three numbers update as the sliders move, and the plot shows the 2 percent band.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner moves the sliders and the gravity switch and watches the curve and the three numbers. The learner should notice that Kd calms oscillation, that gravity leaves a gap, and that Ki closes it.</li>
+<li>The learner switches to the five scenarios. Scenario 1 shows its gains and its plotted response.</li>
+<li>The learner chooses one of the five changes and commits.</li>
+<li>The sim applies the change, plots the new response next to the old one, and shows whether the answer was correct and the Why text. After scenario 5 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Five scenarios, fixed order, one attempt each. Correct: "Correct: <change>. <Why>". Incorrect: "Not quite. The best change is <change>. <Why>". The correct change is revealed after each commit. A running count "Correct: n of 5" is shown and the final screen says whether mastery (4 of 5) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with Kp 40, Ki 0, Kd 0 and no gravity, showing the 34.7 percent overshoot.</p>
+<p><strong>Chapter Anchors:</strong> The chapter's table lists cases A to E with the numbers above (2.09 s, 34.7%, 1.12 s, a final angle of 85.0, and 35.5%). The sim has five scenarios and mastery is 4 of 5.</p>
+</details>
+<h3 id="torque-enable-release-and-limit">Torque Enable, Release, and Limit<a class="headerlink" href="#torque-enable-release-and-limit" title="Permanent link">&para;</a></h3>
+<p>All of the control above is only active when the motor's torque is turned on. <strong>Torque enable</strong> is the switch that does it: in the STS3215 it is the register <code>Torque_Enable</code> at address 40, where 1 turns the motor's drive on and 0 turns it off. <strong>Torque release</strong> is turning it off, which lets the joint go limp. The two are not symmetrical in what they can do to a person. A released joint is free to be moved by hand (useful for moving the leader arm, or setting up) and free to <em>fall</em> under gravity (the warning of Chapter 3). In LeRobot, <code>disable_torque</code> releases the joints and <code>enable_torque</code> turns the drive back on.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Set the Goal to the Present Position Before You Enable Torque</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A servo whose torque comes on starts working toward whatever goal is in its goal register, and that may be an old value far from where the joint is now. The arm can then lunge. Read the present position, write it as the goal, and only then enable torque, with the arm in a safe pose and your hand near the E-stop. Do the changes to the settings while torque is off, which is how LeRobot's own configuration code does it.</p>
+</div>
+<p>A <strong>torque limit</strong> caps how much torque the motor may produce, as a fraction of its maximum. In the STS3215 the <code>Torque_Limit</code> register (address 48) takes a value from 0 to 1000, in tenths of a percent, so 500 means 50 percent. Because torque is proportional to current, a torque limit is also a current limit, and it bounds both the push and the heat. A <strong>force limit</strong> is the same idea seen from the outside: the largest force the joint may apply to whatever it touches. It is set indirectly, by a torque limit and the arm's geometry.</p>
+<p><strong>Overload protection</strong> is a motor's own defence against pushing too hard for too long. When the load stays above a threshold, the servo cuts its torque to a lower level on its own. LeRobot's configuration of the SO-101 gripper shows all three settings working together, with its own comments: a maximum torque limit of 500 (50 percent of the maximum "to avoid burnout"), a protection current of 250 (50 percent of the maximum current), and an overload torque of 25 (25 percent torque when overloaded). The gripper is the joint that is most likely to push on something for a long time, so it gets the tightest limits.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Start Low, Then Raise</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+When you test a new motion, set the torque limit low (the 30 to 50 percent range) and the speed slow, and raise them only if the joint cannot do the job. A low limit makes a first mistake into a bump instead of a crash. If the arm fails to reach the pose with a low limit, that is information about the load, not a reason to remove the limit.</p>
+</div>
+<h3 id="speed-limit">Speed Limit<a class="headerlink" href="#speed-limit" title="Permanent link">&para;</a></h3>
+<p>A <strong>speed limit</strong> caps how fast a joint may move. A joint that moves slowly is easier to watch, easier to stop, and gentler to touch. Servos offer it in two ways. In position mode the STS3215 has a speed value and an acceleration value that set how quickly it moves toward a goal. Check the Feetech documentation for your servo, and test with the arm unloaded. In software, you can also cap how far a goal may be from the present position in one step. LeRobot's follower code has a setting for exactly this, <code>max_relative_target</code>, which limits the size of each commanded move. The lab's <code>limit_target</code> function does the same thing.</p>
+<h3 id="runaway-motion">Runaway Motion<a class="headerlink" href="#runaway-motion" title="Permanent link">&para;</a></h3>
+<p><strong>Runaway motion</strong> is a joint that keeps moving when it should not, or moves the wrong way and does not stop. Common causes are a command with the wrong sign (the leader and follower disagreeing about direction, as in Chapter 2), a calibration offset, and a feedback that is reversed so that the error grows instead of shrinking. Reversed feedback is the worst case: the larger the error, the harder the motor pushes <em>away</em> from the goal. A runaway joint can slam into its stop, which is why the limits above exist. The defence is layered, as Chapter 3 taught: a low torque limit, a speed limit, a cap on each step, joint limits inside the mechanical stops, a stall check like the one in the lab, a small slow first move at every power-up, and a hand near the E-stop.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">A Joint That Pushes the Wrong Way Gets Stronger</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+If a first test move goes in the wrong direction, do not wait to see whether it corrects. Press the E-stop, and look for a sign error, a swapped motor ID, or a calibration problem before you try again. Test every new motion with a low torque limit and a small step.</p>
+</div>
+<p>The next MicroSim practises the judgement behind these settings. You are given five tasks, and you choose the torque limit that is high enough to do the job but no higher than it needs to be.</p>
+<h4 id="diagram-joint-limit-chooser">Diagram: Joint Limit Chooser<a class="headerlink" href="#diagram-joint-limit-chooser" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Joint Limit Chooser</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> joint-limit-chooser<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Evaluate<br/>
+<strong>Bloom Verb:</strong> recommend<br/>
+<strong>Learning Objective:</strong> The learner will recommend the torque limit for each of five joint tasks, choosing the smallest option that is at least 1.5 times the torque the task needs, with at least 4 of 5 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> torque, torque limit, stall torque, force limit, overload protection, servo compliance, runaway motion (all defined in the sections above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of five tasks the learner chooses one of three torque limits and commits. A choice is correct when it matches the Correct limit column in Content, which follows the rule in Rules. Mastery is 4 of 5 correct on the first attempt. Dragging the limit in Explore mode and watching the simulated joint is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) The highest limit is the safest because the joint never fails. (A high limit raises the push and the heat in a fault.) (2) The lowest limit is the safest. (The joint cannot do its job, and a joint that struggles overheats.) (3) The limit should equal the torque the task needs. (It needs a margin.)</p>
+<p><strong>Instructional Rationale:</strong> An Evaluate-level recommend objective asks the learner to weigh two risks, too little torque and too much, and to justify a choice by a criterion. A margin rule makes the criterion explicit and checkable, and the feedback names the failure each wrong option would cause.</p>
+<p><strong>Content:</strong></p>
+<p>The rule of thumb for this sim, stated in the chapter, is: choose the smallest available torque limit that is at least 1.5 times the torque the task needs. Torque needs and limits are percentages of the joint's maximum torque. Five tasks in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Torque needed</th>
+<th>Options (torque limit)</th>
+<th>Correct limit</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The gripper holds a 50 g block.</td>
+<td>15 percent</td>
+<td>20, 30, 100 percent</td>
+<td>30 percent</td>
+<td>1.5 × 15 = 22.5, so 20 is too low. 30 is the smallest that is enough, and 100 is more than the task needs.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The shoulder-lift joint holds the arm up with a 0.3 kg load at reach.</td>
+<td>60 percent</td>
+<td>80, 90, 100 percent</td>
+<td>100 percent</td>
+<td>1.5 × 60 = 90, and 90 is only just enough. With the arm's own weight, 100 is the only option with margin.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The wrist roll turns a light camera.</td>
+<td>10 percent</td>
+<td>10, 20, 50 percent</td>
+<td>20 percent</td>
+<td>1.5 × 10 = 15, so 10 is too low and 20 is the smallest that is enough.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The gripper closes near students during a demo.</td>
+<td>20 percent</td>
+<td>25, 40, 100 percent</td>
+<td>40 percent</td>
+<td>1.5 × 20 = 30, so 25 is too low, and 100 is a needless risk near people.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A first test of an untested program, small and slow.</td>
+<td>30 percent</td>
+<td>30, 50, 100 percent</td>
+<td>50 percent</td>
+<td>1.5 × 30 = 45, so 30 is too low, and a test should not use 100 percent.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The tasks and percentages are illustrative and written for this sim, and the sim labels them "illustrative". The idea of a lower limit for the gripper follows LeRobot's SO-101 configuration, which limits the gripper to 50 percent. The 1.5 margin is a teaching rule of thumb, not a standard.</p>
+<p><strong>Rules:</strong> The correct limit is the smallest option with option &gt;= 1.5 × needed. Each task has exactly one such option. In Explore mode the learner drags a torque limit from 0 to 100 percent (step 5, default 50) against a task of a chosen needed torque (10 to 90 percent, step 10, default 30), and the sim shows a joint that either completes the task, completes it with little margin, or stalls because the limit is below the needed torque.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner moves the limit and the needed torque and watches a simulated joint hold, strain or fail. The learner should notice that below the needed torque the joint stalls and above it only the fault risk grows.</li>
+<li>The learner switches to the five tasks. Task 1 shows its needed torque and the three options.</li>
+<li>The learner chooses one option and commits.</li>
+<li>The sim shows whether the choice was correct, the margin of each option, and the Why text. After task 5 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Five tasks, fixed order, one attempt each. Correct: "Correct: <limit> percent. <Why>". Incorrect: "Not quite. The best choice is <limit> percent. <Why>". The correct limit is revealed after each commit. A running count "Correct: n of 5" is shown and the final screen says whether mastery (4 of 5) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with a 50 percent limit and a task that needs 30 percent, showing the joint holding with margin.</p>
+<p><strong>Chapter Anchors:</strong> The chapter's rule is "smallest limit at least 1.5 times the torque needed", and it cites LeRobot's gripper settings of 50 percent maximum torque, a protection current of 250 and an overload torque of 25. The sim has five tasks and mastery is 4 of 5.</p>
+</details>
+<div class="admonition mascot-neutral">
+<p class="admonition-title">Where These Pieces Get Used</p>
+<p><img alt="Servo in a neutral pose" class="mascot-admonition-img" src="../../img/mascot/neutral.png" />
+Chapter 8 sets these registers on a real SO-ARM101 as you build it, and Chapter 10 packages them in an <code>Arm</code> class. Chapter 11 uses the speed and step limits in the motion loops, and Chapter 13 logs current and temperature for every joint.</p>
+</div>
+<h2 id="lab-read-tune-and-guard-a-joint">Lab: Read, Tune, and Guard a Joint<a class="headerlink" href="#lab-read-tune-and-guard-a-joint" title="Permanent link">&para;</a></h2>
+<p>In this lab you will extend the <code>arm-lab</code> project so that it reads a servo's feedback, tunes a toy joint with PID gains, and guards a joint against a stall. As in Chapter 4, everything runs on the pretend bus and a simulated joint, so no hardware is needed. You will reuse <code>send</code>, <code>parse_status</code> and the pretend servos you built in Chapter 4.</p>
+<p><strong>Step 1. Activate the project.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/projects/arm-lab
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><strong>Step 2. Teach the toolkit more registers.</strong> Open <code>armlab/packets.py</code>. First replace the <code>REGISTERS</code> table so that it also holds the torque limit and the feedback registers from this chapter:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">REGISTERS</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="s2">"ID"</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="s2">"Baud_Rate"</span><span class="p">:</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="s2">"Torque_Enable"</span><span class="p">:</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="s2">"Goal_Position"</span><span class="p">:</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="s2">"Torque_Limit"</span><span class="p">:</span> <span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="s2">"Present_Position"</span><span class="p">:</span> <span class="p">(</span><span class="mi">56</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="s2">"Present_Velocity"</span><span class="p">:</span> <span class="p">(</span><span class="mi">58</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="s2">"Present_Load"</span><span class="p">:</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>    <span class="s2">"Present_Voltage"</span><span class="p">:</span> <span class="p">(</span><span class="mi">62</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="s2">"Present_Temperature"</span><span class="p">:</span> <span class="p">(</span><span class="mi">63</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="s2">"Present_Current"</span><span class="p">:</span> <span class="p">(</span><span class="mi">69</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Then add two functions at the bottom of the file. <code>decode_sign_magnitude</code> turns a raw value with a sign bit into a signed number (the bit operations of Chapter 4), and <code>read_register</code> sends a READ packet for a register by name and returns its value as an integer:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">decode_sign_magnitude</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">sign_bit</span><span class="p">):</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="sd">"""Return the signed value stored as a sign bit plus a magnitude."""</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="n">magnitude</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">&amp;</span> <span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">sign_bit</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="k">return</span> <span class="o">-</span><span class="n">magnitude</span> <span class="k">if</span> <span class="n">raw</span> <span class="o">&gt;&gt;</span> <span class="n">sign_bit</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">magnitude</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="n">servo_id</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="sd">"""Read one register from a servo and return its raw integer value."""</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="n">reply</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span><span class="n">read_packet</span><span class="p">(</span><span class="n">servo_id</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">parse_status</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>    <span class="k">return</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">"little"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>In <code>armlab/fakebus.py</code>, add five lines to <code>make_servos</code>, just after the line that sets the temperature, so that the pretend servo has feedback to report:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>        <span class="n">memory</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>                                  <span class="c1"># Torque_Enable: on</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>        <span class="n">memory</span><span class="p">[</span><span class="mi">48</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"little"</span><span class="p">)</span>    <span class="c1"># Torque_Limit: 100.0 percent</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>        <span class="n">memory</span><span class="p">[</span><span class="mi">58</span><span class="p">:</span><span class="mi">60</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x8064</span><span class="p">)</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"little"</span><span class="p">)</span>  <span class="c1"># Present_Velocity: -100 (sign bit set)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="n">memory</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">62</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x0032</span><span class="p">)</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"little"</span><span class="p">)</span>  <span class="c1"># Present_Load: 50</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>        <span class="n">memory</span><span class="p">[</span><span class="mi">69</span><span class="p">:</span><span class="mi">71</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"little"</span><span class="p">)</span>     <span class="c1"># Present_Current: 200 units</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Step 3. Write the feedback script.</strong> It reads all six feedback values from servo 1 of the pretend bus and converts each to its unit, using the register table of this chapter. The current register counts in units of 6.5 mA, the voltage in 0.1 V, and the torque limit in 0.1 percent. Create <code>feedback_demo.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="sd">"""Read a servo's feedback registers from the pretend bus and turn them into units."""</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.fakebus</span><span class="w"> </span><span class="kn">import</span> <span class="n">fake_bus</span><span class="p">,</span> <span class="n">make_servos</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.packets</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode_sign_magnitude</span><span class="p">,</span> <span class="n">read_register</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">servos</span> <span class="o">=</span> <span class="n">make_servos</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="n">packet</span><span class="p">):</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="k">return</span> <span class="n">fake_bus</span><span class="p">(</span><span class="n">servos</span><span class="p">,</span> <span class="n">packet</span><span class="p">)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="n">ticks</span> <span class="o">=</span> <span class="n">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Present_Position"</span><span class="p">)</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="n">speed</span> <span class="o">=</span> <span class="n">decode_sign_magnitude</span><span class="p">(</span><span class="n">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Present_Velocity"</span><span class="p">),</span> <span class="mi">15</span><span class="p">)</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="n">load</span> <span class="o">=</span> <span class="n">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Present_Load"</span><span class="p">)</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="n">current_a</span> <span class="o">=</span> <span class="n">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Present_Current"</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.0065</span>     <span class="c1"># 6.5 mA per unit</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="n">volts</span> <span class="o">=</span> <span class="n">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Present_Voltage"</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>             <span class="c1"># units of 0.1 V</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="n">temp_c</span> <span class="o">=</span> <span class="n">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Present_Temperature"</span><span class="p">)</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="n">limit</span> <span class="o">=</span> <span class="n">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Torque_Limit"</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>                <span class="c1"># units of 0.1 percent</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"position  </span><span class="si">{</span><span class="n">ticks</span><span class="si">}</span><span class="s2"> ticks = </span><span class="si">{</span><span class="n">ticks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">360</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> degrees"</span><span class="p">)</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"speed     </span><span class="si">{</span><span class="n">speed</span><span class="si">}</span><span class="s2"> (negative means the other direction)"</span><span class="p">)</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"load      </span><span class="si">{</span><span class="n">load</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"current   </span><span class="si">{</span><span class="n">current_a</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> A"</span><span class="p">)</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"voltage   </span><span class="si">{</span><span class="n">volts</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> V"</span><span class="p">)</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"temp      </span><span class="si">{</span><span class="n">temp_c</span><span class="si">}</span><span class="s2"> C"</span><span class="p">)</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"torque limit </span><span class="si">{</span><span class="n">limit</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> percent"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>feedback_demo.py
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>position  2048 ticks = 180.0 degrees
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>speed     -100 (negative means the other direction)
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>load      50
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>current   1.30 A
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>voltage   7.3 V
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>temp      31 C
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>torque limit 100.0 percent
+</span></code></pre></div>
+<p><strong>Step 4. Write the toy joint.</strong> The module has the model from the PID section. The function <code>simulate</code> steps a joint through time. At each step it computes the error, adds it to a running sum for the integral term, forms the torque from the three gains, and updates the speed and the angle (the friction and gravity terms are in the model, as in the table). <code>overshoot_percent</code> and <code>settle_time_s</code> measure the response. Create <code>armlab/joint.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span>
+<span class="normal"><a href="#__codelineno-7-24">24</a></span>
+<span class="normal"><a href="#__codelineno-7-25">25</a></span>
+<span class="normal"><a href="#__codelineno-7-26">26</a></span>
+<span class="normal"><a href="#__codelineno-7-27">27</a></span>
+<span class="normal"><a href="#__codelineno-7-28">28</a></span>
+<span class="normal"><a href="#__codelineno-7-29">29</a></span>
+<span class="normal"><a href="#__codelineno-7-30">30</a></span>
+<span class="normal"><a href="#__codelineno-7-31">31</a></span>
+<span class="normal"><a href="#__codelineno-7-32">32</a></span>
+<span class="normal"><a href="#__codelineno-7-33">33</a></span>
+<span class="normal"><a href="#__codelineno-7-34">34</a></span>
+<span class="normal"><a href="#__codelineno-7-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="sd">"""A toy model of one joint under PID control, in made-up but consistent units."""</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">kp</span><span class="p">,</span> <span class="n">ki</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kd</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">gravity</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="sd">"""Return the joint angle (degrees) at every time step, starting from 0.</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="sd">    The joint has unit inertia and some friction. Each step the controller</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="sd">    computes a torque from the error (kp), the accumulated error (ki) and the</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="sd">    speed (kd). gravity is a constant torque that pulls the joint down, like</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="sd">    the weight of an arm.</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="sd">    """</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a>    <span class="n">angle</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">error_sum</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a>    <span class="n">friction</span> <span class="o">=</span> <span class="mf">4.0</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a>    <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a>        <span class="n">error</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">angle</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a>        <span class="n">error_sum</span> <span class="o">+=</span> <span class="n">error</span> <span class="o">*</span> <span class="n">dt</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a>        <span class="n">torque</span> <span class="o">=</span> <span class="n">kp</span> <span class="o">*</span> <span class="n">error</span> <span class="o">+</span> <span class="n">ki</span> <span class="o">*</span> <span class="n">error_sum</span> <span class="o">-</span> <span class="n">kd</span> <span class="o">*</span> <span class="n">speed</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a>        <span class="n">speed</span> <span class="o">+=</span> <span class="p">(</span><span class="n">torque</span> <span class="o">-</span> <span class="n">friction</span> <span class="o">*</span> <span class="n">speed</span> <span class="o">-</span> <span class="n">gravity</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a>        <span class="n">angle</span> <span class="o">+=</span> <span class="n">speed</span> <span class="o">*</span> <span class="n">dt</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a>        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a>    <span class="k">return</span> <span class="n">history</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="k">def</span><span class="w"> </span><span class="nf">overshoot_percent</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">    </span><span class="sd">"""How far the joint went past the target, as a percent of the target."""</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27"></a>    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">/</span> <span class="n">target</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28"></a>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29"></a>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="k">def</span><span class="w"> </span><span class="nf">settle_time_s</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">    </span><span class="sd">"""Seconds until the angle stays within the band around the target, or None."""</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33"></a>        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">band</span> <span class="o">*</span> <span class="n">target</span><span class="p">:</span>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34"></a>            <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35"></a>    <span class="k">return</span> <span class="mf">0.0</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Then create <code>tune_demo.py</code>, which runs the five cases of the PID section and prints one line for each. The format code <code>{name:&lt;20}</code> pads the label to 20 characters and <code>{...:&gt;8}</code> right-aligns a number, as in the <code>show_config.py</code> of Chapter 1:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="sd">"""Try PID gains on the toy joint and compare the responses."""</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.joint</span><span class="w"> </span><span class="kn">import</span> <span class="n">overshoot_percent</span><span class="p">,</span> <span class="n">settle_time_s</span><span class="p">,</span> <span class="n">simulate</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="n">TARGET</span> <span class="o">=</span> <span class="mi">90</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="n">CASES</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>    <span class="p">(</span><span class="s2">"A  kp=5"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kp</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a>    <span class="p">(</span><span class="s2">"B  kp=40"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kp</span><span class="o">=</span><span class="mi">40</span><span class="p">)),</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a>    <span class="p">(</span><span class="s2">"C  kp=40 kd=10"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kp</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">kd</span><span class="o">=</span><span class="mi">10</span><span class="p">)),</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a>    <span class="p">(</span><span class="s2">"D  C + gravity 200"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kp</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">kd</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">gravity</span><span class="o">=</span><span class="mi">200</span><span class="p">)),</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a>    <span class="p">(</span><span class="s2">"E  D + ki=100"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kp</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">kd</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">gravity</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">ki</span><span class="o">=</span><span class="mi">100</span><span class="p">)),</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="p">]</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'case'</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}{</span><span class="s1">'final'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}{</span><span class="s1">'overshoot'</span><span class="si">:</span><span class="s2">&gt;11</span><span class="si">}{</span><span class="s1">'settles in'</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">gains</span> <span class="ow">in</span> <span class="n">CASES</span><span class="p">:</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a>    <span class="n">history</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">TARGET</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="o">**</span><span class="n">gains</span><span class="p">)</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a>    <span class="n">settle</span> <span class="o">=</span> <span class="n">settle_time_s</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">TARGET</span><span class="p">)</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a>    <span class="n">settle_text</span> <span class="o">=</span> <span class="s2">"never"</span> <span class="k">if</span> <span class="n">settle</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">settle</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s"</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}{</span><span class="n">history</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.1f</span><span class="si">}{</span><span class="n">overshoot_percent</span><span class="p">(</span><span class="n">history</span><span class="p">,</span><span class="w"> </span><span class="n">TARGET</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;10.1f</span><span class="si">}</span><span class="s2">%</span><span class="si">{</span><span class="n">settle_text</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python<span class="w"> </span>tune_demo.py
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>case                   final  overshoot  settles in
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>A  kp=5                90.0       0.1%      2.09 s
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>B  kp=40               90.0      34.7%      1.74 s
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>C  kp=40 kd=10         90.0       0.0%      1.12 s
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>D  C + gravity 200     85.0       0.0%       never
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>E  D + ki=100          90.0      35.5%      2.60 s
+</span></code></pre></div>
+<p>The five rows are the table from the PID section, now computed by your own code. Try changing a gain in <code>CASES</code> and predict the change in each column before you run it.</p>
+<p><strong>Step 5. Write the guards.</strong> The module has two small functions. <code>limit_target</code> caps the distance between a goal and the present position, the same idea as LeRobot's <code>max_relative_target</code>, and the chained <code>max(low, min(goal, high))</code> is the clamp from Chapter 2. <code>stalled</code> reports a stall when the current has been at or above a limit for the last few readings <em>while the joint barely moved</em>, which is how a joint pushing on something looks. Create <code>armlab/guard.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="sd">"""Limits that keep a joint safe: a speed limit, a stall check, and a torque release."""</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">limit_target</span><span class="p">(</span><span class="n">current_deg</span><span class="p">,</span> <span class="n">target_deg</span><span class="p">,</span> <span class="n">max_step_deg</span><span class="p">):</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="sd">"""Return a target no more than max_step_deg away from the current angle."""</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a>    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">current_deg</span> <span class="o">-</span> <span class="n">max_step_deg</span><span class="p">,</span> <span class="n">current_deg</span> <span class="o">+</span> <span class="n">max_step_deg</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">target_deg</span><span class="p">,</span> <span class="n">high</span><span class="p">))</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">stalled</span><span class="p">(</span><span class="n">currents_a</span><span class="p">,</span> <span class="n">angles_deg</span><span class="p">,</span> <span class="n">limit_a</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">moved_deg</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">    </span><span class="sd">"""True when the current has been at or above limit_a for the last `count`</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="sd">    readings while the joint barely moved: the signature of pushing on something."""</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">currents_a</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a>        <span class="k">return</span> <span class="kc">False</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a>    <span class="n">high</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="n">limit_a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">currents_a</span><span class="p">[</span><span class="o">-</span><span class="n">count</span><span class="p">:])</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a>    <span class="n">still</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">angles_deg</span><span class="p">[</span><span class="o">-</span><span class="n">count</span><span class="p">:])</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">angles_deg</span><span class="p">[</span><span class="o">-</span><span class="n">count</span><span class="p">:])</span> <span class="o">&lt;</span> <span class="n">moved_deg</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a>    <span class="k">return</span> <span class="n">high</span> <span class="ow">and</span> <span class="n">still</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Step 6. Test the guards on a stalled joint.</strong> The script simulates a joint that is asked to go to 90 degrees but hits an obstacle at 45. It uses the model of the DC motor section: the current is proportional to the remaining error (the torque is proportional to the current), capped by the torque limit, and the heat is the sum of the squares of the current. It compares three setups, an unlimited joint, one with a 50 percent torque limit, and one with a 50 percent torque limit plus the stall guard that releases the torque. Create <code>guard_demo.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span>
+<span class="normal"><a href="#__codelineno-12-28">28</a></span>
+<span class="normal"><a href="#__codelineno-12-29">29</a></span>
+<span class="normal"><a href="#__codelineno-12-30">30</a></span>
+<span class="normal"><a href="#__codelineno-12-31">31</a></span>
+<span class="normal"><a href="#__codelineno-12-32">32</a></span>
+<span class="normal"><a href="#__codelineno-12-33">33</a></span>
+<span class="normal"><a href="#__codelineno-12-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="sd">"""A joint pushes against an obstacle: compare no limit, a torque limit, and a stall guard."""</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.guard</span><span class="w"> </span><span class="kn">import</span> <span class="n">limit_target</span><span class="p">,</span> <span class="n">stalled</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="n">STALL_A</span> <span class="o">=</span> <span class="mf">2.0</span>          <span class="c1"># stall current from the STS3215 listing, in amperes</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="n">OBSTACLE_DEG</span> <span class="o">=</span> <span class="mi">45</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="n">TARGET_DEG</span> <span class="o">=</span> <span class="mi">90</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">push_against_obstacle</span><span class="p">(</span><span class="n">torque_limit</span><span class="p">,</span> <span class="n">guard</span><span class="p">):</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">    </span><span class="sd">"""Run the joint for 40 steps. Return (step_released, heat) for the run."""</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a>    <span class="n">angle</span><span class="p">,</span> <span class="n">heat</span><span class="p">,</span> <span class="n">currents</span><span class="p">,</span> <span class="n">angles</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a>    <span class="n">cap_a</span> <span class="o">=</span> <span class="n">STALL_A</span> <span class="o">*</span> <span class="n">torque_limit</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14"></a>    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">):</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15"></a>        <span class="n">goal</span> <span class="o">=</span> <span class="n">limit_target</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">TARGET_DEG</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>          <span class="c1"># at most 5 degrees per step</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16"></a>        <span class="n">angle</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">angle</span> <span class="o">+</span> <span class="p">(</span><span class="n">goal</span> <span class="o">-</span> <span class="n">angle</span><span class="p">),</span> <span class="n">OBSTACLE_DEG</span><span class="p">)</span>  <span class="c1"># the obstacle stops the joint</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17"></a>        <span class="n">error</span> <span class="o">=</span> <span class="n">TARGET_DEG</span> <span class="o">-</span> <span class="n">angle</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18"></a>        <span class="n">current</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">0.05</span> <span class="o">*</span> <span class="n">error</span><span class="p">,</span> <span class="n">cap_a</span><span class="p">)</span>                 <span class="c1"># torque is proportional to current</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19"></a>        <span class="n">currents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20"></a>        <span class="n">angles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21"></a>        <span class="n">heat</span> <span class="o">+=</span> <span class="n">current</span> <span class="o">**</span> <span class="mi">2</span>                               <span class="c1"># heating grows with current squared</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22"></a>        <span class="k">if</span> <span class="n">guard</span> <span class="ow">and</span> <span class="n">stalled</span><span class="p">(</span><span class="n">currents</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">cap_a</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23"></a>            <span class="k">return</span> <span class="n">step</span><span class="p">,</span> <span class="n">heat</span>                              <span class="c1"># torque release: stop pushing</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24"></a>    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="n">heat</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25"></a>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26"></a>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'setup'</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}{</span><span class="s1">'current'</span><span class="si">:</span><span class="s2">&gt;9</span><span class="si">}{</span><span class="s1">'heat'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">  result"</span><span class="p">)</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">torque_limit</span><span class="p">,</span> <span class="n">guard</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"no limit, no guard"</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29"></a>                                  <span class="p">(</span><span class="s2">"torque limit 50 percent"</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30"></a>                                  <span class="p">(</span><span class="s2">"torque limit 50 percent + guard"</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="kc">True</span><span class="p">)]:</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31"></a>    <span class="n">released</span><span class="p">,</span> <span class="n">heat</span> <span class="o">=</span> <span class="n">push_against_obstacle</span><span class="p">(</span><span class="n">torque_limit</span><span class="p">,</span> <span class="n">guard</span><span class="p">)</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32"></a>    <span class="n">current</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">0.05</span> <span class="o">*</span> <span class="p">(</span><span class="n">TARGET_DEG</span> <span class="o">-</span> <span class="n">OBSTACLE_DEG</span><span class="p">),</span> <span class="n">STALL_A</span> <span class="o">*</span> <span class="n">torque_limit</span><span class="p">)</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33"></a>    <span class="n">result</span> <span class="o">=</span> <span class="s2">"pushes the whole run"</span> <span class="k">if</span> <span class="n">released</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"released at step </span><span class="si">{</span><span class="n">released</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}{</span><span class="n">current</span><span class="si">:</span><span class="s2">&gt;8.2f</span><span class="si">}</span><span class="s2">A</span><span class="si">{</span><span class="n">heat</span><span class="si">:</span><span class="s2">&gt;8.1f</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python<span class="w"> </span>guard_demo.py
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>setup                           current    heat  result
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>no limit, no guard                2.00A   160.0  pushes the whole run
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>torque limit 50 percent           1.00A    40.0  pushes the whole run
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>torque limit 50 percent + guard   1.00A    11.0  released at step 10
+</span></code></pre></div>
+<p>The torque limit alone cuts the current in half and the heat to a quarter, because heat goes as the current squared. Adding the guard cuts the heat again, because the joint stops pushing as soon as the stall is recognised. The heat units are made up, but the ratios (160, 40, 11) show the order of magnitude of what a limit and a guard buy you.</p>
+<p><strong>Step 7. Record your work.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Add feedback reading, a toy PID joint, and stall guards"</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span></code></pre></div>
+<h3 id="check-your-work">Check Your Work<a class="headerlink" href="#check-your-work" title="Permanent link">&para;</a></h3>
+<p>Your project is complete when all of these are true:</p>
+<ul>
+<li><code>python feedback_demo.py</code> prints <code>current   1.30 A</code> and <code>speed     -100</code>.</li>
+<li><code>python tune_demo.py</code> reports 34.7% overshoot for case B and <code>never</code> for case D.</li>
+<li><code>python guard_demo.py</code> shows the heat falling from 160.0 to 40.0 to 11.0.</li>
+<li>Earlier scripts (<code>bus_demo.py</code>) still run after the changes to <code>REGISTERS</code>.</li>
+<li><code>git log --oneline</code> shows a fifth commit.</li>
+</ul>
+<h3 id="challenge-tune-it-yourself">Challenge: Tune It Yourself<a class="headerlink" href="#challenge-tune-it-yourself" title="Permanent link">&para;</a></h3>
+<p>With gravity set to 200, find gains <span class="arithmatex">\( K_p \)</span>, <span class="arithmatex">\( K_i \)</span> and <span class="arithmatex">\( K_d \)</span> that give an overshoot below 5 percent and a settling time of 1.0 seconds or less. Write a loop that tries combinations (<span class="arithmatex">\( K_p \)</span> from 20 to 200 in steps of 20, <span class="arithmatex">\( K_d \)</span> from 0 to 40 in steps of 5, <span class="arithmatex">\( K_i \)</span> from 0 to 300 in steps of 50) and prints the five fastest. Then answer: what do the best answers have in common, and what is the cost of using such a high <span class="arithmatex">\( K_p \)</span> on a real arm?</p>
+<details class="note">
+<summary>Click to see one solution</summary>
+<p>Create <code>search_gains.py</code>. The loop tries every combination, keeps the ones that meet both rules, and sorts them by settling time:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span>
+<span class="normal"><a href="#__codelineno-16-16">16</a></span>
+<span class="normal"><a href="#__codelineno-16-17">17</a></span>
+<span class="normal"><a href="#__codelineno-16-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="sd">"""Search for PID gains that meet a target on the toy joint."""</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.joint</span><span class="w"> </span><span class="kn">import</span> <span class="n">overshoot_percent</span><span class="p">,</span> <span class="n">settle_time_s</span><span class="p">,</span> <span class="n">simulate</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="n">TARGET</span> <span class="o">=</span> <span class="mi">90</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="n">good</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="k">for</span> <span class="n">kp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a>    <span class="k">for</span> <span class="n">kd</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a>        <span class="k">for</span> <span class="n">ki</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">50</span><span class="p">):</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a>            <span class="n">history</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">TARGET</span><span class="p">,</span> <span class="n">kp</span><span class="p">,</span> <span class="n">ki</span><span class="p">,</span> <span class="n">kd</span><span class="p">,</span> <span class="n">gravity</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a>            <span class="n">overshoot</span> <span class="o">=</span> <span class="n">overshoot_percent</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">TARGET</span><span class="p">)</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a>            <span class="n">settle</span> <span class="o">=</span> <span class="n">settle_time_s</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">TARGET</span><span class="p">)</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a>            <span class="k">if</span> <span class="n">overshoot</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">settle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">settle</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a>                <span class="n">good</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">settle</span><span class="p">,</span> <span class="n">kp</span><span class="p">,</span> <span class="n">ki</span><span class="p">,</span> <span class="n">kd</span><span class="p">,</span> <span class="n">overshoot</span><span class="p">))</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="n">good</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="k">for</span> <span class="n">settle</span><span class="p">,</span> <span class="n">kp</span><span class="p">,</span> <span class="n">ki</span><span class="p">,</span> <span class="n">kd</span><span class="p">,</span> <span class="n">overshoot</span> <span class="ow">in</span> <span class="n">good</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"kp=</span><span class="si">{</span><span class="n">kp</span><span class="si">:</span><span class="s2">&lt;4</span><span class="si">}</span><span class="s2">ki=</span><span class="si">{</span><span class="n">ki</span><span class="si">:</span><span class="s2">&lt;4</span><span class="si">}</span><span class="s2">kd=</span><span class="si">{</span><span class="n">kd</span><span class="si">:</span><span class="s2">&lt;3</span><span class="si">}</span><span class="s2">settles in </span><span class="si">{</span><span class="n">settle</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s, overshoot </span><span class="si">{</span><span class="n">overshoot</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The fastest answers use a large <span class="arithmatex">\( K_p \)</span> (140 to 200) with a <span class="arithmatex">\( K_d \)</span> of 15 to 20 and little or no <span class="arithmatex">\( K_i \)</span>. With gravity 200, a <span class="arithmatex">\( K_p \)</span> of 140 leaves a steady error of only <span class="arithmatex">\( 200 / 140 \approx 1.4 \)</span> degrees, which is inside the 2 percent band, so the integral term is not needed. The cost on a real arm is <strong>compliance</strong>: a very stiff joint pushes back hard against any disturbance, including a hand or an obstacle, and it magnifies sensor noise and sign errors. A stiff joint is accurate, and a soft joint is safe, so the right gains are a compromise for the job.</p>
+</details>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">&para;</a></h2>
+<p>You now know what is inside a joint and how to read it, tune it, and limit it.</p>
+<ul>
+<li>An <strong>actuator</strong> converts electrical energy into motion. The three families here are the <strong>hobby servo</strong>, the <strong>serial bus servo</strong> and the brushless CAN actuator, and they differ in how they are commanded, what they report, their voltage, and their cost.</li>
+<li>A <strong>DC motor</strong>'s torque is proportional to its current and its speed to its voltage. <strong>Back-EMF</strong> is the voltage a spinning motor generates against the supply, so a stalled motor draws the most current, and <strong>inrush current</strong> is that same surge at start-up. A <strong>motor controller</strong>, built around an <strong>H-bridge</strong>, drives the motor in both directions, and <strong>PWM</strong> sets its average voltage (a hobby servo's <strong>PWM signal</strong> is a command instead). A <strong>brushless motor</strong> has no brushes and needs an electronic driver, which the Damiao and RobStride actuators include.</li>
+<li>A <strong>gearbox</strong> with a <strong>gear ratio</strong> trades speed for <strong>torque</strong>: output speed is the motor speed divided by the ratio, and output torque is the motor torque times the ratio times the efficiency. <strong>Stall torque</strong> is the most a blocked actuator can produce, and <strong>backlash</strong> is the play in the gears.</li>
+<li>An <strong>encoder</strong>, often a <strong>magnetic encoder</strong>, reports the shaft angle. Its bits set its resolution: 12 bits is about 0.088 degrees and 16 bits is about 0.0055 degrees. <strong>Position feedback</strong> closes the loop, and <strong>velocity feedback</strong>, <strong>load feedback</strong>, <strong>current sensing</strong> and <strong>temperature sensing</strong> show how hard the joint is working.</li>
+<li>A <strong>servo motor</strong> packages a motor, gearbox, encoder and controller. The <strong>STS3215</strong> is a serial bus servo with a 12-bit magnetic encoder. <strong>Servo compliance</strong> is how much a joint yields. The <strong>Damiao</strong> and <strong>RobStride</strong> actuators run on 24 V or 48 V over CAN, and their MIT mode runs a PD loop inside the motor.</li>
+<li><strong>PID control</strong> adds three terms: P pushes toward the goal, D brakes, and I removes a steady error. <strong>Torque enable</strong> and <strong>torque release</strong> turn the drive on and off, a <strong>torque limit</strong> or <strong>force limit</strong> caps the push, a <strong>speed limit</strong> caps how fast the joint moves, and <strong>overload protection</strong> cuts the torque when the load stays high. <strong>Runaway motion</strong> is what the limits are there to stop.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Know How a Joint Works!</p>
+<p><img alt="Servo celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just followed a signal through a whole joint, from the H-bridge and the gears to the encoder and the PID loop, and then you wrote code that reads it, tunes a model of it, and stops it from pushing too hard. That is the knowledge behind every motion in the rest of the book. Let's move it on to Chapter 6!</p>
+</div>
+<h3 id="self-check-questions">Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permanent link">&para;</a></h3>
+<p>Test yourself before you move on. Click each question to reveal an answer.</p>
+<details class="question">
+<summary>1. A motor has a winding resistance of 3 Ω and runs from 6 V. What current does it draw when it is stalled, and why is that dangerous?</summary>
+<p>With no back-EMF, the current is <span class="arithmatex">\( 6 / 3 = 2 \)</span> A. The heat in the winding is <span class="arithmatex">\( I^2 R = 4 \times 3 = 12 \)</span> W, and it is generated in a small motor with little ability to shed it, so a joint that stays stalled overheats. A torque limit and a stall guard prevent this.</p>
+</details>
+<details class="question">
+<summary>2. A servo has a 1/345 gearbox and a motor that turns at 12000 rpm. How fast does the output turn, and what happens to the torque?</summary>
+<p>The output turns at <span class="arithmatex">\( 12000 / 345 \approx 34.8 \)</span> rpm. The output torque is the motor's torque multiplied by 345 and by the efficiency, so the joint is about 345 times slower and, less friction, about 345 times stronger.</p>
+</details>
+<details class="question">
+<summary>3. A 12-bit encoder reads 1024. What is the angle, and how big is one step?</summary>
+<p>The angle is <span class="arithmatex">\( 1024 / 4096 \times 360 = 90 \)</span> degrees. One step is <span class="arithmatex">\( 360 / 4096 \approx 0.088 \)</span> degrees.</p>
+</details>
+<details class="question">
+<summary>4. A joint overshoots its goal and then rings back and forth. Which gain would you raise, which would you lower, and why?</summary>
+<p>Raise <span class="arithmatex">\( K_d \)</span>, the derivative term, because it brakes the joint in proportion to its speed and calms oscillation. If it is still too lively, lower <span class="arithmatex">\( K_p \)</span>, because a smaller proportional push gives the joint less speed on arrival. Do not raise <span class="arithmatex">\( K_i \)</span>, which adds to overshoot.</p>
+</details>
+<details class="question">
+<summary>5. An arm's shoulder joint always stops 3 degrees below its goal when holding a load, though it reaches goals fine with no load. What is happening, and what are two remedies?</summary>
+<p>Gravity is pulling the joint down, and with a proportional-only controller a steady error is needed to produce the holding torque. One remedy is to add an integral term, which pushes harder as long as the error remains. The other is to raise <span class="arithmatex">\( K_p \)</span>, which needs a smaller error for the same torque but makes the joint stiffer.</p>
+</details>
+<details class="question">
+<summary>6. Why does the SO-101 follower configuration give the gripper a torque limit of 50 percent and an overload torque of 25 percent when it gives the other joints none?</summary>
+<p>The gripper is the joint most likely to push on an object continuously, so it draws a high current for a long time and can burn out. A low torque limit and an overload torque cap the current and the heating, which is the purpose of the limits in this chapter.</p>
+</details>
+<p>Chapter 6 turns from how the arm works to how you get one: how to read a bill of materials, compare a kit with a self-sourced build, and total the cost in Python.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 

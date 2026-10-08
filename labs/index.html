@@ -6,34 +6,34 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+        <meta name="description" content="Small, low-cost labs that get new students working with servos, stepper motors, sensors, and mini robot arms on a Raspberry Pi Pico running MicroPython.">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/13-logging-testing-simulation/">
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/labs/">
       
       
-        <link rel="prev" href="../12-kinematics/">
+        <link rel="prev" href="../chapters/19-advanced-arm-path-mathematics/">
       
       
-        <link rel="next" href="../14-perception-and-learning/">
+        <link rel="next" href="list-of-ideas/">
       
       
-      <link rel="icon" href="../../img/favicon.ico">
+      <link rel="icon" href="../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>13. Logging, Testing, Simulation, and ROS 2 - Controlling a Robot Arm</title>
+        <title>Hands-On Labs - Controlling a Robot Arm</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,13 +52,13 @@
       
     
     
-      <link rel="stylesheet" href="../../css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
-      <link rel="stylesheet" href="../../css/mascot.css">
+      <link rel="stylesheet" href="../css/mascot.css">
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#logging-testing-simulation-and-ros-2" class="md-skip">
+        <a href="#hands-on-labs" class="md-skip">
           Skip to content
         </a>
       
@@ -98,9 +98,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href=".." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
-  <img src="../../img/logo.png" alt="logo">
+  <img src="../img/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              13. Logging, Testing, Simulation, and ROS 2
+              Hands-On Labs
             
           </span>
         </div>
@@ -211,9 +211,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+    <a href=".." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
       
-  <img src="../../img/logo.png" alt="logo">
+  <img src="../img/logo.png" alt="logo">
 
     </a>
     Controlling a Robot Arm
@@ -240,7 +240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -260,7 +260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about/" class="md-nav__link">
+      <a href="../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -280,7 +280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../course-description/" class="md-nav__link">
+      <a href="../course-description/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -300,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../procurement-notes/" class="md-nav__link">
+      <a href="../procurement-notes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -317,8 +317,6 @@
       
   
   
-    
-  
   
   
     
@@ -402,6 +400,55 @@
       
         
           
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
         
       
     
@@ -413,32 +460,32 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   <span class="md-ellipsis">
-    Chapters
+    Labs
   </span>
   
 
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            Chapters
+            Labs
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -451,457 +498,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-python-setup-for-robotics/" class="md-nav__link">
+      <a href="list-of-ideas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    1. Setting Up Python for Robotics
+    List of Lab Ideas
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-anatomy-of-a-robot-arm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    2. Anatomy of a Robot Arm
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-electricity-power-and-safety/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    3. Electricity, Power, and Safety Basics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-serial-and-can-communication/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    4. Serial and CAN Communication
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-actuators-and-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    5. Actuators and Sensors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-sourcing-parts-and-budget/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Sourcing Parts and Planning a Budget
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-printing-fasteners-and-tools/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    7. 3D Printing, Fasteners, and Tools
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08-building-the-so-arm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8. Building and Calibrating the SO-ARM100
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-building-the-rebot-devarm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    9. Building the reBot-DevArm and Choosing a Platform
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-python-hardware-library/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    10. A Python Hardware Library for Robot Arms
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11-moving-the-arm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12-kinematics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    12. Kinematics: Where Is the Hand and How Do I Get There
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
   
     
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    13. Logging, Testing, Simulation, and ROS 2
-  </span>
+    <span class="md-status md-status--draft"></span>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    13. Logging, Testing, Simulation, and ROS 2
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14-perception-and-learning/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    14. Cameras, Perception, and Learning from Demonstration
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15-agents-and-openclaw-skills/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    15. AI Agents, Tools, and OpenClaw Skills
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16-agent-planning-and-vision/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    16. Agent Planning, Vision, and Interfaces
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../17-agent-safety-and-evaluation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    17. Safety Layers and Evaluation for Agent-Controlled Arms
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../18-projects-operation-and-teaching/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    18. Projects, Operation, and Teaching
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19-advanced-arm-path-mathematics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    19. Optional Advanced Chapter: The Mathematics of Arm Paths
-  </span>
   
 
       </a>
@@ -932,53 +541,6 @@
       
         
       
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../labs/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Labs
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
         
       
         
@@ -1002,7 +564,7 @@
         
   
   
-    <a href="../../learning-graph/" class="md-nav__link">
+    <a href="../learning-graph/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1087,7 +649,7 @@
         
   
   
-    <a href="../../sims/" class="md-nav__link">
+    <a href="../sims/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1136,7 +698,7 @@
         
   
   
-    <a href="../../appendices/" class="md-nav__link">
+    <a href="../appendices/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1162,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../license/" class="md-nav__link">
+      <a href="../license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1182,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contact/" class="md-nav__link">
+      <a href="../contact/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1222,27 +784,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+  <a href="#lab-tracks" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary
+      Lab Tracks
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
+  <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
+      Status
     </span>
   </a>
   
@@ -1263,7 +816,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/13-logging-testing-simulation/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/labs/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1271,131 +824,81 @@
   
 
 
-<h1 id="logging-testing-simulation-and-ros-2">Logging, Testing, Simulation, and ROS 2<a class="headerlink" href="#logging-testing-simulation-and-ros-2" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>This chapter covers the tools that make robot code trustworthy. You will add logging and plotting, write tests with pytest against the fake arm, and use simulation and URDF models before touching hardware. It also gives guided tours of Pinocchio, Isaac Sim, and ROS 2. After this chapter, you will be able to test robot code safely.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
-<p>This chapter covers the following 23 concepts from the learning graph:</p>
+<h1 id="hands-on-labs">Hands-On Labs<a class="headerlink" href="#hands-on-labs" title="Permanent link">&para;</a></h1>
+<p>Before you touch a $330 robot arm, you practice on a $4 servo. These labs
+use a <strong>Raspberry Pi Pico programmed with MicroPython</strong> to move servos and
+stepper motors, measure distances, show data on a small display, and talk to
+a laptop. Every lab is cheap, small, and safe to get wrong.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Start small, break things safely</p>
+<p><img alt="Servo waving welcome" class="mascot-admonition-img" src="../img/mascot/welcome.png" />
+Each lab teaches one new idea on a part you can replace for a few dollars. By the time you meet the full arm, you will already know what a brownout looks like and how to stop a joint before it hurts anything.</p>
+</div>
+<h2 id="lab-tracks">Lab Tracks<a class="headerlink" href="#lab-tracks" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Concept</th>
-<th>Concept Impact Score</th>
+<th>Track</th>
+<th>Theme</th>
+<th>Examples</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Logging Module</td>
-<td>86</td>
+<td>A</td>
+<td>Getting started with the Pico</td>
+<td>Blink, buttons, knobs, the OLED display</td>
 </tr>
 <tr>
-<td>CSV Logging</td>
-<td>78</td>
+<td>B</td>
+<td>Hobby servos</td>
+<td>Sweep, calibrate, smooth motion, power, leader and follower</td>
 </tr>
 <tr>
-<td>Matplotlib Plot</td>
-<td>30</td>
+<td>C</td>
+<td>Sensors and displays</td>
+<td>Ultrasonic, time-of-flight, encoders, IMU, current monitor</td>
 </tr>
 <tr>
-<td>Simulation</td>
-<td>17</td>
+<td>D</td>
+<td>DC motors and steppers</td>
+<td>H-bridge, microstepping, ramps, PID</td>
 </tr>
 <tr>
-<td>Pytest</td>
-<td>12</td>
+<td>E</td>
+<td>Build a mini arm</td>
+<td>Kinematics, pen plotter, waypoint recorder, pick and place</td>
 </tr>
 <tr>
-<td>Unit Test</td>
-<td>10</td>
+<td>F</td>
+<td>Communication and bus servos</td>
+<td>UART, serial protocols, STS3215, CAN</td>
 </tr>
 <tr>
-<td>Plotting Trajectories</td>
-<td>7</td>
+<td>G</td>
+<td>Power and safety</td>
+<td>Power budget, E-stop, soft limits, watchdog</td>
 </tr>
 <tr>
-<td>Success Rate</td>
-<td>7</td>
-</tr>
-<tr>
-<td>URDF Model</td>
-<td>6</td>
-</tr>
-<tr>
-<td>ROS 2 Tour</td>
-<td>5</td>
-</tr>
-<tr>
-<td>ROS Node</td>
-<td>4</td>
-</tr>
-<tr>
-<td>ROS Topic</td>
-<td>3</td>
-</tr>
-<tr>
-<td>Test Coverage</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Physics Simulator</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Log Levels</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Plotting Workspace</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Test Fixtures</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Testing Safety Limits</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Regression Testing</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Pinocchio Library</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Isaac Sim Tour</td>
-<td>1</td>
-</tr>
-<tr>
-<td>MoveIt Planning</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Sim-to-Real Gap</td>
-<td>1</td>
+<td>H</td>
+<td>Integration and capstones</td>
+<td>Guarded move, teach pendant, agent-safe tool server</td>
 </tr>
 </tbody>
 </table>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>This chapter builds on concepts from:</p>
-<ul>
-<li><a href="../01-python-setup-for-robotics/">Chapter 1: Setting Up Python for Robotics</a></li>
-<li><a href="../02-anatomy-of-a-robot-arm/">Chapter 2: Anatomy of a Robot Arm</a></li>
-<li><a href="../05-actuators-and-sensors/">Chapter 5: Actuators and Sensors</a></li>
-<li><a href="../10-python-hardware-library/">Chapter 10: A Python Hardware Library for Robot Arms</a></li>
-<li><a href="../11-moving-the-arm/">Chapter 11: Moving the Arm: Trajectories, Grippers, and Teleoperation</a></li>
-<li><a href="../12-kinematics/">Chapter 12: Kinematics: Where Is the Hand and How Do I Get There</a></li>
-</ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<p>The labs are in the planning stage. The full candidate list, with parts,
+timing, and the order to write them, is on the
+<a href="list-of-ideas/">List of Hands-On Lab Ideas</a>.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1425,7 +928,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../12-kinematics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 12. Kinematics: Where Is the Hand and How Do I Get There">
+          <a href="../chapters/19-advanced-arm-path-mathematics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 19. Optional Advanced Chapter: The Mathematics of Arm Paths">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1435,20 +938,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                12. Kinematics: Where Is the Hand and How Do I Get There
+                19. Optional Advanced Chapter: The Mathematics of Arm Paths
               </div>
             </div>
           </a>
         
         
           
-          <a href="../14-perception-and-learning/" class="md-footer__link md-footer__link--next" aria-label="Next: 14. Cameras, Perception, and Learning from Demonstration">
+          <a href="list-of-ideas/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Lab Ideas">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                14. Cameras, Perception, and Learning from Demonstration
+                List of Lab Ideas
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1481,12 +984,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../js/katex.js"></script>
+        <script src="../js/katex.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
       

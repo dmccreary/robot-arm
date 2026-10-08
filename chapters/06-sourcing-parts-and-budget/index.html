@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+        <meta name="description" content="How to turn an arm design into a parts order: reading a bill of materials, comparing kit and self-sourced builds, vendors, lead times, shipping and taxes, spare parts, counterfeit and incompatible parts, and totaling a landed cost in Python.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -26,7 +26,7 @@
     
     
       
-        <title>6. Sourcing Parts and Planning a Budget - Controlling a Robot Arm</title>
+        <title>Sourcing Parts and Planning a Budget - Controlling a Robot Arm</title>
       
     
     
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. Sourcing Parts and Planning a Budget
+              Sourcing Parts and Planning a Budget
             
           </span>
         </div>
@@ -628,6 +628,222 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#choosing-an-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choosing an Arm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing an Arm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-so-arm100-and-so-arm101" class="md-nav__link">
+    <span class="md-ellipsis">
+      The SO-ARM100 and SO-ARM101
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rebot-devarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The reBot-DevArm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-a-bill-of-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading a Bill of Materials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-buy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ways to Buy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-and-money" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time and Money
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time and Money">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lead-time-and-order-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lead Time and Order Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shipping-and-customs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shipping and Customs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#total-build-cost-and-budgeting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Total Build Cost and Budgeting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spare-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spare Parts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classroom-parts-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classroom Parts Orders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Calculator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Calculator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-landed-cost-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Landed Cost Calculator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pitfalls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pitfalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fact-checking-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fact-Checking Specifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fact-Checking Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sourcing-listing-checker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Sourcing Listing Checker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-total-the-cost-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab: Total the Cost in Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab: Total the Cost in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-plan-a-classroom-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge: Plan a Classroom Order
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -932,6 +1148,53 @@
       
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
         
       
         
@@ -982,6 +1245,10 @@
   
     
     
+      
+        
+          
+        
       
         
           
@@ -1197,6 +1464,222 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#choosing-an-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choosing an Arm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing an Arm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-so-arm100-and-so-arm101" class="md-nav__link">
+    <span class="md-ellipsis">
+      The SO-ARM100 and SO-ARM101
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rebot-devarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The reBot-DevArm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-a-bill-of-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading a Bill of Materials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-buy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ways to Buy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-and-money" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time and Money
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time and Money">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lead-time-and-order-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lead Time and Order Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shipping-and-customs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shipping and Customs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#total-build-cost-and-budgeting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Total Build Cost and Budgeting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spare-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spare Parts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classroom-parts-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classroom Parts Orders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Calculator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Calculator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-landed-cost-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Landed Cost Calculator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pitfalls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pitfalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fact-checking-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fact-Checking Specifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fact-Checking Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sourcing-listing-checker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Sourcing Listing Checker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-total-the-cost-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab: Total the Cost in Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab: Total the Cost in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-plan-a-classroom-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge: Plan a Classroom Order
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1371,13 +1854,870 @@
 <li><a href="../05-actuators-and-sensors/">Chapter 5: Actuators and Sensors</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Time to Go Shopping!</p>
+<p><img alt="Servo waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Before I can move, someone has to buy my parts, and a wrong order costs weeks and real money. In this chapter you will learn to read a parts list, spot what is missing, and total the true cost with a short Python script. Let's move it!</p>
+</div>
+<p>You now know what is inside an arm, how it is powered, and how it is commanded. This chapter answers the practical question that comes next: <em>what do I buy, from whom, and what will it really cost?</em> The answer is more than adding up prices. A parts list can leave out the plastic that holds the motors. A cheap listing can be the wrong voltage. A shipping fee can add a quarter to the bill, and a part that arrives broken can stop a whole classroom.</p>
+<p>This chapter uses real numbers. The bill of materials for the SO-ARM101 comes from its open-source repository, the reBot-DevArm's from Seeed's repository, and the figures for a real purchase come from this project's own <a href="../../procurement-notes/">procurement notes</a>, which record what the SO-ARM101 motor kit really cost on 2026-10-06. Prices change often, so every price in this chapter has a source and a date, and the habit of writing those down is one of the chapter's lessons.</p>
+<h2 id="choosing-an-arm">Choosing an Arm<a class="headerlink" href="#choosing-an-arm" title="Permanent link">&para;</a></h2>
+<p>This book follows two arms, and the choice between them decides almost everything about the order: how much it costs, which parts you must make, and how much help you can find. The next sections describe each in sourcing terms.</p>
+<h3 id="the-so-arm100-and-so-arm101">The SO-ARM100 and SO-ARM101<a class="headerlink" href="#the-so-arm100-and-so-arm101" title="Permanent link">&para;</a></h3>
+<p>The <strong>SO-ARM100</strong> is the open-source arm from The Robot Studio, designed with Hugging Face, that Chapter 2 introduced. The <strong>SO-ARM101</strong> is its successor, and the repository describes it as having improved wiring, easier assembly (no gear removal), and updated motors for the leader arm, and it marks the older SO-100 documentation as deprecated. The repository covers both arms, so the name you meet depends on the vendor. The practical points of <strong>SO-ARM100 vs SO-ARM101</strong> are the following.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SO-ARM100</th>
+<th>SO-ARM101</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status</td>
+<td>The earlier design, with deprecated documentation</td>
+<td>The current design, used in this book</td>
+</tr>
+<tr>
+<td>Wiring and assembly</td>
+<td>Gear removal is needed during assembly</td>
+<td>Improved wiring, no gear removal</td>
+</tr>
+<tr>
+<td>Leader arm motors</td>
+<td>Earlier selection</td>
+<td>Updated motors with mixed gear ratios (Chapter 2)</td>
+</tr>
+<tr>
+<td>Parts compatibility</td>
+<td>Printed parts differ from the SO-ARM101's</td>
+<td>Use the SO-ARM101's parts and instructions</td>
+</tr>
+</tbody>
+</table>
+<p>An arm of this family is built from the same parts list each time: twelve STS3215 servos for the pair (six for the follower and six for the leader), two servo control boards, cables, two power supplies, clamps, and the 3D-printed parts. The follower's motors can be the 7.4 V or the 12 V version, and the leader's are always 7.4 V, which is why Chapter 3 told you to check the voltage on every part. It is a low-cost entry: the project's own list prices the follower arm's parts at about $122, and the leader and follower pair at about $230, without the printed parts. This book's own build comes to about $350: the motor kit was $332.04 delivered, and the printed parts add $20 or more.</p>
+<h3 id="the-rebot-devarm">The reBot-DevArm<a class="headerlink" href="#the-rebot-devarm" title="Permanent link">&para;</a></h3>
+<p>The <strong>reBot-DevArm</strong> is Seeed Studio's open-source arm. It comes in two versions that share one design, the <strong>reBot B601-DM</strong> with Damiao motors on a 24 V supply and the <strong>reBot B601-RS</strong> with RobStride motors on a 48 V supply (Chapters 3 and 5). It is a bigger and more costly project. Its repository publishes a bill of materials for each version, and the parts include machined (CNC) components as well as 3D-printed ones, so the arm cannot be built from a printer and a few screws alone. News coverage at the launch of the B601-DM gave a starting price of about €1,120 for the arm.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SO-ARM101</th>
+<th>reBot B601-DM</th>
+<th>reBot B601-RS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motors</td>
+<td>12 STS3215 for a leader and follower pair</td>
+<td>4 DM4310 and 3 DM4340P</td>
+<td>4 RS00 and 3 RS06</td>
+</tr>
+<tr>
+<td>Motor cost in the project's bill of materials</td>
+<td>$13.89 each</td>
+<td>$120 (DM4310) and $175 (DM4340P)</td>
+<td>$125 (RS00) and $210 (RS06)</td>
+</tr>
+<tr>
+<td>Supply voltage</td>
+<td>5 V (7.4 V motors)</td>
+<td>24 V</td>
+<td>48 V</td>
+</tr>
+<tr>
+<td>Frame parts</td>
+<td>3D-printed</td>
+<td>3D-printed and CNC-machined</td>
+<td>3D-printed and CNC-machined</td>
+</tr>
+<tr>
+<td>Approximate Cost</td>
+<td>$350</td>
+<td>About $1,200 to $1,500</td>
+<td>About $1,400 and up</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reading-a-bill-of-materials">Reading a Bill of Materials<a class="headerlink" href="#reading-a-bill-of-materials" title="Permanent link">&para;</a></h2>
+<p>A <strong>bill of materials</strong> (BOM) is the list of every part a build needs, with the quantity of each, its supplier, and its price. It is the most important document in this chapter, because the order <em>is</em> the BOM. A BOM line has a few fields, and the SO-ARM100 repository's list shows them well. This is a part of its table for two arms, with unit costs in US dollars, from the repository on 2026-10-07.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Amount</th>
+<th>Unit cost (US)</th>
+<th>Line total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STS3215 servo 7.4 V, 1/345 gear (C001)</td>
+<td>7</td>
+<td>$13.89</td>
+<td>$97.23</td>
+</tr>
+<tr>
+<td>STS3215 servo 7.4 V, 1/191 gear (C044)</td>
+<td>2</td>
+<td>$13.89</td>
+<td>$27.78</td>
+</tr>
+<tr>
+<td>STS3215 servo 7.4 V, 1/147 gear (C046)</td>
+<td>3</td>
+<td>$13.89</td>
+<td>$41.67</td>
+</tr>
+<tr>
+<td>Motor control board</td>
+<td>2</td>
+<td>$10.60</td>
+<td>$21.20</td>
+</tr>
+<tr>
+<td>USB-C cable (2 pieces)</td>
+<td>1</td>
+<td>$7.00</td>
+<td>$7.00</td>
+</tr>
+<tr>
+<td>Power supply</td>
+<td>2</td>
+<td>$10.00</td>
+<td>$20.00</td>
+</tr>
+<tr>
+<td>Table clamp (4 pieces)</td>
+<td>1</td>
+<td>$9.00</td>
+<td>$9.00</td>
+</tr>
+<tr>
+<td>Screwdriver set</td>
+<td>1</td>
+<td>$6.00</td>
+<td>$6.00</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>$229.88</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The three servo lines show something to look for in any BOM: the <em>same</em> motor in different gear ratios, with different part codes, because the leader arm uses mixed gearing (Chapter 2). Ordering twelve of the C001 would be a mistake that the table prevents. Some lines list the number of pieces in a pack (the clamp line has four pieces, so one pack covers both arms), and the quantity column counts packs, not pieces.</p>
+<p>Not every line is equal. <strong>Required parts</strong> are those the arm cannot work without: the servos, the control boards, the power supplies. <strong>Optional parts</strong> improve the build but are not needed: the screwdriver set in the table, if you already own one, and the compliant grippers, camera mounts and tactile sensors that the repository lists as add-ons. Mark each line as required or optional in your own list, and total the two groups separately, as the lab does.</p>
+<p>A BOM is only as good as its sources, so check four documents beside it. A <strong>datasheet</strong> is the manufacturer's specification for one part, with its voltage range, current, and dimensions, and it is the authority on what the part can do (the STS3215 numbers in Chapter 5 came from one). <strong>Vendor documentation</strong> is the seller's own pages: what the listing says is in the box, which version it is, and what is <em>not</em> included. A <strong>CSV parts list</strong> is a BOM saved in a plain comma-separated text file, which a spreadsheet can open and a Python program can read, and it is the format of this chapter's lab. And <strong>part revisions</strong> are the version numbers of a part: a listing that says "V1.2" and one that says "V1.1" may differ in torque, size, or connector, and a BOM written for one revision can be wrong for another.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">A BOM Is a Recipe, Not a Receipt</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+A BOM tells you what to buy <em>to follow the build</em>, at the prices of the day it was written. It does not know your shipping, your taxes, or the vendor you will choose. Treat its total as the cost of the parts and expect the real bill to be higher.</p>
+</div>
+<h2 id="ways-to-buy">Ways to Buy<a class="headerlink" href="#ways-to-buy" title="Permanent link">&para;</a></h2>
+<p>The same arm can be bought in several ways, and each trades money against time and risk. The table compares the five most common, and the sections after it explain each in turn.</p>
+<table>
+<thead>
+<tr>
+<th>Way to buy</th>
+<th>What you do</th>
+<th>Typical advantage</th>
+<th>Typical risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Official kit</td>
+<td>Buy a complete kit from the project's partner vendors</td>
+<td>Everything matches the design</td>
+<td>Higher price, vendor stock</td>
+</tr>
+<tr>
+<td>Kit build</td>
+<td>Buy a kit of motors and electronics, and print or buy the frame</td>
+<td>Motors and boards already matched</td>
+<td>Printed parts are separate</td>
+</tr>
+<tr>
+<td>Self-sourced build</td>
+<td>Buy every part yourself from the BOM</td>
+<td>Lowest list price, full control</td>
+<td>Many orders, many chances for an error</td>
+</tr>
+<tr>
+<td>Direct from the manufacturer</td>
+<td>Order from the maker of a part</td>
+<td>Authentic parts, official support</td>
+<td>Shipping from abroad, minimum quantities</td>
+</tr>
+<tr>
+<td>Online marketplace</td>
+<td>Order from a marketplace seller</td>
+<td>Low price, many choices</td>
+<td>Quality varies, long shipping</td>
+</tr>
+</tbody>
+</table>
+<p>An <strong>official kit</strong> is a bundle that the project or its partner vendors sell: the SO-ARM100 repository names Seeed Studio, WowRobo, Robonine, PartaBot, ForgeMotion Labs, RoboSEasy and Autodiscovery, and says that vendors offer printed-part kits, assembled versions, electronics kits and complete arm kits. A <strong>kit build</strong> is the middle path this project took: the motor kit arrives with the servos, boards and cables, and the frame comes separately. The project's order, on 2026-10-06, was the SO-ARM101 "Kit Pro" motor kit from a marketplace seller, and the listing states plainly that the 3D-printed parts are <em>not</em> included. The listing's photograph of the kit shows twelve STS3215 servos, each with its own small bag of horns and screws, plus two control boards, two power supplies and the cables. Twelve is exactly what the pair needs, so the kit has no spare servo.</p>
+<p>A <strong>self-sourced build</strong> means you buy each part in the BOM yourself, from the links the repository gives for the United States, Europe, China and Japan. It can give the lowest list price, but it is also the most work: a dozen orders from several sellers, each with its own shipping. A <strong>distributor</strong> is a company that stocks parts from many manufacturers and sells them in small quantities, and it is the usual source for the commodity parts of a BOM, such as connectors, cables, power supplies and fasteners. Buying <strong>direct from the manufacturer</strong> is the route for a specialised part, such as a Damiao motor from Damiao's own channels, and it gives the best guarantee that the part is genuine and the best access to documentation. An <strong>online marketplace</strong> is a site where many independent sellers list the same kinds of parts. Prices are often the lowest, and the quality, the labelling and the shipping time vary the most.</p>
+<p>The printed parts are their own choice. You can print them yourself (the repository gives the settings recorded in the procurement notes: PLA+, a 0.4 mm nozzle at 0.2 mm layers, 15 percent infill, and supports almost everywhere), pay a printing service (the repository points to a list of them), or buy a ready-made set of printed parts. Chapter 7 covers printing in detail.</p>
+<div class="admonition mascot-neutral">
+<p class="admonition-title">Printing Comes Next</p>
+<p><img alt="Servo in a neutral pose" class="mascot-admonition-img" src="../../img/mascot/neutral.png" />
+Chapter 7 covers the printed parts, the fasteners and the tools in detail, and it adds their cost to the budget you start here.</p>
+</div>
+<p>Whichever way you buy, the next question is what the listing actually includes, and the answer is often less than the photograph suggests.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Check What Is Not in the Box</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A motor kit can arrive complete and still leave you unable to build, because the frame, the screws, the power supply, or the computer are separate. Before you pay, read the listing's "includes" and "does not include" lines, and tick off each BOM line against them. Whatever is not in the box must be on a second list with a source of its own.</p>
+</div>
+<h2 id="time-and-money">Time and Money<a class="headerlink" href="#time-and-money" title="Permanent link">&para;</a></h2>
+<p>A parts order has two costs that a BOM does not show: the time it takes to arrive, and the money added on top of the sticker price.</p>
+<h3 id="lead-time-and-order-tracking">Lead Time and Order Tracking<a class="headerlink" href="#lead-time-and-order-tracking" title="Permanent link">&para;</a></h3>
+<p><strong>Lead time</strong> is the time from placing an order to receiving the goods. It has two parts, the <em>processing</em> time before the seller ships and the <em>transit</em> time on the way, and for a build it is set by the <em>slowest</em> part, because you cannot start assembly without the last one. A listing usually shows only one estimate, so ask the seller or read the shipping options before you pay. <strong>Order tracking</strong> is how you watch the order: save the order number and the tracking number the day you buy, check the carrier's page, and note the promised date, so that a late parcel is noticed on the day it is late and not three weeks after.</p>
+<p>You can compute dates in Python with the <code>datetime</code> module. A <code>date</code> object, and a <code>timedelta</code> for a span of days, give the expected arrival of an order. The numbers below are illustrative lead times for three parts of one order, and the latest of the three decides when you can build:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">ordered</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">transit_days</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"motor kit"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s2">"printed parts"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"power supplies"</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>   <span class="c1"># illustrative</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="n">arrivals</span> <span class="o">=</span> <span class="p">{</span><span class="n">part</span><span class="p">:</span> <span class="n">ordered</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">days</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span><span class="p">,</span> <span class="n">days</span> <span class="ow">in</span> <span class="n">transit_days</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">for</span> <span class="n">part</span><span class="p">,</span> <span class="n">when</span> <span class="ow">in</span> <span class="n">arrivals</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">part</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}{</span><span class="n">when</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"You can start building on"</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">arrivals</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>motor kit      2026-10-27
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>printed parts  2026-10-16
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>power supplies 2026-10-13
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>You can start building on 2026-10-27
+</span></code></pre></div>
+<h3 id="shipping-and-customs">Shipping and Customs<a class="headerlink" href="#shipping-and-customs" title="Permanent link">&para;</a></h3>
+<p><strong>Shipping and customs</strong> cover everything that is charged to move the goods to you and into your country. Shipping is the carrier's fee. Customs is the import duty and tax that some countries charge on goods that cross the border, and the rules depend on the country, the kind of goods and the date, so check the checkout page for whether duties are included. The project's own order shows the other charges that appear even when the goods are not taxed at the border. The sticker price was $258.94 for the kit, and the order added $46.55 for shipping, $26.05 in sales tax (collected by the marketplace, which the law treats as the seller of record), and a $0.50 retail delivery fee that Minnesota and Colorado charge on orders shipped to them. None of the charges on that order was a tariff.</p>
+<h3 id="total-build-cost-and-budgeting">Total Build Cost and Budgeting<a class="headerlink" href="#total-build-cost-and-budgeting" title="Permanent link">&para;</a></h3>
+<p>The <strong>total build cost</strong> is the sum of <em>everything</em> needed to finish the build, and the number that matters is the <strong>landed cost</strong>, which is the sticker price plus shipping, tax, and fees, as it arrives at your door. The kit order is the worked example:</p>
+<div class="arithmatex">\[ 258.94 + 46.55 + 26.05 + 0.50 = 332.04 \]</div>
+<p>The landed cost of $332.04 is $73.10 above the sticker price, an overhead of <span class="arithmatex">\( 73.10 / 258.94 \approx 28.2 \)</span> percent. A <strong>budget</strong> is a plan for that total, written before you buy, with a line for each BOM group, a margin for surprises, and an amount you decide in advance you will not exceed. <strong>Budgeting</strong> is the habit of keeping it up to date as real prices replace estimates. For the SO-ARM101, a first budget has a line for each of the following, and the lab turns it into a program.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">The Landed Cost Is the Real Price</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Only one number answers "can I afford this?", and it is the one printed on your card statement. Quote prices to your students and your parents as landed costs, and keep the sticker price as a separate column so you can see how much the extras added.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Budget line</th>
+<th>How to estimate it</th>
+<th>Example for this project</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motor kit, landed</td>
+<td>Sticker price plus shipping, tax and fees</td>
+<td>$332.04 (the project's order)</td>
+</tr>
+<tr>
+<td>3D-printed parts</td>
+<td>Filament if you print, or the vendor's price</td>
+<td>$20 or more if you print them (Chapter 7)</td>
+</tr>
+<tr>
+<td>Power supplies</td>
+<td>The BOM's line, with shipping</td>
+<td>$10 each in the repository's list</td>
+</tr>
+<tr>
+<td>Fasteners and tools</td>
+<td>The BOM's lines, with shipping</td>
+<td>A screwdriver set at $6 in the list</td>
+</tr>
+<tr>
+<td>Spare parts</td>
+<td>A percentage of the servos and cables</td>
+<td>One spare STS3215 servo at $13.89, before shipping (the kit has none)</td>
+</tr>
+<tr>
+<td>Margin</td>
+<td>10 percent of the total</td>
+<td>Decided before ordering</td>
+</tr>
+<tr>
+<td><strong>Approximate total for the pair</strong></td>
+<td>Motor kit plus printed parts, before the margin</td>
+<td><strong>About $350</strong> ($332.04 + $20 or more)</td>
+</tr>
+<tr>
+<td><strong>Total with one spare servo</strong></td>
+<td>The total above plus the spare</td>
+<td><strong>About $364</strong> ($350 + $13.89)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Write the Source and the Date Beside Every Price</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+A price with no date is a rumour. In your parts list, keep a column for the source (a URL) and the date you saw it, and take a screenshot of the listing at the moment you buy, as the procurement notes do. When a price later changes, you will know whether the list or the world changed.</p>
+</div>
+<h3 id="spare-parts">Spare Parts<a class="headerlink" href="#spare-parts" title="Permanent link">&para;</a></h3>
+<p><strong>Spare parts</strong> are extra units you buy now because you may need them later. Two kinds of failure justify them. Servos can burn out or strip their gears when a joint is overloaded, which is the risk Chapter 5 described, and a build with no spare servo stops until a replacement arrives, a wait that can be weeks from an overseas seller. Printed parts crack, and you can reprint them, but only if the file and a printer are at hand. A common plan is one or two spare servos for each pair of arms (the kit we bought has none, so a spare is an extra purchase, and the budget above includes one), a spare cable of each kind, and a few spare screws. The extra cost is small next to the weeks it saves.</p>
+<h3 id="classroom-parts-orders">Classroom Parts Orders<a class="headerlink" href="#classroom-parts-orders" title="Permanent link">&para;</a></h3>
+<p>A <strong>classroom parts order</strong> multiplies a single build by the number of student teams and adds the spares for the whole class. The numbers grow quickly, and so do the places for an error. Here is a worked example. A class of 12 students working in pairs needs 6 leader-and-follower sets. Each set needs 12 servos, so the class needs 72. A 10 percent spare allowance is <span class="arithmatex">\( 0.10 \times 72 = 7.2 \)</span>, rounded <em>up</em> to 8 spare servos, for 80 servos in all, which at $13.89 each is <span class="arithmatex">\( 80 \times 13.89 = \$1111.20 \)</span>. Rounding up matters: a plan that rounds 7.2 down to 7 is short by a motor.</p>
+<h3 id="cost-calculator">Cost Calculator<a class="headerlink" href="#cost-calculator" title="Permanent link">&para;</a></h3>
+<p>A <strong>cost calculator</strong> is a tool that totals a BOM and adds the extras, and a spreadsheet or a Python script can be one. The first MicroSim here is a small one. You enter the sticker price, shipping, tax and fees of an order, and it shows the landed cost and the overhead. After you explore, four problems check that you can total an order yourself, including the project's own.</p>
+<h4 id="diagram-landed-cost-calculator">Diagram: Landed Cost Calculator<a class="headerlink" href="#diagram-landed-cost-calculator" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Landed Cost Calculator</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> landed-cost-calculator<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Apply<br/>
+<strong>Bloom Verb:</strong> calculate<br/>
+<strong>Learning Objective:</strong> The learner will calculate the landed cost, the overhead percentage or the remaining budget of a parts order from its sticker price, shipping, tax and fees, to within one cent (or 0.1 percent), in five problems, with at least 4 of 5 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> bill of materials, shipping and customs, total build cost, landed cost, overhead, budgeting (all defined in the sections above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of five problems the learner types a number in the unit shown and commits. An answer is correct when it is within 0.01 dollars (or 0.1 percentage points) of the Correct column in Content. Mastery is 4 of 5 correct on the first attempt. Changing the order amounts in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) The sticker price is what you pay. (Shipping, tax and fees are added.) (2) Overhead is a percentage of the landed cost. (It is a percentage of the sticker price.) (3) Tax applies to every charge in the same way. (Each problem states what the tax applies to.)</p>
+<p><strong>Instructional Rationale:</strong> An Apply-level calculate objective needs repeated use of a procedure on new numbers with an immediate check. The sim shows each charge as a stacked bar on top of the sticker price, so the overhead is seen before it is computed.</p>
+<p><strong>Content:</strong></p>
+<p>Explore mode has four amounts the learner can change (sticker price, shipping, tax and fees), and shows the landed cost and the overhead, with the formulas landed = sticker + shipping + tax + fees and overhead = (landed − sticker) / sticker × 100.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Min</th>
+<th>Max</th>
+<th>Step</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sticker price</td>
+<td>0</td>
+<td>2000</td>
+<td>0.01</td>
+<td>258.94</td>
+<td>USD</td>
+</tr>
+<tr>
+<td>Shipping</td>
+<td>0</td>
+<td>300</td>
+<td>0.01</td>
+<td>46.55</td>
+<td>USD</td>
+</tr>
+<tr>
+<td>Tax</td>
+<td>0</td>
+<td>300</td>
+<td>0.01</td>
+<td>26.05</td>
+<td>USD</td>
+</tr>
+<tr>
+<td>Fees</td>
+<td>0</td>
+<td>50</td>
+<td>0.01</td>
+<td>0.50</td>
+<td>USD</td>
+</tr>
+</tbody>
+</table>
+<p>Five problems in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Problem</th>
+<th>Unit asked</th>
+<th>Correct</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A kit has a sticker price of $258.94, shipping of $46.55, tax of $26.05 and a $0.50 fee. What is the landed cost?</td>
+<td>USD</td>
+<td>332.04</td>
+<td>258.94 + 46.55 + 26.05 + 0.50 = 332.04.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>For the order in problem 1, what is the overhead as a percentage of the sticker price?</td>
+<td>percent</td>
+<td>28.2</td>
+<td>(332.04 − 258.94) / 258.94 × 100 = 28.23.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A $120 motor has $15 shipping and 7 percent sales tax on the item price only. What is the landed cost?</td>
+<td>USD</td>
+<td>143.40</td>
+<td>Tax is 0.07 × 120 = 8.40, and 120 + 15 + 8.40 = 143.40.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Four motors at $120 and three at $175, with $60 shipping and no tax. What is the landed cost?</td>
+<td>USD</td>
+<td>1065.00</td>
+<td>4 × 120 + 3 × 175 = 1005, and 1005 + 60 = 1065.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>You have $350 and place the order in problem 1. How much is left?</td>
+<td>USD</td>
+<td>17.96</td>
+<td>350 − 332.04 = 17.96, which is less than the $20 or more that the printed parts cost.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> Problems 1, 2 and 5 use the project's order from the procurement notes (2026-10-06). The motor prices in problem 4 are from the reBot B601-DM bill of materials. Problem 3 is illustrative.</p>
+<p><strong>Rules:</strong> landed = sticker + shipping + tax + fees, rounded to cents. Overhead = (landed − sticker) / sticker × 100, rounded to one decimal. A typed answer is correct when |typed − correct| &lt;= 0.01 for dollars and &lt;= 0.1 for percent. The typed value has minimum 0, maximum 10000, step 0.01, and no default.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner changes the four amounts and watches the stacked bar, the landed cost and the overhead update. The learner should notice that shipping and tax together add more than a quarter to the sticker price in the default order.</li>
+<li>The learner switches to the five problems. Problem 1 is shown.</li>
+<li>The learner types an answer and presses Check to commit.</li>
+<li>The sim shows whether the answer was correct, the working and the Why text, then moves on. After problem 5 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Five problems, fixed order, one attempt each. Correct: "Correct: <value> <unit>. <Why>". Incorrect: "Not quite. The answer is <value> <unit>. <Why>". The correct value is revealed after each commit. A running count "Correct: n of 5" is shown and the final screen says whether mastery (4 of 5) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with the defaults, showing a landed cost of $332.04 and an overhead of 28.2 percent.</p>
+<p><strong>Chapter Anchors:</strong> The chapter's worked example is 258.94 + 46.55 + 26.05 + 0.50 = 332.04, an overhead of $73.10 or 28.2 percent. The sim has five problems and mastery is 4 of 5.</p>
+</details>
+<h2 id="pitfalls">Pitfalls<a class="headerlink" href="#pitfalls" title="Permanent link">&para;</a></h2>
+<p>Most of the money lost on a first build is lost on a handful of mistakes. They are easy to avoid if you know their shapes.</p>
+<p><strong>Counterfeit parts</strong> are copies sold under the name of a genuine part. A servo marked STS3215 that is a cheaper motor in a similar case will not behave like one, and it may fail early. Warning signs are a price far below every other seller's (the BOM lists the STS3215 at $13.89, so an "STS3215" at $5 deserves doubt), no model or gear-ratio on the listing, photos copied from another seller, and a seller with no history. For servos, Chapter 4 gives you a test: the model number is stored in a register, at address 3 with a size of 2 bytes, and LeRobot's tables list 777 as the STS3215's. A clone can copy that number, so a matching result does not prove a part is genuine, but a <em>wrong</em> number proves it is not what the listing says.</p>
+<p><strong>Incompatible parts</strong> are genuine parts that do not work with the others in your build: a 12 V servo on a 5 V supply, a servo board for hobby PWM servos in a build of bus servos, or a printed part for the SO-ARM100 in an SO-ARM101. They are the most expensive mistake because the part itself is fine and the problem is in the combination. The cure is to check each part against the BOM line, not the picture, and to write the <em>voltage</em>, the <em>bus type</em> and the <em>revision</em> next to every part.</p>
+<p><strong>Substitute parts</strong> are parts you buy instead of the one in the BOM, because it was out of stock or too costly. Some substitutions are safe, such as a power supply with the same voltage and polarity and a higher current rating (Chapter 3), or a different brand of screw with the same size. Some are not: a motor with a different gear ratio changes how the joint moves and breaks the leader and follower match. A substitute is safe when you can show, from datasheets, that every number that matters is equal or better, and not otherwise.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">A Cheap Part That Does Not Match Costs Twice</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A wrong-voltage servo or a counterfeit motor can destroy a board or stop a build, and the return shipping from overseas can cost more than the part. Before you buy, match the listing's model, voltage, gear ratio and revision to the BOM line, and when you receive the parts, test one before you assemble all of them.</p>
+</div>
+<h3 id="fact-checking-specifications">Fact-Checking Specifications<a class="headerlink" href="#fact-checking-specifications" title="Permanent link">&para;</a></h3>
+<p>Specifications in articles, listings and even repositories can disagree, and the safest habit is to treat each number as a claim until two independent sources agree. <strong>Fact-checking specifications</strong> means finding the primary source (the datasheet or the maker's documentation), comparing it with what the seller says, and writing down which source you trusted and when. A real example from this book: Seeed's guide lists the DM4310 with a rated torque of 3 N·m and a peak of 7 N·m, while one reseller's listing for a DM-J4310-2EC V1.2 gives a rated torque of 3.5 N·m and a peak of 12.5 N·m. They could describe different revisions, or one could be wrong, and a build that depended on the peak torque would have to find out which. The next MicroSim practises the habit of looking critically at listings.</p>
+<h4 id="diagram-sourcing-listing-checker">Diagram: Sourcing Listing Checker<a class="headerlink" href="#diagram-sourcing-listing-checker" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Sourcing Listing Checker</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> sourcing-listing-checker<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Analyze<br/>
+<strong>Bloom Verb:</strong> differentiate<br/>
+<strong>Learning Objective:</strong> The learner will differentiate eight parts listings as Buy, Check first or Avoid by comparing each with the bill of materials, with at least 7 of 8 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> bill of materials, datasheet, vendor documentation, part revisions, counterfeit parts, incompatible parts, substitute parts, fact-checking specifications (all defined in the sections above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of eight listings the learner chooses one of three verdicts and commits. A choice is correct when it matches the Verdict column in Content. Mastery is 7 of 8 correct on the first attempt. Reading the BOM reference in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) The cheapest listing is the best deal. (A price far below the BOM suggests a counterfeit or the wrong part.) (2) A genuine part is always the right part. (It must also match the voltage, bus and revision of the build.) (3) A kit has everything. (The listing says what is not included.)</p>
+<p><strong>Instructional Rationale:</strong> An Analyze-level differentiate objective asks the learner to tell similar-looking cases apart on the evidence. A fixed reference BOM and a plan give the learner the criteria, so each listing must be compared with them and not judged by its appearance.</p>
+<p><strong>Content:</strong></p>
+<p>The reference plan for every listing is an SO-ARM101 build that uses 7.4 V STS3215 servos at $13.89 each, a 5 V power supply with a 5.5 × 2.1 mm barrel jack, and servo control boards for serial bus servos. The three verdicts are: "Buy", "Check first", "Avoid". Eight listings in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Listing text</th>
+<th>Verdict</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>"STS3215 servo, 7.4 V, 1/345 gear, model C001, $13.89"</td>
+<td>Buy</td>
+<td>It matches the BOM line in model, voltage, gear ratio and price.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>"Bus servo, compatible with SO-ARM, $4.99, no model number or gear ratio given"</td>
+<td>Avoid</td>
+<td>The price is far below the BOM's $13.89 and the listing names no model, which are signs of a counterfeit or a wrong part.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>"STS3215 servo, 12 V version, 1/345 gear, $17.50"</td>
+<td>Check first</td>
+<td>It is a genuine option, but it needs a 12 V supply of 5 A or more, which the plan does not have.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>"SO-ARM101 motor kit, 12 servos, boards and cables" with no line about printed parts</td>
+<td>Check first</td>
+<td>The listing does not say whether the printed frame is included, and it must be stated before paying.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>"Power supply, 5 V, 4 A, 5.5 × 2.1 mm barrel plug, polarity diagram shown"</td>
+<td>Buy</td>
+<td>It matches the plan's voltage and plug, and the polarity is documented.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>"Motor control board, works with any servo", photographs show three-pin PWM headers only</td>
+<td>Avoid</td>
+<td>PWM headers drive hobby servos, not serial bus servos.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>"SO-ARM100 printed parts, old version" for an SO-ARM101 build</td>
+<td>Avoid</td>
+<td>The SO-ARM101 changed the wiring and assembly, so the older printed parts are the wrong revision.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>"reBot-DevArm B601-RS, 48 V" for a plan with a 24 V power supply</td>
+<td>Check first</td>
+<td>The arm is genuine, but it needs a 48 V supply, so the plan must change before ordering.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The listings are illustrative and written for this sim. The reference values (the $13.89 price, the 7.4 V motors with a 5 V supply, the 12 V option with a 12 V supply of 5 A or more, and the 48 V supply of the B601-RS) come from the SO-ARM100 and reBot-DevArm repositories, as quoted in the chapter. The sim labels the listings "illustrative".</p>
+<p><strong>Rules:</strong> Each listing has exactly one correct verdict. "Buy" means it matches the plan on every checked field. "Check first" means a genuine part that conflicts with the plan or leaves a key field unstated. "Avoid" means the evidence points to a counterfeit, an incompatible bus or the wrong revision.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner reads the reference plan and the three verdicts with a one-line meaning of each.</li>
+<li>The learner switches to the eight listings. Listing 1 is shown next to the reference plan.</li>
+<li>The learner chooses a verdict and commits.</li>
+<li>The sim shows whether the choice was correct and the Why text, marking the field that decided it. After listing 8 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Eight listings, fixed order, one attempt each. Correct: "Correct: <verdict>. <Why>". Incorrect: "Not quite. This listing is <verdict>. <Why>". The correct verdict is revealed after each commit. A running count "Correct: n of 8" is shown and the final screen says whether mastery (7 of 8) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with the reference plan on view and the prompt "Compare each listing with the plan."</p>
+<p><strong>Chapter Anchors:</strong> The chapter states the STS3215's BOM price of $13.89, the 5 V supply for the 7.4 V motors, the 12 V supply of 5 A or more for the 12 V motors, and the 48 V supply of the B601-RS. The sim has eight listings and mastery is 7 of 8.</p>
+</details>
+<h2 id="lab-total-the-cost-in-python">Lab: Total the Cost in Python<a class="headerlink" href="#lab-total-the-cost-in-python" title="Permanent link">&para;</a></h2>
+<p>In this lab you will total a parts list from a CSV file, add the landed-cost extras, and check a delivery with the pretend bus. The one new Python idea is the <code>csv</code> module, which reads a CSV file row by row. You will extend the <code>arm-lab</code> project, and you will need the <code>read_register</code> function from Chapter 5.</p>
+<p><strong>Step 1. Activate the project.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/projects/arm-lab
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><strong>Step 2. Write the parts list.</strong> The file is the SO-ARM100 repository's bill of materials for two arms, with the screwdriver set marked as optional and one spare servo added, as the spare-parts plan above recommends (the kit we bought has none). The first line names the columns. <code>spares</code> counts extra units, and <code>required</code> is <code>yes</code> or <code>no</code>. Create <code>config/so101_two_arms.csv</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>part,qty,spares,unit_usd,required
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>STS3215 servo 7.4V 1/345 gear (C001),7,1,13.89,yes
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>STS3215 servo 7.4V 1/191 gear (C044),2,0,13.89,yes
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>STS3215 servo 7.4V 1/147 gear (C046),3,0,13.89,yes
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Motor control board,2,0,10.60,yes
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>USB-C cable (2 pcs),1,0,7.00,yes
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Power supply 5 V,2,0,10.00,yes
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>Table clamp (4 pcs),1,0,9.00,yes
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Screwdriver set,1,0,6.00,no
+</span></code></pre></div>
+<p><strong>Step 3. Write the budget module.</strong> <code>csv.DictReader</code> reads each row as a dictionary keyed by the column names, but every value arrives as text, so <code>load_parts</code> converts the numbers with <code>int</code> and <code>float</code> and turns the <code>required</code> column into <code>True</code> or <code>False</code>. <code>line_cost</code> counts every unit including spares. <code>parts_total</code> adds the lines, optionally only the required ones. <code>landed_cost</code> and <code>overhead_percent</code> are the formulas from the chapter. The <code>round(..., 2)</code> calls keep the results to whole cents, because adding many prices as floating-point numbers can leave tiny errors. Create <code>armlab/budget.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span>
+<span class="normal"><a href="#__codelineno-4-32">32</a></span>
+<span class="normal"><a href="#__codelineno-4-33">33</a></span>
+<span class="normal"><a href="#__codelineno-4-34">34</a></span>
+<span class="normal"><a href="#__codelineno-4-35">35</a></span>
+<span class="normal"><a href="#__codelineno-4-36">36</a></span>
+<span class="normal"><a href="#__codelineno-4-37">37</a></span>
+<span class="normal"><a href="#__codelineno-4-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="sd">"""Read a CSV parts list and total what an arm will really cost."""</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_parts</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="sd">"""Return the rows of a CSV parts list as dictionaries with numbers converted."""</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a>            <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a>                <span class="s2">"part"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"part"</span><span class="p">],</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a>                <span class="s2">"qty"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"qty"</span><span class="p">]),</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a>                <span class="s2">"spares"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"spares"</span><span class="p">]),</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a>                <span class="s2">"unit_usd"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"unit_usd"</span><span class="p">]),</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a>                <span class="s2">"required"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"required"</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"yes"</span><span class="p">,</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a>            <span class="p">})</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a>    <span class="k">return</span> <span class="n">parts</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">line_cost</span><span class="p">(</span><span class="n">part</span><span class="p">):</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">    </span><span class="sd">"""Cost of one line: every unit, spares included, times the unit price."""</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">((</span><span class="n">part</span><span class="p">[</span><span class="s2">"qty"</span><span class="p">]</span> <span class="o">+</span> <span class="n">part</span><span class="p">[</span><span class="s2">"spares"</span><span class="p">])</span> <span class="o">*</span> <span class="n">part</span><span class="p">[</span><span class="s2">"unit_usd"</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="k">def</span><span class="w"> </span><span class="nf">parts_total</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">required_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="w">    </span><span class="sd">"""Sum of the line costs, optionally counting only the required parts."""</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28"></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">line_cost</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span> <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s2">"required"</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">required_only</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29"></a>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30"></a>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31"></a><span class="k">def</span><span class="w"> </span><span class="nf">landed_cost</span><span class="p">(</span><span class="n">subtotal</span><span class="p">,</span> <span class="n">shipping</span><span class="p">,</span> <span class="n">tax</span><span class="p">,</span> <span class="n">fees</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="w">    </span><span class="sd">"""What you actually pay: the goods plus shipping, tax, and any fees."""</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33"></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">subtotal</span> <span class="o">+</span> <span class="n">shipping</span> <span class="o">+</span> <span class="n">tax</span> <span class="o">+</span> <span class="n">fees</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34"></a>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35"></a>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="k">def</span><span class="w"> </span><span class="nf">overhead_percent</span><span class="p">(</span><span class="n">subtotal</span><span class="p">,</span> <span class="n">landed</span><span class="p">):</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="w">    </span><span class="sd">"""How much more than the sticker price the landed cost is, in percent."""</span>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38"></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">landed</span> <span class="o">-</span> <span class="n">subtotal</span><span class="p">)</span> <span class="o">/</span> <span class="n">subtotal</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Step 4. Write the cost script.</strong> It prints every line of the list, the totals with and without the optional part, the project's real order, and the comparison between the repository's list and what was paid. In the f-strings, <code>{p['part']:&lt;38}</code> pads the name to 38 characters, and <code>${line_cost(p):&gt;7.2f}</code> right-aligns a price with two decimals. Create <code>cost_demo.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span>
+<span class="normal"><a href="#__codelineno-5-33">33</a></span>
+<span class="normal"><a href="#__codelineno-5-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="sd">"""Total an SO-ARM101 parts list and compare it with a real order."""</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.budget</span><span class="w"> </span><span class="kn">import</span> <span class="n">landed_cost</span><span class="p">,</span> <span class="n">line_cost</span><span class="p">,</span> <span class="n">load_parts</span><span class="p">,</span> <span class="n">overhead_percent</span><span class="p">,</span> <span class="n">parts_total</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="n">CSV_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">"config"</span> <span class="o">/</span> <span class="s2">"so101_two_arms.csv"</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>    <span class="n">parts</span> <span class="o">=</span> <span class="n">load_parts</span><span class="p">(</span><span class="n">CSV_PATH</span><span class="p">)</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"1. Parts list (two arms)"</span><span class="p">)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a>        <span class="n">flag</span> <span class="o">=</span> <span class="s2">""</span> <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s2">"required"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">"  (optional)"</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'part'</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;38</span><span class="si">}{</span><span class="n">p</span><span class="p">[</span><span class="s1">'qty'</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="s1">'spares'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;3</span><span class="si">}</span><span class="s2"> x $</span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'unit_usd'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;6.2f</span><span class="si">}</span><span class="s2"> = $</span><span class="si">{</span><span class="n">line_cost</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;7.2f</span><span class="si">}{</span><span class="n">flag</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"2. Totals"</span><span class="p">)</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   Required parts only:      $</span><span class="si">{</span><span class="n">parts_total</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span><span class="w"> </span><span class="n">required_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;8.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   Everything on the list:   $</span><span class="si">{</span><span class="n">parts_total</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;8.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"3. A real order: the SO-ARM101 motor kit"</span><span class="p">)</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a>    <span class="n">subtotal</span><span class="p">,</span> <span class="n">shipping</span><span class="p">,</span> <span class="n">tax</span><span class="p">,</span> <span class="n">fee</span> <span class="o">=</span> <span class="mf">258.94</span><span class="p">,</span> <span class="mf">46.55</span><span class="p">,</span> <span class="mf">26.05</span><span class="p">,</span> <span class="mf">0.50</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a>    <span class="n">landed</span> <span class="o">=</span> <span class="n">landed_cost</span><span class="p">(</span><span class="n">subtotal</span><span class="p">,</span> <span class="n">shipping</span><span class="p">,</span> <span class="n">tax</span><span class="p">,</span> <span class="n">fee</span><span class="p">)</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   Sticker price $</span><span class="si">{</span><span class="n">subtotal</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, landed cost $</span><span class="si">{</span><span class="n">landed</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, "</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26"></a>          <span class="sa">f</span><span class="s2">"overhead </span><span class="si">{</span><span class="n">overhead_percent</span><span class="p">(</span><span class="n">subtotal</span><span class="p">,</span><span class="w"> </span><span class="n">landed</span><span class="p">)</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"4. Repository list versus the real kit"</span><span class="p">)</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29"></a>    <span class="n">listed</span> <span class="o">=</span> <span class="n">parts_total</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   Listed $</span><span class="si">{</span><span class="n">listed</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, paid $</span><span class="si">{</span><span class="n">landed</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, difference $</span><span class="si">{</span><span class="n">landed</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">listed</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31"></a>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32"></a>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Step 5. Run it.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>cost_demo.py
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>1. Parts list (two arms)
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>   STS3215 servo 7.4V 1/345 gear (C001)    8 x $ 13.89 = $ 111.12
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>   STS3215 servo 7.4V 1/191 gear (C044)    2 x $ 13.89 = $  27.78
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>   STS3215 servo 7.4V 1/147 gear (C046)    3 x $ 13.89 = $  41.67
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>   Motor control board                     2 x $ 10.60 = $  21.20
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>   USB-C cable (2 pcs)                     1 x $  7.00 = $   7.00
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>   Power supply 5 V                        2 x $ 10.00 = $  20.00
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>   Table clamp (4 pcs)                     1 x $  9.00 = $   9.00
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>   Screwdriver set                         1 x $  6.00 = $   6.00  (optional)
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>2. Totals
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>   Required parts only:      $  237.77
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>   Everything on the list:   $  243.77
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>3. A real order: the SO-ARM101 motor kit
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>   Sticker price $258.94, landed cost $332.04, overhead 28.2%
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>4. Repository list versus the real kit
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>   Listed $243.77, paid $332.04, difference $88.27
+</span></code></pre></div>
+<p>The repository's own total is $229.88; the list here is $243.77 because it adds one spare servo ($13.89) and the extra quantity is already counted in line 1. The real kit cost $88.27 more than that list. Part of the gap is shipping, tax and fees (the $73.10 of overhead), and the rest is that a retail kit price is not the BOM price. It is the reason that this chapter insists on landed cost.</p>
+<p><strong>Step 6. Check a delivery with the pretend bus.</strong> When the servos arrive, the cheapest test is to read each one's model number. This needs two small changes to your Chapter 4 and 5 code. In <code>armlab/packets.py</code>, add one line at the top of the <code>REGISTERS</code> table: <code>"Model_Number": (3, 2),</code>. In <code>armlab/fakebus.py</code>, add one line to <code>make_servos</code>, just before the line that sets the ID: <code>memory[3:5] = (777).to_bytes(2, "little")      # Model_Number: 777 is the STS3215</code>. The script then pretends that servo 4 is a different model, as a wrong delivery might be. Create <code>arrival_check.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="sd">"""Check the model number of every servo in a delivery, using the pretend bus."""</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.fakebus</span><span class="w"> </span><span class="kn">import</span> <span class="n">fake_bus</span><span class="p">,</span> <span class="n">make_servos</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.packets</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_register</span><span class="p">,</span> <span class="n">scan</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="n">EXPECTED_MODEL</span> <span class="o">=</span> <span class="mi">777</span>          <span class="c1"># the STS3215, from the LeRobot motor tables</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="n">MODEL_NAMES</span> <span class="o">=</span> <span class="p">{</span><span class="mi">777</span><span class="p">:</span> <span class="s2">"STS3215"</span><span class="p">,</span> <span class="mi">2825</span><span class="p">:</span> <span class="s2">"STS3250"</span><span class="p">}</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="n">servos</span> <span class="o">=</span> <span class="n">make_servos</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="n">servos</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2825</span><span class="p">)</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"little"</span><span class="p">)</span>        <span class="c1"># pretend servo 4 is the wrong model</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="n">packet</span><span class="p">):</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a>    <span class="k">return</span> <span class="n">fake_bus</span><span class="p">(</span><span class="n">servos</span><span class="p">,</span> <span class="n">packet</span><span class="p">)</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="n">found</span> <span class="o">=</span> <span class="n">scan</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Servos found: </span><span class="si">{</span><span class="n">found</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="k">for</span> <span class="n">servo_id</span> <span class="ow">in</span> <span class="n">found</span><span class="p">:</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">read_register</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="n">servo_id</span><span class="p">,</span> <span class="s2">"Model_Number"</span><span class="p">)</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">MODEL_NAMES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">"unknown"</span><span class="p">)</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22"></a>    <span class="n">verdict</span> <span class="o">=</span> <span class="s2">"ok"</span> <span class="k">if</span> <span class="n">model</span> <span class="o">==</span> <span class="n">EXPECTED_MODEL</span> <span class="k">else</span> <span class="s2">"WRONG MODEL - return or ask the seller"</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ID </span><span class="si">{</span><span class="n">servo_id</span><span class="si">}</span><span class="s2">: model </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">) -&gt; </span><span class="si">{</span><span class="n">verdict</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python<span class="w"> </span>arrival_check.py
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Servos found: [1, 2, 3, 4, 5, 6]
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  ID 1: model 777 (STS3215) -&gt; ok
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  ID 2: model 777 (STS3215) -&gt; ok
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  ID 3: model 777 (STS3215) -&gt; ok
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  ID 4: model 2825 (STS3250) -&gt; WRONG MODEL - return or ask the seller
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  ID 5: model 777 (STS3215) -&gt; ok
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>  ID 6: model 777 (STS3215) -&gt; ok
+</span></code></pre></div>
+<p>With real servos you would use the <code>send</code> function from <code>read_servo.py</code> in Chapter 4 instead of the pretend one, one motor connected at a time while they all still have the factory ID 1. The model number does not prove a part is genuine, but a wrong one proves it is not what the listing said, and finding that on arrival is far cheaper than finding it after the build.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Test One Before You Assemble All</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+The day a delivery arrives, power up one servo on the bench, ping it, and read its model number before you open the rest or start printing. If something is wrong, you are still inside the seller's return window.</p>
+</div>
+<p><strong>Step 7. Record your work.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Add parts list, landed-cost budget, and arrival check"</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span></code></pre></div>
+<h3 id="check-your-work">Check Your Work<a class="headerlink" href="#check-your-work" title="Permanent link">&para;</a></h3>
+<p>Your project is complete when all of these are true:</p>
+<ul>
+<li><code>python cost_demo.py</code> prints <code>Required parts only:      $  237.77</code> and <code>overhead 28.2%</code>.</li>
+<li><code>python arrival_check.py</code> flags servo 4 as the wrong model and passes the others.</li>
+<li><code>python bus_demo.py</code> and <code>python feedback_demo.py</code> still run after the changes to the registers.</li>
+<li><code>config/so101_two_arms.csv</code> has no values with a trailing comma.</li>
+<li><code>git log --oneline</code> shows a sixth commit.</li>
+</ul>
+<h3 id="challenge-plan-a-classroom-order">Challenge: Plan a Classroom Order<a class="headerlink" href="#challenge-plan-a-classroom-order" title="Permanent link">&para;</a></h3>
+<p>Add a function <code>classroom_servos(pairs, spare_fraction=0.10)</code> to <code>armlab/budget.py</code> that returns the total number of servos for a class that has <code>pairs</code> leader-and-follower sets, using 12 servos per set and rounding the spares <em>up</em>. Then use it with <code>cost_demo.py</code> to print the servo cost of 6 sets at $13.89 and the number of sets a class could afford with $1,500 if each set's landed cost is 28.2 percent above its required parts cost ($223.88 per set).</p>
+<details class="note">
+<summary>Click to see one solution</summary>
+<p>Add <code>from math import ceil</code> at the top of <code>armlab/budget.py</code>, and this function. <code>ceil</code> rounds up, so 7.2 spare servos becomes 8:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">classroom_servos</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">spare_fraction</span><span class="o">=</span><span class="mf">0.10</span><span class="p">):</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="sd">"""Return the servos to order: 12 per set plus spares, with spares rounded up."""</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>    <span class="n">needed</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">pairs</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>    <span class="k">return</span> <span class="n">needed</span> <span class="o">+</span> <span class="n">ceil</span><span class="p">(</span><span class="n">needed</span> <span class="o">*</span> <span class="n">spare_fraction</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Then try it in a Python session or at the bottom of <code>cost_demo.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.budget</span><span class="w"> </span><span class="kn">import</span> <span class="n">classroom_servos</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="n">servos</span> <span class="o">=</span> <span class="n">classroom_servos</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">servos</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">servos</span> <span class="o">*</span> <span class="mf">13.89</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>          <span class="c1"># 80 servos, $1111.20</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="n">per_set</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">223.88</span> <span class="o">*</span> <span class="mf">1.282</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>               <span class="c1"># landed cost per set</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">per_set</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1500</span> <span class="o">//</span> <span class="n">per_set</span><span class="p">))</span>             <span class="c1"># 287.01 per set, 5 sets</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The class needs 80 servos for $1,111.20. A budget of $1,500 buys 5 sets, because 6 sets at $287.01 would cost $1,722.06. The lesson is the one from the chapter: the landed cost, and not the sticker price, decides how many sets a budget buys.</p>
+</details>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">&para;</a></h2>
+<p>You can now plan an order and total what it will really cost.</p>
+<ul>
+<li>The <strong>SO-ARM100</strong> and its successor the <strong>SO-ARM101</strong> are the low-cost, serial-bus entry (about $350 for a pair: a $332.04 motor kit plus $20 or more of printed parts). The <strong>reBot-DevArm</strong>, in its <strong>B601-DM</strong> (24 V) and <strong>B601-RS</strong> (48 V) versions, uses CAN-bus motors and costs several times as much.</li>
+<li>A <strong>bill of materials</strong> lists every part, its quantity, supplier and price. Mark each line as a <strong>required part</strong> or an <strong>optional part</strong>, and check each against its <strong>datasheet</strong>, the <strong>vendor documentation</strong>, and the <strong>part revision</strong>. Save the list as a <strong>CSV parts list</strong> so that a program can read it.</li>
+<li>You can buy as an <strong>official kit</strong>, a <strong>kit build</strong>, a <strong>self-sourced build</strong>, <strong>direct from the manufacturer</strong>, from a <strong>distributor</strong>, or on an <strong>online marketplace</strong>. Each trades price against time and risk.</li>
+<li><strong>Lead time</strong> is set by the slowest part, and <strong>order tracking</strong> catches a late parcel. <strong>Shipping and customs</strong> add to the sticker price, so the <strong>total build cost</strong> is the <strong>landed cost</strong>. The project's kit rose from $258.94 to $332.04, an overhead of 28.2 percent. <strong>Budgeting</strong> plans the total, with <strong>spare parts</strong> and a margin.</li>
+<li>A <strong>classroom parts order</strong> multiplies one build by the number of teams, with the spares rounded up.</li>
+<li><strong>Counterfeit parts</strong>, <strong>incompatible parts</strong> and bad <strong>substitute parts</strong> are the common ways to lose money. Match the model, voltage, gear ratio and revision to the BOM line, and <strong>fact-check specifications</strong> against the primary source.</li>
+<li>In Python, the <code>csv</code> module reads a parts list, and a few functions turn it into a <strong>cost calculator</strong> that totals the cost and the landed cost.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Plan the Whole Order!</p>
+<p><img alt="Servo celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just read a bill of materials, separated required from optional parts, worked out a landed cost with shipping and tax, and wrote a Python script that totals it and checks a delivery. That is the planning that makes the build in the next chapters go smoothly. Let's move it on to Chapter 7!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

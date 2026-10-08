@@ -1,0 +1,2356 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A working list of about 50 hands-on lab ideas for the Controlling a Robot Arm book, built on the Raspberry Pi Pico and MicroPython: servos, stepper motors, sensors, displays, bus communication, safety, and mini robot arms.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/labs/list-of-ideas/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../learning-graph/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>List of Hands-On Lab Ideas - Controlling a Robot Arm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#list-of-hands-on-lab-ideas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Controlling a Robot Arm" class="md-header__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Controlling a Robot Arm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              List of Hands-On Lab Ideas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Controlling a Robot Arm" class="md-nav__button md-logo" aria-label="Controlling a Robot Arm" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Controlling a Robot Arm
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/robot-arm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../procurement-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procurement Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    List of Lab Ideas
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    List of Lab Ideas
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#design-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Assumptions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-the-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Read the Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-a-getting-started-with-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track A: Getting Started with the Pico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-b-hobby-servos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track B: Hobby Servos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-c-sensors-and-displays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track C: Sensors and Displays
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-d-dc-motors-and-steppers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track D: DC Motors and Steppers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-e-build-a-mini-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track E: Build a Mini Arm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-f-communication-and-bus-servos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track F: Communication and Bus Servos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-g-power-and-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track G: Power and Safety
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-h-integration-and-capstones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track H: Integration and Capstones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-first-twelve-to-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested First Twelve to Write
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-station-kit-draft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Station Kit (draft)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Station Kit (draft)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-ons-by-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add-ons by track
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Chains
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsim-ideas-to-pair-with-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Ideas to Pair with Labs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-page-template-proposal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Page Template (proposal)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-questions-for-the-author" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Questions for the Author
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#design-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Assumptions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-the-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Read the Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-a-getting-started-with-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track A: Getting Started with the Pico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-b-hobby-servos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track B: Hobby Servos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-c-sensors-and-displays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track C: Sensors and Displays
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-d-dc-motors-and-steppers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track D: DC Motors and Steppers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-e-build-a-mini-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track E: Build a Mini Arm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-f-communication-and-bus-servos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track F: Communication and Bus Servos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-g-power-and-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track G: Power and Safety
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-h-integration-and-capstones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Track H: Integration and Capstones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-first-twelve-to-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested First Twelve to Write
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-station-kit-draft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Station Kit (draft)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Station Kit (draft)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-ons-by-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add-ons by track
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Chains
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsim-ideas-to-pair-with-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Ideas to Pair with Labs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-page-template-proposal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Page Template (proposal)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-questions-for-the-author" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Questions for the Author
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/labs/list-of-ideas.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="list-of-hands-on-lab-ideas">List of Hands-On Lab Ideas<a class="headerlink" href="#list-of-hands-on-lab-ideas" title="Permanent link">&para;</a></h1>
+<p>This is the <strong>idea list</strong> for the Labs section. Nothing here is written yet.
+Each row is a candidate lab, kept to one line so we can sort, cut, and
+reorder before spending any writing effort. Once a lab is chosen it gets its
+own page under <code>docs/labs/&lt;lab-id&gt;/index.md</code>.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Why labs come before the big arm</p>
+<p><img alt="Servo waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+A $330 arm is a poor place to learn that a servo needs its own power supply. A $4 servo on a breadboard is a great one. Every lab here is cheap, small, and safe to get wrong.</p>
+</div>
+<h2 id="design-assumptions">Design Assumptions<a class="headerlink" href="#design-assumptions" title="Permanent link">&para;</a></h2>
+<p>These assumptions shape every idea below. Change one and the list changes.</p>
+<table>
+<thead>
+<tr>
+<th>Assumption</th>
+<th>Choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microcontroller</td>
+<td>Raspberry Pi <strong>Pico 2 W</strong> (a plain Pico also works for every lab except the Wi-Fi ones)</td>
+</tr>
+<tr>
+<td>Language</td>
+<td><strong>MicroPython</strong>, edited in Thonny; <code>mpremote</code> introduced once labs get larger</td>
+</tr>
+<tr>
+<td>Station</td>
+<td>One Pico, one breadboard, one OLED, one ToF sensor, one USB cable per student or pair</td>
+</tr>
+<tr>
+<td>Budget</td>
+<td>About <strong>$60 per station</strong> for the core kit (less when pairs share a multimeter), about <strong>$170</strong> with every add-on (estimates; verify prices before publishing)</td>
+</tr>
+<tr>
+<td>Prior skill</td>
+<td>Python from <em>Learning Python</em>. MicroPython and electronics are taught just in time</td>
+</tr>
+<tr>
+<td>Bridge to the book</td>
+<td>Labs that touch the laptop use the same <code>pyserial</code> and Python style as Chapters 4, 10, and 11</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Pico pins are not motor power</p>
+<p><img alt="Servo warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A Pico GPIO pin can supply a few milliamps. A hobby servo can pull an amp when it stalls. Every servo and stepper lab must power the motor from a separate supply with a shared ground.</p>
+</div>
+<h2 id="how-to-read-the-tables">How to Read the Tables<a class="headerlink" href="#how-to-read-the-tables" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>ID</strong> is <code>track letter + number</code>. It becomes the lab's directory name.</li>
+<li><strong>Min</strong> is the estimated classroom time, including wiring.</li>
+<li><strong>Level</strong>: <code>1</code> first lab with that part, <code>2</code> builds on a level 1 lab, <code>3</code> stretch or instructor-led.</li>
+<li><strong>Source</strong> shows where an existing lesson can be adapted:<ul>
+<li><code>LM</code> = the <em>Learning MicroPython</em> book at <code>learning-micropython/docs/</code></li>
+<li><code>SR</code> = the <em>STEM Robots</em> book at <code>stem-robots/docs/</code></li>
+<li><code>New</code> = nothing to borrow; we write it from scratch</li>
+</ul>
+</li>
+<li><strong>Ch</strong> is the chapter in this book that the lab reinforces.</li>
+</ul>
+<h2 id="track-a-getting-started-with-the-pico">Track A: Getting Started with the Pico<a class="headerlink" href="#track-a-getting-started-with-the-pico" title="Permanent link">&para;</a></h2>
+<p>Short labs that every other track assumes. Skip any that students already know.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lab</th>
+<th>What students build and learn</th>
+<th>Min</th>
+<th>Level</th>
+<th>Source</th>
+<th>Ch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>Hello, Pico</td>
+<td>Flash MicroPython, open Thonny, blink the LED, use the REPL</td>
+<td>30</td>
+<td>1</td>
+<td>LM <code>basics/01-blink.md</code>, SR <code>setup/05-thonny-installation.md</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>Buttons and Debouncing</td>
+<td>Read a push button with pull-ups; see contact bounce and fix it in software</td>
+<td>30</td>
+<td>1</td>
+<td>LM <code>basics/03-button.md</code>, <code>advanced-labs/21-button-callback.md</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>Multimeter and Ohm's Law</td>
+<td>Measure voltage and resistance, then predict a current before measuring it</td>
+<td>40</td>
+<td>1</td>
+<td>LM <code>hands-on-labs/05-electronics-fundamentals/breadboards.md</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>Reading a Knob</td>
+<td>Use the ADC to read a potentiometer and print values; map 0-65535 to an angle</td>
+<td>30</td>
+<td>1</td>
+<td>LM <code>basics/03-potentiometer.md</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>A5</td>
+<td>Hello, OLED</td>
+<td>Wire an SSD1306 over I2C, write text, run an I2C scanner</td>
+<td>40</td>
+<td>1</td>
+<td>LM <code>hands-on-labs/15-oled-setup/11-oled-ssd1306-i2c.md</code>, <code>advanced-labs/06-i2c.md</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td>A6</td>
+<td>Config Files and Pin Maps</td>
+<td>Keep pin numbers and calibration in <code>config.json</code> so code never hard-codes a pin</td>
+<td>30</td>
+<td>2</td>
+<td>SR <code>lessons/07-config-file.md</code></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="track-b-hobby-servos">Track B: Hobby Servos<a class="headerlink" href="#track-b-hobby-servos" title="Permanent link">&para;</a></h2>
+<p>The core of the book's first half. Five of these should be written first.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lab</th>
+<th>What students build and learn</th>
+<th>Min</th>
+<th>Level</th>
+<th>Source</th>
+<th>Ch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>First Servo Sweep</td>
+<td>PWM at 50 Hz; convert an angle to a pulse width; sweep 0 to 180 degrees</td>
+<td>40</td>
+<td>1</td>
+<td>LM <code>basics/04-servo.md</code>, <code>hands-on-labs/12-motors-servos-steppers/06-servos.md</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Calibrate Your Servo</td>
+<td>Find the true minimum and maximum pulse for <em>this</em> servo and save them to <code>config.json</code>; compare an SG90 and an MG90S</td>
+<td>40</td>
+<td>2</td>
+<td>New</td>
+<td>5</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Knob-Controlled Servo</td>
+<td>Potentiometer sets the angle; OLED shows the angle and the pulse width</td>
+<td>40</td>
+<td>2</td>
+<td>LM <code>hands-on-labs/12-motors-servos-steppers/10-tof-motor-pot-display.md</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>Smooth Motion</td>
+<td>Limit speed with a step-per-tick ramp, then add easing at the ends; compare to a jump</td>
+<td>45</td>
+<td>2</td>
+<td>New</td>
+<td>11</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Servo Power and Brownouts</td>
+<td>Run a servo from USB, watch the Pico reset under load, then fix it with a separate 5 V supply and a shared ground</td>
+<td>45</td>
+<td>2</td>
+<td>New</td>
+<td>3</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Servo Under Load</td>
+<td>Hang weights on a horn-mounted arm and measure current with an INA219; find the stall current</td>
+<td>60</td>
+<td>3</td>
+<td>New</td>
+<td>5</td>
+</tr>
+<tr>
+<td>B7</td>
+<td>Pan-Tilt Drawing</td>
+<td>Two servos and a laser pointer or pen trace squares, circles, and Lissajous curves</td>
+<td>50</td>
+<td>2</td>
+<td>New</td>
+<td>11</td>
+</tr>
+<tr>
+<td>B8</td>
+<td>Gripper with a Limit</td>
+<td>Open and close a gripper; stop when current jumps because it holds an object</td>
+<td>60</td>
+<td>3</td>
+<td>New</td>
+<td>11</td>
+</tr>
+<tr>
+<td>B9</td>
+<td>Three-Pot Leader, Three-Servo Follower</td>
+<td>Three knobs are the leader arm; three servos copy them. A tiny leader-follower pair</td>
+<td>60</td>
+<td>3</td>
+<td>New</td>
+<td>2, 11</td>
+</tr>
+<tr>
+<td>B10</td>
+<td>Hack a Servo for Feedback</td>
+<td>Tap the potentiometer wiper inside an SG90 and read the <em>real</em> joint angle on an ADC pin</td>
+<td>60</td>
+<td>3</td>
+<td>New</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="track-c-sensors-and-displays">Track C: Sensors and Displays<a class="headerlink" href="#track-c-sensors-and-displays" title="Permanent link">&para;</a></h2>
+<p>Sensors tell the arm about the world and about itself.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lab</th>
+<th>What students build and learn</th>
+<th>Min</th>
+<th>Level</th>
+<th>Source</th>
+<th>Ch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Ultrasonic Ranging</td>
+<td>HC-SR04 echo timing; convert microseconds to centimeters; why 5 V echo needs a divider</td>
+<td>45</td>
+<td>1</td>
+<td>LM <code>sensors/03-ping.md</code>, SR <code>lessons/55-ultrasonic-sensors.md</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Time-of-Flight Distance</td>
+<td>VL53L0X over I2C; read millimeters; show on the OLED</td>
+<td>45</td>
+<td>1</td>
+<td>LM <code>sensors/07-VL53L0X_GY.md</code>, SR <code>lessons/50-tof-sensors.md</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Noise and Filtering</td>
+<td>Log 500 readings, plot in Thonny, then compare a moving average with a median filter</td>
+<td>45</td>
+<td>2</td>
+<td>New</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Rotary Encoder</td>
+<td>Count quadrature pulses with interrupts; show position and direction</td>
+<td>50</td>
+<td>2</td>
+<td>LM <code>sensors/10-rotary-encoder.md</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Tilt Angle from an IMU</td>
+<td>MPU6050 gives a link angle; smooth it with a complementary filter</td>
+<td>60</td>
+<td>3</td>
+<td>LM <code>chapters/10-motion-light-sensors</code>, SR <code>kits/imu-mpu6050</code></td>
+<td>5, 12</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Limit Switches and Homing</td>
+<td>Wire a microswitch; drive a joint until it clicks, then call that angle zero</td>
+<td>45</td>
+<td>2</td>
+<td>New</td>
+<td>8</td>
+</tr>
+<tr>
+<td>C7</td>
+<td>Current and Voltage Monitor</td>
+<td>INA219 on the supply line; print volts, amps, and watts on the OLED</td>
+<td>45</td>
+<td>2</td>
+<td>New</td>
+<td>3</td>
+</tr>
+<tr>
+<td>C8</td>
+<td>Magnetic Angle Sensor</td>
+<td>AS5600 absolute encoder on a shaft; read 12-bit angle over I2C</td>
+<td>50</td>
+<td>3</td>
+<td>New</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C9</td>
+<td>Live Plot on the Laptop</td>
+<td>Stream sensor values from the Pico over USB serial; plot them with Python on the laptop</td>
+<td>50</td>
+<td>2</td>
+<td>New</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="track-d-dc-motors-and-steppers">Track D: DC Motors and Steppers<a class="headerlink" href="#track-d-dc-motors-and-steppers" title="Permanent link">&para;</a></h2>
+<p>Servos hide the control loop. These labs open it up.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lab</th>
+<th>What students build and learn</th>
+<th>Min</th>
+<th>Level</th>
+<th>Source</th>
+<th>Ch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>DC Motor with an H-Bridge</td>
+<td>DRV8833 forward, reverse, and brake; pair with the H-Bridge Current Paths MicroSim</td>
+<td>50</td>
+<td>1</td>
+<td>LM <code>hands-on-labs/12-motors-servos-steppers/03-h-bridge.md</code>, <code>08-drv8833.md</code>; <code>docs/sims/h-bridge-current-paths/</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Motor Speed and RPM</td>
+<td>PWM duty vs. speed; measure RPM with an encoder or a slotted wheel</td>
+<td>50</td>
+<td>2</td>
+<td>SR <code>lessons/20-motor-speed.md</code>, <code>25-pwm.md</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Stepper Basics with a 28BYJ-48</td>
+<td>ULN2003 driver; full-step and half-step sequences; count steps per revolution</td>
+<td>50</td>
+<td>1</td>
+<td>LM <code>hands-on-labs/12-motors-servos-steppers/07-stepper-motors.md</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>NEMA 17 with Step/Dir</td>
+<td>A4988 or DRV8825 driver; set the current limit with a multimeter; microstepping</td>
+<td>60</td>
+<td>2</td>
+<td>New</td>
+<td>5</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Acceleration Ramps and Lost Steps</td>
+<td>Start too fast and watch the motor stall; add a ramp and fix it</td>
+<td>50</td>
+<td>2</td>
+<td>New</td>
+<td>5</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Turntable with Homing</td>
+<td>Stepper plus limit switch; command angles in degrees, not steps</td>
+<td>60</td>
+<td>3</td>
+<td>New</td>
+<td>8, 11</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>Closed-Loop Stepper</td>
+<td>AS5600 on the stepper shaft detects a missed step and corrects it</td>
+<td>60</td>
+<td>3</td>
+<td>New</td>
+<td>5</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>PID Position Control</td>
+<td>DC motor plus encoder; tune P, then I, then D, and plot each response</td>
+<td>70</td>
+<td>3</td>
+<td>New</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="track-e-build-a-mini-arm">Track E: Build a Mini Arm<a class="headerlink" href="#track-e-build-a-mini-arm" title="Permanent link">&para;</a></h2>
+<p>These labs turn parts into a mechanism. They need a cheap arm: laser-cut or
+printed links, two to four MG90S servos, and a pen or pointer for the end.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lab</th>
+<th>What students build and learn</th>
+<th>Min</th>
+<th>Level</th>
+<th>Source</th>
+<th>Ch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Assemble a 2-Link Arm</td>
+<td>Mount two servos, set horns at known angles, label shoulder and elbow</td>
+<td>60</td>
+<td>2</td>
+<td>New; see <code>robot-arm-drawing</code> skill and <code>docs/sims/two-link-workspace-explorer/</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Forward Kinematics on the Pico</td>
+<td>Given two angles, compute the hand position; check it against a ruler</td>
+<td>60</td>
+<td>3</td>
+<td>New</td>
+<td>12</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Inverse Kinematics Pen Plotter</td>
+<td>Given a target point, compute the angles; draw a line, a square, and a circle</td>
+<td>90</td>
+<td>3</td>
+<td>New</td>
+<td>12</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>Workspace Mapping</td>
+<td>Sweep every angle pair; mark reachable points on graph paper; compare to the Two-Link Workspace MicroSim</td>
+<td>60</td>
+<td>2</td>
+<td>New</td>
+<td>2, 12</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Joystick Teleoperation</td>
+<td>Dual-axis joystick drives two joints; add a button to open and close the gripper</td>
+<td>50</td>
+<td>2</td>
+<td>LM <code>misc/projects.md</code> (joystick notes)</td>
+<td>11</td>
+</tr>
+<tr>
+<td>E6</td>
+<td>Waypoint Recorder</td>
+<td>A button saves the current pose to a list; a second button plays the list back and stores it in a JSON file</td>
+<td>60</td>
+<td>3</td>
+<td>LM <code>advanced-labs/17-file-system.md</code></td>
+<td>11</td>
+</tr>
+<tr>
+<td>E7</td>
+<td>Pan-Tilt Depth Map</td>
+<td>Two servos sweep a ToF sensor; build a 2D depth map</td>
+<td>70</td>
+<td>3</td>
+<td>LM <code>hands-on-labs/12-motors-servos-steppers/09-2d-depth-mapping.md</code></td>
+<td>14</td>
+</tr>
+<tr>
+<td>E8</td>
+<td>Pick and Place a Block</td>
+<td>Move above a block, descend, grip, lift, move, release; add pauses and speed limits</td>
+<td>90</td>
+<td>3</td>
+<td>New</td>
+<td>11, 18</td>
+</tr>
+</tbody>
+</table>
+<h2 id="track-f-communication-and-bus-servos">Track F: Communication and Bus Servos<a class="headerlink" href="#track-f-communication-and-bus-servos" title="Permanent link">&para;</a></h2>
+<p>This track connects the Pico to the protocol chapters. It is the bridge from
+hobby servos to the STS3215 servos in the SO-ARM101.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lab</th>
+<th>What students build and learn</th>
+<th>Min</th>
+<th>Level</th>
+<th>Source</th>
+<th>Ch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>UART Loopback</td>
+<td>Wire TX to RX on one Pico; send bytes and read them back; see baud-rate mismatch</td>
+<td>40</td>
+<td>1</td>
+<td>New</td>
+<td>4</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Two Picos Talking</td>
+<td>Pico A sends a packet; Pico B verifies the checksum and answers</td>
+<td>60</td>
+<td>2</td>
+<td>New</td>
+<td>4</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Pico as a Serial Arm Controller</td>
+<td>Laptop Python sends <code>MOVE 1 90</code>; the Pico moves a servo. First hardware abstraction layer</td>
+<td>60</td>
+<td>2</td>
+<td>New</td>
+<td>4, 10</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Fake Arm, Real Arm</td>
+<td>Same laptop program drives a software fake arm and the Pico arm through one class</td>
+<td>50</td>
+<td>3</td>
+<td>New</td>
+<td>10</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Logic Analyzer Lab</td>
+<td>Capture PWM and UART with an inexpensive logic analyzer (or a second Pico); read the waveforms</td>
+<td>60</td>
+<td>2</td>
+<td>New</td>
+<td>4</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Ping an STS3215</td>
+<td>Half-duplex UART to one bus servo; build the ping packet by hand; read position, voltage, and temperature</td>
+<td>70</td>
+<td>3</td>
+<td>New</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>Move and Chain Bus Servos</td>
+<td>Set servo IDs; move two servos on one wire; read all registers</td>
+<td>70</td>
+<td>3</td>
+<td>New</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>CAN Loopback with an MCP2515</td>
+<td>SPI CAN module in loopback mode; send and receive a frame; read arbitration IDs</td>
+<td>70</td>
+<td>3</td>
+<td>New</td>
+<td>4</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>Two-Node CAN</td>
+<td>Two Picos with MCP2515 modules exchange frames; add termination and see why it matters</td>
+<td>70</td>
+<td>3</td>
+<td>New</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="track-g-power-and-safety">Track G: Power and Safety<a class="headerlink" href="#track-g-power-and-safety" title="Permanent link">&para;</a></h2>
+<p>Safety labs are the ones students remember. They also match Chapters 3 and 17.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lab</th>
+<th>What students build and learn</th>
+<th>Min</th>
+<th>Level</th>
+<th>Source</th>
+<th>Ch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1</td>
+<td>Power Budget</td>
+<td>Measure idle, moving, and stall current for each motor; size a supply with a 50% margin</td>
+<td>50</td>
+<td>2</td>
+<td>New</td>
+<td>3</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Build an E-Stop</td>
+<td>Normally closed button in series with a relay or MOSFET cuts motor power; Pico reads its state and shows it on the OLED</td>
+<td>60</td>
+<td>2</td>
+<td>New</td>
+<td>3, 17</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Soft Limits</td>
+<td>A <code>Joint</code> class clamps angle and speed; test it with out-of-range commands</td>
+<td>45</td>
+<td>2</td>
+<td>New</td>
+<td>5, 17</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Heartbeat and Watchdog</td>
+<td>Laptop sends a heartbeat; the Pico stops the arm if it goes quiet, and the hardware watchdog resets a hung program</td>
+<td>60</td>
+<td>3</td>
+<td>LM <code>advanced-labs/13-timers.md</code> (WDT)</td>
+<td>17</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Overheat and Overload Guard</td>
+<td>Read temperature or load and stop the joint when it passes a threshold</td>
+<td>50</td>
+<td>3</td>
+<td>New</td>
+<td>5, 17</td>
+</tr>
+<tr>
+<td>G6</td>
+<td>Fuse and Wire Gauge</td>
+<td>Compare thin and thick wire under load; measure voltage drop; blow a fuse on purpose in a safe setup</td>
+<td>50</td>
+<td>2</td>
+<td>New; see <code>docs/sims/wire-voltage-drop-explorer/</code></td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="track-h-integration-and-capstones">Track H: Integration and Capstones<a class="headerlink" href="#track-h-integration-and-capstones" title="Permanent link">&para;</a></h2>
+<p>Each capstone combines three or more earlier labs. Prerequisites are listed.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lab</th>
+<th>What students build and learn</th>
+<th>Min</th>
+<th>Level</th>
+<th>Prereqs</th>
+<th>Ch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>Guarded Move</td>
+<td>The gripper approaches an object and stops 2 cm away, using a ToF sensor</td>
+<td>60</td>
+<td>3</td>
+<td>C2, E1, G3</td>
+<td>14</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Servo Radar</td>
+<td>A servo sweeps an ultrasonic or ToF sensor; draw a polar plot on the laptop</td>
+<td>70</td>
+<td>3</td>
+<td>C2, B1, C9</td>
+<td>14</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>Teach Pendant</td>
+<td>OLED, three knobs, and buttons on a handheld box that drives the mini arm and shows pose and status</td>
+<td>90</td>
+<td>3</td>
+<td>A5, B3, E6, G2</td>
+<td>11</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>Distance-Triggered Wave</td>
+<td>Wave the arm when a hand comes within 30 cm; add a cooldown so it never chatters</td>
+<td>45</td>
+<td>2</td>
+<td>C2, B4</td>
+<td>18</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>Agent-Safe Tool Server</td>
+<td>The Pico exposes <code>move_to</code>, <code>read_distance</code>, and <code>stop</code> over serial; a laptop script (later, an AI agent) calls them through a safety layer that enforces limits</td>
+<td>120</td>
+<td>3</td>
+<td>F3, G3, G4</td>
+<td>15, 16, 17</td>
+</tr>
+<tr>
+<td>H6</td>
+<td>Mini Leader-Follower Over Serial</td>
+<td>Two Picos: one reads three knobs, one drives three servos, linked by UART with a heartbeat</td>
+<td>120</td>
+<td>3</td>
+<td>B9, F2, G4</td>
+<td>2, 11</td>
+</tr>
+<tr>
+<td>H7</td>
+<td>Draw a Signature</td>
+<td>Record a pen path with the waypoint recorder, then replay it with IK smoothing</td>
+<td>120</td>
+<td>3</td>
+<td>E3, E6</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<h2 id="suggested-first-twelve-to-write">Suggested First Twelve to Write<a class="headerlink" href="#suggested-first-twelve-to-write" title="Permanent link">&para;</a></h2>
+<p>Write these first. They form one connected path and each uses only parts we
+already plan to buy.</p>
+<ol>
+<li><strong>A1</strong> Hello, Pico</li>
+<li><strong>A4</strong> Reading a Knob</li>
+<li><strong>B1</strong> First Servo Sweep</li>
+<li><strong>B2</strong> Calibrate Your Servo</li>
+<li><strong>B5</strong> Servo Power and Brownouts</li>
+<li><strong>B3</strong> Knob-Controlled Servo</li>
+<li><strong>C2</strong> Time-of-Flight Distance</li>
+<li><strong>B4</strong> Smooth Motion</li>
+<li><strong>F3</strong> Pico as a Serial Arm Controller</li>
+<li><strong>G3</strong> Soft Limits</li>
+<li><strong>D3</strong> Stepper Basics with a 28BYJ-48</li>
+<li><strong>B9</strong> Three-Pot Leader, Three-Servo Follower</li>
+</ol>
+<h2 id="core-station-kit-draft">Core Station Kit (draft)<a class="headerlink" href="#core-station-kit-draft" title="Permanent link">&para;</a></h2>
+<p>All prices are rough estimates for planning, not quotes.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Qty</th>
+<th>Approx. cost</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi Pico 2 W with headers</td>
+<td>1</td>
+<td>$7</td>
+<td>All</td>
+</tr>
+<tr>
+<td>Half-size breadboard and jumper kit</td>
+<td>1</td>
+<td>$6</td>
+<td>All</td>
+</tr>
+<tr>
+<td>SSD1306 128x64 I2C OLED</td>
+<td>1</td>
+<td>$5</td>
+<td>A5 and later</td>
+</tr>
+<tr>
+<td>VL53L0X ToF sensor</td>
+<td>1</td>
+<td>$4</td>
+<td>C2, E7, H1, H2</td>
+</tr>
+<tr>
+<td>HC-SR04 ultrasonic sensor and 2 resistors</td>
+<td>1</td>
+<td>$3</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>10 kohm potentiometers</td>
+<td>3</td>
+<td>$2</td>
+<td>A4, B3, B9</td>
+</tr>
+<tr>
+<td>Push buttons</td>
+<td>4</td>
+<td>$1</td>
+<td>A2, E6</td>
+</tr>
+<tr>
+<td>MG90S micro servos</td>
+<td>4</td>
+<td>$12</td>
+<td>B, E</td>
+</tr>
+<tr>
+<td>5 V 3 A bench or wall supply with barrel jack adapter</td>
+<td>1</td>
+<td>$8</td>
+<td>B5, G1</td>
+</tr>
+<tr>
+<td>INA219 current sensor</td>
+<td>1</td>
+<td>$3</td>
+<td>B6, C7, G1</td>
+</tr>
+<tr>
+<td>Multimeter</td>
+<td>1 per pair</td>
+<td>$12</td>
+<td>A3, G1</td>
+</tr>
+<tr>
+<td><strong>Core total</strong></td>
+<td></td>
+<td><strong>about $63 (about $51 without the multimeter)</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="add-ons-by-track">Add-ons by track<a class="headerlink" href="#add-ons-by-track" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Add-on</th>
+<th>Approx. cost</th>
+<th>Needed for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>28BYJ-48 stepper with ULN2003 board</td>
+<td>$4</td>
+<td>D3</td>
+</tr>
+<tr>
+<td>NEMA 17 stepper, A4988 or DRV8825 driver, 12 V supply</td>
+<td>$25</td>
+<td>D4-D7</td>
+</tr>
+<tr>
+<td>AS5600 magnetic encoder board</td>
+<td>$4</td>
+<td>C8, D7</td>
+</tr>
+<tr>
+<td>MPU6050 IMU</td>
+<td>$3</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>Rotary encoder module</td>
+<td>$2</td>
+<td>C4</td>
+</tr>
+<tr>
+<td>DRV8833 board and small DC gear motor</td>
+<td>$6</td>
+<td>D1, D2, D8</td>
+</tr>
+<tr>
+<td>Dual-axis analog joystick</td>
+<td>$2</td>
+<td>E5</td>
+</tr>
+<tr>
+<td>Relay or logic-level MOSFET module, plus mushroom E-stop</td>
+<td>$8</td>
+<td>G2</td>
+</tr>
+<tr>
+<td>MCP2515 CAN module (two) with 120-ohm terminators</td>
+<td>$10</td>
+<td>F8, F9</td>
+</tr>
+<tr>
+<td>Bus-servo adapter and one STS3215 servo</td>
+<td>$30</td>
+<td>F6, F7</td>
+</tr>
+<tr>
+<td>Cheap logic analyzer (24 MHz, 8 channel)</td>
+<td>$10</td>
+<td>F5</td>
+</tr>
+<tr>
+<td>Mini arm links, laser cut or printed</td>
+<td>$5</td>
+<td>E1-E8</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dependency-chains">Dependency Chains<a class="headerlink" href="#dependency-chains" title="Permanent link">&para;</a></h2>
+<p>Read each line left to right. A lab needs the ones before it on its line.</p>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Chain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Move a servo precisely</td>
+<td>A1, A4, B1, B2, B3, B4</td>
+</tr>
+<tr>
+<td>Build and aim a mini arm</td>
+<td>B2, E1, E2, E3</td>
+</tr>
+<tr>
+<td>Sense the world</td>
+<td>A1, A5, C2, then H1 or H2</td>
+</tr>
+<tr>
+<td>Control from a laptop</td>
+<td>B1, F3, G3, F4, H5</td>
+</tr>
+<tr>
+<td>Bus servos and CAN</td>
+<td>F1, F2, F6, F7 (and F8, F9 for CAN)</td>
+</tr>
+<tr>
+<td>Leader and follower</td>
+<td>B3, B9, F2, G4, H6</td>
+</tr>
+</tbody>
+</table>
+<h2 id="microsim-ideas-to-pair-with-labs">MicroSim Ideas to Pair with Labs<a class="headerlink" href="#microsim-ideas-to-pair-with-labs" title="Permanent link">&para;</a></h2>
+<p>A lab asks students to <em>do</em>; a MicroSim lets them <em>predict</em> first. These pair
+well and several already exist.</p>
+<table>
+<thead>
+<tr>
+<th>MicroSim</th>
+<th>Pairs with</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H-Bridge Current Paths</td>
+<td>D1</td>
+<td>Exists (<code>docs/sims/h-bridge-current-paths/</code>)</td>
+</tr>
+<tr>
+<td>Two-Link Workspace Explorer</td>
+<td>E1, E4</td>
+<td>Exists</td>
+</tr>
+<tr>
+<td>Leader and Follower Mirror</td>
+<td>B9, H6</td>
+<td>Exists</td>
+</tr>
+<tr>
+<td>Common Ground Loop</td>
+<td>B5</td>
+<td>Exists</td>
+</tr>
+<tr>
+<td>Wire Voltage-Drop Explorer</td>
+<td>G6</td>
+<td>Exists</td>
+</tr>
+<tr>
+<td>Servo Pulse-Width Explorer (adapt <code>learning-micropython/docs/sims/servo-pwm-explorer/</code>)</td>
+<td>B1, B2</td>
+<td>To build</td>
+</tr>
+<tr>
+<td>Stepper Step Sequence Animator</td>
+<td>D3, D4</td>
+<td>To build</td>
+</tr>
+<tr>
+<td>Debounce Waveform Viewer</td>
+<td>A2</td>
+<td>To build</td>
+</tr>
+<tr>
+<td>Ultrasonic Echo Timing (adapt <code>learning-micropython/docs/sims/ultrasonic-ranging/</code>)</td>
+<td>C1</td>
+<td>To build</td>
+</tr>
+<tr>
+<td>Acceleration Ramp Plotter</td>
+<td>B4, D5</td>
+<td>To build</td>
+</tr>
+<tr>
+<td>UART Byte Timing Diagram</td>
+<td>F1, F2</td>
+<td>To build</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lab-page-template-proposal">Lab Page Template (proposal)<a class="headerlink" href="#lab-page-template-proposal" title="Permanent link">&para;</a></h2>
+<p>Every finished lab should follow the same shape so students learn where to
+look:</p>
+<ol>
+<li><strong>Goal</strong> in one sentence, and the one new idea (the book's one-new-idea rule)</li>
+<li><strong>Time, level, cost</strong></li>
+<li><strong>Parts list</strong> with a link to the station kit</li>
+<li><strong>Safety check</strong> (power source, pinch points, what to unplug first)</li>
+<li><strong>Wiring diagram</strong> and a wiring table</li>
+<li><strong>Predict first</strong>: a question to answer before running anything</li>
+<li><strong>Code</strong> in short steps, each Python block with <code>linenums="1"</code></li>
+<li><strong>What you should see</strong>, including the common wrong result</li>
+<li><strong>Troubleshooting</strong> table: symptom, likely cause, fix</li>
+<li><strong>Extend it</strong>: two stretch tasks</li>
+<li><strong>Check yourself</strong>: three short questions</li>
+<li><strong>Link to the chapter</strong> and to the next lab</li>
+</ol>
+<h2 id="open-questions-for-the-author">Open Questions for the Author<a class="headerlink" href="#open-questions-for-the-author" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Which Pico?</strong> Pico 2 W is assumed. A plain Pico is $4 cheaper and runs everything here except Wi-Fi.</li>
+<li><strong>Which mini arm?</strong> Laser-cut MG90S arm, printed arm, or a purchased $25 kit? E labs depend on this choice.</li>
+<li><strong>STS3215 from a Pico.</strong> The bus servo uses half-duplex TTL serial at high baud rates. Before writing F6 and F7, confirm a Pico plus an adapter board can drive it reliably; if not, run these labs from the laptop instead.</li>
+<li><strong>CAN.</strong> The Pico has no CAN controller, so F8 and F9 need the MCP2515 module. They are the most expensive and least reusable labs. Keep or cut?</li>
+<li><strong>Lab numbering.</strong> Keep track letters (A to H) or number labs in one global order like a course?</li>
+<li><strong>Where do answers go?</strong> Instructor guides are a separate section in this book and do not use the mascot.</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hands-On Labs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Hands-On Labs
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../learning-graph/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

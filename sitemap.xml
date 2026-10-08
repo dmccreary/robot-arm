@@ -2,186 +2,198 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dmccreary.github.io/robot-arm/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/about/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/contact/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/course-description/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/license/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/procurement-notes/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/appendices/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/appendices/pwm-servos/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/01-python-setup-for-robotics/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/02-anatomy-of-a-robot-arm/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/03-electricity-power-and-safety/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/04-serial-and-can-communication/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/05-actuators-and-sensors/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/06-sourcing-parts-and-budget/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/07-printing-fasteners-and-tools/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/08-building-the-so-arm/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/09-building-the-rebot-devarm/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/10-python-hardware-library/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/11-moving-the-arm/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/12-kinematics/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/13-logging-testing-simulation/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/14-perception-and-learning/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/15-agents-and-openclaw-skills/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/16-agent-planning-and-vision/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/17-agent-safety-and-evaluation/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/18-projects-operation-and-teaching/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/chapters/19-advanced-arm-path-mathematics/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/img/mascot/character-sheet/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/labs/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/labs/list-of-ideas/</loc>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/concept-list/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/concept-taxonomy/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/course-description-assessment/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/mascot-test/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/quality-metrics/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/learning-graph/taxonomy-distribution/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/common-ground-loop/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/graph-viewer/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/robot-arm/sims/h-bridge-current-paths/</loc>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/leader-follower-mirror/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/ohms-law-explorer/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/protected-power-path/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/pwm-vs-bus-servos/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/robot-arm-part-identifier/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/two-link-workspace-explorer/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/robot-arm/sims/wire-voltage-drop-explorer/</loc>
-         <lastmod>2026-10-07</lastmod>
+         <lastmod>2026-10-08</lastmod>
     </url>
 </urlset>

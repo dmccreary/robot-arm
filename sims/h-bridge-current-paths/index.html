@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+        <meta name="description" content="Set the four switches of an H-bridge motor driver and predict whether the motor runs forward, runs in reverse, coasts, brakes, or short-circuits the supply, then watch animated current dots follow the closed path. Used in Chapter 5.">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/chapters/13-logging-testing-simulation/">
+        <link rel="canonical" href="https://dmccreary.github.io/robot-arm/sims/h-bridge-current-paths/">
       
       
-        <link rel="prev" href="../12-kinematics/">
+        <link rel="prev" href="../common-ground-loop/">
       
       
-        <link rel="next" href="../14-perception-and-learning/">
+        <link rel="next" href="../../appendices/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>13. Logging, Testing, Simulation, and ROS 2 - Controlling a Robot Arm</title>
+        <title>H-Bridge Current Paths - Controlling a Robot Arm</title>
       
     
     
@@ -65,7 +65,9 @@
     
     
     
-  </head>
+    <meta property="og:image" content="https://dmccreary.github.io/robot-arm/sims/h-bridge-current-paths/h-bridge-current-paths.png">
+  <meta name="twitter:image" content="https://dmccreary.github.io/robot-arm/sims/h-bridge-current-paths/h-bridge-current-paths.png">
+</head>
   
   
     
@@ -82,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#logging-testing-simulation-and-ros-2" class="md-skip">
+        <a href="#h-bridge-current-paths" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              13. Logging, Testing, Simulation, and ROS 2
+              H-Bridge Current Paths
             
           </span>
         </div>
@@ -317,601 +319,118 @@
       
   
   
-    
   
   
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
   
-    
-    
+  
+    <a href="../../chapters/" class="md-nav__link">
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
   
   <span class="md-ellipsis">
     Chapters
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Chapters
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-python-setup-for-robotics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    1. Setting Up Python for Robotics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-anatomy-of-a-robot-arm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    2. Anatomy of a Robot Arm
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-electricity-power-and-safety/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    3. Electricity, Power, and Safety Basics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-serial-and-can-communication/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    4. Serial and CAN Communication
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-actuators-and-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    5. Actuators and Sensors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-sourcing-parts-and-budget/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Sourcing Parts and Planning a Budget
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-printing-fasteners-and-tools/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    7. 3D Printing, Fasteners, and Tools
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08-building-the-so-arm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8. Building and Calibrating the SO-ARM100
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-building-the-rebot-devarm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    9. Building the reBot-DevArm and Choosing a Platform
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-python-hardware-library/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    10. A Python Hardware Library for Robot Arms
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11-moving-the-arm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    11. Moving the Arm: Trajectories, Grippers, and Teleoperation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12-kinematics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    12. Kinematics: Where Is the Hand and How Do I Get There
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    13. Logging, Testing, Simulation, and ROS 2
-  </span>
+    </a>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    13. Logging, Testing, Simulation, and ROS 2
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14-perception-and-learning/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    14. Cameras, Perception, and Learning from Demonstration
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15-agents-and-openclaw-skills/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    15. AI Agents, Tools, and OpenClaw Skills
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16-agent-planning-and-vision/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    16. Agent Planning, Vision, and Interfaces
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../17-agent-safety-and-evaluation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    17. Safety Layers and Evaluation for Agent-Controlled Arms
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../18-projects-operation-and-teaching/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    18. Projects, Operation, and Teaching
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19-advanced-arm-path-mathematics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    19. Optional Advanced Chapter: The Mathematics of Arm Paths
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1025,82 +544,456 @@
       
   
   
+    
   
   
-    
-    
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
-  
-    <a href="../../sims/" class="md-nav__link">
+    
+    
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     MicroSims
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            MicroSims
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph Viewer
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pwm-vs-bus-servos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hobby PWM Servo vs. Serial Bus Servo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../robot-arm-part-identifier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Arm Part Identifier
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../two-link-workspace-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-Link Workspace Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leader-follower-mirror/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Leader and Follower Mirror
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ohms-law-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ohm's Law Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wire-voltage-drop-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wire Voltage-Drop Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protected-power-path/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fuse and E-Stop Power Path
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common-ground-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Ground Loop
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    H-Bridge Current Paths
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    H-Bridge Current Paths
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--built" title="Built — implementation complete, awaiting review">
+    </span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1222,27 +1115,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary
+      Description
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Concepts Covered
+      Lesson Plan
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#specification" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Specification
     </span>
   </a>
   
@@ -1263,7 +1156,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/chapters/13-logging-testing-simulation/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/robot-arm/blob/main/docs/sims/h-bridge-current-paths/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1271,131 +1164,37 @@
   
 
 
-<h1 id="logging-testing-simulation-and-ros-2">Logging, Testing, Simulation, and ROS 2<a class="headerlink" href="#logging-testing-simulation-and-ros-2" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>This chapter covers the tools that make robot code trustworthy. You will add logging and plotting, write tests with pytest against the fake arm, and use simulation and URDF models before touching hardware. It also gives guided tours of Pinocchio, Isaac Sim, and ROS 2. After this chapter, you will be able to test robot code safely.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
-<p>This chapter covers the following 23 concepts from the learning graph:</p>
-<table>
-<thead>
-<tr>
-<th>Concept</th>
-<th>Concept Impact Score</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Logging Module</td>
-<td>86</td>
-</tr>
-<tr>
-<td>CSV Logging</td>
-<td>78</td>
-</tr>
-<tr>
-<td>Matplotlib Plot</td>
-<td>30</td>
-</tr>
-<tr>
-<td>Simulation</td>
-<td>17</td>
-</tr>
-<tr>
-<td>Pytest</td>
-<td>12</td>
-</tr>
-<tr>
-<td>Unit Test</td>
-<td>10</td>
-</tr>
-<tr>
-<td>Plotting Trajectories</td>
-<td>7</td>
-</tr>
-<tr>
-<td>Success Rate</td>
-<td>7</td>
-</tr>
-<tr>
-<td>URDF Model</td>
-<td>6</td>
-</tr>
-<tr>
-<td>ROS 2 Tour</td>
-<td>5</td>
-</tr>
-<tr>
-<td>ROS Node</td>
-<td>4</td>
-</tr>
-<tr>
-<td>ROS Topic</td>
-<td>3</td>
-</tr>
-<tr>
-<td>Test Coverage</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Physics Simulator</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Log Levels</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Plotting Workspace</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Test Fixtures</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Testing Safety Limits</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Regression Testing</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Pinocchio Library</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Isaac Sim Tour</td>
-<td>1</td>
-</tr>
-<tr>
-<td>MoveIt Planning</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Sim-to-Real Gap</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>This chapter builds on concepts from:</p>
-<ul>
-<li><a href="../01-python-setup-for-robotics/">Chapter 1: Setting Up Python for Robotics</a></li>
-<li><a href="../02-anatomy-of-a-robot-arm/">Chapter 2: Anatomy of a Robot Arm</a></li>
-<li><a href="../05-actuators-and-sensors/">Chapter 5: Actuators and Sensors</a></li>
-<li><a href="../10-python-hardware-library/">Chapter 10: A Python Hardware Library for Robot Arms</a></li>
-<li><a href="../11-moving-the-arm/">Chapter 11: Moving the Arm: Trajectories, Grippers, and Teleoperation</a></li>
-<li><a href="../12-kinematics/">Chapter 12: Kinematics: Where Is the Hand and How Do I Get There</a></li>
-</ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<h1 id="h-bridge-current-paths">H-Bridge Current Paths<a class="headerlink" href="#h-bridge-current-paths" title="Permanent link">&para;</a></h1>
+<iframe src="main.html" height="562px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="main.html">Run the H-Bridge Current Paths MicroSim Fullscreen</a></p>
+<p>You can include this MicroSim on your website using the following <code>iframe</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/robot-arm/sims/h-bridge-current-paths/main.html"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        <span class="na">height</span><span class="o">=</span><span class="s">"562px"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Set the four switches of an H-bridge motor driver and predict whether the motor runs forward, runs in reverse, coasts, brakes, or short-circuits the supply, then watch animated current dots follow the closed path. Used in Chapter 5.</p>
+<h2 id="lesson-plan">Lesson Plan<a class="headerlink" href="#lesson-plan" title="Permanent link">&para;</a></h2>
+<p><strong>Grade level:</strong> Middle school and up (age 12+).  <strong>Time:</strong> 10 to 15 minutes.</p>
+<ol>
+<li><strong>Predict first.</strong> Read which switches are closed, trace a path from the supply to ground, and choose what the motor does before the circuit runs.</li>
+<li><strong>Watch the dots.</strong> Orange dots show conventional current. They go through the motor from left to right for forward and from right to left for reverse.</li>
+<li><strong>Find the forbidden state.</strong> Two switches closed in the same leg connect the supply straight to ground. The dots turn red and speed up.</li>
+<li><strong>Explore.</strong> After the six combinations, toggle the switches yourself and look for every combination that brakes the motor.</li>
+</ol>
+<p>The picture is a <strong>schematic</strong>, drawn with the shared <code>circuit-lib.js</code> helpers.</p>
+<h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h2>
+<p>The learning objective, evidence of mastery and content for this MicroSim are specified in
+<a href="../../chapters/05-actuators-and-sensors/">Chapter 5: Actuators and Sensors</a>.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1425,7 +1224,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../12-kinematics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 12. Kinematics: Where Is the Hand and How Do I Get There">
+          <a href="../common-ground-loop/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Common Ground Loop">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1435,20 +1234,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                12. Kinematics: Where Is the Hand and How Do I Get There
+                Common Ground Loop
               </div>
             </div>
           </a>
         
         
           
-          <a href="../14-perception-and-learning/" class="md-footer__link md-footer__link--next" aria-label="Next: 14. Cameras, Perception, and Learning from Demonstration">
+          <a href="../../appendices/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Appendices">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                14. Cameras, Perception, and Learning from Demonstration
+                List of Appendices
               </div>
             </div>
             <div class="md-footer__button md-icon">

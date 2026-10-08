@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on sourcing parts, building, and programming low-cost robot arms, using the open-source SO-ARM100 and the Seeed Studio reBot-DevArm as hands-on case studies.">
+        <meta name="description" content="How to make and check the parts of an arm that are not bought as a kit: FDM 3D printing, filament and print settings, tolerances and quality checks, screws and servo horns, crimping and soldering, cable care, and the multimeter, with a Python lab that checks an STL file before it is printed.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -26,7 +26,7 @@
     
     
       
-        <title>7. 3D Printing, Fasteners, and Tools - Controlling a Robot Arm</title>
+        <title>3D Printing, Fasteners, and Tools - Controlling a Robot Arm</title>
       
     
     
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. 3D Printing, Fasteners, and Tools
+              3D Printing, Fasteners, and Tools
             
           </span>
         </div>
@@ -649,6 +649,306 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#printing-the-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      Printing the Frame
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Printing the Frame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3d-printing-and-the-fdm-printer" class="md-nav__link">
+    <span class="md-ellipsis">
+      3D Printing and the FDM Printer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3d-printer-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      3D Printer Safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filament" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filament
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-a-design-to-the-printer" class="md-nav__link">
+    <span class="md-ellipsis">
+      From a Design to the Printer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimensional-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dimensional Tolerance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimensional Tolerance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-tolerance-fit-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Tolerance Fit Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-quality-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print Quality Inspection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Print Quality Inspection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-print-defect-diagnoser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Print Defect Diagnoser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-print-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      What a Print Costs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fasteners-and-assembly-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fasteners and Assembly Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fasteners and Assembly Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fasteners-and-screws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fasteners and Screws
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo-horns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Horns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assembly-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assembly Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wires-connectors-and-meters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wires, Connectors, and Meters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wires, Connectors, and Meters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-servo-cable" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Servo Cable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crimping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crimping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soldering-and-soldering-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soldering and Soldering Safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cable-management-and-strain-relief" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cable Management and Strain Relief
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-multimeter" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Multimeter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Multimeter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-multimeter-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Multimeter Practice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-check-a-part-before-you-print-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab: Check a Part Before You Print It
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab: Check a Part Before You Print It">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-read-the-ascii-plate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge: Read the ASCII Plate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-check-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Check Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -932,6 +1232,53 @@
       
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
         
       
         
@@ -982,6 +1329,10 @@
   
     
     
+      
+        
+          
+        
       
         
           
@@ -1197,6 +1548,306 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#printing-the-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      Printing the Frame
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Printing the Frame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3d-printing-and-the-fdm-printer" class="md-nav__link">
+    <span class="md-ellipsis">
+      3D Printing and the FDM Printer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3d-printer-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      3D Printer Safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filament" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filament
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-a-design-to-the-printer" class="md-nav__link">
+    <span class="md-ellipsis">
+      From a Design to the Printer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimensional-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dimensional Tolerance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimensional Tolerance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-tolerance-fit-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Tolerance Fit Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-quality-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print Quality Inspection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Print Quality Inspection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-print-defect-diagnoser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Print Defect Diagnoser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-print-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      What a Print Costs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fasteners-and-assembly-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fasteners and Assembly Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fasteners and Assembly Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fasteners-and-screws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fasteners and Screws
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo-horns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Horns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assembly-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assembly Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wires-connectors-and-meters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wires, Connectors, and Meters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wires, Connectors, and Meters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-servo-cable" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Servo Cable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crimping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crimping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soldering-and-soldering-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soldering and Soldering Safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cable-management-and-strain-relief" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cable Management and Strain Relief
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-multimeter" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Multimeter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Multimeter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-multimeter-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Multimeter Practice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-check-a-part-before-you-print-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab: Check a Part Before You Print It
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab: Check a Part Before You Print It">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-read-the-ascii-plate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge: Read the ASCII Plate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-check-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Check Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1359,13 +2010,1111 @@
 <li><a href="../06-sourcing-parts-and-budget/">Chapter 6: Sourcing Parts and Planning a Budget</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Let's Make My Bones!</p>
+<p><img alt="Servo waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+The motors you ordered are my muscles, but the printed parts are my bones, and nobody sells those in a box. In this chapter you will learn to print them well, check that they fit, fasten them, and test the wires that join them, and you will write a Python script that checks a part before a single gram of plastic is used. Let's move it!</p>
+</div>
+<p>Chapter 6 ended with a motor kit on the way and a line in the budget that said "3D-printed parts: to be recorded in Chapter 7." This chapter fills that line. The frame of the SO-ARM101 is plastic that you print, the motors are held in it with small screws, and the whole arm is connected by cables. Each of those three jobs has its own craft: printing, fastening, and wiring. A mistake in any of them is cheap to make and annoying to find, so the chapter spends as much time on <em>checking</em> as on making.</p>
+<p>The chapter follows the path of a part. It starts with the machine that makes the plastic, then follows a design file from your computer to the printer, then covers how to judge what came out. The second half turns to screws and horns, the wires and connectors, and the meter that tells you whether electricity is going where you think.</p>
+<h2 id="printing-the-frame">Printing the Frame<a class="headerlink" href="#printing-the-frame" title="Permanent link">&para;</a></h2>
+<h3 id="3d-printing-and-the-fdm-printer">3D Printing and the FDM Printer<a class="headerlink" href="#3d-printing-and-the-fdm-printer" title="Permanent link">&para;</a></h3>
+<p><strong>3D printing</strong> builds an object by adding material one thin layer at a time, which is why it is also called additive manufacturing. A machine that <em>removes</em> material (a saw or a drill) starts with a block and cuts away what is not needed. A 3D printer starts with nothing and adds only what is needed, so it can make shapes that no saw could cut, such as a hollow arm link with ribs inside.</p>
+<p>The printers in this book are <strong>FDM printers</strong>. FDM stands for fused deposition modeling. An FDM printer pushes a plastic string, the filament, into a hot metal tip called the <strong>nozzle</strong>, where it melts. The nozzle moves over a flat plate called the <strong>bed</strong> and lays down a thin line of molten plastic, which cools and hardens in a fraction of a second. When one layer is finished, the nozzle moves up (or the bed moves down) by one layer height and draws the next layer on top of the last. A motor-driven gear called the <strong>extruder</strong> feeds the filament, and the part of the machine that holds the nozzle and heater is the <strong>hot end</strong>.</p>
+<p>A small calculation shows what that means for time. The follower print plate in the SO-ARM100 repository is about 87 mm tall. At a layer height of 0.2 mm, the printer must draw <span class="arithmatex">\( 87 / 0.2 = 435 \)</span> layers, and each layer is a full pass of the nozzle over every part on the plate. That is why a plate takes many hours, and why it is worth checking a file <em>before</em> you start rather than after.</p>
+<p>The size of the bed limits the size of a part. This is the <strong>build volume</strong>, given as width, depth and height. The repository supplies print plates that are already laid out for two common sizes of bed: 220 × 220 mm (the Creality Ender 3 class) and 205 × 250 mm (the Prusa and UP class). You will check one of these in the lab.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Everything Is Layers</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Almost every choice in 3D printing comes from one fact: the part is a stack of thin lines that are glued to each other by heat. Along a layer the plastic is one continuous strand, and between two layers it is only a weld. Keep that picture in mind and the settings in this chapter stop being a list to memorize.</p>
+</div>
+<h3 id="3d-printer-safety">3D Printer Safety<a class="headerlink" href="#3d-printer-safety" title="Permanent link">&para;</a></h3>
+<p><strong>3D printer safety</strong> starts with heat. The nozzle runs at roughly 190 to 260 °C depending on the plastic, and the bed is usually warm as well, so touching either can burn you. Wait for the bed to cool before you reach in, and never touch the nozzle. Melting plastic also gives off fumes and very fine particles, so print in a room with fresh air, and put the printer on a surface that does not burn, with some clear space around it. Do not leave a printer running unattended, especially overnight, and keep a smoke alarm in the room. Keep hair, sleeves and cables away from the moving parts. As the course description says, readers under 16 should print with an adult present.</p>
+<h3 id="filament">Filament<a class="headerlink" href="#filament" title="Permanent link">&para;</a></h3>
+<p><strong>Filament</strong> is the plastic string that a printer uses. The common sizes are 1.75 mm and 2.85 mm in diameter, and most desktop printers take 1.75 mm. It is sold on spools, usually by the kilogram, and the label on the spool gives the plastic type, the diameter, and the temperature range the maker recommends. Follow the spool's label before any table in a book, including this one. Filament that has soaked up moisture from the air bubbles and makes rough prints, so keep spools in a closed box.</p>
+<p>Two plastics matter for this arm. <strong>PLA</strong> (polylactic acid) is the easiest plastic to print. It melts at a fairly low temperature, it warps little, and it is the material that the SO-ARM100 repository asks for, in a version called PLA+. PLA+ is a trade name for PLA blends that are tougher than plain PLA, and the blend differs between makers. PLA has one weakness that the arm's builders should know: it softens at about 60 to 65 °C, the temperature at which the plastic stops being rigid. The inside of a car in the sun can pass 50 to 60 °C, and a PLA part under load there can slowly bend. <strong>PETG</strong> (a glycol-modified polyester) is a little harder to print, takes hotter settings, and keeps its shape to a higher temperature, near 80 °C. It is a good choice for a part that will be warm.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PLA</th>
+<th>PETG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typical nozzle temperature</td>
+<td>About 185 to 235 °C</td>
+<td>About 215 to 270 °C</td>
+</tr>
+<tr>
+<td>Typical bed temperature</td>
+<td>About 50 to 60 °C</td>
+<td>About 70 to 90 °C</td>
+</tr>
+<tr>
+<td>Softens at about</td>
+<td>60 to 65 °C</td>
+<td>About 80 °C</td>
+</tr>
+<tr>
+<td>Ease of printing</td>
+<td>Easiest</td>
+<td>Needs more tuning (it strings more)</td>
+</tr>
+<tr>
+<td>Used for the SO-ARM101</td>
+<td>Yes, as PLA+ (the repository's choice)</td>
+<td>An alternative for warm places</td>
+</tr>
+</tbody>
+</table>
+<p>The temperatures are typical ranges from filament makers, so read the spool.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Do Not Leave PLA in a Hot Car</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A PLA arm left in a sunny window or a parked car can soften and sag, and the holes for the motors can stretch until the screws no longer grip. Store the arm in a cool place, and if a part must live somewhere warm, reprint it in PETG.</p>
+</div>
+<h3 id="from-a-design-to-the-printer">From a Design to the Printer<a class="headerlink" href="#from-a-design-to-the-printer" title="Permanent link">&para;</a></h3>
+<p>A design reaches a printer through a short chain of file types. Each one has a job, and it helps to know which file you are holding.</p>
+<p>A <strong>STEP file</strong> (extension <code>.step</code> or <code>.stp</code>) is the exact shape from a CAD program. It stores true curves and surfaces, not approximations, so it is the file to use if you want to change the design. The SO-ARM100 repository has a folder of STEP files for that purpose. An <strong>STL file</strong> (<code>.stl</code>) is a shape that has been cut into a surface of small triangles. An STL file stores nothing but those triangles: no colors, and no units, so the same file can be read as millimeters or inches. It is the file that printers' software accepts, and the repository's printable parts are all STL files.</p>
+<p>A <strong>slicer</strong> is a program (PrusaSlicer, Cura, Bambu Studio and OrcaSlicer are common ones) that takes an STL file and cuts it into layers, then plans the path that the nozzle will follow in each layer. Its output is a <strong>G-code</strong> file. G-code is plain text, one command per line, that tells the printer where to move, how fast, and how much filament to push. A line such as <code>G1 X50 Y10 E1.6</code> means "move in a straight line to X = 50 mm, Y = 10 mm, and push the extruder to a total of 1.6 mm of filament". Everything after a semicolon is a comment. The printer reads the G-code from a card or over the network, and prints it.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Made by</th>
+<th>Holds</th>
+<th>You use it to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STEP</td>
+<td>CAD program</td>
+<td>Exact shapes</td>
+<td>Change the design</td>
+</tr>
+<tr>
+<td>STL</td>
+<td>CAD program or export</td>
+<td>A mesh of triangles</td>
+<td>Hand a shape to the slicer</td>
+</tr>
+<tr>
+<td>G-code</td>
+<td>Slicer</td>
+<td>Moves and extrusion, one per line</td>
+<td>Run the printer</td>
+</tr>
+</tbody>
+</table>
+<p>An STL file comes in two forms. An <strong>ASCII STL</strong> is text, with a few lines for every triangle, and it is large. A <strong>binary STL</strong> is a compact block of bytes: an 80-byte header, then a 4-byte count of the triangles, then 50 bytes for each triangle. Each triangle's 50 bytes are twelve 4-byte decimal numbers (three for the direction the triangle faces, and three each for its three corners) and two spare bytes. That fixed size gives a quick check. A binary file with 96,584 triangles must be exactly <span class="arithmatex">\( 80 + 4 + 50 \times 96584 = 4{,}829{,}284 \)</span> bytes long, and the Prusa-bed follower plate in the repository is exactly that. You will read files with this layout in Python in the lab, using the <code>struct</code> module from Chapter 4.</p>
+<h3 id="print-settings">Print Settings<a class="headerlink" href="#print-settings" title="Permanent link">&para;</a></h3>
+<p><strong>Print settings</strong> are the choices you give the slicer, and they decide how strong the part is, how long it takes, and how it looks. The SO-ARM100 repository recommends these, in its "Printing the Parts" instructions.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>The repository's recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>PLA+</td>
+</tr>
+<tr>
+<td>Nozzle and layer height</td>
+<td>0.4 mm nozzle at 0.2 mm layers, or 0.6 mm nozzle at 0.4 mm layers</td>
+</tr>
+<tr>
+<td>Infill</td>
+<td>15 percent</td>
+</tr>
+<tr>
+<td>Supports</td>
+<td>Everywhere, but ignore slopes steeper than 45 degrees to the horizontal; no supports inside screw holes whose axes are horizontal</td>
+</tr>
+<tr>
+<td>Bed preparation</td>
+<td>Level the bed; clean off dust and grease; a thin layer of glue stick if the printer's maker recommends it</td>
+</tr>
+</tbody>
+</table>
+<p>The recommendation leaves out the temperatures, the speed and the number of walls, so use your filament's label and your slicer's defaults for those. The repository's own instructions for printing services say 20 percent infill, which is a reminder that these numbers are a starting point.</p>
+<p><strong>Layer height</strong> is the thickness of each layer. A smaller layer height gives a smoother surface and takes more layers: the follower plate needs 435 layers at 0.2 mm and <span class="arithmatex">\( 87 / 0.4 \approx 218 \)</span> at 0.4 mm, about half as many, which is why the repository offers the 0.6 mm nozzle at 0.4 mm as an alternative. The limit is the nozzle: a layer is usually kept below about three quarters of the nozzle width. <strong>Infill</strong> is how much of the <em>inside</em> of a part is filled with plastic, given as a percentage. The outside walls are always solid, and the inside is a light pattern, like a honeycomb. At 15 percent the inside is mostly air, which saves plastic and time, and for small parts that are held by screws the walls carry most of the load anyway. Raising the infill makes a part heavier and a little stronger, and the gain falls off quickly.</p>
+<p><strong>Support material</strong> is a scaffold of thin plastic that the slicer adds under any part that hangs in the air, such as a hole in a wall or a bridge, because a layer cannot be printed on nothing. You break it off afterwards, and it leaves a rougher surface. The repository's rule of ignoring slopes steeper than 45 degrees means that a surface that leans out by less than 45 degrees from vertical prints well without support, and one that leans out further needs it. It also asks you to avoid supports in horizontal screw holes, because they are hard to clean out of a small hole.</p>
+<p><strong>Print orientation</strong> is the direction in which a part sits on the bed. It matters for strength, because the weakest direction of a printed part is <em>between</em> layers. A peg printed standing up is a stack of thin welds that can snap along one layer, and the same peg printed lying down has strands that run along its length. Orientation also decides where the supports go. The repository's plates are already arranged so that each part has "z upwards to minimize supports", so for this arm you will rarely change the orientation, but you should know why it was chosen.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Use the Plate for Your Bed</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Load the print plate that was made for your bed size. The Prusa-class follower plate is about 243 × 205 mm, which fits a 205 × 250 mm bed (barely) and does not fit a 220 × 220 mm one. Check the size with the lab script before you slice, and save a wasted afternoon.</p>
+</div>
+<h3 id="warping">Warping<a class="headerlink" href="#warping" title="Permanent link">&para;</a></h3>
+<p><strong>Warping</strong> is when the corners of a part curl up off the bed during the print. Plastic shrinks as it cools, and the layers on the bed cool slower than the ones above them, so the part pulls itself into a bow. The curl is worst on large flat parts and on plastics that shrink a lot. It is a small problem with PLA and a large one with ABS, a harder plastic that needs a closed, warm box around the printer. You prevent warping by starting with a level, clean bed, a thin layer of glue stick if your printer's maker recommends one, the bed temperature on the spool's label, and no cold draughts across the print. A warped corner can also catch the moving nozzle and knock the whole print out of position, which the inspection section calls a layer shift.</p>
+<h3 id="dimensional-tolerance">Dimensional Tolerance<a class="headerlink" href="#dimensional-tolerance" title="Permanent link">&para;</a></h3>
+<p><strong>Dimensional tolerance</strong> is the amount by which a real dimension may differ from the intended one and still work. A tolerance of <span class="arithmatex">\( \pm 0.2 \)</span> mm on a 40 mm part means any length from 39.8 to 40.2 mm is acceptable. A well-tuned desktop FDM printer typically holds about <span class="arithmatex">\( \pm 0.1 \)</span> to <span class="arithmatex">\( \pm 0.3 \)</span> mm, a figure that depends on the printer, the plastic and the part, and makers of 3D-printing services give the same range.</p>
+<p>Two things follow. First, a hole usually prints <em>smaller</em> than designed, because the nozzle's plastic spreads inwards, so a hole needs a little extra room. Second, parts that must slide or fit together need a <strong>clearance</strong>, a deliberate gap. A common starting rule is to leave about 0.15 to 0.2 mm. The clearance is the printed hole minus the part that goes in it:</p>
+<div class="arithmatex">\[ \text{clearance} = \text{printed hole size} - \text{mating part size} \]</div>
+<p>Here is a worked example with a real size. The STS3215 servo body is 45.2 × 24.7 × 35 mm, according to Feetech's data sheet. A pocket designed exactly 24.7 mm wide, on a printer that makes holes 0.15 mm small, prints 24.55 mm wide. The clearance is <span class="arithmatex">\( 24.55 - 24.7 = -0.15 \)</span> mm. It is negative, so the servo will not go in. A pocket designed 25.0 mm wide, on the same printer with a 0.10 mm error, prints 24.90 mm, which gives <span class="arithmatex">\( 24.90 - 24.7 = +0.20 \)</span> mm, a good sliding fit. The next MicroSim lets you predict the outcome for six cases, and then change the numbers yourself. The sizes in it are illustrative, apart from the servo's and the screw's.</p>
+<h4 id="diagram-tolerance-fit-explorer">Diagram: Tolerance Fit Explorer<a class="headerlink" href="#diagram-tolerance-fit-explorer" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Tolerance Fit Explorer</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> tolerance-fit-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Understand<br/>
+<strong>Bloom Verb:</strong> infer<br/>
+<strong>Learning Objective:</strong> The learner will infer whether a printed hole is too tight, snug, a good sliding fit, or loose from its designed size, the printer's size error and the size of the part that goes into it, in six cases, with at least 5 of 6 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> 3D printing, dimensional tolerance, clearance, printed hole size, mating part (all defined in the section above this block).</p>
+<p><strong>Evidence of Mastery:</strong> For each of six cases the learner chooses one of four outcomes and commits before the outcome is shown. A choice is correct when it matches the Outcome column in Content. Mastery is 5 of 6 correct on the first attempt. Changing the numbers in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) A hole prints at exactly the size that was designed. (It prints smaller by the printer's error.) (2) A bigger hole is always safer. (Beyond about 0.3 mm of clearance the part rattles.) (3) Zero clearance is a perfect fit. (It is a press fit that may not go in at all.)</p>
+<p><strong>Instructional Rationale:</strong> An Understand-level infer objective asks the learner to reason from numbers to a physical outcome. Predicting before the result is shown makes the learner apply the clearance rule instead of watching a picture.</p>
+<p><strong>Content:</strong></p>
+<p>Explore mode has three quantities the learner can change, and shows the printed hole size, the clearance and the outcome, with the picture of a part sliding into a hole.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Min</th>
+<th>Max</th>
+<th>Step</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Designed hole size</td>
+<td>2.5</td>
+<td>26.0</td>
+<td>0.05</td>
+<td>25.0</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>Printer size error (negative means the hole prints smaller)</td>
+<td>-0.40</td>
+<td>0.40</td>
+<td>0.05</td>
+<td>-0.10</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>Mating part size</td>
+<td>2.5</td>
+<td>26.0</td>
+<td>0.05</td>
+<td>24.7</td>
+<td>mm</td>
+</tr>
+</tbody>
+</table>
+<p>The four outcomes: "Too tight", "Snug", "Good sliding fit", "Loose". Six cases in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Case</th>
+<th>Designed hole (mm)</th>
+<th>Printer error (mm)</th>
+<th>Mating part (mm)</th>
+<th>Outcome</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>STS3215 body width into a pocket designed with no extra room</td>
+<td>24.70</td>
+<td>-0.15</td>
+<td>24.70</td>
+<td>Too tight</td>
+<td>The pocket prints 24.55 mm, so the clearance is -0.15 mm and the servo will not go in.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>STS3215 body width into a pocket designed with 0.3 mm of room</td>
+<td>25.00</td>
+<td>-0.10</td>
+<td>24.70</td>
+<td>Good sliding fit</td>
+<td>The pocket prints 24.90 mm, so the clearance is +0.20 mm.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>M3 screw shaft into a hole designed at 3.2 mm</td>
+<td>3.20</td>
+<td>-0.25</td>
+<td>3.00</td>
+<td>Too tight</td>
+<td>The hole prints 2.95 mm, so the clearance is -0.05 mm and the screw will not enter.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>M3 screw shaft into a hole designed at 3.4 mm</td>
+<td>3.40</td>
+<td>-0.20</td>
+<td>3.00</td>
+<td>Good sliding fit</td>
+<td>The hole prints 3.20 mm, so the clearance is +0.20 mm.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>M3 screw shaft into a hole designed at 3.8 mm</td>
+<td>3.80</td>
+<td>-0.10</td>
+<td>3.00</td>
+<td>Loose</td>
+<td>The hole prints 3.70 mm, so the clearance is +0.70 mm and the screw rattles.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Servo output spline of 5.9 mm into a hole designed at 6.0 mm</td>
+<td>6.00</td>
+<td>-0.10</td>
+<td>5.90</td>
+<td>Snug</td>
+<td>The hole prints 5.90 mm, so the clearance is 0.00 mm, a press fit.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The servo body width (24.7 mm) and the output spline outer diameter (5.9 mm) are from Feetech's STS3215 data sheet. The M3 shaft diameter (3.0 mm) is the standard size. The designed hole sizes and printer errors are illustrative values written for this sim, and the sim labels them "illustrative". The clearance rule is from the chapter section "Dimensional Tolerance".</p>
+<p><strong>Rules:</strong> printed hole = designed hole + printer error. Clearance = printed hole - mating part, rounded to 0.01 mm. Clearance &lt; 0 is "Too tight". 0 &lt;= clearance &lt; 0.10 is "Snug". 0.10 &lt;= clearance &lt;= 0.30 is "Good sliding fit". Clearance &gt; 0.30 is "Loose". In Explore mode the picture of the part and the hole is drawn from the same rule.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner changes the three quantities and watches the printed size, the clearance and the outcome. The learner should notice that a printer error of -0.10 mm turns a designed clearance of 0.30 mm into 0.20 mm.</li>
+<li>The learner switches to the six cases. Case 1 is shown with the numbers but not the outcome.</li>
+<li>The learner chooses one of the four outcomes and commits.</li>
+<li>The sim shows whether the choice was correct and the Why text, then moves on. After case 6 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Six cases, fixed order, one attempt each. Correct: "Correct: <outcome>. <Why>". Incorrect: "Not quite. This case is <outcome>. <Why>". The correct outcome is revealed after each commit. A running count "Correct: n of 6" is shown and the final screen says whether mastery (5 of 6) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with the defaults, showing a printed hole of 24.90 mm, a clearance of 0.20 mm and the outcome "Good sliding fit".</p>
+<p><strong>Chapter Anchors:</strong> The chapter states a typical FDM tolerance of about ±0.1 to ±0.3 mm, a starting clearance of about 0.15 to 0.2 mm, the servo body width of 24.7 mm, the worked example of -0.15 mm and +0.20 mm, and the rule that clearance is the printed hole minus the mating part. The sim has six cases and mastery is 5 of 6.</p>
+</details>
+<h3 id="print-quality-inspection">Print Quality Inspection<a class="headerlink" href="#print-quality-inspection" title="Permanent link">&para;</a></h3>
+<p><strong>Print quality inspection</strong> is looking at a finished print, and measuring it, before you build with it. It takes five minutes per part and saves the much longer job of taking an arm apart. The SO-ARM100 repository adds a useful tool: a set of small <strong>gauge</strong> prints. Its "Step 3" tells you to print a gauge and test it against your object, and it provides gauges for the STS3215 servo and for a LEGO brick. A gauge prints in a minute or two and tells you whether your printer's settings give the right fit for the real parts, so you print it <em>before</em> the whole plate.</p>
+<p>A good inspection goes in this order: look, then feel, then measure, then test-fit. Look for the faults in the next list. Feel the part for loose strands and for support material still stuck in a hole. Measure the sizes that matter (a servo pocket, a screw hole) with digital calipers and compare them with the plan, as the lab's tolerance check does. And test-fit one servo or screw in the part before you print more. These are the faults to know, since each has a cause and a remedy.</p>
+<table>
+<thead>
+<tr>
+<th>Fault</th>
+<th>What you see</th>
+<th>Usual cause</th>
+<th>Usual remedy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Warping</td>
+<td>Corners curl off the bed</td>
+<td>Plastic cooling and shrinking, a dirty or unlevel bed</td>
+<td>Clean and level the bed, check bed temperature, remove draughts</td>
+</tr>
+<tr>
+<td>Stringing</td>
+<td>Fine hairs of plastic between separate parts of the print</td>
+<td>The nozzle is too hot, or the filament is wet</td>
+<td>Lower the nozzle temperature, dry the filament, turn on retraction</td>
+</tr>
+<tr>
+<td>Under-extrusion</td>
+<td>Gaps or thin, weak walls</td>
+<td>Too little plastic is pushed: a partly blocked nozzle, a tangled spool, or a worn extruder</td>
+<td>Clear the nozzle, free the spool, check the filament path</td>
+</tr>
+<tr>
+<td>Layer shift</td>
+<td>The upper part is displaced sideways from the lower part</td>
+<td>The nozzle hit something (a curled corner), or a belt or screw slipped</td>
+<td>Remove what was hit, check that the belts are tight</td>
+</tr>
+<tr>
+<td>Poor first layer</td>
+<td>The first lines do not stick, or are squashed unevenly</td>
+<td>The bed is not level, or the nozzle is too far from or too close to it</td>
+<td>Level the bed, set the first-layer height, clean the bed</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagram-print-defect-diagnoser">Diagram: Print Defect Diagnoser<a class="headerlink" href="#diagram-print-defect-diagnoser" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Print Defect Diagnoser</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> print-defect-diagnoser<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Analyze<br/>
+<strong>Bloom Verb:</strong> distinguish<br/>
+<strong>Learning Objective:</strong> The learner will distinguish five common FDM print faults from eight written descriptions of failed prints, with at least 7 of 8 correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> FDM printer, nozzle, bed, layer, filament, warping, support material, print quality inspection, and the five faults in the table above this block (all defined in the sections above).</p>
+<p><strong>Evidence of Mastery:</strong> For each of eight descriptions the learner chooses one of five faults and commits. A choice is correct when it matches the Fault column in Content. Mastery is 7 of 8 correct on the first attempt. Reading the fault table in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) Every print failure comes from the settings. (Several come from the machine: a loose belt or a tangled spool.) (2) A curled corner is harmless. (It can knock the nozzle and cause a layer shift.) (3) Stringing and under-extrusion are the same fault. (One has too much plastic where there should be none, and the other too little where there should be some.)</p>
+<p><strong>Instructional Rationale:</strong> An Analyze-level distinguish objective asks the learner to tell similar-looking cases apart by the evidence. Each description is a short symptom with no label, so the learner must decide which feature separates one fault from another.</p>
+<p><strong>Content:</strong></p>
+<p>The five faults: "Warping", "Stringing", "Under-extrusion", "Layer shift", "Poor first layer". Eight descriptions in this fixed order. Each is an illustrative description written for this sim, and the sim labels the set "illustrative".</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Description shown to the learner</th>
+<th>Fault</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The corners of a large flat part have lifted off the bed and the part rocks when touched.</td>
+<td>Warping</td>
+<td>Corners that lift as the plastic cools and shrinks are warping.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Thin hairs of plastic stretch between two posts that were meant to be separate.</td>
+<td>Stringing</td>
+<td>Hairs between separate features come from plastic oozing while the nozzle travels.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The walls have visible gaps between the lines and the part snaps easily.</td>
+<td>Under-extrusion</td>
+<td>Gaps and thin walls mean too little plastic was pushed.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The top half of a tall part sits 3 mm to one side of the bottom half, and every layer above one height is displaced the same way.</td>
+<td>Layer shift</td>
+<td>A sudden sideways displacement that continues up the part is a layer shift.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The first layer came off the bed as loose strands, and the lines were squashed flat on one side of the bed and barely touching on the other.</td>
+<td>Poor first layer</td>
+<td>An uneven first layer across the bed points to a bed that is not level.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A long thin part was flat for the first hour, and by the end its ends bowed upward and the lower layers had split apart.</td>
+<td>Warping</td>
+<td>Bowing and split layers appear as the cooling part shrinks and pulls itself up.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Halfway through the print the extruder started clicking, and the later layers have holes and look thin.</td>
+<td>Under-extrusion</td>
+<td>A clicking extruder means the filament is not feeding, so the later layers got too little plastic.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>After the nozzle struck a curled-up corner, every later layer is displaced about 3 mm along one axis.</td>
+<td>Layer shift</td>
+<td>A hit on the nozzle moved the print relative to the machine, so the layers above are shifted.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The fault names, causes and remedies are from the chapter section "Print Quality Inspection". The eight descriptions are illustrative and written for this sim.</p>
+<p><strong>Rules:</strong> Each description has exactly one correct fault. The five faults are the only choices.</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner reads the five faults, each with its cause and remedy, in a list.</li>
+<li>The learner switches to the eight descriptions. Description 1 is shown.</li>
+<li>The learner chooses a fault and commits.</li>
+<li>The sim shows whether the choice was correct and the Why text, then moves on. After description 8 it shows the score and lists the faults that were missed.</li>
+</ol>
+<p><strong>Feedback:</strong> Eight descriptions, fixed order, one attempt each. Correct: "Correct: <fault>. <Why>". Incorrect: "Not quite. This is <fault>. <Why>". The correct fault is revealed after each commit. A running count "Correct: n of 8" is shown and the final screen says whether mastery (7 of 8) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with the five faults listed and the prompt "Which fault is this?" ready for the first description.</p>
+<p><strong>Chapter Anchors:</strong> The chapter's table lists the five faults (warping, stringing, under-extrusion, layer shift, poor first layer) with a cause and a remedy for each. The sim has eight descriptions and mastery is 7 of 8.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Print the Gauge First</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+The repository's small gauge prints take a few minutes and test your printer's fit against a real STS3215. If the servo does not slide in, change one setting and print the gauge again, before you commit a whole plate and half a day.</p>
+</div>
+<h3 id="what-a-print-costs">What a Print Costs<a class="headerlink" href="#what-a-print-costs" title="Permanent link">&para;</a></h3>
+<p>Chapter 6 left a line in the budget for the printed parts. The lab measures the plastic in the repository's own plates, and the answer is a bracket, because the real mass depends on the walls, the infill and the pattern that the slicer chooses. The Prusa-bed follower plate has a solid volume of 571 cm³ and the leader plate 615 cm³. If every bit were solid plastic, with PLA's density of about 1.24 g/cm³, the two plates would weigh <span class="arithmatex">\( 571 \times 1.24 \approx 709 \)</span> g and <span class="arithmatex">\( 615 \times 1.24 \approx 762 \)</span> g. At the other extreme, 15 percent of the volume with no walls would be 106 g and 114 g. A real print lies between the extremes, and the slicer will give the figure. The bracket for the pair is 220 g to 1,471 g. At an <em>illustrative</em> price of $20 per kilogram, that is <span class="arithmatex">\( 0.2206 \times 20 \approx \$4.41 \)</span> to <span class="arithmatex">\( 1.471 \times 20 \approx \$29.42 \)</span>. Check your own spool's price. Either way, printing the pair yourself costs much less than the motor kit, in plastic, and costs hours of machine time instead. This book budgets $20 or more for the printed parts, which with the $332.04 motor kit makes the whole pair about $350. If you have no printer, Chapter 6's note about buying a printed set or using a printing service applies.</p>
+<h2 id="fasteners-and-assembly-tools">Fasteners and Assembly Tools<a class="headerlink" href="#fasteners-and-assembly-tools" title="Permanent link">&para;</a></h2>
+<h3 id="fasteners-and-screws">Fasteners and Screws<a class="headerlink" href="#fasteners-and-screws" title="Permanent link">&para;</a></h3>
+<p><strong>Fasteners</strong> are the small parts that hold other parts together: screws, nuts, washers, and pins. In the SO-ARM101, nearly all of them are <strong>screws</strong>, which are a threaded shaft with a head that you turn with a screwdriver. A screw is named by the diameter of its thread and its length. An <em>M3 × 6</em> screw is metric (the M), has a thread 3 mm across, and is 6 mm long. The SO-ARM101 build uses two sizes, according to LeRobot's assembly instructions.</p>
+<table>
+<thead>
+<tr>
+<th>Screw</th>
+<th>Where it is used</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3 × 6 mm</td>
+<td>Holding a horn to a motor, and joining frame parts to horns</td>
+<td>LeRobot SO-101 instructions</td>
+</tr>
+<tr>
+<td>M2 × 6 mm</td>
+<td>Fastening a motor into the printed frame (usually four per motor), and the smallest joints</td>
+<td>LeRobot SO-101 instructions</td>
+</tr>
+</tbody>
+</table>
+<p>By the build instructions' wording, a follower arm needs about two dozen M2 × 6 and about forty to fifty M3 × 6 screws. That is the author's own count from the text, which does not give totals, so count the screws in your kit when it arrives and ask the seller if you are short. The repository does not say whether they are self-tapping screws (which cut their own thread into plastic) or machine screws, and it does not use nuts. Use the screws that come with your kit. The one rule that always applies when you screw into plastic is to stop turning when the screw is snug. A screw driven too tight strips the thread it has cut in the plastic, and the hole is then useless.</p>
+<p>A <strong>heat-set insert</strong> is a small brass nut with a ribbed outside that you press into a printed hole with a hot soldering iron. The plastic melts around it and sets, leaving a metal thread that can be screwed in and out many times without wearing. The SO-ARM101 does not use them, since all its screws go into plastic or into the servos' own holes, but you will meet them in other printed designs. The hole must be slightly <em>smaller</em> than the insert, and the insert maker's data sheet gives the size, for example about 4 mm for an M3 insert.</p>
+<h3 id="servo-horns">Servo Horns<a class="headerlink" href="#servo-horns" title="Permanent link">&para;</a></h3>
+<p>A <strong>servo horn</strong> is the plastic or metal arm that fits on a servo's output shaft and carries the next part of the arm. The shaft has a ring of fine teeth around it, called a spline, and the horn has matching teeth inside. The STS3215's spline has 25 teeth (called 25T) and an outside diameter of 5.9 mm, from Feetech's data sheet, and the horn's own screw is an M3 × 6. LeRobot's instructions have each joint motor carry two horns, one on each side. The top horn is secured with one M3 × 6 screw, and the bottom horn is not screwed on. The 25 teeth mean that the horn can be placed in 25 positions around the shaft, which is <span class="arithmatex">\( 360 / 25 = 14.4 \)</span> degrees apart, so the position you choose at assembly is a coarse setting and the calibration in Chapter 8 does the fine one.</p>
+<h3 id="assembly-tools">Assembly Tools<a class="headerlink" href="#assembly-tools" title="Permanent link">&para;</a></h3>
+<p>The <strong>assembly tools</strong> for this arm are few. The repository's list has a set of precision Phillips screwdrivers, and its instructions say the two sizes #0 and #1 are highly recommended. You also need a putty knife to lift the prints off the bed, a small screwdriver to pick out support material, and a table clamp for each arm (the list gives four clamps for two arms). Optional but very useful are digital calipers for the tolerance checks, a pair of flush cutters for supports, and tweezers for the small screws. Put the screws in small dishes, one size per dish, because an M2 × 6 and an M3 × 6 look alike in a heap.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Do Not Overtighten Plastic</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A screw in printed plastic has only the thread it cut for itself, and turning past snug strips it, so the screw spins and holds nothing. Stop when the screw stops, and if a thread does strip, move to a new hole or fill the old one and reprint the part, since a stripped joint will loosen on every move of the arm.</p>
+</div>
+<h2 id="wires-connectors-and-meters">Wires, Connectors, and Meters<a class="headerlink" href="#wires-connectors-and-meters" title="Permanent link">&para;</a></h2>
+<h3 id="the-servo-cable">The Servo Cable<a class="headerlink" href="#the-servo-cable" title="Permanent link">&para;</a></h3>
+<p>The STS3215 servos are connected by three-wire cables with a small plastic plug. Feetech's data sheet names the plug a 5264 three-pin, with the wires in this order: ground, supply voltage, and signal. The cable on the servo is 15 cm long. The pitch is 2.54 mm (0.1 inch), the same spacing as the pins on a breadboard. The SO-ARM101 build uses only ready-made cables that plug in, so building it needs no soldering and no crimping. The rest of this section teaches those skills for the day you must repair a cable, make a longer one, or wire the power for the reBot-DevArm in Chapter 9.</p>
+<h3 id="crimping">Crimping<a class="headerlink" href="#crimping" title="Permanent link">&para;</a></h3>
+<p><strong>Crimping</strong> joins a wire to a metal terminal by squeezing the terminal's barrel around the bare wire with a special tool, with no heat. A good crimp makes a gas-tight joint that is strong and conducts well. The steps are the same for most terminals: strip the insulation to the length the terminal's data sheet gives (for a 2.54 mm terminal it is only about 3 mm), place the bare wire and the terminal in the right slot of the crimping tool, and squeeze until the tool releases. Then pull the wire gently to test it. A terminal for this size of plug suits wire of about 22 to 30 AWG and is rated for a few amps, so check the data sheet and use the right tool for the terminal, because a general pair of pliers makes a poor crimp that fails later. Chapter 3's table of wire gauges tells you what current a gauge can carry.</p>
+<h3 id="soldering-and-soldering-safety">Soldering and Soldering Safety<a class="headerlink" href="#soldering-and-soldering-safety" title="Permanent link">&para;</a></h3>
+<p><strong>Soldering</strong> joins two metal parts with a melted metal alloy called solder, which flows into the joint and hardens. It is the right choice for joining wires to a circuit board and for a permanent connection. <strong>Soldering safety</strong> matters because the iron's tip runs between about 315 and 425 °C and causes serious burns. Always return the iron to its stand, never put it down on the bench, wear safety glasses because solder and flux can spit, work with fresh air moving or with a fume fan so that you do not breathe the smoke, and wash your hands afterward, since many solders contain lead. Unplug the iron when you finish. Soldering mains-powered parts is for an adult only.</p>
+<h3 id="cable-management-and-strain-relief">Cable Management and Strain Relief<a class="headerlink" href="#cable-management-and-strain-relief" title="Permanent link">&para;</a></h3>
+<p><strong>Cable management</strong> is arranging the cables so that they do not snag, pull, or rub as the arm moves. Wires that bend thousands of times in an arm break inside their insulation, and the break shows up as a fault that comes and goes. Three habits prevent most of it. Leave a little slack at each joint so the cable is never stretched when the arm moves to the end of its range. Bundle the cables along the links with ties or clips that hold them without squeezing, since a very tight tie directly on a wire crushes it. And give every connector <strong>strain relief</strong>, which is anything that takes the pull on the cable instead of the joint at the end: a clip near the plug, a loop of slack, or a sleeve. A sharp bend right beside a connector is a common place for the wire to break. Chapter 8 returns to this when you route the cables through the arm.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Test the Range Before You Tie Down</p>
+<p><img alt="Servo pointing upward with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Before you fasten a cable bundle, move the joint by hand to both ends of its range and watch the cable. Tie it down only where it stays slack at both ends, and you will not chase a flickering joint later.</p>
+</div>
+<h3 id="the-multimeter">The Multimeter<a class="headerlink" href="#the-multimeter" title="Permanent link">&para;</a></h3>
+<p>A <strong>multimeter</strong> is a hand-held meter that measures voltage, resistance and (in some modes) current, and tests whether two points are connected. It is the tool that tells you what electricity is doing, and it connects Chapter 3's ideas to a real circuit. A dial or buttons choose the mode, and two probes, one red and one black, touch the circuit. Four modes cover almost everything you will do with this arm.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Symbol</th>
+<th>What it measures</th>
+<th>How to connect</th>
+<th>Power</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DC voltage</td>
+<td>V with a straight line</td>
+<td>The voltage between two points</td>
+<td>Probes across the two points (in parallel)</td>
+<td>On</td>
+</tr>
+<tr>
+<td>Resistance</td>
+<td>Ω</td>
+<td>The resistance between two points</td>
+<td>Probes across the part, in parallel</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Continuity</td>
+<td>A diode or sound-wave symbol</td>
+<td>Whether two points are connected; it beeps if they are</td>
+<td>Probes at the two points</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>DC current</td>
+<td>A with a straight line</td>
+<td>The current in a wire</td>
+<td>The meter becomes part of the circuit: you break the wire and put the meter in the gap (in series)</td>
+<td>On</td>
+</tr>
+</tbody>
+</table>
+<p>Voltage is measured <em>across</em> two points, because it is a difference between them. Current is measured <em>through</em> a wire, because it is a flow, and so the circuit has to be opened and the meter put in the gap. This is the mistake that blows the meter's fuse: connecting the meter in current mode across a power supply is a near short circuit. Resistance must be measured with the power <em>off</em>, because the meter sends its own small current through the part and a powered circuit gives a wrong reading. When the screen shows "OL" or "1", the value is over the meter's range or the circuit is open.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Never Use Current Mode Across a Supply</p>
+<p><img alt="Servo holding up a warning sign" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+In current mode the meter is almost a wire, so probes across a supply make a short circuit that can blow the meter's fuse, or worse. To check voltage, use the voltage mode, with the probes across the points. Use the current mode only after you have opened the circuit to put the meter in series, and put the meter back in voltage mode when you finish.</p>
+</div>
+<p>The meters that most hobbyists buy are rated for low-voltage electronics. The arms in this book run from 5 to 48 V DC, which is within the range of any meter, but the supply that feeds them is plugged into the mains, and a meter used near mains must carry a safety category rating (CAT II or higher). Do not measure the mains side unless you are an adult who knows how.</p>
+<p>In the following MicroSim you practise the three choices that every measurement needs: which mode, whether the power is on, and how the meter connects. The six tasks come from this book's circuits.</p>
+<h4 id="diagram-multimeter-practice">Diagram: Multimeter Practice<a class="headerlink" href="#diagram-multimeter-practice" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Multimeter Practice</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> multimeter-practice<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified<br/>
+<strong>Bloom Level:</strong> Apply<br/>
+<strong>Bloom Verb:</strong> use<br/>
+<strong>Learning Objective:</strong> The learner will use a virtual multimeter by choosing the correct mode, power state and connection for six measuring tasks from this book's circuits, with at least 5 of 6 tasks fully correct on the first attempt.</p>
+<p><strong>Prerequisites:</strong> multimeter, DC voltage, resistance, continuity, DC current, parallel and series connection, CAN termination (all defined in the sections above this block and in Chapters 3 and 4).</p>
+<p><strong>Evidence of Mastery:</strong> For each of six tasks the learner sets three choices (the meter's mode, whether the circuit's power is on or off, and whether the meter is connected across the points or in series with the wire) and commits. A task is fully correct when all three match the Correct row in Content. Mastery is 5 of 6 tasks fully correct on the first attempt. Trying settings in Explore mode is exploration, not evidence.</p>
+<p><strong>Misconceptions:</strong> (1) Current is measured across two points, like voltage. (It is measured in series, by opening the circuit.) (2) Resistance can be measured in a live circuit. (The power must be off.) (3) Continuity is the same as voltage. (It tests for a connection and needs the power off.)</p>
+<p><strong>Instructional Rationale:</strong> An Apply-level use objective needs the learner to carry out a procedure, so the sim makes the learner set every part of a measurement, and shows what the meter would read, so a wrong setting produces a visible wrong result.</p>
+<p><strong>Content:</strong></p>
+<p>The meter has five modes: "DC voltage", "AC voltage", "Resistance", "Continuity", "DC current". The power choices are "Power on" and "Power off". The connection choices are "Across the points" and "In series (open the wire)". In Explore mode the learner can set the meter any way and choose any of the six circuits, and the sim shows what the display would read, or the warning "Short circuit: the fuse would blow" when the setting is wrong.</p>
+<p>Six tasks in this fixed order:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Mode</th>
+<th>Power</th>
+<th>Connection</th>
+<th>Expected reading</th>
+<th>Why (shown as feedback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Check that the 5 V arm supply gives about 5 V at its plug.</td>
+<td>DC voltage</td>
+<td>Power on</td>
+<td>Across the points</td>
+<td>About 5 V</td>
+<td>Voltage is a difference between two points, so the probes go across them with the supply running.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Check that one wire of a servo cable has no break.</td>
+<td>Continuity</td>
+<td>Power off</td>
+<td>Across the points</td>
+<td>A beep</td>
+<td>Continuity needs the power off and the probes at the two ends of the wire.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Check the CAN bus terminators of the reBot-DevArm bus.</td>
+<td>Resistance</td>
+<td>Power off</td>
+<td>Across the points</td>
+<td>About 60 Ω</td>
+<td>Resistance is measured with the power off, across CAN_H and CAN_L, and two 120 Ω terminators in parallel give 60 Ω.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Check whether a fuse is blown.</td>
+<td>Continuity</td>
+<td>Power off</td>
+<td>Across the points</td>
+<td>A beep if the fuse is good</td>
+<td>A good fuse is a connection, so it beeps, and an open fuse is silent.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Check whether the red and black supply wires touch each other.</td>
+<td>Continuity</td>
+<td>Power off</td>
+<td>Across the points</td>
+<td>Silence if they are apart</td>
+<td>Continuity between the two supply wires means they touch, which is a short.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Find out how much current the arm draws from its supply.</td>
+<td>DC current</td>
+<td>Power on</td>
+<td>In series (open the wire)</td>
+<td>A current in amperes</td>
+<td>Current flows through the wire, so the wire is opened and the meter is put in the gap.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Provenance:</strong> The modes, connections and the power rules are from the chapter section "The Multimeter". Task 1 uses the 5 V supply from Chapter 3. Task 3 uses the 60 Ω reading from Chapter 4. The tasks are illustrative situations written for this sim.</p>
+<p><strong>Rules:</strong> Each task has exactly one correct combination of mode, power and connection. A combination is fully correct only when all three choices are correct. The sim does not give partial credit. In Explore mode, current mode with the connection "Across the points" on a powered circuit shows the "Short circuit" warning, and resistance mode with the power on shows "Reading is not valid".</p>
+<p><strong>Learner Activity:</strong></p>
+<ol>
+<li>In Explore mode the learner tries the modes on the circuits and reads the display. The learner should notice the warnings for current mode across a supply and for resistance on a powered circuit.</li>
+<li>The learner switches to the six tasks. Task 1 is shown.</li>
+<li>The learner sets the mode, the power state and the connection, and commits.</li>
+<li>The sim shows whether all three were correct, the reading, and the Why text, then moves on. After task 6 it shows the score.</li>
+</ol>
+<p><strong>Feedback:</strong> Six tasks, fixed order, one attempt each. Correct: "Correct: <mode>, <power>, <connection>. <Why>". Incorrect: "Not quite. This task needs <mode>, <power>, <connection>. <Why>". The correct setting is revealed after each commit. A running count "Correct: n of 6" is shown and the final screen says whether mastery (5 of 6) was reached.</p>
+<p><strong>Starting State:</strong> Explore mode with the meter in DC voltage mode on the 5 V supply circuit, showing about 5 V.</p>
+<p><strong>Chapter Anchors:</strong> The chapter lists four modes (DC voltage, resistance, continuity, DC current) in a table and states that voltage is measured across two points, that current is measured in series, and that resistance needs the power off. The sim has six tasks, a task needs all three choices correct, and mastery is 5 of 6.</p>
+</details>
+<h2 id="lab-check-a-part-before-you-print-it">Lab: Check a Part Before You Print It<a class="headerlink" href="#lab-check-a-part-before-you-print-it" title="Permanent link">&para;</a></h2>
+<p>In this lab you will write a small toolkit that reads an STL file, checks whether the part fits your printer's bed, estimates the plastic it needs, reads the filament from a G-code file, and checks a measured size against a tolerance. Everything runs on any computer with no printer, and the last step uses a real print plate from the SO-ARM100 repository. The one new Python idea is the <strong><code>struct</code> module</strong>, which unpacks the numbers inside a block of bytes. You used it for packets in Chapter 4, and here it reads a file format. You will extend the <code>arm-lab</code> project.</p>
+<p><strong>Step 1. Activate the project.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/projects/arm-lab
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><strong>Step 2. Write the STL module.</strong> A binary STL is 80 bytes of header, then a 4-byte count, then 50 bytes per triangle. <code>struct.Struct("&lt;12fH")</code> describes one triangle: the <code>&lt;</code> means little-endian, <code>12f</code> means twelve 4-byte decimals (the normal and the three corners), and <code>H</code> is the 2 spare bytes, for 50 bytes in all. <code>read_stl</code> reads the whole file, checks that its length matches the count (the test from the chapter), and unpacks each triangle with <code>unpack_from</code>, which reads at a given position. <code>bounding_box</code> finds the smallest and largest value of each axis, so the size of the part is high minus low. <code>volume_mm3</code> uses a neat trick: each triangle and the origin make a small pyramid, and adding the signed volumes of all the pyramids gives the volume of the solid. <code>write_box_stl</code> makes a test file, a box, from 12 triangles, so you have something to read. Create <code>armlab/stl.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span>
+<span class="normal"><a href="#__codelineno-1-45">45</a></span>
+<span class="normal"><a href="#__codelineno-1-46">46</a></span>
+<span class="normal"><a href="#__codelineno-1-47">47</a></span>
+<span class="normal"><a href="#__codelineno-1-48">48</a></span>
+<span class="normal"><a href="#__codelineno-1-49">49</a></span>
+<span class="normal"><a href="#__codelineno-1-50">50</a></span>
+<span class="normal"><a href="#__codelineno-1-51">51</a></span>
+<span class="normal"><a href="#__codelineno-1-52">52</a></span>
+<span class="normal"><a href="#__codelineno-1-53">53</a></span>
+<span class="normal"><a href="#__codelineno-1-54">54</a></span>
+<span class="normal"><a href="#__codelineno-1-55">55</a></span>
+<span class="normal"><a href="#__codelineno-1-56">56</a></span>
+<span class="normal"><a href="#__codelineno-1-57">57</a></span>
+<span class="normal"><a href="#__codelineno-1-58">58</a></span>
+<span class="normal"><a href="#__codelineno-1-59">59</a></span>
+<span class="normal"><a href="#__codelineno-1-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="sd">"""Read and write binary STL files, the triangle-mesh format that slicers accept."""</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="n">HEADER_SIZE</span> <span class="o">=</span> <span class="mi">80</span>                      <span class="c1"># bytes of free text at the start of the file</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="n">TRIANGLE</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">Struct</span><span class="p">(</span><span class="s2">"&lt;12fH"</span><span class="p">)</span>     <span class="c1"># normal (3), three vertices (9), 2 spare bytes: 50 bytes</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">write_box_stl</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span><span class="p">):</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="sd">"""Write a solid box with one corner at the origin as 12 triangles."""</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="n">c</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dz</span><span class="p">)]</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="c1"># Each face is two triangles, listed counter-clockwise when seen from outside.</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>    <span class="n">faces</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>   <span class="c1"># x = 0</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a>        <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>   <span class="c1"># x = dx</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>   <span class="c1"># y = 0</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a>        <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>   <span class="c1"># y = dy</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>   <span class="c1"># z = 0</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>   <span class="c1"># z = dz</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a>    <span class="p">]</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"box"</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">HEADER_SIZE</span><span class="p">,</span> <span class="sa">b</span><span class="s2">" "</span><span class="p">))</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">"&lt;I"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">faces</span><span class="p">)))</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a>        <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">TRIANGLE</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">c</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="o">*</span><span class="n">c</span><span class="p">[</span><span class="n">b</span><span class="p">],</span> <span class="o">*</span><span class="n">c</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>   <span class="c1"># a zero normal: slicers recompute it</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_stl</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">    </span><span class="sd">"""Return the triangles of a binary STL file as a list of three (x, y, z) tuples each."""</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a>        <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a>    <span class="p">(</span><span class="n">count</span><span class="p">,)</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack_from</span><span class="p">(</span><span class="s2">"&lt;I"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">HEADER_SIZE</span><span class="p">)</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HEADER_SIZE</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">count</span> <span class="o">*</span> <span class="n">TRIANGLE</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a>        <span class="n">hint</span> <span class="o">=</span> <span class="s2">" (it starts with 'solid', so it may be an ASCII STL)"</span> <span class="k">if</span> <span class="n">data</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">"solid"</span> <span class="k">else</span> <span class="s2">""</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"not a binary STL file: the size does not match the triangle count"</span> <span class="o">+</span> <span class="n">hint</span><span class="p">)</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a>    <span class="n">triangles</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a>        <span class="n">values</span> <span class="o">=</span> <span class="n">TRIANGLE</span><span class="o">.</span><span class="n">unpack_from</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">HEADER_SIZE</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">TRIANGLE</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a>        <span class="n">v</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span>                          <span class="c1"># skip the 3 normal numbers</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a>        <span class="n">triangles</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]),</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]),</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">])])</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41"></a>    <span class="k">return</span> <span class="n">triangles</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42"></a>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43"></a>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="k">def</span><span class="w"> </span><span class="nf">bounding_box</span><span class="p">(</span><span class="n">triangles</span><span class="p">):</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w">    </span><span class="sd">"""Return ((min_x, min_y, min_z), (max_x, max_y, max_z)) of all the vertices."""</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46"></a>    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">tri</span> <span class="ow">in</span> <span class="n">triangles</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">tri</span><span class="p">]</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47"></a>    <span class="n">low</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48"></a>    <span class="n">high</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49"></a>    <span class="k">return</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50"></a>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51"></a>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_mm3</span><span class="p">(</span><span class="n">triangles</span><span class="p">):</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w">    </span><span class="sd">"""Volume of a closed mesh: add up the signed volume of a tetrahedron per triangle."""</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54"></a>    <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55"></a>    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">triangles</span><span class="p">:</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56"></a>        <span class="n">cross</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57"></a>                 <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58"></a>                 <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59"></a>        <span class="n">total</span> <span class="o">+=</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">cross</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">cross</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">cross</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">6</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60"></a>    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Step 3. Write the checks.</strong> <code>fits_bed</code> compares the part's length and width with the bed, trying both ways round, by sorting each pair of sizes. <code>mass_g</code> turns a volume into grams: 1,000 mm³ is 1 cm³, and the density of PLA is about 1.24 g/cm³. <code>filament_length_m</code> finds how long a 1.75 mm string holds that mass, using the area of the filament's circle. <code>check_dimension</code> returns whether a measured size is within the tolerance of the intended one, and the signed error. Create <code>armlab/printcheck.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="sd">"""Sanity checks to run on a part before it goes to the printer."""</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">PLA_DENSITY_G_CM3</span> <span class="o">=</span> <span class="mf">1.24</span>      <span class="c1"># typical for PLA; check the spool's label</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="n">FILAMENT_DIAMETER_MM</span> <span class="o">=</span> <span class="mf">1.75</span>   <span class="c1"># the common size; the other is 2.85 mm</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">fits_bed</span><span class="p">(</span><span class="n">size_mm</span><span class="p">,</span> <span class="n">bed_mm</span><span class="p">):</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="sd">"""True if a part of size (x, y) fits on a bed of size (x, y), in either orientation."""</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>    <span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">),</span> <span class="p">(</span><span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">)</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">size_mm</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">bed_mm</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="k">return</span> <span class="n">px</span> <span class="o">&lt;=</span> <span class="n">bx</span> <span class="ow">and</span> <span class="n">py</span> <span class="o">&lt;=</span> <span class="n">by</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">mass_g</span><span class="p">(</span><span class="n">volume_mm3</span><span class="p">,</span> <span class="n">fill_fraction</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="n">PLA_DENSITY_G_CM3</span><span class="p">):</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">    </span><span class="sd">"""Mass of plastic if the given fraction of the part's volume is solid."""</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="k">return</span> <span class="n">volume_mm3</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">fill_fraction</span> <span class="o">*</span> <span class="n">density</span>          <span class="c1"># 1000 mm^3 = 1 cm^3</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="k">def</span><span class="w"> </span><span class="nf">filament_length_m</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="n">PLA_DENSITY_G_CM3</span><span class="p">,</span> <span class="n">diameter</span><span class="o">=</span><span class="n">FILAMENT_DIAMETER_MM</span><span class="p">):</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="sd">"""Length of filament that holds `mass` grams of plastic."""</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>    <span class="n">area_mm2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">diameter</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>    <span class="k">return</span> <span class="n">mass</span> <span class="o">/</span> <span class="n">density</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="n">area_mm2</span> <span class="o">/</span> <span class="mi">1000</span>              <span class="c1"># g -&gt; cm^3 -&gt; mm^3 -&gt; mm -&gt; m</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="k">def</span><span class="w"> </span><span class="nf">check_dimension</span><span class="p">(</span><span class="n">nominal</span><span class="p">,</span> <span class="n">measured</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">):</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">    </span><span class="sd">"""Return (ok, error): is the measured size within +/- tolerance of the nominal one?"""</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>    <span class="n">error</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">measured</span> <span class="o">-</span> <span class="n">nominal</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a>    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">error</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Step 4. Write the G-code reader.</strong> The file has one command per line. The function throws away the comment (everything after a <code>;</code>), and looks at lines that start with <code>G1</code>, a move. A word that begins with <code>E</code> is the total filament pushed so far, so the amount used in one move is the new <code>E</code> minus the old one. A retraction (the extruder pulls back a little to stop oozing) is a <em>negative</em> step and cancels the push that follows it, so adding the signed steps gives the net filament. <code>G92 E0</code> resets the count. Create <code>armlab/gcode.py</code>, and a short hand-made G-code file, <code>config/sample.gcode</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="sd">"""Read a few facts out of a G-code file."""</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">filament_used_mm</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="sd">"""Return (moves, filament_mm): the number of G1 moves and the filament pushed in total.</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="sd">    Assumes absolute extrusion (M82), where E is the total pushed so far and G92 resets it.</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="sd">    """</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>    <span class="n">moves</span><span class="p">,</span> <span class="n">used</span><span class="p">,</span> <span class="n">e_now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>    <span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>        <span class="n">line</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">";"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>          <span class="c1"># everything after ; is a comment</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>            <span class="k">continue</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a>        <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>        <span class="k">if</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"G92"</span><span class="p">:</span>                     <span class="c1"># "set position": E restarts from a new value</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a>            <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a>                <span class="k">if</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"E"</span><span class="p">:</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a>                    <span class="n">e_now</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a>        <span class="k">elif</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"G1"</span><span class="p">:</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a>            <span class="n">moves</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a>            <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a>                <span class="k">if</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"E"</span><span class="p">:</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a>                    <span class="n">e_new</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a>                    <span class="n">used</span> <span class="o">+=</span> <span class="n">e_new</span> <span class="o">-</span> <span class="n">e_now</span>         <span class="c1"># a retraction is negative, so it cancels the un-retract</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a>                    <span class="n">e_now</span> <span class="o">=</span> <span class="n">e_new</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a>    <span class="k">return</span> <span class="n">moves</span><span class="p">,</span> <span class="n">used</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>; a tiny hand-written example, not from a real slicer
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>M82              ; absolute extrusion
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>G92 E0           ; start counting filament at zero
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>G1 Z0.2 F1200    ; move the nozzle to the first layer height
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>G1 X10 Y10 F3000 ; travel with no plastic
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>G1 X50 Y10 E1.6  ; print a line: 1.6 mm of filament pushed
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>G1 X50 Y30 E2.4  ; print a line
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>G1 E1.9          ; retract by 0.5 mm so the nozzle does not ooze
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>G1 X10 Y30       ; travel
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>G1 E2.4          ; un-retract
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>G1 X10 Y10 E4.0  ; print a line
+</span></code></pre></div>
+<p><strong>Step 5. Write the check script and run it.</strong> The script makes a small block (40 × 20 × 10 mm) and a part that is too long (300 × 40 × 10 mm), reads each file back, and prints its size, volume, whether it fits a 220 × 220 mm bed, and the plastic it needs when it is fully solid and when it is 15 percent solid. It then reads the sample G-code and checks two measured sizes. The measured sizes (a block length of 40.12 mm and a screw hole of 3.05 mm) are made up for the lab. Create <code>partcheck.py</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="sd">"""Check a part before printing it: size, plastic needed, and G-code filament."""</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.gcode</span><span class="w"> </span><span class="kn">import</span> <span class="n">filament_used_mm</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.printcheck</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_dimension</span><span class="p">,</span> <span class="n">filament_length_m</span><span class="p">,</span> <span class="n">fits_bed</span><span class="p">,</span> <span class="n">mass_g</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.stl</span><span class="w"> </span><span class="kn">import</span> <span class="n">bounding_box</span><span class="p">,</span> <span class="n">read_stl</span><span class="p">,</span> <span class="n">volume_mm3</span><span class="p">,</span> <span class="n">write_box_stl</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="n">BED_MM</span> <span class="o">=</span> <span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>          <span class="c1"># an Ender-3-class bed, from the SO-ARM100 printing notes</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="n">HERE</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="n">write_box_stl</span><span class="p">(</span><span class="n">HERE</span> <span class="o">/</span> <span class="s2">"block.stl"</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="n">write_box_stl</span><span class="p">(</span><span class="n">HERE</span> <span class="o">/</span> <span class="s2">"huge.stl"</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"block.stl"</span><span class="p">,</span> <span class="s2">"huge.stl"</span><span class="p">):</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a>    <span class="n">triangles</span> <span class="o">=</span> <span class="n">read_stl</span><span class="p">(</span><span class="n">HERE</span> <span class="o">/</span> <span class="n">name</span><span class="p">)</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a>    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">bounding_box</span><span class="p">(</span><span class="n">triangles</span><span class="p">)</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a>    <span class="n">size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">l</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">))</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a>    <span class="n">volume</span> <span class="o">=</span> <span class="n">volume_mm3</span><span class="p">(</span><span class="n">triangles</span><span class="p">)</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">triangles</span><span class="p">)</span><span class="si">}</span><span class="s2"> triangles, size </span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2"> mm, volume </span><span class="si">{</span><span class="n">volume</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> mm^3"</span><span class="p">)</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   fits the bed: </span><span class="si">{</span><span class="n">fits_bed</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">BED_MM</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a>    <span class="k">for</span> <span class="n">fill</span> <span class="ow">in</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">):</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a>        <span class="n">grams</span> <span class="o">=</span> <span class="n">mass_g</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">fill</span><span class="p">)</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   </span><span class="si">{</span><span class="n">fill</span><span class="si">:</span><span class="s2">&gt;4.0%</span><span class="si">}</span><span class="s2"> solid: </span><span class="si">{</span><span class="n">grams</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2"> g, </span><span class="si">{</span><span class="n">filament_length_m</span><span class="p">(</span><span class="n">grams</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m of filament"</span><span class="p">)</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25"></a>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="n">lines</span> <span class="o">=</span> <span class="p">(</span><span class="n">HERE</span> <span class="o">/</span> <span class="s2">"config"</span> <span class="o">/</span> <span class="s2">"sample.gcode"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="n">moves</span><span class="p">,</span> <span class="n">used</span> <span class="o">=</span> <span class="n">filament_used_mm</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sample.gcode: </span><span class="si">{</span><span class="n">moves</span><span class="si">}</span><span class="s2"> G1 moves, </span><span class="si">{</span><span class="n">used</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mm of filament"</span><span class="p">)</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29"></a>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">nominal</span><span class="p">,</span> <span class="n">measured</span><span class="p">,</span> <span class="n">tol</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"block length"</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">40.12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="s2">"screw hole"</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">3.05</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)]:</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31"></a>    <span class="n">ok</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">check_dimension</span><span class="p">(</span><span class="n">nominal</span><span class="p">,</span> <span class="n">measured</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">: nominal </span><span class="si">{</span><span class="n">nominal</span><span class="si">}</span><span class="s2">, measured </span><span class="si">{</span><span class="n">measured</span><span class="si">}</span><span class="s2">, error </span><span class="si">{</span><span class="n">err</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="s1">'ok'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'OUT OF TOLERANCE'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>partcheck.py
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>block.stl: 12 triangles, size (40.0, 20.0, 10.0) mm, volume 8000 mm^3
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>   fits the bed: True
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>   100% solid:  9.92 g, 3.33 m of filament
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    15% solid:  1.49 g, 0.50 m of filament
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>huge.stl: 12 triangles, size (300.0, 40.0, 10.0) mm, volume 120000 mm^3
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>   fits the bed: False
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>   100% solid: 148.80 g, 49.89 m of filament
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    15% solid: 22.32 g, 7.48 m of filament
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>sample.gcode: 8 G1 moves, 4.0 mm of filament
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>block length: nominal 40.0, measured 40.12, error +0.12 -&gt; ok
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>screw hole: nominal 3.4, measured 3.05, error -0.35 -&gt; OUT OF TOLERANCE
+</span></code></pre></div>
+<p>Read the results as a designer would. The block fits, uses about 1.5 to 10 g of plastic, and its length is within 0.2 mm of 40 mm. The long part is rejected because 300 mm does not fit a 220 mm bed, with no need to slice it. The screw hole was designed at 3.4 mm and printed 3.05 mm, 0.35 mm small, which is out of the 0.2 mm tolerance and, with a 3.0 mm screw, leaves a clearance of only 0.05 mm: it is snug, and a screw would go in only with force. The G-code pushes 4.0 mm of filament in total: 1.6, then 0.8, then a 0.5 mm retraction, then 0.5 mm back, then 1.6.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">A Check Is Cheaper Than a Print</p>
+<p><img alt="Servo thinking with a hand on chin" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice that the script rejected the long part in a few milliseconds, and the printer would have needed hours to find out the same thing. Turning a physical failure into a number that a program can test is one of the most useful habits in robotics, and you will use it again with joint limits and power in later chapters.</p>
+</div>
+<p><strong>Step 6. Try it on a real plate.</strong> This step uses a real file from the SO-ARM100 repository. Download <code>Prusa_Follower_SO101.stl</code> from the repository's <code>STL/SO101/Follower</code> folder (the file is about 4.8 MB), and save it next to your scripts. Then create <code>plate_check.py</code>, which takes the file name when you run it:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="sd">"""Check a real print plate from the SO-ARM100 repository: python plate_check.py FILE.stl"""</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.printcheck</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits_bed</span><span class="p">,</span> <span class="n">mass_g</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">armlab.stl</span><span class="w"> </span><span class="kn">import</span> <span class="n">bounding_box</span><span class="p">,</span> <span class="n">read_stl</span><span class="p">,</span> <span class="n">volume_mm3</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="n">BEDS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Ender-class (220 x 220)"</span><span class="p">:</span> <span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">220</span><span class="p">),</span> <span class="s2">"Prusa/UP-class (205 x 250)"</span><span class="p">:</span> <span class="p">(</span><span class="mi">205</span><span class="p">,</span> <span class="mi">250</span><span class="p">)}</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="n">triangles</span> <span class="o">=</span> <span class="n">read_stl</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">bounding_box</span><span class="p">(</span><span class="n">triangles</span><span class="p">)</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="n">size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">l</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">))</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="n">volume</span> <span class="o">=</span> <span class="n">volume_mm3</span><span class="p">(</span><span class="n">triangles</span><span class="p">)</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">triangles</span><span class="p">)</span><span class="si">}</span><span class="s2"> triangles, size </span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2"> mm, volume </span><span class="si">{</span><span class="n">volume</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> cm^3"</span><span class="p">)</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">bed</span> <span class="ow">in</span> <span class="n">BEDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   fits </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">fits_bed</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">bed</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"plastic if 100% solid: </span><span class="si">{</span><span class="n">mass_g</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> g; if only 15% infill and no walls: </span><span class="si">{</span><span class="n">mass_g</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span><span class="w"> </span><span class="mf">0.15</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> g"</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python<span class="w"> </span>plate_check.py<span class="w"> </span>Prusa_Follower_SO101.stl
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>96584 triangles, size (243.4, 204.9, 87.0) mm, volume 571 cm^3
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>   fits Ender-class (220 x 220): False
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>   fits Prusa/UP-class (205 x 250): True
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>plastic if 100% solid: 709 g; if only 15% infill and no walls: 106 g
+</span></code></pre></div>
+<p>The file has exactly the 96,584 triangles whose size the chapter computed (80 + 4 + 50 × 96,584 = 4,829,284 bytes). The plate is 243.4 mm long and 204.9 mm wide, so it fits the Prusa-class bed (205 × 250 mm) by 0.1 mm in one direction and does not fit the Ender-class bed. The Ender plates are different files for that reason, and they are ASCII STL files, so <code>read_stl</code> will refuse one with an error that says so:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ValueError: not a binary STL file: the size does not match the triangle count (it starts with 'solid', so it may be an ASCII STL)
+</span></code></pre></div>
+<p>If your computer shows a different number for the size or the volume, the repository may have updated the file since this chapter was written. The method is what matters.</p>
+<p><strong>Step 7. Record your work.</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Add STL reader, print checks, and G-code filament reader"</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span></code></pre></div>
+<h3 id="check-your-work">Check Your Work<a class="headerlink" href="#check-your-work" title="Permanent link">&para;</a></h3>
+<p>Your project is complete when all of these are true:</p>
+<ul>
+<li><code>python partcheck.py</code> reports <code>huge.stl</code> as not fitting the bed, and <code>sample.gcode</code> as <code>4.0 mm of filament</code>.</li>
+<li>The screw-hole check says <code>OUT OF TOLERANCE</code> for a hole of 3.05 mm designed at 3.4 mm.</li>
+<li><code>python plate_check.py Prusa_Follower_SO101.stl</code> prints <code>96584 triangles</code>.</li>
+<li>Earlier scripts (<code>bus_demo.py</code>, <code>cost_demo.py</code>) still run.</li>
+<li><code>git log --oneline</code> shows a seventh commit.</li>
+</ul>
+<h3 id="challenge-read-the-ascii-plate">Challenge: Read the ASCII Plate<a class="headerlink" href="#challenge-read-the-ascii-plate" title="Permanent link">&para;</a></h3>
+<p>An ASCII STL stores each triangle as text, and each corner is a line such as <code>vertex 12.5 4.0 0.0</code>. Write a function <code>read_ascii_stl(path)</code> that returns the same list of triangles as <code>read_stl</code>, by reading the file line by line and collecting every three <code>vertex</code> lines into one triangle. Then run <code>bounding_box</code> and <code>volume_mm3</code> on <code>Ender_Follower_SO101.stl</code>. Does its volume agree with the Prusa plate's?</p>
+<details class="note">
+<summary>Click to see one solution</summary>
+<p>Add this to <code>armlab/stl.py</code>. A <code>for</code> loop over an open file gives one line at a time, <code>split()</code> cuts a line into words, and the three numbers after the word <code>vertex</code> are the corner:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_ascii_stl</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">    </span><span class="sd">"""Return the triangles of an ASCII STL file, in the same form as read_stl."""</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>    <span class="n">triangles</span><span class="p">,</span> <span class="n">corners</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a>            <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a>            <span class="k">if</span> <span class="n">words</span> <span class="ow">and</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"vertex"</span><span class="p">:</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a>                <span class="n">corners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]))</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a>                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">corners</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a>                    <span class="n">triangles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">corners</span><span class="p">)</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11"></a>                    <span class="n">corners</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12"></a>    <span class="k">return</span> <span class="n">triangles</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Running it on the Ender follower plate gives 96,584 triangles, a size of about 216.3 × 215.3 × 87.0 mm, which fits a 220 × 220 mm bed, and a volume of about 571 cm³. The Prusa plate has the same 96,584 triangles and about 571 cm³: the two plates hold the same parts in a different arrangement, so the plastic needed is the same and only the layout changes. The ASCII file is about five times larger, since a number takes several characters of text where the binary form takes four bytes.</p>
+</details>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">&para;</a></h2>
+<p>You can now make, check and prepare the parts of an arm.</p>
+<ul>
+<li><strong>3D printing</strong> adds material in layers. An <strong>FDM printer</strong> melts <strong>filament</strong> in a nozzle and draws each layer on a bed. <strong>PLA</strong> is the easy plastic that the SO-ARM101 uses (as PLA+), and it softens at about 60 to 65 °C. <strong>PETG</strong> keeps its shape to a higher temperature. <strong>3D printer safety</strong> means hot parts, fresh air, a clear surface, and never leaving a print unattended.</li>
+<li>A <strong>STEP file</strong> holds exact CAD shapes, an <strong>STL file</strong> holds a mesh of triangles, and a <strong>slicer</strong> turns an STL into <strong>G-code</strong>, the text that drives the printer. A binary STL is 80 + 4 + 50 bytes per triangle.</li>
+<li><strong>Print settings</strong> are <strong>layer height</strong>, <strong>infill</strong>, <strong>support material</strong> and <strong>print orientation</strong>. The repository asks for PLA+, 0.2 mm layers on a 0.4 mm nozzle, 15 percent infill, and supports almost everywhere. A part is weakest between layers. <strong>Warping</strong> is the curl of a part cooling on the bed.</li>
+<li><strong>Dimensional tolerance</strong> is the allowed error, about ±0.1 to ±0.3 mm for FDM. Holes print small, so leave about 0.15 to 0.2 mm of clearance. <strong>Print quality inspection</strong> is look, feel, measure, test-fit, and the repository's gauges test the fit cheaply.</li>
+<li><strong>Fasteners</strong> and <strong>screws</strong> here are M3 × 6 and M2 × 6. Stop turning when a screw is snug. A <strong>heat-set insert</strong> is a metal thread melted into plastic, used in other designs. A <strong>servo horn</strong> fits the 25-tooth spline of the STS3215.</li>
+<li><strong>Assembly tools</strong> are #0 and #1 Phillips screwdrivers, a putty knife, a small screwdriver and clamps. <strong>Crimping</strong> joins a wire to a terminal by squeezing. <strong>Soldering</strong> joins metal with a melted alloy and needs <strong>soldering safety</strong>. <strong>Cable management</strong> and <strong>strain relief</strong> stop wires breaking where they bend.</li>
+<li>A <strong>multimeter</strong> measures voltage across two points, resistance with the power off, and current in series. In the lab, Python reads an STL, checks that it fits the bed, estimates plastic, and checks a tolerance.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Make and Check My Bones!</p>
+<p><img alt="Servo celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just learned how a printer builds a part, wrote a script that reads an STL file and tells you whether it fits your bed, how much plastic it needs and whether a measured hole is in tolerance, and learned which meter mode to trust. With printed parts, screws and a tested set of tools, you have everything the build needs. Let's move it on to Chapter 8!</p>
+</div>
+<h3 id="self-check-questions">Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permanent link">&para;</a></h3>
+<p>Test yourself before you move on. Click each question to reveal an answer.</p>
+<details class="question">
+<summary>1. A tall part is 60 mm high. How many layers does it have at 0.2 mm and at 0.4 mm, and what is the trade-off?</summary>
+<p>At 0.2 mm it has <span class="arithmatex">\( 60 / 0.2 = 300 \)</span> layers, and at 0.4 mm it has 150. The thicker layers print in roughly half the passes, so the part finishes sooner, but the surface is coarser. The nozzle limits the layer height to about three quarters of its width.</p>
+</details>
+<details class="question">
+<summary>2. A binary STL file is 5,000,084 bytes long. How many triangles does it hold?</summary>
+<p>Subtract the 80-byte header and the 4-byte count to leave 5,000,000 bytes, then divide by 50 bytes per triangle: <span class="arithmatex">\( 5{,}000{,}000 / 50 = 100{,}000 \)</span> triangles.</p>
+</details>
+<details class="question">
+<summary>3. A servo pocket is designed 25.0 mm wide and the printer's holes come out 0.2 mm small. Will the 24.7 mm servo fit, and with what clearance?</summary>
+<p>The pocket prints <span class="arithmatex">\( 25.0 - 0.2 = 24.8 \)</span> mm. The clearance is <span class="arithmatex">\( 24.8 - 24.7 = 0.1 \)</span> mm, which is the lower edge of a sliding fit, so it should fit, but snugly. A little more room would be safer.</p>
+</details>
+<details class="question">
+<summary>4. Why should a peg that has to carry a sideways load be printed lying down rather than standing up?</summary>
+<p>A printed part is weakest <em>between</em> layers, where it is a weld, and strongest along the strands inside a layer. A standing peg has layer welds across its width, so a sideways load can snap it along one layer. A lying peg has strands that run along its length.</p>
+</details>
+<details class="question">
+<summary>5. You want to know how much current a servo draws. Which mode do you use, and how do you connect the meter?</summary>
+<p>Use the DC current mode, and connect the meter in series: open the supply wire and put the meter in the gap, so the current flows through the meter. Connecting it across the supply in this mode is a short circuit.</p>
+</details>
+<details class="question">
+<summary>6. A cable to a servo works when the arm is still and glitches when the elbow moves. What is the likely cause, and what do you check?</summary>
+<p>The conductor has probably broken inside the insulation where the cable bends, or the plug is pulling out under strain, which gives a fault that comes and goes. Move the joint slowly and watch for the glitch, check for a sharp bend or a tight tie near the connector, and add slack or strain relief.</p>
+</details>
+<p>Chapter 8 puts the parts together: you will prepare the servos, give each one its ID, assemble the follower and leader arms, power on for the first time, and calibrate.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
