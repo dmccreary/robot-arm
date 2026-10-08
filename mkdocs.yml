@@ -72,6 +72,9 @@ nav:
       - Concept Taxonomy: learning-graph/concept-taxonomy.md
       - Graph Quality Analysis: learning-graph/quality-metrics.md
       - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
+      - Glossary Quality Report: learning-graph/glossary-quality-report.md
+      - FAQ Quality Report: learning-graph/faq-quality-report.md
+      - FAQ Coverage Gaps: learning-graph/faq-coverage-gaps.md
 
   - MicroSims:
       - List of MicroSims: sims/index.md
@@ -87,6 +90,7 @@ nav:
       - H-Bridge Current Paths: sims/h-bridge-current-paths/index.md
 
   - Stories:
+      - List of Stories: stories/index.md
       - Story Ideas: stories/story-ideas.md
       - "The Lobster and the Arm (OpenClaw)": stories/openclaw-lobster-and-the-arm/index.md
 
@@ -95,6 +99,7 @@ nav:
       - "A. Why PWM Servos Won't Work": appendices/pwm-servos/index.md
 
   - Glossary: glossary.md
+  - FAQ: faq.md
   - License: license.md
   - Contact: contact.md
 

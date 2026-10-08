@@ -1,0 +1,2838 @@
+{
+  "faq_version": "1.0",
+  "generated_date": "2026-10-07",
+  "source_textbook": "Controlling a Robot Arm",
+  "total_questions": 106,
+  "questions": [
+    {
+      "id": "faq-001",
+      "category": "Getting Started",
+      "question": "What is this book about?",
+      "answer": "*Controlling a Robot Arm* is a **Python programming book that happens to move a real robot**. Every chapter turns an idea into code that reads a sensor, moves a joint, or makes a decision, and then shows the result on a physical arm. You start with a bill of materials and finish with an AI agent that can safely command a robot arm through Python code you wrote.\n\nThe book follows one learning path across two open-source desktop arms, the SO-ARM100/101 and the Seeed Studio reBot-DevArm. Comparing them shows which design decisions (actuators, buses, power, kinematics, software) matter for any arm and which belong to one platform. A central skill is writing a small **hardware abstraction layer**, a Python class that lets the same program drive either arm.\n\nRead the [Course Description](course-description.md) for the full list of topics and learning outcomes, or the [About page](about.md) for why the book exists.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Robot Arm",
+        "Learning Python Prerequisites",
+        "Hardware Abstraction Layer"
+      ],
+      "keywords": [
+        "book",
+        "overview",
+        "python",
+        "robot arm",
+        "course"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/about.md"
+      ],
+      "has_example": false,
+      "word_count": 150
+    },
+    {
+      "id": "faq-002",
+      "category": "Getting Started",
+      "question": "Who is this book for?",
+      "answer": "The primary readers are **middle-school students, high-school students, and adults, aged 12 and up**, who have finished the Learning Python course and want a motivating project that uses Python to control a physical machine.\n\nThe book also serves:\n\n- **Makers, hobbyists, and self-taught roboticists** who can write basic Python and want to build and program their first arm.\n- **Students in robotics, computer science, or AI classes**, and the **teachers, makerspace leaders, and club mentors** who plan the parts order for them.\n- **Software developers and AI practitioners** who want to give an AI agent a physical body and need to learn the hardware side.\n\nNobody needs earlier experience with robotics, electronics, or 3D printing. See the [About page](about.md) for the full audience description and [Chapter 18](chapters/18-projects-operation-and-teaching/index.md) for classroom and makerspace use.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Robot Arm",
+        "Learning Python Prerequisites",
+        "Classroom Parts Order"
+      ],
+      "keywords": [
+        "audience",
+        "students",
+        "age",
+        "teachers",
+        "makers"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/about.md"
+      ],
+      "has_example": false,
+      "word_count": 132
+    },
+    {
+      "id": "faq-003",
+      "category": "Getting Started",
+      "question": "What is the minimum age, and when do I need an adult?",
+      "answer": "The minimum age for this book is **12**. Readers **under 16 should work with an adult** whenever they use a 3D printer, a soldering iron, or a mains-powered supply, and whenever they work with the higher-voltage reBot-DevArm. The book flags every such step.\n\nThe reBot-DevArm runs on 24 V or 48 V, which is why it needs more care than the SO-ARM101, whose motors run on 7.4 V and are usually fed by a 5 V supply. [Chapter 3](chapters/03-electricity-power-and-safety/index.md) covers **adult supervision**, **supervised operation**, pinch points, and the safe power-up sequence. A good habit for everyone, whatever their age, is to keep a hand near the power switch the first time any new program drives a real arm.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Adult Supervision",
+        "Supervised Operation",
+        "Mains Power Safety",
+        "Pinch Point"
+      ],
+      "keywords": [
+        "age",
+        "supervision",
+        "safety",
+        "soldering",
+        "mains"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": false,
+      "word_count": 118
+    },
+    {
+      "id": "faq-004",
+      "category": "Getting Started",
+      "question": "What Python do I need to know before starting?",
+      "answer": "You need the skills from the **Learning Python** course, or you must be able to do everything in this list:\n\n- Variables, strings, f-strings, `input()`, and `print()`.\n- `if`/`elif`/`else`, `for` and `while` loops, and `range()`.\n- Functions with parameters, return values, and docstrings.\n- Lists, tuples, dictionaries, sets, and list comprehensions.\n- Importing modules such as `math`, `random`, and `time`.\n- Reading and writing text files and reading JSON.\n- `try`/`except` and reading a traceback.\n- A simple class with `__init__`, attributes, methods, and basic inheritance.\n- Basic matplotlib plots and NumPy array math.\n- The REPL, running a script, and installing a package with `pip` in a virtual environment.\n\n[Chapter 1](chapters/01-python-setup-for-robotics/index.md) reviews these skills and adds the project tooling every lab uses. Anything beyond them, such as `dataclass`, `pytest`, or OpenCV, is introduced just in time, one new idea per lab.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Learning Python Prerequisites",
+        "Virtual Environment",
+        "Pip",
+        "REPL"
+      ],
+      "keywords": [
+        "prerequisites",
+        "python",
+        "skills",
+        "virtual environment",
+        "pip"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/chapters/01-python-setup-for-robotics/index.md"
+      ],
+      "has_example": false,
+      "word_count": 142
+    },
+    {
+      "id": "faq-005",
+      "category": "Getting Started",
+      "question": "Do I need experience with robotics, electronics, or 3D printing?",
+      "answer": "No. The book does **not** assume any experience with robotics, electronics, 3D printing, soldering, ROS, machine-learning frameworks, asynchronous programming, or large language models. Each is introduced when you first need it.\n\nYou do need basic algebra, the idea of an angle, and a willingness to follow safety instructions around motors and power supplies. Sine and cosine are reviewed with Python code in the first kinematics lab, so you do not need a trigonometry course first.\n\nThe book also keeps the math light. Trigonometry and geometry appear as short Python functions that you run, plot, and experiment with, rather than as formulas to memorize. For example, [Chapter 3](chapters/03-electricity-power-and-safety/index.md) teaches voltage, current, and Ohm's law from scratch, and [Chapter 12](chapters/12-kinematics/index.md) teaches kinematics the same way.",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Learning Python Prerequisites",
+        "Voltage",
+        "Current",
+        "Forward Kinematics"
+      ],
+      "keywords": [
+        "experience",
+        "beginner",
+        "math",
+        "electronics",
+        "no prerequisites"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": true,
+      "word_count": 123
+    },
+    {
+      "id": "faq-006",
+      "category": "Getting Started",
+      "question": "Which two robot arms does this book use?",
+      "answer": "The book builds and programs two open-source desktop arms that sit at opposite ends of the hobbyist-to-developer range.\n\n- **SO-ARM100 and its successor, the SO-ARM101.** A 3D-printed six-degree-of-freedom arm designed by The Robot Studio with Hugging Face. It is built as a **leader and follower pair** around STS3215 serial bus servos and works with the LeRobot library. It is the low-cost entry point, at about $350 for the pair.\n- **Seeed Studio reBot-DevArm (B601 series).** An open-source six-axis arm plus a parallel gripper, built around CAN-bus actuators (Damiao motors in the B601-DM, RobStride motors in the B601-RS). It carries more (1.5 kg for the B601-DM and 2.5 kg for the B601-RS) and runs on 24 V or 48 V.\n\n[Chapter 2](chapters/02-anatomy-of-a-robot-arm/index.md) puts the arms side by side, and [Chapter 9](chapters/09-building-the-rebot-devarm/index.md) compares them on cost, payload, learning curve, and software. The book builds the SO-ARM101 first because it needs less power and less supervision.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Robot Arm",
+        "Leader Arm",
+        "Follower Arm",
+        "Serial Bus Servo"
+      ],
+      "keywords": [
+        "so-arm101",
+        "rebot-devarm",
+        "arms",
+        "leader follower",
+        "comparison"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/chapters/02-anatomy-of-a-robot-arm/index.md",
+        "docs/chapters/09-building-the-rebot-devarm/index.md"
+      ],
+      "has_example": false,
+      "word_count": 153
+    },
+    {
+      "id": "faq-007",
+      "category": "Getting Started",
+      "question": "Do I need to own a robot arm to follow along?",
+      "answer": "No. Every build and programming lab includes a **fake arm** version that runs without hardware, so you can finish the Python work even before your arm arrives. This follows the book's second teaching rule: **simulate first, then power on**. Each program runs against the software fake arm before it touches a motor, so mistakes are cheap and safe.\n\nThe fake arm is a Python class that has the same interface as the real drivers. In [Chapter 10](chapters/10-python-hardware-library/index.md) you build it, along with the **hardware abstraction layer** that lets one program drive the fake arm, the SO-ARM101, or the reBot-DevArm.\n\nA real arm is still the best way to feel what your code does, so the book walks through sourcing in [Chapter 6](chapters/06-sourcing-parts-and-budget/index.md) and building in [Chapter 8](chapters/08-building-the-so-arm/index.md). You can read those chapters while the parts ship.",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Fake Arm",
+        "Hardware Abstraction Layer",
+        "Arm Class"
+      ],
+      "keywords": [
+        "fake arm",
+        "simulation",
+        "no hardware",
+        "labs",
+        "simulate first"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/chapters/10-python-hardware-library/index.md"
+      ],
+      "has_example": false,
+      "word_count": 136
+    },
+    {
+      "id": "faq-008",
+      "category": "Getting Started",
+      "question": "How much does it cost to build the arms?",
+      "answer": "The book's own **SO-ARM101** build comes to about **$350** for the leader and follower pair. The motor kit cost $332.04 delivered (a sticker price of $258.94 plus $46.55 shipping, $26.05 sales tax, and a $0.50 delivery fee), and the 3D-printed parts add $20 or more. Add about $14 for a spare STS3215 servo.\n\nThe **reBot-DevArm** costs much more. The B601-DM's priced parts come to about $1,400 to $1,500, and the B601-RS starts near $1,230 before the frame. Its 24 V or 48 V supply also needs fusing and an emergency stop.\n\nPrices change often, so re-check before you order. [Chapter 6](chapters/06-sourcing-parts-and-budget/index.md) teaches you to read a bill of materials and compute a **landed cost**, and its lab turns the budget into a Python program. [Chapter 9](chapters/09-building-the-rebot-devarm/index.md) compares the costs of the two arms.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Total Build Cost",
+        "Budgeting",
+        "Bill of Materials",
+        "Cost Comparison"
+      ],
+      "keywords": [
+        "cost",
+        "budget",
+        "price",
+        "so-arm101",
+        "rebot"
+      ],
+      "source_links": [
+        "docs/chapters/06-sourcing-parts-and-budget/index.md",
+        "docs/chapters/09-building-the-rebot-devarm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 133
+    },
+    {
+      "id": "faq-009",
+      "category": "Getting Started",
+      "question": "Do I need a 3D printer to build the SO-ARM101?",
+      "answer": "You need the printed parts, not necessarily the printer. The frame of the SO-ARM101 is plastic that you print, and the book budgets **$20 or more** for it if you print it yourself. Printing the pair costs much less than the motor kit in plastic, but it costs hours of machine time.\n\nIf you have no printer, you can buy a printed set or use a printing service. A school makerspace, library, or club printer works too. [Chapter 7](chapters/07-printing-fasteners-and-tools/index.md) covers printing in detail: filament, print settings, warping, dimensional tolerance, and print quality inspection. Its lab has you write a script that checks a part before you print it.\n\nRemember the supervision note: readers under 16 should have an adult with them when using a 3D printer. See [Chapter 6](chapters/06-sourcing-parts-and-budget/index.md) for the buying options.",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "3D Printing",
+        "FDM Printer",
+        "Filament",
+        "Print Settings"
+      ],
+      "keywords": [
+        "3d printer",
+        "printed parts",
+        "filament",
+        "makerspace",
+        "cost"
+      ],
+      "source_links": [
+        "docs/chapters/07-printing-fasteners-and-tools/index.md",
+        "docs/chapters/06-sourcing-parts-and-budget/index.md"
+      ],
+      "has_example": false,
+      "word_count": 133
+    },
+    {
+      "id": "faq-010",
+      "category": "Getting Started",
+      "question": "How are the chapters organized?",
+      "answer": "The book has **19 chapters** that cover **537 concepts**, arranged so each idea comes after its prerequisites. The learning path runs in six stages:\n\n1. **Foundations (Chapters 1 to 3):** Python setup, the anatomy of an arm, and electricity and safety.\n2. **Hardware (Chapters 4 and 5):** serial and CAN communication, then actuators and sensors.\n3. **Sourcing and building (Chapters 6 to 9):** parts and budgets, printing and tools, and building both arms.\n4. **Software (Chapters 10 to 13):** a Python hardware library, moving the arm, kinematics, and logging, testing, and simulation.\n5. **Perception and agents (Chapters 14 to 17):** cameras and learning from demonstration, AI agents and OpenClaw skills, planning and vision, and agent safety.\n6. **Projects (Chapter 18)**, plus the **optional advanced Chapter 19** on the mathematics of arm paths.\n\nRead Chapters 1 through 18 in order; Chapter 19 can be skipped because nothing depends on it. When this FAQ was generated in October 2026, Chapters 1 through 16 had full text and Chapters 17 to 19 were outlines. See the [chapter list](chapters/index.md) for the current summaries.",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Learning Python Prerequisites",
+        "Robot Arm",
+        "Large Language Model"
+      ],
+      "keywords": [
+        "chapters",
+        "structure",
+        "order",
+        "learning path",
+        "optional chapter"
+      ],
+      "source_links": [
+        "docs/chapters/index.md",
+        "docs/course-description.md"
+      ],
+      "has_example": false,
+      "word_count": 179
+    },
+    {
+      "id": "faq-011",
+      "category": "Getting Started",
+      "question": "What computer and software do I need?",
+      "answer": "You need a computer running **macOS, Linux, or Windows with WSL**. For the perception chapters you also need a **USB webcam**. An optional **edge AI computer** can run local agents.\n\nThe Python libraries are introduced as they are needed: `pyserial` or the vendor SDKs, NumPy, matplotlib, OpenCV, LeRobot, and `pytest`. The agent chapters add OpenClaw and access to a language model or vision-language model service, either in the cloud or running locally. ROS 2 and a physics simulator are optional guided tours, not skills you must master.\n\nInstall everything in a clean **virtual environment** so one project never breaks another, as [Chapter 1](chapters/01-python-setup-for-robotics/index.md) shows. Note that [Chapter 9](chapters/09-building-the-rebot-devarm/index.md) says the reBot-DevArm's SDK expects an Ubuntu computer and its motor setup uses Windows software, so check before you choose that arm.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Virtual Environment",
+        "Pip",
+        "OpenCV Library",
+        "LeRobot Library"
+      ],
+      "keywords": [
+        "software",
+        "computer",
+        "webcam",
+        "libraries",
+        "wsl"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/chapters/01-python-setup-for-robotics/index.md"
+      ],
+      "has_example": false,
+      "word_count": 130
+    },
+    {
+      "id": "faq-012",
+      "category": "Getting Started",
+      "question": "What is a MicroSim and how do I use one?",
+      "answer": "A **MicroSim** is a small, interactive, browser-based simulation focused on a single concept. You change a voltage, a joint angle, or a wire length with a slider or button and watch what happens. They are the fastest way to build intuition before you write code.\n\nMicroSims are embedded in the chapters, and the full set is in the [MicroSim catalog](sims/index.md). Three examples are the Ohm's Law Explorer in [Chapter 3](chapters/03-electricity-power-and-safety/index.md), the Wire Voltage Drop Explorer, and the Two-Link Workspace Explorer from [Chapter 2](chapters/02-anatomy-of-a-robot-arm/index.md), which shows the reach of a two-joint arm as you move its joints.\n\nTry each one when the chapter points you to it, then predict what will happen before you move a control. Prediction is what turns a toy into a lesson. The sims are free and need nothing to install.",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Ohm's Law",
+        "Workspace",
+        "Voltage Drop"
+      ],
+      "keywords": [
+        "microsim",
+        "simulation",
+        "interactive",
+        "sliders",
+        "browser"
+      ],
+      "source_links": [
+        "docs/sims/index.md",
+        "docs/about.md"
+      ],
+      "has_example": true,
+      "word_count": 134
+    },
+    {
+      "id": "faq-013",
+      "category": "Getting Started",
+      "question": "What does \"simulate first, then power on\" mean?",
+      "answer": "It is the book's central safety habit, and one of the mascot's signature phrases. **Run every new program against the software fake arm before it drives real hardware.** A bug in a simulation costs a few seconds. The same bug on a powered arm can break a gear, pinch a finger, or knock the table.\n\nIn practice it means four steps: write the program, run it on the **fake arm** and read the output, check your limits and logs, and only then power on the real arm, following the **safe power-up sequence**. [Chapter 3](chapters/03-electricity-power-and-safety/index.md) gives the sequence, and [Chapter 10](chapters/10-python-hardware-library/index.md) builds the fake arm so the first step is always available.\n\nEven after power-on, start with small moves and slow speeds, and keep your hand near the emergency stop.",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Fake Arm",
+        "Safe Power-Up Sequence",
+        "Emergency Stop",
+        "Safe Work Envelope"
+      ],
+      "keywords": [
+        "simulate first",
+        "power on",
+        "safety",
+        "fake arm",
+        "habit"
+      ],
+      "source_links": [
+        "docs/course-description.md",
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": false,
+      "word_count": 129
+    },
+    {
+      "id": "faq-014",
+      "category": "Getting Started",
+      "question": "Who is Servo the Robot Arm?",
+      "answer": "**Servo** is the book's learning mascot, a friendly robot arm who guides you through the chapters. You will meet Servo in colored boxes: waving hello at the start of a chapter, thinking about a key idea, offering a tip, warning you about a common mistake, encouraging you through a hard passage, and celebrating at the end.\n\nServo calls readers \"builders\" and treats mistakes as normal calibration. The signature phrases are \"Let's move it!\", \"One joint at a time.\", and \"Simulate first, then power on.\" Servo appears only in student-facing content, so teacher and instructor guides do not use the mascot.\n\nYou can see Servo's welcome on the [About page](about.md), and the complete set of poses on the [mascot test page](learning-graph/mascot-test.md).",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Robot Arm"
+      ],
+      "keywords": [
+        "servo",
+        "mascot",
+        "guide",
+        "characters",
+        "admonitions"
+      ],
+      "source_links": [
+        "docs/about.md",
+        "docs/learning-graph/mascot-test.md"
+      ],
+      "has_example": false,
+      "word_count": 120
+    },
+    {
+      "id": "faq-015",
+      "category": "Getting Started",
+      "question": "Can I reuse or share this book?",
+      "answer": "Yes, within the terms of the license. The book is **open source and free**, with no paywalls and no access codes. It is released under **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.\n\nThat means you may **share** it (copy and redistribute in any medium) and **adapt** it (remix and build on it), provided you:\n\n- give appropriate **attribution**, link to the license, and say if you made changes;\n- do not use it for **commercial** purposes;\n- distribute your changes under the **same license**.\n\nA teacher can therefore use it in a class and adapt a lab for their students, but a company cannot sell it as a paid course. See the [license page](license.md) for the full text, and the [contact page](contact.md) to send feedback or ask permission for something the license does not cover.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Open-Source Hardware"
+      ],
+      "keywords": [
+        "license",
+        "creative commons",
+        "reuse",
+        "open source",
+        "share"
+      ],
+      "source_links": [
+        "docs/license.md",
+        "docs/about.md"
+      ],
+      "has_example": true,
+      "word_count": 136
+    },
+    {
+      "id": "faq-016",
+      "category": "Core Concepts",
+      "question": "What is a robot arm and why is it called a serial manipulator?",
+      "answer": "A **robot arm** is a programmable machine made of rigid pieces connected by motorized joints, built to move a tool to a chosen place. \"Programmable\" is the key word. A crane moves a hook when a person works its levers, but a robot arm moves when a program tells its motors where to go, which is why a Python script can drive one.\n\nIt is also a **serial manipulator**, which means its joints are connected one after another in a single chain from the base to the tool, like links in a necklace. The opposite design is a parallel manipulator, where several chains hold the tool at the same time, as in the delta robots that sort items on factory conveyor belts.\n\nA serial chain has two consequences:\n\n- **Motion adds up.** Each joint moves everything beyond it. Turn the shoulder, and the elbow, wrist, and gripper all swing along.\n- **Weight adds up.** The joint nearest the base carries the whole arm plus whatever the gripper holds, while the joint nearest the tool carries only a small part of the weight.\n\nSee [Chapter 2: Anatomy of a Robot Arm](chapters/02-anatomy-of-a-robot-arm/index.md) for the full vocabulary.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Robot Arm",
+        "Serial Manipulator",
+        "Joint",
+        "Link",
+        "End Effector"
+      ],
+      "keywords": [
+        "robot arm",
+        "serial manipulator",
+        "joints",
+        "parallel manipulator",
+        "chain"
+      ],
+      "source_links": [
+        "docs/chapters/02-anatomy-of-a-robot-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 194
+    },
+    {
+      "id": "faq-017",
+      "category": "Core Concepts",
+      "question": "How do revolute joints and prismatic joints differ in motion?",
+      "answer": "A **revolute joint** rotates around a fixed line called its axis, like a door on a hinge. Its motion is measured as an angle, in degrees or radians. A **prismatic joint** slides along a straight line, like a drawer on its rails, and its motion is measured as a distance in millimeters or meters.\n\n| | Revolute joint | Prismatic joint |\n|---|---|---|\n| Motion | Rotates around an axis | Slides along a line |\n| Measured as | Angle | Distance |\n| Everyday example | Door hinge | Drawer on rails |\n\nEvery joint in the SO-ARM101 is revolute, because each is driven by a motor that turns a shaft. A 3D printer is a robot of three prismatic joints, the X, Y, and Z slides.\n\nThe kind of joint is about the motion you get at the output, not the motor behind it. The reBot-DevArm's parallel gripper has fingers that slide, so that joint is prismatic even though a motor drives it.\n\nDetails are in [Chapter 2: Anatomy of a Robot Arm](chapters/02-anatomy-of-a-robot-arm/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Revolute Joint",
+        "Prismatic Joint",
+        "Joint",
+        "Joint Angle",
+        "Parallel Gripper"
+      ],
+      "keywords": [
+        "revolute",
+        "prismatic",
+        "hinge",
+        "slide",
+        "axis"
+      ],
+      "source_links": [
+        "docs/chapters/02-anatomy-of-a-robot-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 176
+    },
+    {
+      "id": "faq-018",
+      "category": "Core Concepts",
+      "question": "How does Ohm's law connect voltage, current, and resistance?",
+      "answer": "**Ohm's law** says that for a simple resistor, the voltage across it equals the current through it times its resistance: **V = I × R**. Voltage is in volts, current is in amps, and resistance is in ohms. In words, double the push and you double the flow.\n\nYou can rearrange it to find whichever quantity is missing:\n\n- Current: I = V / R, so 12 V and 6 Ω give 2 A.\n- Resistance: R = V / I, so 12 V and 3 A give 4 Ω.\n- Voltage: V = I × R, so 2 A and 8 Ω give 16 V.\n\nChange one value and the others follow. Swap the 6 Ω resistor for 12 Ω at 12 V and the current falls to 1 A. Keep 6 Ω and raise the supply to 24 V and the current rises to 4 A. **Electrical power** then follows from P = V × I, so 12 V at 2 A is 24 W.\n\nThis straight proportion holds for plain resistors and wires. A motor's current depends on how hard it is working, so treat Ohm's law as only a rough guide for motors.\n\nRead more in [Chapter 3: Electricity, Power, and Safety](chapters/03-electricity-power-and-safety/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Ohm's Law",
+        "Voltage",
+        "Current",
+        "Electrical Power"
+      ],
+      "keywords": [
+        "ohm's law",
+        "voltage",
+        "current",
+        "resistance",
+        "watts"
+      ],
+      "source_links": [
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": true,
+      "word_count": 206
+    },
+    {
+      "id": "faq-019",
+      "category": "Core Concepts",
+      "question": "How do I count the degrees of freedom of the SO-ARM101?",
+      "answer": "Use the **counting rule**: count each independent single-axis joint once. A door on one hinge has one degree of freedom, and a drawer on one slide has one.\n\nThe SO-ARM101 has five joints in the arm (`shoulder_pan`, `shoulder_lift`, `elbow_flex`, `wrist_flex`, and `wrist_roll`) plus a sixth motor in the gripper. LeRobot's documentation calls that six degrees of freedom because it counts the gripper motor. By the strict definition, which counts only the joints that position and orient the hand, it is a five-axis arm with a gripper. Both descriptions are correct because each counts differently.\n\nThe difference has a practical meaning. A free object in space moves in six independent ways (three translations and three rotations), so an arm needs at least six joints to place its hand at any position and any orientation. The SO-ARM101 cannot set all six numbers of the end-effector pose independently. The reBot-DevArm B601 is a true **six-axis arm** plus a parallel gripper, which its project writes as \"6+1\".\n\nWhen you read a datasheet that says \"6 DOF\", ask whether the gripper is included. See [Chapter 2: Anatomy of a Robot Arm](chapters/02-anatomy-of-a-robot-arm/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Degrees of Freedom",
+        "Six-Axis Arm",
+        "Revolute Joint",
+        "Gripper",
+        "Serial Manipulator"
+      ],
+      "keywords": [
+        "degrees of freedom",
+        "counting rule",
+        "so-arm101",
+        "six-axis",
+        "gripper"
+      ],
+      "source_links": [
+        "docs/chapters/02-anatomy-of-a-robot-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 186
+    },
+    {
+      "id": "faq-020",
+      "category": "Core Concepts",
+      "question": "What is the difference between accuracy and repeatability in a robot arm?",
+      "answer": "**Repeatability** is how closely an arm returns to the same pose when you send it there again and again. **Accuracy** is how close the arm gets to the point you asked for. In this book accuracy is the distance between the target and the average landing point.\n\nPicture sending the gripper to one spot five times and marking where the tip lands. If the marks cluster tightly, repeatability is high, even if the cluster sits away from the target.\n\nThe chapter's worked example has an average landing point of (2.00, 1.00) mm from the target. The farthest any trial lands from that average is 0.28 mm, so the arm is repeatable. But the average is about 2.24 mm from the target, so it is not accurate.\n\n| | Tight cluster | Scattered cluster |\n|---|---|---|\n| **Centered on the target** | Accurate and repeatable | Accurate on average, not repeatable |\n| **Away from the target** | Repeatable, not accurate | Neither |\n\nRepeatability usually matters more. A repeatable arm that is off by 2 mm every time can be fixed with calibration, one correction applied everywhere. A scattered arm cannot, because its error changes each time. The reBot-DevArm B601 project lists repeatability of less than 0.2 mm. See [Chapter 2: Anatomy of a Robot Arm](chapters/02-anatomy-of-a-robot-arm/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Repeatability",
+        "Accuracy",
+        "Robot Arm"
+      ],
+      "keywords": [
+        "accuracy",
+        "repeatability",
+        "landing points",
+        "calibration",
+        "spec sheet"
+      ],
+      "source_links": [
+        "docs/chapters/02-anatomy-of-a-robot-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 216
+    },
+    {
+      "id": "faq-021",
+      "category": "Core Concepts",
+      "question": "What is a bus in robot arm serial communication?",
+      "answer": "A **bus** is a set of shared wires that several devices use to talk to one computer. Every message travels over the bus, every device hears every message, and the message must say who it is for so that only the right device answers.\n\nThis book uses two buses. The SO-ARM101's STS3215 servos share a **serial bus** with one data wire for all six motors of an arm. The reBot-DevArm's motors share a **CAN bus**, which uses two wires for all seven motors. The wiring is different, but the idea is the same: a message goes out, and one device recognises its name in it and replies.\n\nPicture one narrow hallway that six people share. Only one person can talk at a time, so nearly every rule in the chapter, such as device IDs, checksums, and timeouts, exists to make that shared hallway work. A serial bus names the receiver inside the packet, while a CAN bus labels what the message is about and each motor decides which labels it cares about.\n\nSee [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md) for the full explanation, and the [glossary](glossary.md) for short definitions of each term.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Serial Communication",
+        "CAN Bus",
+        "Device ID",
+        "Daisy Chain Wiring"
+      ],
+      "keywords": [
+        "bus",
+        "serial",
+        "can",
+        "shared wire",
+        "motors"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": false,
+      "word_count": 192
+    },
+    {
+      "id": "faq-022",
+      "category": "Core Concepts",
+      "question": "Why does a byte take ten bits on a serial wire?",
+      "answer": "With the standard **8N1** layout, one byte travels as ten bits: a low **start bit** that wakes the receiver, 8 data bits, and a high **stop bit** that returns the line to rest. Only 8 of the 10 bits are data, so the speed in bytes per second is the **baud rate** divided by 10.\n\nThe time to send a message is `bytes * 10 / baud`. At 1,000,000 baud, the factory setting for the STS3215 servos, one bit takes 1 microsecond, so one byte takes 10 µs and a six-byte ping packet takes 60 µs. At 115,200 baud, a slower rate that many hobby boards use, one byte takes about 87 µs, so the same ping takes 0.52 ms.\n\nBoth ends must use the same baud rate. If they do not, the receiver samples the wire at the wrong moments and reads garbage, even though every wire is connected correctly. A **UART** is the small circuit that turns bytes into this stream of bits and back again. There is no shared clock wire, so each byte announces its own start.\n\nThe chapter works through this timing calculation in [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "UART",
+        "Baud Rate",
+        "Serial Communication",
+        "Bytes and Bytearray"
+      ],
+      "keywords": [
+        "8n1",
+        "start bit",
+        "stop bit",
+        "baud rate",
+        "timing"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": true,
+      "word_count": 195
+    },
+    {
+      "id": "faq-023",
+      "category": "Core Concepts",
+      "question": "How does a packet make a shared servo bus work?",
+      "answer": "A **packet** is a message with structure, so a shared wire can say where a message begins, who it is for, and whether it arrived intact. Every Feetech servo packet has a 2-byte header (`FF FF`), a 1-byte **device ID**, a 1-byte length, an instruction byte (in a reply this becomes an error byte, which is 0 when all is well), zero or more parameter or data bytes, and a 1-byte **checksum**.\n\nThe length field equals the number of parameter bytes plus 2. Each field solves one problem of a shared wire: the header marks the start, the ID is the address, the length says how much is inside, and the checksum is the seal that shows damage in transit.\n\nA ping to servo 1 is `FF FF 01 02 01 FB`. The computer sends an **instruction packet**, and the addressed servo answers with a **status packet**, such as `FF FF 01 02 00 FC`. When a packet fails, you can ask which problem it was: a wrong start, a wrong servo, a wrong size, or damage in transit.\n\nThe full field table is in [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Packet Structure",
+        "Instruction Packet",
+        "Status Packet",
+        "Device ID",
+        "Checksum"
+      ],
+      "keywords": [
+        "packet",
+        "header",
+        "device id",
+        "status packet",
+        "instruction"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": true,
+      "word_count": 191
+    },
+    {
+      "id": "faq-024",
+      "category": "Core Concepts",
+      "question": "How do I calculate a packet checksum for a servo?",
+      "answer": "A **checksum** is one byte computed from the other bytes, so the receiver can detect damage. Add up every byte from the ID through the last parameter (not the two header bytes), keep only the lowest byte of the sum, and flip every bit.\n\nWorked example for a PING to servo 2: the bytes after the header are the ID `02`, the length `02`, and the instruction `01`. Their sum is 5, which is `0x05`. Flipping all eight bits gives `0xFA`, so the packet is `FF FF 02 02 01 FA`.\n\n```python linenums=\"1\"\ndef checksum(body):\n    return ~sum(body) & 0xFF\n\nbody = bytes([0x02, 0x02, 0x01])\nprint(hex(checksum(body)))\n```\n\nThis prints `0xfa`. The `& 0xFF` keeps the low byte after the flip. The receiver repeats the calculation and compares, and if one bit changed on the wire the numbers will almost always disagree, so the receiver ignores the packet. Two common mistakes are including the header in the sum and using the plain sum instead of its bitwise NOT.\n\nSee [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md) for the PING to servo 1 example and the other packet types.",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Checksum",
+        "Packet Structure",
+        "Bit Operations",
+        "Hexadecimal",
+        "Instruction Packet"
+      ],
+      "keywords": [
+        "checksum",
+        "bitwise not",
+        "hex",
+        "ping",
+        "packet"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": true,
+      "word_count": 185
+    },
+    {
+      "id": "faq-025",
+      "category": "Core Concepts",
+      "question": "How do hobby servos, bus servos, and CAN actuators differ?",
+      "answer": "The three actuator families differ in how you command them, what they report back, their supply voltage, and their cost.\n\n- **Hobby servo** (for example the MG995): commanded by a pulse width on one signal wire, a pulse every 20 ms that is 1.0 to 2.0 ms wide. Your program cannot read its angle, temperature or load, and it has no address, so each servo needs its own signal wire.\n- **Serial bus servo** (the STS3215 in the SO-ARM101): commanded by packets on a shared bus, with an ID for each motor. It reports position, speed, load, current, voltage and temperature, runs from 5 to 12 V, and costs $13.89 in the bill of materials.\n- **Brushless CAN actuator** (Damiao DM4310 or RobStride RS00 in the reBot-DevArm): commanded by frames on a CAN bus, reports position, speed, torque and temperatures, runs from 24 V or 48 V, and costs $120 to $210 each.\n\nThe deciding feature for a programmable arm is feedback. A hobby servo's feedback never leaves its case, which is why it cannot serve as the joint of a leader and follower pair. See [Chapter 5: Actuators and Sensors](chapters/05-actuators-and-sensors/index.md) for the full comparison.",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Hobby Servo",
+        "Serial Bus Servo",
+        "STS3215 Servo",
+        "Damiao Actuator",
+        "Brushless Motor",
+        "PWM Signal"
+      ],
+      "keywords": [
+        "hobby servo",
+        "bus servo",
+        "can actuator",
+        "feedback",
+        "voltage"
+      ],
+      "source_links": [
+        "docs/chapters/05-actuators-and-sensors/index.md"
+      ],
+      "has_example": false,
+      "word_count": 195
+    },
+    {
+      "id": "faq-026",
+      "category": "Core Concepts",
+      "question": "What is the difference between a STEP file, an STL file, and G-code?",
+      "answer": "These three file types form a chain from design to printed part, and each has one job.\n\n- A **STEP file** stores the exact shape from a CAD program, with true curves and surfaces. Use it when you want to *change* the design.\n- An **STL file** stores the shape as a mesh of small triangles, with no colors and no units. A slicer accepts it, and all the printable parts in the SO-ARM100 repository are STL files.\n- **G-code** is plain text made by the **slicer**, one command per line, that drives the printer.\n\nFor example, the line `G1 X50 Y10 E1.6` means \"move in a straight line to X = 50 mm, Y = 10 mm, and push the extruder to a total of 1.6 mm of filament.\"\n\nA binary STL has an 80-byte header, a 4-byte triangle count, and 50 bytes per triangle. That gives a quick size check: 96,584 triangles must make a file of exactly 80 + 4 + 50 x 96,584 = 4,829,284 bytes. See [Chapter 7: 3D Printing, Fasteners, and Tools](chapters/07-printing-fasteners-and-tools/index.md) for the full explanation and the Python lab that reads STL files.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "STEP File",
+        "STL File",
+        "G-Code",
+        "Slicer",
+        "3D Printing"
+      ],
+      "keywords": [
+        "step",
+        "stl",
+        "g-code",
+        "slicer",
+        "mesh"
+      ],
+      "source_links": [
+        "docs/chapters/07-printing-fasteners-and-tools/index.md"
+      ],
+      "has_example": true,
+      "word_count": 190
+    },
+    {
+      "id": "faq-027",
+      "category": "Core Concepts",
+      "question": "Why must I set servo IDs one servo at a time?",
+      "answer": "Every new STS3215 servo ships with the same ID, 1. The packets from [Chapter 4](chapters/04-serial-and-can-communication/index.md) begin with the ID of the servo they are meant for, so if you connect six new servos at once they all answer to ID 1 and nothing works. Two servos with one ID answer at the same time and corrupt each other's replies.\n\nSo you connect **one servo at a time** to the **servo bus controller board**, give it its ID, label it, and set it aside. The ID is stored in the servo's EEPROM, which keeps its contents without power, so each servo needs this only once.\n\nLeRobot automates the job with `lerobot-setup-motors`. It works from the gripper back to the shoulder, so the IDs are: shoulder_pan 1, shoulder_lift 2, elbow_flex 3, wrist_flex 4, wrist_roll 5, gripper 6. It prints \"Connect the controller board to the '<name>' motor only and press enter,\" and then confirms with a line such as \"'gripper' motor id set to 6\".\n\nDo this on the bench before assembly, because unplugging cables from a built arm is troublesome. [Chapter 8: Building the SO-ARM](chapters/08-building-the-so-arm/index.md) walks through the whole step.",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Setting Servo IDs",
+        "Servo Preparation",
+        "Servo Bus Controller Board",
+        "Servo Testing",
+        "Setting Baud Rate"
+      ],
+      "keywords": [
+        "servo id",
+        "eeprom",
+        "bus",
+        "lerobot-setup-motors",
+        "bench"
+      ],
+      "source_links": [
+        "docs/chapters/08-building-the-so-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 189
+    },
+    {
+      "id": "faq-028",
+      "category": "Core Concepts",
+      "question": "What does calibration store, and why do leader and follower need it?",
+      "answer": "**Calibration** finds, for every joint, the raw position that means \"the middle\" and the raw positions at the two ends of its travel, and saves them. Without it, a joint's number depends on how the horn happened to sit on the shaft. With it, the leader and follower report the same values when they are in the same physical position, which is what lets a leader arm drive a follower, and later lets a neural network trained on one robot work on another.\n\nThe **calibration procedure** has two steps, run on each arm with the torque off:\n\n1. Move every joint to the middle of its range (the **homing position**) and press Enter. The program stores the difference between that reading and 2047 as the homing offset, so the middle pose reads 2047 on every arm.\n2. Move each joint through its full range. The smallest and largest values seen become the **range of motion limits**. The wrist roll is not swept; its range is set to 0 to 4095.\n\nThe result goes in a **calibration file** (JSON) with five numbers per joint: `id`, `drive_mode`, `homing_offset`, `range_min`, `range_max`. Use the same `id` each time you use the same arm. Details are in [Chapter 8](chapters/08-building-the-so-arm/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Calibration",
+        "Calibration Procedure",
+        "Calibration File",
+        "Homing Position",
+        "Range of Motion Limits",
+        "Zero Offset"
+      ],
+      "keywords": [
+        "calibration",
+        "homing",
+        "range limits",
+        "json",
+        "leader follower"
+      ],
+      "source_links": [
+        "docs/chapters/08-building-the-so-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 204
+    },
+    {
+      "id": "faq-029",
+      "category": "Core Concepts",
+      "question": "Which multimeter mode and connection should I use to measure current?",
+      "answer": "Use the **DC current** mode and connect the meter **in series**. Current is a flow *through* a wire, so you open the circuit, break the wire, and put the meter in the gap so that the current passes through it. The circuit's power is on while you measure.\n\nCompare the other modes from [Chapter 7](chapters/07-printing-fasteners-and-tools/index.md):\n\n| Mode | Connection | Power |\n|---|---|---|\n| DC voltage | Across the two points | On |\n| Resistance | Across the part | Off |\n| Continuity (beeps) | At the two points | Off |\n| DC current | In series, in the gap | On |\n\nFor example, to find out how much current an arm draws from its supply, open the supply wire, put the meter in current mode in the gap, and read the amperes. Put the meter back in voltage mode when you finish.\n\nThe classic mistake is connecting the meter in current mode *across* a power supply. In that mode the meter is almost a wire, so this is a near short circuit that can blow the meter's fuse. To check a voltage, use voltage mode with the probes across the points. A reading of \"OL\" or \"1\" means the value is over range or the circuit is open.",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Multimeter",
+        "Current",
+        "Voltage",
+        "Fuse",
+        "Safety Checklist"
+      ],
+      "keywords": [
+        "multimeter",
+        "current",
+        "series",
+        "voltage mode",
+        "fuse"
+      ],
+      "source_links": [
+        "docs/chapters/07-printing-fasteners-and-tools/index.md"
+      ],
+      "has_example": true,
+      "word_count": 213
+    },
+    {
+      "id": "faq-030",
+      "category": "Core Concepts",
+      "question": "How do the SO-ARM101 and reBot-DevArm differ in cost, payload, and power?",
+      "answer": "They are different machines for different jobs, not one product at two prices.\n\n| | SO-ARM101 | reBot B601-DM | reBot B601-RS |\n|---|---|---|---|\n| Cost | About $350 for the pair | About $1,387 in priced lines (store bundle $1,517.58) | Motors alone $1,130, supply $69.50 |\n| Payload | About 0.5 kg (listed by sellers) | 1.5 kg | 2.5 kg |\n| Supply | 5 V (7.4 V motors) or 12 V | 24 V | 48 V |\n| Motors | 6 STS3215 per arm, serial bus | 4 DM4310 and 3 DM4340P, CAN | 4 RS00 and 3 RS06, CAN |\n\nThe B601-DM priced lines come to about four times the SO-ARM101 cost. The SO-ARM101 has a built-in leader arm because teleoperation is its purpose, while the reBot-DevArm is built to carry more and to connect to a heavier software ecosystem (ROS 1 and 2, Pinocchio, Isaac Sim).\n\nThe trade-off is the **learning curve**. The reBot-DevArm adds CAN bus termination, 24 V or 48 V power that needs a fuse and an E-stop, mains wiring on the supply side, and bit-level frame formats. That is why the book builds the SO-ARM101 first. See [Chapter 9: Building the reBot-DevArm and Choosing a Platform](chapters/09-building-the-rebot-devarm/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Arm Comparison",
+        "Cost Comparison",
+        "Payload Comparison",
+        "Learning Curve",
+        "24 V to 48 V Systems"
+      ],
+      "keywords": [
+        "so-arm101",
+        "rebot-devarm",
+        "cost",
+        "payload",
+        "voltage"
+      ],
+      "source_links": [
+        "docs/chapters/09-building-the-rebot-devarm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 207
+    },
+    {
+      "id": "faq-031",
+      "category": "Core Concepts",
+      "question": "What is a hardware abstraction layer in a robot arm library?",
+      "answer": "A **hardware abstraction layer** (HAL) is the layer of software between your program and the hardware. It hides the differences between devices, so your program can say \"move the elbow to 45 degrees\" without knowing whether the arm underneath speaks servo packets or CAN frames.\n\n[Chapter 10: A Python Hardware Library for Robot Arms](chapters/10-python-hardware-library/index.md) builds this layer in five levels:\n\n| Layer | What it knows |\n|---|---|\n| Your program | Poses, in degrees and percent |\n| `Arm` interface | Limits, connection, step limits |\n| A driver | One arm's units and messages (`FeetechArm`, `DamiaoArm`) |\n| The bus functions | Packets or frames |\n| The hardware | Steps, amps and the physical world |\n\nThe program at the top never imports anything from below the **class interface**, and that is what lets it run on any arm, including a fake one.\n\nThe layer can leak. If a program checks `isinstance(arm, FeetechArm)` or mentions a raw step, it will break on the next arm. When a program needs something the interface lacks, add it to the interface with a version for every driver instead of reaching underneath.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Hardware Abstraction Layer",
+        "Class Interface",
+        "Arm Class",
+        "Inheritance for Drivers"
+      ],
+      "keywords": [
+        "hardware abstraction layer",
+        "hal",
+        "driver",
+        "interface",
+        "arm class"
+      ],
+      "source_links": [
+        "docs/chapters/10-python-hardware-library/index.md"
+      ],
+      "has_example": false,
+      "word_count": 191
+    },
+    {
+      "id": "faq-032",
+      "category": "Core Concepts",
+      "question": "How do I convert a raw servo reading into degrees?",
+      "answer": "Use the joint's own calibration from Chapter 8. A **raw servo unit** is an encoder step from 0 to 4095, and the same raw number means different angles on different joints. The steps per degree are 4095 / 360 = 11.375.\n\n1. Find the middle of the calibrated range: `(range_min + range_max) / 2`.\n2. Subtract it from the raw reading.\n3. Divide by 11.375.\n\nFor the shoulder pan with range 742 to 3242, the middle is 1992. A raw reading of 3000 is (3000 - 1992) / 11.375 = **88.6 degrees**. A raw reading of 2047 is 4.84 degrees, not zero, because zero is the middle of this joint's range.\n\nGoing the other way, a target of 45 degrees is raw 1992 + 45 x 11.375 = 2504. A target of 150 degrees would be raw 3698, so the conversion holds it at the end of the range, 3242, which reads back as 109.9 degrees.\n\nThis is **unit conversion** done at the edge: only the driver sees raw steps. See the unit table in [Chapter 10: A Python Hardware Library for Robot Arms](chapters/10-python-hardware-library/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Raw Servo Units",
+        "Unit Conversion",
+        "Degrees and Radians",
+        "Reading Joint Positions"
+      ],
+      "keywords": [
+        "raw steps",
+        "degrees",
+        "calibration",
+        "4095",
+        "conversion"
+      ],
+      "source_links": [
+        "docs/chapters/10-python-hardware-library/index.md"
+      ],
+      "has_example": true,
+      "word_count": 184
+    },
+    {
+      "id": "faq-033",
+      "category": "Core Concepts",
+      "question": "What is the difference between forward and inverse kinematics?",
+      "answer": "**Forward kinematics** answers \"if the joints have these angles, where is the hand?\" Its answer is unique: one set of angles gives one hand position. **Inverse kinematics** (IK) turns the question around: \"if the hand must be here, what should the joint angles be?\" It can have many answers or none.\n\nFor a **two-link arm** with link lengths l1 and l2, forward kinematics is\n\nx = l1 cos(theta1) + l2 cos(theta1 + theta2), z = l1 sin(theta1) + l2 sin(theta1 + theta2)\n\nWith both links 0.10 m, theta1 = 30 and theta2 = 60 degrees give x = 0.0866 m and z = 0.150 m. Note that the second link points at the sum of the two angles.\n\nInverse kinematics usually has two answers (elbow up and elbow down) and has none for a target that is too far or too close. In the chapter's example, the target (0.15, 0.10) m has two solutions for the SO-101's links.\n\nAlways check an IK answer by running it forward. [Chapter 12: Kinematics](chapters/12-kinematics/index.md) explains both directions and checks the SO-101 chain against its URDF.",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Forward Kinematics",
+        "Inverse Kinematics",
+        "Two-Link Arm",
+        "Multiple IK Solutions"
+      ],
+      "keywords": [
+        "forward kinematics",
+        "inverse kinematics",
+        "hand position",
+        "joint angles"
+      ],
+      "source_links": [
+        "docs/chapters/12-kinematics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 181
+    },
+    {
+      "id": "faq-034",
+      "category": "Core Concepts",
+      "question": "What does a control loop do on every cycle?",
+      "answer": "A **control loop** repeats three steps at a steady rate: *read* the state of the world, *decide* what to do, and *write* a command. For an arm, reading is `read_pose()`, deciding is \"where should each joint be now?\", and writing is `move_to()`. Some loops skip a step: the trajectory player only writes, and the teleoperation loop reads one arm and writes to another.\n\nThe **control rate** is how many cycles run per second, in hertz, and the period is its inverse. At 50 Hz the period is 20 ms, which is plenty for this book's arm.\n\nThe tempting loop does the work and then sleeps one period. If the work takes 8 ms, each cycle lasts 28 ms and the loop runs at 36 Hz, not 50. The better loop schedules the nth cycle for `start + n x period` and sleeps only for the time left. If the work runs longer than the period, it starts again from now instead of rushing to catch up.\n\nMeasure durations with `time.perf_counter()`. [Chapter 11: Moving the Arm](chapters/11-moving-the-arm/index.md) turns this into the `run_loop` function.",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Control Loop",
+        "Control Rate",
+        "Timing Jitter",
+        "Time Module"
+      ],
+      "keywords": [
+        "control loop",
+        "control rate",
+        "period",
+        "perf_counter",
+        "50 hz"
+      ],
+      "source_links": [
+        "docs/chapters/11-moving-the-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 181
+    },
+    {
+      "id": "faq-035",
+      "category": "Core Concepts",
+      "question": "How do I calculate the total time of a trapezoidal move?",
+      "answer": "A **trapezoidal velocity profile** speeds up at a constant acceleration, cruises at the speed limit, and slows down at the same rate. You need the distance D, the speed limit v, and the **acceleration limit** a.\n\nFirst test whether the joint reaches full speed: if D >= v^2 / a, the profile is a trapezoid, and\n\nt_accel = v / a, t_cruise = (D - v x t_accel) / v, T = D / v + v / a\n\nWorked example: D = 90 degrees, v = 60 degrees per second, a = 120 degrees per second squared. Since 90 >= 60^2 / 120 = 30, it is a trapezoid. The speed-up takes 0.5 s, the cruise takes (90 - 30) / 60 = 1.0 s, and T = **2.0 s**.\n\nIf the distance is too short, the profile is a triangle: t_accel = sqrt(D / a), T = 2 x t_accel, and the peak speed is a x t_accel. For D = 20 degrees that gives 0.41 s, T = 0.82 s, and a peak of 49 degrees per second, below the 60 limit.\n\nThe formulas and a calculator exercise are in [Chapter 11: Moving the Arm](chapters/11-moving-the-arm/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Trapezoidal Velocity Profile",
+        "Acceleration Limit",
+        "Trajectory",
+        "Smooth Velocity Profile"
+      ],
+      "keywords": [
+        "trapezoid",
+        "velocity profile",
+        "acceleration limit",
+        "move time"
+      ],
+      "source_links": [
+        "docs/chapters/11-moving-the-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 198
+    },
+    {
+      "id": "faq-036",
+      "category": "Core Concepts",
+      "question": "What are the five log levels and their numeric values?",
+      "answer": "Python's **logging module** ranks messages with five **log levels**, and each level has a number you can compare. `DEBUG` is 10, `INFO` is 20, `WARNING` is 30, `ERROR` is 40, and `CRITICAL` is 50. Your program's setup chooses the lowest level it wants to see, and everything at or above that level is shown. If the level is `INFO`, then `INFO`, `WARNING`, `ERROR`, and `CRITICAL` appear while `DEBUG` is hidden.\n\nEach level has a typical use in an arm program:\n\n- `DEBUG`: detail for finding a fault, such as `write {'shoulder_pan': 20.0}`.\n- `INFO`: a normal event, such as `arm connected (6 joints)`.\n- `WARNING`: something unexpected that the program handled, such as a target within 2 degrees of a joint limit.\n- `ERROR`: an operation failed, such as a servo that could not be read after 2 retries.\n- `CRITICAL`: the program cannot go on, or safety is at risk, such as an emergency stop.\n\nBecause you change the level in one place, the same program runs quietly in everyday use and shows every detail when you hunt a bug. No message in the code has to change. The full table, a sorting MicroSim, and the lab are in [Chapter 13: Logging, Testing, Simulation, and ROS 2](chapters/13-logging-testing-simulation/index.md). Terms are also defined in the [glossary](glossary.md).",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Logging Module",
+        "Log Levels",
+        "CSV Logging"
+      ],
+      "keywords": [
+        "log levels",
+        "debug",
+        "warning",
+        "critical",
+        "logging"
+      ],
+      "source_links": [
+        "docs/chapters/13-logging-testing-simulation/index.md"
+      ],
+      "has_example": true,
+      "word_count": 215
+    },
+    {
+      "id": "faq-037",
+      "category": "Core Concepts",
+      "question": "How is an AI agent different from a workflow?",
+      "answer": "An **AI agent** is a system in which a **large language model** decides, step by step, which tools to use and when to stop. In a workflow, the model and the tools are put through predefined code paths. Your program fixes the order, and the model only fills in a step, such as rewriting a message. The same model can sit inside either one. The difference is who holds the steering wheel, and for a robot arm that is the whole safety question.\n\nTwo examples make it concrete:\n\n- A script that always reads the camera, then finds the block, then moves the arm, and only asks a model to write a friendly report is a **workflow**. The code decides the order.\n- A model that is given the arm's tools and told to tidy a desk is an **agent**. It plans its own steps, calls tools, checks the results, and repeats.\n\nEvery agent runs an **agent loop**, which the book calls perceive, plan, act, observe. The program sends the model the conversation and the tool list, runs any tool the model requests, and returns the result. A turn limit is the stopping condition, so a model that never says \"finished\" cannot loop forever. See [Chapter 15: AI Agents, Tools, and OpenClaw Skills](chapters/15-agents-and-openclaw-skills/index.md) for the full comparison of ordinary programs, chatbots, workflows, and agents.",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "AI Agent",
+        "Agent Loop",
+        "Large Language Model",
+        "Tool Calling",
+        "Perceive Plan Act Observe"
+      ],
+      "keywords": [
+        "agent",
+        "workflow",
+        "agent loop",
+        "tool calling",
+        "language model"
+      ],
+      "source_links": [
+        "docs/chapters/15-agents-and-openclaw-skills/index.md"
+      ],
+      "has_example": true,
+      "word_count": 224
+    },
+    {
+      "id": "faq-038",
+      "category": "Core Concepts",
+      "question": "What is the sim-to-real gap and why does it matter?",
+      "answer": "The **sim-to-real gap** is the difference between what a program does in **simulation** and what it does on the real arm. A simulation is safe, fast, and repeatable, but it leaves things out. The chapter lists friction that the model has wrong, backlash in the gears, motor lag, bus delay, a camera's noise and lighting, and a calibration that is a degree off.\n\nThe lab shows the gap in miniature. The same trajectory is played on an ideal fake arm and on a lagging fake arm. The ideal arm follows exactly, with an error of 0. The lagging arm trails by about 4.5 degrees, which is the move's speed of 30 degrees per second times a delay of 0.15 seconds. A program tuned only against the ideal arm would assume it can stop right on the target.\n\nThat is why a passing simulation is not a safe arm. Test in simulation for logic and safety. Then make the first run on the hardware a new experiment: small, slow moves, a hand near the E-stop, and a log running so you can compare what the arm really did. Read more in [Chapter 13: Logging, Testing, Simulation, and ROS 2](chapters/13-logging-testing-simulation/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Sim-to-Real Gap",
+        "Simulation",
+        "Physics Simulator",
+        "URDF Model",
+        "CSV Logging"
+      ],
+      "keywords": [
+        "sim-to-real",
+        "simulation",
+        "lag",
+        "backlash",
+        "fake arm"
+      ],
+      "source_links": [
+        "docs/chapters/13-logging-testing-simulation/index.md"
+      ],
+      "has_example": true,
+      "word_count": 198
+    },
+    {
+      "id": "faq-039",
+      "category": "Core Concepts",
+      "question": "How do I convert a block's pixel position into table coordinates?",
+      "answer": "Use a short chain of OpenCV steps, each of which you can test.\n\n1. **Threshold the color.** Convert the frame to HSV and call `cv2.inRange` to get a mask.\n2. **Find the block.** `cv2.findContours` outlines each white region, and the **object centroid** comes from the moments: \\( c_x = M_{10} / M_{00} \\) and \\( c_y = M_{01} / M_{00} \\). That gives the pixel position \\( (u, v) \\).\n3. **Detect fiducial markers.** ArUco markers sit at known places on the table. Four markers with four corners each give 16 pixel-and-metre pairs.\n4. **Fit a homography** with `cv2.findHomography`. This 3 by 3 matrix maps pixels to table coordinates for points on a flat surface.\n5. **Apply it** to the centroid to get \\( (x, y) \\) in the base frame, set \\( z \\) to the block's height, and call the inverse kinematics from [Chapter 12: Kinematics](chapters/12-kinematics/index.md).\n\nThe only assumption is that the block sits on the table plane. In the lab's synthetic image the block positions come out within 0.3 mm because the camera is perfect. A real camera has distortion and imperfect calibration, so errors of millimetres or more are normal. Measure your own with a ruler. The whole lab is in [Chapter 14: Cameras, Perception, and Learning from Demonstration](chapters/14-perception-and-learning/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "hard",
+      "concepts": [
+        "Pixel-to-World Mapping",
+        "Object Centroid",
+        "Fiducial Markers",
+        "Contour Detection",
+        "Color Thresholding"
+      ],
+      "keywords": [
+        "homography",
+        "centroid",
+        "aruco",
+        "pixel to world",
+        "opencv"
+      ],
+      "source_links": [
+        "docs/chapters/14-perception-and-learning/index.md",
+        "docs/chapters/12-kinematics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 213
+    },
+    {
+      "id": "faq-040",
+      "category": "Core Concepts",
+      "question": "How do I write a pytest test for a joint limit?",
+      "answer": "Write a plain function whose name reads like a sentence, ask for the connected fake arm through a **test fixture**, and check that the refusal happens and that nothing was sent. The lab's version is:\n\n```python linenums=\"1\"\nimport pytest\nfrom armlab.arm import JointLimitError, Pose\n\ndef test_a_pose_outside_the_limits_is_refused_and_nothing_is_sent(arm):\n    with pytest.raises(JointLimitError, match=\"shoulder_pan\"):\n        arm.move_to(Pose({\"shoulder_pan\": 140.0}))\n    assert arm.writes == []\n```\n\nThe `arm` fixture is marked `@pytest.fixture` and lives in `conftest.py`. It connects a fake arm, uses `yield` to hand it to the test, and always disconnects it, even if the test fails. Run everything with `python -m pytest -q` from the project folder.\n\nTo cover **testing safety limits** on every joint, stack two `@pytest.mark.parametrize` marks. The lab's test runs six cases from three lines of code, and it checks a value just outside each limit, a value just inside, and the limit itself. If someone later changes `move_to` and the check silently disappears, this test fails the same day. See [Chapter 13: Logging, Testing, Simulation, and ROS 2](chapters/13-logging-testing-simulation/index.md) for fixtures, regression tests, and coverage.",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Pytest",
+        "Unit Test",
+        "Test Fixtures",
+        "Testing Safety Limits"
+      ],
+      "keywords": [
+        "pytest",
+        "fixture",
+        "parametrize",
+        "joint limit",
+        "assert"
+      ],
+      "source_links": [
+        "docs/chapters/13-logging-testing-simulation/index.md"
+      ],
+      "has_example": true,
+      "word_count": 170
+    },
+    {
+      "id": "faq-041",
+      "category": "Core Concepts",
+      "question": "Why keep the planner and the executor as separate programs?",
+      "answer": "The **planner-executor split** is the central design rule of the agent in [Chapter 16: Agent Planning, Vision, and Interfaces](chapters/16-agent-planning-and-vision/index.md). The **agent planner** decides *what* to do and in what order, and it never touches the arm. The **executor** does it one step at a time, and it only runs a checked plan, reading each result before it goes on.\n\nThe reason is that the planner's output is **data**, a list of steps. Data can be printed, saved, tested, validated, and refused. A language model that moves the arm directly is hard to test because you cannot know what it will do next. A model that writes a plan leaves a list that code can inspect before one motor turns.\n\nIn the lab, `validate_plan` checks every step against its tool's schema. A plan with an invented tool called `wave_hello` and a `move_to_pose` with z = 0.01 (the minimum is 0.02 m) is refused *as a whole*, with each fault named by its step number, and the arm never leaves home. This is the same idea as the doorway in [Chapter 15](chapters/15-agents-and-openclaw-skills/index.md), one level higher: the doorway for single commands is the tool layer, and the doorway for whole plans is the checked plan.",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Planner-Executor Split",
+        "Agent Planner",
+        "Task Planning",
+        "Agent Architecture",
+        "Task Decomposition"
+      ],
+      "keywords": [
+        "planner",
+        "executor",
+        "plan as data",
+        "validate plan",
+        "agent architecture"
+      ],
+      "source_links": [
+        "docs/chapters/16-agent-planning-and-vision/index.md"
+      ],
+      "has_example": true,
+      "word_count": 202
+    },
+    {
+      "id": "faq-042",
+      "category": "Core Concepts",
+      "question": "How do I turn a vision model's bounding box into arm coordinates?",
+      "answer": "**Image-to-arm coordinates** is the step that turns a **bounding box** from a **vision-language model** into a point the arm can use. Ask the model for absolute pixels, as `[x1, y1, x2, y2]` with the origin at the top left. Then follow three steps from [Chapter 16: Agent Planning, Vision, and Interfaces](chapters/16-agent-planning-and-vision/index.md).\n\n1. **Check the box first.** Treat it as a claim. It must lie inside the picture, be about the size of a block, and give a point inside the area the arm's tools allow.\n2. **Take the middle of the box**, which is ((x1 + x2)/2, (y1 + y2)/2).\n3. **Convert it** with the pixel-to-world homography that the four markers give, built in Chapter 14. The result is (x, y) in metres in the base frame, ready for a `move_to_pose` step.\n\nIn the lab, the red block's box `[204, 200, 239, 235]` becomes a point at (0.220, +0.089) m, within 1.4 mm of the truth. The invented yellow block with the box `[650, 300, 700, 350]` is rejected, because it lies outside the picture. If the picture was resized before the model saw it, scale the answer back first. The **scene description** is the fixed JSON form that carries these results to the planner.",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Image-to-Arm Coordinates",
+        "Object Localization",
+        "Scene Description",
+        "Vision-Language Model"
+      ],
+      "keywords": [
+        "bounding box",
+        "homography",
+        "pixels",
+        "check detection",
+        "vlm"
+      ],
+      "source_links": [
+        "docs/chapters/16-agent-planning-and-vision/index.md"
+      ],
+      "has_example": true,
+      "word_count": 205
+    },
+    {
+      "id": "faq-043",
+      "category": "Technical Details",
+      "question": "What five rules must a JSON configuration file follow?",
+      "answer": "**JSON** is a plain-text format for structured data, and its rules are strict. A program rejects the whole file if any rule is broken:\n\n1. Text is always in **double quotes**. Single quotes are not allowed.\n2. Items in an object or a list are separated by **commas**.\n3. There is **no comma after the last item**.\n4. There are **no comments**.\n5. The words `true`, `false`, and `null` are written in **lowercase**.\n\nPython maps JSON to its own types in an obvious way: an object becomes a `dict`, an array becomes a `list`, a string becomes a `str`, a number becomes an `int` or `float`, `true` and `false` become `True` and `False`, and `null` becomes `None`. Calling `json.load(f)` on an open file returns the dictionary.\n\nA single misplaced comma makes `json.load` raise a `JSONDecodeError`. For example, a comma after the last joint in the `joints` object of `config/arm.json` produces `Illegal trailing comma before end of object` on Python 3.13. Read the traceback, find the line, and remove the comma.\n\nSee [Chapter 1: Setting Up Python for Robotics](chapters/01-python-setup-for-robotics/index.md) for the full settings file.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "JSON File Format",
+        "Configuration File",
+        "Reading a Traceback",
+        "Standard Library"
+      ],
+      "keywords": [
+        "json",
+        "double quotes",
+        "trailing comma",
+        "configuration",
+        "jsondecodeerror"
+      ],
+      "source_links": [
+        "docs/chapters/01-python-setup-for-robotics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 183
+    },
+    {
+      "id": "faq-044",
+      "category": "Technical Details",
+      "question": "How does Python find a module when I use an import statement?",
+      "answer": "When Python meets `import conversions`, it needs a file called `conversions.py`. It searches a list of folders in order, and you can print the list with `sys.path`. The first entry is the folder that holds the script you ran. After it come the folders of Python's own **standard library**, and last a folder named `site-packages`, where installed libraries live.\n\nPython stops at the first match. Take `import serial` as an example. It checks the project folder for `serial.py` and finds none. It checks the standard-library folders and finds none. It then checks `site-packages`, finds the `serial` folder that `pip` put there, and loads it. If every folder comes up empty, Python raises `ModuleNotFoundError`.\n\nA **virtual environment** works by adding its own `site-packages` folder to this list, which is how each project gets its own libraries.\n\nBecause the first match wins, never name your own file `math.py` or `random.py`. Python finds your file before the real module and `import math` seems broken.\n\nNote also that the install name and import name can differ: you install `pyserial` but import `serial`. See [Chapter 1: Setting Up Python for Robotics](chapters/01-python-setup-for-robotics/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Import Statement",
+        "Python Module",
+        "Standard Library",
+        "Virtual Environment",
+        "Pip"
+      ],
+      "keywords": [
+        "import",
+        "sys.path",
+        "site-packages",
+        "modulenotfounderror",
+        "module"
+      ],
+      "source_links": [
+        "docs/chapters/01-python-setup-for-robotics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 186
+    },
+    {
+      "id": "faq-045",
+      "category": "Technical Details",
+      "question": "What does the AWG wire gauge number tell me about a wire?",
+      "answer": "**Wire gauge** describes a wire's thickness. This book uses the American Wire Gauge (AWG), where a *larger* number means a *thinner* wire. Every 3 gauge numbers halve the wire's cross-section area, and every 6 halve its diameter.\n\nThicker copper has less resistance and carries more current before it heats up. The chapter lists six gauges that fit hobby arms:\n\n| AWG | Diameter (mm) | Resistance (mΩ per metre) | Teaching limit (A) |\n|---|---|---|---|\n| 22 | 0.644 | 52.96 | 3 |\n| 20 | 0.812 | 33.31 | 5 |\n| 18 | 1.024 | 20.95 | 7 |\n\nThe full table also covers AWG 14, 16, and 24. The teaching limits are conservative rules of thumb for short, bundled hobby wiring, so check the data sheet of your own wire.\n\nA current needs two wires, a lead to the load and a return, and each one drops voltage just as a resistor does. For example, 3 A through 2 m of AWG 22 in each direction drops 0.64 V and turns 1.9 W into heat.\n\nSee [Chapter 3: Electricity, Power, and Safety](chapters/03-electricity-power-and-safety/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Wire Gauge",
+        "Current Rating",
+        "Current",
+        "Voltage"
+      ],
+      "keywords": [
+        "awg",
+        "wire gauge",
+        "resistance",
+        "teaching limit",
+        "voltage drop"
+      ],
+      "source_links": [
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": true,
+      "word_count": 186
+    },
+    {
+      "id": "faq-046",
+      "category": "Technical Details",
+      "question": "How do I size a power supply using a power budget?",
+      "answer": "A **power budget** lists every electrical load, adds up the current each draws, and compares the total with what the supply can deliver. The method has three steps:\n\n1. List the current of each motor and board in a realistic busy moment.\n2. Add the currents.\n3. Multiply by a **margin factor**, which is 1.25 in this book. Pick a supply whose current rating is at least that number.\n\nHere is the chapter's example for the SO-ARM101 follower, using illustrative currents. In a busy moment the shoulder-lift and elbow motors draw 1.2 A each, and the other four motors draw 0.3 A each:\n\n1.2 + 1.2 + 4 × 0.3 = 3.6 A, and 3.6 × 1.25 = 4.5 A.\n\nA 5 A supply fits, and a 4 A supply does not. At 5 V the arm draws 5 × 3.6 = 18 W at that moment.\n\nDo not size the supply for every motor stalling at once. Six motors at the 2.0 A stall current would be 12 A, and no sensible 5 V supply is chosen for that. Guard against stalls with a fuse, the motors' torque limits, and by not driving the arm into a stop. The supply voltage must also match the load.\n\nSee [Chapter 3: Electricity, Power, and Safety](chapters/03-electricity-power-and-safety/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Power Budget",
+        "Power Supply",
+        "Current Rating",
+        "Electrical Power",
+        "Voltage Rating"
+      ],
+      "keywords": [
+        "power budget",
+        "supply",
+        "margin factor",
+        "amps",
+        "stall current"
+      ],
+      "source_links": [
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": true,
+      "word_count": 214
+    },
+    {
+      "id": "faq-047",
+      "category": "Technical Details",
+      "question": "What are the STS3215 register addresses for position, voltage, and temperature?",
+      "answer": "The STS3215 keeps everything you can read or change in a **register map**, where each register has an address and a size in bytes:\n\n| Register | Address | Size | Meaning |\n|---|---|---|---|\n| Present_Position | 56 | 2 | Where the joint is, in steps (about 0.088 degrees each) |\n| Present_Voltage | 62 | 1 | Supply voltage, in units of 0.1 V |\n| Present_Temperature | 63 | 1 | Motor temperature, in degrees Celsius |\n| Goal_Position | 42 | 2 | Where the joint should go |\n| Torque_Enable | 40 | 1 | 0 = off, 1 = on |\n\nThe three Present_ registers above are read only. The ID (address 5) and Baud_Rate (address 6) registers live in non-volatile memory, so writing them changes the motor permanently. Chapter 5 adds Present_Velocity (58), Present_Load (60) and Present_Current (69), which counts in units of about 6.5 mA.\n\nFor example, the packet `FF FF 01 04 02 38 02 BE` asks servo 1 to read 2 bytes starting at address 56 (`0x38`). See [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md) and [Chapter 5: Actuators and Sensors](chapters/05-actuators-and-sensors/index.md).",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Register Map",
+        "Reading a Register",
+        "Writing a Register",
+        "STS3215 Servo",
+        "Temperature Sensing"
+      ],
+      "keywords": [
+        "register",
+        "address",
+        "present_position",
+        "sts3215",
+        "control table"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md",
+        "docs/chapters/05-actuators-and-sensors/index.md"
+      ],
+      "has_example": true,
+      "word_count": 190
+    },
+    {
+      "id": "faq-048",
+      "category": "Technical Details",
+      "question": "How does little-endian byte order work for servo position data?",
+      "answer": "A number larger than 255 needs more than one byte, and **little-endian** byte order sends the *low* byte first. The value 1304 is `0x0518` in hex, so it travels as the two bytes `18 05`. The Feetech motors use little-endian for every two-byte value.\n\nA servo that answers a position read with `FF FF 01 04 00 18 05 DD` is reporting the data `18 05`, which is 1304 steps. The encoder has 4096 steps per turn, so the angle is 1304 / 4096 × 360, about 114.6 degrees.\n\nPython's **struct module** unpacks it. In the format `\"<H\"`, the `<` means little-endian and `H` means one unsigned 16-bit number:\n\n```python linenums=\"1\"\nimport struct\n\ndata = bytes([0x18, 0x05])\nprint(int.from_bytes(data, \"little\"))\nprint(struct.unpack(\"<H\", data)[0])\n```\n\nBoth lines print 1304. Reading `18 05` as 1304 feels backwards for everyone at first, and it only gets easy through repetition. Run the code, change a byte, and predict the output before you press Enter. See [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md) for the full packet walk-through.",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Little-Endian Byte Order",
+        "Struct Module",
+        "Bytes and Bytearray",
+        "Hexadecimal",
+        "Status Packet"
+      ],
+      "keywords": [
+        "little-endian",
+        "struct",
+        "bytes",
+        "hex",
+        "two-byte value"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": true,
+      "word_count": 170
+    },
+    {
+      "id": "faq-049",
+      "category": "Technical Details",
+      "question": "Why does a CAN bus need two 120 ohm terminators?",
+      "answer": "**CAN termination** is a 120 Ω resistor between CAN_H and CAN_L at each of the two physical ends of the bus. Without them, the signal reflects off the open end of the wire and corrupts the frames that follow. Only the two ends get one, however many motors sit in between.\n\nTwo 120 Ω resistors across the same two wires are in parallel, so the resistance is 1 / (1/120 + 1/120) = 60 Ω. With the power off, a meter across CAN_H and CAN_L shows the state of the bus:\n\n- About 60 Ω: healthy, two terminators.\n- About 120 Ω: one terminator is missing.\n- About 40 Ω: an extra terminator, because three 120 Ω in parallel give 40 Ω.\n- Open (very large): no terminators, or a broken wire.\n- Near 0 Ω: a short circuit between the two wires.\n\nMany adapters and motors have a built-in terminator you can switch on, so check which devices sit at the two ends of your bus and switch on only those. Three terminators is as wrong as none. See [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "CAN Termination",
+        "CAN Bus",
+        "CAN Adapter",
+        "CAN Bit Rate"
+      ],
+      "keywords": [
+        "can termination",
+        "120 ohm",
+        "60 ohm",
+        "meter",
+        "can_h"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": true,
+      "word_count": 186
+    },
+    {
+      "id": "faq-050",
+      "category": "Technical Details",
+      "question": "How do I convert 12-bit encoder steps into degrees?",
+      "answer": "An **encoder** turns a shaft angle into a number, and its number of bits sets its resolution. A 12-bit encoder has 2^12 = 4096 steps per turn, so one step is 360 / 4096, about 0.088 degrees. The STS3215 has a 12-bit **magnetic encoder**. It is absolute, so it reports the true angle at power-up, and single-turn, so the number wraps from the highest value back to 0.\n\nTo convert, divide by 4096 and multiply by 360:\n\n```python linenums=\"1\"\nticks = 3072\ndegrees = ticks / 4096 * 360\nprint(degrees)\n```\n\nThis prints 270.0. The reverse is `steps = angle / 360 * 4096`, so 45 degrees is step 512. A 16-bit encoder, which the Damiao listing gives for its motors, has 65536 steps and about 0.0055 degrees per step, 16 times finer.\n\nResolution is not the same as accuracy, though: a fine encoder can still be placed badly. The position is the **position feedback** that a controller compares with its goal. See [Chapter 5: Actuators and Sensors](chapters/05-actuators-and-sensors/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "easy",
+      "concepts": [
+        "Encoder",
+        "Magnetic Encoder",
+        "Position Feedback",
+        "STS3215 Servo"
+      ],
+      "keywords": [
+        "encoder",
+        "12-bit",
+        "steps",
+        "degrees",
+        "resolution"
+      ],
+      "source_links": [
+        "docs/chapters/05-actuators-and-sensors/index.md"
+      ],
+      "has_example": true,
+      "word_count": 168
+    },
+    {
+      "id": "faq-051",
+      "category": "Technical Details",
+      "question": "What print settings does the SO-ARM100 repository recommend for the parts?",
+      "answer": "The repository's \"Printing the Parts\" instructions recommend:\n\n| Setting | Recommendation |\n|---|---|\n| Material | PLA+ |\n| Nozzle and layer height | 0.4 mm nozzle at 0.2 mm layers, or 0.6 mm nozzle at 0.4 mm layers |\n| Infill | 15 percent |\n| Supports | Everywhere, but ignore slopes steeper than 45 degrees to the horizontal; none inside screw holes whose axes are horizontal |\n| Bed preparation | Level the bed, clean off dust and grease, thin layer of glue stick if the printer's maker recommends it |\n\nThe recommendation leaves out temperatures, speed, and the number of walls, so use your filament's label and your slicer's defaults. The repository's printing-service instructions say 20 percent infill, so treat these numbers as a starting point.\n\n**Layer height** matters for time: the follower plate is about 87 mm tall, so it needs 87 / 0.2 = 435 layers at 0.2 mm, but only about 218 at 0.4 mm. Load the print plate made for your bed. The Prusa-class plate fits a 205 x 250 mm bed, and the Ender-class plates are for 220 x 220 mm. See [Chapter 7](chapters/07-printing-fasteners-and-tools/index.md).",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Print Settings",
+        "Layer Height",
+        "Infill",
+        "Support Material",
+        "PLA"
+      ],
+      "keywords": [
+        "print settings",
+        "pla+",
+        "infill",
+        "layer height",
+        "supports"
+      ],
+      "source_links": [
+        "docs/chapters/07-printing-fasteners-and-tools/index.md"
+      ],
+      "has_example": true,
+      "word_count": 192
+    },
+    {
+      "id": "faq-052",
+      "category": "Technical Details",
+      "question": "How does an MIT-mode CAN frame pack five values into eight bytes?",
+      "answer": "A CAN frame carries only 8 data bytes, and a Damiao MIT command must carry five numbers. The motor turns each number into a whole number with a fixed number of bits, then packs the bits side by side. The position gets 16 bits, and the speed, \\( K_p \\), \\( K_d \\) and torque get 12 bits each. That is 16 + 4 x 12 = 64 bits, exactly 8 bytes.\n\nA value x in the range x_min to x_max, stored in n bits, becomes `floor((x - x_min) * (2**n - 1) / (x_max - x_min))`. For example, a DM4310 at 1.0 rad uses a position range of +/-12.5 rad, so the integer is (1.0 + 12.5) x 65535 / 25 = 35388, or `0x8A3C`. A \\( K_d \\) of 1 over 0 to 5 in 12 bits gives 819.\n\n```python linenums=\"1\"\ndef float_to_uint(x, x_min, x_max, bits):\n    x = max(x_min, min(x, x_max))\n    return int((x - x_min) * ((1 << bits) - 1) / (x_max - x_min))\n\nprint(hex(float_to_uint(1.0, -12.5, 12.5, 16)))\n```\n\nThe last line prints `0x8a3c`. Shifts (`>>`, `<<`) and masks (`&`) then split the 12-bit fields across byte boundaries. The packing loses almost nothing: one position step is about 0.022 degrees. See [Chapter 9](chapters/09-building-the-rebot-devarm/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "hard",
+      "concepts": [
+        "CAN Frame",
+        "Bit Operations",
+        "Motor Mode Selection",
+        "Quasi-Direct Drive",
+        "Motor ID Assignment"
+      ],
+      "keywords": [
+        "mit mode",
+        "can frame",
+        "bit packing",
+        "damiao",
+        "8 bytes"
+      ],
+      "source_links": [
+        "docs/chapters/09-building-the-rebot-devarm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 206
+    },
+    {
+      "id": "faq-053",
+      "category": "Technical Details",
+      "question": "Why do printed holes come out too small, and how much clearance is needed?",
+      "answer": "A hole usually prints *smaller* than designed, because the nozzle's plastic spreads inwards. A well-tuned desktop FDM printer typically holds about +/-0.1 to +/-0.3 mm. So parts that must slide or fit together need a **clearance**, a deliberate gap. A common starting rule is about 0.15 to 0.2 mm, where:\n\nclearance = printed hole size - mating part size\n\nHere is the chapter's worked example with the STS3215 servo, whose body is 24.7 mm wide:\n\n- A pocket designed exactly 24.7 mm wide, on a printer that makes holes 0.15 mm small, prints 24.55 mm. The clearance is -0.15 mm, so the servo will not go in.\n- A pocket designed 25.0 mm wide, with a 0.10 mm error, prints 24.90 mm. The clearance is +0.20 mm, a good sliding fit.\n\nMore than about 0.3 mm of clearance and a part rattles; zero clearance is a press fit that may not go in at all. Measure the sizes that matter with digital calipers and test-fit one servo or screw before printing more. This is the idea behind **dimensional tolerance**, covered in [Chapter 7: 3D Printing, Fasteners, and Tools](chapters/07-printing-fasteners-and-tools/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Dimensional Tolerance",
+        "Print Quality Inspection",
+        "3D Printing",
+        "Screws",
+        "Print Settings"
+      ],
+      "keywords": [
+        "tolerance",
+        "clearance",
+        "hole size",
+        "fit",
+        "calipers"
+      ],
+      "source_links": [
+        "docs/chapters/07-printing-fasteners-and-tools/index.md"
+      ],
+      "has_example": true,
+      "word_count": 188
+    },
+    {
+      "id": "faq-054",
+      "category": "Technical Details",
+      "question": "How do I compute a joint's homing offset during calibration?",
+      "answer": "In step 1 of the **calibration procedure**, you hold the joint in the middle of its range and the program reads the raw position. The homing offset is that reading minus 2047, the middle of the range 0 to 4095:\n\n```python linenums=\"1\"\nMIDDLE = 2047\nreading = 2105\noffset = reading - MIDDLE\nprint(offset)\n```\n\nHere `reading` is the raw position at the middle pose, and the code prints 58.\n\nThe offset is written to the servo's `Homing_Offset` register (address 31) in sign-and-magnitude format, with the sign in bit 11. From then on the servo reports its actual position minus the offset, so the middle pose reads 2047 on every arm.\n\nIn the chapter's lab, the made-up shoulder pan sits at 2105 in the middle pose, so its offset is 58, while the shoulder lift sits at 1990, so its offset is -57. The offsets differ because each horn sat on its shaft at a slightly different angle, and after calibration all joints read 2047 at the middle.\n\nIf a horn later slips, the file no longer matches the arm. A shift of 40 steps is 40 x 360 / 4095, about 3.5 degrees. That is **calibration drift**, and the cure is to fix the mechanical cause and calibrate again. See [Chapter 8](chapters/08-building-the-so-arm/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Calibration Procedure",
+        "Homing Position",
+        "Zero Offset",
+        "Calibration Drift",
+        "Bit Operations"
+      ],
+      "keywords": [
+        "homing offset",
+        "2047",
+        "register",
+        "sign bit",
+        "drift"
+      ],
+      "source_links": [
+        "docs/chapters/08-building-the-so-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 213
+    },
+    {
+      "id": "faq-055",
+      "category": "Technical Details",
+      "question": "Which four methods must each Arm driver implement?",
+      "answer": "Every driver subclass of the **Arm class** fills in four methods whose names begin with an underscore:\n\n- `_open`: open the connection and switch the motors on\n- `_close`: switch the motors off and close the connection\n- `_read`: return the present value of every joint, in the library's unit\n- `_write`: send a target value for each joint named\n\nThe base class marks them with `@abstractmethod`, so Python refuses to create an object of a subclass that has not filled in all four. A missing method is caught when the program starts, not in the middle of a move.\n\nEverything else is written once in `Arm`: checking that the arm is connected, checking limits before a write, and limiting the step of a command. This is the **template method** pattern.\n\nFor example, `FeetechArm._open` writes `Torque_Enable` to each servo, `_read` reads `Present_Position`, and `_write` writes `Goal_Position`. `DamiaoArm` instead turns degrees into radians and packs an MIT frame. Neither driver contains a limit check, because they inherit it. See [Chapter 10: A Python Hardware Library for Robot Arms](chapters/10-python-hardware-library/index.md).",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Arm Class",
+        "Inheritance for Drivers",
+        "Class Interface",
+        "Connect and Disconnect"
+      ],
+      "keywords": [
+        "abstractmethod",
+        "driver",
+        "feetecharm",
+        "damiaoarm",
+        "template method"
+      ],
+      "source_links": [
+        "docs/chapters/10-python-hardware-library/index.md"
+      ],
+      "has_example": false,
+      "word_count": 177
+    },
+    {
+      "id": "faq-056",
+      "category": "Technical Details",
+      "question": "How does a homogeneous transform combine rotation and translation?",
+      "answer": "A **homogeneous transform** is a 4 by 4 matrix. The 3 by 3 **rotation matrix** sits in the top left, the translation vector in the top right, and the bottom row is 0, 0, 0, 1. To apply it to a point (x, y, z), write the point as (x, y, z, 1), multiply, and drop the 1. The result is R p + t: rotate first, then move.\n\nOrder matters, and it is the most common source of kinematics bugs. Turn 90 degrees about z, then move 0.2 m along x. The point (0.1, 0, 0) in the arm's own frame goes to (0.2, 0.1, 0) in the base frame. Do the two steps in the other order and the same point ends at (0, 0.3, 0).\n\nA **transform chain** multiplies one transform per joint and link from the base to the hand, left to right. The first matrix acts last on the point, so the chain reads like a trip: go to the pan axis, turn, go to the shoulder, tilt, and so on.\n\nThe lab functions `homogeneous`, `transform_point` and `compose` are in [Chapter 12: Kinematics](chapters/12-kinematics/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Homogeneous Transform",
+        "Rotation Matrix",
+        "Transform Chain",
+        "Coordinate Frame"
+      ],
+      "keywords": [
+        "homogeneous transform",
+        "4x4 matrix",
+        "order matters",
+        "rotation",
+        "translation"
+      ],
+      "source_links": [
+        "docs/chapters/12-kinematics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 188
+    },
+    {
+      "id": "faq-057",
+      "category": "Technical Details",
+      "question": "How does the smooth velocity profile differ from a linear move?",
+      "answer": "A linear move jumps from standing still to full speed at the first tick, which means an infinite acceleration. The servo, gears and printed parts feel it as a jolt, and the same happens at the end.\n\nThe **smooth velocity profile** replaces the fraction t with the ramp s(t) = 3t^2 - 2t^3. It starts and ends at zero speed and is steepest in the middle, where its speed is 1.5 times the average. It is one line of code and a good default. The price is time: to keep the same peak speed, it needs 1.5 times as long as the linear move.\n\nThe lab compares three profiles on a 90 degree move with a 60 degrees per second limit:\n\n| Profile | Time | Speed at 0.1 s |\n|---|---|---|\n| Linear | 1.50 s | 60 deg/s |\n| Smooth | 2.26 s | 9 deg/s |\n| Trapezoid | 2.00 s | 11 deg/s |\n\nAll three reach the same peak of 60 degrees per second, but only the linear one jumps there. See [Chapter 11: Moving the Arm](chapters/11-moving-the-arm/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Smooth Velocity Profile",
+        "Linear Interpolation",
+        "Interpolation",
+        "Trapezoidal Velocity Profile"
+      ],
+      "keywords": [
+        "smooth profile",
+        "3t^2-2t^3",
+        "jolt",
+        "linear move",
+        "velocity"
+      ],
+      "source_links": [
+        "docs/chapters/11-moving-the-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 183
+    },
+    {
+      "id": "faq-058",
+      "category": "Technical Details",
+      "question": "How do I find both inverse kinematics solutions for a two-link arm?",
+      "answer": "Use the law of cosines on the triangle made by the two links and the line from the shoulder to the target:\n\ncos(theta2) = (x^2 + z^2 - l1^2 - l2^2) / (2 x l1 x l2)\n\ntheta1 = atan2(z, x) - atan2(l2 sin(theta2), l1 + l2 cos(theta2))\n\nThe cosine gives two angles, +theta2 and -theta2, so most targets have **multiple IK solutions**: the elbow-down and elbow-up poses. For l1 = 0.116 m, l2 = 0.135 m and the target (0.15, 0.10), cos(theta2) = 0.0262, so theta2 = +88.5 degrees with theta1 = -14.8 degrees, or theta2 = -88.5 degrees with theta1 = +82.2 degrees.\n\n```python linenums=\"1\"\nfrom armlab.kinematics import L1, L2, two_link_fk, two_link_ik\n\nfor elbow in (\"down\", \"up\"):\n    t1, t2 = two_link_ik(L1, L2, 0.15, 0.10, elbow)\n    print(elbow, two_link_fk(L1, L2, t1, t2))   # (0.150, 0.100) both times\n```\n\nA program must pick one, usually the solution nearest the present pose. See [Chapter 12: Kinematics](chapters/12-kinematics/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Geometric Inverse Kinematics",
+        "Multiple IK Solutions",
+        "Elbow Up and Elbow Down",
+        "Link Lengths"
+      ],
+      "keywords": [
+        "law of cosines",
+        "elbow up",
+        "elbow down",
+        "two solutions",
+        "atan2"
+      ],
+      "source_links": [
+        "docs/chapters/12-kinematics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 154
+    },
+    {
+      "id": "faq-059",
+      "category": "Technical Details",
+      "question": "What are the allowed ranges for the move_to_pose tool?",
+      "answer": "The **move to pose tool** (`move_to_pose`) has four parameters, and every one is a **typed parameter** with a hard bound:\n\n- `x`: a number from 0.10 to 0.28 m, forward from the base.\n- `y`: a number from -0.15 to 0.15 m, to the left of the base.\n- `z`: a number from 0.02 to 0.07 m, height above the table.\n- `speed_dps`: an optional number from 5 to 60 degrees per second, default 30.\n\nThe parameters `x`, `y`, and `z` are required. These **bounded commands** come from what the arm can safely do, using the reachability of Chapter 12 and the speed limits of Chapter 5, and they stay the same whatever the model says.\n\nA call outside a bound is refused with a message that teaches. Asking for `x = 0.35` returns: \"x = 0.35 is outside the allowed range 0.1 to 0.28 (forward from the base, meters). Choose a value inside the range.\"\n\nPassing the bounds is not enough. The bounds say what is *allowed*, and the kinematics say what is *possible*. The point (0.28, 0.14, 0.07) is inside every bound but is refused because it cannot be reached with the gripper pointing down. See [Chapter 15: AI Agents, Tools, and OpenClaw Skills](chapters/15-agents-and-openclaw-skills/index.md) for the full tool table.",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concepts": [
+        "Move to Pose Tool",
+        "Bounded Commands",
+        "Typed Parameters",
+        "Tool Schema",
+        "Parameter Validation"
+      ],
+      "keywords": [
+        "move_to_pose",
+        "bounds",
+        "x y z",
+        "speed",
+        "schema"
+      ],
+      "source_links": [
+        "docs/chapters/15-agents-and-openclaw-skills/index.md"
+      ],
+      "has_example": true,
+      "word_count": 211
+    },
+    {
+      "id": "faq-060",
+      "category": "Technical Details",
+      "question": "How does HSV thresholding find red when hue wraps around?",
+      "answer": "The **HSV** color space writes a color as hue (the kind of color), saturation (how strong), and value (how bright). In OpenCV, hue runs from 0 to 179, which is half of 360 degrees so it fits in one byte, and saturation and value run from 0 to 255. Pure red has hue 0, yellow 30, green 60, and blue 120. You convert with `cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)`.\n\n**Color thresholding** then keeps the pixels in a range. `cv2.inRange(hsv, low, high)` returns a mask that is 255 inside the range and 0 elsewhere. Hue is a circle, so red sits at both ends of the scale: 0 to 10 and 170 to 179. A red mask therefore needs two ranges joined with `|`. Forgetting this is the most common bug in color code.\n\nThe lab uses green at hue 45 to 75 and blue at 100 to 130. Every range requires saturation of at least 120 and value of at least 70, which keeps gray, white, and dark pixels out. For example, the pixel (175, 180, 150) is red because 175 is in the wrapped part. The pixel (60, 40, 200) is none of the three because its saturation of 40 is below 120. More is in [Chapter 14: Cameras, Perception, and Learning from Demonstration](chapters/14-perception-and-learning/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Color Space",
+        "Color Thresholding",
+        "Image Frame",
+        "OpenCV Library"
+      ],
+      "keywords": [
+        "hsv",
+        "hue",
+        "mask",
+        "inrange",
+        "red"
+      ],
+      "source_links": [
+        "docs/chapters/14-perception-and-learning/index.md"
+      ],
+      "has_example": true,
+      "word_count": 212
+    },
+    {
+      "id": "faq-061",
+      "category": "Technical Details",
+      "question": "What does the ACT policy predict, and how is it trained?",
+      "answer": "The **ACT policy** (Action Chunking with Transformers) is the policy that LeRobot's documentation recommends first. It comes from a 2023 paper by Tony Zhao and colleagues, which reported 80 to 90 percent success on six real-world tasks from about ten minutes of demonstrations, on a system built for under $20,000.\n\nIts key idea is *action chunking*. Instead of predicting one action at a time, it predicts a chunk of the next \\( k \\) actions, 100 by default. That shortens the number of decisions in a task, so there is less chance for small errors to pile up. The network uses a ResNet-18 to read the pictures and a transformer to turn pictures and joint positions into the chunk, and it has about 80 million numbers to learn.\n\n**Training a policy** is one command, `lerobot-train --policy.type=act`. The defaults are 100,000 steps with a batch of 8, a saved checkpoint every 20,000 steps, and a log line every 200. A healthy run shows the **training loss** falling. **GPU training** matters because the network is large: the documentation says several hours for 100,000 steps on one GPU, and `--policy.device=mps` works on Apple silicon but is slower. See [Chapter 14: Cameras, Perception, and Learning from Demonstration](chapters/14-perception-and-learning/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "hard",
+      "concepts": [
+        "ACT Policy",
+        "Training a Policy",
+        "Training Loss",
+        "GPU Training",
+        "Policy"
+      ],
+      "keywords": [
+        "act",
+        "action chunking",
+        "lerobot-train",
+        "gpu",
+        "loss"
+      ],
+      "source_links": [
+        "docs/chapters/14-perception-and-learning/index.md"
+      ],
+      "has_example": true,
+      "word_count": 203
+    },
+    {
+      "id": "faq-062",
+      "category": "Technical Details",
+      "question": "How do I log target and actual joint positions to a CSV file?",
+      "answer": "Use **CSV logging** with Python's `csv.DictWriter`. The lab wraps it in a `CsvLogger` context manager that opens the file with `newline=\"\"`, writes the header once, writes one row per call, and flushes every row.\n\n```python linenums=\"1\"\nfrom armlab.logs import CsvLogger\n\nwith CsvLogger(\"logs/run.csv\", [\"time_s\", \"target\", \"actual\"]) as logger:\n    logger.log({\"time_s\": 0.02, \"target\": 1.2, \"actual\": 0.4})\n```\n\nTwo habits make the log useful. Put time in the first column, taken from `time.perf_counter()`, so rows can be lined up and plotted. And flush after every row, because a program that crashes with a million numbers still in memory leaves an empty file, and a crash is exactly when you want the log.\n\nWrite the target and the actual reading at every tick of the control loop. Then a **matplotlib plot** with the `Agg` backend (`matplotlib.use(\"Agg\")`) saves a picture with no window. In the lab the lagging arm's line trails its target by about 4.5 degrees. A growing gap between the two lines is an early warning of a stalled or overloaded joint. The code is in [Chapter 13: Logging, Testing, Simulation, and ROS 2](chapters/13-logging-testing-simulation/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "CSV Logging",
+        "Plotting Trajectories",
+        "Matplotlib Plot",
+        "Logging Module"
+      ],
+      "keywords": [
+        "csv",
+        "logging",
+        "trajectory",
+        "flush",
+        "matplotlib"
+      ],
+      "source_links": [
+        "docs/chapters/13-logging-testing-simulation/index.md"
+      ],
+      "has_example": true,
+      "word_count": 180
+    },
+    {
+      "id": "faq-063",
+      "category": "Technical Details",
+      "question": "What do the tool server's 401, 400, 404, and 409 responses mean?",
+      "answer": "The lab's **tool server** puts the arm's tools behind an **HTTP API** and turns every result into an honest status code. The first digit tells you whose fault a failure is: 2xx is success, 4xx means *you* sent something wrong, and 5xx means the server had a problem. See [Chapter 16: Agent Planning, Vision, and Interfaces](chapters/16-agent-planning-and-vision/index.md).\n\n| Code | Meaning | What the client does |\n|---|---|---|\n| 401 | The `X-API-Key` header is missing or wrong | Fix the key |\n| 400 | The request was invalid, such as x = 0.35 when the range is 0.1 to 0.28 | Read the message and fix the request |\n| 404 | No such address or tool, such as `wave_hello` | Fix the name |\n| 409 | A conflict with the arm's state: it is stopped | Wait and ask a person |\n\nThe server adds no new safety logic. Every call goes through `call_json` and `RobotSession.call`, so the bounds and the sticky stop of [Chapter 15](chapters/15-agents-and-openclaw-skills/index.md) apply as before. When you use the **requests library**, always pass `timeout` and call `raise_for_status()`, which turns a 4xx or 5xx into an `HTTPError` your program can catch.",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "HTTP API",
+        "Tool Server",
+        "JSON Requests",
+        "Requests Library",
+        "API Key Handling"
+      ],
+      "keywords": [
+        "status codes",
+        "tool server",
+        "raise_for_status",
+        "timeout",
+        "x-api-key"
+      ],
+      "source_links": [
+        "docs/chapters/16-agent-planning-and-vision/index.md",
+        "docs/chapters/15-agents-and-openclaw-skills/index.md"
+      ],
+      "has_example": true,
+      "word_count": 197
+    },
+    {
+      "id": "faq-064",
+      "category": "Common Challenges",
+      "question": "Why does pip show an externally-managed-environment error?",
+      "answer": "The message `error: externally-managed-environment` means you forgot to activate your **virtual environment**. Pip is protecting the system's Python, which the operating system manages, so it refuses to install anything into it.\n\nThe fix takes three steps:\n\n1. Run `source .venv/bin/activate` from your project folder.\n2. Check that the prompt shows the `(.venv)` prefix.\n3. Try again with `python -m pip install name`.\n\nActivation changes the `PATH` of one terminal only. Open a new terminal window and you must activate again, so this error often returns after you open a new tab.\n\nUsing `python -m pip` instead of plain `pip` runs the pip that belongs to the interpreter named in front of it, which removes any doubt about which toolbox you are filling.\n\nNever override the error with `--break-system-packages`. That flag is how a computer's own tools get broken. On Debian, Ubuntu, and Raspberry Pi OS you may also need `sudo apt install python3-venv` before you can create the environment at all.\n\nThe same activation mistake causes `ModuleNotFoundError` when a library is installed in an environment that is not active. See [Chapter 1: Setting Up Python for Robotics](chapters/01-python-setup-for-robotics/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Pip",
+        "Virtual Environment",
+        "Python Interpreter",
+        "Terminal",
+        "Requirements File"
+      ],
+      "keywords": [
+        "pip",
+        "externally-managed-environment",
+        "activate",
+        "venv",
+        "error"
+      ],
+      "source_links": [
+        "docs/chapters/01-python-setup-for-robotics/index.md"
+      ],
+      "has_example": false,
+      "word_count": 187
+    },
+    {
+      "id": "faq-065",
+      "category": "Common Challenges",
+      "question": "How do I fix FileNotFoundError when running a script from another folder?",
+      "answer": "A relative path such as `config/arm.json` starts from the **working directory**, which is the folder your terminal is standing in. It does not start from the folder where your script is saved. A script that works from the project folder fails from your home folder, because there `config/arm.json` points at `~/config/arm.json`, which does not exist.\n\nThe robust fix is to build the path from the location of the script itself. Python's `pathlib` module does this with three pieces. `__file__` holds the path of the current script, `Path(__file__).parent` is the folder that contains it, and the `/` operator joins path pieces:\n\n```python linenums=\"1\"\nfrom pathlib import Path\n\nDEFAULT_CONFIG = Path(__file__).parent / \"config\" / \"arm.json\"\n```\n\nThis path is the same no matter where the terminal is standing. An absolute path such as `/home/maker/arm-lab/config/arm.json` also works from anywhere, but only on that one computer.\n\nWhen you debug the error, read the traceback from the bottom. The last line shows the path Python tried, which tells you which folder it was really looking in.\n\nSee [Chapter 1: Setting Up Python for Robotics](chapters/01-python-setup-for-robotics/index.md) for the full File Paths section.",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "File Paths",
+        "Python Script",
+        "Configuration File",
+        "Reading a Traceback",
+        "Python Module"
+      ],
+      "keywords": [
+        "file paths",
+        "working directory",
+        "pathlib",
+        "__file__",
+        "filenotfounderror"
+      ],
+      "source_links": [
+        "docs/chapters/01-python-setup-for-robotics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 185
+    },
+    {
+      "id": "faq-066",
+      "category": "Common Challenges",
+      "question": "Why does my arm reset when it lifts a load?",
+      "answer": "A reset under load usually means the voltage at the motor board sags. Check the supply first, then check the wire, because a wire drops voltage just as a resistor does.\n\nUse this chapter's example. A 5 V supply is rated 5 A and the arm peaks at 3.6 A, so the supply is big enough. But a meter reads 5.0 V at the supply and 4.5 V at the motor board while the arm lifts. The 0.5 V drop is 10 percent of 5 V. The **5 percent rule** says to keep the drop below 5 percent of the supply voltage, which is only 0.25 V at 5 V. The board's voltage falls enough to reset it.\n\nTwo fixes work:\n\n- **Shorten the cable.** Wire resistance grows with length, so halving the cable halves the drop, and it costs nothing.\n- **Use thicker wire**, which means a smaller AWG number.\n\nIf instead the supply's current rating is below the power budget, its voltage sags under load and the arm resets or behaves oddly. Measure at the motor board while the arm moves to tell the two causes apart.\n\nSee [Chapter 3: Electricity, Power, and Safety](chapters/03-electricity-power-and-safety/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concepts": [
+        "Wire Gauge",
+        "Voltage",
+        "Current",
+        "Power Supply",
+        "Power Budget"
+      ],
+      "keywords": [
+        "voltage drop",
+        "reset",
+        "5 percent rule",
+        "cable",
+        "supply"
+      ],
+      "source_links": [
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": true,
+      "word_count": 196
+    },
+    {
+      "id": "faq-067",
+      "category": "Common Challenges",
+      "question": "How do I fix a bus scan that finds only some servos?",
+      "answer": "If a scan of IDs 1 to 6 finds servos 1, 2 and 3 only, the most likely cause is a broken link in the **daisy chain** between servo 3 and servo 4. Everything before the break answers and everything after it is silent, because the three wires in each cable (power, ground, and the shared data line) pass from motor to motor. A wrong baud rate or a duplicate ID would not produce this pattern.\n\nWhat to do:\n\n1. Reseat the cable just before the first silent motor.\n2. If that does not help, connect only the first motor to the board, test it, and add one motor at a time until the problem returns. The motor you just added, or its cable, is the culprit.\n3. Scan only the IDs you expect, such as 1 to 10, and never while the arm is moving.\n\nEvery ID that does not answer costs one full **communication timeout**, so a scan of ten IDs with a 0.1 second timeout can take close to a second.\n\nIn the chapter's lab, the pretend bus has servos 1, 2, 3, 5 and 6, and the scan prints `[1, 2, 3, 5, 6]`. The missing ID 4 is the signature of a loose cable. See [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Bus Scan",
+        "Daisy Chain Wiring",
+        "Communication Errors",
+        "Communication Timeout",
+        "Ping Command"
+      ],
+      "keywords": [
+        "bus scan",
+        "daisy chain",
+        "missing servo",
+        "timeout",
+        "loose cable"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": true,
+      "word_count": 216
+    },
+    {
+      "id": "faq-068",
+      "category": "Common Challenges",
+      "question": "How can I tell a baud rate mismatch from no motor power?",
+      "answer": "Look at what the program actually receives. The chapter's table of **communication errors** separates the cases:\n\n- **Wrong port:** the program raises an error that the port does not exist, and `list_ports` shows a different name, such as `/dev/ttyACM0` when the script asked for `/dev/ttyACM1`. A scan can also return nothing because the script opened the other adapter.\n- **No motor power:** the port opens and the adapter is listed, but a scan returns nothing at all. USB carries data only, so the motors need their own barrel-jack supply. Check that the barrel jack is actually plugged into the board.\n- **Baud rate mismatch:** the scan finds nothing even though the motors have power, but bytes do arrive and look like garbage, such as `00 FE 80 00 F8`. The STS3215 answers at 1,000,000 baud by default, so a port opened at 115,200 baud reads the reply as noise.\n\nIn short, silence points to the port or the power, and garbage points to the baud rate. Silence is rarely a broken motor, so fix the settings before you replace hardware. See [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md) for the full table of symptoms and first things to try.",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concepts": [
+        "Communication Errors",
+        "Baud Rate",
+        "Serial Port",
+        "USB Serial Adapter",
+        "Bus Scan"
+      ],
+      "keywords": [
+        "troubleshooting",
+        "baud mismatch",
+        "no reply",
+        "garbage bytes",
+        "power"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": true,
+      "word_count": 198
+    },
+    {
+      "id": "faq-069",
+      "category": "Common Challenges",
+      "question": "Why does a stalled motor draw so much current?",
+      "answer": "A spinning motor generates **back-EMF**, a voltage in its own coil that opposes the supply. The current is the supply voltage minus the back-EMF, divided by the winding resistance. A blocked motor is not turning, so there is no back-EMF, and the whole supply voltage sits across the coil's small resistance.\n\nWorked example from the STS3215 listing: a stall current of 2.0 A at 6 V gives an effective resistance of 6 / 2.0 = 3 Ω. Stalled, the current is 2.0 A. Lifting a load slowly (4.5 V of back-EMF) it is 0.5 A, and spinning freely (5.55 V) it is 0.15 A. The chapter notes these table values are an illustration based on that estimate.\n\nBecause torque is proportional to current, a stalled motor makes maximum torque, and heat grows with the square of the current. **Inrush current** is the same surge at the instant a motor starts. Remedies are a supply with margin, gentle starts, a **torque limit**, and a stall guard that releases torque. In the chapter's lab, a 50 percent torque limit cut the heat from 160.0 to 40.0, and adding the guard cut it to 11.0 (made-up units). See [Chapter 5: Actuators and Sensors](chapters/05-actuators-and-sensors/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concepts": [
+        "Back-EMF",
+        "Inrush Current",
+        "Stall Torque",
+        "DC Motor",
+        "Torque Limit"
+      ],
+      "keywords": [
+        "stall",
+        "back-emf",
+        "current",
+        "heat",
+        "inrush"
+      ],
+      "source_links": [
+        "docs/chapters/05-actuators-and-sensors/index.md"
+      ],
+      "has_example": true,
+      "word_count": 200
+    },
+    {
+      "id": "faq-070",
+      "category": "Common Challenges",
+      "question": "Why is my 24 V arm's wire too thin when voltage drop is small?",
+      "answer": "A wire has two separate limits, and it must pass both. One is **voltage drop**, the voltage lost along the wire (current times resistance). The other is heat from the current, which sets the largest current the wire may carry. A wire can pass the first and fail the second.\n\nThe chapter's example is a 200 W peak draw through 1 m of AWG 18 wire, lead and return:\n\n| Supply | Current | Wire drop | Percent | Current check |\n|---|---|---|---|---|\n| 12 V | 16.7 A | 0.70 V | 5.8 | Too much |\n| 24 V | 8.3 A | 0.35 V | 1.5 | Too much |\n| 48 V | 4.2 A | 0.17 V | 0.4 | Ok |\n\nAt 24 V, 23.65 V reaches the motors, about 8.7 V above the Damiao under-voltage setting of 15 V, so a **brown-out** is unlikely. But 8.3 A is more than the 7 A teaching limit of AWG 18, so the wire is too thin for the *current*. The cure is thicker wire, such as AWG 16 with a 10 A limit.\n\nDoubling the voltage halves the current, halves the drop in volts, and quarters it as a percentage. That is why higher-voltage systems suit bigger arms. Read more in [Chapter 9](chapters/09-building-the-rebot-devarm/index.md) and the wire gauge table in [Chapter 3](chapters/03-electricity-power-and-safety/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "hard",
+      "concepts": [
+        "Voltage Drop",
+        "Wire Gauge",
+        "Brown-Out",
+        "24 V to 48 V Systems",
+        "Current Rating"
+      ],
+      "keywords": [
+        "voltage drop",
+        "awg 18",
+        "current limit",
+        "24 v",
+        "brown-out"
+      ],
+      "source_links": [
+        "docs/chapters/09-building-the-rebot-devarm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 226
+    },
+    {
+      "id": "faq-071",
+      "category": "Common Challenges",
+      "question": "What should I check when the setup command cannot find a servo?",
+      "answer": "**Servo not found** means a servo never answers a scan, and `lerobot-setup-motors` says it cannot find the motor at any baud rate. Work along the chain from the wall to the servo, changing one thing at a time:\n\n1. **One servo only.** Unplug everything except the cable to the motor the command named. Two servos on the board (or none) is the usual cause. A wrong motor model also raises an error.\n2. **The supply.** Measure it with a multimeter. A reading of 0 V, or a voltage far from the label, tells you at once. One builder's \"12 V\" adapter measured about 16 V and the servos went into protection and would not turn on.\n3. **The USB cable** between the computer and the board.\n4. **The three-pin cable** from the board to the servo.\n5. **The jumpers** on the Waveshare board must be on channel B (USB).\n\nIf a scan of the assembled arm finds servos 1 to 3 and nothing after, the break is in the cable between servo 3 and servo 4.\n\nDo not assume the servo is broken, since power, ID and cable faults are more common. See the Troubleshooting section of [Chapter 8: Building the SO-ARM](chapters/08-building-the-so-arm/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Servo Not Found",
+        "Troubleshooting",
+        "Servo Bus Controller Board",
+        "Setting Servo IDs",
+        "Multimeter"
+      ],
+      "keywords": [
+        "servo not found",
+        "scan",
+        "supply",
+        "jumpers",
+        "troubleshooting"
+      ],
+      "source_links": [
+        "docs/chapters/08-building-the-so-arm/index.md"
+      ],
+      "has_example": false,
+      "word_count": 202
+    },
+    {
+      "id": "faq-072",
+      "category": "Common Challenges",
+      "question": "How do I tell jitter, loose gears, and intermittent wiring apart?",
+      "answer": "All three look like a joint misbehaving, but each has a different clue.\n\n- **Intermittent wiring** comes and goes with the pose. Errors such as \"There is no status packet\" appear only when a joint moves into a certain position, or when you touch a cable. A conductor is breaking inside its insulation, or a plug is working loose. Add slack, strain relief and a firm plug, or replace the cable.\n- **Loose gears** are mechanical: play, a click, or slop at the end of the arm. With the torque off, rock the part by hand and see whether the movement is between the horn and the frame or inside the servo. Re-seat the horn on its 25-tooth spline and tighten the screw to snug. Stripped plastic must be replaced.\n- **Jitter** is a joint that trembles around its goal and never settles. A loose horn or gear is a common cause, because the controller fights the slop. Others are noisy communication and gains too stiff for the load (LeRobot sets the follower's proportional gain to 16 and derivative gain to 32).\n\nFix the mechanical play first, check the cable second, and only then think about gains. LeRobot retries a failed read twice, which hides a few glitches but does not cure a bad cable. See [Chapter 8](chapters/08-building-the-so-arm/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concepts": [
+        "Jitter",
+        "Loose Gears",
+        "Intermittent Wiring",
+        "Troubleshooting",
+        "Servo Horn"
+      ],
+      "keywords": [
+        "jitter",
+        "loose gears",
+        "intermittent",
+        "cable",
+        "horn"
+      ],
+      "source_links": [
+        "docs/chapters/08-building-the-so-arm/index.md"
+      ],
+      "has_example": false,
+      "word_count": 218
+    },
+    {
+      "id": "faq-073",
+      "category": "Common Challenges",
+      "question": "Why does math.sin(90) give 0.894 and not 1?",
+      "answer": "Python's `math.sin` and `math.cos` expect **radians**, not degrees. The call `math.sin(90)` treats 90 as 90 radians, which gives 0.894. The fix is to convert first: `math.sin(math.radians(90))` is 1.0.\n\nA **degree** is one 360th of a full turn, and a **radian** is the angle at which the arc along a circle equals its radius, so a full turn is 2 pi radians. The conversions are\n\nradians = degrees x pi / 180, degrees = radians x 180 / pi\n\nFor example, 90 degrees is 1.5708 radians, and 0.5 radians is 28.65 degrees.\n\nBoth units appear in robotics. People think in degrees, and the configuration file is written in degrees. The Damiao motors of the reBot-DevArm report position in radians, and so does most kinematics math. Mixed units cause more robot bugs than any other mistake.\n\nThe rule from [Chapter 10: A Python Hardware Library for Robot Arms](chapters/10-python-hardware-library/index.md) is to convert at the edge: inside your programs every joint has one unit (degrees, or percent for a gripper), and radians exist only inside a driver. NumPy's `np.radians` does the same job in [Chapter 12: Kinematics](chapters/12-kinematics/index.md).",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Degrees and Radians",
+        "Unit Conversion",
+        "Sine and Cosine",
+        "Raw Servo Units"
+      ],
+      "keywords": [
+        "radians",
+        "degrees",
+        "math.sin",
+        "unit bug",
+        "convert at the edge"
+      ],
+      "source_links": [
+        "docs/chapters/10-python-hardware-library/index.md",
+        "docs/chapters/12-kinematics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 183
+    },
+    {
+      "id": "faq-074",
+      "category": "Common Challenges",
+      "question": "How do I make sure the torque turns off if my program crashes?",
+      "answer": "Use a **with statement** around the arm. The `Arm` class is a **context manager**: its `__enter__` calls `connect` and returns the arm, and its `__exit__` calls `disconnect` and returns `False`, which means \"do not hide the error\".\n\n```python linenums=\"1\"\nwith arm:\n    arm.move_to(target)         # if this raises, the torque is still switched off\n```\n\nThis is the same as `arm.connect()` followed by a `try` block and a `finally: arm.disconnect()`, but you cannot forget the `finally`.\n\nThe lab proves it by making the fake arm fail on the second write. With a `with` block the error is caught and the torque afterwards is off. With no `with` block and no `finally`, the torque afterwards is still on, so the motors keep holding with nobody commanding them.\n\nTwo related rules: a **try finally** block runs whatever happens, and the error then continues upward. And a loop that moves the arm should be stopped with a flag, not killed, so that its last act is the clean cleanup. See [Chapter 10: A Python Hardware Library for Robot Arms](chapters/10-python-hardware-library/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "With Statement",
+        "Context Manager",
+        "Try Finally",
+        "Exception Handling for Hardware",
+        "Connect and Disconnect"
+      ],
+      "keywords": [
+        "with statement",
+        "torque",
+        "disconnect",
+        "cleanup",
+        "finally"
+      ],
+      "source_links": [
+        "docs/chapters/10-python-hardware-library/index.md"
+      ],
+      "has_example": true,
+      "word_count": 174
+    },
+    {
+      "id": "faq-075",
+      "category": "Common Challenges",
+      "question": "Why does my inverse kinematics solver say the target is unreachable?",
+      "answer": "Work through three causes, from simple to subtle.\n\n**Distance.** For a two-link arm, the hand can be no farther from the shoulder than l1 + l2 (arm straight) and no nearer than |l1 - l2| (arm folded). For the SO-101's links that is 0.019 m to 0.251 m. Outside that ring the cosine in the IK formula is above 1 or below -1, so the library raises an `UnreachableError` rather than returning nonsense. The target (0.30, 0.0) is too far, and (0.01, 0.0) is too close. On the boundary there is exactly one solution.\n\n**Joint limits.** The numerical solver holds every joint inside its limits at each round, so the solver cannot settle on a point that needs an angle beyond a limit.\n\n**Orientation.** Demanding a gripper pitch shrinks the reachable set. At (0.20, 0.10) m with the gripper pointing straight down, a tip height of 0.07 m works but 0.09 m does not. Tilting the gripper to 60 degrees makes 0.13 m reachable.\n\nCheck the distance first, then the limits, then relax the pitch. See [Chapter 12: Kinematics](chapters/12-kinematics/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concepts": [
+        "Unreachable Target",
+        "Geometric Inverse Kinematics",
+        "Orientation Control",
+        "Numerical Inverse Kinematics"
+      ],
+      "keywords": [
+        "unreachable",
+        "reach",
+        "joint limits",
+        "pitch",
+        "unreachableerror"
+      ],
+      "source_links": [
+        "docs/chapters/12-kinematics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 179
+    },
+    {
+      "id": "faq-076",
+      "category": "Common Challenges",
+      "question": "Why does my new logger print nothing at INFO level?",
+      "answer": "The root logger's default level is `WARNING`. A new logger that writes only `INFO` or `DEBUG` messages therefore seems to print nothing, because those levels rank below `WARNING` and are hidden.\n\nThe fix is to set the level once, in your program's setup, with `logging.basicConfig(level=..., format=..., handlers=[...])`. The lab wraps that call in `setup_logging(level=logging.INFO)`. Create each logger with `logging.getLogger(__name__)` so every message names where it came from.\n\nThe lab's `log_demo.py` runs the same program twice. At `INFO`, the debug lines are hidden and you see \"arm connected\", a warning that `shoulder_pan` is within 2 degrees of its limit, and an error line. At `DEBUG`, each write also appears, in order. The warning shows at both levels because it is above both. Nothing in the program changed between the runs, only the level.\n\nOne more tip: pass values as separate arguments, as in `logger.warning(\"%s is near its limit\", name)`, and not as a pre-built f-string. Logging then builds the text only if the message will be shown. See [Chapter 13: Logging, Testing, Simulation, and ROS 2](chapters/13-logging-testing-simulation/index.md) for the full explanation of loggers, handlers, and formatters.",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concepts": [
+        "Logging Module",
+        "Log Levels",
+        "CSV Logging"
+      ],
+      "keywords": [
+        "logger",
+        "root logger",
+        "basicconfig",
+        "info",
+        "warning"
+      ],
+      "source_links": [
+        "docs/chapters/13-logging-testing-simulation/index.md"
+      ],
+      "has_example": true,
+      "word_count": 184
+    },
+    {
+      "id": "faq-077",
+      "category": "Common Challenges",
+      "question": "How do I fix pytest errors such as ModuleNotFoundError for armlab?",
+      "answer": "Read the failure message as a clue. The chapter's output reader maps real pytest messages to their usual causes:\n\n- **ModuleNotFoundError: No module named 'armlab'** means Python cannot find the library. Run `python -m pytest -q` from the project folder, because `python -m` adds the current folder to the search path.\n- **fixture 'arm_connected' not found** means a fixture is missing or misspelled. The test names one that `conftest.py` does not define, and the real one is called `arm`.\n- **assert (0.1 + 0.2) == 0.3** means decimals were compared with exact equality. The sum is 0.30000000000000004, so use `pytest.approx`.\n- **DID NOT RAISE JointLimitError** means a check that should have refused did not refuse, so the limit check is missing.\n- **assert 0.0 == 10.0** means the test never created the state it checks, such as reading a joint that was never moved.\n\nAlso confirm that `pytest.ini` contains `testpaths = tests`, that files are named `test_something.py`, and that you installed the tools with `python -m pip install pytest pytest-cov`. A failing test does not always mean the code is wrong: the test itself can be wrong or incomplete. Details are in [Chapter 13: Logging, Testing, Simulation, and ROS 2](chapters/13-logging-testing-simulation/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Pytest",
+        "Unit Test",
+        "Test Fixtures",
+        "Testing Safety Limits",
+        "Test Coverage"
+      ],
+      "keywords": [
+        "pytest",
+        "modulenotfounderror",
+        "conftest",
+        "approx",
+        "raises"
+      ],
+      "source_links": [
+        "docs/chapters/13-logging-testing-simulation/index.md"
+      ],
+      "has_example": true,
+      "word_count": 200
+    },
+    {
+      "id": "faq-078",
+      "category": "Common Challenges",
+      "question": "Why does my policy do well in training but fail on new blocks?",
+      "answer": "This pattern is **overfitting**: the policy learned the noise in the demonstrations and not the task. The lab shows it with 12 demonstrations that contain a little human jitter.\n\n- A simple policy has a training loss of 20 and puts the tip 11.7 mm from new blocks.\n- A very flexible policy drives the training loss to 0.00 by copying the jitter, and then does *worse* on new blocks, at 14.9 mm.\n\nSo a low **training loss** alone does not prove a good policy. Always measure on examples the policy never trained on.\n\nThe cure is mostly data. With 60 demonstrations the flexible policy gets down to 5.6 mm, and 78 percent of new blocks land within 10 mm. Variety matters too.\n\nA related **policy failure mode** is running outside the demonstrated situations. In the lab, blocks beyond the demonstrated region gave errors of about 400 mm because a flexible function extrapolates wildly. Other failure modes include freezing in an ambiguous situation, failing when lighting or the camera has moved, and small errors accumulating along the task. The remedy is in the data: more episodes in weak situations, steadier cameras, and consistent recordings. Safety limits such as `Arm.move_to` still apply. See [Chapter 14: Cameras, Perception, and Learning from Demonstration](chapters/14-perception-and-learning/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concepts": [
+        "Overfitting",
+        "Training Loss",
+        "Policy Failure Modes",
+        "Demonstration Data",
+        "Policy"
+      ],
+      "keywords": [
+        "overfitting",
+        "generalization",
+        "demonstrations",
+        "training loss",
+        "failure"
+      ],
+      "source_links": [
+        "docs/chapters/14-perception-and-learning/index.md"
+      ],
+      "has_example": true,
+      "word_count": 210
+    },
+    {
+      "id": "faq-079",
+      "category": "Common Challenges",
+      "question": "Why should the agent stop retrying after a second failed grasp?",
+      "answer": "A **failed grasp** is the most common problem on a real arm. The `close_gripper` tool reports whether it holds something, and the lab's executor follows a short routine from [Chapter 16: Agent Planning, Vision, and Interfaces](chapters/16-agent-planning-and-vision/index.md): if nothing is held, open the gripper, go back to the approach, and try **once more**. If the second try also fails, it stops and **asks a human**.\n\nThe logic is about what each failure tells you. The first miss may be chance, because a block can move a little. A second miss means something else is wrong, such as a missing block or a miscalibrated camera. More attempts waste time and may cause harm.\n\nDo not confuse the recovery actions. A *retry* repeats the same step. **Replanning** builds a different list because something changed, for example when `move_to_pose` says \"x is outside 0.1 to 0.28\". Repeating that call is pointless, so you replan with a corrected x. If the same refusal comes back twice, the agent is not making progress, so ask. A good question gives the person something to do: \"I could not pick the block up after two tries. Please look at the table and tell me what to do.\"\n\nIn the lab output the executor ends with `result: asked a person`.",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Failed Grasp Recovery",
+        "Replanning",
+        "Asking a Human",
+        "Planner-Executor Split"
+      ],
+      "keywords": [
+        "failed grasp",
+        "retry once",
+        "replan",
+        "ask a human",
+        "recovery"
+      ],
+      "source_links": [
+        "docs/chapters/16-agent-planning-and-vision/index.md"
+      ],
+      "has_example": true,
+      "word_count": 211
+    },
+    {
+      "id": "faq-080",
+      "category": "Best Practices",
+      "question": "What steps make up a safe power-up sequence for my arm?",
+      "answer": "A **safe power-up sequence** is a fixed list of steps, done in the same order every time, before you give an arm power in a session. A checklist works because dangerous mistakes are easy to make when you are excited, and a list does not get excited. The cheap, reversible checks come first and the step that can hurt something comes late.\n\n1. **Clear the work envelope** of people, loose cables, and anything not part of the task.\n2. **Check the label, the polarity, and the fuse.**\n3. **Simulate the program** against the software fake arm with no power on.\n4. **Park the arm in its home pose**, supported by hand if it might sag.\n5. **Place your hand within reach of the E-stop**, and check that it is released.\n6. **Switch on the power supply.** Watch and listen, and switch off at once for any unexpected smell, noise, or movement.\n7. **Enable the motors and make one small, slow move.**\n\nPower-down reverses the idea: send the arm home, turn the torque off, switch off the supply, and then unplug anything. The book also recommends an adult be present for the first power-up of any arm, because that is when wiring mistakes show.\n\nSee [Chapter 3: Electricity, Power, and Safety](chapters/03-electricity-power-and-safety/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "easy",
+      "concepts": [
+        "Safe Power-Up Sequence",
+        "Safe Work Envelope",
+        "Emergency Stop",
+        "Fuse",
+        "Adult Supervision"
+      ],
+      "keywords": [
+        "power-up",
+        "checklist",
+        "e-stop",
+        "simulate",
+        "home pose"
+      ],
+      "source_links": [
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": false,
+      "word_count": 210
+    },
+    {
+      "id": "faq-081",
+      "category": "Best Practices",
+      "question": "Why is a hardware E-stop more reliable than a software E-stop?",
+      "answer": "A **hardware E-stop** is a physical switch in the arm's power path, so pressing it breaks the circuit and cuts power to the motors. It works through physics: if the circuit is open, no current can flow. A **software E-stop** works by sending a command, so it depends on the computer, the program, the USB cable, and the motor board all still working.\n\nThe chapter compares them on six failures. The hardware stop still works when the program freezes in an endless loop, the computer crashes, or the USB cable falls out. The software stop fails in all three. The software stop wins only when the button is out of reach, because it works from the keyboard. So keep both, build and test the hardware stop first, and never use the software stop instead of it.\n\nFor the software stop, Python's `finally` block runs when the `try` block ends normally, with an error, or with Ctrl+C:\n\n```python linenums=\"1\"\nstate[\"torque\"] = True\ntry:\n    move_through_the_targets()\nfinally:\n    state[\"torque\"] = False   # the software stop\n```\n\nIt does not help if the process freezes or is killed. Park the arm at home before a planned shutdown, because cutting power can drop it. See [Chapter 3: Electricity, Power, and Safety](chapters/03-electricity-power-and-safety/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Hardware E-Stop",
+        "Software E-Stop",
+        "Emergency Stop",
+        "Robot Safety",
+        "Supervised Operation"
+      ],
+      "keywords": [
+        "e-stop",
+        "hardware",
+        "software",
+        "finally",
+        "power path"
+      ],
+      "source_links": [
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": true,
+      "word_count": 205
+    },
+    {
+      "id": "faq-082",
+      "category": "Best Practices",
+      "question": "Is replacing a blown fuse with a larger one ever a good fix?",
+      "answer": "No. A fuse is a deliberately weak link that melts and opens the circuit when current stays too high. It protects the *wire* and prevents fire. A fuse that keeps blowing is telling you something is wrong, such as a short, a stalled motor, or an undersized supply. Swapping in a bigger fuse, or a piece of wire, removes the protection and leaves the fault in place. Find the cause first, then fit a fuse of the same rating.\n\nThe right rating sits inside a window. It must be above the highest current the arm normally draws, with some margin, or the fuse blows during normal work. It must also be below the teaching limit of the thinnest wire it protects, or the wire could overheat before the fuse acts.\n\nFor the chapter's 5 V arm with a 3.6 A peak and AWG 18 cable (limit 7 A), a 25 percent margin gives 4.5 A. Any rating from 4.5 A to 7 A fits, and 5 A is a standard blade-fuse value.\n\nPlace the fuse in series with the positive wire, as close to the supply as possible. A fuse does not protect the motor itself, since a motor can be damaged at a current well below the fuse rating.\n\nSee [Chapter 3: Electricity, Power, and Safety](chapters/03-electricity-power-and-safety/index.md).",
+      "bloom_level": "Evaluate",
+      "difficulty": "medium",
+      "concepts": [
+        "Fuse",
+        "Current Rating",
+        "Wire Gauge",
+        "Power Budget",
+        "Robot Safety"
+      ],
+      "keywords": [
+        "fuse",
+        "rating",
+        "blown fuse",
+        "wire limit",
+        "margin"
+      ],
+      "source_links": [
+        "docs/chapters/03-electricity-power-and-safety/index.md"
+      ],
+      "has_example": true,
+      "word_count": 217
+    },
+    {
+      "id": "faq-083",
+      "category": "Best Practices",
+      "question": "How do I enable servo torque without the arm lunging?",
+      "answer": "A servo whose torque comes on starts working toward whatever goal is in its goal register, and that may be an old value far from where the joint is now. The arm can then lunge.\n\nFollow this order:\n\n1. Put the arm in a safe pose, with your hand near the E-stop.\n2. Read the present position (`Present_Position`, address 56).\n3. Write that value as the goal (`Goal_Position`, address 42).\n4. Only then enable torque by writing 1 to `Torque_Enable` (address 40).\n\nMake changes to the settings while torque is off, which is how LeRobot's own configuration code does it. In LeRobot, `disable_torque` releases the joints and `enable_torque` turns the drive back on.\n\nRemember that a released joint can go limp and *fall* under gravity, so **torque release** is not a gentle way to stop a loaded arm. Also read a register before you write it: the ID and Baud_Rate registers are saved permanently, and a servo set to a baud rate your adapter does not use will seem to disappear from the bus. See [Chapter 5: Actuators and Sensors](chapters/05-actuators-and-sensors/index.md) and [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Torque Enable",
+        "Torque Release",
+        "Writing a Register",
+        "Reading a Register",
+        "Runaway Motion"
+      ],
+      "keywords": [
+        "torque enable",
+        "goal position",
+        "safe start",
+        "e-stop",
+        "lunge"
+      ],
+      "source_links": [
+        "docs/chapters/05-actuators-and-sensors/index.md",
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": true,
+      "word_count": 187
+    },
+    {
+      "id": "faq-084",
+      "category": "Best Practices",
+      "question": "Why compare landed cost instead of the sticker price?",
+      "answer": "Only the **landed cost**, the sticker price plus shipping, tax and fees as it arrives at your door, answers \"can I afford this?\" The project's SO-ARM101 motor kit order shows the gap:\n\n258.94 (sticker) + 46.55 (shipping) + 26.05 (sales tax) + 0.50 (retail delivery fee) = **$332.04**\n\nThat is $73.10 above the sticker price, an overhead of 73.10 / 258.94, about 28.2 percent of the sticker price. None of the charges was a tariff: the marketplace collected the sales tax, and Minnesota and Colorado charge the delivery fee on orders shipped to them.\n\nKeeping both numbers lets you see how much the extras added, so quote landed costs to students and parents and keep the sticker price as a separate column. Budgeting from the sticker price alone would miss $73.10 of this order. The printed parts add $20 or more, which brings the pair to about $350.\n\nAlso write the source URL and the date beside every price, because a price with no date is a rumour. See [Chapter 6: Sourcing Parts and Planning a Budget](chapters/06-sourcing-parts-and-budget/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Total Build Cost",
+        "Shipping and Customs",
+        "Budgeting",
+        "Cost Calculator",
+        "SO-ARM101"
+      ],
+      "keywords": [
+        "landed cost",
+        "sticker price",
+        "shipping",
+        "overhead",
+        "budget"
+      ],
+      "source_links": [
+        "docs/chapters/06-sourcing-parts-and-budget/index.md"
+      ],
+      "has_example": true,
+      "word_count": 177
+    },
+    {
+      "id": "faq-085",
+      "category": "Best Practices",
+      "question": "Is a high torque limit safer than a low one?",
+      "answer": "No. A very high **torque limit** lets the joint push harder and heat up more when something goes wrong, while a very low limit leaves the joint unable to do its job, and a joint that struggles overheats too. The limit caps how much torque the motor may produce, and because torque is proportional to current, it also caps current and heat. In the STS3215, the `Torque_Limit` register (address 48) takes 0 to 1000 in tenths of a percent, so 500 means 50 percent.\n\nThe chapter's rule of thumb, which is a teaching rule and not a standard: choose the smallest available limit that is at least 1.5 times the torque the task needs. If a gripper needs 15 percent, 1.5 × 15 = 22.5, so of the options 20, 30 and 100 percent, 30 percent is the right one.\n\nLeRobot's SO-101 gripper, the joint most likely to push on something for a long time, uses a maximum torque limit of 500 (50 percent), a protection current of 250, and an overload torque of 25 (25 percent torque when overloaded).\n\nWhen you test a new motion, start in the 30 to 50 percent range with a slow speed, and raise the limit only if the joint cannot do the job. See [Chapter 5: Actuators and Sensors](chapters/05-actuators-and-sensors/index.md).",
+      "bloom_level": "Evaluate",
+      "difficulty": "hard",
+      "concepts": [
+        "Torque Limit",
+        "Overload Protection",
+        "Force Limit",
+        "Stall Torque",
+        "Speed Limit"
+      ],
+      "keywords": [
+        "torque limit",
+        "safety margin",
+        "gripper",
+        "overload",
+        "rule of thumb"
+      ],
+      "source_links": [
+        "docs/chapters/05-actuators-and-sensors/index.md"
+      ],
+      "has_example": true,
+      "word_count": 216
+    },
+    {
+      "id": "faq-086",
+      "category": "Best Practices",
+      "question": "How should I route and secure cables on a robot arm?",
+      "answer": "**Cable management** means arranging cables so they do not snag, pull, or rub as the arm moves. Wires that bend thousands of times break inside their insulation, and the break shows up as a fault that comes and goes. Three habits prevent most of it:\n\n1. **Leave slack at each joint**, so the cable is never stretched when the arm reaches the end of its range.\n2. **Bundle gently.** Use ties or clips that hold the cables without squeezing, because a very tight tie directly on a wire crushes it.\n3. **Give every connector strain relief**: a clip near the plug, a loop of slack, or a sleeve takes the pull instead of the joint at the end. A sharp bend right beside a connector is a common place for a wire to break.\n\nBefore you tie anything down, switch the torque off and move each joint by hand to both ends of its range while you watch the cable. Tie it only where it stays slack at both ends. A cable that goes tight at one end will break there.\n\nOn the SO-ARM101, the motors chain from the board to motor 1, then motor 2, and so on to motor 6, so each cable matters to everything after it. See [Chapter 7](chapters/07-printing-fasteners-and-tools/index.md) and [Chapter 8](chapters/08-building-the-so-arm/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "easy",
+      "concepts": [
+        "Cable Management",
+        "Strain Relief",
+        "Intermittent Wiring",
+        "Cable Routing",
+        "Crimping"
+      ],
+      "keywords": [
+        "cable",
+        "slack",
+        "strain relief",
+        "routing",
+        "range of motion"
+      ],
+      "source_links": [
+        "docs/chapters/07-printing-fasteners-and-tools/index.md",
+        "docs/chapters/08-building-the-so-arm/index.md"
+      ],
+      "has_example": false,
+      "word_count": 216
+    },
+    {
+      "id": "faq-087",
+      "category": "Best Practices",
+      "question": "Why inspect a part and print a gauge before printing a whole plate?",
+      "answer": "A **print quality inspection** takes about five minutes per part and saves the much longer job of taking an arm apart. A whole plate takes many hours, so you want cheap evidence first.\n\nThe SO-ARM100 repository provides small **gauge** prints, for the STS3215 servo and for a LEGO brick. A gauge prints in a minute or two and shows whether your settings give the right fit for the real parts. If the servo does not slide in, change one setting and print the gauge again.\n\nThen inspect each finished part in this order:\n\n1. **Look** for faults: warping (corners curl off the bed), stringing, under-extrusion, layer shift, poor first layer.\n2. **Feel** for loose strands and support material still stuck in a hole.\n3. **Measure** servo pockets and screw holes with calipers and compare them with the plan.\n4. **Test-fit** one servo or screw before printing more.\n\nThe order moves from the cheapest check to the most specific. The same idea applies before printing: a Python script can reject a 300 mm part for a 220 mm bed in milliseconds, where the printer would need hours to find out. Each fault has a cause and a remedy in the table in [Chapter 7: 3D Printing, Fasteners, and Tools](chapters/07-printing-fasteners-and-tools/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Print Quality Inspection",
+        "Dimensional Tolerance",
+        "Warping",
+        "3D Printing",
+        "STL File"
+      ],
+      "keywords": [
+        "inspection",
+        "gauge",
+        "test fit",
+        "calipers",
+        "faults"
+      ],
+      "source_links": [
+        "docs/chapters/07-printing-fasteners-and-tools/index.md"
+      ],
+      "has_example": false,
+      "word_count": 208
+    },
+    {
+      "id": "faq-088",
+      "category": "Best Practices",
+      "question": "Should payload be a hard requirement or a weighted preference when choosing an arm?",
+      "answer": "Treat it as a **requirement**, which means a filter. The **platform selection criteria** are cost, payload, learning curve and supervision, software, and power. A requirement (the arm must carry 2 kg) removes any arm that fails it. A preference (cheaper is better) is a weight. Filter first, then weigh what remains.\n\nA weighted score hides a trap: a very good score on one thing can pay for a failure on another. The chapter's challenge shows it. Ranking the arms for a lab that lifts 2 kg gives the B601-RS 39 points and the B601-DM 38. The one-point lead is fragile, and the B601-DM *cannot* lift 2 kg at all, since its payload is 1.5 kg. A small change of weights would put it first.\n\nThe better method is to add a minimum payload, drop every arm below it, and then rank. With a 2 kg requirement only the B601-RS survives, and no weights are needed. For a school class with a $400 budget and ages 12 to 14, the filters (cost, supervision, low-voltage power) leave only the SO-ARM101.\n\nWeights are the author's judgments, not measurements, so you can disagree with them. Requirements are the part you can defend with numbers. See [Chapter 9](chapters/09-building-the-rebot-devarm/index.md).",
+      "bloom_level": "Evaluate",
+      "difficulty": "hard",
+      "concepts": [
+        "Platform Selection Criteria",
+        "Arm Comparison",
+        "Payload Comparison",
+        "Payload",
+        "Learning Curve"
+      ],
+      "keywords": [
+        "requirements",
+        "weights",
+        "payload",
+        "filter",
+        "decision"
+      ],
+      "source_links": [
+        "docs/chapters/09-building-the-rebot-devarm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 203
+    },
+    {
+      "id": "faq-089",
+      "category": "Best Practices",
+      "question": "How should I validate a waypoint list before the arm moves?",
+      "answer": "Check the whole list before anything moves. A **waypoint list** with a pose outside a joint's limit should fail on the first line of the program, with a message that names the waypoint and the joint, not on the fifth waypoint with the arm halfway through a task.\n\nThe lab's `check_waypoints(arm, waypoints)` returns every problem at once, in the form `name: joint = value is outside min to max`, and it also reports an unknown joint name. It uses the limits that `Joint` holds, which are the limits you measured in Chapter 8. A clean list returns an empty list, so the pick-and-place demo can assert that `check_waypoints(arm, waypoints) == []` before starting.\n\nTwo habits help. First, name every **waypoint** for its purpose: `pick_above_bin` tells you what it is for, and `pose_4` tells you nothing. When something goes wrong you read the names in an error message and fix one line. Second, run the task on the fake arm before the real one, following the simulate-first rule.\n\nThe `Waypoint` dataclass holds the name, the pose and an optional pause. See [Chapter 11: Moving the Arm](chapters/11-moving-the-arm/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Waypoint",
+        "Waypoint List",
+        "Fake Arm",
+        "Joint Class"
+      ],
+      "keywords": [
+        "waypoint",
+        "check_waypoints",
+        "limits",
+        "validation",
+        "naming"
+      ],
+      "source_links": [
+        "docs/chapters/11-moving-the-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 185
+    },
+    {
+      "id": "faq-090",
+      "category": "Best Practices",
+      "question": "Why does pick and place check the grasp before lifting?",
+      "answer": "The cheapest place to find a missed grasp is the moment the gripper closes. If the program lifts first, it carries an empty gripper across the table and puts \"nothing\" down very carefully.\n\nIn the **state machine** of [Chapter 11: Moving the Arm](chapters/11-moving-the-arm/index.md), the grasp state closes the gripper to 0 percent, waits for the move to end, and reads the gripper. An empty gripper reads about 0. A gripper holding an object stops where the object stops it, at the object's width, for example 20 percent. The lab treats a reading above 5 percent as \"held\", the same idea as the stall check of Chapter 5.\n\nWhat happens next depends on what the state machine saw. If the object is held, the next state is lift. If not, it counts a try and goes back to approach, and when the tries run out (the lab allows 2) it stops in a failed state without lifting anything.\n\nThat is why a state machine suits **pick and place**: each step is one state, and the exceptions, such as retry or fail, live in one place. The **grasp force** limit, a torque limit, keeps the closing gripper from burning out its motor.",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Pick and Place",
+        "State Machine",
+        "Gripper Control",
+        "Grasp Force",
+        "Pre-Grasp Approach"
+      ],
+      "keywords": [
+        "grasp check",
+        "state machine",
+        "retry",
+        "gripper",
+        "failed state"
+      ],
+      "source_links": [
+        "docs/chapters/11-moving-the-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 200
+    },
+    {
+      "id": "faq-091",
+      "category": "Best Practices",
+      "question": "When should I use joint-space motion instead of Cartesian motion?",
+      "answer": "Choose by what the task needs the hand to do on the way.\n\n**Joint-space motion** gives joint angles and lets each joint go there. It is simpler, needs no math, and is smoother. Use it when you know the pose you want, such as \"home\" or \"pick above the bin\", and the path in between does not matter. Its drawback is that equal joint steps do not move the hand in a straight line.\n\n**Cartesian motion** describes the path of the hand in space and solves inverse kinematics at every step, using the previous answer as the starting guess so the elbow does not flip. The lab compares a vertical line from (0.25, 0.05) to (0.25, 0.30) m. Joint-space interpolation strays **33.5 mm** sideways from the line. Cartesian motion strays **0.008 mm**.\n\nUse Cartesian motion when the hand must carry a full cup or slide along a wall. Pay for it with inverse kinematics at every step and care near singular poses.\n\nMy recommendation: default to joint-space for pose-to-pose moves, and switch to straight-line Cartesian motion only when the path itself matters. See [Chapter 11: Moving the Arm](chapters/11-moving-the-arm/index.md) and [Chapter 12: Kinematics](chapters/12-kinematics/index.md).",
+      "bloom_level": "Evaluate",
+      "difficulty": "medium",
+      "concepts": [
+        "Joint-Space Motion",
+        "Cartesian Motion",
+        "Straight-Line Motion",
+        "Interpolation"
+      ],
+      "keywords": [
+        "joint space",
+        "cartesian",
+        "straight line",
+        "trade-off",
+        "path"
+      ],
+      "source_links": [
+        "docs/chapters/11-moving-the-arm/index.md",
+        "docs/chapters/12-kinematics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 192
+    },
+    {
+      "id": "faq-092",
+      "category": "Best Practices",
+      "question": "How should I record good demonstration episodes for imitation learning?",
+      "answer": "The quality of the **demonstration data** is the quality of the policy, and the same few rules appear in every guide:\n\n- Keep the cameras fixed. A camera that moves makes every calibration and demonstration out of date.\n- Make sure the object is visible in the camera. A good test is whether you could do the task yourself looking only at the camera image.\n- Grasp the same way each time.\n- Start with simple variation, such as a few object locations, and add more only when the policy is reliable.\n\nLeRobot's advice for a first dataset is at least 50 episodes, with 10 episodes at each object location. Each episode lasts up to 60 seconds by default, followed by a 60-second reset period. If an attempt goes wrong, the left arrow cancels the episode and records it again. Use the same `--robot.id` and `--teleop.id` every time so the right calibration files load, and watch the loop's real rate against the target, because a loop that cannot keep up makes motion play back too fast.\n\nAfterward, run `lerobot-replay` on one episode. If the replay does not do the task, no policy trained on it will. The full commands are in [Chapter 14: Cameras, Perception, and Learning from Demonstration](chapters/14-perception-and-learning/index.md).",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concepts": [
+        "Demonstration Data",
+        "Recording Episodes",
+        "Imitation Learning",
+        "Dataset",
+        "Replaying Motion"
+      ],
+      "keywords": [
+        "demonstrations",
+        "episodes",
+        "lerobot-record",
+        "replay",
+        "cameras"
+      ],
+      "source_links": [
+        "docs/chapters/14-perception-and-learning/index.md"
+      ],
+      "has_example": true,
+      "word_count": 209
+    },
+    {
+      "id": "faq-093",
+      "category": "Best Practices",
+      "question": "Why should safety rules live in code instead of the prompt?",
+      "answer": "A rule in the prompt, such as \"never move faster than 60 degrees per second\", is only a request. A model can forget it, misread it, or be talked out of it. A rule in the code cannot be argued with. The prompt can say what is wanted, and the code must enforce what is allowed.\n\nThis matters because a model is good at deciding and is not reliable at being safe. It can misread a request, invent a command that does not exist, or ask for a number that would break the arm. A hallucinated joint angle or tool name is just as fluent as a correct one. So the model never touches the arm. It gets a short menu of tools, and the lab's `validate` function checks every call. `RobotSession.call` runs that check before anything moves, and it refuses anything missing, unknown, of the wrong type, or out of range.\n\nThe same idea applies to skills. A skill that says \"never exceed 60\" is a polite request. A skill that tells the agent to run `robot_cli.py`, where the *program* refuses a speed above 60, is a safety rule. The lab's stop scenario shows it: the model *wanted* to move after a stop and could not. See [Chapter 15: AI Agents, Tools, and OpenClaw Skills](chapters/15-agents-and-openclaw-skills/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "medium",
+      "concepts": [
+        "Parameter Validation",
+        "Bounded Commands",
+        "Agent Tool",
+        "Descriptive Error Messages",
+        "Large Language Model"
+      ],
+      "keywords": [
+        "validation",
+        "prompt",
+        "safety",
+        "hallucination",
+        "code"
+      ],
+      "source_links": [
+        "docs/chapters/15-agents-and-openclaw-skills/index.md"
+      ],
+      "has_example": true,
+      "word_count": 216
+    },
+    {
+      "id": "faq-094",
+      "category": "Best Practices",
+      "question": "Is ten trials enough to evaluate a robot policy?",
+      "answer": "No. The chapter says ten trials are too few to tell a good policy from a lucky one. A policy that succeeds on 8 of 10 tries is not the same as one that succeeds on 80 of 100, even though both score 80 percent. The book does not name a required number of trials, so treat more trials as better and report the count with the rate.\n\n**Evaluating a policy** means running it on the arm and counting. The current tool is `lerobot-rollout`. Older tutorials use `lerobot-record --policy.path=...`, which no longer works that way, because `lerobot-record` is now for data collection only and refuses dataset names that begin with `eval_`.\n\nThe number you report is the **success rate**, the successes divided by the trials. In Chapter 13's lab, the pick-and-place state machine succeeds 18 times in 20 trials, or 90 percent, and each failure was a missing object that the grasp check caught. The trials are repeatable because a seeded random generator makes the \"random\" choices. A test whose result changes between runs teaches little, so give every random choice a fixed seed.\n\nFor a learned policy, also keep a hand near the E-stop and start slowly. See [Chapter 14: Cameras, Perception, and Learning from Demonstration](chapters/14-perception-and-learning/index.md) and [Chapter 13: Logging, Testing, Simulation, and ROS 2](chapters/13-logging-testing-simulation/index.md).",
+      "bloom_level": "Evaluate",
+      "difficulty": "medium",
+      "concepts": [
+        "Evaluating a Policy",
+        "Success Rate",
+        "Policy",
+        "Regression Testing"
+      ],
+      "keywords": [
+        "trials",
+        "success rate",
+        "lerobot-rollout",
+        "evaluation",
+        "seed"
+      ],
+      "source_links": [
+        "docs/chapters/14-perception-and-learning/index.md",
+        "docs/chapters/13-logging-testing-simulation/index.md"
+      ],
+      "has_example": true,
+      "word_count": 216
+    },
+    {
+      "id": "faq-095",
+      "category": "Best Practices",
+      "question": "Which API key handling habits should I follow in a robot project?",
+      "answer": "**API key handling** is the set of habits that keeps a secret key from leaking, and for a cloud model the key also means someone is paying. [Chapter 16: Agent Planning, Vision, and Interfaces](chapters/16-agent-planning-and-vision/index.md) lists these habits, which follow the guidance that model providers publish.\n\n- **Never put a key in code or in a file that goes into Git.** Read it from an environment variable with `os.environ[\"NAME\"]`.\n- **Add `.env` to `.gitignore` before you create the file.** The other order is how keys reach public repositories, because Git remembers a file even after you delete it.\n- **Treat any key that was ever public as stolen**, even for a minute, and replace it.\n- **Use a separate key for each purpose**, set spending limits, and rotate keys regularly.\n- **Turn on secret scanning.** GitHub scans for leaked credentials, and LeRobot's pre-commit checks include gitleaks.\n\nTogether they keep keys out of Git and catch mistakes early. The lab's `check_secrets.py` is a small scanner that flags lines such as `API_KEY = \"sk-...\"` and reports whether `.env` is ignored. The lab's tool server also requires an `X-API-Key` header and answers 401 if it is missing or wrong.",
+      "bloom_level": "Evaluate",
+      "difficulty": "medium",
+      "concepts": [
+        "API Key Handling",
+        "HTTP API",
+        "Tool Server",
+        "Cloud Agent"
+      ],
+      "keywords": [
+        "api key",
+        "environment variable",
+        "gitignore",
+        "secret scanning",
+        "rotate"
+      ],
+      "source_links": [
+        "docs/chapters/16-agent-planning-and-vision/index.md"
+      ],
+      "has_example": true,
+      "word_count": 195
+    },
+    {
+      "id": "faq-096",
+      "category": "Advanced Topics",
+      "question": "Why can joint limits make a point inside the workspace unreachable?",
+      "answer": "The **workspace** is the set of positions the end effector can reach. It is bounded by the link lengths and by the **joint limits**, and every limit takes a bite out of it.\n\nTake the chapter's flat two-link arm with a 10 cm upper arm and a 15 cm forearm. If both joints can turn all the way around, the tip reaches any point whose distance r from the shoulder satisfies |L1 - L2| <= r <= L1 + L2, which here is 5 to 25 cm. That is a flat ring with a hole in the middle.\n\nNow add an elbow limit of 0 to 90 degrees. For the target (20, 10), r is about 22.4 cm and the elbow must bend plus or minus 54.3 degrees, so the +54.3 solution is allowed and the point is reachable. For the target (7, 0), r = 7 cm is inside the ring, but the elbow must bend plus or minus 156.9 degrees. Neither fits the limit, so the limited arm cannot reach it, although an unlimited arm could.\n\nWhen your arm cannot reach a point that looks close, ask which joint ran out of travel before you suspect the code. See [Chapter 2: Anatomy of a Robot Arm](chapters/02-anatomy-of-a-robot-arm/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concepts": [
+        "Workspace",
+        "Joint Limits",
+        "Reach",
+        "Joint Angle",
+        "Link"
+      ],
+      "keywords": [
+        "workspace",
+        "joint limits",
+        "elbow",
+        "reachability",
+        "ring"
+      ],
+      "source_links": [
+        "docs/chapters/02-anatomy-of-a-robot-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 208
+    },
+    {
+      "id": "faq-097",
+      "category": "Advanced Topics",
+      "question": "How do I write a function that checks a pose against joint limits?",
+      "answer": "Design it in three parts. First, represent a **pose** as a dictionary from joint name to target angle in degrees. Second, load the limits from your **configuration file**, where each joint has `min_deg` and `max_deg`. Third, test each angle with a chained comparison, which reads like a sentence: `min_deg <= angle_deg <= max_deg` is true only when the angle is between the limits.\n\nThe chapter's `check_pose` returns the names of joints that are out of range, so an empty list means the whole pose is safe:\n\n```python linenums=\"1\"\ndef check_pose(pose, joints):\n    out_of_range = []\n    for name, angle_deg in pose.items():\n        limits = joints[name]\n        if not limits[\"min_deg\"] <= angle_deg <= limits[\"max_deg\"]:\n            out_of_range.append(name)\n    return out_of_range\n```\n\nA companion `clamp_pose` returns a copy with each angle held inside its limits, using `max(low, min(angle, high))`. In the chapter's test, a `shoulder_pan` target 30 degrees past its 110 limit is reported by `check_pose` and clamped to 110.\n\nAdd a docstring that states the units, and set software limits inside the mechanical stops with a margin. See [Chapter 2: Anatomy of a Robot Arm](chapters/02-anatomy-of-a-robot-arm/index.md).",
+      "bloom_level": "Create",
+      "difficulty": "hard",
+      "concepts": [
+        "Joint Limits",
+        "Pose",
+        "Configuration File",
+        "JSON File Format",
+        "Docstring"
+      ],
+      "keywords": [
+        "check_pose",
+        "joint limits",
+        "clamp",
+        "pose",
+        "dictionary"
+      ],
+      "source_links": [
+        "docs/chapters/02-anatomy-of-a-robot-arm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 177
+    },
+    {
+      "id": "faq-098",
+      "category": "Advanced Topics",
+      "question": "Which fail-safe behavior should an arm use when commands stop?",
+      "answer": "The chapter says there is no single best choice, so decide on purpose for each arm. Compare the three common answers:\n\n- **Hold position:** the motors keep holding the last position. This suits carrying a load or delicate tasks, but an arm that was heading into an obstacle may keep pushing.\n- **Torque off:** the motors release the joints. This stops a harmful push, but the arm can sag or fall.\n- **Go home slowly:** the arm moves to a safe pose at low speed. This suits open spaces, but the motion itself is a risk if the cause was a loose cable.\n\nChoose based on what the arm carries and who is nearby, write the choice down, and test it with the arm unloaded. Also check what the motor does by itself when the commands stop, because motors differ. Damiao's documentation, for example, describes a timeout protection that puts the motor in protection mode if no CAN command arrives within the set interval.\n\nA **watchdog timer** triggers the behavior. A software watchdog guards against a stalled source of commands, but it fails if the whole program freezes. A watchdog inside the motor does not depend on your computer, so use one when the motor offers it. See [Chapter 4: Serial and CAN Communication](chapters/04-serial-and-can-communication/index.md).",
+      "bloom_level": "Evaluate",
+      "difficulty": "hard",
+      "concepts": [
+        "Fail-Safe Behavior",
+        "Watchdog Timer",
+        "Communication Timeout",
+        "Torque Release"
+      ],
+      "keywords": [
+        "fail-safe",
+        "watchdog",
+        "hold position",
+        "torque off",
+        "go home"
+      ],
+      "source_links": [
+        "docs/chapters/04-serial-and-can-communication/index.md"
+      ],
+      "has_example": false,
+      "word_count": 214
+    },
+    {
+      "id": "faq-099",
+      "category": "Advanced Topics",
+      "question": "How do I plan a classroom servo order in Python?",
+      "answer": "Start from the bill of materials, then scale it. Each leader-and-follower set needs 12 STS3215 servos, six for each arm. A class of 12 students working in pairs makes 6 sets, so it needs 6 × 12 = 72 servos. A 10 percent spare allowance is 7.2, which you round *up* to 8, giving 80 servos. At $13.89 each that is 80 × 13.89 = $1,111.20. Rounding down to 7 would leave you one motor short.\n\nIn Python:\n\n- Save the parts list as a **CSV parts list** with columns `part,qty,spares,unit_usd,required`, and read it with `csv.DictReader`, converting the text to numbers.\n- Round spares up with `math.ceil`, as in `needed + ceil(needed * 0.10)`.\n- Total required and optional parts separately, then add shipping, tax and fees to get the landed cost.\n\nWith a $1,500 budget and a landed cost of $287.01 per set (the $223.88 required-parts cost plus 28.2 percent), you can afford 5 sets, because 6 would cost $1,722.06.\n\nWhen the servos arrive, power up one at a time and read each model number (address 3, 2 bytes). The STS3215 should read 777. A wrong number proves the part is not what the listing said, but a matching one does not prove it is genuine. See [Chapter 6: Sourcing Parts and Planning a Budget](chapters/06-sourcing-parts-and-budget/index.md).",
+      "bloom_level": "Create",
+      "difficulty": "hard",
+      "concepts": [
+        "Classroom Parts Order",
+        "CSV Parts List",
+        "Totaling Costs in Python",
+        "Spare Parts",
+        "Counterfeit Parts",
+        "Total Build Cost"
+      ],
+      "keywords": [
+        "classroom",
+        "spare parts",
+        "csv",
+        "budget",
+        "python"
+      ],
+      "source_links": [
+        "docs/chapters/06-sourcing-parts-and-budget/index.md"
+      ],
+      "has_example": true,
+      "word_count": 216
+    },
+    {
+      "id": "faq-100",
+      "category": "Advanced Topics",
+      "question": "Is it safe to run an arm at its full rated payload?",
+      "answer": "Not without margin. The payload at the end of an arm of length r puts a torque on the shoulder of \\( \\tau = m g r \\), with g = 9.81 m/s^2, *before* counting the weight of the arm itself.\n\n- **SO-ARM101:** an illustrative 0.5 kg at 0.3 m needs 0.5 x 9.81 x 0.3 = 1.47 N·m. The STS3215's stall torque at 6 V is 16.5 kg·cm, or 1.62 N·m, so the payload alone takes about 91 percent of it.\n- **B601-DM:** 1.5 kg at 0.45 m needs 6.6 N·m. The DM4340P has a rated torque of 9 N·m, so the load takes about 74 percent.\n\nBoth arms work near the limit of their shoulder motors at the stated payload, which is how payloads are chosen. A motor can deliver its peak torque only for a short time.\n\nSeeed's own tests agree. Moving 1.5 kg back and forth within 70 percent of the reach ran more than two hours before a motor reached 90 degrees C and the test was stopped. Moving 2.5 kg was stopped by overheat protection after 40 minutes. Seeed advises keeping loads under 1.5 kg and staying inside 70 percent of the reach.\n\nSo treat the rated payload as a ceiling, not a daily setting. Choose a load well below it, and stay close to the base. See [Chapter 9](chapters/09-building-the-rebot-devarm/index.md).",
+      "bloom_level": "Evaluate",
+      "difficulty": "hard",
+      "concepts": [
+        "Payload Comparison",
+        "Torque",
+        "Stall Torque",
+        "Reach",
+        "Servo Overheating"
+      ],
+      "keywords": [
+        "payload",
+        "torque",
+        "stall torque",
+        "reach",
+        "overheating"
+      ],
+      "source_links": [
+        "docs/chapters/09-building-the-rebot-devarm/index.md"
+      ],
+      "has_example": true,
+      "word_count": 226
+    },
+    {
+      "id": "faq-101",
+      "category": "Advanced Topics",
+      "question": "How can I design a Python check that rejects an STL before printing?",
+      "answer": "Build a small toolkit that turns a physical failure into a number a program can test. The chapter's lab does this with the `struct` module in five steps:\n\n1. **Validate the file.** A binary STL is 80 header bytes, a 4-byte count, and 50 bytes per triangle. If the length does not match the count, raise an error. A file starting with `solid` may be an ASCII STL.\n2. **Find the size.** Read each triangle and take the bounding box: the high value minus the low value on each axis.\n3. **Test the bed.** Compare the length and width with the bed, trying both ways round by sorting each pair.\n4. **Estimate plastic.** Volume in mm^3 / 1000, times the fill fraction, times PLA's density of about 1.24 g/cm^3.\n5. **Check a measured size** against its tolerance.\n\n```python linenums=\"1\"\nimport struct\ndata = open(\"part.stl\", \"rb\").read()\n(count,) = struct.unpack_from(\"<I\", data, 80)\nif len(data) != 80 + 4 + 50 * count:\n    raise ValueError(\"not a binary STL file\")\n```\n\nRun on the real Prusa-class follower plate, it reports 96,584 triangles and a size of 243.4 x 204.9 x 87.0 mm. That fits a 205 x 250 mm bed by 0.1 mm and fails a 220 x 220 mm one. Full code is in the lab of [Chapter 7](chapters/07-printing-fasteners-and-tools/index.md).",
+      "bloom_level": "Create",
+      "difficulty": "hard",
+      "concepts": [
+        "STL File",
+        "Struct Module",
+        "Dimensional Tolerance",
+        "3D Printing",
+        "Python Script",
+        "Slicer"
+      ],
+      "keywords": [
+        "stl",
+        "struct",
+        "bounding box",
+        "bed size",
+        "python lab"
+      ],
+      "source_links": [
+        "docs/chapters/07-printing-fasteners-and-tools/index.md"
+      ],
+      "has_example": true,
+      "word_count": 216
+    },
+    {
+      "id": "faq-102",
+      "category": "Advanced Topics",
+      "question": "How do singular poses affect Cartesian motion of a two-link arm?",
+      "answer": "A **singular pose** is one where the **Jacobian** cannot be solved, because some direction of hand motion is impossible whatever the joints do. For the two-link arm the determinant is l1 l2 sin(theta2), which is zero when theta2 = 0 (arm straight) or 180 degrees (folded). At full stretch the hand cannot move along the arm, because both links are lined up with it.\n\nNear such a pose, joint speeds grow without limit. In the chapter's table, moving the hand at 0.1 m/s along x with theta1 = 20 degrees needs:\n\n| theta2 | Joint speeds (deg/s) | Condition number |\n|---|---|---|\n| 90 degrees | 17 and 23 | 2.8 |\n| 10 degrees | 246 and 476 | 29.7 |\n| 1 degree | 2,642 and 4,927 | 297 |\n| 0 degrees | no answer | infinite |\n\nThe condition number (`np.linalg.cond`) is a handy warning light. A Cartesian planner should keep the elbow away from straight or fully folded, watch the condition number, and let the speed limit of Chapter 11 catch whatever is left. In the chapter's singularity sim, the sign of the bend does not matter, only the size of sin(theta2). See [Chapter 12: Kinematics](chapters/12-kinematics/index.md).",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concepts": [
+        "Jacobian",
+        "Singular Pose",
+        "Cartesian Motion",
+        "Two-Link Arm",
+        "Numerical Inverse Kinematics"
+      ],
+      "keywords": [
+        "singularity",
+        "jacobian",
+        "condition number",
+        "determinant",
+        "joint speed"
+      ],
+      "source_links": [
+        "docs/chapters/12-kinematics/index.md"
+      ],
+      "has_example": true,
+      "word_count": 201
+    },
+    {
+      "id": "faq-103",
+      "category": "Advanced Topics",
+      "question": "How would I add a driver for a third robot arm?",
+      "answer": "Follow the order the chapter recommends. Begin with the fake arm and a short program that uses the interface. Once that works, the new driver only has to fill four methods, and any problem that appears afterwards is in the driver and nowhere else.\n\n```python linenums=\"1\"\nclass MyArm(Arm):\n    def _open(self): ...                 # open the bus, switch the torque on\n    def _close(self): ...                # switch the torque off, close the bus\n    def _read(self): ...                 # return {joint: value} in degrees or percent\n    def _write(self, values): ...        # convert to the arm's unit and send\n```\n\nDesign decisions to make:\n\n- **Units.** Convert at the edge: the driver turns its raw steps or radians into degrees and percent on the way out, and back on the way in.\n- **Bus functions.** Take a `send` or `exchange` function as `FeetechArm` and `DamiaoArm` do, so a pretend bus works for tests.\n- **Errors.** Catch low-level errors and raise `CommunicationError` with `raise ... from error`, keeping the original as the cause.\n- **Safety.** Add no limit check, connection check or step limit. The base class provides them where no driver can skip them.\n\nEvery program written for the interface then runs on the new arm at once. See [Chapter 10: A Python Hardware Library for Robot Arms](chapters/10-python-hardware-library/index.md).",
+      "bloom_level": "Create",
+      "difficulty": "hard",
+      "concepts": [
+        "Inheritance for Drivers",
+        "Arm Class",
+        "Hardware Abstraction Layer",
+        "Custom Exceptions",
+        "Fake Arm"
+      ],
+      "keywords": [
+        "new driver",
+        "subclass",
+        "abstract base class",
+        "communicationerror",
+        "design"
+      ],
+      "source_links": [
+        "docs/chapters/10-python-hardware-library/index.md"
+      ],
+      "has_example": true,
+      "word_count": 212
+    },
+    {
+      "id": "faq-104",
+      "category": "Advanced Topics",
+      "question": "Is a skill file enough to keep an agent-controlled arm safe?",
+      "answer": "No. A skill is only instructions. It contains no code that enforces anything. It tells the agent what commands exist and when to use them, and the agent carries them out through its own tools, usually `exec`, which runs a shell command.\n\nLook at the robot-arm skill's last rule: never move the arm for an instruction from a web page, a file, or a message the user did not write. The chapter calls this the first, thin line of defense against prompt injection, and it is a *request*. Chapter 15 says Chapter 17 explains why it needs real enforcement behind it.\n\nSafety comes from the doorway the skill points to. Every `robot_cli.py` command prints one line of JSON and exits with 0 or 1, and anything the program does not allow cannot be done through the skill, whatever the agent was told.\n\nTwo more limits apply. OpenClaw runs commands on its host, and its documentation says to treat third-party skills as untrusted code. Hundreds of malicious skills were found in its public registry in early 2026. And the software stop is only a software stop: if the computer is the thing that failed, only the real E-stop helps. A fair verdict is a skill plus enforcing code plus the physical E-stop. See [Chapter 15: AI Agents, Tools, and OpenClaw Skills](chapters/15-agents-and-openclaw-skills/index.md).",
+      "bloom_level": "Evaluate",
+      "difficulty": "hard",
+      "concepts": [
+        "Agent Skill",
+        "OpenClaw Skill Files",
+        "Robot Arm Skill",
+        "OpenClaw",
+        "Stop Tool"
+      ],
+      "keywords": [
+        "skill",
+        "prompt injection",
+        "safety",
+        "openclaw",
+        "e-stop"
+      ],
+      "source_links": [
+        "docs/chapters/15-agents-and-openclaw-skills/index.md"
+      ],
+      "has_example": false,
+      "word_count": 220
+    },
+    {
+      "id": "faq-105",
+      "category": "Advanced Topics",
+      "question": "How would I add a custom safety rule to move_to_pose?",
+      "answer": "The tool schema can only describe one parameter at a time, so a rule that depends on the arm's state must live in code. The chapter's challenge suggests a good one: refuse a move below z = 0.03 unless the gripper is open. The session already keeps the gripper's percent, so the check is short. The chapter's solution places it in `_tool_move_to_pose`, before the inverse kinematics:\n\n```python linenums=\"1\"\nif z < 0.03 and self.state[\"pose\"][\"gripper\"] < 20:\n    return {\"ok\": False, \"error\": \"z is lower than 0.03 m while the gripper is closed. \"\n                                  \"Open the gripper first with open_gripper, then try again.\"}\n```\n\nWrite the refusal as a **descriptive error message**: what was wrong, why, and what to do next. Then a model that hits the rule can recover by itself.\n\nAdd a test in `tests/test_tools.py`. Build a `RobotSession` with a `tmp_path` state file, call `move_to_pose` with `z = 0.025`, then assert that the result is not ok and that \"Open the gripper first\" appears in the error. Because the check comes first, the test needs no motion at all. This is the same habit as the safety-limit tests of Chapter 13. See [Chapter 15: AI Agents, Tools, and OpenClaw Skills](chapters/15-agents-and-openclaw-skills/index.md).",
+      "bloom_level": "Create",
+      "difficulty": "hard",
+      "concepts": [
+        "Move to Pose Tool",
+        "Parameter Validation",
+        "Descriptive Error Messages",
+        "Bounded Commands",
+        "Agent Tool"
+      ],
+      "keywords": [
+        "custom rule",
+        "move_to_pose",
+        "validation",
+        "gripper",
+        "test"
+      ],
+      "source_links": [
+        "docs/chapters/15-agents-and-openclaw-skills/index.md"
+      ],
+      "has_example": true,
+      "word_count": 200
+    },
+    {
+      "id": "faq-106",
+      "category": "Advanced Topics",
+      "question": "How would I build an MCP server that exposes my arm's tools?",
+      "answer": "The **Model Context Protocol** (MCP) is an open standard for connecting AI applications to tools. An **MCP server** for the arm is short with the official Python SDK, because the SDK builds the tool schema from the function's type hints. [Chapter 16: Agent Planning, Vision, and Interfaces](chapters/16-agent-planning-and-vision/index.md) gives a design recipe.\n\n```python linenums=\"1\"\nmcp = MCPServer(\"robot-arm\")\n\n@mcp.tool()\ndef go_home() -> str:\n    \"\"\"Move the arm to its safe home pose.\"\"\"\n    return _show(session.call(\"go_home\"))\n```\n\nDesign rules to follow:\n\n- **Check the SDK version.** In version 2 the class is `MCPServer`. Version 1 called it `FastMCP`, and old tutorials fail on version 2.\n- **Write bounds as type hints**, such as `Annotated[float, Field(ge=0.10, le=0.28)]`. The SDK turns them into `minimum` and `maximum`.\n- **Keep the checks in `RobotSession`.** The SDK refuses an out-of-range value with a technical message, so catch it or keep the friendlier validation of [Chapter 15](chapters/15-agents-and-openclaw-skills/index.md) inside the function.\n- **Never print to standard output** on the stdio transport, because that channel carries the protocol. Log to standard error or a file.\n- **Get consent.** Tools are arbitrary code execution, so a host should ask a person first.\n\nA **ROS 2 bridge** is another doorway into the same checked tools.",
+      "bloom_level": "Create",
+      "difficulty": "hard",
+      "concepts": [
+        "MCP Server",
+        "Model Context Protocol",
+        "ROS 2 Bridge",
+        "Tool Server",
+        "Planner-Executor Split"
+      ],
+      "keywords": [
+        "mcp",
+        "mcpserver",
+        "type hints",
+        "stdio",
+        "tool schema",
+        "ros 2"
+      ],
+      "source_links": [
+        "docs/chapters/16-agent-planning-and-vision/index.md",
+        "docs/chapters/15-agents-and-openclaw-skills/index.md"
+      ],
+      "has_example": true,
+      "word_count": 200
+    }
+  ]
+}
