@@ -1,0 +1,23 @@
+{
+  "title": "Multimeter Practice",
+  "description": "The learner will use a virtual multimeter by choosing the correct mode, power state and connection for six measuring tasks from this book's circuits, with at least 5 of 6 tasks fully correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "multimeter-practice",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "use",
+  "completion_status": "scaffold",
+  "chapter_number": 7,
+  "chapter_title": "3D Printing, Fasteners, and Tools",
+  "chapter_dir": "07-printing-fasteners-and-tools",
+  "chapter_rel_dir": "chapters/07-printing-fasteners-and-tools"
+}

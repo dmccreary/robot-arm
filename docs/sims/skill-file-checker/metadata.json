@@ -1,0 +1,23 @@
+{
+  "title": "Skill File Checker",
+  "description": "The learner will validate eight skill-file headers against the rules of the OpenClaw skill format, naming the one rule that each breaks or saying that it is valid, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "skill-file-checker",
+  "library": "p5.js",
+  "bloomLevel": "Evaluate",
+  "bloomVerb": "validate",
+  "completion_status": "scaffold",
+  "chapter_number": 15,
+  "chapter_title": "AI Agents, Tools, and OpenClaw Skills",
+  "chapter_dir": "15-agents-and-openclaw-skills",
+  "chapter_rel_dir": "chapters/15-agents-and-openclaw-skills"
+}

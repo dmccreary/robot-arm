@@ -1,0 +1,23 @@
+{
+  "title": "RRT Step Tracer",
+  "description": "The learner will execute one step of the RRT algorithm by hand, finding the distance to the nearest node and the coordinates of the new node, to within 0.1 of the unit shown, in six problems, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "rrt-step-tracer",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "execute",
+  "completion_status": "scaffold",
+  "chapter_number": 19,
+  "chapter_title": "Optional Advanced Chapter: The Mathematics of Arm Paths",
+  "chapter_dir": "19-advanced-arm-path-mathematics",
+  "chapter_rel_dir": "chapters/19-advanced-arm-path-mathematics"
+}

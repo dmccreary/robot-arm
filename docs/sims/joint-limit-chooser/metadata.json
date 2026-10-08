@@ -1,0 +1,23 @@
+{
+  "title": "Joint Limit Chooser",
+  "description": "The learner will recommend the torque limit for each of five joint tasks, choosing the smallest option that is at least 1.5 times the torque the task needs, with at least 4 of 5 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "joint-limit-chooser",
+  "library": "p5.js",
+  "bloomLevel": "Evaluate",
+  "bloomVerb": "recommend",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "Actuators and Sensors",
+  "chapter_dir": "05-actuators-and-sensors",
+  "chapter_rel_dir": "chapters/05-actuators-and-sensors"
+}

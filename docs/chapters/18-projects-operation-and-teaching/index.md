@@ -106,6 +106,10 @@ A script is not a poor choice. If the blocks are always in the same place, a scr
 
 #### Diagram: Script Policy Agent Sorter
 
+<iframe src="../../sims/script-policy-agent-sorter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Script Policy Agent Sorter MicroSim fullscreen](../../sims/script-policy-agent-sorter/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Script Policy Agent Sorter</summary>
 Type: microsim
@@ -195,6 +199,10 @@ The **shutdown procedure** reverses it. The arm goes to its home pose, the folde
 
 #### Diagram: Startup Order Sequencer
 
+<iframe src="../../sims/startup-order-sequencer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Startup Order Sequencer MicroSim fullscreen](../../sims/startup-order-sequencer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Startup Order Sequencer</summary>
 Type: microsim
@@ -282,6 +290,10 @@ The printed parts wear in a different way. PLA softens as it warms, with a glass
 **Servo replacement** uses the skills of Chapter 8, in order. Keep the spare from the budget of Chapter 6, and take care to use the *same gear-ratio variant* for the joint: the book's parts list uses the 1/345 ratio (C001) for most joints, 1/191 (C044) and 1/147 (C046) for others. Then: switch the power off, remove the old servo, connect the new one *alone* to the controller board, set its ID to the old one's, fit it, reconnect the bus, run the pre-flight check, check the calibration, and test at low speed. A replaced servo changes the arm's zero, so the calibration step is not optional. Write the replacement in the log, with the date and the hours of use.
 
 #### Diagram: Maintenance Due Calculator
+
+<iframe src="../../sims/maintenance-due-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Maintenance Due Calculator MicroSim fullscreen](../../sims/maintenance-due-calculator/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Maintenance Due Calculator</summary>
@@ -1099,3 +1111,5 @@ You can now plan, run, maintain and share an agent-controlled arm project.
 !!! mascot-celebration "We Built, Ran and Looked After a Whole Project!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You started the arm in a fixed order, sorted blocks through every safety layer, watched me warm up until the monitor stopped me, scheduled my maintenance and wrote my documentation from real measurements. That is a complete project. If you want a taste of the mathematics behind my smooth motions, Chapter 19 has it!
+
+[See Annotated References](./references.md)

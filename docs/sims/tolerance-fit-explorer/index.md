@@ -1,0 +1,80 @@
+---
+title: "Tolerance Fit Explorer"
+description: "The learner will infer whether a printed hole is too tight, snug, a good sliding fit, or loose from its designed size, the printer's size error and the size of the part that goes into it, in six cases, with at least 5 of 6 correct on the first attempt."
+status: scaffold
+library: p5.js
+bloom_level: Understand
+---
+
+# Tolerance Fit Explorer
+
+
+
+<iframe src="main.html" width="100%" height="600"></iframe>
+
+[Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
+
+## Specification
+
+The full specification below is extracted from
+[Chapter 7: 3D Printing, Fasteners, and Tools](../../chapters/07-printing-fasteners-and-tools/index.md).
+
+```text
+Type: microsim
+**sim-id:** tolerance-fit-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Bloom Level:** Understand<br/>
+**Bloom Verb:** infer<br/>
+**Learning Objective:** The learner will infer whether a printed hole is too tight, snug, a good sliding fit, or loose from its designed size, the printer's size error and the size of the part that goes into it, in six cases, with at least 5 of 6 correct on the first attempt.
+
+**Prerequisites:** 3D printing, dimensional tolerance, clearance, printed hole size, mating part (all defined in the section above this block).
+
+**Evidence of Mastery:** For each of six cases the learner chooses one of four outcomes and commits before the outcome is shown. A choice is correct when it matches the Outcome column in Content. Mastery is 5 of 6 correct on the first attempt. Changing the numbers in Explore mode is exploration, not evidence.
+
+**Misconceptions:** (1) A hole prints at exactly the size that was designed. (It prints smaller by the printer's error.) (2) A bigger hole is always safer. (Beyond about 0.3 mm of clearance the part rattles.) (3) Zero clearance is a perfect fit. (It is a press fit that may not go in at all.)
+
+**Instructional Rationale:** An Understand-level infer objective asks the learner to reason from numbers to a physical outcome. Predicting before the result is shown makes the learner apply the clearance rule instead of watching a picture.
+
+**Content:**
+
+Explore mode has three quantities the learner can change, and shows the printed hole size, the clearance and the outcome, with the picture of a part sliding into a hole.
+
+| Quantity | Min | Max | Step | Default | Unit |
+|---|---|---|---|---|---|
+| Designed hole size | 2.5 | 26.0 | 0.05 | 25.0 | mm |
+| Printer size error (negative means the hole prints smaller) | -0.40 | 0.40 | 0.05 | -0.10 | mm |
+| Mating part size | 2.5 | 26.0 | 0.05 | 24.7 | mm |
+
+The four outcomes: "Too tight", "Snug", "Good sliding fit", "Loose". Six cases in this fixed order:
+
+| # | Case | Designed hole (mm) | Printer error (mm) | Mating part (mm) | Outcome | Why (shown as feedback) |
+|---|---|---|---|---|---|---|
+| 1 | STS3215 body width into a pocket designed with no extra room | 24.70 | -0.15 | 24.70 | Too tight | The pocket prints 24.55 mm, so the clearance is -0.15 mm and the servo will not go in. |
+| 2 | STS3215 body width into a pocket designed with 0.3 mm of room | 25.00 | -0.10 | 24.70 | Good sliding fit | The pocket prints 24.90 mm, so the clearance is +0.20 mm. |
+| 3 | M3 screw shaft into a hole designed at 3.2 mm | 3.20 | -0.25 | 3.00 | Too tight | The hole prints 2.95 mm, so the clearance is -0.05 mm and the screw will not enter. |
+| 4 | M3 screw shaft into a hole designed at 3.4 mm | 3.40 | -0.20 | 3.00 | Good sliding fit | The hole prints 3.20 mm, so the clearance is +0.20 mm. |
+| 5 | M3 screw shaft into a hole designed at 3.8 mm | 3.80 | -0.10 | 3.00 | Loose | The hole prints 3.70 mm, so the clearance is +0.70 mm and the screw rattles. |
+| 6 | Servo output spline of 5.9 mm into a hole designed at 6.0 mm | 6.00 | -0.10 | 5.90 | Snug | The hole prints 5.90 mm, so the clearance is 0.00 mm, a press fit. |
+
+**Provenance:** The servo body width (24.7 mm) and the output spline outer diameter (5.9 mm) are from Feetech's STS3215 data sheet. The M3 shaft diameter (3.0 mm) is the standard size. The designed hole sizes and printer errors are illustrative values written for this sim, and the sim labels them "illustrative". The clearance rule is from the chapter section "Dimensional Tolerance".
+
+**Rules:** printed hole = designed hole + printer error. Clearance = printed hole - mating part, rounded to 0.01 mm. Clearance < 0 is "Too tight". 0 <= clearance < 0.10 is "Snug". 0.10 <= clearance <= 0.30 is "Good sliding fit". Clearance > 0.30 is "Loose". In Explore mode the picture of the part and the hole is drawn from the same rule.
+
+**Learner Activity:**
+
+1. In Explore mode the learner changes the three quantities and watches the printed size, the clearance and the outcome. The learner should notice that a printer error of -0.10 mm turns a designed clearance of 0.30 mm into 0.20 mm.
+2. The learner switches to the six cases. Case 1 is shown with the numbers but not the outcome.
+3. The learner chooses one of the four outcomes and commits.
+4. The sim shows whether the choice was correct and the Why text, then moves on. After case 6 it shows the score.
+
+**Feedback:** Six cases, fixed order, one attempt each. Correct: "Correct: <outcome>. <Why>". Incorrect: "Not quite. This case is <outcome>. <Why>". The correct outcome is revealed after each commit. A running count "Correct: n of 6" is shown and the final screen says whether mastery (5 of 6) was reached.
+
+**Starting State:** Explore mode with the defaults, showing a printed hole of 24.90 mm, a clearance of 0.20 mm and the outcome "Good sliding fit".
+
+**Chapter Anchors:** The chapter states a typical FDM tolerance of about ±0.1 to ±0.3 mm, a starting clearance of about 0.15 to 0.2 mm, the servo body width of 24.7 mm, the worked example of -0.15 mm and +0.20 mm, and the rule that clearance is the printed hole minus the mating part. The sim has six cases and mastery is 5 of 6.
+```
+
+## Related Resources
+
+- [Chapter 7: 3D Printing, Fasteners, and Tools](../../chapters/07-printing-fasteners-and-tools/index.md)

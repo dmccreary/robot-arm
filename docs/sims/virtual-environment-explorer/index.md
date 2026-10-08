@@ -1,0 +1,84 @@
+---
+title: "Virtual Environment Explorer"
+description: "The learner will infer what an import or a pip command does in each of eight terminal situations, given which environment is active and which packages each environment contains, with at least 7 of 8 correct on the first attempt."
+status: scaffold
+library: p5.js
+bloom_level: Understand
+---
+
+# Virtual Environment Explorer
+
+
+
+<iframe src="main.html" width="100%" height="600"></iframe>
+
+[Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
+
+## Specification
+
+The full specification below is extracted from
+[Chapter 1: Setting Up Python for Robotics](../../chapters/01-python-setup-for-robotics/index.md).
+
+```text
+Type: microsim
+**sim-id:** virtual-environment-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Bloom Level:** Understand<br/>
+**Bloom Verb:** infer<br/>
+**Learning Objective:** The learner will infer what an import or a pip command does in each of eight terminal situations, given which environment is active and which packages each environment contains, with at least 7 of 8 correct on the first attempt.
+
+**Prerequisites:** virtual environment, active environment, system Python, pip, package, library, `ModuleNotFoundError` (all defined in the sections above this block).
+
+**Evidence of Mastery:** For each of eight scenarios, the learner commits an answer before the result is shown. An answer is correct when it matches the Correct column of the scenario table in Content. Mastery is 7 of 8 correct on the first attempt. Running commands in free exploration afterwards is not evidence.
+
+**Misconceptions:** (1) `pip install` installs a library for the whole computer. (2) A library installed in one project's environment is available to other projects. (3) The environment folder holds the project's own code. (It holds only libraries and a launcher.)
+
+**Instructional Rationale:** An Understand-level infer objective needs the learner to apply a rule to a new case and commit to a result. Predicting the outcome while the three package lists stay visible makes the learner use the rule "only the active environment's packages are visible". The exploration mode that follows lets the learner confirm the rule with commands of their own.
+
+**Content:**
+
+The three places Python can run from, and what each contains at the start of every scenario:
+
+| Place | Installed packages (illustrative versions) |
+|---|---|
+| System Python (no environment active) | Only the standard library. The operating system manages it, and `pip install` is refused with `error: externally-managed-environment`. |
+| `arm-lab` environment | numpy 2.1, pyserial 3.5 |
+| `old-project` environment | numpy 1.26 |
+
+The eight scenarios, in this fixed order. Every scenario offers the same three answer options except where the Choices column differs:
+
+| # | Active environment | Command(s) | Choices | Correct | Why (shown as feedback) |
+|---|---|---|---|---|---|
+| 1 | `arm-lab` | `python -c "import serial"` | (a) It imports pyserial 3.5. (b) `ModuleNotFoundError: No module named 'serial'`. (c) `error: externally-managed-environment`. | a | pyserial is installed in `arm-lab`, and `arm-lab` is the active environment. |
+| 2 | none (system Python) | `python -c "import serial"` | same as 1 | b | System Python has no pyserial. The copy inside `arm-lab` cannot be seen from outside it. |
+| 3 | `old-project` | `python -c "import serial"` | same as 1 | b | pyserial was installed only in `arm-lab`. Each environment has its own libraries. |
+| 4 | `arm-lab` | `python -c "import numpy; print(numpy.__version__)"` | (a) 1.26 (b) 2.1 (c) `ModuleNotFoundError: No module named 'numpy'` | b | `arm-lab` holds numpy 2.1. |
+| 5 | `old-project` | `python -c "import numpy; print(numpy.__version__)"` | same as 4 | a | `old-project` keeps its own numpy 1.26. The newer copy in `arm-lab` does not affect it. |
+| 6 | none (system Python) | `python -c "import numpy; print(numpy.__version__)"` | same as 4 | c | System Python has only the standard library, so there is no numpy to import. |
+| 7 | `arm-lab`, then switch to `old-project` | `pip install matplotlib`, then (after activating `old-project`) `python -c "import matplotlib"` | (a) It imports matplotlib. (b) `ModuleNotFoundError: No module named 'matplotlib'`. (c) `error: externally-managed-environment`. | b | `pip install` put matplotlib only into `arm-lab`, the environment that was active at the time. |
+| 8 | none (system Python) | `pip install matplotlib` | (a) It installs matplotlib for every project. (b) It installs matplotlib into `arm-lab`. (c) pip stops with `error: externally-managed-environment`. | c | System Python is managed by the operating system, so pip refuses. Activate an environment first. |
+
+Free exploration commands (available after the eight scenarios): activate `arm-lab`, activate `old-project`, deactivate, `pip install numpy`, `pip install pyserial`, `pip install matplotlib`, `python -c "import numpy"`, `python -c "import serial"`, `python -c "import matplotlib"`, and `pip list`.
+
+**Provenance:** The behavior follows the chapter sections "Virtual Environments" and "Pip", and the externally-managed-environment refusal follows PEP 668 as applied by Homebrew Python and recent Debian, Ubuntu, and Raspberry Pi OS releases. The package versions are illustrative and the sim labels them "illustrative".
+
+**Rules:** Only the active environment's packages can be imported. With no environment active, only System Python's contents are visible. `pip install <name>` adds the package to the active environment, and the install message is `Successfully installed <name>-<version>`, using the version in this list: numpy 2.1, pyserial 3.5, matplotlib 3.9 (illustrative). If the package is already present in the active environment, the message is `Requirement already satisfied`. With no environment active, `pip install` prints `error: externally-managed-environment` and installs nothing. Importing a package that is not in the active environment prints `ModuleNotFoundError: No module named '<import name>'`, where the import name for pyserial is `serial`. Each scenario begins from the Content table's starting state. In free exploration, changes persist until the learner presses Reset, which restores the starting state. There are no adjustable numeric quantities.
+
+**Learner Activity:**
+
+1. The learner sees the three environments with their package lists and the first scenario: the active environment, the command, and three choices.
+2. The learner commits one choice. The sim runs the command against the three environments and shows the output, the result for the committed choice, and the reason.
+3. The learner continues through all eight scenarios.
+4. After scenario 8, free exploration unlocks. The learner picks commands, watches the three package lists and the active-environment label update, and tries to make a `ModuleNotFoundError` appear and disappear.
+
+**Feedback:** Eight scenarios, fixed order, one attempt each. Correct: "Correct: <Why>". Incorrect: "Not quite. The answer is (<letter>): <Why>". The correct answer is revealed after each commitment. A running count "Correct: n of 8" is shown, and the final screen says whether mastery (7 of 8) was reached.
+
+**Starting State:** The three environments are shown with their packages, no environment is active, and the first scenario asks "What happens when this command runs?"
+
+**Chapter Anchors:** The chapter says the MicroSim has eight situations and three environments (system Python, `arm-lab`, `old-project`) with illustrative package versions, and that `pip install` with no environment active is refused on modern systems.
+```
+
+## Related Resources
+
+- [Chapter 1: Setting Up Python for Robotics](../../chapters/01-python-setup-for-robotics/index.md)

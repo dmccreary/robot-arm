@@ -1,0 +1,23 @@
+{
+  "title": "ROS Concept Matcher",
+  "description": "The learner will identify the ROS 2 or robot-description term that matches each of eight short descriptions, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "ros-concept-matcher",
+  "library": "p5.js",
+  "bloomLevel": "Remember",
+  "bloomVerb": "identify",
+  "completion_status": "scaffold",
+  "chapter_number": 13,
+  "chapter_title": "Logging, Testing, Simulation, and ROS 2",
+  "chapter_dir": "13-logging-testing-simulation",
+  "chapter_rel_dir": "chapters/13-logging-testing-simulation"
+}

@@ -1,0 +1,79 @@
+---
+title: "Loop Rate Calculator"
+description: "The learner will calculate the period of a control loop and the rate that a naive loop and a scheduled loop actually achieve, for six loops, to within 0.1 of the unit shown, with at least 5 of 6 correct on the first attempt."
+status: scaffold
+library: p5.js
+bloom_level: Apply
+---
+
+# Loop Rate Calculator
+
+
+
+<iframe src="main.html" width="100%" height="600"></iframe>
+
+[Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
+
+## Specification
+
+The full specification below is extracted from
+[Chapter 11: Moving the Arm: Trajectories, Grippers, and Teleoperation](../../chapters/11-moving-the-arm/index.md).
+
+```text
+Type: microsim
+**sim-id:** loop-rate-calculator<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Bloom Level:** Apply<br/>
+**Bloom Verb:** calculate<br/>
+**Learning Objective:** The learner will calculate the period of a control loop and the rate that a naive loop and a scheduled loop actually achieve, for six loops, to within 0.1 of the unit shown, with at least 5 of 6 correct on the first attempt.
+
+**Prerequisites:** control loop, control rate, period, naive loop, scheduled loop, work time (all defined in the section "Time and the Control Loop" above this block).
+
+**Evidence of Mastery:** For each of six problems the learner types a number in the unit shown and commits. An answer is correct when it is within 0.1 of the Correct column in Content. Mastery is 5 of 6 correct on the first attempt. Changing the target rate and the work time in Explore mode is exploration, not evidence.
+
+**Misconceptions:** (1) A loop that sleeps one period after its work runs at the target rate. (It runs slower, since each cycle is the work plus the sleep.) (2) A scheduled loop can always keep the target rate. (It cannot if the work takes longer than the period.) (3) A faster target rate is always better. (The work must fit inside the period.)
+
+**Instructional Rationale:** An Apply-level calculate objective needs repeated use of a formula on new numbers with an immediate check. The three formulas are short, and comparing the naive and scheduled answers for the same numbers shows why the scheduled loop is better.
+
+**Content:**
+
+Explore mode has two quantities the learner can change, and shows the period, the rate of a naive loop and the rate of a scheduled loop, with a bar of the cycle that is work and the part that is waiting.
+
+| Quantity | Min | Max | Step | Default | Unit |
+|---|---|---|---|---|---|
+| Target rate | 10 | 200 | 10 | 50 | Hz |
+| Work per cycle | 0 | 50 | 1 | 8 | ms |
+
+Formulas: period (ms) = 1000 / target rate. Naive rate (Hz) = 1000 / (work + period). Scheduled rate (Hz) = the smaller of the target rate and 1000 / work. Six problems in this fixed order:
+
+| # | Problem | Unit asked | Correct | Why (shown as feedback) |
+|---|---|---|---|---|
+| 1 | What is the period of a 50 Hz loop? | ms | 20.0 | 1000 / 50 = 20 ms. |
+| 2 | What is the period of a 60 Hz loop? | ms | 16.7 | 1000 / 60 = 16.67 ms. |
+| 3 | A naive loop targets 50 Hz and its work takes 5 ms. What rate does it achieve? | Hz | 40.0 | Each cycle is 5 + 20 = 25 ms, and 1000 / 25 = 40 Hz. |
+| 4 | A scheduled loop targets 50 Hz and its work takes 5 ms. What rate does it achieve? | Hz | 50.0 | The work fits inside the 20 ms period, so the loop keeps the target rate. |
+| 5 | A scheduled loop targets 50 Hz and its work takes 25 ms. What rate does it achieve? | Hz | 40.0 | The work is longer than the period, so each cycle is 25 ms and 1000 / 25 = 40 Hz. |
+| 6 | A naive loop targets 100 Hz and its work takes 4 ms. What rate does it achieve? | Hz | 71.4 | The period is 10 ms, each cycle is 4 + 10 = 14 ms, and 1000 / 14 = 71.4 Hz. |
+
+**Provenance:** The formulas are from the chapter sections "The Control Loop" and "Control Rate, Timing Jitter, and Latency". The numbers are illustrative values written for this sim.
+
+**Rules:** period = 1000 / rate. naive = 1000 / (work + period). scheduled = min(rate, 1000 / work) and equals the target rate when work <= period. When the work is 0 ms the scheduled rate equals the target rate. An answer is correct when |typed - correct| <= 0.1.
+
+**Learner Activity:**
+
+1. In Explore mode the learner changes the target rate and the work time and watches the two achieved rates. The learner should notice that the naive loop falls below the target as soon as there is any work, and that the scheduled loop stays at the target until the work is longer than the period.
+2. The learner switches to the six problems. Problem 1 is shown.
+3. The learner types a number and presses Check to commit.
+4. The sim shows whether the answer was correct and the Why text, then moves on. After problem 6 it shows the score.
+
+**Feedback:** Six problems, fixed order, one attempt each. Correct: "Correct: <value> <unit>. <Why>". Incorrect: "Not quite. The answer is <value> <unit>. <Why>". The correct value is revealed after each commit. A running count "Correct: n of 6" is shown and the final screen says whether mastery (5 of 6) was reached.
+
+**Starting State:** Explore mode with a target rate of 50 Hz and 8 ms of work, showing a period of 20 ms, a naive rate of 35.7 Hz and a scheduled rate of 50 Hz.
+
+**Chapter Anchors:** The chapter states that 50 Hz has a period of 20 ms, that 60 Hz has a period of 16.7 ms, and that a naive loop with 8 ms of work at 50 Hz runs at 36 Hz. The sim has six problems and mastery is 5 of 6.
+```
+
+## Related Resources
+
+- [Chapter 11: Moving the Arm: Trajectories, Grippers, and Teleoperation](../../chapters/11-moving-the-arm/index.md)

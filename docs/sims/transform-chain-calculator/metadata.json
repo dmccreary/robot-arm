@@ -1,0 +1,23 @@
+{
+  "title": "Transform Chain Calculator",
+  "description": "The learner will calculate the tip position of a flat two-link arm from its joint angles using the forward kinematics equations, to within 0.001 m, in six problems, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "transform-chain-calculator",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 12,
+  "chapter_title": "Kinematics: Where Is the Hand and How Do I Get There",
+  "chapter_dir": "12-kinematics",
+  "chapter_rel_dir": "chapters/12-kinematics"
+}

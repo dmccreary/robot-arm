@@ -1,0 +1,23 @@
+{
+  "title": "File Path Resolver",
+  "description": "The learner will solve eight path problems by determining which file, or no file, a path reaches from a given working directory, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "file-path-resolver",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "solve",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "Setting Up Python for Robotics",
+  "chapter_dir": "01-python-setup-for-robotics",
+  "chapter_rel_dir": "chapters/01-python-setup-for-robotics"
+}

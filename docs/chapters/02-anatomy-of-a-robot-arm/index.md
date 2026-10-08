@@ -337,6 +337,10 @@ In the next MicroSim, you will use the counting rule on eight mechanisms, from a
 
 #### Diagram: Degrees of Freedom Counter
 
+<iframe src="../../sims/degrees-of-freedom-counter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Degrees of Freedom Counter MicroSim fullscreen](../../sims/degrees-of-freedom-counter/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Degrees of Freedom Counter</summary>
 Type: microsim
@@ -580,6 +584,10 @@ Repeatability matters more for most robot work, for a reason that is easy to rem
 In this MicroSim, you will classify four sets of landing points as one of the four boxes above. For each set the sim lists five offsets in millimeters. You decide whether the cluster is centered on the target and whether it is tight.
 
 #### Diagram: Accuracy and Repeatability Targets
+
+<iframe src="../../sims/accuracy-repeatability-targets/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Accuracy and Repeatability Targets MicroSim fullscreen](../../sims/accuracy-repeatability-targets/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Accuracy and Repeatability Targets</summary>
@@ -1075,3 +1083,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     The torque a load puts on the joints is mass times gravity times distance. The same mass is a much heavier load when held farther from the base, so a payload number only makes sense at a stated position.
 
 In Chapter 3 you will turn from the shape of the arm to what powers it, and learn the electricity and safety rules that keep both you and your arm in one piece.
+
+[See Annotated References](./references.md)

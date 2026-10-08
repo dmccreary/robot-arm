@@ -1,0 +1,23 @@
+{
+  "title": "Tool Call Checker",
+  "description": "The learner will examine eight tool calls against the schema of the arm's move_to_pose tool and identify the first problem with each, or that it is valid, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "tool-call-checker",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "examine",
+  "completion_status": "scaffold",
+  "chapter_number": 15,
+  "chapter_title": "AI Agents, Tools, and OpenClaw Skills",
+  "chapter_dir": "15-agents-and-openclaw-skills",
+  "chapter_rel_dir": "chapters/15-agents-and-openclaw-skills"
+}

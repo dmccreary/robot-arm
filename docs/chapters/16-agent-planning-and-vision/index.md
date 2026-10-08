@@ -113,6 +113,10 @@ The **agent planner** is the part that produces such a list. In the lab it is a 
 
 #### Diagram: Plan Checker
 
+<iframe src="../../sims/plan-checker/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Plan Checker MicroSim fullscreen](../../sims/plan-checker/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Plan Checker</summary>
 Type: microsim
@@ -235,6 +239,10 @@ Treat every box as a *claim*. The provider's own documentation says that a model
 
 #### Diagram: Failure Recovery Chooser
 
+<iframe src="../../sims/failure-recovery-chooser/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Failure Recovery Chooser MicroSim fullscreen](../../sims/failure-recovery-chooser/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Failure Recovery Chooser</summary>
 Type: microsim
@@ -327,6 +335,10 @@ The lab's `check_secrets.py` is a small version of such a scanner. It looks for 
     Add `.env` to `.gitignore` first, then create the file. The other order is how keys end up in public repositories: one `git add .` is all it takes, and Git remembers it even after you delete the file.
 
 #### Diagram: HTTP Status Reader
+
+<iframe src="../../sims/http-status-reader/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the HTTP Status Reader MicroSim fullscreen](../../sims/http-status-reader/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>HTTP Status Reader</summary>
@@ -1165,3 +1177,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     Ask a human. One retry covers the chance that the block moved a little. After a second failure, something else is wrong, such as a missing block or a miscalibrated camera, and more attempts waste time and may cause harm.
 
 Chapter 17 collects these doorways into a full safety design for agent-controlled arms, and shows how to test it.
+
+[See Annotated References](./references.md)

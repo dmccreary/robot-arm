@@ -1,0 +1,23 @@
+{
+  "title": "Quaternion Calculator",
+  "description": "The learner will calculate quaternion components, turn angles and SLERP angles from given rotations, to within 0.1 of the unit shown, in six problems, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "quaternion-calculator",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 19,
+  "chapter_title": "Optional Advanced Chapter: The Mathematics of Arm Paths",
+  "chapter_dir": "19-advanced-arm-path-mathematics",
+  "chapter_rel_dir": "chapters/19-advanced-arm-path-mathematics"
+}

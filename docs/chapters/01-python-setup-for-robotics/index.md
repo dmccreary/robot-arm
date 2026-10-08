@@ -253,6 +253,10 @@ The next MicroSim lets you open each stage and then sort five real error message
 
 #### Diagram: Python Run Stage Sorter
 
+<iframe src="../../sims/python-run-stage-sorter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Python Run Stage Sorter MicroSim fullscreen](../../sims/python-run-stage-sorter/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Python Run Stage Sorter</summary>
 Type: microsim
@@ -497,6 +501,10 @@ Before the next MicroSim, three terms. The **active environment** is the one you
 
 #### Diagram: Virtual Environment Explorer
 
+<iframe src="../../sims/virtual-environment-explorer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Virtual Environment Explorer MicroSim fullscreen](../../sims/virtual-environment-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Virtual Environment Explorer</summary>
 Type: microsim
@@ -722,6 +730,10 @@ In the next MicroSim you practice this skill on five real tracebacks. For each o
 
 #### Diagram: Traceback Detective
 
+<iframe src="../../sims/traceback-detective/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Traceback Detective MicroSim fullscreen](../../sims/traceback-detective/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Traceback Detective</summary>
 Type: microsim
@@ -936,6 +948,10 @@ In the next MicroSim you practice resolving paths. The project folder in the sim
 
 #### Diagram: File Path Resolver
 
+<iframe src="../../sims/file-path-resolver/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the File Path Resolver MicroSim fullscreen](../../sims/file-path-resolver/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>File Path Resolver</summary>
 Type: microsim
@@ -1087,6 +1103,10 @@ print(config["joints"]["elbow_flex"]["id"])
 This prints `3`. A single misplaced comma makes `json.load` raise a `JSONDecodeError` and the whole file is rejected, so learning to spot those mistakes pays off. The next MicroSim presents six short settings files. Five contain one mistake each, and one is correct. You find the bad line and name which of the five rules above it breaks.
 
 #### Diagram: JSON Syntax Doctor
+
+<iframe src="../../sims/json-syntax-doctor/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the JSON Syntax Doctor MicroSim fullscreen](../../sims/json-syntax-doctor/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>JSON Syntax Doctor</summary>
@@ -1503,3 +1523,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     Do not reuse another computer's `.venv`, because it is tied to that machine's paths and Python. Create your own with `python3 -m venv .venv`, activate it, and run `python -m pip install -r requirements.txt`. The requirements file lists exactly what to install.
 
 In Chapter 2 you will leave the keyboard for the workbench and learn the parts of a robot arm: links, joints, degrees of freedom, and the workspace that your Python code will soon be moving through.
+
+[See Annotated References](./references.md)

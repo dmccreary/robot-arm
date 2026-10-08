@@ -121,6 +121,10 @@ An **audit log** is a permanent record of every request and what was done with i
 
 #### Diagram: Defense Layer Matcher
 
+<iframe src="../../sims/defense-layer-matcher/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Defense Layer Matcher MicroSim fullscreen](../../sims/defense-layer-matcher/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Defense Layer Matcher</summary>
 Type: microsim
@@ -194,6 +198,10 @@ Defenses against injection are layered too, and OpenClaw's own documentation rec
 
 #### Diagram: Injection Spotter
 
+<iframe src="../../sims/injection-spotter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Injection Spotter MicroSim fullscreen](../../sims/injection-spotter/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Injection Spotter</summary>
 Type: microsim
@@ -260,6 +268,10 @@ A **repeatability test** runs the same task many times and measures how much the
 **Replay testing** takes a recorded audit log and runs its calls through a *new version* of the system, to see what changed. It is a regression test for safety (Chapter 13), and its inputs are real, since they are what the agent actually did. The lab records a good plan's log, then replays it through a layer with a tighter workspace that keeps a strip near the bin out of bounds, and reports the two calls, 7 and 8, that were allowed before and are now refused by the workspace layer. That is just what you want to learn *before* the change reaches the arm: which of yesterday's good behavior breaks today. Keep audit logs from interesting runs, especially the failures, and replay them whenever the layers change.
 
 #### Diagram: Evaluation Metrics Calculator
+
+<iframe src="../../sims/evaluation-metrics-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Evaluation Metrics Calculator MicroSim fullscreen](../../sims/evaluation-metrics-calculator/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Evaluation Metrics Calculator</summary>
@@ -977,3 +989,5 @@ You can now design layers around an agent, test them, and explain why the agent 
 !!! mascot-celebration "My Walls Hold Even When the Agent Is Wrong!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just built layers of roles, limits, rate limits, confirmations and a log, watched them hold against a model that obeyed every trick, and measured them with 40 trials, 500 random calls and a replay. The agent can be clever or confused, and you will still know what the arm will and will not do. Let's move it on to the capstone projects in Chapter 18!
+
+[See Annotated References](./references.md)

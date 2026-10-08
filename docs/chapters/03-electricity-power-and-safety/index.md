@@ -489,6 +489,10 @@ The next MicroSim practises the method on four arm setups. For each one, you cal
 
 #### Diagram: Power Budget Sizer
 
+<iframe src="../../sims/power-budget-sizer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Power Budget Sizer MicroSim fullscreen](../../sims/power-budget-sizer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Power Budget Sizer</summary>
 Type: microsim
@@ -618,6 +622,10 @@ Here is a worked example for a desk setup with an SO-ARM101 follower.
 Two of the four are high, and the controls for them are the habits in the safe power-up sequence later in this chapter. The next MicroSim practises the first step of a risk assessment, which is spotting and naming hazards. You look at eight items in a scene and classify each as a pinch point, a collision hazard, an electrical hazard, or acceptable.
 
 #### Diagram: Workcell Hazard Spotter
+
+<iframe src="../../sims/workcell-hazard-spotter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Workcell Hazard Spotter MicroSim fullscreen](../../sims/workcell-hazard-spotter/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Workcell Hazard Spotter</summary>
@@ -841,6 +849,10 @@ The steps are in this order for a reason. The cheap, reversible checks come firs
 The sequence for **power-down** reverses the idea: send the arm home, turn the torque off, switch off the supply, and then unplug anything. Chapter 8 gives the full first-power-on checklist for the SO-ARM101. In the next MicroSim, you put the seven steps in order.
 
 #### Diagram: Safe Power-Up Sequencer
+
+<iframe src="../../sims/safe-power-up-sequencer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Safe Power-Up Sequencer MicroSim fullscreen](../../sims/safe-power-up-sequencer/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Safe Power-Up Sequencer</summary>
@@ -1213,3 +1225,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     The cheap and reversible checks come first, so mistakes cost nothing. Simulating the program catches errors with no risk. Parking the arm gives it a known starting pose, and the hand near the E-stop means the stop is ready before anything can move. Power goes on only after every check has passed.
 
 In Chapter 4 you will learn how the computer talks to the motors over serial and CAN buses, including the timeouts and watchdogs that make a software stop more reliable.
+
+[See Annotated References](./references.md)

@@ -170,6 +170,10 @@ One caution that is simple to test. The signs here are the signs of the URDF. Wh
 
 #### Diagram: Transform Chain Calculator
 
+<iframe src="../../sims/transform-chain-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Transform Chain Calculator MicroSim fullscreen](../../sims/transform-chain-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Transform Chain Calculator</summary>
 Type: microsim
@@ -245,6 +249,10 @@ The cosine gives *two* angles, \( +\theta_2 \) and \( -\theta_2 \), so most targ
 A target is an **unreachable target** when no angles can put the hand there, and the geometry says when. The hand can be no farther from the shoulder than \( l_1 + l_2 \), when the arm is straight, and no nearer than \( |l_1 - l_2| \), when it is folded back. For the SO-101's upper arm and forearm that is 0.019 m to 0.251 m. Outside that ring, the cosine in the formula is larger than 1 or smaller than -1, and the library function raises an `UnreachableError` and never returns nonsense. On the boundary there is exactly one solution (a straight arm or a folded one), and strictly inside there are two. The next MicroSim classifies eight targets.
 
 #### Diagram: IK Target Classifier
+
+<iframe src="../../sims/ik-target-classifier/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the IK Target Classifier MicroSim fullscreen](../../sims/ik-target-classifier/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>IK Target Classifier</summary>
@@ -329,6 +337,10 @@ A **singular pose** is one where the Jacobian cannot be solved, because some dir
     Near full stretch, a tiny hand motion can demand a huge joint speed, and a program that does not check will command it. Keep Cartesian moves away from a straight or fully folded elbow, watch the condition number, and let the speed limit of Chapter 11 catch whatever is left.
 
 #### Diagram: Singularity Spotter
+
+<iframe src="../../sims/singularity-spotter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Singularity Spotter MicroSim fullscreen](../../sims/singularity-spotter/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Singularity Spotter</summary>
@@ -1025,3 +1037,5 @@ You can now compute where the hand is and which joint angles put it where you wa
 !!! mascot-celebration "You Can Find My Hand Anywhere!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just turned joint angles into a hand position with a chain of transforms, matched the SO-101's own design file to a twentieth of a millimetre, and solved the problem backward to aim a pick and place at real points. That is the mathematics that lets a program talk about the world instead of about joints. Let's move it on to Chapter 13!
+
+[See Annotated References](./references.md)

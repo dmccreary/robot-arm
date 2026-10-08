@@ -98,6 +98,10 @@ The next MicroSim lets you practise these conversions with the calibration of th
 
 #### Diagram: Unit Converter Drill
 
+<iframe src="../../sims/unit-converter-drill/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Unit Converter Drill MicroSim fullscreen](../../sims/unit-converter-drill/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Unit Converter Drill</summary>
 Type: microsim
@@ -264,6 +268,10 @@ The next MicroSim practises seeing through the layers. You are given one call on
 
 #### Diagram: Driver Swap Tracer
 
+<iframe src="../../sims/driver-swap-tracer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Driver Swap Tracer MicroSim fullscreen](../../sims/driver-swap-tracer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Driver Swap Tracer</summary>
 Type: microsim
@@ -353,6 +361,10 @@ but you cannot forget the second form's `finally`. The lab runs four versions of
     A program that crashes after `connect()` and before `disconnect()` leaves the motors holding, with nobody commanding them. Always use `with arm:` (or a `try` and `finally`), so that the torque comes off whatever happens, and do not rely on remembering to clean up at the end of the happy path.
 
 #### Diagram: With Block Predictor
+
+<iframe src="../../sims/with-block-predictor/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the With Block Predictor MicroSim fullscreen](../../sims/with-block-predictor/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>With Block Predictor</summary>
@@ -989,3 +1001,5 @@ You can now read and write joint positions in real units on either arm or on a f
 !!! mascot-celebration "You Wrote One Interface for Two Arms!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just wrote a class that any program can use, two drivers that translate it into servo packets and CAN frames, a fake arm for testing, and error handling that switches the torque off whatever goes wrong. Every program from here on runs on whichever arm you have. Let's move it on to Chapter 11!
+
+[See Annotated References](./references.md)

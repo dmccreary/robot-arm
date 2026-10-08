@@ -1,0 +1,23 @@
+{
+  "title": "Script Policy Agent Sorter",
+  "description": "The learner will differentiate eight situations as a script, a learned policy or an agent, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "script-policy-agent-sorter",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "differentiate",
+  "completion_status": "scaffold",
+  "chapter_number": 18,
+  "chapter_title": "Projects, Operation, and Teaching",
+  "chapter_dir": "18-projects-operation-and-teaching",
+  "chapter_rel_dir": "chapters/18-projects-operation-and-teaching"
+}

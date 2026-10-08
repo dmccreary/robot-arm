@@ -1,0 +1,23 @@
+{
+  "title": "IK Target Classifier",
+  "description": "The learner will differentiate eight targets for a two-link arm (l1 = 0.116 m, l2 = 0.135 m) as having two solutions, one solution, or being unreachable too far or too close, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "ik-target-classifier",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "differentiate",
+  "completion_status": "scaffold",
+  "chapter_number": 12,
+  "chapter_title": "Kinematics: Where Is the Hand and How Do I Get There",
+  "chapter_dir": "12-kinematics",
+  "chapter_rel_dir": "chapters/12-kinematics"
+}

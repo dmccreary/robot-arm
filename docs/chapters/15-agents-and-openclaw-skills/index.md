@@ -102,6 +102,10 @@ The next MicroSim practises telling these systems apart.
 
 #### Diagram: Agent or Workflow Sorter
 
+<iframe src="../../sims/agent-or-workflow-sorter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Agent or Workflow Sorter MicroSim fullscreen](../../sims/agent-or-workflow-sorter/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Agent or Workflow Sorter</summary>
 Type: microsim
@@ -229,6 +233,10 @@ A model that reads the second message can repair the call in one step, and the l
 The next MicroSim has you act as the validator for the arm's most important tool.
 
 #### Diagram: Tool Call Checker
+
+<iframe src="../../sims/tool-call-checker/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Tool Call Checker MicroSim fullscreen](../../sims/tool-call-checker/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Tool Call Checker</summary>
@@ -358,6 +366,10 @@ The **robot arm skill** puts all of this together. Its folder, `skills/robot-arm
 The skill uses the command line `robot_cli.py` for a reason. An agent that can run shell commands can be given exactly one program to run for the arm. Each command prints one line of JSON and exits with 0 if it worked and 1 if it was refused, so the agent can read the result and decide. Anything that the program does not allow cannot be done through the skill, whatever the agent was told. The same six commands could instead be offered as typed tools through a plugin or through the Model Context Protocol of Chapter 16, and the safety logic stays in the same place.
 
 #### Diagram: Skill File Checker
+
+<iframe src="../../sims/skill-file-checker/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Skill File Checker MicroSim fullscreen](../../sims/skill-file-checker/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Skill File Checker</summary>
@@ -1094,3 +1106,5 @@ You can now give an agent a safe set of tools for the arm, and package them as a
 !!! mascot-celebration "An Agent Can Move Me, and Only Safely!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just built the doorway between a language model and an arm: tools with typed, bounded, validated inputs, refusals that teach, a sticky stop, a skill file, and an agent loop that survived an invented tool and broken JSON. The model decides what to try, and your code decides what happens. Let's move it on to Chapter 16!
+
+[See Annotated References](./references.md)

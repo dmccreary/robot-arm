@@ -1,0 +1,23 @@
+{
+  "title": "Injection Spotter",
+  "description": "The learner will distinguish eight pieces of text that an agent might read as a real request from the user, plain data, or an injection, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "injection-spotter",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "distinguish",
+  "completion_status": "scaffold",
+  "chapter_number": 17,
+  "chapter_title": "Safety Layers and Evaluation for Agent-Controlled Arms",
+  "chapter_dir": "17-agent-safety-and-evaluation",
+  "chapter_rel_dir": "chapters/17-agent-safety-and-evaluation"
+}

@@ -228,6 +228,10 @@ In the next MicroSim you use the gear equations on five problems: speeds, torque
 
 #### Diagram: Gear Ratio Explorer
 
+<iframe src="../../sims/gear-ratio-explorer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Gear Ratio Explorer MicroSim fullscreen](../../sims/gear-ratio-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Gear Ratio Explorer</summary>
 Type: microsim
@@ -306,6 +310,10 @@ The *resolution* of an encoder is the smallest angle it can tell apart, and it i
 In the next MicroSim you work with encoder numbers: the size of one step, the conversion between steps and degrees, and a speed calculated from two position readings.
 
 #### Diagram: Encoder Resolution Reader
+
+<iframe src="../../sims/encoder-resolution-reader/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Encoder Resolution Reader MicroSim fullscreen](../../sims/encoder-resolution-reader/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Encoder Resolution Reader</summary>
@@ -468,6 +476,10 @@ The next MicroSim practises telling the three families apart. You read eight sho
 
 #### Diagram: Actuator Type Matcher
 
+<iframe src="../../sims/actuator-type-matcher/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Actuator Type Matcher MicroSim fullscreen](../../sims/actuator-type-matcher/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Actuator Type Matcher</summary>
 Type: microsim
@@ -559,6 +571,10 @@ In the next MicroSim you tune the toy joint. Sliders set the three gains and a g
 
 #### Diagram: PID Step Response
 
+<iframe src="../../sims/pid-step-response/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the PID Step Response MicroSim fullscreen](../../sims/pid-step-response/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>PID Step Response</summary>
 Type: microsim
@@ -647,6 +663,10 @@ A **speed limit** caps how fast a joint may move. A joint that moves slowly is e
 The next MicroSim practises the judgement behind these settings. You are given five tasks, and you choose the torque limit that is high enough to do the job but no higher than it needs to be.
 
 #### Diagram: Joint Limit Chooser
+
+<iframe src="../../sims/joint-limit-chooser/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Joint Limit Chooser MicroSim fullscreen](../../sims/joint-limit-chooser/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Joint Limit Chooser</summary>
@@ -1041,3 +1061,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     The gripper is the joint most likely to push on an object continuously, so it draws a high current for a long time and can burn out. A low torque limit and an overload torque cap the current and the heating, which is the purpose of the limits in this chapter.
 
 Chapter 6 turns from how the arm works to how you get one: how to read a bill of materials, compare a kit with a self-sourced build, and total the cost in Python.
+
+[See Annotated References](./references.md)

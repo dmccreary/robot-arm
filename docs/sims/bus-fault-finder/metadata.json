@@ -1,0 +1,23 @@
+{
+  "title": "Bus Fault Finder",
+  "description": "The learner will differentiate six causes of serial bus failure by choosing the most likely cause for each of eight symptom reports, with at least 6 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "bus-fault-finder",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "differentiate",
+  "completion_status": "scaffold",
+  "chapter_number": 4,
+  "chapter_title": "Serial and CAN Communication",
+  "chapter_dir": "04-serial-and-can-communication",
+  "chapter_rel_dir": "chapters/04-serial-and-can-communication"
+}

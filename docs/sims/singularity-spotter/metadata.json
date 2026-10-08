@@ -1,0 +1,23 @@
+{
+  "title": "Singularity Spotter",
+  "description": "The learner will classify eight elbow angles of a two-link arm as safe, near a singularity, or singular, from the value of sin(theta2), with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "singularity-spotter",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "classify",
+  "completion_status": "scaffold",
+  "chapter_number": 12,
+  "chapter_title": "Kinematics: Where Is the Hand and How Do I Get There",
+  "chapter_dir": "12-kinematics",
+  "chapter_rel_dir": "chapters/12-kinematics"
+}

@@ -95,6 +95,10 @@ The next MicroSim practises choosing levels.
 
 #### Diagram: Log Level Sorter
 
+<iframe src="../../sims/log-level-sorter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Log Level Sorter MicroSim fullscreen](../../sims/log-level-sorter/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Log Level Sorter</summary>
 Type: microsim
@@ -191,6 +195,10 @@ Some behavior cannot be a single yes or no. A pick-and-place may succeed on most
 The next MicroSim practises reading the failures that pytest prints, which are real messages from the lab's code with a bug put in on purpose.
 
 #### Diagram: Pytest Output Reader
+
+<iframe src="../../sims/pytest-output-reader/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Pytest Output Reader MicroSim fullscreen](../../sims/pytest-output-reader/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Pytest Output Reader</summary>
@@ -325,6 +333,10 @@ The practical facts, as read on 2026-10-07: the latest long-term-support release
 The **Isaac Sim tour** is short, because the tool is heavy. NVIDIA Isaac Sim is a robotics simulator with photorealistic rendering and physics on the GPU, and Isaac Lab is its framework for training robot policies. Its published requirements for the 6.x line are an NVIDIA RTX GPU (a GeForce RTX 4080 with 16 GB of video memory at the least), 32 GB of memory, and Ubuntu or Windows 11. There is no macOS version. It installs with `pip install isaacsim` on Linux with Python 3.12, after accepting NVIDIA's license, and there are other installation routes. Seeed provides USD models and an Isaac Sim teleoperation tutorial for the reBot-DevArm, in repositories separate from the arm's own. Treat Isaac Sim as a destination for readers who have the GPU, and keep the rest of the book's work on tools that run on a laptop.
 
 #### Diagram: ROS Concept Matcher
+
+<iframe src="../../sims/ros-concept-matcher/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the ROS Concept Matcher MicroSim fullscreen](../../sims/ros-concept-matcher/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>ROS Concept Matcher</summary>
@@ -1160,3 +1172,5 @@ You can now make robot code leave a record, check itself, and run safely before 
 !!! mascot-celebration "You Can Trust Your Code Now!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just gave your arm library a memory with logs and CSV files, a conscience with 31 automatic tests, and a safe playground with simulators, and you checked your own transform chain against Pinocchio. From here on, every change is something you can test in a second. Let's move it on to Chapter 14!
+
+[See Annotated References](./references.md)

@@ -1,0 +1,23 @@
+{
+  "title": "Pinhole Projection Calculator",
+  "description": "The learner will calculate the pixel position of a point, or the sideways distance of a point from its pixel and depth, using the pinhole camera model with fx = fy = 500 and the principal point (320, 240), for six problems, to within the tolerance shown, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "pinhole-projection-calculator",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 14,
+  "chapter_title": "Cameras, Perception, and Learning from Demonstration",
+  "chapter_dir": "14-perception-and-learning",
+  "chapter_rel_dir": "chapters/14-perception-and-learning"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Print Defect Diagnoser",
+  "description": "The learner will distinguish five common FDM print faults from eight written descriptions of failed prints, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "print-defect-diagnoser",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "distinguish",
+  "completion_status": "scaffold",
+  "chapter_number": 7,
+  "chapter_title": "3D Printing, Fasteners, and Tools",
+  "chapter_dir": "07-printing-fasteners-and-tools",
+  "chapter_rel_dir": "chapters/07-printing-fasteners-and-tools"
+}

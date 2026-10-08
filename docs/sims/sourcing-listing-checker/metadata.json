@@ -1,0 +1,23 @@
+{
+  "title": "Sourcing Listing Checker",
+  "description": "The learner will differentiate eight parts listings as Buy, Check first or Avoid by comparing each with the bill of materials, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "sourcing-listing-checker",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "differentiate",
+  "completion_status": "scaffold",
+  "chapter_number": 6,
+  "chapter_title": "Sourcing Parts and Planning a Budget",
+  "chapter_dir": "06-sourcing-parts-and-budget",
+  "chapter_rel_dir": "chapters/06-sourcing-parts-and-budget"
+}

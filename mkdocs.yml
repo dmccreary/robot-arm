@@ -39,25 +39,82 @@ nav:
 
   - Chapters:
       - List of Chapters: chapters/index.md
-      - "1. Setting Up Python for Robotics": chapters/01-python-setup-for-robotics/index.md
-      - "2. Anatomy of a Robot Arm": chapters/02-anatomy-of-a-robot-arm/index.md
-      - "3. Electricity, Power, and Safety Basics": chapters/03-electricity-power-and-safety/index.md
-      - "4. Serial and CAN Communication": chapters/04-serial-and-can-communication/index.md
-      - "5. Actuators and Sensors": chapters/05-actuators-and-sensors/index.md
-      - "6. Sourcing Parts and Planning a Budget": chapters/06-sourcing-parts-and-budget/index.md
-      - "7. 3D Printing, Fasteners, and Tools": chapters/07-printing-fasteners-and-tools/index.md
-      - "8. Building and Calibrating the SO-ARM100": chapters/08-building-the-so-arm/index.md
-      - "9. Building the reBot-DevArm and Choosing a Platform": chapters/09-building-the-rebot-devarm/index.md
-      - "10. A Python Hardware Library for Robot Arms": chapters/10-python-hardware-library/index.md
-      - "11. Moving the Arm: Trajectories, Grippers, and Teleoperation": chapters/11-moving-the-arm/index.md
-      - "12. Kinematics: Where Is the Hand and How Do I Get There": chapters/12-kinematics/index.md
-      - "13. Logging, Testing, Simulation, and ROS 2": chapters/13-logging-testing-simulation/index.md
-      - "14. Cameras, Perception, and Learning from Demonstration": chapters/14-perception-and-learning/index.md
-      - "15. AI Agents, Tools, and OpenClaw Skills": chapters/15-agents-and-openclaw-skills/index.md
-      - "16. Agent Planning, Vision, and Interfaces": chapters/16-agent-planning-and-vision/index.md
-      - "17. Safety Layers and Evaluation for Agent-Controlled Arms": chapters/17-agent-safety-and-evaluation/index.md
-      - "18. Projects, Operation, and Teaching": chapters/18-projects-operation-and-teaching/index.md
-      - "19. Optional Advanced Chapter: The Mathematics of Arm Paths": chapters/19-advanced-arm-path-mathematics/index.md
+      - "1. Setting Up Python for Robotics":
+          - Content: chapters/01-python-setup-for-robotics/index.md
+          - Quiz: chapters/01-python-setup-for-robotics/quiz.md
+          - Annotated References: chapters/01-python-setup-for-robotics/references.md
+      - "2. Anatomy of a Robot Arm":
+          - Content: chapters/02-anatomy-of-a-robot-arm/index.md
+          - Quiz: chapters/02-anatomy-of-a-robot-arm/quiz.md
+          - Annotated References: chapters/02-anatomy-of-a-robot-arm/references.md
+      - "3. Electricity, Power, and Safety Basics":
+          - Content: chapters/03-electricity-power-and-safety/index.md
+          - Quiz: chapters/03-electricity-power-and-safety/quiz.md
+          - Annotated References: chapters/03-electricity-power-and-safety/references.md
+      - "4. Serial and CAN Communication":
+          - Content: chapters/04-serial-and-can-communication/index.md
+          - Quiz: chapters/04-serial-and-can-communication/quiz.md
+          - Annotated References: chapters/04-serial-and-can-communication/references.md
+      - "5. Actuators and Sensors":
+          - Content: chapters/05-actuators-and-sensors/index.md
+          - Quiz: chapters/05-actuators-and-sensors/quiz.md
+          - Annotated References: chapters/05-actuators-and-sensors/references.md
+      - "6. Sourcing Parts and Planning a Budget":
+          - Content: chapters/06-sourcing-parts-and-budget/index.md
+          - Quiz: chapters/06-sourcing-parts-and-budget/quiz.md
+          - Annotated References: chapters/06-sourcing-parts-and-budget/references.md
+      - "7. 3D Printing, Fasteners, and Tools":
+          - Content: chapters/07-printing-fasteners-and-tools/index.md
+          - Quiz: chapters/07-printing-fasteners-and-tools/quiz.md
+          - Annotated References: chapters/07-printing-fasteners-and-tools/references.md
+      - "8. Building and Calibrating the SO-ARM100":
+          - Content: chapters/08-building-the-so-arm/index.md
+          - Quiz: chapters/08-building-the-so-arm/quiz.md
+          - Annotated References: chapters/08-building-the-so-arm/references.md
+      - "9. Building the reBot-DevArm and Choosing a Platform":
+          - Content: chapters/09-building-the-rebot-devarm/index.md
+          - Quiz: chapters/09-building-the-rebot-devarm/quiz.md
+          - Annotated References: chapters/09-building-the-rebot-devarm/references.md
+      - "10. A Python Hardware Library for Robot Arms":
+          - Content: chapters/10-python-hardware-library/index.md
+          - Quiz: chapters/10-python-hardware-library/quiz.md
+          - Annotated References: chapters/10-python-hardware-library/references.md
+      - "11. Moving the Arm: Trajectories, Grippers, and Teleoperation":
+          - Content: chapters/11-moving-the-arm/index.md
+          - Quiz: chapters/11-moving-the-arm/quiz.md
+          - Annotated References: chapters/11-moving-the-arm/references.md
+      - "12. Kinematics: Where Is the Hand and How Do I Get There":
+          - Content: chapters/12-kinematics/index.md
+          - Quiz: chapters/12-kinematics/quiz.md
+          - Annotated References: chapters/12-kinematics/references.md
+      - "13. Logging, Testing, Simulation, and ROS 2":
+          - Content: chapters/13-logging-testing-simulation/index.md
+          - Quiz: chapters/13-logging-testing-simulation/quiz.md
+          - Annotated References: chapters/13-logging-testing-simulation/references.md
+      - "14. Cameras, Perception, and Learning from Demonstration":
+          - Content: chapters/14-perception-and-learning/index.md
+          - Quiz: chapters/14-perception-and-learning/quiz.md
+          - Annotated References: chapters/14-perception-and-learning/references.md
+      - "15. AI Agents, Tools, and OpenClaw Skills":
+          - Content: chapters/15-agents-and-openclaw-skills/index.md
+          - Quiz: chapters/15-agents-and-openclaw-skills/quiz.md
+          - Annotated References: chapters/15-agents-and-openclaw-skills/references.md
+      - "16. Agent Planning, Vision, and Interfaces":
+          - Content: chapters/16-agent-planning-and-vision/index.md
+          - Quiz: chapters/16-agent-planning-and-vision/quiz.md
+          - Annotated References: chapters/16-agent-planning-and-vision/references.md
+      - "17. Safety Layers and Evaluation for Agent-Controlled Arms":
+          - Content: chapters/17-agent-safety-and-evaluation/index.md
+          - Quiz: chapters/17-agent-safety-and-evaluation/quiz.md
+          - Annotated References: chapters/17-agent-safety-and-evaluation/references.md
+      - "18. Projects, Operation, and Teaching":
+          - Content: chapters/18-projects-operation-and-teaching/index.md
+          - Quiz: chapters/18-projects-operation-and-teaching/quiz.md
+          - Annotated References: chapters/18-projects-operation-and-teaching/references.md
+      - "19. Optional Advanced Chapter: The Mathematics of Arm Paths":
+          - Content: chapters/19-advanced-arm-path-mathematics/index.md
+          - Quiz: chapters/19-advanced-arm-path-mathematics/quiz.md
+          - Annotated References: chapters/19-advanced-arm-path-mathematics/references.md
 
   - Labs:
       - Hands-On Labs: labs/index.md
@@ -75,19 +132,81 @@ nav:
       - Glossary Quality Report: learning-graph/glossary-quality-report.md
       - FAQ Quality Report: learning-graph/faq-quality-report.md
       - FAQ Coverage Gaps: learning-graph/faq-coverage-gaps.md
+      - Quiz Generation Report: learning-graph/quiz-generation-report.md
 
   - MicroSims:
       - List of MicroSims: sims/index.md
       - Learning Graph Viewer: sims/graph-viewer/index.md
       - Hobby PWM Servo vs. Serial Bus Servo: sims/pwm-vs-bus-servos/index.md
+      - Python Run Stage Sorter: sims/python-run-stage-sorter/index.md
+      - Virtual Environment Explorer: sims/virtual-environment-explorer/index.md
+      - Traceback Detective: sims/traceback-detective/index.md
+      - File Path Resolver: sims/file-path-resolver/index.md
+      - JSON Syntax Doctor: sims/json-syntax-doctor/index.md
       - Robot Arm Part Identifier: sims/robot-arm-part-identifier/index.md
+      - Degrees of Freedom Counter: sims/degrees-of-freedom-counter/index.md
       - Two-Link Workspace Explorer: sims/two-link-workspace-explorer/index.md
+      - Accuracy and Repeatability Targets: sims/accuracy-repeatability-targets/index.md
       - Leader and Follower Mirror: sims/leader-follower-mirror/index.md
       - Ohm's Law Explorer: sims/ohms-law-explorer/index.md
       - Wire Voltage-Drop Explorer: sims/wire-voltage-drop-explorer/index.md
-      - Fuse and E-Stop Power Path: sims/protected-power-path/index.md
       - Common Ground Loop: sims/common-ground-loop/index.md
+      - Power Budget Sizer: sims/power-budget-sizer/index.md
+      - Workcell Hazard Spotter: sims/workcell-hazard-spotter/index.md
+      - Fuse and E-Stop Power Path: sims/protected-power-path/index.md
+      - Safe Power-Up Sequencer: sims/safe-power-up-sequencer/index.md
+      - UART Frame Timeline: sims/uart-frame-timeline/index.md
+      - Packet Checksum Calculator: sims/packet-checksum-calculator/index.md
+      - Status Packet Decoder: sims/status-packet-decoder/index.md
+      - Bus Fault Finder: sims/bus-fault-finder/index.md
+      - CAN Termination Meter: sims/can-termination-meter/index.md
       - H-Bridge Current Paths: sims/h-bridge-current-paths/index.md
+      - Gear Ratio Explorer: sims/gear-ratio-explorer/index.md
+      - Encoder Resolution Reader: sims/encoder-resolution-reader/index.md
+      - Actuator Type Matcher: sims/actuator-type-matcher/index.md
+      - PID Step Response: sims/pid-step-response/index.md
+      - Joint Limit Chooser: sims/joint-limit-chooser/index.md
+      - Landed Cost Calculator: sims/landed-cost-calculator/index.md
+      - Sourcing Listing Checker: sims/sourcing-listing-checker/index.md
+      - Tolerance Fit Explorer: sims/tolerance-fit-explorer/index.md
+      - Print Defect Diagnoser: sims/print-defect-diagnoser/index.md
+      - Multimeter Practice: sims/multimeter-practice/index.md
+      - Servo ID Setup Sequencer: sims/servo-id-setup-sequencer/index.md
+      - Calibration Range Recorder: sims/calibration-range-recorder/index.md
+      - Assembly Fault Finder: sims/assembly-fault-finder/index.md
+      - MIT Frame Packer: sims/mit-frame-packer/index.md
+      - Platform Chooser: sims/platform-chooser/index.md
+      - Unit Converter Drill: sims/unit-converter-drill/index.md
+      - Driver Swap Tracer: sims/driver-swap-tracer/index.md
+      - With Block Predictor: sims/with-block-predictor/index.md
+      - Loop Rate Calculator: sims/loop-rate-calculator/index.md
+      - Trapezoid Profile Calculator: sims/trapezoid-profile-calculator/index.md
+      - Pick and Place Sequencer: sims/pick-and-place-sequencer/index.md
+      - Transform Chain Calculator: sims/transform-chain-calculator/index.md
+      - IK Target Classifier: sims/ik-target-classifier/index.md
+      - Singularity Spotter: sims/singularity-spotter/index.md
+      - Log Level Sorter: sims/log-level-sorter/index.md
+      - Pytest Output Reader: sims/pytest-output-reader/index.md
+      - ROS Concept Matcher: sims/ros-concept-matcher/index.md
+      - HSV Color Classifier: sims/hsv-color-classifier/index.md
+      - Pinhole Projection Calculator: sims/pinhole-projection-calculator/index.md
+      - Demo Episode Judge: sims/demo-episode-judge/index.md
+      - Agent or Workflow Sorter: sims/agent-or-workflow-sorter/index.md
+      - Tool Call Checker: sims/tool-call-checker/index.md
+      - Skill File Checker: sims/skill-file-checker/index.md
+      - Plan Checker: sims/plan-checker/index.md
+      - Failure Recovery Chooser: sims/failure-recovery-chooser/index.md
+      - HTTP Status Reader: sims/http-status-reader/index.md
+      - Defense Layer Matcher: sims/defense-layer-matcher/index.md
+      - Injection Spotter: sims/injection-spotter/index.md
+      - Evaluation Metrics Calculator: sims/evaluation-metrics-calculator/index.md
+      - Script Policy Agent Sorter: sims/script-policy-agent-sorter/index.md
+      - Startup Order Sequencer: sims/startup-order-sequencer/index.md
+      - Maintenance Due Calculator: sims/maintenance-due-calculator/index.md
+      - Quaternion Calculator: sims/quaternion-calculator/index.md
+      - Manipulability Calculator: sims/manipulability-calculator/index.md
+      - Polynomial Order Chooser: sims/polynomial-order-chooser/index.md
+      - RRT Step Tracer: sims/rrt-step-tracer/index.md
 
   - Stories:
       - List of Stories: stories/index.md
@@ -106,6 +225,9 @@ nav:
 # Theme configuration
 theme:
   name: material
+  custom_dir: overrides
+  static_templates:
+    - 404.html
   logo: img/logo.png
   favicon: img/favicon.ico
   palette:

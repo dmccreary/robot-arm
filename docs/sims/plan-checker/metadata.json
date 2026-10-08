@@ -1,0 +1,23 @@
+{
+  "title": "Plan Checker",
+  "description": "The learner will examine eight pick-and-place plans written as lists of tool calls and name the problem with each, or say that the plan is valid, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "plan-checker",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "examine",
+  "completion_status": "scaffold",
+  "chapter_number": 16,
+  "chapter_title": "Agent Planning, Vision, and Interfaces",
+  "chapter_dir": "16-agent-planning-and-vision",
+  "chapter_rel_dir": "chapters/16-agent-planning-and-vision"
+}

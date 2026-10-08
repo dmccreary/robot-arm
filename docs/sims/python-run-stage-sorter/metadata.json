@@ -1,0 +1,23 @@
+{
+  "title": "Python Run Stage Sorter",
+  "description": "The learner will classify each of five Python error messages by the stage of running a script that produces it, with at least 4 of 5 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "python-run-stage-sorter",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "classify",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "Setting Up Python for Robotics",
+  "chapter_dir": "01-python-setup-for-robotics",
+  "chapter_rel_dir": "chapters/01-python-setup-for-robotics"
+}

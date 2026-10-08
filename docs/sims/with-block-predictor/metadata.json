@@ -1,0 +1,23 @@
+{
+  "title": "With Block Predictor",
+  "description": "The learner will infer the outcome of six short programs that use a fake arm, by choosing what happens to the error and to the torque, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "with-block-predictor",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "infer",
+  "completion_status": "scaffold",
+  "chapter_number": 10,
+  "chapter_title": "A Python Hardware Library for Robot Arms",
+  "chapter_dir": "10-python-hardware-library",
+  "chapter_rel_dir": "chapters/10-python-hardware-library"
+}

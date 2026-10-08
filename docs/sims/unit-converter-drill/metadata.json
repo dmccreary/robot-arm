@@ -1,0 +1,23 @@
+{
+  "title": "Unit Converter Drill",
+  "description": "The learner will calculate conversions between raw servo steps, degrees, radians and percent for a calibrated joint, to within 0.1 degree, 0.001 radian, 1 step or 0.1 percent as asked, in six problems, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "unit-converter-drill",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 10,
+  "chapter_title": "A Python Hardware Library for Robot Arms",
+  "chapter_dir": "10-python-hardware-library",
+  "chapter_rel_dir": "chapters/10-python-hardware-library"
+}

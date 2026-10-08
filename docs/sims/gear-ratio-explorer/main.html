@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- microsim-scaffold-stub -->
+    <title>Gear Ratio Explorer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Gear Ratio Explorer</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> gear-ratio-explorer</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Apply</p>
+            <p><strong>Learning Objective:</strong> The learner will calculate the output speed or torque of a geared actuator, or the motor speed or torque behind it, from the gear ratio and efficiency, to within 2 percent, in five problems, with at least 4 of 5 correct on the first attempt.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** gear-ratio-explorer<br/>
+    **Library:** p5.js<br/>
+    **Status:** Specified<br/>
+    **Bloom Level:** Apply<br/>
+    **Bloom Verb:** calculate<br/>
+    **Learning Objective:** The learner will calculate the output speed or torque of a geared actuator, or the motor speed or torque behind it, from the gear ratio and efficiency, to within 2 percent, in five problems, with at least 4 of 5 correct on the first attempt.
+    
+    **Prerequisites:** torque, motor speed, gearbox, gear ratio, stall torque, efficiency, newton-metre (all defined in the section above this block).
+    
+    **Evidence of Mastery:** For each of five problems the learner types a number in the unit shown and commits. An answer is correct when it is within 2 percent of the Correct column in Content. Mastery is 4 of 5 correct on the first attempt. Changing the ratio and the motor in Explore mode is exploration, not evidence.
+    
+    **Misconceptions:** (1) A higher gear ratio makes the output faster. (It makes it slower and stronger.) (2) Gears create torque from nothing. (Power is conserved apart from friction, so the speed falls as the torque rises.) (3) Efficiency does not matter. (It reduces the output torque.)
+    
+    **Instructional Rationale:** An Apply-level calculate objective needs practice with a formula on new numbers. The sim shows the motor turning many times for each output turn, so the sign of the speed-for-torque trade is seen before it is calculated.
+    
+    **Content:**
+    
+    Explore mode shows a motor gear turning \( N \) times for each turn of the output gear. The learner can set the motor speed, the motor torque, the ratio N and the efficiency. Formulas: output speed = motor speed / N; output torque = motor torque × N × efficiency.
+    
+    | Quantity | Min | Max | Step | Default | Unit |
+    |---|---|---|---|---|---|
+    | Gear ratio N | 1 | 400 | 1 | 100 | : 1 |
+    | Motor speed | 0 | 20000 | 100 | 12000 | rpm |
+    | Motor torque | 0 | 50 | 1 | 10 | mN·m |
+    | Efficiency | 20 | 100 | 5 | 60 | percent |
+    
+    Five problems in this fixed order:
+    
+    | # | Problem | Unit asked | Correct | Why (shown as feedback) |
+    |---|---|---|---|---|
+    | 1 | A motor turns at 12000 rpm through a 100 : 1 gearbox. What is the output speed? | rpm | 120 | 12000 / 100 = 120 rpm. |
+    | 2 | The STS3215's output turns at 42 rpm through a 345 : 1 gearbox. How fast is the motor shaft? | rpm | 14490 | 42 × 345 = 14490 rpm. |
+    | 3 | A motor makes 10 mN·m through a 100 : 1 gearbox at 60 percent efficiency. What is the output torque? | N·m | 0.6 | 0.010 × 100 × 0.6 = 0.6 N·m. |
+    | 4 | An output needs 1.62 N·m through a 345 : 1 gearbox at 50 percent efficiency. What motor torque is needed? | mN·m | 9.39 | 1.62 / (345 × 0.5) = 0.00939 N·m = 9.39 mN·m. |
+    | 5 | The same motor drives a 147 : 1 joint and a 345 : 1 joint. How many times faster is the 147 : 1 joint? | times | 2.35 | 345 / 147 = 2.347 times faster, and it is that much weaker. |
+    
+    **Provenance:** The 42 rpm and 1.62 N·m figures follow the STS3215 listing values in the chapter's worked example (0.238 s per 60 degrees and 16.5 kg·cm at 6 V). The other numbers are illustrative, and the sim labels them "illustrative".
+    
+    **Rules:** Output speed = motor speed / N, output torque = motor torque × N × (efficiency / 100). A typed answer is correct when |typed − correct| / correct <= 0.02 in the unit shown. The typed value has minimum 0, maximum 100000, step 0.01, and no default.
+    
+    **Learner Activity:**
+    
+    1. In Explore mode the learner changes the ratio, speed, torque and efficiency and watches the output speed and torque update. The learner should notice that raising N lowers the speed and raises the torque by the same factor, apart from efficiency.
+    2. The learner switches to the five problems. Problem 1 is shown with the quantities it uses.
+    3. The learner types an answer and presses Check to commit.
+    4. The sim shows whether the answer was correct, the working and the Why text, then moves on. After problem 5 it shows the score.
+    
+    **Feedback:** Five problems, fixed order, one attempt each. Correct: "Correct: <value> <unit>. <Why>". Incorrect: "Not quite. Speed goes down by N and torque goes up by N times the efficiency: <value> <unit>. <Why>". The correct value is revealed after each commit. A running count "Correct: n of 5" is shown and the final screen says whether mastery (4 of 5) was reached.
+    
+    **Starting State:** Explore mode with the default values, showing an output speed of 120 rpm and an output torque of 0.6 N·m.
+    
+    **Chapter Anchors:** The chapter's worked example is 16.5 kg·cm = 1.62 N·m, 252 degrees per second = 42 rpm, about 14500 rpm at the motor (14490 exactly), and 9.4 mN·m at the motor for 50 percent efficiency. The ratio comparison is 345 / 147 = 2.35. The sim has five problems and mastery is 4 of 5.
+    -->
+</body>
+</html>

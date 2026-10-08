@@ -159,6 +159,10 @@ If the dot product is negative, negate \( q_1 \) first, so that the rotation tak
 
 #### Diagram: Quaternion Calculator
 
+<iframe src="../../sims/quaternion-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Quaternion Calculator MicroSim fullscreen](../../sims/quaternion-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Quaternion Calculator</summary>
 Type: microsim
@@ -262,6 +266,10 @@ The **condition number** \( \kappa = \sigma_{\max}/\sigma_{\min} \), from the si
 So the steps are exact where it is safe and tame where it is not. The lab's `adaptive_damping` does this, with \( w_0 = 0.004 \) and \( \lambda_{\max} = 0.05 \). *Limit the speed*: scale all joint speeds down so that none exceeds its limit, which the time-scaling section below does. A robot that stops before a singularity is annoying, and one that does not is dangerous.
 
 #### Diagram: Manipulability Calculator
+
+<iframe src="../../sims/manipulability-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Manipulability Calculator MicroSim fullscreen](../../sims/manipulability-calculator/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Manipulability Calculator</summary>
@@ -382,6 +390,10 @@ A **via-point trajectory** passes through several poses on the way, at set times
 
 #### Diagram: Polynomial Order Chooser
 
+<iframe src="../../sims/polynomial-order-chooser/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Polynomial Order Chooser MicroSim fullscreen](../../sims/polynomial-order-chooser/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Polynomial Order Chooser</summary>
 Type: microsim
@@ -498,6 +510,10 @@ Smoothing makes new segments that the planner never tested, so it must be follow
     A shortcut joins two points that the planner never connected, and the straight segment between them may touch the obstacle. Run the safety check on the finished path, at a resolution finer than your smallest obstacle, and again whenever the obstacles move.
 
 #### Diagram: RRT Step Tracer
+
+<iframe src="../../sims/rrt-step-tracer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the RRT Step Tracer MicroSim fullscreen](../../sims/rrt-step-tracer/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>RRT Step Tracer</summary>
@@ -2022,3 +2038,5 @@ You can now predict an arm's path, and check the prediction against a log.
 !!! mascot-celebration "You Can Predict My Path Before I Move!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You turned rotations into four forms, tamed the Jacobian near a singularity, designed minimum-jerk moves, planned around an obstacle with a random tree, and predicted my tip to within a millimeter once the lag was fitted. That is the end of the book. Now go and build something with me!
+
+[See Annotated References](./references.md)

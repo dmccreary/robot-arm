@@ -1,0 +1,23 @@
+{
+  "title": "Actuator Type Matcher",
+  "description": "The learner will classify eight descriptions of an actuator as a hobby servo, a serial bus servo or a brushless CAN actuator, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "actuator-type-matcher",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "classify",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "Actuators and Sensors",
+  "chapter_dir": "05-actuators-and-sensors",
+  "chapter_rel_dir": "chapters/05-actuators-and-sensors"
+}

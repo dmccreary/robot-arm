@@ -1,0 +1,72 @@
+---
+title: "With Block Predictor"
+description: "The learner will infer the outcome of six short programs that use a fake arm, by choosing what happens to the error and to the torque, with at least 5 of 6 correct on the first attempt."
+status: scaffold
+library: p5.js
+bloom_level: Understand
+---
+
+# With Block Predictor
+
+
+
+<iframe src="main.html" width="100%" height="600"></iframe>
+
+[Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
+
+## Specification
+
+The full specification below is extracted from
+[Chapter 10: A Python Hardware Library for Robot Arms](../../chapters/10-python-hardware-library/index.md).
+
+```text
+Type: microsim
+**sim-id:** with-block-predictor<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Bloom Level:** Understand<br/>
+**Bloom Verb:** infer<br/>
+**Learning Objective:** The learner will infer the outcome of six short programs that use a fake arm, by choosing what happens to the error and to the torque, with at least 5 of 6 correct on the first attempt.
+
+**Prerequisites:** connect and disconnect, exception handling for hardware, custom exceptions, try finally, with statement, context manager (all defined in the section "When Hardware Fails" above this block).
+
+**Evidence of Mastery:** For each of six programs the learner chooses one of four outcomes and commits before the outcome is run. A choice is correct when it matches the Outcome column in Content. Mastery is 5 of 6 correct on the first attempt. Running programs in Explore mode is exploration, not evidence.
+
+**Misconceptions:** (1) A with block hides errors. (It switches the torque off and lets the error continue.) (2) An error that is caught inside a with block leaves the torque on. (The block still ends and disconnects.) (3) Code after a failed call still runs. (An uncaught error skips the rest of the block.)
+
+**Instructional Rationale:** An Understand-level infer objective asks the learner to reason from code to behavior. Predicting the outcome before it is run makes the learner trace the flow of control through the cleanup, which is the skill that keeps real arms safe.
+
+**Content:**
+
+Each program uses a fake arm with joints shoulder_pan (limits -110 to 110) and elbow_flex (limits -97 to 97). The four outcomes: "The error continues upward and the torque is off", "The error continues upward and the torque is still on", "The error is caught and the torque is off", "The error continues upward and the torque was never on". Six programs in this fixed order:
+
+| # | Program | Outcome | Why (shown as feedback) |
+|---|---|---|---|
+| 1 | with arm: followed by arm.move_to(Pose({"shoulder_pan": 140.0})) | The error continues upward and the torque is off | The limit check raises JointLimitError, the with block exits through __exit__, which disconnects, and the error is not hidden. |
+| 2 | arm.connect() followed by arm.move_to(Pose({"shoulder_pan": 140.0})), with no with and no try | The error continues upward and the torque is still on | Nothing runs disconnect, so the torque stays on after the error. |
+| 3 | arm.connect(); try: arm.move_to(Pose({"shoulder_pan": 140.0})) finally: arm.disconnect() | The error continues upward and the torque is off | The finally block runs on the way out, so the torque is switched off and the error continues. |
+| 4 | with arm: try: arm.move_to(Pose({"shoulder_pan": 140.0})) except JointLimitError: print("limit") | The error is caught and the torque is off | The except block handles the error, the program continues, and the with block still disconnects at its end. |
+| 5 | arm.read_pose() with no connect() | The error continues upward and the torque was never on | NotConnectedError is raised before any driver code runs, and the torque was never switched on. |
+| 6 | with FakeArm(joints, fail_after=0) as arm: followed by arm.move_to(Pose({"shoulder_pan": 10.0})) | The error continues upward and the torque is off | The first write raises CommunicationError, and the with block disconnects on the way out. |
+
+**Provenance:** The programs and their outcomes are from the lab of this chapter, and were checked by running them. The programs are illustrative.
+
+**Rules:** Each program has exactly one correct outcome. An error raised inside a with block runs __exit__ before it continues. An error caught by an except block inside the with block does not leave the block. A write is checked against the joint limits before the driver is called.
+
+**Learner Activity:**
+
+1. In Explore mode the learner picks one of the programs, runs it, and sees the sequence of events: connect, the call, the error, the cleanup, and the final torque state.
+2. The learner switches to the six programs. Program 1 is shown.
+3. The learner chooses an outcome and commits.
+4. The sim runs the program and shows whether the choice was correct and the Why text, then moves on. After program 6 it shows the score.
+
+**Feedback:** Six programs, fixed order, one attempt each. Correct: "Correct: <outcome>. <Why>". Incorrect: "Not quite. The outcome is: <outcome>. <Why>". The correct outcome is revealed after each commit. A running count "Correct: n of 6" is shown and the final screen says whether mastery (5 of 6) was reached.
+
+**Starting State:** Explore mode with program 1 shown and the prompt "What will happen to the error and to the torque?"
+
+**Chapter Anchors:** The chapter states that a with block calls disconnect even when an error is raised, that its __exit__ returns False so that the error is not hidden, and that without a with block or a finally block the torque stays on after a failure. The sim has six programs and mastery is 5 of 6.
+```
+
+## Related Resources
+
+- [Chapter 10: A Python Hardware Library for Robot Arms](../../chapters/10-python-hardware-library/index.md)

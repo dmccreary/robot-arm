@@ -1,0 +1,23 @@
+{
+  "title": "Tolerance Fit Explorer",
+  "description": "The learner will infer whether a printed hole is too tight, snug, a good sliding fit, or loose from its designed size, the printer's size error and the size of the part that goes into it, in six cases, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "tolerance-fit-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "infer",
+  "completion_status": "scaffold",
+  "chapter_number": 7,
+  "chapter_title": "3D Printing, Fasteners, and Tools",
+  "chapter_dir": "07-printing-fasteners-and-tools",
+  "chapter_rel_dir": "chapters/07-printing-fasteners-and-tools"
+}

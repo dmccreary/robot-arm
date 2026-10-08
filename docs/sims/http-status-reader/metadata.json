@@ -1,0 +1,23 @@
+{
+  "title": "HTTP Status Reader",
+  "description": "The learner will interpret eight HTTP status codes returned by the arm's tool server or a model provider by choosing what the client should do, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "http-status-reader",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "interpret",
+  "completion_status": "scaffold",
+  "chapter_number": 16,
+  "chapter_title": "Agent Planning, Vision, and Interfaces",
+  "chapter_dir": "16-agent-planning-and-vision",
+  "chapter_rel_dir": "chapters/16-agent-planning-and-vision"
+}

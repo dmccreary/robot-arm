@@ -1,0 +1,23 @@
+{
+  "title": "Demo Episode Judge",
+  "description": "The learner will judge eight described demonstration episodes as worth keeping or needing to be re-recorded, using the data-collection guidance of the chapter, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "demo-episode-judge",
+  "library": "p5.js",
+  "bloomLevel": "Evaluate",
+  "bloomVerb": "judge",
+  "completion_status": "scaffold",
+  "chapter_number": 14,
+  "chapter_title": "Cameras, Perception, and Learning from Demonstration",
+  "chapter_dir": "14-perception-and-learning",
+  "chapter_rel_dir": "chapters/14-perception-and-learning"
+}

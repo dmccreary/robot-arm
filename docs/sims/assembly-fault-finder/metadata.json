@@ -1,0 +1,23 @@
+{
+  "title": "Assembly Fault Finder",
+  "description": "The learner will differentiate six causes of SO-ARM101 faults from eight written symptoms, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "assembly-fault-finder",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "differentiate",
+  "completion_status": "scaffold",
+  "chapter_number": 8,
+  "chapter_title": "Building and Calibrating the SO-ARM100",
+  "chapter_dir": "08-building-the-so-arm",
+  "chapter_rel_dir": "chapters/08-building-the-so-arm"
+}

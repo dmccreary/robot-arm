@@ -1,6 +1,6 @@
 # TODO
 
-Observations from generating Chapters 3 to 9, written down so they are not lost. The first
+Observations from generating Chapters 3 to 19, written down so they are not lost. The first
 section lists skills that would have saved work, the second lists facts that still need a human
 check, and the third lists what is not built yet.
 
@@ -104,6 +104,37 @@ check, and the third lists what is not built yet.
     same code for the DM motors and a different one for RobStride's 29-bit protocol. One shared
     codec, with a round-trip test (`pack` then `unpack` within one quantization step), should
     serve the labs, the sim `mit-frame-packer`, and Chapter 10.
+
+### Added while writing Chapters 10 to 19
+
+18. **lab-regression-runner** (extends items 4 and 10). The scratch `arm-lab` now holds about 60 demo
+    scripts and 81 tests, and every chapter edit risked breaking an earlier one (the Chapter 11
+    `run_loop` change reached Chapters 11 and 13). The last pass ran every `*_demo.py` and
+    `check_*.py` and reported zero failures, but it was a hand-written loop. A tool should keep a
+    pinned copy of the lab in the repo, run all scripts and pytest, and diff against the pasted
+    output blocks. macOS has no `timeout` command, so the tool needs its own time limit.
+19. **figure-sync**. Lab scripts save figures into the lab folder, and the chapter needs them in
+    `docs/chapters/NN-.../figures/`. Chapters 13, 14 and 19 were copied by hand, and Chapter 19
+    ran its demos again during assembly, so the copy had to be repeated. `assemble.py` should
+    copy the figures that its `@@RUN@@` commands wrote.
+20. **agent-safety-kit** (Chapter 17 as a tool). `SafetyLayer` (roles, rate limit, schema,
+    workspace, confirmation that only a person can grant, dry run, audit log), a misbehaving-model
+    harness (`ChaosModel`, `evaluate`) and `replay` are not specific to this arm. A skill could
+    wrap any tool list with them and generate the three reports (by-layer refusals, violation
+    rate, replay diff).
+21. **project-report-generator** (Chapter 18). `project_report` writes `PROJECT.md` from measured
+    values (cost, last run, hottest joint, maintenance due, test result). A skill could do this
+    for any capstone, and fail the build if a number in the report is older than the last run.
+22. **calculate-sim-family** (extends item 12). Chapters 17 to 19 added eight more
+    "type a number, tolerance 0.1" and "pick one of three" sims. Most of the specs now share one
+    shape (fixed items table, a Why per item, mastery n of m), so the generator of item 2 can
+    be tested on them.
+23. **toy-model-labeler**. Chapters 13, 17, 18 and 19 use made-up models (the thermal model, the
+    servo lag, the stand-in measurement). Each is labeled in the text, and a lint should check
+    that every function marked `toy` or `stand-in` has a sentence in the chapter that says so.
+24. **path-math-checker** (Chapter 19). The six modules are checked against SciPy and exact
+    results. The same checks (quaternion against `Rotation`, Jacobian against a numerical one,
+    minimum-jerk peaks 1.875 and 10/sqrt(3)) would guard any future kinematics code.
 
 ## Facts to check by a human
 
@@ -289,6 +320,100 @@ not listed. Everything here came from a retailer, a wiki, a search summary, or m
   2026-09-23. A Linux or macOS tool may exist.
 - **The decision-matrix scores** in `platform-chooser` are my judgments, labeled as such.
 
+### Chapters 10 to 19: unverified facts
+
+All read on 2026-10-07. Everything here came from a secondary source, a search summary, or my own
+inference, and not from the maker's primary document.
+
+**Chapters 10 to 12**
+
+- **Chapters 10 and 11 had no research sheet of their own.** The driver classes and the control
+  loop are my design on top of the facts of Chapters 4, 5, 8 and 9, so the unverified items of
+  those chapters apply here too.
+- **SO-101 transform chain.** The offsets, sign conventions and the 0.007 mm match were computed
+  from the URDF (`so101_new_calib.urdf`) with a NumPy forward kinematics. Whether the LeRobot
+  degree signs match the URDF signs on a real arm is unverified. The "flat" model leaves out an
+  18 mm out-of-plane jog and link offsets of 14 and 2.2 degrees.
+- **Denavit-Hartenberg, two-link IK and the Jacobian** are textbook content stated from memory
+  (the sources were listed but not fetched).
+
+**Chapter 13**
+
+- **ROS 2.** The RoboStack install on macOS and the availability of the newest release were not
+  verified; docs.ros.org blocked automated fetches. The MoveIt and Seeed pages were not fetched.
+- **MuJoCo** has no Intel-Mac wheel for the newest version, and Isaac Sim needs an NVIDIA RTX GPU
+  on Linux or Windows. Check before telling a class to install them.
+- **The Pinocchio example** was run on a two-link URDF, not on the SO-101 URDF.
+
+**Chapter 14**
+
+- **ACT training time** ("several hours", "a few hours for 100k steps on a single GPU") is quoted
+  from the LeRobot docs, which name no GPU. The paper's venue (RSS 2023) is unverified.
+- **Joint units.** Only the gripper's 0 to 100 range is confirmed. The unit of the other five
+  joints depends on `use_degrees`, which was not run on a machine.
+- **OpenCV pages** returned HTTP 403, so the documentation URLs were not checked. The macOS
+  camera-permission steps are from general knowledge.
+- **The toy imitation policy and the synthetic camera** are teaching models, not LeRobot code.
+
+**Chapters 15 and 16**
+
+- **Model IDs, API field names and prices** change quickly. The OpenAI page's model string came
+  through a summarizer and was not copied. OpenAI's key-safety page, the `requests` release
+  date and a primary source for the planner-executor pattern were not found.
+- **OpenClaw.** The security-incident summaries and the claim that OpenClaw's own documentation
+  recommends keeping untrusted content apart and limiting tools came from a fact sheet that
+  mixes primary and secondary sources. Re-read them before publishing.
+- **Local models.** Qwen2.5-VL-3B's license (`qwen-research`) is not permissive, so the chapter
+  uses SmolVLM (Apache 2.0). Jetson and Raspberry Pi prices and Ollama model names will date.
+- **MCP.** The specification version and the SDK v2 `MCPServer` names were read from the
+  documentation, and the server was not connected to a real client.
+
+**Chapter 17**
+
+- **ISO 10218 and ISO/TS 15066** come from search snippets and trade summaries, because iso.org
+  returned 403. The statement that 15066 was folded into the 2025 edition of 10218 is secondary.
+  The chapter says the standards are context and that nothing here makes an arm compliant.
+- **NIST** definitions of least privilege and defense in depth, the four functions of the AI Risk
+  Management Framework, and the OWASP 2025 numbers (LLM01 prompt injection, LLM06 excessive
+  agency) were taken from the glossary and list pages as read by the research agent.
+- **All limits in the safety layer** (workspace box, 40 degrees per second, 3 cm, 5 calls per
+  second) are the lab's choices for the fake arm. The evaluation numbers (26 of 40, 8 of 40)
+  depend on the `ChaosModel` parameters and the seed.
+
+**Chapter 18**
+
+- **Maintenance intervals** (10, 25, 50 and 100 hours) are examples, not a maker's figures. The
+  SO-ARM100 README has no maintenance notes, and no Feetech lubrication guidance was found.
+  Retailer listings disagree on the gear metal (steel or copper).
+- **PLA glass transition (about 60 C) and creep** come from vendor blogs and a paper abstract,
+  and the creep sentence is weakly sourced.
+- **XLeRobot, $660** is the SO-ARM100 README's own claim. The reBot payloads (1.5 and 2.5 kg)
+  are from the README as read for Chapter 9, and the SO-ARM101's 0.5 kg is a seller figure.
+- **Group ordering.** Whether a bulk order lowers the 28 percent shipping and tax overhead was
+  not checked. The $364 per team is the $332.04 kit, $20 of printing and one spare servo.
+- **The homing pose** (the folded `home_pose` of `config/arm.json`) is assumed to be safe to leave
+  without torque. Check on the real arm before the shutdown procedure is taught to a class.
+- **The thermal model** (0.004 C per degree, 0.8 C per minute) is made up, and the 50 and 60 C
+  thresholds are the lab's. The 70 C servo cut-off is from the data sheet of Chapter 8.
+- **The contribution workflow** is from GitHub's docs, LeRobot's `CONTRIBUTING.md`, its
+  `.pre-commit-config.yaml` and `AI_POLICY.md`, all read on 2026-10-07. The rules change.
+
+**Chapter 19**
+
+- **References stated from memory and not fetched:** Yoshikawa 1985 (manipulability), Wampler
+  1986 and Nakamura and Hanafusa 1986 (damped least squares and its adaptive form), Flash and
+  Hogan 1985 (minimum jerk), LaValle 1998 (RRT), and the SciPy function signatures (the code
+  was run, so the signatures work with the installed SciPy 1.18).
+- **Link masses** are from the URDF, but the lab puts each mass at the middle of its segment.
+  The real centers of mass are in the URDF and were not used. The 19.5 kg.cm stall torque is the
+  seller's figure, and the margin of 2 is a rule of thumb.
+- **reBot IK defaults** (damping 1e-6 that grows with the error, step 0.5, 1000 iterations) and
+  **LeRobot IK defaults** (8 Newton steps, orientation weight 0.01) are from the repositories at
+  the commits recorded in the fact sheet. Both may change.
+- **The planner's joint limits and obstacle** belong to the flat model and are not the SO-101's.
+  The stand-in measurement (lag 0.12 s, delay 20 ms, 0.5 degrees of backlash) is made up, so
+  measure a real arm's lag before quoting the fitted values.
+
 ## Labs section: decisions needed
 
 From `docs/labs/list-of-ideas.md` (53 candidate labs, none written yet). The answers decide
@@ -325,7 +450,22 @@ which labs get written and which parts go on the station kit.
 - Chapter 9: `mit-frame-packer`, `platform-chooser`
 - Social-preview PNGs for the five built circuit sims (Chapters 3 and 5), named in each sim's
   `index.md`.
-- Chapters 7 to 9 are generated but not committed or deployed. Chapters 4 to 6 were committed
-  in `314c316`, and it is not recorded whether they were deployed.
+- Chapters 7 to 9 were committed in `40997be` and deployed. Chapters 10 to 19 were written in
+  this session and picked up by commits made while it ran (`c4a73f9` to `5f2e10a`). Nothing from
+  this session has been deployed since Chapters 7 to 9, and the logs `logs/ch-10` to `ch-19`
+  are not committed yet.
+- Chapter 10: `unit-converter-drill`, `driver-swap-tracer`, `with-block-predictor`
+- Chapter 11: `loop-rate-calculator`, `trapezoid-profile-calculator`, `pick-and-place-sequencer`
+- Chapter 12: `transform-chain-calculator`, `ik-target-classifier`, `singularity-spotter`
+- Chapter 13: `log-level-sorter`, `pytest-output-reader`, `ros-concept-matcher`
+- Chapter 14: `hsv-color-classifier`, `pinhole-projection-calculator`, `demo-episode-judge`
+- Chapter 15: `agent-or-workflow-sorter`, `tool-call-checker`, `skill-file-checker`
+- Chapter 16: `plan-checker`, `failure-recovery-chooser`, `http-status-reader`
+- Chapter 17: `defense-layer-matcher`, `injection-spotter`, `evaluation-metrics-calculator`
+- Chapter 18: `script-policy-agent-sorter`, `startup-order-sequencer`, `maintenance-due-calculator`
+- Chapter 19: `quaternion-calculator`, `manipulability-calculator`, `polynomial-order-chooser`,
+  `rrt-step-tracer`
+- The scratch `arm-lab` project exists only in the session scratch folder (81 tests). Save a
+  reference copy in the repository, or the Chapter 10 to 19 labs cannot be re-run later.
 - `docs/labs/` is still untracked (the lab idea list, written before these chapters).
 - Chapter 5's torque figures for the DM4310 should get the same caveat that Chapter 9 now has.

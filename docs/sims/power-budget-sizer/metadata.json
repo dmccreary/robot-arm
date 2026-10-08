@@ -1,0 +1,23 @@
+{
+  "title": "Power Budget Sizer",
+  "description": "The learner will calculate the supply current needed for four arm setups by adding the motor currents and applying a 1.25 margin factor, to within 0.05 A, with at least 3 of 4 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "power-budget-sizer",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 3,
+  "chapter_title": "Electricity, Power, and Safety Basics",
+  "chapter_dir": "03-electricity-power-and-safety",
+  "chapter_rel_dir": "chapters/03-electricity-power-and-safety"
+}

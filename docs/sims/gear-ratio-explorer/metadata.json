@@ -1,0 +1,23 @@
+{
+  "title": "Gear Ratio Explorer",
+  "description": "The learner will calculate the output speed or torque of a geared actuator, or the motor speed or torque behind it, from the gear ratio and efficiency, to within 2 percent, in five problems, with at least 4 of 5 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "gear-ratio-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "Actuators and Sensors",
+  "chapter_dir": "05-actuators-and-sensors",
+  "chapter_rel_dir": "chapters/05-actuators-and-sensors"
+}

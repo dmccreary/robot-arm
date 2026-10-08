@@ -1,0 +1,23 @@
+{
+  "title": "Pick and Place Sequencer",
+  "description": "The learner will organize the eight steps of a pick-and-place task into their correct order, with at least 7 of the 8 steps in their correct positions within three attempts.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "pick-and-place-sequencer",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "organize",
+  "completion_status": "scaffold",
+  "chapter_number": 11,
+  "chapter_title": "Moving the Arm: Trajectories, Grippers, and Teleoperation",
+  "chapter_dir": "11-moving-the-arm",
+  "chapter_rel_dir": "chapters/11-moving-the-arm"
+}

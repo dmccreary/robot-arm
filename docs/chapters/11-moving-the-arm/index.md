@@ -138,6 +138,10 @@ The next MicroSim practises the arithmetic of loops. You predict the rate of a n
 
 #### Diagram: Loop Rate Calculator
 
+<iframe src="../../sims/loop-rate-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Loop Rate Calculator MicroSim fullscreen](../../sims/loop-rate-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Loop Rate Calculator</summary>
 Type: microsim
@@ -252,6 +256,10 @@ Next, a MicroSim for the trapezoid arithmetic.
 
 #### Diagram: Trapezoid Profile Calculator
 
+<iframe src="../../sims/trapezoid-profile-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Trapezoid Profile Calculator MicroSim fullscreen](../../sims/trapezoid-profile-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Trapezoid Profile Calculator</summary>
 Type: microsim
@@ -353,6 +361,10 @@ A **state machine** is a program built around a list of *states* and rules for t
 The next MicroSim practises the order of the steps.
 
 #### Diagram: Pick and Place Sequencer
+
+<iframe src="../../sims/pick-and-place-sequencer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Pick and Place Sequencer MicroSim fullscreen](../../sims/pick-and-place-sequencer/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Pick and Place Sequencer</summary>
@@ -1108,3 +1120,5 @@ You can now move an arm smoothly, in a loop, through a list of waypoints, and by
 !!! mascot-celebration "You Can Move Me Like a Pro!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You wrote a steady control loop, planned moves with gentle starts and stops, followed a list of waypoints, picked something up and checked the grasp, and made one arm copy another in real time. That is everything a program needs to make me move. Let's move it on to Chapter 12!
+
+[See Annotated References](./references.md)

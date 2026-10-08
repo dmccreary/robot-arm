@@ -1,0 +1,23 @@
+{
+  "title": "MIT Frame Packer",
+  "description": "The learner will calculate the whole number that a value becomes when it is packed into an MIT-mode field of a Damiao motor, in six problems, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "mit-frame-packer",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 9,
+  "chapter_title": "Building the reBot-DevArm and Choosing a Platform",
+  "chapter_dir": "09-building-the-rebot-devarm",
+  "chapter_rel_dir": "chapters/09-building-the-rebot-devarm"
+}

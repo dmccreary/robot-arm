@@ -1,0 +1,23 @@
+{
+  "title": "Packet Checksum Calculator",
+  "description": "The learner will calculate the checksum byte of six instruction packets from their ID, instruction and parameters, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "packet-checksum-calculator",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 4,
+  "chapter_title": "Serial and CAN Communication",
+  "chapter_dir": "04-serial-and-can-communication",
+  "chapter_rel_dir": "chapters/04-serial-and-can-communication"
+}

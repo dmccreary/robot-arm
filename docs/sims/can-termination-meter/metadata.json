@@ -1,0 +1,23 @@
+{
+  "title": "CAN Termination Meter",
+  "description": "The learner will infer the state of a CAN bus's termination from the resistance a meter reads between CAN_H and CAN_L, in six readings, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "can-termination-meter",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "infer",
+  "completion_status": "scaffold",
+  "chapter_number": 4,
+  "chapter_title": "Serial and CAN Communication",
+  "chapter_dir": "04-serial-and-can-communication",
+  "chapter_rel_dir": "chapters/04-serial-and-can-communication"
+}

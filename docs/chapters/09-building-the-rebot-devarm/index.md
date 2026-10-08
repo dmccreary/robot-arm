@@ -202,6 +202,10 @@ The first MicroSim of the chapter makes you do the first step of this by hand: t
 
 #### Diagram: MIT Frame Packer
 
+<iframe src="../../sims/mit-frame-packer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the MIT Frame Packer MicroSim fullscreen](../../sims/mit-frame-packer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>MIT Frame Packer</summary>
 Type: microsim
@@ -346,6 +350,10 @@ The **learning curve** is how much a builder has to learn before the arm works, 
 A *requirement* (the arm must carry 2 kg) is a filter that removes any arm that fails it. A *preference* (cheaper is better) is a weight. Treat the two differently: filter first, then weigh what remains. The final MicroSim makes you recommend a platform for six situations, and in its Explore mode you can set the weights for the five criteria and see how the totals change. The scores in Explore mode are the author's judgments and not measurements, and you can disagree with them.
 
 #### Diagram: Platform Chooser
+
+<iframe src="../../sims/platform-chooser/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Platform Chooser MicroSim fullscreen](../../sims/platform-chooser/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Platform Chooser</summary>
@@ -897,3 +905,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     A hard requirement was treated as a weight. The B601-DM's payload is 1.5 kg, so it cannot meet the requirement, however well it scores on cost or software. The requirement should have been a filter that removed it before any weights were applied.
 
 Chapter 10 turns to the software: a Python class for an arm, with the same methods for either of the two arms, so that the programs of the rest of the book run on whichever you chose.
+
+[See Annotated References](./references.md)

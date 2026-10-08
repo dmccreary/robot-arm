@@ -1,0 +1,23 @@
+{
+  "title": "Safe Power-Up Sequencer",
+  "description": "The learner will implement the safe power-up sequence by arranging seven shuffled steps in the correct order, with at least 6 of the 7 steps in their correct positions on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "safe-power-up-sequencer",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "implement",
+  "completion_status": "scaffold",
+  "chapter_number": 3,
+  "chapter_title": "Electricity, Power, and Safety Basics",
+  "chapter_dir": "03-electricity-power-and-safety",
+  "chapter_rel_dir": "chapters/03-electricity-power-and-safety"
+}

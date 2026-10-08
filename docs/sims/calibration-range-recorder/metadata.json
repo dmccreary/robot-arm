@@ -1,0 +1,23 @@
+{
+  "title": "Calibration Range Recorder",
+  "description": "The learner will infer the result of a calibration run from a description of what the builder did in each of its two steps, in six situations, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "calibration-range-recorder",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "infer",
+  "completion_status": "scaffold",
+  "chapter_number": 8,
+  "chapter_title": "Building and Calibrating the SO-ARM100",
+  "chapter_dir": "08-building-the-so-arm",
+  "chapter_rel_dir": "chapters/08-building-the-so-arm"
+}

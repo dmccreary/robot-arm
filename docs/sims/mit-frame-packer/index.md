@@ -1,0 +1,82 @@
+---
+title: "MIT Frame Packer"
+description: "The learner will calculate the whole number that a value becomes when it is packed into an MIT-mode field of a Damiao motor, in six problems, with at least 5 of 6 correct on the first attempt."
+status: scaffold
+library: p5.js
+bloom_level: Apply
+---
+
+# MIT Frame Packer
+
+
+
+<iframe src="main.html" width="100%" height="600"></iframe>
+
+[Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
+
+## Specification
+
+The full specification below is extracted from
+[Chapter 9: Building the reBot-DevArm and Choosing a Platform](../../chapters/09-building-the-rebot-devarm/index.md).
+
+```text
+Type: microsim
+**sim-id:** mit-frame-packer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Bloom Level:** Apply<br/>
+**Bloom Verb:** calculate<br/>
+**Learning Objective:** The learner will calculate the whole number that a value becomes when it is packed into an MIT-mode field of a Damiao motor, in six problems, with at least 5 of 6 correct on the first attempt.
+
+**Prerequisites:** CAN frame, MIT mode, bits, PMAX, VMAX, TMAX, the packing formula (all defined in the section "An MIT Frame in Eight Bytes" above this block).
+
+**Evidence of Mastery:** For each of six problems the learner types a whole number and commits. An answer is correct when it equals the Correct column in Content exactly. Mastery is 5 of 6 correct on the first attempt. Changing the values in Explore mode is exploration, not evidence.
+
+**Misconceptions:** (1) A value of zero maps to the middle number exactly. (With an even number of steps the middle falls between two integers and the whole number is rounded down.) (2) All the fields have the same range. (Each field has its own range and number of bits.) (3) The conversion rounds to the nearest whole number. (It drops the fraction.)
+
+**Instructional Rationale:** An Apply-level calculate objective needs the learner to carry out the formula on new values with an immediate check. Typing the integer, and seeing the formula worked afterwards, ties the formula to the bytes that the lab produces.
+
+**Content:**
+
+The formula is integer = floor((x - x_min) x (2^n - 1) / (x_max - x_min)). In Explore mode the learner can choose a model (DM4310 or DM4340P), set the five values, and see each integer, its hexadecimal form, and the eight packed bytes.
+
+| Quantity | Min | Max | Step | Default | Unit |
+|---|---|---|---|---|---|
+| Position | -12.5 | 12.5 | 0.1 | 1.0 | rad |
+| Speed (DM4310: limit 30, DM4340P: limit 8) | the negative limit | the limit | 0.1 | 0.0 | rad/s |
+| Kp | 0 | 500 | 1 | 20 | none |
+| Kd | 0 | 5 | 0.1 | 1.0 | none |
+| Torque (DM4310: limit 10, DM4340P: limit 28) | the negative limit | the limit | 0.1 | 0.0 | N·m |
+
+Six problems in this fixed order:
+
+| # | Problem | Bits | Correct | Why (shown as feedback) |
+|---|---|---|---|---|
+| 1 | DM4310, position 0 rad (range -12.5 to 12.5). | 16 | 32767 | 12.5 x 65535 / 25 = 32767.5, and the fraction is dropped. |
+| 2 | DM4310, Kd = 1.0 (range 0 to 5). | 12 | 819 | 1.0 x 4095 / 5 = 819. |
+| 3 | DM4310, Kp = 20 (range 0 to 500). | 12 | 163 | 20 x 4095 / 500 = 163.8, and the fraction is dropped. |
+| 4 | DM4340P, speed 3 rad/s (range -8 to 8). | 12 | 2815 | (3 + 8) x 4095 / 16 = 2815.3, and the fraction is dropped. |
+| 5 | DM4340P, torque -7 N·m (range -28 to 28). | 12 | 1535 | (-7 + 28) x 4095 / 56 = 1535.6, and the fraction is dropped. |
+| 6 | DM4310, position 1.0 rad (range -12.5 to 12.5). | 16 | 35388 | 13.5 x 65535 / 25 = 35388.9, and the fraction is dropped. |
+
+**Provenance:** The formula, the bit counts, the Kp and Kd ranges and the PMAX, VMAX and TMAX values are from the chapter section "An MIT Frame in Eight Bytes", which follows the Damiao Python library in Seeed's wiki read on 2026-10-07. The problems are illustrative and written for this sim.
+
+**Rules:** integer = floor((x - x_min) x (2^n - 1) / (x_max - x_min)). A typed answer is a whole number between 0 and 2^n - 1, and is correct only if it equals the Correct value. A value outside its range is limited to the range before the formula is applied.
+
+**Learner Activity:**
+
+1. In Explore mode the learner changes the model and the five values and watches the integers, the hexadecimal values and the eight bytes update. The learner should notice that a speed of exactly 0 does not give exactly the middle integer.
+2. The learner switches to the six problems. Problem 1 is shown.
+3. The learner types a whole number and presses Check to commit.
+4. The sim shows whether the answer was correct and the worked formula with the Why text, then moves on. After problem 6 it shows the score.
+
+**Feedback:** Six problems, fixed order, one attempt each. Correct: "Correct: <value>. <Why>". Incorrect: "Not quite. The answer is <value>. <Why>". The correct value is revealed after each commit. A running count "Correct: n of 6" is shown and the final screen says whether mastery (5 of 6) was reached.
+
+**Starting State:** Explore mode with the DM4310 and the defaults, showing the packed bytes 8A 3C 7F F0 A3 33 37 FF.
+
+**Chapter Anchors:** The chapter's worked example is a DM4310 at 1.0 rad, which is 35388 or 0x8A3C, with Kd = 1.0 giving 819. The sim has six problems and mastery is 5 of 6.
+```
+
+## Related Resources
+
+- [Chapter 9: Building the reBot-DevArm and Choosing a Platform](../../chapters/09-building-the-rebot-devarm/index.md)

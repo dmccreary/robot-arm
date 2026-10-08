@@ -1,0 +1,23 @@
+{
+  "title": "Encoder Resolution Reader",
+  "description": "The learner will calculate the step size of an encoder, convert between encoder steps and degrees, and find a speed from two position readings, to within 1 percent, in five problems, with at least 4 of 5 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "encoder-resolution-reader",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "Actuators and Sensors",
+  "chapter_dir": "05-actuators-and-sensors",
+  "chapter_rel_dir": "chapters/05-actuators-and-sensors"
+}

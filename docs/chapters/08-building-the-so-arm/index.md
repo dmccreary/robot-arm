@@ -183,6 +183,10 @@ Leave the rate at 1,000,000. Every device on one bus must agree (Chapter 4), and
 
 #### Diagram: Servo ID Setup Sequencer
 
+<iframe src="../../sims/servo-id-setup-sequencer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Servo ID Setup Sequencer MicroSim fullscreen](../../sims/servo-id-setup-sequencer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Servo ID Setup Sequencer</summary>
 Type: microsim
@@ -347,6 +351,10 @@ A program can use the file to convert raw numbers. The default in current LeRobo
 
 #### Diagram: Calibration Range Recorder
 
+<iframe src="../../sims/calibration-range-recorder/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Calibration Range Recorder MicroSim fullscreen](../../sims/calibration-range-recorder/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Calibration Range Recorder</summary>
 Type: microsim
@@ -425,6 +433,10 @@ The five results: "The program stops with an error", "The recorded range is too 
 The last MicroSim of the chapter practices the first step of troubleshooting: matching a symptom to its most likely cause.
 
 #### Diagram: Assembly Fault Finder
+
+<iframe src="../../sims/assembly-fault-finder/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Assembly Fault Finder MicroSim fullscreen](../../sims/assembly-fault-finder/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Assembly Fault Finder</summary>
@@ -965,3 +977,5 @@ You can now build, power up and calibrate an arm pair.
 !!! mascot-celebration "You Built and Calibrated an Arm!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just gave six servos their names, put together a follower and a leader, woke them up safely and taught them where their middle and their ends are, and you wrote the Python that does the same on a pretend bus. That is a working arm pair, and the hardest part of the build is behind you. Let's move it on to Chapter 9!
+
+[See Annotated References](./references.md)

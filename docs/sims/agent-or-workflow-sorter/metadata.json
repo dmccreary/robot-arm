@@ -1,0 +1,23 @@
+{
+  "title": "Agent or Workflow Sorter",
+  "description": "The learner will classify eight described systems as an ordinary program, a chatbot, a workflow or an agent, according to who decides the next step and whether tools are used, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "agent-or-workflow-sorter",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "classify",
+  "completion_status": "scaffold",
+  "chapter_number": 15,
+  "chapter_title": "AI Agents, Tools, and OpenClaw Skills",
+  "chapter_dir": "15-agents-and-openclaw-skills",
+  "chapter_rel_dir": "chapters/15-agents-and-openclaw-skills"
+}

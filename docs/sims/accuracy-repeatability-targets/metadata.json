@@ -1,0 +1,23 @@
+{
+  "title": "Accuracy and Repeatability Targets",
+  "description": "The learner will classify four sets of landing points as accurate or not and repeatable or not, using a stated distance threshold, with at least 3 of 4 sets classified correctly on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "accuracy-repeatability-targets",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "classify",
+  "completion_status": "scaffold",
+  "chapter_number": 2,
+  "chapter_title": "Anatomy of a Robot Arm",
+  "chapter_dir": "02-anatomy-of-a-robot-arm",
+  "chapter_rel_dir": "chapters/02-anatomy-of-a-robot-arm"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Trapezoid Profile Calculator",
+  "description": "The learner will calculate the acceleration time, cruise time, total time and peak speed of a joint move under a trapezoidal velocity profile, for six problems, to within the tolerance shown, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "trapezoid-profile-calculator",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 11,
+  "chapter_title": "Moving the Arm: Trajectories, Grippers, and Teleoperation",
+  "chapter_dir": "11-moving-the-arm",
+  "chapter_rel_dir": "chapters/11-moving-the-arm"
+}

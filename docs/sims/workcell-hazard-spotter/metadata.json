@@ -1,0 +1,23 @@
+{
+  "title": "Workcell Hazard Spotter",
+  "description": "The learner will distinguish pinch-point, collision, and electrical hazards from acceptable items in a desk robot-arm scene, in eight items, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "workcell-hazard-spotter",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "distinguish",
+  "completion_status": "scaffold",
+  "chapter_number": 3,
+  "chapter_title": "Electricity, Power, and Safety Basics",
+  "chapter_dir": "03-electricity-power-and-safety",
+  "chapter_rel_dir": "chapters/03-electricity-power-and-safety"
+}

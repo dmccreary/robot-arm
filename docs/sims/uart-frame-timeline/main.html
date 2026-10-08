@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- microsim-scaffold-stub -->
+    <title>UART Frame Timeline</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>UART Frame Timeline</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> uart-frame-timeline</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Apply</p>
+            <p><strong>Learning Objective:</strong> The learner will calculate the time to send a given number of bytes at a given baud rate using 8N1 framing, to within 1 percent, in five problems, with at least 4 of 5 correct on the first attempt.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** uart-frame-timeline<br/>
+    **Library:** p5.js<br/>
+    **Status:** Specified<br/>
+    **Bloom Level:** Apply<br/>
+    **Bloom Verb:** calculate<br/>
+    **Learning Objective:** The learner will calculate the time to send a given number of bytes at a given baud rate using 8N1 framing, to within 1 percent, in five problems, with at least 4 of 5 correct on the first attempt.
+    
+    **Prerequisites:** serial communication, bit, byte, UART, baud rate, 8N1, start bit, stop bit (all defined in the sections above this block).
+    
+    **Evidence of Mastery:** For each of five problems the learner types a time in the unit shown and commits. An answer is correct when it is within 1 percent of the Correct time column in Content. Mastery is 4 of 5 correct on the first attempt. Moving the baud and packet controls in Explore mode is exploration, not evidence.
+    
+    **Misconceptions:** (1) A byte is 8 bits on the wire. (It is 10 bits with 8N1 framing.) (2) A higher baud rate sends bytes with fewer bits. (It only makes each bit shorter.) (3) Both ends can use different baud rates. (A mismatch gives garbage.)
+    
+    **Instructional Rationale:** An Apply-level calculate objective needs repeated use of one formula on new numbers with an immediate check. The time line shows ten-bit frames end to end, so the factor of 10 is seen before it is calculated.
+    
+    **Content:**
+    
+    The formula is time = bytes × 10 / baud. Explore mode lets the learner choose one of the eight baud rates in the chapter's table and one of three example packets: a ping request (6 bytes), a position-read request (8 bytes), and a position-read reply (8 bytes). The time line shows each byte as a start bit, eight data bits and a stop bit, with the total time written beneath.
+    
+    Five problems in this fixed order:
+    
+    | # | Problem | Bytes | Baud | Unit asked | Correct time | Why (shown as feedback) |
+    |---|---|---|---|---|---|---|
+    | 1 | Send one ping request | 6 | 1,000,000 | µs | 60 µs | 6 × 10 / 1,000,000 = 60 µs. |
+    | 2 | One position read, request plus reply | 16 | 1,000,000 | µs | 160 µs | 16 × 10 / 1,000,000 = 160 µs. |
+    | 3 | The same position read | 16 | 115,200 | ms | 1.39 ms | 16 × 10 / 115,200 = 1.389 ms. |
+    | 4 | Read all six servos' positions, one at a time | 96 | 1,000,000 | µs | 960 µs | 6 reads × 16 bytes = 96 bytes; 96 × 10 / 1,000,000 = 960 µs. |
+    | 5 | The same six reads | 96 | 57,600 | ms | 16.67 ms | 96 × 10 / 57,600 = 16.667 ms. |
+    
+    **Provenance:** The byte counts follow the packet examples in the chapter section "Instruction Packet" and "Status Packet". The baud rates are from the STS3215 baud rate table (LeRobot motor tables). The times are computed from the formula and ignore USB and software delays, and the sim says so.
+    
+    **Rules:** time (s) = bytes × 10 / baud. An answer is correct when |typed − correct| / correct <= 0.01 after converting to the unit shown. The typed value has minimum 0, maximum 1000, step 0.01, and no default. Baud rates are the eight values in the table and the default is 1,000,000.
+    
+    **Learner Activity:**
+    
+    1. In Explore mode the learner picks a baud rate and a packet and watches the frames and the total time change. The learner should notice that slowing the baud rate stretches every bit equally.
+    2. The learner switches to the problems. Problem 1 shows its bytes and baud rate.
+    3. The learner types a time and presses Check to commit.
+    4. The sim shows whether the answer was correct, the correct time and the Why text, then moves on. After problem 5 it shows the score.
+    
+    **Feedback:** Five problems, fixed order, one attempt each. Correct: "Correct: <time>. <Why>". Incorrect: "Not quite. Each byte is 10 bits, so the time is <time>. <Why>". The correct time is revealed after each commit. A running count "Correct: n of 5" is shown and the final screen says whether mastery (4 of 5) was reached.
+    
+    **Starting State:** Explore mode with 1,000,000 baud and the ping request selected, showing six frames and "60 µs".
+    
+    **Chapter Anchors:** The chapter's worked example is 6 bytes at 1,000,000 baud giving 60 µs, and at 115,200 baud giving 0.52 ms. The formula is bytes × 10 / baud. The sim has five problems and mastery is 4 of 5.
+    -->
+</body>
+</html>

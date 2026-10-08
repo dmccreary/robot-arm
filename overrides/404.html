@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+<title>Page Not Found - {{ config.site_name }}</title>
+{% endblock %}
+
+{% block content %}
+<style>
+  .servo-404 { text-align: center; padding: 3rem 1rem; }
+  .servo-404 img {
+    width: 240px;
+    max-width: 70%;
+    margin-bottom: 1rem;
+    transform-origin: 50% 90%;
+    animation: servo-404-rock 3s ease-in-out infinite;
+  }
+  .servo-404 .servo-404-lead { font-size: 1.2rem; }
+  .servo-404 .md-button { margin: 0.3rem; }
+  @keyframes servo-404-rock {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .servo-404 img { animation: none; }
+  }
+  /* This page has no table of contents. Below the width where Material turns
+     the left nav into a drawer, the empty right sidebar would push Servo off
+     center, so remove it there. Above it the two sidebars balance. */
+  @media screen and (max-width: 76.234375em) {
+    .md-main .md-sidebar--secondary:not([hidden]) { display: none; }
+  }
+</style>
+<div class="servo-404">
+  <img src="/robot-arm/img/mascot/warning.png" alt="Servo the robot arm looking worried and holding up a gripper beside a warning sign">
+  <h1>404 — Out of Reach!</h1>
+  <p class="servo-404-lead">Whoa there, builder! I stretched every joint, but that page is outside my workspace.</p>
+  <p>Don't worry. A wrong address is just normal calibration. Let's move it back to somewhere I can reach.</p>
+  <p style="margin-top: 1.5rem;">
+    <a href="/robot-arm/" class="md-button md-button--primary">Return to Home</a>
+    <a href="/robot-arm/chapters/" class="md-button">Browse the Chapters</a>
+  </p>
+</div>
+{% endblock %}

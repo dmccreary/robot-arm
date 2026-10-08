@@ -1,0 +1,23 @@
+{
+  "title": "Pytest Output Reader",
+  "description": "The learner will attribute each of six pytest failure messages to its most likely cause, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "pytest-output-reader",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "attribute",
+  "completion_status": "scaffold",
+  "chapter_number": 13,
+  "chapter_title": "Logging, Testing, Simulation, and ROS 2",
+  "chapter_dir": "13-logging-testing-simulation",
+  "chapter_rel_dir": "chapters/13-logging-testing-simulation"
+}

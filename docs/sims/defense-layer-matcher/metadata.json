@@ -1,0 +1,23 @@
+{
+  "title": "Defense Layer Matcher",
+  "description": "The learner will attribute each of eight agent requests to the one safety layer that refuses it first, among six layers, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "defense-layer-matcher",
+  "library": "p5.js",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "attribute",
+  "completion_status": "scaffold",
+  "chapter_number": 17,
+  "chapter_title": "Safety Layers and Evaluation for Agent-Controlled Arms",
+  "chapter_dir": "17-agent-safety-and-evaluation",
+  "chapter_rel_dir": "chapters/17-agent-safety-and-evaluation"
+}

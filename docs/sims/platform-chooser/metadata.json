@@ -1,0 +1,23 @@
+{
+  "title": "Platform Chooser",
+  "description": "The learner will recommend one of three robot arms (the SO-ARM101, the reBot B601-DM or the reBot B601-RS) for each of six project situations by applying the platform selection criteria, with at least 5 of 6 recommendations correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "platform-chooser",
+  "library": "p5.js",
+  "bloomLevel": "Evaluate",
+  "bloomVerb": "recommend",
+  "completion_status": "scaffold",
+  "chapter_number": 9,
+  "chapter_title": "Building the reBot-DevArm and Choosing a Platform",
+  "chapter_dir": "09-building-the-rebot-devarm",
+  "chapter_rel_dir": "chapters/09-building-the-rebot-devarm"
+}

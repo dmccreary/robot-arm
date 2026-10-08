@@ -1,0 +1,23 @@
+{
+  "title": "UART Frame Timeline",
+  "description": "The learner will calculate the time to send a given number of bytes at a given baud rate using 8N1 framing, to within 1 percent, in five problems, with at least 4 of 5 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "uart-frame-timeline",
+  "library": "p5.js",
+  "bloomLevel": "Apply",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 4,
+  "chapter_title": "Serial and CAN Communication",
+  "chapter_dir": "04-serial-and-can-communication",
+  "chapter_rel_dir": "chapters/04-serial-and-can-communication"
+}

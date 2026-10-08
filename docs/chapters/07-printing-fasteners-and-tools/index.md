@@ -162,6 +162,10 @@ Here is a worked example with a real size. The STS3215 servo body is 45.2 × 24.
 
 #### Diagram: Tolerance Fit Explorer
 
+<iframe src="../../sims/tolerance-fit-explorer/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Tolerance Fit Explorer MicroSim fullscreen](../../sims/tolerance-fit-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Tolerance Fit Explorer</summary>
 Type: microsim
@@ -234,6 +238,10 @@ A good inspection goes in this order: look, then feel, then measure, then test-f
 | Poor first layer | The first lines do not stick, or are squashed unevenly | The bed is not level, or the nozzle is too far from or too close to it | Level the bed, set the first-layer height, clean the bed |
 
 #### Diagram: Print Defect Diagnoser
+
+<iframe src="../../sims/print-defect-diagnoser/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Print Defect Diagnoser MicroSim fullscreen](../../sims/print-defect-diagnoser/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Print Defect Diagnoser</summary>
@@ -365,6 +373,10 @@ The meters that most hobbyists buy are rated for low-voltage electronics. The ar
 In the following MicroSim you practise the three choices that every measurement needs: which mode, whether the power is on, and how the meter connects. The six tasks come from this book's circuits.
 
 #### Diagram: Multimeter Practice
+
+<iframe src="../../sims/multimeter-practice/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Multimeter Practice MicroSim fullscreen](../../sims/multimeter-practice/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Multimeter Practice</summary>
@@ -756,3 +768,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     The conductor has probably broken inside the insulation where the cable bends, or the plug is pulling out under strain, which gives a fault that comes and goes. Move the joint slowly and watch for the glitch, check for a sharp bend or a tight tie near the connector, and add slack or strain relief.
 
 Chapter 8 puts the parts together: you will prepare the servos, give each one its ID, assemble the follower and leader arms, power on for the first time, and calibrate.
+
+[See Annotated References](./references.md)

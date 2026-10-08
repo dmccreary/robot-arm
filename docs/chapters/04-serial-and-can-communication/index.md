@@ -131,6 +131,10 @@ The next MicroSim practises the formula. You choose a baud rate and a packet, wa
 
 #### Diagram: UART Frame Timeline
 
+<iframe src="../../sims/uart-frame-timeline/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the UART Frame Timeline MicroSim fullscreen](../../sims/uart-frame-timeline/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>UART Frame Timeline</summary>
 Type: microsim
@@ -339,6 +343,10 @@ In the next MicroSim you calculate the checksum byte of six packets. Each shows 
 
 #### Diagram: Packet Checksum Calculator
 
+<iframe src="../../sims/packet-checksum-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Packet Checksum Calculator MicroSim fullscreen](../../sims/packet-checksum-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Packet Checksum Calculator</summary>
 Type: microsim
@@ -403,6 +411,10 @@ Here is the status packet for a position read from servo 1, whose data were `18 
 The next MicroSim practises reading replies. You are shown six reply packets as hex bytes, and you classify each as a valid reading, a bad checksum, a servo-reported error, or not a packet at all.
 
 #### Diagram: Status Packet Decoder
+
+<iframe src="../../sims/status-packet-decoder/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Status Packet Decoder MicroSim fullscreen](../../sims/status-packet-decoder/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Status Packet Decoder</summary>
@@ -532,6 +544,10 @@ A timeout is only useful if the code *does something* when it fires. The usual c
 The next MicroSim turns the table into a troubleshooting exercise. It shows eight symptom reports from a real-looking bus session, and you choose the most likely cause for each.
 
 #### Diagram: Bus Fault Finder
+
+<iframe src="../../sims/bus-fault-finder/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Bus Fault Finder MicroSim fullscreen](../../sims/bus-fault-finder/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Bus Fault Finder</summary>
@@ -667,6 +683,10 @@ Chapter 3's equations tell you how to test them. Two 120 Ω resistors that sit a
 In the next MicroSim you read a resistance from a virtual meter across a CAN bus and say what it shows about the terminators. In Explore mode you can add and remove terminators and see the meter respond.
 
 #### Diagram: CAN Termination Meter
+
+<iframe src="../../sims/can-termination-meter/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the CAN Termination Meter MicroSim fullscreen](../../sims/can-termination-meter/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>CAN Termination Meter</summary>
@@ -1173,3 +1193,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     The software watchdog runs in your program, so if the whole program or the computer freezes, the check never runs, which is the weakness of every software stop in Chapter 3. The watchdog in the motor counts the silence itself and needs nothing from your computer to trigger.
 
 In Chapter 5 you will look inside the motors that these packets control, and learn how a joint holds a position and how to set limits that keep it safe.
+
+[See Annotated References](./references.md)

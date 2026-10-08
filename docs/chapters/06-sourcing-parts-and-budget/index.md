@@ -226,6 +226,10 @@ A **cost calculator** is a tool that totals a BOM and adds the extras, and a spr
 
 #### Diagram: Landed Cost Calculator
 
+<iframe src="../../sims/landed-cost-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Landed Cost Calculator MicroSim fullscreen](../../sims/landed-cost-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Landed Cost Calculator</summary>
 Type: microsim
@@ -302,6 +306,10 @@ Most of the money lost on a first build is lost on a handful of mistakes. They a
 Specifications in articles, listings and even repositories can disagree, and the safest habit is to treat each number as a claim until two independent sources agree. **Fact-checking specifications** means finding the primary source (the datasheet or the maker's documentation), comparing it with what the seller says, and writing down which source you trusted and when. A real example from this book: Seeed's guide lists the DM4310 with a rated torque of 3 N·m and a peak of 7 N·m, while one reseller's listing for a DM-J4310-2EC V1.2 gives a rated torque of 3.5 N·m and a peak of 12.5 N·m. They could describe different revisions, or one could be wrong, and a build that depended on the peak torque would have to find out which. The next MicroSim practises the habit of looking critically at listings.
 
 #### Diagram: Sourcing Listing Checker
+
+<iframe src="../../sims/sourcing-listing-checker/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Sourcing Listing Checker MicroSim fullscreen](../../sims/sourcing-listing-checker/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Sourcing Listing Checker</summary>
@@ -598,3 +606,5 @@ You can now plan an order and total what it will really cost.
 !!! mascot-celebration "You Can Plan the Whole Order!"
     ![Servo celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just read a bill of materials, separated required from optional parts, worked out a landed cost with shipping and tax, and wrote a Python script that totals it and checks a delivery. That is the planning that makes the build in the next chapters go smoothly. Let's move it on to Chapter 7!
+
+[See Annotated References](./references.md)

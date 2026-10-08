@@ -108,6 +108,10 @@ A **color space** is a way of writing a color as numbers. The BGR of a camera fr
 
 #### Diagram: HSV Color Classifier
 
+<iframe src="../../sims/hsv-color-classifier/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the HSV Color Classifier MicroSim fullscreen](../../sims/hsv-color-classifier/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>HSV Color Classifier</summary>
 Type: microsim
@@ -190,6 +194,10 @@ A picture gives pixels, and a robot needs metres. The first link is a model of t
 The four numbers are the **camera intrinsics**: the focal lengths \( f_x \) and \( f_y \) in pixels (how strongly the lens magnifies) and the principal point \( (c_x, c_y) \) (where the middle of the lens lands on the sensor, usually near the centre of the picture). They are collected in a 3 by 3 matrix, and a real lens adds small *distortion* coefficients that bend straight lines near the edges. A worked example with \( f = 500 \), \( c_x = 320 \), \( c_y = 240 \): a point 0.10 m to the right and 0.50 m in front projects to \( u = 500 \times 0.10 / 0.50 + 320 = 420 \). The same point 1.0 m away would project to \( u = 370 \): farther things look smaller, because of the division by \( Z \).
 
 #### Diagram: Pinhole Projection Calculator
+
+<iframe src="../../sims/pinhole-projection-calculator/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Pinhole Projection Calculator MicroSim fullscreen](../../sims/pinhole-projection-calculator/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Pinhole Projection Calculator</summary>
@@ -385,6 +393,10 @@ The `base` strategy runs the policy with no recording, and others record the run
 The next MicroSim practises the judgement that every dataset needs: which episodes to keep.
 
 #### Diagram: Demo Episode Judge
+
+<iframe src="../../sims/demo-episode-judge/main.html" height="620px" width="100%" scrolling="no"></iframe>
+
+[Run the Demo Episode Judge MicroSim fullscreen](../../sims/demo-episode-judge/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Demo Episode Judge</summary>
@@ -1255,3 +1267,5 @@ Test yourself before you move on. Click each question to reveal an answer.
     Use `lerobot-rollout`. The `lerobot-record` command is now for data collection only, and it rejects dataset names that start with `eval_`, a prefix reserved for policy evaluation runs.
 
 Chapter 15 introduces the other kind of intelligence in this book: AI agents that decide what to do, and the tools, typed and bounded, through which they may act on the arm.
+
+[See Annotated References](./references.md)

@@ -1,0 +1,23 @@
+{
+  "title": "JSON Syntax Doctor",
+  "description": "The learner will critique six short JSON settings files by marking the line that breaks a JSON rule and naming the rule, or by judging the file correct, with at least 5 of 6 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "json-syntax-doctor",
+  "library": "p5.js",
+  "bloomLevel": "Evaluate",
+  "bloomVerb": "critique",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "Setting Up Python for Robotics",
+  "chapter_dir": "01-python-setup-for-robotics",
+  "chapter_rel_dir": "chapters/01-python-setup-for-robotics"
+}

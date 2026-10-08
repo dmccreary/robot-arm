@@ -1,0 +1,23 @@
+{
+  "title": "Virtual Environment Explorer",
+  "description": "The learner will infer what an import or a pip command does in each of eight terminal situations, given which environment is active and which packages each environment contains, with at least 7 of 8 correct on the first attempt.",
+  "creator": "Controlling a Robot Arm",
+  "author": "Dan McCreary",
+  "date": "2026-10-08",
+  "subject": [
+    "Controlling a Robot Arm"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "virtual-environment-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Understand",
+  "bloomVerb": "infer",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "Setting Up Python for Robotics",
+  "chapter_dir": "01-python-setup-for-robotics",
+  "chapter_rel_dir": "chapters/01-python-setup-for-robotics"
+}

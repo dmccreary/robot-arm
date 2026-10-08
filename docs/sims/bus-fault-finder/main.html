@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- microsim-scaffold-stub -->
+    <title>Bus Fault Finder</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Bus Fault Finder</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> bus-fault-finder</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Analyze</p>
+            <p><strong>Learning Objective:</strong> The learner will differentiate six causes of serial bus failure by choosing the most likely cause for each of eight symptom reports, with at least 6 of 8 correct on the first attempt.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** bus-fault-finder<br/>
+    **Library:** p5.js<br/>
+    **Status:** Specified<br/>
+    **Bloom Level:** Analyze<br/>
+    **Bloom Verb:** differentiate<br/>
+    **Learning Objective:** The learner will differentiate six causes of serial bus failure by choosing the most likely cause for each of eight symptom reports, with at least 6 of 8 correct on the first attempt.
+    
+    **Prerequisites:** baud rate, serial port, device ID, daisy chain wiring, bus scan, checksum, communication timeout, communication errors, common ground (all defined in the sections above this block).
+    
+    **Evidence of Mastery:** For each of eight symptom reports the learner chooses one of six causes and commits. A choice is correct when it matches the Cause column in Content. Mastery is 6 of 8 correct on the first attempt. Viewing the cause list and the packet traces in Explore mode is exploration, not evidence.
+    
+    **Misconceptions:** (1) Silence always means the motor is broken. (Silence is usually the port, the power or the baud rate.) (2) Garbage means the cable is bad. (It usually means a baud rate mismatch.) (3) A partial scan means a bad adapter. (It points to the chain.)
+    
+    **Instructional Rationale:** An Analyze-level differentiate objective asks the learner to tell similar-looking cases apart by the evidence. Each report includes the scan result and the raw bytes, so the learner must separate causes by what the bytes show, not by the first guess.
+    
+    **Content:**
+    
+    The six causes: "Wrong port", "No motor power", "Baud rate mismatch", "Duplicate ID", "Broken chain link", "Noise or missing ground". Eight reports in this fixed order:
+    
+    | # | Symptom report | Cause | Why (shown as feedback) |
+    |---|---|---|---|
+    | 1 | The program raises an error that the port `/dev/ttyACM1` does not exist. `list_ports` shows only `/dev/ttyACM0`. | Wrong port | The port named in the program is not the one the computer sees. |
+    | 2 | The port opens and the adapter is listed by the computer. A scan of IDs 1 to 6 returns nothing, and the barrel-jack supply is switched off. | No motor power | USB carries data only, and the motors need their own supply. |
+    | 3 | A scan of IDs 1 to 6 returns nothing. The bytes received after each ping are `00 FE 80 00 F8`, and the motors have power. The port is open at 115,200 baud. | Baud rate mismatch | The motors answer at 1,000,000 baud, so the reply is read as garbage. |
+    | 4 | A scan finds IDs 1, 2 and 3 only. IDs 4, 5 and 6 never answer, and a cable between motors 3 and 4 is half unplugged. | Broken chain link | Everything after the break is silent, and everything before it answers. |
+    | 5 | A ping to ID 2 sometimes gets a good reply and sometimes one that fails its checksum. Two motors are on the bus, and both are set to ID 2. | Duplicate ID | Two servos answered together and their replies overlapped. |
+    | 6 | Pings succeed, but about one read in five fails its checksum. The cable to the motors is long, and the controller and the motors run from different supplies whose grounds are not joined. | Noise or missing ground | Poor grounding and long wires corrupt bits at random. |
+    | 7 | A scan on `/dev/ttyACM0` returns nothing although the arm is powered. The follower's adapter is the second entry in `list_ports`, `/dev/ttyACM1`. | Wrong port | The script opened the other adapter's port. |
+    | 8 | All six motors stay silent. The supply's label reads 5 V, and the supply's plug is in the wall, but its barrel jack is not in the board. | No motor power | The supply is not connected to the board, so the motors have no power. |
+    
+    **Provenance:** The symptoms are illustrative and written for this sim from the chapter's table of communication errors. The garbage bytes in report 3 are invented for illustration and are labeled "illustrative".
+    
+    **Rules:** Each report has exactly one correct cause among the six. A choice is scored once and cannot be changed after it is committed.
+    
+    **Learner Activity:**
+    
+    1. In Explore mode the learner reads the six causes and the typical signs of each.
+    2. The learner switches to the reports. Report 1 is shown with its scan result and bytes.
+    3. The learner chooses one of the six causes and commits.
+    4. The sim shows whether the choice was correct, the Why text, and the evidence that decided it. After report 8 it shows the score.
+    
+    **Feedback:** Eight reports, fixed order, one attempt each. Correct: "Correct: <cause>. <Why>". Incorrect: "Not quite. The most likely cause is <cause>. <Why>". The correct cause is revealed after each commit. A running count "Correct: n of 8" is shown and the final screen says whether mastery (6 of 8) was reached.
+    
+    **Starting State:** Explore mode with the six causes listed and the prompt "Read the evidence, then choose the most likely cause."
+    
+    **Chapter Anchors:** The chapter's error table lists the same kinds of symptoms (silence, garbage, partial replies, duplicate IDs, intermittent checksums). The sim has six causes and eight reports, and mastery is 6 of 8.
+    -->
+</body>
+</html>
